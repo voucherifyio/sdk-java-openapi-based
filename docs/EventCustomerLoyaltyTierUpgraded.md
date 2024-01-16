@@ -1,0 +1,18 @@
+
+
+# EventCustomerLoyaltyTierUpgraded
+
+Event data object schema for `customer.loyalty.tier.upgraded`.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
+|**campaign** | [**SimpleCampaign**](SimpleCampaign.md) |  |  [optional] |
+|**loyaltyTierFrom** | [**LoyaltyTier**](LoyaltyTier.md) |  |  [optional] |
+|**loyaltyTierTo** | [**LoyaltyTier**](LoyaltyTier.md) |  |  |
+|**createdAt** | **OffsetDateTime** |  |  |
+
+
+

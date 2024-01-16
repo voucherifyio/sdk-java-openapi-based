@@ -1,0 +1,19 @@
+
+
+# DiscountAmountVouchersEffectTypes
+
+## Enum
+
+
+* `ORDER` (value: `"APPLY_TO_ORDER"`)
+
+* `ITEMS` (value: `"APPLY_TO_ITEMS"`)
+
+* `ITEMS_PROPORTIONALLY` (value: `"APPLY_TO_ITEMS_PROPORTIONALLY"`)
+
+* `ITEMS_PROPORTIONALLY_BY_QUANTITY` (value: `"APPLY_TO_ITEMS_PROPORTIONALLY_BY_QUANTITY"`)
+
+* `ITEMS_BY_QUANTITY` (value: `"APPLY_TO_ITEMS_BY_QUANTITY"`)
+
+
+

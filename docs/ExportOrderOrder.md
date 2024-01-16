@@ -1,0 +1,61 @@
+
+
+# ExportOrderOrder
+
+## Enum
+
+
+* `ID` (value: `"id"`)
+
+* `_ID` (value: `"-id"`)
+
+* `SOURCE_ID` (value: `"source_id"`)
+
+* `_SOURCE_ID` (value: `"-source_id"`)
+
+* `CREATED_AT` (value: `"created_at"`)
+
+* `_CREATED_AT` (value: `"-created_at"`)
+
+* `UPDATED_AT` (value: `"updated_at"`)
+
+* `_UPDATED_AT` (value: `"-updated_at"`)
+
+* `STATUS` (value: `"status"`)
+
+* `_STATUS` (value: `"-status"`)
+
+* `AMOUNT` (value: `"amount"`)
+
+* `_AMOUNT` (value: `"-amount"`)
+
+* `DISCOUNT_AMOUNT` (value: `"discount_amount"`)
+
+* `_DISCOUNT_AMOUNT` (value: `"-discount_amount"`)
+
+* `ITEMS_DISCOUNT_AMOUNT` (value: `"items_discount_amount"`)
+
+* `_ITEMS_DISCOUNT_AMOUNT` (value: `"-items_discount_amount"`)
+
+* `TOTAL_DISCOUNT_AMOUNT` (value: `"total_discount_amount"`)
+
+* `_TOTAL_DISCOUNT_AMOUNT` (value: `"-total_discount_amount"`)
+
+* `TOTAL_AMOUNT` (value: `"total_amount"`)
+
+* `_TOTAL_AMOUNT` (value: `"-total_amount"`)
+
+* `CUSTOMER_ID` (value: `"customer_id"`)
+
+* `_CUSTOMER_ID` (value: `"-customer_id"`)
+
+* `REFERRER_ID` (value: `"referrer_id"`)
+
+* `_REFERRER_ID` (value: `"-referrer_id"`)
+
+* `METADATA` (value: `"metadata"`)
+
+* `_METADATA` (value: `"-metadata"`)
+
+
+
