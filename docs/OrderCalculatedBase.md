@@ -8,8 +8,8 @@ Order information.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Unique ID assigned by Voucherify of an existing order that will be linked to the redemption of this request. |  |
-|**sourceId** | **String** | Unique source ID of an existing order that will be linked to the redemption of this request. |  |
+|**id** | **String** | Unique ID assigned by Voucherify of an existing order that will be linked to the redemption of this request. |  [optional] |
+|**sourceId** | **String** | Unique source ID of an existing order that will be linked to the redemption of this request. |  [optional] |
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the order was created in ISO 8601 format. |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the order was last updated in ISO 8601 format. |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | The order status. |  [optional] |
@@ -24,8 +24,8 @@ Order information.
 |**totalAppliedDiscountAmount** | **Integer** | Sum of all order-level AND all product-specific discounts applied in a particular request.   &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; |  [optional] |
 |**items** | [**List&lt;OrderItemCalculated&gt;**](OrderItemCalculated.md) | Array of items applied to the order. |  [optional] |
 |**metadata** | **Object** | A set of custom key/value pairs that you can attach to an order. It can be useful for storing additional information about the order in a structured format. |  [optional] |
-|**customerId** | **String** | Unique customer ID of the customer making the purchase. |  |
-|**referrerId** | **String** | Unique referrer ID. |  |
+|**customerId** | **String** | Unique customer ID of the customer making the purchase. |  [optional] |
+|**referrerId** | **String** | Unique referrer ID. |  [optional] |
 |**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. |  |
 |**redemptions** | [**Map&lt;String, OrderRedemptions&gt;**](OrderRedemptions.md) |  |  [optional] |
 

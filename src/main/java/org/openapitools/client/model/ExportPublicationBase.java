@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * ExportPublicationBase
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ExportPublicationBase {
   /**
    * The type of object to be exported.
@@ -235,6 +235,17 @@ public class ExportPublicationBase {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("exported_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exported_object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("exported_object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ExportedObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `exported_object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a valid element of ExportedObjectEnum enum got `%s` instead", jsonObj.get("exported_object").toString()));
       }
       // validate the optional field `parameters`
       if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {

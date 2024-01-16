@@ -15,8 +15,8 @@ Assignments of business validation rule
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the object was created in ISO 8601 format. |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the object was last updated in ISO 8601 format. |  [optional] |
 |**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. |  |
-|**validationStatus** | [**ValidationStatusEnum**](#ValidationStatusEnum) | The validation status of the assignment |  |
-|**validationOmittedRules** | **List&lt;String&gt;** | The list of omitted rules |  |
+|**validationStatus** | [**ValidationStatusEnum**](#ValidationStatusEnum) | The validation status of the assignment |  [optional] |
+|**validationOmittedRules** | **List&lt;String&gt;** | The list of omitted rules |  [optional] |
 
 
 

@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Response body schema for &#x60;vouchers/{code}/balance.&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class VouchersBalanceUpdateResponseBody {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -474,11 +474,44 @@ public class VouchersBalanceUpdateResponseBody {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+      }
       if (!jsonObj.get("operation_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `operation_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation_type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("operation_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          OperationTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `operation_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `operation_type` to be a valid element of OperationTypeEnum enum got `%s` instead", jsonObj.get("operation_type").toString()));
+      }
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
       }
       // validate the required field `related_object`
       VouchersBalanceUpdateResponseBodyRelatedObject.validateJsonElement(jsonObj.get("related_object"));

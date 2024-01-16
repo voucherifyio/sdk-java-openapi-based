@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * DiscountUnitMultipleOneUnit
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class DiscountUnitMultipleOneUnit {
   public static final String SERIALIZED_NAME_UNIT_OFF = "unit_off";
   @SerializedName(SERIALIZED_NAME_UNIT_OFF)
@@ -355,6 +355,17 @@ public class DiscountUnitMultipleOneUnit {
       }
       if (!jsonObj.get("effect").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("effect");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          EffectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `effect` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
       }
       if (!jsonObj.get("unit_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `unit_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_type").toString()));

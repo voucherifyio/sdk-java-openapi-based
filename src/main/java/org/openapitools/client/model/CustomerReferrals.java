@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Summary of customer&#39;s referrals, in this case, the customer being the referee, i.e. information about the source of referrals and number of times the customer was referred by other customers.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class CustomerReferrals {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

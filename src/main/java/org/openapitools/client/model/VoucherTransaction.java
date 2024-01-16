@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.client.model.LoyaltyCardTransactionsType;
 import org.openapitools.client.model.VoucherTransactionDetails;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * VoucherTransaction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class VoucherTransaction {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -329,9 +330,20 @@ public class VoucherTransaction {
         Objects.equals(this.createdAt, voucherTransaction.createdAt);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, sourceId, voucherId, campaignId, source, reason, type, details, relatedTransactionId, createdAt);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -384,14 +396,10 @@ public class VoucherTransaction {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("source_id");
     openapiRequiredFields.add("voucher_id");
     openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("source");
-    openapiRequiredFields.add("reason");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("details");
-    openapiRequiredFields.add("related_transaction_id");
     openapiRequiredFields.add("created_at");
   }
 

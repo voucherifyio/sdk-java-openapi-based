@@ -14,7 +14,7 @@ Response body schema for **POST** `/promotions/{campaignId}/stacks`.
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the promotion stack was created in ISO 8601 format. |  |
 |**campaignId** | **String** | Promotion stack&#39;s parent campaign&#39;s unique ID. |  |
 |**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. |  |
-|**categoryId** | **String** | Promotion stack category ID. |  |
+|**categoryId** | **String** | Promotion stack category ID. |  [optional] |
 |**categories** | [**List&lt;PromotionStackBase&gt;**](PromotionStackBase.md) | Details about the category assigned to the promotion stack. |  |
 
 

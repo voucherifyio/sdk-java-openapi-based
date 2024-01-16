@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * This is an object representing a promotion tier create params. Promotion tiers are always assigned to a campaign and cannot be used standalone.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class PromotionTierCreateParams {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

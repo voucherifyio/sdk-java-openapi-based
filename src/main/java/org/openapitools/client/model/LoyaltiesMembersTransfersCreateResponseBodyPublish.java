@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * This object stores a summary of publish events: an events counter and an endpoint which can be called to return details of each event. A publication is required for loyalty cards and referral codes. This object gets updated whenever a voucher has been published. Publication means assigning a code to a particular customer. Typically, a publication is made by distributing your codes to your customers, e.g. through Export to MailChimp or publish voucher API method.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
   /**
    * The type of object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
@@ -300,6 +300,17 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("entries") != null && !jsonObj.get("entries").isJsonNull() && !jsonObj.get("entries").isJsonArray()) {

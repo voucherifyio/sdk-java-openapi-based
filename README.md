@@ -2,7 +2,7 @@
 
 Voucherify API
 - API version: v2018-08-01
-  - Build date: 2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]
+  - Build date: 2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]
 
 Voucherify promotion engine REST API. Please see https://docs.voucherify.io/docs for more details.
 
@@ -285,7 +285,6 @@ Class | Method | HTTP request | Description
  - [CampaignLoyaltyVoucher](docs/CampaignLoyaltyVoucher.md)
  - [CampaignLoyaltyVoucherRedemption](docs/CampaignLoyaltyVoucherRedemption.md)
  - [CampaignVoucher](docs/CampaignVoucher.md)
- - [CampaignVoucherRedemption](docs/CampaignVoucherRedemption.md)
  - [CampaignsCreateBase](docs/CampaignsCreateBase.md)
  - [CampaignsCreateDiscountCouponsCampaign](docs/CampaignsCreateDiscountCouponsCampaign.md)
  - [CampaignsCreateGiftCampaign](docs/CampaignsCreateGiftCampaign.md)
@@ -333,8 +332,6 @@ Class | Method | HTTP request | Description
  - [ClientEventsCreateRequestBodyReferral](docs/ClientEventsCreateRequestBodyReferral.md)
  - [ClientEventsCreateResponseBody](docs/ClientEventsCreateResponseBody.md)
  - [ClientQualificationsCheckEligibilityRequestBody](docs/ClientQualificationsCheckEligibilityRequestBody.md)
- - [ClientQualificationsCheckEligibilityRequestBodyOptions](docs/ClientQualificationsCheckEligibilityRequestBodyOptions.md)
- - [ClientQualificationsCheckEligibilityRequestBodyOptionsFilters](docs/ClientQualificationsCheckEligibilityRequestBodyOptionsFilters.md)
  - [ClientQualificationsCheckEligibilityResponseBody](docs/ClientQualificationsCheckEligibilityResponseBody.md)
  - [ClientRedemptionsRedeemRequestBody](docs/ClientRedemptionsRedeemRequestBody.md)
  - [ClientRedemptionsRedeemRequestBodyAllOfOptions](docs/ClientRedemptionsRedeemRequestBodyAllOfOptions.md)
@@ -752,6 +749,8 @@ Class | Method | HTTP request | Description
  - [QualificationsCheckEligibilityResponseBody](docs/QualificationsCheckEligibilityResponseBody.md)
  - [QualificationsFieldConditions](docs/QualificationsFieldConditions.md)
  - [QualificationsFiltersCondition](docs/QualificationsFiltersCondition.md)
+ - [QualificationsOption](docs/QualificationsOption.md)
+ - [QualificationsOptionFilters](docs/QualificationsOptionFilters.md)
  - [QualificationsRedeemable](docs/QualificationsRedeemable.md)
  - [QualificationsRedeemableBase](docs/QualificationsRedeemableBase.md)
  - [QualificationsRedeemables](docs/QualificationsRedeemables.md)

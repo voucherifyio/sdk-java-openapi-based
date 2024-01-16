@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Response body schema for **GET** &#x60;/promotions/stacks&#x60; and for **GET** &#x60;/promotions/{campaignId}/stacks&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class PromotionsStacksListResponseBody {
   /**
    * The type of object represented by JSON. This object stores information about promotion stacks in a dictionary.
@@ -351,8 +351,30 @@ public class PromotionsStacksListResponseBody {
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+      }
       if (!jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("data_ref");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          DataRefEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `data_ref` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("data").isJsonArray()) {

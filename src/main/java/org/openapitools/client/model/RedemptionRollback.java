@@ -31,6 +31,7 @@ import org.openapitools.client.model.RedemptionRewardResult;
 import org.openapitools.client.model.RedemptionRollbackRelatedRedemptions;
 import org.openapitools.client.model.SimpleCustomer;
 import org.openapitools.client.model.Voucher;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * This is an object representing a redemption rollback.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class RedemptionRollback {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -888,9 +889,20 @@ public class RedemptionRollback {
         Objects.equals(this.loyaltyCard, redemptionRollback.loyaltyCard);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, _object, date, customerId, trackingId, metadata, amount, redemption, reason, result, status, relatedRedemptions, failureCode, failureMessage, order, channel, customer, relatedObjectType, relatedObjectId, voucher, promotionTier, reward, gift, loyaltyCard);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -973,15 +985,9 @@ public class RedemptionRollback {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("object");
     openapiRequiredFields.add("date");
-    openapiRequiredFields.add("customer_id");
-    openapiRequiredFields.add("tracking_id");
-    openapiRequiredFields.add("metadata");
-    openapiRequiredFields.add("redemption");
     openapiRequiredFields.add("result");
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("order");
     openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("customer");
     openapiRequiredFields.add("related_object_type");
     openapiRequiredFields.add("related_object_id");
   }
@@ -1020,6 +1026,17 @@ public class RedemptionRollback {
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+      }
       if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
       }
@@ -1035,8 +1052,30 @@ public class RedemptionRollback {
       if (!jsonObj.get("result").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `result` to be a primitive type in the JSON string but got `%s`", jsonObj.get("result").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("result");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ResultEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `result` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+      }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("status");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          StatusEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `status` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
       }
       // validate the optional field `related_redemptions`
       if (jsonObj.get("related_redemptions") != null && !jsonObj.get("related_redemptions").isJsonNull()) {
@@ -1048,14 +1087,29 @@ public class RedemptionRollback {
       if ((jsonObj.get("failure_message") != null && !jsonObj.get("failure_message").isJsonNull()) && !jsonObj.get("failure_message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `failure_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failure_message").toString()));
       }
-      // validate the required field `order`
-      OrderCalculatedNoCustomerData.validateJsonElement(jsonObj.get("order"));
+      // validate the optional field `order`
+      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
+        OrderCalculatedNoCustomerData.validateJsonElement(jsonObj.get("order"));
+      }
       // validate the required field `channel`
       RedemptionChannel.validateJsonElement(jsonObj.get("channel"));
-      // validate the required field `customer`
-      SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
+      }
       if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("related_object_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          RelatedObjectTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `related_object_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
       }
       if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));

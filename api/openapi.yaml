@@ -18614,27 +18614,7 @@ components:
         mode: BASIC
         metadata: "{}"
         scenario: ALL
-        options:
-          expand:
-          - redeemable
-          - redeemable
-          limit: 8
-          starting_after: 2021-09-08T13:52:18.227Z
-          filters:
-            junction: null
-            code:
-              conditions: ""
-            category_id:
-              conditions: ""
-            voucher_type:
-              conditions: ""
-            resource_type:
-              conditions: ""
-            resource_id:
-              conditions: ""
-            campaign_id:
-              conditions: ""
-          sorting_rule: BEST_DEAL
+        options: ""
         tracking_id: tracking_id
         customer: ""
         order: ""
@@ -18681,7 +18661,8 @@ components:
           - PRODUCTS_DISCOUNT_BY_CUSTOMER
           type: string
         options:
-          $ref: '#/components/schemas/ClientQualificationsCheckEligibilityRequestBody_options'
+          allOf:
+          - $ref: '#/components/schemas/QualificationsOption'
         metadata:
           description: "A set of key/value pairs that you can send in the request\
             \ body to check against redeemables requiring **redemption** metadata\
@@ -19445,7 +19426,6 @@ components:
             type: boolean
         required:
         - active
-        - updated_at
         type: object
       description: "Response body schema for **POST** `/loyalties/{campaignId}/earning-rules/{earningRuleId}/disable`"
       title: Loyalties Earning Rules Disable Response Body
@@ -19468,7 +19448,6 @@ components:
             type: boolean
         required:
         - active
-        - updated_at
         type: object
       description: "Response body schema for **POST** `/loyalties/{campaignId}/earning-rules/{earningRuleId}/enable`"
       title: Loyalties Earning Rules Enable Response Body
@@ -20005,20 +19984,13 @@ components:
           type: string
       required:
       - active
-      - additional_info
-      - category
-      - category_id
       - code
       - created_at
-      - expiration_date
       - id
       - is_referral_code
       - loyalty_card
       - metadata
-      - start_date
       - type
-      - validity_day_of_week
-      - validity_timeframe
       title: Loyalties Members Transfers Create Response Body
       type: object
     LoyaltiesRewardAssignmentsGetResponseBody:
@@ -20936,7 +20908,6 @@ components:
         required:
         - campaign_id
         - categories
-        - category_id
         - created_at
         - id
         - object
@@ -21049,7 +21020,6 @@ components:
         required:
         - campaign_id
         - categories
-        - category_id
         - created_at
         - id
         - object
@@ -21136,27 +21106,7 @@ components:
         mode: BASIC
         metadata: "{}"
         scenario: ALL
-        options:
-          expand:
-          - redeemable
-          - redeemable
-          limit: 8
-          starting_after: 2021-09-08T13:52:18.227Z
-          filters:
-            junction: null
-            code:
-              conditions: ""
-            category_id:
-              conditions: ""
-            voucher_type:
-              conditions: ""
-            resource_type:
-              conditions: ""
-            resource_id:
-              conditions: ""
-            campaign_id:
-              conditions: ""
-          sorting_rule: BEST_DEAL
+        options: ""
         tracking_id: tracking_id
         customer: ""
         order: ""
@@ -21203,7 +21153,8 @@ components:
           - PRODUCTS_DISCOUNT_BY_CUSTOMER
           type: string
         options:
-          $ref: '#/components/schemas/ClientQualificationsCheckEligibilityRequestBody_options'
+          allOf:
+          - $ref: '#/components/schemas/QualificationsOption'
         metadata:
           description: "A set of key/value pairs that you can send in the request\
             \ body to check against redeemables requiring **redemption** metadata\
@@ -22140,7 +22091,6 @@ components:
       required:
       - data_ref
       - object
-      - quantity
       - redeemed_quantity
       - redemption_entries
       - total
@@ -22603,7 +22553,6 @@ components:
       - auto_join
       - campaign_type
       - categories
-      - category_id
       - created_at
       - creation_status
       - id
@@ -23251,10 +23200,7 @@ components:
             - customer
             type: string
         required:
-        - loyalty
         - object
-        - referrals
-        - summary
         title: Customer Response Data
         type: object
       - $ref: '#/components/schemas/CustomerBase'
@@ -23284,8 +23230,6 @@ components:
             type: boolean
         required:
         - active
-        - updated_at
-        - validation_rule_id
         type: object
       title: Earning Rule
     EarningRuleBase:
@@ -23961,7 +23905,6 @@ components:
         - config
         - created_at
         - id
-        - metadata
         - object
         type: object
       title: Loyalty Tier
@@ -24300,7 +24243,6 @@ components:
         required:
         - campaign_id
         - categories
-        - category_id
         - created_at
         - id
         - object
@@ -24470,16 +24412,49 @@ components:
         type: object
       description: Response body schema for **POST** `/publication` and **GET** `/publications/create`.
       title: Publications Create Vouchers Response Body
-    QualificationsFieldConditions:
-      example:
-        conditions: ""
+    QualificationsOption:
+      description: Configure parameters returned in the response.
       properties:
-        conditions:
-          allOf:
-          - $ref: '#/components/schemas/QualificationsFiltersCondition'
-          description: Data filters used to narrow the data records to be returned
-            in the result.
-      title: Qualifications Field Conditions
+        limit:
+          description: The maximum number of redeemables to be returned in the API
+            request. The actual number of returned redeemables will be determined
+            by the API. The default value is set to 5
+          maximum: 100
+          type: integer
+        starting_after:
+          description: Cursor used for paging.
+          example: 2021-09-08T13:52:18.227Z
+          format: date-time
+          nullable: true
+          type: string
+        filters:
+          $ref: '#/components/schemas/QualificationsOption_filters'
+        expand:
+          description: "The expand array lets you configure the parameters included\
+            \ in the response. Depending on the strings included in the array, the\
+            \ response will contain different details. \n\n| **Expand Option** | **Response\
+            \ Body** |\n|:---|:---|\n| [\"redeemable\"] | - Returns the redeemables'\
+            \ metadata. |\n| [\"category\"] | - Returns an expanded `categories` object,\
+            \ showing details about the category. |\n| [\"validation_rules\"] | -\
+            \ Returns an expanded `validation_rules` object, showing details about\
+            \ the validation rules. |"
+          items:
+            enum:
+            - redeemable
+            - category
+            - validation_rules
+            type: string
+          type: array
+        sorting_rule:
+          description: "Is used to determine the order in which data is displayed\
+            \ in the result array. \n\n - `DEFAULT` - Sorting descending by `created_at`\
+            \ \n - `BEST_DEAL` - Sorting descending by `total_applied_discount_amount`\
+            \ \n - `LEAST_DEAL` - Sorting ascending by `total_applied_discount_amount`"
+          enum:
+          - BEST_DEAL
+          - LEAST_DEAL
+          - DEFAULT
+          type: string
       type: object
     QualificationsRedeemables:
       description: List of redeemables for examine qualification.
@@ -24761,19 +24736,13 @@ components:
           $ref: '#/components/schemas/Redemption_loyalty_card'
       required:
       - channel
-      - customer
-      - customer_id
       - date
       - id
-      - metadata
       - object
-      - order
-      - redemption
       - related_object_id
       - related_object_type
       - result
       - status
-      - tracking_id
       title: Redemption
       type: object
     RedemptionRollback:
@@ -24946,19 +24915,13 @@ components:
           $ref: '#/components/schemas/Redemption_loyalty_card'
       required:
       - channel
-      - customer
-      - customer_id
       - date
       - id
-      - metadata
       - object
-      - order
-      - redemption
       - related_object_id
       - related_object_type
       - result
       - status
-      - tracking_id
       title: Redemption Rollback
       type: object
     Reward:
@@ -25039,10 +25002,7 @@ components:
       - metadata
       - name
       - object
-      - redeemed
-      - stock
       - type
-      - updated_at
       title: Reward
       type: object
     RewardAssignment:
@@ -25190,14 +25150,9 @@ components:
       - attributes
       - created_at
       - id
-      - image_url
       - metadata
       - object
-      - price
       - product_id
-      - sku
-      - source_id
-      - updated_at
       title: SKU Object
       type: object
     SkusList:
@@ -25833,10 +25788,6 @@ components:
       - created_at
       - details
       - id
-      - reason
-      - related_transaction_id
-      - source
-      - source_id
       - type
       - voucher_id
       title: Voucher Transaction
@@ -25905,9 +25856,7 @@ components:
       - id
       - object
       - parameters
-      - result
       - status
-      - user_id
       title: Voucher Transactions Export
       type: object
     VoucherTransactionsExportParameters:
@@ -26081,7 +26030,7 @@ components:
           - $ref: '#/components/schemas/CampaignLoyaltyCard'
           description: Defines the voucher loyalty card details.
         redemption:
-          $ref: '#/components/schemas/CampaignVoucher_redemption'
+          $ref: '#/components/schemas/CampaignLoyaltyVoucher_redemption'
         code_config:
           $ref: '#/components/schemas/CodeConfigRequiredLengthCharsetPattern'
         is_referral_code:
@@ -27273,7 +27222,6 @@ components:
       - id
       - metadata
       - object
-      - source_id
       - vouchers_id
       title: List Publications Item Base
       type: object
@@ -27542,11 +27490,7 @@ components:
             $ref: '#/components/schemas/OrderRedemptions'
           type: object
       required:
-      - customer_id
-      - id
       - object
-      - referrer_id
-      - source_id
       title: Order Response Base
       type: object
     OrderItem:
@@ -27673,10 +27617,7 @@ components:
       - attributes
       - id
       - metadata
-      - name
       - object
-      - price
-      - source_id
       title: Product without Skus Object
     PromotionTierCreateParams:
       description: This is an object representing a promotion tier create params.
@@ -27821,26 +27762,17 @@ components:
       - metadata
       - object
       - result
-      - source_id
       - vouchers_id
       title: Publications Create Base Response Body
       type: object
-    QualificationsFiltersCondition:
+    QualificationsFieldConditions:
       properties:
-        $is:
-          $ref: '#/components/schemas/Any'
-        $is_not:
-          $ref: '#/components/schemas/Any'
-        $has_value:
-          $ref: '#/components/schemas/Any'
-        $is_unknown:
-          $ref: '#/components/schemas/Any'
-        $in:
-          $ref: '#/components/schemas/Any'
-        $not_in:
-          $ref: '#/components/schemas/Any'
-      title: |
-        Qualifications Filters Condition
+        conditions:
+          allOf:
+          - $ref: '#/components/schemas/QualificationsFiltersCondition'
+          description: Data filters used to narrow the data records to be returned
+            in the result.
+      title: Qualifications Field Conditions
       type: object
     QualificationsRedeemable:
       allOf:
@@ -28000,13 +27932,7 @@ components:
           - MATERIAL
           type: string
       required:
-      - assignment_id
-      - customer
-      - loyalty_tier_id
-      - product
       - reward
-      - sku
-      - voucher
       title: Redemption Reward Result
       type: object
     ReferralCampaignVoucher:
@@ -28119,7 +28045,6 @@ components:
       - related_object_id
       - related_object_type
       - reward_id
-      - updated_at
       title: Reward Assignment Base
       type: object
     RewardAssignmentParameters:
@@ -28506,19 +28431,6 @@ components:
       - filters
       title: Voucher Transactions
       type: object
-    Any:
-      oneOf:
-      - items:
-          $ref: '#/components/schemas/array_inner'
-        title: array
-        type: array
-      - title: string
-        type: string
-      - title: number
-        type: number
-      - title: object
-        type: object
-      title: Any
     ApplicableToEffect:
       enum:
       - APPLY_TO_EVERY
@@ -28617,8 +28529,6 @@ components:
       - related_object_id
       - related_object_type
       - rule_id
-      - validation_omitted_rules
-      - validation_status
       title: Business Validation Rule Assignment
     CampaignLoyaltyCard:
       description: Schema model for a campaign loyalty card.
@@ -29575,9 +29485,7 @@ components:
       - created_at
       - id
       - object
-      - result
       - status
-      - user_id
       title: Export Base
       type: object
     FiltersCondition:
@@ -29730,9 +29638,10 @@ components:
           description: The total amount of the order item (price * quantity).
           type: integer
         discount_amount:
-          description: |2-
-
-            Sum of all order-item-level discounts applied to the order.
+          description: Sum of all order-item-level discounts applied to the order.
+          type: integer
+        applied_discount_amount:
+          description: This field shows the order-level discount applied.
           type: integer
         initial_amount:
           description: A positive integer in the smallest currency unit (e.g. 100
@@ -29816,6 +29725,23 @@ components:
             type: string
           type: array
       title: Order Redemptions
+      type: object
+    QualificationsFiltersCondition:
+      properties:
+        $is:
+          $ref: '#/components/schemas/Any'
+        $is_not:
+          $ref: '#/components/schemas/Any'
+        $has_value:
+          $ref: '#/components/schemas/Any'
+        $is_unknown:
+          $ref: '#/components/schemas/Any'
+        $in:
+          $ref: '#/components/schemas/Any'
+        $not_in:
+          $ref: '#/components/schemas/Any'
+      title: |
+        Qualifications Filters Condition
       type: object
     QualificationsRedeemableBase:
       description: Data of single redeemable which was properly qualified.
@@ -29963,6 +29889,19 @@ components:
       - voucher_id
       title: Filter by voucher ID
       type: object
+    Any:
+      oneOf:
+      - items:
+          $ref: '#/components/schemas/array_inner'
+        title: array
+        type: array
+      - title: string
+        type: string
+      - title: number
+        type: number
+      - title: object
+        type: object
+      title: Any
     CustomEvent:
       properties:
         id:
@@ -30961,9 +30900,7 @@ components:
           description: The total amount of the order item (price * quantity).
           type: integer
         discount_amount:
-          description: |2-
-
-            Sum of all order-item-level discounts applied to the order.
+          description: Sum of all order-item-level discounts applied to the order.
           type: integer
         applied_discount_amount:
           description: This field shows the order-level discount applied.
@@ -31009,105 +30946,6 @@ components:
           type: string
       required:
       - code
-      type: object
-    ClientQualificationsCheckEligibilityRequestBody_options_filters:
-      additionalProperties: false
-      description: A set of filters to return only a specific category or type of
-        redeemable.
-      example:
-        junction: null
-        code:
-          conditions: ""
-        category_id:
-          conditions: ""
-        voucher_type:
-          conditions: ""
-        resource_type:
-          conditions: ""
-        resource_id:
-          conditions: ""
-        campaign_id:
-          conditions: ""
-      properties:
-        junction:
-          $ref: '#/components/schemas/Junction'
-        category_id:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
-        campaign_id:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
-        resource_id:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
-        resource_type:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
-        voucher_type:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
-        code:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
-      type: object
-    ClientQualificationsCheckEligibilityRequestBody_options:
-      description: Configure parameters returned in the response.
-      example:
-        expand:
-        - redeemable
-        - redeemable
-        limit: 8
-        starting_after: 2021-09-08T13:52:18.227Z
-        filters:
-          junction: null
-          code:
-            conditions: ""
-          category_id:
-            conditions: ""
-          voucher_type:
-            conditions: ""
-          resource_type:
-            conditions: ""
-          resource_id:
-            conditions: ""
-          campaign_id:
-            conditions: ""
-        sorting_rule: BEST_DEAL
-      properties:
-        limit:
-          description: The maximum number of redeemables to be returned in the API
-            request. The actual number of returned redeemables will be determined
-            by the API. The default value is set to 5
-          maximum: 100
-          type: integer
-        starting_after:
-          description: Cursor used for paging.
-          example: 2021-09-08T13:52:18.227Z
-          format: date-time
-          nullable: true
-          type: string
-        filters:
-          $ref: '#/components/schemas/ClientQualificationsCheckEligibilityRequestBody_options_filters'
-        expand:
-          description: "The expand array lets you configure the parameters included\
-            \ in the response. Depending on the strings included in the array, the\
-            \ response will contain different details. \n\n| **Expand Option** | **Response\
-            \ Body** |\n|:---|:---|\n| [\"redeemable\"] | - Returns the redeemables'\
-            \ metadata. |\n| [\"category\"] | - Returns an expanded `categories` object,\
-            \ showing details about the category. |\n| [\"validation_rules\"] | -\
-            \ Returns an expanded `validation_rules` object, showing details about\
-            \ the validation rules. |"
-          items:
-            enum:
-            - redeemable
-            - category
-            - validation_rules
-            type: string
-          type: array
-        sorting_rule:
-          description: "Is used to determine the order in which data is displayed\
-            \ in the result array. \n\n - `DEFAULT` - Sorting descending by `created_at`\
-            \ \n - `BEST_DEAL` - Sorting descending by `total_applied_discount_amount`\
-            \ \n - `LEAST_DEAL` - Sorting ascending by `total_applied_discount_amount`"
-          enum:
-          - BEST_DEAL
-          - LEAST_DEAL
-          - DEFAULT
-          type: string
       type: object
     ClientRedemptionsRedeemRequestBody_allOf_options:
       description: Configure parameters returned in the response.
@@ -31492,8 +31330,6 @@ components:
           description: "The endpoint where this list of redemptions can be accessed\
             \ using a GET method. /v1/vouchers/{voucher_code}/redemptions"
           type: string
-      required:
-      - quantity
       type: object
     LoyaltiesMembersTransfersCreateResponseBody_assets_qr:
       description: Stores Quick Response (QR) representation of encrypted code.
@@ -32232,6 +32068,26 @@ components:
         orders:
           $ref: '#/components/schemas/PromotionTier_summary_orders'
       type: object
+    QualificationsOption_filters:
+      additionalProperties: false
+      description: A set of filters to return only a specific category or type of
+        redeemable.
+      properties:
+        junction:
+          $ref: '#/components/schemas/Junction'
+        category_id:
+          $ref: '#/components/schemas/QualificationsFieldConditions'
+        campaign_id:
+          $ref: '#/components/schemas/QualificationsFieldConditions'
+        resource_id:
+          $ref: '#/components/schemas/QualificationsFieldConditions'
+        resource_type:
+          $ref: '#/components/schemas/QualificationsFieldConditions'
+        voucher_type:
+          $ref: '#/components/schemas/QualificationsFieldConditions'
+        code:
+          $ref: '#/components/schemas/QualificationsFieldConditions'
+      type: object
     Redemption_Related_Redemptions_Rollbacks_Item:
       example:
         date: 2021-12-22T10:13:06.487Z
@@ -32913,15 +32769,6 @@ components:
       type: object
     CampaignLoyaltyVoucher_redemption:
       description: Defines the redemption limits on vouchers.
-      properties:
-        quantity:
-          description: How many times a voucher can be redeemed. A `null` value means
-            unlimited.
-          nullable: true
-          type: integer
-      type: object
-    CampaignVoucher_redemption:
-      description: Defines the redemption limits on vouchers.
       example:
         quantity: 0
       properties:
@@ -32930,8 +32777,6 @@ components:
             unlimited.
           nullable: true
           type: integer
-      required:
-      - quantity
       type: object
     CustomerLoyalty_campaigns_value:
       description: Contains details about the point balances left on loyalty cards
@@ -33334,14 +33179,6 @@ components:
       - $ref: '#/components/schemas/RedeemableResultLoyaltyCard'
       - $ref: '#/components/schemas/RedeemableResultPromotionTier'
       - $ref: '#/components/schemas/RedeemableResultPromotionStack'
-    array_inner:
-      oneOf:
-      - title: string
-        type: string
-      - title: number
-        type: number
-      - title: object
-        type: object
     CampaignLoyaltyCard_expiration_rules:
       properties:
         period_type:
@@ -33552,7 +33389,6 @@ components:
           type: string
       required:
       - id
-      - sku_id
       type: object
     VoucherTransactionsExportFilterConditions_voucher_id_conditions:
       description: Data filters used to narrow the data records to be returned in
@@ -33578,6 +33414,14 @@ components:
       required:
       - conditions
       type: object
+    array_inner:
+      oneOf:
+      - title: string
+        type: string
+      - title: number
+        type: number
+      - title: object
+        type: object
     CustomEvent_referral:
       description: Referral object.
       properties:

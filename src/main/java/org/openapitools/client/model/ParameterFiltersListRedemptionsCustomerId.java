@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Unique customer ID, i.e. cust_sehkNIi8Uq2qQuRqSr7xn4Zi.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ParameterFiltersListRedemptionsCustomerId {
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)

@@ -15,9 +15,11 @@ public class Main {
         Properties properties = new Properties();
         InputStream input = null;
 
+        System.out.println("czesc");
+
         try {
             String dir = System.getProperty("user.dir");
-            input = new FileInputStream(dir + "/sdk-tests/.env");
+            input = new FileInputStream(dir + "/.env");
             properties.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();

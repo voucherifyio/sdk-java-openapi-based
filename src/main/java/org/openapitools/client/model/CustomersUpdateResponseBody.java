@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * Response body schema for **PUT** &#x60;/customers/{customerId}&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class CustomersUpdateResponseBody {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -668,9 +668,6 @@ public class CustomersUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("summary");
-    openapiRequiredFields.add("loyalty");
-    openapiRequiredFields.add("referrals");
     openapiRequiredFields.add("object");
   }
 
@@ -708,18 +705,35 @@ public class CustomersUpdateResponseBody {
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
       }
-      // validate the required field `summary`
-      CustomerSummary.validateJsonElement(jsonObj.get("summary"));
-      // validate the required field `loyalty`
-      CustomerLoyalty.validateJsonElement(jsonObj.get("loyalty"));
-      // validate the required field `referrals`
-      CustomerReferrals.validateJsonElement(jsonObj.get("referrals"));
+      // validate the optional field `summary`
+      if (jsonObj.get("summary") != null && !jsonObj.get("summary").isJsonNull()) {
+        CustomerSummary.validateJsonElement(jsonObj.get("summary"));
+      }
+      // validate the optional field `loyalty`
+      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
+        CustomerLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      }
+      // validate the optional field `referrals`
+      if (jsonObj.get("referrals") != null && !jsonObj.get("referrals").isJsonNull()) {
+        CustomerReferrals.validateJsonElement(jsonObj.get("referrals"));
+      }
       // validate the optional field `assets`
       if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
         CustomerResponseDataAssets.validateJsonElement(jsonObj.get("assets"));
       }
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * If an earning rule in a loyalty program is based on a custom event. This objects let&#39;s you specify the loyalty card to which the custom event should be attributed to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ClientEventsCreateRequestBodyLoyalty {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

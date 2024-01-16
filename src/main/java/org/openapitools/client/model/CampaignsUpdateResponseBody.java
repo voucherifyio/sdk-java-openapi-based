@@ -31,6 +31,7 @@ import org.openapitools.client.model.LoyaltyTiersExpirationAll;
 import org.openapitools.client.model.PromotionTiersList;
 import org.openapitools.client.model.ReferralProgram;
 import org.openapitools.client.model.ValidationRulesAssignmentsList;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,7 +60,7 @@ import org.openapitools.client.JSON;
 /**
  * Response body schema for **PUT** &#x60;/campaigns/{campaignId}&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class CampaignsUpdateResponseBody {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -1080,9 +1081,20 @@ public class CampaignsUpdateResponseBody {
         Objects.equals(this.validationRulesAssignments, campaignsUpdateResponseBody.validationRulesAssignments);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, name, description, campaignType, type, voucher, autoJoin, joinOnce, useVoucherMetadataSchema, validityTimeframe, validityDayOfWeek, activityDurationAfterPublishing, vouchersCount, startDate, expirationDate, active, metadata, createdAt, updatedAt, category, creationStatus, vouchersGenerationStatus, _protected, categoryId, categories, _object, referralProgram, loyaltyTiersExpiration, promotion, validationRulesAssignments);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1185,7 +1197,6 @@ public class CampaignsUpdateResponseBody {
     openapiRequiredFields.add("creation_status");
     openapiRequiredFields.add("vouchers_generation_status");
     openapiRequiredFields.add("protected");
-    openapiRequiredFields.add("category_id");
     openapiRequiredFields.add("categories");
     openapiRequiredFields.add("object");
   }
@@ -1230,8 +1241,30 @@ public class CampaignsUpdateResponseBody {
       if (!jsonObj.get("campaign_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("campaign_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          CampaignTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `campaign_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a valid element of CampaignTypeEnum enum got `%s` instead", jsonObj.get("campaign_type").toString()));
+      }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
       }
       // validate the optional field `voucher`
       if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
@@ -1254,8 +1287,30 @@ public class CampaignsUpdateResponseBody {
       if (!jsonObj.get("creation_status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_status").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("creation_status");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          CreationStatusEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `creation_status` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `creation_status` to be a valid element of CreationStatusEnum enum got `%s` instead", jsonObj.get("creation_status").toString()));
+      }
       if (!jsonObj.get("vouchers_generation_status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vouchers_generation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vouchers_generation_status").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("vouchers_generation_status");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          VouchersGenerationStatusEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `vouchers_generation_status` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers_generation_status` to be a valid element of VouchersGenerationStatusEnum enum got `%s` instead", jsonObj.get("vouchers_generation_status").toString()));
       }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));

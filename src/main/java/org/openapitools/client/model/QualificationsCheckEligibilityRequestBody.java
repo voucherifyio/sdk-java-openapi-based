@@ -21,9 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.client.model.ClientQualificationsCheckEligibilityRequestBodyOptions;
 import org.openapitools.client.model.Customer;
 import org.openapitools.client.model.Order;
+import org.openapitools.client.model.QualificationsOption;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Request body schema for **POST** &#x60;/qualifications&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class QualificationsCheckEligibilityRequestBody {
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
@@ -182,7 +182,7 @@ public class QualificationsCheckEligibilityRequestBody {
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
-  private ClientQualificationsCheckEligibilityRequestBodyOptions options;
+  private QualificationsOption options;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -296,7 +296,7 @@ public class QualificationsCheckEligibilityRequestBody {
   }
 
 
-  public QualificationsCheckEligibilityRequestBody options(ClientQualificationsCheckEligibilityRequestBodyOptions options) {
+  public QualificationsCheckEligibilityRequestBody options(QualificationsOption options) {
     
     this.options = options;
     return this;
@@ -307,12 +307,12 @@ public class QualificationsCheckEligibilityRequestBody {
    * @return options
   **/
   @javax.annotation.Nullable
-  public ClientQualificationsCheckEligibilityRequestBodyOptions getOptions() {
+  public QualificationsOption getOptions() {
     return options;
   }
 
 
-  public void setOptions(ClientQualificationsCheckEligibilityRequestBodyOptions options) {
+  public void setOptions(QualificationsOption options) {
     this.options = options;
   }
 
@@ -447,7 +447,7 @@ public class QualificationsCheckEligibilityRequestBody {
       }
       // validate the optional field `options`
       if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {
-        ClientQualificationsCheckEligibilityRequestBodyOptions.validateJsonElement(jsonObj.get("options"));
+        QualificationsOption.validateJsonElement(jsonObj.get("options"));
       }
   }
 

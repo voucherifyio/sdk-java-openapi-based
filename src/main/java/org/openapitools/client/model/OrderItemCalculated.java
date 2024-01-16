@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * OrderItemCalculated
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class OrderItemCalculated {
   public static final String SERIALIZED_NAME_SKU_ID = "sku_id";
   @SerializedName(SERIALIZED_NAME_SKU_ID)
@@ -135,6 +135,10 @@ public class OrderItemCalculated {
   public static final String SERIALIZED_NAME_DISCOUNT_AMOUNT = "discount_amount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_AMOUNT)
   private Integer discountAmount;
+
+  public static final String SERIALIZED_NAME_APPLIED_DISCOUNT_AMOUNT = "applied_discount_amount";
+  @SerializedName(SERIALIZED_NAME_APPLIED_DISCOUNT_AMOUNT)
+  private Integer appliedDiscountAmount;
 
   public static final String SERIALIZED_NAME_INITIAL_AMOUNT = "initial_amount";
   @SerializedName(SERIALIZED_NAME_INITIAL_AMOUNT)
@@ -391,7 +395,7 @@ public class OrderItemCalculated {
   }
 
    /**
-   *  Sum of all order-item-level discounts applied to the order.
+   * Sum of all order-item-level discounts applied to the order.
    * @return discountAmount
   **/
   @javax.annotation.Nullable
@@ -402,6 +406,27 @@ public class OrderItemCalculated {
 
   public void setDiscountAmount(Integer discountAmount) {
     this.discountAmount = discountAmount;
+  }
+
+
+  public OrderItemCalculated appliedDiscountAmount(Integer appliedDiscountAmount) {
+    
+    this.appliedDiscountAmount = appliedDiscountAmount;
+    return this;
+  }
+
+   /**
+   * This field shows the order-level discount applied.
+   * @return appliedDiscountAmount
+  **/
+  @javax.annotation.Nullable
+  public Integer getAppliedDiscountAmount() {
+    return appliedDiscountAmount;
+  }
+
+
+  public void setAppliedDiscountAmount(Integer appliedDiscountAmount) {
+    this.appliedDiscountAmount = appliedDiscountAmount;
   }
 
 
@@ -592,6 +617,7 @@ public class OrderItemCalculated {
         Objects.equals(this.initialQuantity, orderItemCalculated.initialQuantity) &&
         Objects.equals(this.amount, orderItemCalculated.amount) &&
         Objects.equals(this.discountAmount, orderItemCalculated.discountAmount) &&
+        Objects.equals(this.appliedDiscountAmount, orderItemCalculated.appliedDiscountAmount) &&
         Objects.equals(this.initialAmount, orderItemCalculated.initialAmount) &&
         Objects.equals(this.totalAppliedDiscountAmount, orderItemCalculated.totalAppliedDiscountAmount) &&
         Objects.equals(this.price, orderItemCalculated.price) &&
@@ -604,7 +630,7 @@ public class OrderItemCalculated {
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuId, productId, relatedObject, sourceId, quantity, discountQuantity, initialQuantity, amount, discountAmount, initialAmount, totalAppliedDiscountAmount, price, subtotalAmount, product, sku, _object, metadata);
+    return Objects.hash(skuId, productId, relatedObject, sourceId, quantity, discountQuantity, initialQuantity, amount, discountAmount, appliedDiscountAmount, initialAmount, totalAppliedDiscountAmount, price, subtotalAmount, product, sku, _object, metadata);
   }
 
   @Override
@@ -620,6 +646,7 @@ public class OrderItemCalculated {
     sb.append("    initialQuantity: ").append(toIndentedString(initialQuantity)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    discountAmount: ").append(toIndentedString(discountAmount)).append("\n");
+    sb.append("    appliedDiscountAmount: ").append(toIndentedString(appliedDiscountAmount)).append("\n");
     sb.append("    initialAmount: ").append(toIndentedString(initialAmount)).append("\n");
     sb.append("    totalAppliedDiscountAmount: ").append(toIndentedString(totalAppliedDiscountAmount)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -659,6 +686,7 @@ public class OrderItemCalculated {
     openapiFields.add("initial_quantity");
     openapiFields.add("amount");
     openapiFields.add("discount_amount");
+    openapiFields.add("applied_discount_amount");
     openapiFields.add("initial_amount");
     openapiFields.add("total_applied_discount_amount");
     openapiFields.add("price");
@@ -723,6 +751,17 @@ public class OrderItemCalculated {
       }
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
       }
   }
 
