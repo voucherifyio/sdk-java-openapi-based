@@ -9,11 +9,19 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-git
+
 COPY pom.xml .
+
+COPY .env .
 
 COPY src ./src
 
+COPY tests ./tests
+
 RUN mvn clean install
 
-CMD ["java", "-jar", "target/openapi-java-client-v2018-08-01.jar"]
+RUN mvn install:install-file -Dfile=./target/openapi-java-client-v2018-08-01.jar -DgroupId=voucherify -DartifactId=java-sdk-test -Dversion=0.0.1 -Dpackaging=jar
+
+RUN mvn -f ./tests clean install
+
+CMD ["mvn", "-f" , "./tests", "exec:java"]
