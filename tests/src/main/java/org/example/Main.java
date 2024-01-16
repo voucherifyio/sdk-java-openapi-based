@@ -15,8 +15,6 @@ public class Main {
         Properties properties = new Properties();
         InputStream input = null;
 
-        System.out.println("czesc");
-
         try {
             String dir = System.getProperty("user.dir");
             input = new FileInputStream(dir + "/.env");
@@ -72,9 +70,9 @@ public class Main {
             Publications publications = new Publications();
 
             qualifications.test(defaultClient);
-//            loyalties.test(defaultClient);
-//            publications.test(defaultClient);
-//            redemptions.test(defaultClient);
+            loyalties.test(defaultClient);
+            publications.test(defaultClient);
+            redemptions.test(defaultClient);
         }
     }
 }
