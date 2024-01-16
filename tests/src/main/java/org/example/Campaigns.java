@@ -10,7 +10,6 @@ import org.openapitools.client.model.*;
 import java.math.BigDecimal;
 
 public class Campaigns {
-    
     CampaignsApi campaigns;
     
     private String createLoyaltyProgram(String generatedString){
@@ -20,14 +19,14 @@ public class Campaigns {
         CampaignLoyaltyVoucher campaignLoyaltyVoucher = new CampaignLoyaltyVoucher();
         campaignLoyaltyVoucher.loyaltyCard(campaignLoyaltyCard);
 
-        CampaignsCreateLoyaltyCampaign campaignsCreate = new CampaignsCreateLoyaltyCampaign();
-        campaignsCreate.setCampaignType("REFERRAL_PROGRAM");
-        campaignsCreate.setCampaignType("AUTO_UPDATE");
-        campaignsCreate.setName(generatedString);
+        CampaignsCreateLoyaltyCampaign campaign = new CampaignsCreateLoyaltyCampaign();
+        campaign.setCampaignType(CampaignsCreateLoyaltyCampaign.CampaignTypeEnum.LOYALTY_CARD);
+        campaign.setType(CampaignsCreateLoyaltyCampaign.TypeEnum.AUTO_UPDATE);
+        campaign.setName(generatedString);
 
         CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody(); // CampaignsCreateRequestBody | Specify the details of the campaign that you would like to create.
-        campaignsCreateRequestBody.setActualInstance(campaignsCreate);
-        campaignsCreate.setVoucher(campaignLoyaltyVoucher);
+        campaignsCreateRequestBody.setActualInstance(campaign);
+        campaign.setVoucher(campaignLoyaltyVoucher);
 
         try {
             CampaignsCreateResponseBody result = campaigns.createCampaign(campaignsCreateRequestBody);
@@ -50,26 +49,27 @@ public class Campaigns {
     }
 
     private String createDiscountCampaign(String generatedString){
-        Discount discount = new Discount();
         DiscountAmount discountAmount = new DiscountAmount();
         discountAmount.setType(DiscountAmount.TypeEnum.AMOUNT);
         discountAmount.setAmountOff(BigDecimal.valueOf(1));
+
+        Discount discount = new Discount();
         discount.setActualInstance(discountAmount);
 
         DiscountCouponsCampaignVoucher discountCouponsCampaignVoucher = new DiscountCouponsCampaignVoucher();
         discountCouponsCampaignVoucher.setDiscount(discount);
 
-        CampaignsCreateDiscountCouponsCampaign campaignsCreateDiscountCouponsCampaign = new CampaignsCreateDiscountCouponsCampaign();
-        campaignsCreateDiscountCouponsCampaign.setCampaignType("DISCOUNT_COUPONS");
-        campaignsCreateDiscountCouponsCampaign.setCampaignType("AUTO_UPDATE");
-        campaignsCreateDiscountCouponsCampaign.setName(generatedString);
-        campaignsCreateDiscountCouponsCampaign.setValidationRules(
+        CampaignsCreateDiscountCouponsCampaign campaign = new CampaignsCreateDiscountCouponsCampaign();
+        campaign.setCampaignType(CampaignsCreateDiscountCouponsCampaign.CampaignTypeEnum.DISCOUNT_COUPONS);
+        campaign.setType(CampaignsCreateDiscountCouponsCampaign.TypeEnum.AUTO_UPDATE);
+        campaign.setName(generatedString);
+        campaign.setValidationRules(
             Voucherify.getInstance().getCampaign().getValidationRuleIds()
         );
 
         CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody(); // CampaignsCreateRequestBody | Specify the details of the campaign that you would like to create.
-        campaignsCreateRequestBody.setActualInstance(campaignsCreateDiscountCouponsCampaign);
-        campaignsCreateDiscountCouponsCampaign.setVoucher(discountCouponsCampaignVoucher);
+        campaignsCreateRequestBody.setActualInstance(campaign);
+        campaign.setVoucher(discountCouponsCampaignVoucher);
 
         try {
             CampaignsCreateResponseBody result = campaigns.createCampaign(campaignsCreateRequestBody);
