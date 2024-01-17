@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Voucherify {
-    private final Campaign campaign;
+    private final Campaign couponCampaign;
+    private final Campaign loyaltyCampaign;
     private final Customer customer;
     private final List<Product> products;
 
@@ -13,7 +14,8 @@ public class Voucherify {
     private boolean dataEnsured = false;
 
     private Voucherify() {
-        campaign = new Campaign();
+        couponCampaign = new Campaign();
+        loyaltyCampaign = new Campaign();
         customer = new Customer();
         products = new ArrayList<>();
     }
@@ -26,8 +28,12 @@ public class Voucherify {
         return SingletonHolder.INSTANCE;
     }
 
-    public Campaign getCampaign() {
-        return campaign;
+    public Campaign getCouponCampaign() {
+        return couponCampaign;
+    }
+
+    public Campaign getLoyaltyCampaign() {
+        return loyaltyCampaign;
     }
 
     public Customer getCustomer() {

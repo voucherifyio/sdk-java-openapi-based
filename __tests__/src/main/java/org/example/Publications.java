@@ -2,10 +2,10 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Voucherify;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.api.PublicationsApi;
-import org.openapitools.client.model.*;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.api.PublicationsApi;
+import voucherify.client.model.*;
 
 public class Publications {
     public void test(ApiClient defaultClient) {
@@ -39,7 +39,7 @@ public class Publications {
             customer.setId(Voucherify.getInstance().getCustomer().getId());
 
             createPublicationWithSpecificVoucher.setCustomer(customer);
-            createPublicationWithSpecificVoucher.setVoucher(Voucherify.getInstance().getCampaign().getVoucherIds().get(0));
+            createPublicationWithSpecificVoucher.setVoucher(Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0));
 
             PublicationsCreateRequestBody publicationsCreateRequestBody = new PublicationsCreateRequestBody();
             publicationsCreateRequestBody.setActualInstance(createPublicationWithSpecificVoucher);
@@ -57,7 +57,7 @@ public class Publications {
             CreatePublicationWithCampaign createPublicationWithCampaign = new CreatePublicationWithCampaign();
 
             CreatePublicationCampaign createPublicationCampaign = new CreatePublicationCampaign();
-            createPublicationCampaign.setName(Voucherify.getInstance().getCampaign().getName());
+            createPublicationCampaign.setName(Voucherify.getInstance().getLoyaltyCampaign().getName());
             createPublicationCampaign.setCount(2);
 
             Customer customer = new Customer();

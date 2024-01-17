@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>SdkTest</artifactId>
-    <version>0.0.1</version>
+    <artifactId>voucherify-java-sdk-tests</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -41,9 +41,9 @@
         </dependency>
 
         <dependency>
-            <groupId>voucherify</groupId>
-            <artifactId>java-sdk-test</artifactId>
-            <version>0.0.1</version>
+            <groupId>local</groupId>
+            <artifactId>voucherify-java-sdk</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

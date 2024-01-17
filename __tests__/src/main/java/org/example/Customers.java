@@ -2,10 +2,10 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Voucherify;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.api.CustomersApi;
-import org.openapitools.client.model.*;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.api.CustomersApi;
+import voucherify.client.model.*;
 
 import java.util.ArrayList;
 import java.util.List;

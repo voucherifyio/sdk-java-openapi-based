@@ -2,10 +2,10 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Voucherify;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.api.CampaignsApi;
-import org.openapitools.client.model.*;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.api.CampaignsApi;
+import voucherify.client.model.*;
 
 import java.math.BigDecimal;
 
@@ -34,8 +34,8 @@ public class Campaigns {
             String loyaltyProgramId = result.getId();
             String campaignName = result.getName();
 
-            Voucherify.getInstance().getCampaign().setId(loyaltyProgramId);
-            Voucherify.getInstance().getCampaign().setName(campaignName);
+            Voucherify.getInstance().getLoyaltyCampaign().setId(loyaltyProgramId);
+            Voucherify.getInstance().getLoyaltyCampaign().setName(campaignName);
 
             System.out.println("Calling CampaignsApi#createCampaign OK");
             
@@ -64,7 +64,7 @@ public class Campaigns {
         campaign.setType(CampaignsCreateDiscountCouponsCampaign.TypeEnum.AUTO_UPDATE);
         campaign.setName(generatedString);
         campaign.setValidationRules(
-            Voucherify.getInstance().getCampaign().getValidationRuleIds()
+            Voucherify.getInstance().getCouponCampaign().getValidationRuleIds()
         );
 
         CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody(); // CampaignsCreateRequestBody | Specify the details of the campaign that you would like to create.
@@ -77,8 +77,8 @@ public class Campaigns {
             String discountCampaignId = result.getId();
             String campaignName = result.getName();
 
-            Voucherify.getInstance().getCampaign().setId(discountCampaignId);
-            Voucherify.getInstance().getCampaign().setName(campaignName);
+            Voucherify.getInstance().getCouponCampaign().setId(discountCampaignId);
+            Voucherify.getInstance().getCouponCampaign().setName(campaignName);
 
             System.out.println("Calling CampaignsApi#createCampaign OK");
 
@@ -112,13 +112,13 @@ public class Campaigns {
             CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody(); // CampaignsVouchersCreateInBulkRequestBody | Specify the voucher parameters that you would like to overwrite.
 
             CampaignsVouchersCreateCombinedResponseBody result = campaigns.addVouchersToCampaign(loyaltyProgramId, vouchersCount, campaignsVouchersCreateInBulkRequestBody);
-            Voucherify.getInstance().getCampaign().addVoucherId(
+            Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
                 ((CampaignsVouchersCreateResponseBody) result.getActualInstance()).getId()
             );
 
             //NEED TWO VOUCHERS FOR PUBLICATION
             CampaignsVouchersCreateCombinedResponseBody result2 = campaigns.addVouchersToCampaign(loyaltyProgramId, vouchersCount, campaignsVouchersCreateInBulkRequestBody);
-            Voucherify.getInstance().getCampaign().addVoucherId(
+            Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
                 ((CampaignsVouchersCreateResponseBody) result2.getActualInstance()).getId()
             );
 

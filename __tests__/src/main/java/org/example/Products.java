@@ -3,11 +3,11 @@ package org.example;
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Product;
 import org.example.data.Voucherify;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.api.ProductsApi;
-import org.openapitools.client.model.ProductsCreateRequestBody;
-import org.openapitools.client.model.ProductsCreateResponseBody;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.api.ProductsApi;
+import voucherify.client.model.ProductsCreateRequestBody;
+import voucherify.client.model.ProductsCreateResponseBody;
 
 public class Products {
 
