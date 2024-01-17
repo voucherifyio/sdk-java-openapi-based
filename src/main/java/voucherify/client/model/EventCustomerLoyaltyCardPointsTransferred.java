@@ -53,7 +53,8 @@ import voucherify.client.JSON;
 /**
  * Event data object schema for &#x60;customer.voucher.loyalty_card.points_transferred&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class EventCustomerLoyaltyCardPointsTransferred {
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)

@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Object for defining detailed information about lucky draw should be applied
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LuckyDraw {
   public static final String SERIALIZED_NAME_WINNERS_COUNT = "winners_count";
   @SerializedName(SERIALIZED_NAME_WINNERS_COUNT)

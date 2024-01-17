@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * Stores links to images of QR and barcode that correspond to an encrypted voucher code.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltiesMembersTransfersCreateResponseBodyAssets {
   public static final String SERIALIZED_NAME_QR = "qr";
   @SerializedName(SERIALIZED_NAME_QR)

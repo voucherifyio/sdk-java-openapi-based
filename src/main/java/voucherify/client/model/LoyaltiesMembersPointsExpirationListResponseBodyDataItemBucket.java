@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the number of points stored in the given loyalty points bucket.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltiesMembersPointsExpirationListResponseBodyDataItemBucket {
   public static final String SERIALIZED_NAME_TOTAL_POINTS = "total_points";
   @SerializedName(SERIALIZED_NAME_TOTAL_POINTS)

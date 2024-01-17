@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the conditions for the start date of the tier.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltyTiersExpirationAllStartDate {
   /**
    * What triggers the tier to be valid for a customer.     &#x60;IMMEDIATE&#x60;: After reaching the minimum required points.  &#x60;NEXT_PERIOD&#x60;: When the next qualification period starts.

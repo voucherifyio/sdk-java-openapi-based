@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * Defines a set of criteria and boundary conditions for an &#x60;AUTO_UPDATE&#x60; product collection type.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ProductCollectionsCreateDynamicRequestBodyFilter {
   public static final String SERIALIZED_NAME_JUNCTION = "junction";
   @SerializedName(SERIALIZED_NAME_JUNCTION)

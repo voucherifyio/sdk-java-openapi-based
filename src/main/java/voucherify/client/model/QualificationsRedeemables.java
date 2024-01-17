@@ -53,7 +53,8 @@ import voucherify.client.JSON;
 /**
  * List of redeemables for examine qualification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class QualificationsRedeemables {
   /**
    * The type of object represented by JSON. Default is &#x60;list&#x60;.

@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Set recurrent time periods when the voucher is valid. For example, valid for 1 hour every other day.start_date required when including the validity_timeframe.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe {
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)

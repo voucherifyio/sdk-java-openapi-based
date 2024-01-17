@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the details of the channel through which the redemption was issued.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class RedemptionChannel {
   public static final String SERIALIZED_NAME_CHANNEL_ID = "channel_id";
   @SerializedName(SERIALIZED_NAME_CHANNEL_ID)

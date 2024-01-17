@@ -54,7 +54,8 @@ import voucherify.client.JSON;
 /**
  * Base body schema for updating a campaign which contains coupon codes using **PUT** &#x60;/campaigns&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CampaignsUpdateCouponCampaignBase {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)

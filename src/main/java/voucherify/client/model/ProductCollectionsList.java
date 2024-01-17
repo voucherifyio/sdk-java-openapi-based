@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Schema representing list of product collections
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ProductCollectionsList {
   /**
    * The type of object represented by JSON. This object stores information about product collections.

@@ -63,7 +63,8 @@ import com.google.gson.JsonParseException;
 
 import voucherify.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class EarningRuleBaseLoyalty extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(EarningRuleBaseLoyalty.class.getName());
 

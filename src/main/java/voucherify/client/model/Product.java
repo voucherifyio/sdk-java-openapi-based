@@ -54,7 +54,8 @@ import voucherify.client.JSON;
 /**
  * This is an object representing a product.    This entity should be used to map product items from your inventory management system. The aim of products is to build which reflect product-specific campaigns.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class Product {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

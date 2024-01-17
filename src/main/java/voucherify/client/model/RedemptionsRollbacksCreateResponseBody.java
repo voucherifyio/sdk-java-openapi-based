@@ -53,7 +53,8 @@ import voucherify.client.JSON;
 /**
  * Response body schema for POST &#x60;/redemptions/{parentRedemptionID}/rollbacks&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class RedemptionsRollbacksCreateResponseBody {
   public static final String SERIALIZED_NAME_ROLLBACKS = "rollbacks";
   @SerializedName(SERIALIZED_NAME_ROLLBACKS)
