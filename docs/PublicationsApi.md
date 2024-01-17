@@ -20,12 +20,12 @@ This method selects vouchers that are suitable for publication, adds a publish e
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.PublicationsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.PublicationsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -97,12 +97,12 @@ This method selects vouchers that are suitable for publication, adds a publish e
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.PublicationsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.PublicationsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -182,12 +182,12 @@ Retrieve a list of publications. To return a **particular** publication, you can
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.PublicationsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.PublicationsApi;
 
 public class Example {
   public static void main(String[] args) {

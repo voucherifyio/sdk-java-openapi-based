@@ -21,12 +21,12 @@ Create export object. The export can be any of the following types: &#x60;vouche
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ExportsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ExportsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -96,12 +96,12 @@ This method deletes a previously created export object.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ExportsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ExportsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -170,12 +170,12 @@ Retrieves the URL of the downloadable file, which was generated via the &lt;!-- 
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ExportsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ExportsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -245,12 +245,12 @@ List all exports.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ExportsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ExportsApi;
 
 public class Example {
   public static void main(String[] args) {

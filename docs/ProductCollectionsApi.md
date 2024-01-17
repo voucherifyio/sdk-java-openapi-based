@@ -22,12 +22,12 @@ This method creates a new product collection.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ProductCollectionsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ProductCollectionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -97,12 +97,12 @@ This method deletes a product collection.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ProductCollectionsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ProductCollectionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -171,12 +171,12 @@ Retrieves the product collection.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ProductCollectionsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ProductCollectionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -246,12 +246,12 @@ This method returns a list of product collections.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ProductCollectionsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ProductCollectionsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -325,12 +325,12 @@ Retrieves list of products from a product collection; works for both dynamic and
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ProductCollectionsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ProductCollectionsApi;
 
 public class Example {
   public static void main(String[] args) {

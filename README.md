@@ -1,8 +1,8 @@
-# openapi-java-client
+# voucherify-java-sdk
 
 Voucherify API
 - API version: v2018-08-01
-  - Build date: 2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]
+  - Build date: 2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]
 
 Voucherify promotion engine REST API. Please see https://docs.voucherify.io/docs for more details.
 
@@ -39,9 +39,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>org.openapitools</groupId>
-  <artifactId>openapi-java-client</artifactId>
-  <version>v2018-08-01</version>
+  <groupId>com.voucherify</groupId>
+  <artifactId>voucherify-java-sdk</artifactId>
+  <version>1.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -52,12 +52,12 @@ Add this dependency to your project's build file:
 
 ```groovy
   repositories {
-    mavenCentral()     // Needed if the 'openapi-java-client' jar has been published to maven central.
-    mavenLocal()       // Needed if the 'openapi-java-client' jar has been published to the local maven repo.
+    mavenCentral()     // Needed if the 'voucherify-java-sdk' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'voucherify-java-sdk' jar has been published to the local maven repo.
   }
 
   dependencies {
-     implementation "org.openapitools:openapi-java-client:v2018-08-01"
+     implementation "com.voucherify:voucherify-java-sdk:1.0.0"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-v2018-08-01.jar`
+* `target/voucherify-java-sdk-1.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -81,12 +81,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.CampaignsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CampaignsApi;
 
 public class Example {
   public static void main(String[] args) {

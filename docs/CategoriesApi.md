@@ -22,12 +22,12 @@ Create category with a specific name and hierarchy.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.CategoriesApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CategoriesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -97,12 +97,12 @@ Delete a category by the category ID.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.CategoriesApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CategoriesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -171,12 +171,12 @@ Retrieve a category by the category ID.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.CategoriesApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CategoriesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -246,12 +246,12 @@ List all categories.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.CategoriesApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CategoriesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -317,12 +317,12 @@ Update category using the category ID.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.CategoriesApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CategoriesApi;
 
 public class Example {
   public static void main(String[] args) {
