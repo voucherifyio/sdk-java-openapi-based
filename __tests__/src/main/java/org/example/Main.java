@@ -73,6 +73,7 @@ public class Main {
             loyalties.test(defaultClient);
             publications.test(defaultClient);
             redemptions.test(defaultClient);
+            stackableDiscounts.test(defaultClient);
         }
     }
 }

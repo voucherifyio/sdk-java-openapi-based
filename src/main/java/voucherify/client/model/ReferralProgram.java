@@ -260,6 +260,19 @@ public class ReferralProgram {
       if ((jsonObj.get("conversion_event_type") != null && !jsonObj.get("conversion_event_type").isJsonNull()) && !jsonObj.get("conversion_event_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conversion_event_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event_type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("conversion_event_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ConversionEventTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `conversion_event_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("conversion_event_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `conversion_event_type` to be a valid element of ConversionEventTypeEnum enum got `%s` instead", jsonObj.get("conversion_event_type").toString()));
+        }
+      }
       // validate the optional field `custom_event`
       if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
         ReferralProgramCustomEvent.validateJsonElement(jsonObj.get("custom_event"));

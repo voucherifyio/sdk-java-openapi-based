@@ -366,7 +366,9 @@ public class DiscountAmount {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if ((jsonObj.get("amount_off_formula") != null && !jsonObj.get("amount_off_formula").isJsonNull()) && !jsonObj.get("amount_off_formula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `amount_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount_off_formula").toString()));

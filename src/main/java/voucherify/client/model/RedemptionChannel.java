@@ -233,6 +233,19 @@ public class RedemptionChannel {
       if ((jsonObj.get("channel_type") != null && !jsonObj.get("channel_type").isJsonNull()) && !jsonObj.get("channel_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel_type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("channel_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ChannelTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `channel_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("channel_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `channel_type` to be a valid element of ChannelTypeEnum enum got `%s` instead", jsonObj.get("channel_type").toString()));
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -258,6 +258,19 @@ public class VoucherGift {
       if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("effect");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          EffectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `effect` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("effect") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

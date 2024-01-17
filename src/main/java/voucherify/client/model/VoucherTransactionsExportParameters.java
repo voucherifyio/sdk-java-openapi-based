@@ -307,6 +307,19 @@ public class VoucherTransactionsExportParameters {
       if ((jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) && !jsonObj.get("order").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `order` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("order");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          OrderEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `order` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("order") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `order` to be a valid element of OrderEnum enum got `%s` instead", jsonObj.get("order").toString()));
+        }
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));

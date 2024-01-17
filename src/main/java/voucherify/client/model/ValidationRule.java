@@ -679,7 +679,9 @@ public class ValidationRule {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if (!jsonObj.get("context_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("context_type").toString()));
@@ -693,7 +695,9 @@ public class ValidationRule {
           throw new IllegalArgumentException("Expected the field `context_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
+        if(jsonObj.get("context_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
+        }
       }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

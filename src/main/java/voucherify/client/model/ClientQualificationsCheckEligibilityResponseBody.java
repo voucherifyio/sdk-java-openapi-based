@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.QualificationsRedeemables;
-import voucherify.client.model.QualificationsStackingRules;
+import voucherify.client.model.StackingRules;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -69,7 +69,7 @@ public class ClientQualificationsCheckEligibilityResponseBody {
 
   public static final String SERIALIZED_NAME_STACKING_RULES = "stacking_rules";
   @SerializedName(SERIALIZED_NAME_STACKING_RULES)
-  private QualificationsStackingRules stackingRules;
+  private StackingRules stackingRules;
 
   public ClientQualificationsCheckEligibilityResponseBody() {
   }
@@ -137,7 +137,7 @@ public class ClientQualificationsCheckEligibilityResponseBody {
   }
 
 
-  public ClientQualificationsCheckEligibilityResponseBody stackingRules(QualificationsStackingRules stackingRules) {
+  public ClientQualificationsCheckEligibilityResponseBody stackingRules(StackingRules stackingRules) {
     
     this.stackingRules = stackingRules;
     return this;
@@ -148,12 +148,12 @@ public class ClientQualificationsCheckEligibilityResponseBody {
    * @return stackingRules
   **/
   @javax.annotation.Nullable
-  public QualificationsStackingRules getStackingRules() {
+  public StackingRules getStackingRules() {
     return stackingRules;
   }
 
 
-  public void setStackingRules(QualificationsStackingRules stackingRules) {
+  public void setStackingRules(StackingRules stackingRules) {
     this.stackingRules = stackingRules;
   }
 
@@ -252,7 +252,7 @@ public class ClientQualificationsCheckEligibilityResponseBody {
       }
       // validate the optional field `stacking_rules`
       if (jsonObj.get("stacking_rules") != null && !jsonObj.get("stacking_rules").isJsonNull()) {
-        QualificationsStackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
+        StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
       }
   }
 

@@ -443,10 +443,25 @@ public class CategoriesGetResponseBody {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       if ((jsonObj.get("stacking_rules_type") != null && !jsonObj.get("stacking_rules_type").isJsonNull()) && !jsonObj.get("stacking_rules_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `stacking_rules_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stacking_rules_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("stacking_rules_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          StackingRulesTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `stacking_rules_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("stacking_rules_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `stacking_rules_type` to be a valid element of StackingRulesTypeEnum enum got `%s` instead", jsonObj.get("stacking_rules_type").toString()));
+        }
       }
   }
 

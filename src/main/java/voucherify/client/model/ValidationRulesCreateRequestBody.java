@@ -524,8 +524,34 @@ public class ValidationRulesCreateRequestBody {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
       if ((jsonObj.get("context_type") != null && !jsonObj.get("context_type").isJsonNull()) && !jsonObj.get("context_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("context_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("context_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ContextTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `context_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("context_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
+        }
       }
   }
 

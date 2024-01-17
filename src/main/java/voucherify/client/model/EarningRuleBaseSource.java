@@ -280,7 +280,9 @@ public class EarningRuleBaseSource {
           throw new IllegalArgumentException("Expected the field `object_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a valid element of ObjectTypeEnum enum got `%s` instead", jsonObj.get("object_type").toString()));
+        if(jsonObj.get("object_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a valid element of ObjectTypeEnum enum got `%s` instead", jsonObj.get("object_type").toString()));
+        }
       }
   }
 

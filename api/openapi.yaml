@@ -18694,9 +18694,12 @@ components:
           exclusive_categories:
           - exclusive_categories
           - exclusive_categories
-          applicable_exclusive_redeemables_limit: 5
-          applicable_redeemables_limit: 18
-          redeemables_limit: 3
+          applicable_redeemables_per_category_limit: 17
+          redeemables_application_mode: ALL
+          applicable_exclusive_redeemables_limit: 18
+          redeemables_sorting_rule: REQUESTED_ORDER
+          applicable_redeemables_limit: 5
+          redeemables_limit: 18
         tracking_id: tracking_id
         order: null
       properties:
@@ -18710,7 +18713,7 @@ components:
         order:
           $ref: '#/components/schemas/OrderCalculated'
         stacking_rules:
-          $ref: '#/components/schemas/QualificationsStackingRules'
+          $ref: '#/components/schemas/StackingRules'
       title: Client Qualifications Check Eligibility Response Body
       type: object
     ClientRedemptionsRedeemRequestBody:
@@ -18977,10 +18980,9 @@ components:
       description: Response body schema for **POST** `/validations`.
       title: Client Validations Validate Request Body
     ClientValidationsValidateResponseBody:
+      allOf:
+      - $ref: '#/components/schemas/ValidationsValidateResponseBody'
       description: Response body schema for POST `/validations`.
-      oneOf:
-      - $ref: '#/components/schemas/ValidationsValidateAllResponseBody'
-      - $ref: '#/components/schemas/ValidationsValidatePartialResponseBody'
       title: Client Validations Validate Response Body
     CreatePublicationCampaign:
       description: Create publication with campaign.
@@ -21186,9 +21188,12 @@ components:
           exclusive_categories:
           - exclusive_categories
           - exclusive_categories
-          applicable_exclusive_redeemables_limit: 5
-          applicable_redeemables_limit: 18
-          redeemables_limit: 3
+          applicable_redeemables_per_category_limit: 17
+          redeemables_application_mode: ALL
+          applicable_exclusive_redeemables_limit: 18
+          redeemables_sorting_rule: REQUESTED_ORDER
+          applicable_redeemables_limit: 5
+          redeemables_limit: 18
         tracking_id: tracking_id
         order: null
       properties:
@@ -21202,7 +21207,7 @@ components:
         order:
           $ref: '#/components/schemas/OrderCalculated'
         stacking_rules:
-          $ref: '#/components/schemas/QualificationsStackingRules'
+          $ref: '#/components/schemas/StackingRules'
       title: Qualifications Check Eligibility Response Body
       type: object
     RedemptionsGetResponseBody:
@@ -21928,10 +21933,77 @@ components:
       title: Validations Validate Request Body
     ValidationsValidateResponseBody:
       description: Response body schema for POST `/validations`.
-      oneOf:
-      - $ref: '#/components/schemas/ValidationsValidateAllResponseBody'
-      - $ref: '#/components/schemas/ValidationsValidatePartialResponseBody'
+      example:
+        valid: true
+        redeemables:
+        - null
+        - null
+        inapplicable_redeemables:
+        - ""
+        - ""
+        stacking_rules:
+          joint_categories:
+          - joint_categories
+          - joint_categories
+          exclusive_categories:
+          - exclusive_categories
+          - exclusive_categories
+          applicable_redeemables_per_category_limit: 17
+          redeemables_application_mode: ALL
+          applicable_exclusive_redeemables_limit: 18
+          redeemables_sorting_rule: REQUESTED_ORDER
+          applicable_redeemables_limit: 5
+          redeemables_limit: 18
+        skipped_redeemables:
+        - ""
+        - ""
+        session:
+          type: LOCK
+          ttl: 0.8008281904610115
+          key: LOCK
+          ttl_unit: DAYS
+        tracking_id: track_VAVo1/z+G2GI2LPw==
+        order: null
+      properties:
+        valid:
+          description: The result of the validation. It takes all of the redeemables
+            into account and returns a `false` if at least one redeemable is inapplicable.
+            Returns `true` if all redeemables are applicable.
+          type: boolean
+        redeemables:
+          description: Lists validation results of each redeemable. If redeemables_application_mode="PARTIAL"
+            all redeemables here will be "APPLICABLE"
+          items:
+            $ref: '#/components/schemas/Validations_Validate_All_Response_Body_Redeemables_Item'
+          type: array
+        skipped_redeemables:
+          description: Lists validation results of each skipped redeemable.
+          items:
+            allOf:
+            - $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
+          type: array
+        inapplicable_redeemables:
+          description: Lists validation results of each inapplicable redeemable.
+          items:
+            allOf:
+            - $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
+          type: array
+        order:
+          $ref: '#/components/schemas/OrderCalculated'
+        tracking_id:
+          description: Hashed customer source ID.
+          example: track_VAVo1/z+G2GI2LPw==
+          type: string
+        session:
+          $ref: '#/components/schemas/Session'
+        stacking_rules:
+          $ref: '#/components/schemas/StackingRules'
+      required:
+      - application_mode
+      - redeemables
+      - valid
       title: Validations Validate Response Body
+      type: object
     VouchersBalanceUpdateRequestBody:
       description: "Request body schema for `vouchers/{code}/balance`."
       example:
@@ -24510,66 +24582,6 @@ components:
       - total
       title: Redeemables
       type: object
-    QualificationsStackingRules:
-      description: "Defines stacking rules for redeemables. Read more in the [Help\
-        \ Center](https://support.voucherify.io/article/604-stacking-rules)"
-      example:
-        joint_categories:
-        - joint_categories
-        - joint_categories
-        exclusive_categories:
-        - exclusive_categories
-        - exclusive_categories
-        applicable_exclusive_redeemables_limit: 5
-        applicable_redeemables_limit: 18
-        redeemables_limit: 3
-      properties:
-        redeemables_limit:
-          default: 30
-          description: "Defines how many redeemables can be sent in one stacking request\
-            \ (note: more redeemables means more processing time!)."
-          maximum: 30
-          minimum: 1
-          type: integer
-        applicable_redeemables_limit:
-          default: 5
-          description: "Defines how many of the sent redeemables will be applied to\
-            \ the order. For example, a user can select 30 discounts but only 5 will\
-            \ be applied to the order and the remaining will be labelled as SKIPPED."
-          maximum: 30
-          minimum: 1
-          type: integer
-        applicable_exclusive_redeemables_limit:
-          default: 1
-          description: Defines how many redeemables with an exclusive category can
-            be applied in one request.
-          maximum: 30
-          minimum: 1
-          type: integer
-        exclusive_categories:
-          default: []
-          description: Lists all exclusive categories. A redeemable from a campaign
-            with an exclusive category is the only redeemable to be redeemed when
-            applied with redeemables from other campaigns unless these campaigns are
-            exclusive or joint.
-          items:
-            type: string
-          type: array
-        joint_categories:
-          default: []
-          description: Lists all joint categories. A campaign with a joint category
-            is always applied regardless of the exclusivity of other campaigns.
-          items:
-            type: string
-          type: array
-      required:
-      - applicable_exclusive_redeemables_limit
-      - applicable_redeemables_limit
-      - exclusive_categories
-      - joint_categories
-      - redeemables_limit
-      title: Examine Qualification Stacking Rules
-      type: object
     Redemption:
       description: This is an object representing a redemption.
       example:
@@ -25039,6 +25051,45 @@ components:
       - campaign
       - parameters
       title: Digital Or Material Reward
+    Session:
+      example:
+        type: LOCK
+        ttl: 0.8008281904610115
+        key: LOCK
+        ttl_unit: DAYS
+      properties:
+        key:
+          default: LOCK
+          description: "The session unique ID assigned by Voucherify or your own unique\
+            \ session ID. Sending an existing ID will result in overwriting an existing\
+            \ session. If no session key is provided, then a new ID will be generated."
+          enum:
+          - LOCK
+          type: string
+        type:
+          default: LOCK
+          description: This parameter is required to establish a new session. The
+            session locks the redemption quantity by 1.
+          enum:
+          - LOCK
+          type: string
+        ttl:
+          description: Value for the period of time that the session is active. Units
+            for this parameter are defined by the session.ttl_unit parameter.
+          type: number
+        ttl_unit:
+          description: Defines the type of unit in which the session time is counted.
+          enum:
+          - DAYS
+          - HOURS
+          - MICROSECONDS
+          - MILLISECONDS
+          - MINUTES
+          - NANOSECONDS
+          - SECONDS
+          type: string
+      title: Session
+      type: object
     SimpleCustomerRequiredObjectType:
       description: This is an object representing a customer with limited properties
         used in Event Tracking endpoints.
@@ -25221,6 +25272,89 @@ components:
       required:
       - redeemables
       title: Stackable Validate Redeem Base
+      type: object
+    StackingRules:
+      description: "Defines stacking rules for redeemables. Read more in the [Help\
+        \ Center](https://support.voucherify.io/article/604-stacking-rules)"
+      example:
+        joint_categories:
+        - joint_categories
+        - joint_categories
+        exclusive_categories:
+        - exclusive_categories
+        - exclusive_categories
+        applicable_redeemables_per_category_limit: 17
+        redeemables_application_mode: ALL
+        applicable_exclusive_redeemables_limit: 18
+        redeemables_sorting_rule: REQUESTED_ORDER
+        applicable_redeemables_limit: 5
+        redeemables_limit: 18
+      properties:
+        redeemables_limit:
+          default: 30
+          description: "Defines how many redeemables can be sent in one stacking request\
+            \ (note: more redeemables means more processing time!)."
+          maximum: 30
+          minimum: 1
+          type: integer
+        applicable_redeemables_limit:
+          default: 5
+          description: "Defines how many of the sent redeemables will be applied to\
+            \ the order. For example, a user can select 30 discounts but only 5 will\
+            \ be applied to the order and the remaining will be labelled as SKIPPED."
+          maximum: 30
+          minimum: 1
+          type: integer
+        applicable_exclusive_redeemables_limit:
+          default: 1
+          description: Defines how many redeemables with an exclusive category can
+            be applied in one request.
+          maximum: 30
+          minimum: 1
+          type: integer
+        applicable_redeemables_per_category_limit:
+          default: 1
+          description: Defines how many redeemables per category can be applied in
+            one request.
+          maximum: 30
+          minimum: 1
+          type: integer
+        exclusive_categories:
+          default: []
+          description: Lists all exclusive categories. A redeemable from a campaign
+            with an exclusive category is the only redeemable to be redeemed when
+            applied with redeemables from other campaigns unless these campaigns are
+            exclusive or joint.
+          items:
+            type: string
+          type: array
+        joint_categories:
+          default: []
+          description: Lists all joint categories. A campaign with a joint category
+            is always applied regardless of the exclusivity of other campaigns.
+          items:
+            type: string
+          type: array
+        redeemables_application_mode:
+          description: Defines redeemables application mode.
+          enum:
+          - ALL
+          - PARTIAL
+          type: string
+        redeemables_sorting_rule:
+          default: REQUESTED_ORDER
+          description: Defines redeemables sorting rule.
+          enum:
+          - CATEGORY_HIERARCHY
+          - REQUESTED_ORDER
+          type: string
+      required:
+      - applicable_exclusive_redeemables_limit
+      - applicable_redeemables_limit
+      - exclusive_categories
+      - joint_categories
+      - redeemables_limit
+      title: Stacking Rules
       type: object
     ValidationRule:
       allOf:
@@ -25408,6 +25542,42 @@ components:
           type: string
       title: Validation Rule Base
       type: object
+    ValidationsRedeemableApplicable:
+      properties:
+        status:
+          default: APPLICABLE
+          description: Indicates whether the redeemable can be applied or not applied
+            based on the validation rules.
+          enum:
+          - APPLICABLE
+          type: string
+        id:
+          description: "Redeemable ID, i.e. the voucher code."
+          type: string
+        object:
+          description: Redeemable's object type.
+          enum:
+          - voucher
+          - promotion_tier
+          type: string
+        order:
+          $ref: '#/components/schemas/OrderCalculated'
+        applicable_to:
+          $ref: '#/components/schemas/ApplicableToResultList'
+        inapplicable_to:
+          $ref: '#/components/schemas/InapplicableToResultList'
+        result:
+          $ref: '#/components/schemas/ValidationsRedeemableApplicable_result'
+        metadata:
+          description: The metadata object stores all custom attributes in the form
+            of key/value pairs assigned to the redeemable.
+          type: object
+        categories:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+      title: Applicable Redeemable
+      type: object
     ValidationsRedeemableInapplicable:
       example:
         result:
@@ -25471,82 +25641,6 @@ components:
           properties: {}
           type: object
       title: Skipped Redeemable
-      type: object
-    ValidationsValidateAllResponseBody:
-      description: Response body schema for POST `/validations` where all promotion
-        must be valid
-      properties:
-        valid:
-          description: The result of the validation. It takes all of the redeemables
-            into account and returns a `false` if at least one redeemable is inapplicable.
-            Returns `true` if all redeemables are applicable.
-          type: boolean
-        redeemables:
-          description: "Lists validation results of each redeemable. If a redeemable\
-            \ can be applied, the API returns `\"status\": \"APPLICABLE\"`."
-          items:
-            $ref: '#/components/schemas/Validations_Validate_All_Response_Body_Redeemables_Item'
-          type: array
-        order:
-          $ref: '#/components/schemas/OrderCalculated'
-        tracking_id:
-          description: Hashed customer source ID.
-          example: track_VAVo1/z+G2GI2LPw==
-          type: string
-        session:
-          $ref: '#/components/schemas/Session'
-        application_mode:
-          default: ALL
-          enum:
-          - ALL
-          type: string
-      required:
-      - application_mode
-      - redeemables
-      - valid
-      title: Validations Validate All Response Body
-      type: object
-    ValidationsValidatePartialResponseBody:
-      description: Response body schema for POST `/validations` where at least one
-        promotion must be valid
-      properties:
-        valid:
-          description: The result of the validation. It takes all of the redeemables
-            into account and returns a `false` if at least one redeemable is inapplicable.
-            Returns `true` if all redeemables are applicable.
-          type: boolean
-        redeemables:
-          description: "Lists validation results of each redeemable. If a redeemable\
-            \ can be applied, the API returns `\"status\": \"APPLICABLE\"`."
-          items:
-            allOf:
-            - $ref: '#/components/schemas/ValidationsRedeemableApplicable'
-          type: array
-        inapplicable_redeemables:
-          description: Lists validation results of each inapplicable redeemable.
-          items:
-            allOf:
-            - $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
-          type: array
-        order:
-          $ref: '#/components/schemas/OrderCalculated'
-        tracking_id:
-          description: Hashed customer source ID.
-          example: track_VAVo1/z+G2GI2LPw==
-          type: string
-        session:
-          $ref: '#/components/schemas/Session'
-        application_mode:
-          default: PARTIAL
-          enum:
-          - PARTIAL
-          type: string
-      required:
-      - application_mode
-      - inapplicable_redeemables
-      - redeemables
-      - valid
-      title: Validations Validate Partial Response Body
       type: object
     Voucher:
       description: This is an object representing a voucher.
@@ -25975,6 +26069,37 @@ components:
       - object
       - strict
       title: Applicable To
+      type: object
+    ApplicableToResultList:
+      properties:
+        data:
+          description: Contains array of items to which the discount can apply.
+          items:
+            $ref: '#/components/schemas/ApplicableTo'
+          type: array
+        total:
+          description: "Total number of objects defining included products, SKUs,\
+            \ or product collections."
+          minimum: 0
+          type: integer
+        object:
+          default: list
+          description: The type of object represented by JSON.
+          enum:
+          - list
+          type: string
+        data_ref:
+          default: data
+          description: The type of object represented by JSON.
+          enum:
+          - data
+          type: string
+      required:
+      - data
+      - data_ref
+      - object
+      - total
+      title: Applicable To Result List
       type: object
     CampaignLoyaltyVoucher:
       description: Schema model for a discount voucher.
@@ -27161,6 +27286,37 @@ components:
       - discount
       - type
       title: Object representing voucher property for Giveaway Campaign
+    InapplicableToResultList:
+      properties:
+        data:
+          description: Contains array of items to which the discount cannot apply.
+          items:
+            $ref: '#/components/schemas/InapplicableTo'
+          type: array
+        total:
+          description: "Total number of objects defining included products, SKUs,\
+            \ or product collections."
+          minimum: 0
+          type: integer
+        object:
+          default: list
+          description: The type of object represented by JSON.
+          enum:
+          - list
+          type: string
+        data_ref:
+          default: data
+          description: The type of object represented by JSON.
+          enum:
+          - data
+          type: string
+      required:
+      - data
+      - data_ref
+      - object
+      - total
+      title: Inapplicable To Result List
+      type: object
     ListPublicationsItemBase:
       properties:
         id:
@@ -27852,6 +28008,45 @@ components:
       - object
       title: Redeem Voucher
       type: object
+    RedeemableResultGiftCard:
+      description: This is a `result` object representing the results for a gift card.
+      properties:
+        gift:
+          $ref: '#/components/schemas/RedeemableResultGiftCard_gift'
+      title: Gift Card
+      type: object
+    RedeemableResultLoyaltyCard:
+      description: This is a `result` object representing the results for a loyalty
+        card.
+      properties:
+        loyalty_card:
+          $ref: '#/components/schemas/RedeemableResultLoyaltyCard_loyalty_card'
+      title: Loyalty Card
+      type: object
+    RedeemableResultPromotionStack:
+      description: This is a `result` object representing the results for a promotion
+        stack.
+      properties:
+        loyalty_card:
+          $ref: '#/components/schemas/RedeemableResultLoyaltyCard_loyalty_card'
+      title: Promotion Stack
+      type: object
+    RedeemableResultPromotionTier:
+      description: This is a `result` object representing the results for a promotion
+        tier.
+      properties:
+        discount:
+          $ref: '#/components/schemas/RedeemableResultPromotionTier_discount'
+      title: Redeemable Result Promotion Tier
+      type: object
+    RedeemableResultVoucherCode:
+      description: This is a `result` object representing the results for a coupon
+        code.
+      properties:
+        discount:
+          $ref: '#/components/schemas/RedeemableResultPromotionTier_discount'
+      title: Coupon Code
+      type: object
     RedemptionRewardResult:
       example:
         product: null
@@ -28059,40 +28254,6 @@ components:
       - $ref: '#/components/schemas/RewardTypeCoin'
       - $ref: '#/components/schemas/RewardTypeMaterial'
       title: Reward type
-    Session:
-      properties:
-        key:
-          default: LOCK
-          description: "The session unique ID assigned by Voucherify or your own unique\
-            \ session ID. Sending an existing ID will result in overwriting an existing\
-            \ session. If no session key is provided, then a new ID will be generated."
-          enum:
-          - LOCK
-          type: string
-        type:
-          default: LOCK
-          description: This parameter is required to establish a new session. The
-            session locks the redemption quantity by 1.
-          enum:
-          - LOCK
-          type: string
-        ttl:
-          description: Value for the period of time that the session is active. Units
-            for this parameter are defined by the session.ttl_unit parameter.
-          type: number
-        ttl_unit:
-          description: Defines the type of unit in which the session time is counted.
-          enum:
-          - DAYS
-          - HOURS
-          - MICROSECONDS
-          - MILLISECONDS
-          - MINUTES
-          - NANOSECONDS
-          - SECONDS
-          type: string
-      title: Session
-      type: object
     SimpleCustomer:
       properties:
         id:
@@ -28333,42 +28494,6 @@ components:
       - total
       title: Validation Rules Assignments List
       type: object
-    ValidationsRedeemableApplicable:
-      properties:
-        status:
-          default: APPLICABLE
-          description: Indicates whether the redeemable can be applied or not applied
-            based on the validation rules.
-          enum:
-          - APPLICABLE
-          type: string
-        id:
-          description: "Redeemable ID, i.e. the voucher code."
-          type: string
-        object:
-          description: Redeemable's object type.
-          enum:
-          - voucher
-          - promotion_tier
-          type: string
-        order:
-          $ref: '#/components/schemas/OrderCalculated'
-        applicable_to:
-          $ref: '#/components/schemas/ApplicableToResultList'
-        inapplicable_to:
-          $ref: '#/components/schemas/InapplicableToResultList'
-        result:
-          $ref: '#/components/schemas/ValidationsRedeemableApplicable_result'
-        metadata:
-          description: The metadata object stores all custom attributes in the form
-            of key/value pairs assigned to the redeemable.
-          type: object
-        categories:
-          items:
-            $ref: '#/components/schemas/Category'
-          type: array
-      title: Applicable Redeemable
-      type: object
     VoucherAssets:
       description: Stores links to images of QR and barcode that correspond to an
         encrypted voucher code.
@@ -28438,37 +28563,6 @@ components:
       - APPLY_TO_MOST_EXPENSIVE
       title: Applicable To Effect
       type: string
-    ApplicableToResultList:
-      properties:
-        data:
-          description: Contains array of items to which the discount can apply.
-          items:
-            $ref: '#/components/schemas/ApplicableTo'
-          type: array
-        total:
-          description: "Total number of objects defining included products, SKUs,\
-            \ or product collections."
-          minimum: 0
-          type: integer
-        object:
-          default: list
-          description: The type of object represented by JSON.
-          enum:
-          - list
-          type: string
-        data_ref:
-          default: data
-          description: The type of object represented by JSON.
-          enum:
-          - data
-          type: string
-      required:
-      - data
-      - data_ref
-      - object
-      - total
-      title: Applicable To Result List
-      type: object
     BusValRuleAssignment:
       description: Assignments of business validation rule
       example:
@@ -29542,36 +29636,10 @@ components:
           $ref: '#/components/schemas/Any'
       title: Filters Condition
       type: object
-    InapplicableToResultList:
-      properties:
-        data:
-          description: Contains array of items to which the discount cannot apply.
-          items:
-            $ref: '#/components/schemas/InapplicableTo'
-          type: array
-        total:
-          description: "Total number of objects defining included products, SKUs,\
-            \ or product collections."
-          minimum: 0
-          type: integer
-        object:
-          default: list
-          description: The type of object represented by JSON.
-          enum:
-          - list
-          type: string
-        data_ref:
-          default: data
-          description: The type of object represented by JSON.
-          enum:
-          - data
-          type: string
-      required:
-      - data
-      - data_ref
-      - object
-      - total
-      title: Inapplicable To Result List
+    InapplicableTo:
+      allOf:
+      - $ref: '#/components/schemas/ApplicableTo'
+      title: Inapplicable To
       type: object
     MappingFixed:
       properties:
@@ -29816,45 +29884,6 @@ components:
         validation_rules_assignments:
           $ref: '#/components/schemas/ValidationRulesAssignmentsList'
       title: Single redeemable
-      type: object
-    RedeemableResultGiftCard:
-      description: This is a `result` object representing the results for a gift card.
-      properties:
-        gift:
-          $ref: '#/components/schemas/RedeemableResultGiftCard_gift'
-      title: Gift Card
-      type: object
-    RedeemableResultLoyaltyCard:
-      description: This is a `result` object representing the results for a loyalty
-        card.
-      properties:
-        loyalty_card:
-          $ref: '#/components/schemas/RedeemableResultLoyaltyCard_loyalty_card'
-      title: Loyalty Card
-      type: object
-    RedeemableResultPromotionStack:
-      description: This is a `result` object representing the results for a promotion
-        stack.
-      properties:
-        loyalty_card:
-          $ref: '#/components/schemas/RedeemableResultLoyaltyCard_loyalty_card'
-      title: Promotion Stack
-      type: object
-    RedeemableResultPromotionTier:
-      description: This is a `result` object representing the results for a promotion
-        tier.
-      properties:
-        discount:
-          $ref: '#/components/schemas/RedeemableResultPromotionTier_discount'
-      title: Redeemable Result Promotion Tier
-      type: object
-    RedeemableResultVoucherCode:
-      description: This is a `result` object representing the results for a coupon
-        code.
-      properties:
-        discount:
-          $ref: '#/components/schemas/RedeemableResultPromotionTier_discount'
-      title: Coupon Code
       type: object
     RewardTypeCampaign:
       properties:
@@ -30270,11 +30299,6 @@ components:
       required:
       - sent_at
       title: Event Customer Sent
-      type: object
-    InapplicableTo:
-      allOf:
-      - $ref: '#/components/schemas/ApplicableTo'
-      title: Inapplicable To
       type: object
     RedeemableResult:
       description: Information about redeemable result.
@@ -31563,6 +31587,12 @@ components:
         loyalty:
           $ref: '#/components/schemas/RewardsAssignmentsUpdateRequestBody_parameters_loyalty'
       type: object
+    Validations_Validate_All_Response_Body_Redeemables_Item:
+      oneOf:
+      - $ref: '#/components/schemas/ValidationsRedeemableApplicable'
+      - $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
+      - $ref: '#/components/schemas/ValidationsRedeemableSkipped'
+      title: Validations Validate All Response Body Redeemables Item
     VouchersBalanceUpdateResponseBody_related_object:
       description: Defines the resource that is being modified with the values that
         are returned in the balance object.
@@ -32305,6 +32335,15 @@ components:
           description: Indicates whether all items are included in the discount.
           type: boolean
       type: object
+    ValidationsRedeemableApplicable_result:
+      description: Specifies the redeemable's end effect on the order. This object
+        is unique to each type of redeemable.
+      oneOf:
+      - $ref: '#/components/schemas/RedeemableResultVoucherCode'
+      - $ref: '#/components/schemas/RedeemableResultGiftCard'
+      - $ref: '#/components/schemas/RedeemableResultLoyaltyCard'
+      - $ref: '#/components/schemas/RedeemableResultPromotionTier'
+      - $ref: '#/components/schemas/RedeemableResultPromotionStack'
     ValidationsRedeemableInapplicable_result:
       example:
         error:
@@ -32319,12 +32358,6 @@ components:
         error:
           $ref: '#/components/schemas/Error'
       type: object
-    Validations_Validate_All_Response_Body_Redeemables_Item:
-      oneOf:
-      - $ref: '#/components/schemas/ValidationsRedeemableApplicable'
-      - $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
-      - $ref: '#/components/schemas/ValidationsRedeemableSkipped'
-      title: Validations Validate All Response Body Redeemables Item
     Voucher_gift:
       description: Object representing gift parameters. Child attributes are present
         only if `type` is `GIFT_VOUCHER`. Defaults to `null`.
@@ -33008,6 +33041,30 @@ components:
           type: integer
       type: object
       example: null
+    RedeemableResultGiftCard_gift:
+      description: Stores the amount of gift card credits to be applied in the redemption.
+      properties:
+        credits:
+          description: Total number of gift card credits to be applied in the redemption
+            expressed as the smallest currency unit (e.g. 100 cents for $1.00).
+          type: integer
+      type: object
+    RedeemableResultLoyaltyCard_loyalty_card:
+      description: Stores the amount of loyalty card points to be applied in the redemption.
+      properties:
+        points:
+          description: Total number of loyalty points to be applied in the redemption.
+          type: integer
+      type: object
+    RedeemableResultPromotionTier_discount:
+      description: Discount details about the type of discount to be applied for the
+        redeemable.
+      oneOf:
+      - $ref: '#/components/schemas/DiscountAmount'
+      - $ref: '#/components/schemas/DiscountUnit'
+      - $ref: '#/components/schemas/DiscountUnitMultiple'
+      - $ref: '#/components/schemas/DiscountPercent'
+      - $ref: '#/components/schemas/DiscountFixed'
     RedemptionRewardResult_voucher:
       allOf:
       - $ref: '#/components/schemas/Voucher'
@@ -33170,15 +33227,6 @@ components:
       required:
       - loyalty
       type: object
-    ValidationsRedeemableApplicable_result:
-      description: Specifies the redeemable's end effect on the order. This object
-        is unique to each type of redeemable.
-      oneOf:
-      - $ref: '#/components/schemas/RedeemableResultVoucherCode'
-      - $ref: '#/components/schemas/RedeemableResultGiftCard'
-      - $ref: '#/components/schemas/RedeemableResultLoyaltyCard'
-      - $ref: '#/components/schemas/RedeemableResultPromotionTier'
-      - $ref: '#/components/schemas/RedeemableResultPromotionStack'
     CampaignLoyaltyCard_expiration_rules:
       properties:
         period_type:
@@ -33311,30 +33359,6 @@ components:
       required:
       - url
       type: object
-    RedeemableResultGiftCard_gift:
-      description: Stores the amount of gift card credits to be applied in the redemption.
-      properties:
-        credits:
-          description: Total number of gift card credits to be applied in the redemption
-            expressed as the smallest currency unit (e.g. 100 cents for $1.00).
-          type: integer
-      type: object
-    RedeemableResultLoyaltyCard_loyalty_card:
-      description: Stores the amount of loyalty card points to be applied in the redemption.
-      properties:
-        points:
-          description: Total number of loyalty points to be applied in the redemption.
-          type: integer
-      type: object
-    RedeemableResultPromotionTier_discount:
-      description: Discount details about the type of discount to be applied for the
-        redeemable.
-      oneOf:
-      - $ref: '#/components/schemas/DiscountAmount'
-      - $ref: '#/components/schemas/DiscountUnit'
-      - $ref: '#/components/schemas/DiscountUnitMultiple'
-      - $ref: '#/components/schemas/DiscountPercent'
-      - $ref: '#/components/schemas/DiscountFixed'
     RewardTypeCampaign_campaign:
       description: Objects stores information about the campaign related to the reward.
       properties:
