@@ -8,7 +8,7 @@ Response body schema for **GET** `/vouchers/{code}/redemption`.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**quantity** | **Integer** | The maximum number of times a voucher can be redeemed. |  |
+|**quantity** | **Integer** | The maximum number of times a voucher can be redeemed. |  [optional] |
 |**redeemedQuantity** | **Integer** | The number of times the voucher was redeemed successfully. |  |
 |**_object** | **String** | The type of object represented by JSON. This object stores information about redemptions in a dictionary. |  |
 |**url** | **String** | URL |  |

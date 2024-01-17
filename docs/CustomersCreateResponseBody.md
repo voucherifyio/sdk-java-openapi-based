@@ -10,9 +10,9 @@ Response bofy for **POST** `/customers`.
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | The ID of an existing customer that will be linked to redemption in this request. |  [optional] |
 |**sourceId** | **String** | A unique identifier of the customer who validates a voucher. It can be a customer ID or email from a CRM system, database, or a third-party service. If you also pass a customer ID (unique ID assigned by Voucherify), the source ID will be ignored. |  [optional] |
-|**summary** | [**CustomerSummary**](CustomerSummary.md) |  |  |
-|**loyalty** | [**CustomerLoyalty**](CustomerLoyalty.md) |  |  |
-|**referrals** | [**CustomerReferrals**](CustomerReferrals.md) |  |  |
+|**summary** | [**CustomerSummary**](CustomerSummary.md) |  |  [optional] |
+|**loyalty** | [**CustomerLoyalty**](CustomerLoyalty.md) |  |  [optional] |
+|**referrals** | [**CustomerReferrals**](CustomerReferrals.md) |  |  [optional] |
 |**systemMetadata** | **Object** | Object used to store system metadata information. |  [optional] |
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the customer was created in ISO 8601 format. |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the customer was updated in ISO 8601 format. |  [optional] |

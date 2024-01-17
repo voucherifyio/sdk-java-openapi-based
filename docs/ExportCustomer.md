@@ -12,8 +12,8 @@
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the export was scheduled in ISO 8601 format. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Status of the export. Informs you whether the export has already been completed, i.e. indicates whether the file containing the exported data has been generated. |  |
 |**channel** | **String** | The channel through which the export was triggered. |  [optional] |
-|**result** | [**ExportBaseResult**](ExportBaseResult.md) |  |  |
-|**userId** | **String** | Identifies the specific user who initiated the export through the Voucherify Dashboard; returned when the channel value is WEBSITE. |  |
+|**result** | [**ExportBaseResult**](ExportBaseResult.md) |  |  [optional] |
+|**userId** | **String** | Identifies the specific user who initiated the export through the Voucherify Dashboard; returned when the channel value is WEBSITE. |  [optional] |
 |**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) | The type of object to be exported. |  |
 |**parameters** | [**ExportCustomerBaseParameters**](ExportCustomerBaseParameters.md) |  |  [optional] |
 

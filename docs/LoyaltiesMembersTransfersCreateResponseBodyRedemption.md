@@ -8,7 +8,7 @@ Stores a summary of redemptions that have been applied to the voucher.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**quantity** | **Integer** | How many times a voucher can be redeemed. A null value means unlimited. |  |
+|**quantity** | **Integer** | How many times a voucher can be redeemed. A null value means unlimited. |  [optional] |
 |**redeemedPoints** | **Integer** | Total loyalty points redeemed. |  [optional] |
 |**redeemedQuantity** | **Integer** | How many times a voucher has already been redeemed. |  [optional] |
 |**redemptionEntries** | **List&lt;String&gt;** |  |  [optional] |

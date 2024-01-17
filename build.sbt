@@ -1,8 +1,8 @@
 lazy val root = (project in file(".")).
   settings(
-    organization := "org.openapitools",
-    name := "openapi-java-client",
-    version := "v2018-08-01",
+    organization := "com.voucherify",
+    name := "voucherify-java-sdk",
+    version := "1.0.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),

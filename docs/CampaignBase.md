@@ -31,7 +31,7 @@ This is an object representing a campaign.
 |**creationStatus** | [**CreationStatusEnum**](#CreationStatusEnum) | Indicates the status of the campaign creation. |  |
 |**vouchersGenerationStatus** | [**VouchersGenerationStatusEnum**](#VouchersGenerationStatusEnum) | Indicates the status of the campaign&#39;s vouchers. |  |
 |**_protected** | **Boolean** | Indicates whether the resource can be deleted. |  |
-|**categoryId** | **String** | Unique category ID that this campaign belongs to. |  |
+|**categoryId** | **String** | Unique category ID that this campaign belongs to. |  [optional] |
 |**categories** | [**List&lt;Category&gt;**](Category.md) | Contains details about the category. |  |
 |**_object** | **String** | The type of object represented by JSON. This object stores information about the campaign. |  |
 |**referralProgram** | [**ReferralProgram**](ReferralProgram.md) |  |  [optional] |
