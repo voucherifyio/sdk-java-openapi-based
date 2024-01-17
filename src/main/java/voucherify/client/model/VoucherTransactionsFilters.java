@@ -52,7 +52,7 @@ import voucherify.client.JSON;
 /**
  * List of available fields and filters that can be exported with gift card or loyalty card transactions along with the sorting order of the returned data.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class VoucherTransactionsFilters {
   /**
    * How the export is filtered, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order.

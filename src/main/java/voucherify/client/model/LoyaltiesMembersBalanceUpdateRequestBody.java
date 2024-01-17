@@ -51,7 +51,7 @@ import voucherify.client.JSON;
 /**
  * Request Body schema for **post** &#x60;/loyalties/members/{memberId}/balance&#x60; and **POST** &#x60;/loyalties/{campaignId}/members/{memberId}/balance&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class LoyaltiesMembersBalanceUpdateRequestBody {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)

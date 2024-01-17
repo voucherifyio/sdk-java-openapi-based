@@ -49,7 +49,7 @@ import voucherify.client.JSON;
 /**
  * Defines the resource that is being modified with the values that are returned in the balance object.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class VouchersBalanceUpdateResponseBodyRelatedObject {
   /**
    * The object being modified, i.e. &#x60;voucher&#x60;.

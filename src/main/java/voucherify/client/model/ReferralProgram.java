@@ -51,7 +51,7 @@ import voucherify.client.JSON;
 /**
  * Defines the referee reward and the way a referral is triggered. Context: &#x60;REFERRAL_PROGRAM&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class ReferralProgram {
   /**
    * Define how a referral is triggered.

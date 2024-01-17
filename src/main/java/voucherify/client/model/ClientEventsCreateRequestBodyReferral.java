@@ -49,7 +49,7 @@ import voucherify.client.JSON;
 /**
  * If a **conversion event** for a referral program is set to a custom event, then you need to send the referral code in the payload to make a record of the conversion event. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class ClientEventsCreateRequestBodyReferral {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

@@ -50,7 +50,7 @@ import voucherify.client.JSON;
 /**
  * Create publication with specific voucher.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class CreatePublicationWithSpecificVoucher {
   public static final String SERIALIZED_NAME_SOURCE_ID = "source_id";
   @SerializedName(SERIALIZED_NAME_SOURCE_ID)

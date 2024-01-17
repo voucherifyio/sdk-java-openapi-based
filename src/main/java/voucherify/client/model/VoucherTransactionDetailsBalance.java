@@ -50,7 +50,7 @@ import voucherify.client.JSON;
 /**
  * Contains information on how the balance was affected by the transaction.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class VoucherTransactionDetailsBalance {
   /**
    * The type of voucher whose balance is being adjusted due to the transaction.

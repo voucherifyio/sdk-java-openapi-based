@@ -52,7 +52,7 @@ import voucherify.client.JSON;
 /**
  * Response body for **GET** &#x60;/validation-rules-assignments&#x60; and **GET** &#x60;/validation-rules/{validationRuleId}/assignments&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class ValidationRulesAssignmentsListResponseBody {
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)

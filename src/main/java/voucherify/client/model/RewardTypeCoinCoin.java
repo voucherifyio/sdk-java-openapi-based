@@ -50,7 +50,7 @@ import voucherify.client.JSON;
 /**
  * Defines the ratio by mapping the number of loyalty points in points_ratio to a predefined cash amount in exchange_ratio.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class RewardTypeCoinCoin {
   public static final String SERIALIZED_NAME_EXCHANGE_RATIO = "exchange_ratio";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATIO)

@@ -51,7 +51,7 @@ import voucherify.client.JSON;
 /**
  * Defines stacking rules for redeemables. Read more in the [Help Center](https://support.voucherify.io/article/604-stacking-rules)
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class QualificationsStackingRules {
   public static final String SERIALIZED_NAME_REDEEMABLES_LIMIT = "redeemables_limit";
   @SerializedName(SERIALIZED_NAME_REDEEMABLES_LIMIT)

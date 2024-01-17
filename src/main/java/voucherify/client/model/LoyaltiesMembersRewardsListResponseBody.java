@@ -52,7 +52,7 @@ import voucherify.client.JSON;
 /**
  * Response body schema for **GET** &#x60;/loyalties/members/{memberId}/rewards&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class LoyaltiesMembersRewardsListResponseBody {
   /**
    * The type of object represented by JSON.

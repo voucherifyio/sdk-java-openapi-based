@@ -49,7 +49,7 @@ import voucherify.client.JSON;
 /**
  * Set recurrent time periods when the promotion tier is valid. For example, valid for 1 hour every other day.&#x60;start_date&#x60; **required** when including the &#x60;validity_timeframe&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class PromotionTierValidityTimeframe {
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)

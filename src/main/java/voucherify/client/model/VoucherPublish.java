@@ -49,7 +49,7 @@ import voucherify.client.JSON;
 /**
  * This object stores a summary of publish events: an events counter and an endpoint which can be called to return details of each event.  A publication is required for loyalty cards and referral codes. This object gets updated whenever a voucher has been published. Publication means assigning a code to a particular customer. Typically, a publication is made by distributing your codes to your customers, e.g. through Export to MailChimp or &lt;!-- [publish voucher](OpenAPI.json/paths/~1publications/post) --&gt;[publish voucher](ref:create-publication) API method.   &lt;!-- title: My Table Title --&gt;  | Required | Optional | | -------- | :------: | | &#x60;type&#x60;:&#x60;LOYALTY_CARD&#x60; |  &#x60;type&#x60;:&#x60;DISCOUNT_VOUCHER&#x60;   |  | &#x60;is_referral_code&#x60;:&#x60;true&#x60;      |    &#x60;type&#x60;:&#x60;GIFT_VOUCHER&#x60;   | 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class VoucherPublish {
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)

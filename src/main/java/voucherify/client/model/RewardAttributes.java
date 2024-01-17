@@ -49,7 +49,7 @@ import voucherify.client.JSON;
 /**
  * These properties are configurable for **material rewards**.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class RewardAttributes {
   public static final String SERIALIZED_NAME_IMAGE_URL = "image_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)

@@ -2,7 +2,7 @@
 
 Voucherify API
 - API version: v2018-08-01
-  - Build date: 2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]
+  - Build date: 2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]
 
 Voucherify promotion engine REST API. Please see https://docs.voucherify.io/docs for more details.
 

@@ -49,7 +49,7 @@ import voucherify.client.JSON;
 /**
  * Defines the ratio based on the property defined in the calculation_type parameter. For every set of value (1, 10, etc) defined in the every parameter for the property defined in calculation_type, give the customer the number of points defined in the points parameter. In other words, for every calculation_type, give points.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:00:53.208514+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T09:04:49.535428+01:00[Europe/Warsaw]")
 public class EarningRuleProportionalOrderItemsAmountOrderItemsAmount {
   public static final String SERIALIZED_NAME_EVERY = "every";
   @SerializedName(SERIALIZED_NAME_EVERY)
