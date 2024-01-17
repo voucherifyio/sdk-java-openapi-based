@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Response body schema for POST &#x60;/validations&#x60; where all promotion must be valid
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ValidationsValidateAllResponseBody {
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
@@ -382,6 +382,17 @@ public class ValidationsValidateAllResponseBody {
       }
       if (!jsonObj.get("application_mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `application_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("application_mode").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("application_mode");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ApplicationModeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `application_mode` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `application_mode` to be a valid element of ApplicationModeEnum enum got `%s` instead", jsonObj.get("application_mode").toString()));
       }
   }
 

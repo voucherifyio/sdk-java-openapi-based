@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Request schema for **POST** &#x60;/products/metadata/async&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ProductsMetadataUpdateInBulkRequestBody {
   public static final String SERIALIZED_NAME_SOURCE_IDS = "source_ids";
   @SerializedName(SERIALIZED_NAME_SOURCE_IDS)

@@ -24,7 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.client.model.CampaignBaseValidityTimeframe;
 import org.openapitools.client.model.CampaignLoyaltyCard;
-import org.openapitools.client.model.CampaignVoucherRedemption;
+import org.openapitools.client.model.CampaignLoyaltyVoucherRedemption;
 import org.openapitools.client.model.CodeConfigRequiredLengthCharsetPattern;
 import org.openapitools.client.model.Discount;
 import org.openapitools.client.model.Gift;
@@ -56,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * Schema model for a campaign voucher.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class CampaignVoucher {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -76,7 +76,7 @@ public class CampaignVoucher {
 
   public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
   @SerializedName(SERIALIZED_NAME_REDEMPTION)
-  private CampaignVoucherRedemption redemption;
+  private CampaignLoyaltyVoucherRedemption redemption;
 
   public static final String SERIALIZED_NAME_CODE_CONFIG = "code_config";
   @SerializedName(SERIALIZED_NAME_CODE_CONFIG)
@@ -185,7 +185,7 @@ public class CampaignVoucher {
   }
 
 
-  public CampaignVoucher redemption(CampaignVoucherRedemption redemption) {
+  public CampaignVoucher redemption(CampaignLoyaltyVoucherRedemption redemption) {
     
     this.redemption = redemption;
     return this;
@@ -196,12 +196,12 @@ public class CampaignVoucher {
    * @return redemption
   **/
   @javax.annotation.Nonnull
-  public CampaignVoucherRedemption getRedemption() {
+  public CampaignLoyaltyVoucherRedemption getRedemption() {
     return redemption;
   }
 
 
-  public void setRedemption(CampaignVoucherRedemption redemption) {
+  public void setRedemption(CampaignLoyaltyVoucherRedemption redemption) {
     this.redemption = redemption;
   }
 
@@ -437,7 +437,7 @@ public class CampaignVoucher {
         CampaignLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
       // validate the required field `redemption`
-      CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
+      CampaignLoyaltyVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
       // validate the required field `code_config`
       CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
       // validate the optional field `validity_timeframe`

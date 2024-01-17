@@ -30,6 +30,7 @@ import org.openapitools.client.model.LoyaltiesMembersTransfersCreateResponseBody
 import org.openapitools.client.model.LoyaltiesMembersTransfersCreateResponseBodyPublish;
 import org.openapitools.client.model.LoyaltiesMembersTransfersCreateResponseBodyRedemption;
 import org.openapitools.client.model.LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,7 +59,7 @@ import org.openapitools.client.JSON;
 /**
  * Response body schema for **POST** &#x60;/loyalties/{campaignId}/members/{memberId}/transfers&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class LoyaltiesMembersTransfersCreateResponseBody {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -734,9 +735,20 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
         Objects.equals(this.createdAt, loyaltiesMembersTransfersCreateResponseBody.createdAt);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, code, campaign, campaignId, category, categoryId, categories, type, loyaltyCard, startDate, expirationDate, validityTimeframe, validityDayOfWeek, publish, redemption, active, additionalInfo, metadata, assets, isReferralCode, holderId, updatedAt, createdAt);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -816,16 +828,9 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("code");
-    openapiRequiredFields.add("category");
-    openapiRequiredFields.add("category_id");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("loyalty_card");
-    openapiRequiredFields.add("start_date");
-    openapiRequiredFields.add("expiration_date");
-    openapiRequiredFields.add("validity_timeframe");
-    openapiRequiredFields.add("validity_day_of_week");
     openapiRequiredFields.add("active");
-    openapiRequiredFields.add("additional_info");
     openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("is_referral_code");
     openapiRequiredFields.add("created_at");
@@ -894,14 +899,25 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+      }
       // validate the required field `loyalty_card`
       LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      // validate the required field `validity_timeframe`
-      LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      // ensure the required json array is present
-      if (jsonObj.get("validity_day_of_week") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("validity_day_of_week").isJsonArray()) {
+      // validate the optional field `validity_timeframe`
+      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
+        LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
       }
       // validate the optional field `publish`

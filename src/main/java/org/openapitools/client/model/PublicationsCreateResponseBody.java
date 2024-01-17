@@ -28,6 +28,7 @@ import org.openapitools.client.model.CustomerWithSummaryLoyaltyReferrals;
 import org.openapitools.client.model.PublicationsCreateVoucherResponseBody;
 import org.openapitools.client.model.PublicationsCreateVouchersResponseBody;
 import org.openapitools.client.model.Voucher;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
@@ -64,7 +65,7 @@ import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class PublicationsCreateResponseBody extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(PublicationsCreateResponseBody.class.getName());
 

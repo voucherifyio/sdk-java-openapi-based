@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.CustomerWithSummaryLoyaltyReferrals;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * ListPublicationsItemValidMultipleVouchers
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ListPublicationsItemValidMultipleVouchers {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -488,9 +489,20 @@ public class ListPublicationsItemValidMultipleVouchers {
         Objects.equals(this.vouchers, listPublicationsItemValidMultipleVouchers.vouchers);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchersId, result, vouchers);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -552,7 +564,6 @@ public class ListPublicationsItemValidMultipleVouchers {
     openapiRequiredFields.add("customer_id");
     openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("source_id");
     openapiRequiredFields.add("customer");
     openapiRequiredFields.add("vouchers_id");
     openapiRequiredFields.add("result");
@@ -593,6 +604,17 @@ public class ListPublicationsItemValidMultipleVouchers {
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+      }
       if (!jsonObj.get("customer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
       }
@@ -615,6 +637,17 @@ public class ListPublicationsItemValidMultipleVouchers {
       }
       if (!jsonObj.get("result").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `result` to be a primitive type in the JSON string but got `%s`", jsonObj.get("result").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("result");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ResultEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `result` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("vouchers") == null) {

@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Contains information on the number of gift card credits that the customer wants to apply to the order.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class RedeemGiftCardAllOfGift {
   public static final String SERIALIZED_NAME_CREDITS = "credits";
   @SerializedName(SERIALIZED_NAME_CREDITS)

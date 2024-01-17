@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Unique related object parent ID, i.e. camp_22noMlhTADb7Fq2UL3vWu3d1.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ParameterFiltersListRedemptionsRelatedObjectParentId {
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)

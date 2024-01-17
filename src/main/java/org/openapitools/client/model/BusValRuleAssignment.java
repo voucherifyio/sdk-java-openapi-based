@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Assignments of business validation rule
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class BusValRuleAssignment {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -182,7 +182,7 @@ public class BusValRuleAssignment {
 
   public static final String SERIALIZED_NAME_VALIDATION_OMITTED_RULES = "validation_omitted_rules";
   @SerializedName(SERIALIZED_NAME_VALIDATION_OMITTED_RULES)
-  private List<String> validationOmittedRules = new ArrayList<>();
+  private List<String> validationOmittedRules;
 
   public BusValRuleAssignment() {
   }
@@ -344,7 +344,7 @@ public class BusValRuleAssignment {
    * The validation status of the assignment
    * @return validationStatus
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ValidationStatusEnum getValidationStatus() {
     return validationStatus;
   }
@@ -373,7 +373,7 @@ public class BusValRuleAssignment {
    * The list of omitted rules
    * @return validationOmittedRules
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getValidationOmittedRules() {
     return validationOmittedRules;
   }
@@ -462,8 +462,6 @@ public class BusValRuleAssignment {
     openapiRequiredFields.add("related_object_id");
     openapiRequiredFields.add("related_object_type");
     openapiRequiredFields.add("object");
-    openapiRequiredFields.add("validation_status");
-    openapiRequiredFields.add("validation_omitted_rules");
   }
 
  /**
@@ -509,13 +507,22 @@ public class BusValRuleAssignment {
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
-      if (!jsonObj.get("validation_status").isJsonPrimitive()) {
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+      }
+      if ((jsonObj.get("validation_status") != null && !jsonObj.get("validation_status").isJsonNull()) && !jsonObj.get("validation_status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `validation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("validation_status").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("validation_omitted_rules") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("validation_omitted_rules").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validation_omitted_rules") != null && !jsonObj.get("validation_omitted_rules").isJsonNull() && !jsonObj.get("validation_omitted_rules").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validation_omitted_rules` to be an array in the JSON string but got `%s`", jsonObj.get("validation_omitted_rules").toString()));
       }
   }

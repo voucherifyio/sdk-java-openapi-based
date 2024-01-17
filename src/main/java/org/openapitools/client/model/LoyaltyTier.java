@@ -57,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * LoyaltyTier
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class LoyaltyTier {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -520,7 +520,6 @@ public class LoyaltyTier {
     openapiRequiredFields.add("points");
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("created_at");
     openapiRequiredFields.add("config");
     openapiRequiredFields.add("object");
@@ -573,6 +572,17 @@ public class LoyaltyTier {
       }
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
       }
   }
 

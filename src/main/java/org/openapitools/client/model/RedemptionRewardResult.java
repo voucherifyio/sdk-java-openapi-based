@@ -27,6 +27,7 @@ import org.openapitools.client.model.RedemptionRewardResultProduct;
 import org.openapitools.client.model.RedemptionRewardResultSku;
 import org.openapitools.client.model.RedemptionRewardResultVoucher;
 import org.openapitools.client.model.SimpleCustomer;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * RedemptionRewardResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class RedemptionRewardResult {
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
@@ -504,9 +505,20 @@ public class RedemptionRewardResult {
         Objects.equals(this.type, redemptionRewardResult.type);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(customer, assignmentId, voucher, product, sku, loyaltyTierId, id, name, _object, createdAt, updatedAt, parameters, type);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -564,12 +576,6 @@ public class RedemptionRewardResult {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("customer");
-    openapiRequiredFields.add("assignment_id");
-    openapiRequiredFields.add("voucher");
-    openapiRequiredFields.add("product");
-    openapiRequiredFields.add("sku");
-    openapiRequiredFields.add("loyalty_tier_id");
   }
 
  /**
@@ -592,25 +598,26 @@ public class RedemptionRewardResult {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionRewardResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RedemptionRewardResult.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `customer`
-      SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
+      }
       if ((jsonObj.get("assignment_id") != null && !jsonObj.get("assignment_id").isJsonNull()) && !jsonObj.get("assignment_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `assignment_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assignment_id").toString()));
       }
-      // validate the required field `voucher`
-      RedemptionRewardResultVoucher.validateJsonElement(jsonObj.get("voucher"));
-      // validate the required field `product`
-      RedemptionRewardResultProduct.validateJsonElement(jsonObj.get("product"));
-      // validate the required field `sku`
-      RedemptionRewardResultSku.validateJsonElement(jsonObj.get("sku"));
+      // validate the optional field `voucher`
+      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
+        RedemptionRewardResultVoucher.validateJsonElement(jsonObj.get("voucher"));
+      }
+      // validate the optional field `product`
+      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
+        RedemptionRewardResultProduct.validateJsonElement(jsonObj.get("product"));
+      }
+      // validate the optional field `sku`
+      if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
+        RedemptionRewardResultSku.validateJsonElement(jsonObj.get("sku"));
+      }
       if ((jsonObj.get("loyalty_tier_id") != null && !jsonObj.get("loyalty_tier_id").isJsonNull()) && !jsonObj.get("loyalty_tier_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `loyalty_tier_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("loyalty_tier_id").toString()));
       }

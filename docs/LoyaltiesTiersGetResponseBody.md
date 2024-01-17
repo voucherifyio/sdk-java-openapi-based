@@ -14,7 +14,7 @@ Response body schema for **GET** `/loyalties/{campaignId}/tiers/{loyaltyTierId}`
 |**points** | [**LoyaltyTierBasePoints**](LoyaltyTierBasePoints.md) |  |  |
 |**id** | **String** | Unique loyalty tier ID. |  |
 |**campaignId** | **String** | Unique parent campaign ID. |  |
-|**metadata** | **Object** | The metadata object stores all custom attributes assigned to the loyalty tier. A set of key/value pairs that you can attach to a loyalty tier object. It can be useful for storing additional information about the loyalty tier in a structured format. |  |
+|**metadata** | **Object** | The metadata object stores all custom attributes assigned to the loyalty tier. A set of key/value pairs that you can attach to a loyalty tier object. It can be useful for storing additional information about the loyalty tier in a structured format. |  [optional] |
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the loyalty tier was created in ISO 8601 format. |  |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the loyalty tier was updated in ISO 8601 format. |  [optional] |
 |**config** | [**LoyaltyTierAllOfConfig**](LoyaltyTierAllOfConfig.md) |  |  |

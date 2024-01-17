@@ -15,7 +15,7 @@
 |**quantity** | **Integer** | The quantity of the particular item in the cart. |  [optional] |
 |**discountQuantity** | **Integer** | Number of dicounted items. |  [optional] |
 |**amount** | **Integer** | The total amount of the order item (price * quantity). |  [optional] |
-|**discountAmount** | **Integer** |  Sum of all order-item-level discounts applied to the order. |  [optional] |
+|**discountAmount** | **Integer** | Sum of all order-item-level discounts applied to the order. |  [optional] |
 |**appliedDiscountAmount** | **Integer** | This field shows the order-level discount applied. |  [optional] |
 |**price** | **Integer** | Unit price of an item. Value is multiplied by 100 to precisely represent 2 decimal places. For example &#x60;10000 cents&#x60; for &#x60;$100.00&#x60;. |  [optional] |
 

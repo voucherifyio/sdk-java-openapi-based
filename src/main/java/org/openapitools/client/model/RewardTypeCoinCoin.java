@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Defines the ratio by mapping the number of loyalty points in points_ratio to a predefined cash amount in exchange_ratio.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class RewardTypeCoinCoin {
   public static final String SERIALIZED_NAME_EXCHANGE_RATIO = "exchange_ratio";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATIO)

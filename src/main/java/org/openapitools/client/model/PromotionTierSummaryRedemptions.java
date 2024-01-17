@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Contains statistics about promotion tier redemptions.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class PromotionTierSummaryRedemptions {
   public static final String SERIALIZED_NAME_TOTAL_REDEEMED = "total_redeemed";
   @SerializedName(SERIALIZED_NAME_TOTAL_REDEEMED)

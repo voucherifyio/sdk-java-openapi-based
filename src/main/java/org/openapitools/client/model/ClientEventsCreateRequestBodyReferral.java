@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * If a **conversion event** for a referral program is set to a custom event, then you need to send the referral code in the payload to make a record of the conversion event. 
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class ClientEventsCreateRequestBodyReferral {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

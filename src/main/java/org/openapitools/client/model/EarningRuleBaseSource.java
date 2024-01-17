@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Contains the custom earning rule name and parent campaign.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class EarningRuleBaseSource {
   public static final String SERIALIZED_NAME_BANNER = "banner";
   @SerializedName(SERIALIZED_NAME_BANNER)
@@ -269,6 +269,17 @@ public class EarningRuleBaseSource {
       }
       if (!jsonObj.get("object_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a valid element of ObjectTypeEnum enum got `%s` instead", jsonObj.get("object_type").toString()));
       }
   }
 

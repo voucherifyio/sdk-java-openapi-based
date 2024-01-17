@@ -30,6 +30,7 @@ import org.openapitools.client.model.EarningRuleBaseSegment;
 import org.openapitools.client.model.EarningRuleBaseSource;
 import org.openapitools.client.model.EarningRuleBaseValidityTimeframe;
 import org.openapitools.client.model.EarningRuleEvent;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,7 +59,7 @@ import org.openapitools.client.JSON;
 /**
  * EarningRule
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T10:34:33.845621+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-16T13:33:47.147825+01:00[Europe/Warsaw]")
 public class EarningRule {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -570,9 +571,20 @@ public class EarningRule {
         Objects.equals(this.active, earningRule.active);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, createdAt, loyalty, event, customEvent, segment, source, _object, automationId, startDate, expirationDate, validityTimeframe, validityDayOfWeek, metadata, validationRuleId, updatedAt, active);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -645,8 +657,6 @@ public class EarningRule {
     openapiRequiredFields.add("object");
     openapiRequiredFields.add("automation_id");
     openapiRequiredFields.add("metadata");
-    openapiRequiredFields.add("validation_rule_id");
-    openapiRequiredFields.add("updated_at");
     openapiRequiredFields.add("active");
   }
 
@@ -695,6 +705,17 @@ public class EarningRule {
       EarningRuleBaseSource.validateJsonElement(jsonObj.get("source"));
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
       }
       if (!jsonObj.get("automation_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `automation_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("automation_id").toString()));
