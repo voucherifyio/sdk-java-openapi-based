@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * DiscountPercent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class DiscountPercent {
   /**
    * Defines the type of the voucher.
@@ -387,7 +388,9 @@ public class DiscountPercent {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if ((jsonObj.get("percent_off_formula") != null && !jsonObj.get("percent_off_formula").isJsonNull()) && !jsonObj.get("percent_off_formula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `percent_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("percent_off_formula").toString()));

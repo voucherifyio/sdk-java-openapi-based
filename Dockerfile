@@ -9,14 +9,16 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY pom.xml .
 COPY .env .
-COPY src ./src
-COPY tests ./tests
+COPY pom.xml .
+COPY ./src ./src
+COPY ./__tests__ ./__tests__
 
 RUN mvn clean install
-RUN mvn install:install-file -Dfile=./target/openapi-java-client-v2018-08-01.jar -DgroupId=voucherify -DartifactId=java-sdk-test -Dversion=0.0.1 -Dpackaging=jar
-RUN mvn -f ./tests clean install
 
-CMD mvn -f ./tests exec:java
+RUN mvn install:install-file -Dfile=./target/voucherify-java-sdk-1.0.0.jar -DgroupId=local -DartifactId=voucherify-java-sdk -Dversion=1.0.0 -Dpackaging=jar
+
+RUN mvn -f ./__tests__ clean install
+
+CMD mvn -f ./__tests__ exec:java
 

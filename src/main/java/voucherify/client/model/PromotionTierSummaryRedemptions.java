@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Contains statistics about promotion tier redemptions.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PromotionTierSummaryRedemptions {
   public static final String SERIALIZED_NAME_TOTAL_REDEEMED = "total_redeemed";
   @SerializedName(SERIALIZED_NAME_TOTAL_REDEEMED)

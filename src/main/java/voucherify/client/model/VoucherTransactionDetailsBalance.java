@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * Contains information on how the balance was affected by the transaction.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class VoucherTransactionDetailsBalance {
   /**
    * The type of voucher whose balance is being adjusted due to the transaction.
@@ -407,7 +408,9 @@ public class VoucherTransactionDetailsBalance {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
@@ -421,7 +424,9 @@ public class VoucherTransactionDetailsBalance {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       // validate the required field `related_object`
       VoucherTransactionDetailsBalanceRelatedObject.validateJsonElement(jsonObj.get("related_object"));

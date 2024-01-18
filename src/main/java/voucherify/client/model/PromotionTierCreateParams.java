@@ -54,7 +54,8 @@ import voucherify.client.JSON;
 /**
  * This is an object representing a promotion tier create params. Promotion tiers are always assigned to a campaign and cannot be used standalone.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PromotionTierCreateParams {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

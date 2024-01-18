@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Assignments of business validation rule
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class BusValRuleAssignment {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -516,10 +517,25 @@ public class BusValRuleAssignment {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       if ((jsonObj.get("validation_status") != null && !jsonObj.get("validation_status").isJsonNull()) && !jsonObj.get("validation_status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `validation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("validation_status").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("validation_status");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ValidationStatusEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `validation_status` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("validation_status") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `validation_status` to be a valid element of ValidationStatusEnum enum got `%s` instead", jsonObj.get("validation_status").toString()));
+        }
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("validation_omitted_rules") != null && !jsonObj.get("validation_omitted_rules").isJsonNull() && !jsonObj.get("validation_omitted_rules").isJsonArray()) {

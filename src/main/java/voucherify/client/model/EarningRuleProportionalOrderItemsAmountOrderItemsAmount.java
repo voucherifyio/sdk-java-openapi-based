@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the ratio based on the property defined in the calculation_type parameter. For every set of value (1, 10, etc) defined in the every parameter for the property defined in calculation_type, give the customer the number of points defined in the points parameter. In other words, for every calculation_type, give points.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class EarningRuleProportionalOrderItemsAmountOrderItemsAmount {
   public static final String SERIALIZED_NAME_EVERY = "every";
   @SerializedName(SERIALIZED_NAME_EVERY)
@@ -307,7 +308,9 @@ public class EarningRuleProportionalOrderItemsAmountOrderItemsAmount {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

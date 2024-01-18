@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * Object representing loyalty card parameters. Child attributes are present only if &#x60;type&#x60; is &#x60;LOYALTY_CARD&#x60;. Defaults to &#x60;null&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class VoucherLoyaltyCard {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)

@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the ratio based on the property defined in the calculation_type parameter. For every given increment of value (1, 10, etc) defined in the every parameter for the property defined in calculation_type, give the customer the number of points defined in the points parameter. In other words, for every order metadata property value, give points.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class EarningRuleProportionalCustomerMetadataCustomerMetadata {
   public static final String SERIALIZED_NAME_EVERY = "every";
   @SerializedName(SERIALIZED_NAME_EVERY)

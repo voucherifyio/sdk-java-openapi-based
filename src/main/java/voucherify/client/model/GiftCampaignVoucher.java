@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Schema model for a discount voucher.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class GiftCampaignVoucher {
   /**
    * Type of voucher.
@@ -304,7 +305,9 @@ public class GiftCampaignVoucher {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       // validate the required field `gift`
       Gift.validateJsonElement(jsonObj.get("gift"));

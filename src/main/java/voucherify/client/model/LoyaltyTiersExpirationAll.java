@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * Defines the Loyalty Tiers Expiration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltyTiersExpirationAll {
   /**
    * Tier qualification.     &#x60;BALANCE&#x60;: Points balance is based on the customer&#39;s current points balance. Customers qualify for the tier if their points balance is in the points range of the tier.   &#x60;POINTS_IN_PERIOD&#x60;: A customer qualifies for the tier only if the sum of the accumulated points in a **defined time interval** reaches the tier threshold.
@@ -357,10 +358,25 @@ public class LoyaltyTiersExpirationAll {
           throw new IllegalArgumentException("Expected the field `qualification_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a valid element of QualificationTypeEnum enum got `%s` instead", jsonObj.get("qualification_type").toString()));
+        if(jsonObj.get("qualification_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a valid element of QualificationTypeEnum enum got `%s` instead", jsonObj.get("qualification_type").toString()));
+        }
       }
       if ((jsonObj.get("qualification_period") != null && !jsonObj.get("qualification_period").isJsonNull()) && !jsonObj.get("qualification_period").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qualification_period").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("qualification_period");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          QualificationPeriodEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `qualification_period` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("qualification_period") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a valid element of QualificationPeriodEnum enum got `%s` instead", jsonObj.get("qualification_period").toString()));
+        }
       }
       // validate the required field `start_date`
       LoyaltyTiersExpirationAllStartDate.validateJsonElement(jsonObj.get("start_date"));

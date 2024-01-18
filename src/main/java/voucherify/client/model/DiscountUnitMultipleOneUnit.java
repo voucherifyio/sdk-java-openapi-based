@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * DiscountUnitMultipleOneUnit
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class DiscountUnitMultipleOneUnit {
   public static final String SERIALIZED_NAME_UNIT_OFF = "unit_off";
   @SerializedName(SERIALIZED_NAME_UNIT_OFF)
@@ -365,7 +366,9 @@ public class DiscountUnitMultipleOneUnit {
           throw new IllegalArgumentException("Expected the field `effect` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
+        if(jsonObj.get("effect") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
+        }
       }
       if (!jsonObj.get("unit_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `unit_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_type").toString()));

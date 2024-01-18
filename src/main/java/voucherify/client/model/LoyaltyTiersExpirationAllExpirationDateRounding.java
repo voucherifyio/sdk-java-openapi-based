@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the rounding mechanism for tier expiration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltyTiersExpirationAllExpirationDateRounding {
   /**
    * This mechanism describes a custom rounding for the expiration date.
@@ -383,11 +384,50 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
       if ((jsonObj.get("strategy") != null && !jsonObj.get("strategy").isJsonNull()) && !jsonObj.get("strategy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `strategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("strategy").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("strategy");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          StrategyEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `strategy` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("strategy") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `strategy` to be a valid element of StrategyEnum enum got `%s` instead", jsonObj.get("strategy").toString()));
+        }
+      }
       if ((jsonObj.get("unit") != null && !jsonObj.get("unit").isJsonNull()) && !jsonObj.get("unit").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `unit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("unit");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          UnitEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `unit` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("unit") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `unit` to be a valid element of UnitEnum enum got `%s` instead", jsonObj.get("unit").toString()));
+        }
       }
   }
 

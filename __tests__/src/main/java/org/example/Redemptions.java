@@ -1,9 +1,9 @@
 package org.example;
 
 import com.google.gson.JsonSyntaxException;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.api.RedemptionsApi;
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.api.RedemptionsApi;
 
 public class Redemptions {
 

@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * List of available fields and filters that can be exported with gift card or loyalty card transactions along with the sorting order of the returned data.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class VoucherTransactionsFilters {
   /**
    * How the export is filtered, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order.
@@ -342,6 +343,19 @@ public class VoucherTransactionsFilters {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) && !jsonObj.get("order").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `order` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("order");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          OrderEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `order` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("order") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `order` to be a valid element of OrderEnum enum got `%s` instead", jsonObj.get("order").toString()));
+        }
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {

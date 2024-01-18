@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * Contains the tier configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PromotionsStacksUpdateRequestBodyTiers {
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
@@ -240,6 +241,19 @@ public class PromotionsStacksUpdateRequestBodyTiers {
       }
       if ((jsonObj.get("hierarchy_mode") != null && !jsonObj.get("hierarchy_mode").isJsonNull()) && !jsonObj.get("hierarchy_mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hierarchy_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hierarchy_mode").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("hierarchy_mode");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          HierarchyModeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `hierarchy_mode` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("hierarchy_mode") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `hierarchy_mode` to be a valid element of HierarchyModeEnum enum got `%s` instead", jsonObj.get("hierarchy_mode").toString()));
+        }
       }
   }
 

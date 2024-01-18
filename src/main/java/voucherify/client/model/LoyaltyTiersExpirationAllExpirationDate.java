@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * Defines the conditions for the expiration date of a tier.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltyTiersExpirationAllExpirationDate {
   /**
    * What triggers the tier to expire for a customer.     &#x60;END_OF_PERIOD&#x60;: Expire tier at the end of the period.     &#x60;END_OF_NEXT_PERIOD&#x60;:  Expire tier at the end of the next period.   &#x60;BALANCE_DROP&#x60;: Tier expires when the points balance drops below the required range of the tier.   &#x60;CUSTOM&#x60;: Tier expires after a certain time period passes following the instance the points balance drops below the required range of the tier.
@@ -280,7 +281,9 @@ public class LoyaltyTiersExpirationAllExpirationDate {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if (!jsonObj.get("extend").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `extend` to be a primitive type in the JSON string but got `%s`", jsonObj.get("extend").toString()));

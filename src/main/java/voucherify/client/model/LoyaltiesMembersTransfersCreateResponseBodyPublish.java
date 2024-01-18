@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * This object stores a summary of publish events: an events counter and an endpoint which can be called to return details of each event. A publication is required for loyalty cards and referral codes. This object gets updated whenever a voucher has been published. Publication means assigning a code to a particular customer. Typically, a publication is made by distributing your codes to your customers, e.g. through Export to MailChimp or publish voucher API method.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
   /**
    * The type of object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
@@ -310,7 +311,9 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("entries") != null && !jsonObj.get("entries").isJsonNull() && !jsonObj.get("entries").isJsonArray()) {

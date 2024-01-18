@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Contains details about the point balances left on loyalty cards and the number of referred customers in each campaign.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CustomerLoyaltyCampaignsValue {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)

@@ -54,7 +54,8 @@ import voucherify.client.JSON;
 /**
  * CampaignsCreatePromotionCampaign
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CampaignsCreatePromotionCampaign {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -749,6 +750,19 @@ public class CampaignsCreatePromotionCampaign {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
@@ -772,6 +786,19 @@ public class CampaignsCreatePromotionCampaign {
       }
       if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("campaign_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          CampaignTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `campaign_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("campaign_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a valid element of CampaignTypeEnum enum got `%s` instead", jsonObj.get("campaign_type").toString()));
+        }
       }
       // validate the optional field `promotion`
       if (jsonObj.get("promotion") != null && !jsonObj.get("promotion").isJsonNull()) {

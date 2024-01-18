@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * Schema containing information about config used for voucher. Defines code&#39;s pattern (prefix, suffix, length, charset, etc).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CodeConfig {
   public static final String SERIALIZED_NAME_LENGTH = "length";
   @SerializedName(SERIALIZED_NAME_LENGTH)

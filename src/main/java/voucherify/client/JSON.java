@@ -539,7 +539,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.QualificationsRedeemable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.QualificationsRedeemableBase.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.QualificationsRedeemables.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.QualificationsStackingRules.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedeemGiftCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedeemGiftCardAllOfGift.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedeemLoyaltyCard.CustomTypeAdapterFactory());
@@ -651,6 +650,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SkusListForProduct.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.StackableValidateRedeemBase.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.StackableValidateRedeemBaseRedeemablesItem.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.StackingRules.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationEntity.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRuleAssignment.CustomTypeAdapterFactory());
@@ -671,9 +671,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsRedeemableInapplicable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsRedeemableInapplicableResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsRedeemableSkipped.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsValidateAllResponseBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsValidateAllResponseBodyRedeemablesItem.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsValidatePartialResponseBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsValidateRequestBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationsValidateResponseBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.Voucher.CustomTypeAdapterFactory());

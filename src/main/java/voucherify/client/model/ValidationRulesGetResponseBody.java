@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Response body schema for **GET** &#x60;/validation-rules/{validationRuleId}&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ValidationRulesGetResponseBody {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -678,7 +679,9 @@ public class ValidationRulesGetResponseBody {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if (!jsonObj.get("context_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("context_type").toString()));
@@ -692,7 +695,9 @@ public class ValidationRulesGetResponseBody {
           throw new IllegalArgumentException("Expected the field `context_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
+        if(jsonObj.get("context_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
+        }
       }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

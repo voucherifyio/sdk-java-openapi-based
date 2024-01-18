@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * OrderItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class OrderItem {
   public static final String SERIALIZED_NAME_SKU_ID = "sku_id";
   @SerializedName(SERIALIZED_NAME_SKU_ID)
@@ -572,6 +573,19 @@ public class OrderItem {
       }
       if ((jsonObj.get("related_object") != null && !jsonObj.get("related_object").isJsonNull()) && !jsonObj.get("related_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("related_object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          RelatedObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `related_object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("related_object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `related_object` to be a valid element of RelatedObjectEnum enum got `%s` instead", jsonObj.get("related_object").toString()));
+        }
       }
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));

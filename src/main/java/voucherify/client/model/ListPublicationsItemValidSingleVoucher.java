@@ -55,7 +55,8 @@ import voucherify.client.JSON;
 /**
  * ListPublicationsItemValidSingleVoucher
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ListPublicationsItemValidSingleVoucher {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -606,7 +607,9 @@ public class ListPublicationsItemValidSingleVoucher {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       if (!jsonObj.get("customer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
@@ -640,7 +643,9 @@ public class ListPublicationsItemValidSingleVoucher {
           throw new IllegalArgumentException("Expected the field `result` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+        if(jsonObj.get("result") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+        }
       }
       // validate the required field `voucher`
       ListPublicationsItemVoucher.validateJsonElement(jsonObj.get("voucher"));

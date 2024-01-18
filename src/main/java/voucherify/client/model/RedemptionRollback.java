@@ -60,7 +60,8 @@ import voucherify.client.JSON;
 /**
  * This is an object representing a redemption rollback.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class RedemptionRollback {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -1035,7 +1036,9 @@ public class RedemptionRollback {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
@@ -1061,7 +1064,9 @@ public class RedemptionRollback {
           throw new IllegalArgumentException("Expected the field `result` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+        if(jsonObj.get("result") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+        }
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
@@ -1075,7 +1080,9 @@ public class RedemptionRollback {
           throw new IllegalArgumentException("Expected the field `status` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
+        if(jsonObj.get("status") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
+        }
       }
       // validate the optional field `related_redemptions`
       if (jsonObj.get("related_redemptions") != null && !jsonObj.get("related_redemptions").isJsonNull()) {
@@ -1109,7 +1116,9 @@ public class RedemptionRollback {
           throw new IllegalArgumentException("Expected the field `related_object_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
+        if(jsonObj.get("related_object_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
+        }
       }
       if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));

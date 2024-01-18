@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * Contains current gift card balance information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class Gift {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -266,6 +267,19 @@ public class Gift {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("effect");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          EffectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `effect` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("effect") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
+        }
       }
   }
 

@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Request body schema for **POST** &#x60;/qualifications&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class QualificationsCheckEligibilityRequestBody {
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
@@ -439,11 +440,37 @@ public class QualificationsCheckEligibilityRequestBody {
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("mode");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ModeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `mode` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("mode") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `mode` to be a valid element of ModeEnum enum got `%s` instead", jsonObj.get("mode").toString()));
+        }
+      }
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
       }
       if ((jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) && !jsonObj.get("scenario").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scenario` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scenario").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("scenario");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ScenarioEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `scenario` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("scenario") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `scenario` to be a valid element of ScenarioEnum enum got `%s` instead", jsonObj.get("scenario").toString()));
+        }
       }
       // validate the optional field `options`
       if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {

@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Contains the custom earning rule name and parent campaign.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class EarningRuleBaseSource {
   public static final String SERIALIZED_NAME_BANNER = "banner";
   @SerializedName(SERIALIZED_NAME_BANNER)
@@ -279,7 +280,9 @@ public class EarningRuleBaseSource {
           throw new IllegalArgumentException("Expected the field `object_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a valid element of ObjectTypeEnum enum got `%s` instead", jsonObj.get("object_type").toString()));
+        if(jsonObj.get("object_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a valid element of ObjectTypeEnum enum got `%s` instead", jsonObj.get("object_type").toString()));
+        }
       }
   }
 

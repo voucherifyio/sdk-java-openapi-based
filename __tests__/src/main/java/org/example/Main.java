@@ -1,9 +1,9 @@
 package org.example;
 
 import org.example.data.Voucherify;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.ApiKeyAuth;
+import voucherify.client.ApiClient;
+import voucherify.client.Configuration;
+import voucherify.client.auth.ApiKeyAuth;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -73,6 +73,7 @@ public class Main {
             loyalties.test(defaultClient);
             publications.test(defaultClient);
             redemptions.test(defaultClient);
+            stackableDiscounts.test(defaultClient);
         }
     }
 }

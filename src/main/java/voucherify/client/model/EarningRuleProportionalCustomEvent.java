@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * EarningRuleProportionalCustomEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class EarningRuleProportionalCustomEvent {
   /**
    * Defines how the points will be added to the loyalty card.PROPORTIONAL adds points based on a pre-defined ratio.
@@ -320,7 +321,9 @@ public class EarningRuleProportionalCustomEvent {
           throw new IllegalArgumentException("Expected the field `type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
       }
       if (!jsonObj.get("calculation_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `calculation_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calculation_type").toString()));
@@ -334,7 +337,9 @@ public class EarningRuleProportionalCustomEvent {
           throw new IllegalArgumentException("Expected the field `calculation_type` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `calculation_type` to be a valid element of CalculationTypeEnum enum got `%s` instead", jsonObj.get("calculation_type").toString()));
+        if(jsonObj.get("calculation_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `calculation_type` to be a valid element of CalculationTypeEnum enum got `%s` instead", jsonObj.get("calculation_type").toString()));
+        }
       }
       // validate the required field `custom_event`
       EarningRuleProportionalCustomEventCustomEvent.validateJsonElement(jsonObj.get("custom_event"));

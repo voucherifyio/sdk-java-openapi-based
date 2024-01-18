@@ -51,7 +51,8 @@ import voucherify.client.JSON;
 /**
  * Defines the referee reward and the way a referral is triggered. Context: &#x60;REFERRAL_PROGRAM&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ReferralProgram {
   /**
    * Define how a referral is triggered.
@@ -258,6 +259,19 @@ public class ReferralProgram {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("conversion_event_type") != null && !jsonObj.get("conversion_event_type").isJsonNull()) && !jsonObj.get("conversion_event_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conversion_event_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("conversion_event_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ConversionEventTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `conversion_event_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("conversion_event_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `conversion_event_type` to be a valid element of ConversionEventTypeEnum enum got `%s` instead", jsonObj.get("conversion_event_type").toString()));
+        }
       }
       // validate the optional field `custom_event`
       if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {

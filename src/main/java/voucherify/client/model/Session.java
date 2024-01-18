@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * Session
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class Session {
   /**
    * The session unique ID assigned by Voucherify or your own unique session ID. Sending an existing ID will result in overwriting an existing session. If no session key is provided, then a new ID will be generated.
@@ -386,11 +387,50 @@ public class Session {
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("key");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          KeyEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `key` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("key") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `key` to be a valid element of KeyEnum enum got `%s` instead", jsonObj.get("key").toString()));
+        }
+      }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
       if ((jsonObj.get("ttl_unit") != null && !jsonObj.get("ttl_unit").isJsonNull()) && !jsonObj.get("ttl_unit").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ttl_unit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ttl_unit").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("ttl_unit");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TtlUnitEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `ttl_unit` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("ttl_unit") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `ttl_unit` to be a valid element of TtlUnitEnum enum got `%s` instead", jsonObj.get("ttl_unit").toString()));
+        }
       }
   }
 

@@ -53,7 +53,8 @@ import voucherify.client.JSON;
 /**
  * List of redeemables for examine qualification.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class QualificationsRedeemables {
   /**
    * The type of object represented by JSON. Default is &#x60;list&#x60;.
@@ -417,7 +418,9 @@ public class QualificationsRedeemables {
           throw new IllegalArgumentException("Expected the field `object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
       }
       if (!jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
@@ -431,7 +434,9 @@ public class QualificationsRedeemables {
           throw new IllegalArgumentException("Expected the field `data_ref` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
+        if(jsonObj.get("data_ref") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
+        }
       }
       // ensure the json data is an array
       if (!jsonObj.get("data").isJsonArray()) {

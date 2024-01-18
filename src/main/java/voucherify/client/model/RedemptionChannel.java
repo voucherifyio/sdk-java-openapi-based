@@ -49,7 +49,8 @@ import voucherify.client.JSON;
 /**
  * Defines the details of the channel through which the redemption was issued.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class RedemptionChannel {
   public static final String SERIALIZED_NAME_CHANNEL_ID = "channel_id";
   @SerializedName(SERIALIZED_NAME_CHANNEL_ID)
@@ -231,6 +232,19 @@ public class RedemptionChannel {
       }
       if ((jsonObj.get("channel_type") != null && !jsonObj.get("channel_type").isJsonNull()) && !jsonObj.get("channel_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("channel_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ChannelTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `channel_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("channel_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `channel_type` to be a valid element of ChannelTypeEnum enum got `%s` instead", jsonObj.get("channel_type").toString()));
+        }
       }
   }
 

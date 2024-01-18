@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.QualificationsRedeemables;
-import voucherify.client.model.QualificationsStackingRules;
+import voucherify.client.model.StackingRules;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Response body schema for **POST** &#x60;/qualifications&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class QualificationsCheckEligibilityResponseBody {
   public static final String SERIALIZED_NAME_REDEEMABLES = "redeemables";
   @SerializedName(SERIALIZED_NAME_REDEEMABLES)
@@ -68,7 +69,7 @@ public class QualificationsCheckEligibilityResponseBody {
 
   public static final String SERIALIZED_NAME_STACKING_RULES = "stacking_rules";
   @SerializedName(SERIALIZED_NAME_STACKING_RULES)
-  private QualificationsStackingRules stackingRules;
+  private StackingRules stackingRules;
 
   public QualificationsCheckEligibilityResponseBody() {
   }
@@ -136,7 +137,7 @@ public class QualificationsCheckEligibilityResponseBody {
   }
 
 
-  public QualificationsCheckEligibilityResponseBody stackingRules(QualificationsStackingRules stackingRules) {
+  public QualificationsCheckEligibilityResponseBody stackingRules(StackingRules stackingRules) {
     
     this.stackingRules = stackingRules;
     return this;
@@ -147,12 +148,12 @@ public class QualificationsCheckEligibilityResponseBody {
    * @return stackingRules
   **/
   @javax.annotation.Nullable
-  public QualificationsStackingRules getStackingRules() {
+  public StackingRules getStackingRules() {
     return stackingRules;
   }
 
 
-  public void setStackingRules(QualificationsStackingRules stackingRules) {
+  public void setStackingRules(StackingRules stackingRules) {
     this.stackingRules = stackingRules;
   }
 
@@ -251,7 +252,7 @@ public class QualificationsCheckEligibilityResponseBody {
       }
       // validate the optional field `stacking_rules`
       if (jsonObj.get("stacking_rules") != null && !jsonObj.get("stacking_rules").isJsonNull()) {
-        QualificationsStackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
+        StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
       }
   }
 

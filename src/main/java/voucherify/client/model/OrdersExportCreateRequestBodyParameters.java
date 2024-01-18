@@ -54,7 +54,8 @@ import voucherify.client.JSON;
 /**
  * List of available fields and filters that can be exported with an order along with the sorting order of the returned data.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class OrdersExportCreateRequestBodyParameters {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)

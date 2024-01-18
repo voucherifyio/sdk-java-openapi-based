@@ -52,7 +52,8 @@ import voucherify.client.JSON;
 /**
  * Summary of customer&#39;s referrals, in this case, the customer being the referee, i.e. information about the source of referrals and number of times the customer was referred by other customers.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CustomerReferrals {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)

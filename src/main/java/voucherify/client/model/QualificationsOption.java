@@ -54,7 +54,8 @@ import voucherify.client.JSON;
 /**
  * Configure parameters returned in the response.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class QualificationsOption {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
@@ -396,6 +397,19 @@ public class QualificationsOption {
       }
       if ((jsonObj.get("sorting_rule") != null && !jsonObj.get("sorting_rule").isJsonNull()) && !jsonObj.get("sorting_rule").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sorting_rule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sorting_rule").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("sorting_rule");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          SortingRuleEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `sorting_rule` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("sorting_rule") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `sorting_rule` to be a valid element of SortingRuleEnum enum got `%s` instead", jsonObj.get("sorting_rule").toString()));
+        }
       }
   }
 

@@ -50,7 +50,8 @@ import voucherify.client.JSON;
 /**
  * ExportCustomerBase
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-17T11:15:49.612672+01:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ExportCustomerBase {
   /**
    * The type of object to be exported.
@@ -245,7 +246,9 @@ public class ExportCustomerBase {
           throw new IllegalArgumentException("Expected the field `exported_object` to be not null");
         }
       } catch (IllegalArgumentException e) {
-        throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a valid element of ExportedObjectEnum enum got `%s` instead", jsonObj.get("exported_object").toString()));
+        if(jsonObj.get("exported_object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a valid element of ExportedObjectEnum enum got `%s` instead", jsonObj.get("exported_object").toString()));
+        }
       }
       // validate the optional field `parameters`
       if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
