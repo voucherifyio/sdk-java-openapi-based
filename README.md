@@ -98,17 +98,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     CampaignsApi apiInstance = new CampaignsApi(defaultClient);
     String campaignId = "campaignId_example"; // String | The campaign ID or name of the campaign to which voucher will be added. You can either pass the campaign ID, which was assigned by Voucherify, or the name of the campaign as the path parameter value.
@@ -942,40 +942,33 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="X-App-Id-1"></a>
-### X-App-Id-1
+<a id="X-App-Id"></a>
+### X-App-Id
 
 - **Type**: API key
 - **API key parameter name**: X-App-Id
 - **Location**: HTTP header
 
-<a id="X-App-Token-1"></a>
-### X-App-Token-1
+<a id="X-App-Token"></a>
+### X-App-Token
 
 - **Type**: API key
 - **API key parameter name**: X-App-Token
 - **Location**: HTTP header
 
-<a id="X-Client-Token-1"></a>
-### X-Client-Token-1
+<a id="X-Client-Token"></a>
+### X-Client-Token
 
 - **Type**: API key
 - **API key parameter name**: X-Client-Token
 - **Location**: HTTP header
 
-<a id="X-Client-Application-Id-1"></a>
-### X-Client-Application-Id-1
+<a id="X-Client-Application-Id"></a>
+### X-Client-Application-Id
 
 - **Type**: API key
 - **API key parameter name**: X-Client-Application-Id
 - **Location**: HTTP header
-
-<a id="Download-Token-1"></a>
-### Download-Token-1
-
-- **Type**: API key
-- **API key parameter name**: token
-- **Location**: URL query string
 
 
 ## Recommendation

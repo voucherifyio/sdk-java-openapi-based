@@ -108,8 +108,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Voucher
       tags:
       - Vouchers
@@ -571,8 +571,8 @@ paths:
             \ \n\nAdditionally, the response returns validation rules related to the\
             \ voucher object. They can be inherited from a campaign."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Voucher
       tags:
       - Vouchers
@@ -657,8 +657,8 @@ paths:
                 $ref: '#/components/schemas/VouchersEnableResponseBody'
           description: Returns a voucher object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Enable Voucher
       tags:
       - Vouchers
@@ -742,8 +742,8 @@ paths:
                 $ref: '#/components/schemas/VouchersDisableResponseBody'
           description: Returns a voucher object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Disable Voucher
       tags:
       - Vouchers
@@ -792,8 +792,8 @@ paths:
                 $ref: '#/components/schemas/VouchersBalanceUpdateResponseBody'
           description: Returns a balance object if the operation succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Add or Remove Voucher Balance
       tags:
       - Vouchers
@@ -1015,8 +1015,8 @@ paths:
                 $ref: '#/components/schemas/VouchersTransactionsListResponseBody'
           description: Returns a dictionary of transaction objects
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Voucher Transactions
       tags:
       - Vouchers
@@ -1130,8 +1130,8 @@ paths:
                 $ref: '#/components/schemas/VouchersTransactionsExportCreateResponseBody'
           description: Returns an export object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Export Voucher Transactions
       tags:
       - Vouchers
@@ -1198,8 +1198,8 @@ paths:
             \ <!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import Vouchers using CSV
       tags:
       - Vouchers
@@ -1236,8 +1236,8 @@ paths:
         "204":
           description: Returns no content if the validation session was released successfully.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Release Validation Session
       tags:
       - Vouchers
@@ -1522,8 +1522,8 @@ paths:
             \ campaign object. If no more campaigns are available, the resulting array\
             \ on a given page will be empty."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Campaigns
       tags:
       - Campaigns
@@ -2146,8 +2146,8 @@ paths:
                 $ref: '#/components/schemas/CampaignsCreateResponseBody'
           description: Returns a campaign object if the call succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Campaign
       tags:
       - Campaigns
@@ -2202,8 +2202,8 @@ paths:
             \ <!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Campaign
       tags:
       - Campaigns
@@ -2267,8 +2267,8 @@ paths:
                 $ref: '#/components/schemas/CampaignsGetResponseBody'
           description: Returns a campaign object if a valid identifier was provided.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Campaign
       tags:
       - Campaigns
@@ -2374,8 +2374,8 @@ paths:
                 $ref: '#/components/schemas/CampaignsUpdateResponseBody'
           description: Returns the campaign object if the update succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Campaign
       tags:
       - Campaigns
@@ -2452,8 +2452,8 @@ paths:
             count of 1. and Returns an `async_action_id` if the request was made to
             create more than 1 voucher.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Add Vouchers to Campaign
       tags:
       - Campaigns
@@ -2566,8 +2566,8 @@ paths:
                 $ref: '#/components/schemas/CampaignsVouchersCreateResponseBody'
           description: Returns a voucher object if the call succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Add Voucher with Specific Code to Campaign
       tags:
       - Campaigns
@@ -2706,8 +2706,8 @@ paths:
             \ Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import Vouchers to Campaign
       tags:
       - Campaigns
@@ -2791,8 +2791,8 @@ paths:
             \ Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import Vouchers to Campaign by CSV
       tags:
       - Campaigns
@@ -2829,8 +2829,8 @@ paths:
                 $ref: '#/components/schemas/CampaignsEnableResponseBody'
           description: "Returns an empty json `{}`."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Enable Campaign
       tags:
       - Campaigns
@@ -2864,8 +2864,8 @@ paths:
                 $ref: '#/components/schemas/CampaignsDisableResponseBody'
           description: "Returns an empty json `{}`."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Disable Campaign
       tags:
       - Campaigns
@@ -2961,8 +2961,8 @@ paths:
           description: Returns a dictionary with a `tiers` property that contains
             an array of promotion tiers.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Promotion Tiers from Campaign
       tags:
       - Promotions
@@ -2984,8 +2984,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Promotion Tier
       tags:
       - Promotions
@@ -3010,8 +3010,8 @@ paths:
                 $ref: '#/components/schemas/PromotionsTiersGetResponseBody'
           description: Returns a promotion tier object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Promotion Tier
       tags:
       - Promotions
@@ -3084,8 +3084,8 @@ paths:
           description: Returns the promotion tier object with an updated `active`
             parameter.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Enable Promotion Tier
       tags:
       - Promotions
@@ -3158,8 +3158,8 @@ paths:
           description: Returns the promotion tier object with an updated `active`
             parameter.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Disable Promotion Tier
       tags:
       - Promotions
@@ -3345,8 +3345,8 @@ paths:
           description: Returns a dictionary with a `data` property that contains an
             array of promotion stacks across all your campaigns.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Promotion Stacks
       tags:
       - Promotions
@@ -3400,8 +3400,8 @@ paths:
                 $ref: '#/components/schemas/PromotionsStacksListResponseBody'
           description: Returns a list of promotion stack objects.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Promotion Stacks in Campaign
       tags:
       - Promotions
@@ -3458,8 +3458,8 @@ paths:
           description: Returns a new stack object if a valid promotion campaign identifier
             was provided in the path and available promotion IDs in the payload.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Promotion Stack
       tags:
       - Promotions
@@ -3492,8 +3492,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Promotion Stack
       tags:
       - Promotions
@@ -3543,8 +3543,8 @@ paths:
           description: Returns a stack object if valid identifiers were provided in
             the path.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Promotion Stack
       tags:
       - Promotions
@@ -3610,8 +3610,8 @@ paths:
           description: Returns a promotion stack with updated parameters if the update
             was successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Promotion Stack
       tags:
       - Promotions
@@ -3634,8 +3634,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Reward
       tags:
       - Rewards
@@ -3707,8 +3707,8 @@ paths:
             contains information regarding the resource to which the reward was assigned
             and the cost in loyalty points for the reward.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Reward Assignments
       tags:
       - Rewards
@@ -3760,8 +3760,8 @@ paths:
                 $ref: '#/components/schemas/RewardsAssignmentsCreateResponseBody'
           description: Returns a reward assignment object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Reward Assignment
       tags:
       - Rewards
@@ -3792,8 +3792,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Reward Assignment
       tags:
       - Rewards
@@ -3826,8 +3826,8 @@ paths:
                 $ref: '#/components/schemas/RewardsAssignmentsGetResponseBody'
           description: Returns a reward assignment object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Reward Assignment
       tags:
       - Rewards
@@ -3885,8 +3885,8 @@ paths:
                 $ref: '#/components/schemas/RewardsAssignmentsUpdateResponseBody'
           description: Returns the updated reward assignment object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Reward Assignment
       tags:
       - Rewards
@@ -4050,8 +4050,8 @@ paths:
                 $ref: '#/components/schemas/PublicationsCreateResponseBody'
           description: Returns a publication object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Publication
       tags:
       - Publications
@@ -4324,8 +4324,8 @@ paths:
             \ manager. The publications are returned in sorted order, with the most\
             \ recent ones appearing first."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Publications
       tags:
       - Publications
@@ -4485,8 +4485,8 @@ paths:
                 $ref: '#/components/schemas/PublicationsCreateResponseBody'
           description: Returns a publication object if a valid identifier was provided.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Publication
       tags:
       - Publications
@@ -4942,8 +4942,8 @@ paths:
             \ the resulting array will be empty. If you provide a non-existent customer\
             \ ID, this call returns an empty object."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Redemptions
       tags:
       - Redemptions
@@ -5034,8 +5034,8 @@ paths:
           description: "Depending on your project settings: all redeemables must be\
             \ valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules"
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Redeem Stackable Discounts
       tags:
       - Stackable Discounts
@@ -6248,8 +6248,8 @@ paths:
                 $ref: '#/components/schemas/RedemptionsGetResponseBody'
           description: Returns a redemption object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Redemption
       tags:
       - Redemptions
@@ -6648,8 +6648,8 @@ paths:
           description: A dictionary with a `redemption_entries` property that contains
             an array of voucher's redemptions.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Voucher's Redemptions
       tags:
       - Redemptions
@@ -7214,8 +7214,8 @@ paths:
           description: Returns a redemption rollback object indicating the result
             of the rollback.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Rollback Redemption
       tags:
       - Redemptions
@@ -7308,8 +7308,8 @@ paths:
           description: "Depending on your project settings: all redeemables must be\
             \ valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules"
       security:
-      - X-Client-Application-Id-1: []
-        X-Client-Token-1: []
+      - X-Client-Application-Id: []
+        X-Client-Token: []
       summary: Redeem Stackable Discounts (client-side)
       tags:
       - Stackable Discounts
@@ -7836,8 +7836,8 @@ paths:
           description: "Depending on your project settings: all redeemables must be\
             \ valid or just one must be valid to result as valid validation. See https://support.voucherify.io/article/604-stacking-rules#application-rules"
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Validate Stackable Discounts
       tags:
       - Stackable Discounts
@@ -7941,8 +7941,8 @@ paths:
           description: "Depending on your project settings: all redeemables must be\
             \ valid or just one must be valid to result as valid validation. See https://support.voucherify.io/article/604-stacking-rules#application-rules"
       security:
-      - X-Client-Application-Id-1: []
-        X-Client-Token-1: []
+      - X-Client-Application-Id: []
+        X-Client-Token: []
       summary: Validate Stackable Discounts (client-side)
       tags:
       - Stackable Discounts
@@ -8020,8 +8020,8 @@ paths:
           description: Returns an array with the individual redemption rollback results
             along with the parent rollback result and related order.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Rollback Stackable Redemptions
       tags:
       - Stackable Discounts
@@ -8071,8 +8071,8 @@ paths:
             \ pass it using <!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Loyalty Campaign
       tags:
       - Loyalties
@@ -8148,8 +8148,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersBalanceUpdateResponseBody'
           description: Returns a balance object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Add or Remove Loyalty Card Balance
       tags:
       - Loyalties
@@ -8208,8 +8208,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersBalanceUpdateResponseBody'
           description: Returns a balance object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Add or Remove Loyalty Card Balance
       tags:
       - Loyalties
@@ -8312,8 +8312,8 @@ paths:
           description: "Returns a loyalty card object for the loaded loyalty card,\
             \ ie. the one that that points were transferred to from the other cards(s)."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Transfer Loyalty Points
       tags:
       - Loyalties
@@ -8598,8 +8598,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersTransactionsListResponseBody'
           description: Returns a dictionary of loyalty card transaction objects.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Loyalty Card Transactions
       tags:
       - Loyalties
@@ -8874,8 +8874,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersTransactionsListResponseBody'
           description: Returns a dictionary of loyalty card transaction objects.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Loyalty Card Transactions
       tags:
       - Loyalties
@@ -8987,8 +8987,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersTransactionsExportCreateResponseBody'
           description: Returns an export object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Export Loyalty Card Transactions
       tags:
       - Loyalties
@@ -9110,8 +9110,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersTransactionsExportCreateResponseBody'
           description: Returns an export object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Export Loyalty Card Transactions
       tags:
       - Loyalties
@@ -9214,8 +9214,8 @@ paths:
             an expiration date if the points are due to expire. No expiration date
             parameter is returned if the loyalty points bucket does not expire.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Points Expiration
       tags:
       - Loyalties
@@ -9249,8 +9249,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Earning Rule
       tags:
       - Loyalties
@@ -9482,8 +9482,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesEarningRulesGetResponseBody'
           description: Returns an earning rule object with the earning rule details.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Earning Rule
       tags:
       - Loyalties
@@ -9545,8 +9545,8 @@ paths:
           description: Returns an earning rule object with the `active` parameter
             set to `true`.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Enable Earning Rule
       tags:
       - Loyalties
@@ -9602,8 +9602,8 @@ paths:
           description: Returns an earning rule object with the `active` parameter
             set to `false`.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Disable Earning Rule
       tags:
       - Loyalties
@@ -9792,8 +9792,8 @@ paths:
           description: Returns a list of rewards for the given `member_id`. Returns
             a filtered list if the query parameter `affordable_only` is set to `true`.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Member Rewards
       tags:
       - Loyalties
@@ -9881,8 +9881,8 @@ paths:
           description: Returns reward details in the context of a loyalty *campaign*
             and reward assignment ID.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Reward Details
       tags:
       - Loyalties
@@ -9933,8 +9933,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesRewardAssignmentsGetResponseBody'
           description: Returns specific reward assignment.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Reward Assignment
       tags:
       - Loyalties
@@ -9967,8 +9967,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Reward Assignment
       tags:
       - Loyalties
@@ -10017,8 +10017,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesRewardsGetResponseBody'
           description: Returns specific reward assignment.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Reward Assignment
       tags:
       - Loyalties
@@ -11229,8 +11229,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersRedemptionRedeemResponseBody'
           description: Returns a redemption object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Redeem Reward
       tags:
       - Loyalties
@@ -11454,8 +11454,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersRedemptionRedeemResponseBody'
           description: Returns a redemption object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Redeem Reward
       tags:
       - Loyalties
@@ -11584,8 +11584,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesTiersListResponseBody'
           description: Returns a list of loyalty tier objects.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Loyalty Tiers
       tags:
       - Loyalties
@@ -11617,8 +11617,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesTiersCreateInBulkResponseBody'
           description: Returns created loyalty tiers.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create loyalty tiers
       tags:
       - Loyalties
@@ -11689,8 +11689,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesTiersGetResponseBody'
           description: Returns a loyalty tier object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Loyalty Tier
       tags:
       - Loyalties
@@ -11763,8 +11763,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesMembersTiersListResponseBody'
           description: Returns a data array containing the member's loyalty tiers.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Member's Loyalty Tiers
       tags:
       - Loyalties
@@ -12243,8 +12243,8 @@ paths:
             \ used to calculate points for a given tier, then the `loyalty.points`\
             \ parameter will account for this calculation."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Loyalty Tier Earning Rules
       tags:
       - Loyalties
@@ -12367,8 +12367,8 @@ paths:
                 $ref: '#/components/schemas/LoyaltiesTiersRewardsListResponseBody'
           description: Returns a dictionary of loyalty tier reward objects.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Loyalty Tier Rewards
       tags:
       - Loyalties
@@ -12650,8 +12650,8 @@ paths:
             \ are returned sorted by creation date, with the most recent customers\
             \ appearing first."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Customers
       tags:
       - Customers
@@ -12749,8 +12749,8 @@ paths:
                 $ref: '#/components/schemas/CustomersCreateResponseBody'
           description: Returns a customer object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Customer
       tags:
       - Customers
@@ -12773,8 +12773,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Customer
       tags:
       - Customers
@@ -12843,8 +12843,8 @@ paths:
                 $ref: '#/components/schemas/CustomersGetResponseBody'
           description: Returns a customer object if a valid identifier was provided.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Customer
       tags:
       - Customers
@@ -12960,8 +12960,8 @@ paths:
                 $ref: '#/components/schemas/CustomersUpdateResponseBody'
           description: Returns a customer object if updates were successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Customer
       tags:
       - Customers
@@ -13007,8 +13007,8 @@ paths:
                 $ref: '#/components/schemas/CustomersPermanentDeletionCreateResponseBody'
           description: Returns a permanent deletion object and status of the deletion.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Customer Permanently
       tags:
       - Customers
@@ -13066,8 +13066,8 @@ paths:
             \ [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import and Update Customers using CSV
       tags:
       - Customers
@@ -13169,8 +13169,8 @@ paths:
             \ [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Customers in bulk
       tags:
       - Customers
@@ -13230,8 +13230,8 @@ paths:
             \ [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Customers' Metadata in bulk
       tags:
       - Customers
@@ -13275,8 +13275,8 @@ paths:
         "204":
           description: Returns no content if the consents were updated successfully.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Customer's consents
       tags:
       - Customers
@@ -13320,8 +13320,8 @@ paths:
         "204":
           description: Returns no content if the consents were updated successfully.
       security:
-      - X-Client-Application-Id-1: []
-        X-Client-Token-1: []
+      - X-Client-Application-Id: []
+        X-Client-Token: []
       summary: Update Customer's consents (client-side)
       tags:
       - Customers
@@ -13437,8 +13437,8 @@ paths:
                 $ref: '#/components/schemas/CustomersActivitiesListResponseBody'
           description: Returns a dictionary with customer activities.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Customer Activities
       tags:
       - Customers
@@ -13492,8 +13492,8 @@ paths:
           description: The method returns segment(s) to which the given customer belongs
             to.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Customer's Segments
       tags:
       - Customers
@@ -14043,8 +14043,8 @@ paths:
             \ sorted by creation date by default, with the most recent orders appearing\
             \ last, unless you specify another sequence using the order query parameter."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Orders
       tags:
       - Orders
@@ -14236,8 +14236,8 @@ paths:
                 $ref: '#/components/schemas/OrdersCreateResponseBody'
           description: Returns an order object if the operation succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Order
       tags:
       - Orders
@@ -14264,8 +14264,8 @@ paths:
                 $ref: '#/components/schemas/OrdersGetResponseBody'
           description: 'Returns an order object if a valid identifier was provided. '
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Order
       tags:
       - Orders
@@ -14370,8 +14370,8 @@ paths:
                 $ref: '#/components/schemas/OrdersUpdateResponseBody'
           description: Returns the order object if the update succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Order
       tags:
       - Orders
@@ -14604,8 +14604,8 @@ paths:
             \ Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import Orders
       tags:
       - Orders
@@ -14728,8 +14728,8 @@ paths:
             \ of the CSV file. The status indicates whether the file has been scheduled\
             \ for creation."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Orders Export
       tags:
       - Orders
@@ -14893,8 +14893,8 @@ paths:
             \ appearing last, unless you specify another sequence using the `order`\
             \ query parameter."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Products
       tags:
       - Products
@@ -14956,8 +14956,8 @@ paths:
                 $ref: '#/components/schemas/ProductsCreateResponseBody'
           description: Returns a product object if the operation succeeded.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Product
       tags:
       - Products
@@ -14990,8 +14990,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Product
       tags:
       - Products
@@ -15066,8 +15066,8 @@ paths:
                 $ref: '#/components/schemas/ProductsGetResponseBody'
           description: Returns a product object if a valid identifier was provided.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Product
       tags:
       - Products
@@ -15122,8 +15122,8 @@ paths:
                 $ref: '#/components/schemas/ProductsUpdateResponseBody'
           description: Returns an updated product object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Product
       tags:
       - Products
@@ -15201,8 +15201,8 @@ paths:
             \ [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Products in bulk
       tags:
       - Products
@@ -15262,8 +15262,8 @@ paths:
             \ [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Products' Metadata in bulk
       tags:
       - Products
@@ -15308,8 +15308,8 @@ paths:
                 $ref: '#/components/schemas/SkusGetResponseBody'
           description: Returns requested SKU object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get SKU
       tags:
       - Products
@@ -15448,8 +15448,8 @@ paths:
                 $ref: '#/components/schemas/ProductsSkusListResponseBody'
           description: Returns a dictionary of SKUs.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List SKUs in Product
       tags:
       - Products
@@ -15518,8 +15518,8 @@ paths:
                 $ref: '#/components/schemas/ProductsSkusCreateResponseBody'
           description: Returns the created SKU object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create SKU
       tags:
       - Products
@@ -15562,8 +15562,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete SKU
       tags:
       - Products
@@ -15631,8 +15631,8 @@ paths:
                 $ref: '#/components/schemas/ProductsSkusUpdateResponseBody'
           description: Returns the SKU object with the updated parameters.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update SKU
       tags:
       - Products
@@ -15706,8 +15706,8 @@ paths:
             \ [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import Products using CSV
       tags:
       - Products
@@ -15767,8 +15767,8 @@ paths:
             \ Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get)\
             \ -->[Get Async Action](ref:get-async-action) endpoint."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Import SKUs using CSV
       tags:
       - Products
@@ -15920,8 +15920,8 @@ paths:
           description: Returns a dictionary containing a list of product collections
             and details about each product collection.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Product Collections
       tags:
       - Product Collections
@@ -15944,8 +15944,8 @@ paths:
           description: "Returns information about the newly created collection, as\
             \ well as an array containing the products."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Product Collection
       tags:
       - Product Collections
@@ -15968,8 +15968,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Product Collection
       tags:
       - Product Collections
@@ -16021,8 +16021,8 @@ paths:
           description: Returns a product collection object if a valid identifier was
             provided in the path.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Product Collection
       tags:
       - Product Collections
@@ -16196,8 +16196,8 @@ paths:
           description: Returns a dictionary of products and/or SKUs grouped in the
             collection with each product's/SKU's details.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Products in Collection
       tags:
       - Product Collections
@@ -16382,8 +16382,8 @@ paths:
                 $ref: '#/components/schemas/ValidationRulesListResponseBody'
           description: Returns a dictionary of validation rules.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Validation Rules
       tags:
       - Validation Rules
@@ -16511,8 +16511,8 @@ paths:
                 $ref: '#/components/schemas/ValidationRulesCreateResponseBody'
           description: Returns a validation rule object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Validation Rules
       tags:
       - Validation Rules
@@ -16535,8 +16535,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Validation Rule
       tags:
       - Validation Rules
@@ -16583,8 +16583,8 @@ paths:
                 $ref: '#/components/schemas/ValidationRulesGetResponseBody'
           description: Returns the validation rule object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Validation Rule
       tags:
       - Validation Rules
@@ -16745,8 +16745,8 @@ paths:
                 $ref: '#/components/schemas/ValidationRulesUpdateResponseBody'
           description: Returns the validation rule object with the updated parameters.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Validation Rule
       tags:
       - Validation Rules
@@ -16900,8 +16900,8 @@ paths:
             \ array will be empty. The result can be narrowed down according to default\
             \ filters."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Validation Rules' Assignment(s)
       tags:
       - Validation Rules
@@ -16988,8 +16988,8 @@ paths:
             \ validation rule ID provided in the path parameter cannot be found, the\
             \ endpoint will return an empty `data` array and a total of `0`."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Validation Rule Assignments
       tags:
       - Validation Rules
@@ -17019,8 +17019,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Validation Rule Assignment
       tags:
       - Validation Rules
@@ -17042,8 +17042,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Segment
       tags:
       - Segments
@@ -17118,8 +17118,8 @@ paths:
                 $ref: '#/components/schemas/EventsCreateResponseBody'
           description: Returns the event type if the event was received by the application.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Track Custom Event
       tags:
       - Events
@@ -17195,8 +17195,8 @@ paths:
                 $ref: '#/components/schemas/ClientEventsCreateResponseBody'
           description: Returns the event type if the event was received by the application.
       security:
-      - X-Client-Application-Id-1: []
-        X-Client-Token-1: []
+      - X-Client-Application-Id: []
+        X-Client-Token: []
       summary: Track Custom Event (client-side)
       tags:
       - Events
@@ -17313,8 +17313,8 @@ paths:
             \ through the Voucherify Dashboard; this `user_id` is returned when the\
             \ channel value is `WEBSITE`."
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Exports
       tags:
       - Exports
@@ -17521,8 +17521,8 @@ paths:
                 $ref: '#/components/schemas/ExportsCreateResponseBody'
           description: Returns export object and URL of CSV file.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Export
       tags:
       - Exports
@@ -17547,8 +17547,8 @@ paths:
         "204":
           description: Returns no content if deletion is successful.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Export
       tags:
       - Exports
@@ -17601,8 +17601,8 @@ paths:
           description: Returns the export object if a valid identifier was provided
             in the path.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Export
       tags:
       - Exports
@@ -17657,8 +17657,8 @@ paths:
                 $ref: '#/components/schemas/CategoriesListResponseBody'
           description: Returns a dictionary of category objects.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: List Categories
       tags:
       - Categories
@@ -17694,8 +17694,8 @@ paths:
                 $ref: '#/components/schemas/CategoriesCreateResponseBody'
           description: Returns a newly created category object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Create Category
       tags:
       - Categories
@@ -17718,8 +17718,8 @@ paths:
         "204":
           description: No content is returned.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Delete Category
       tags:
       - Categories
@@ -17752,8 +17752,8 @@ paths:
                 $ref: '#/components/schemas/CategoriesGetResponseBody'
           description: Returns a category object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Get Category
       tags:
       - Categories
@@ -17798,8 +17798,8 @@ paths:
                 $ref: '#/components/schemas/CategoriesUpdateResponseBody'
           description: Returns a category object with a refreshed `updated_at` property.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Update Category
       tags:
       - Categories
@@ -17851,8 +17851,8 @@ paths:
                 $ref: '#/components/schemas/QualificationsCheckEligibilityResponseBody'
           description: Returns a qualifications object.
       security:
-      - X-App-Id-1: []
-        X-App-Token-1: []
+      - X-App-Id: []
+        X-App-Token: []
       summary: Check Eligibility
       tags:
       - Qualifications
@@ -17900,8 +17900,8 @@ paths:
                 $ref: '#/components/schemas/ClientQualificationsCheckEligibilityResponseBody'
           description: Returns a qualifications object.
       security:
-      - X-Client-Application-Id-1: []
-        X-Client-Token-1: []
+      - X-Client-Application-Id: []
+        X-Client-Token: []
       summary: Check Eligibility (client-side)
       tags:
       - Qualifications
@@ -33624,25 +33624,21 @@ components:
           type: string
       type: object
   securitySchemes:
-    X-App-Id-1:
+    X-App-Id:
       in: header
       name: X-App-Id
       type: apiKey
-    X-App-Token-1:
+    X-App-Token:
       in: header
       name: X-App-Token
       type: apiKey
-    X-Client-Token-1:
+    X-Client-Token:
       in: header
       name: X-Client-Token
       type: apiKey
-    X-Client-Application-Id-1:
+    X-Client-Application-Id:
       in: header
       name: X-Client-Application-Id
-      type: apiKey
-    Download-Token-1:
-      in: query
-      name: token
       type: apiKey
 x-readme:
   samples-languages:

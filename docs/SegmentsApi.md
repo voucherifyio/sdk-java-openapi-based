@@ -30,17 +30,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     SegmentsApi apiInstance = new SegmentsApi(defaultClient);
     String segmentId = "segmentId_example"; // String | A unique customer segment ID.
@@ -69,7 +69,7 @@ null (empty response body)
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 

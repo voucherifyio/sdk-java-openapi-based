@@ -34,17 +34,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     StackableDiscountsApi apiInstance = new StackableDiscountsApi(defaultClient);
     RedemptionsRedeemRequestBody redemptionsRedeemRequestBody = new RedemptionsRedeemRequestBody(); // RedemptionsRedeemRequestBody | 
@@ -74,7 +74,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -109,17 +109,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-Client-Application-Id-1
-    ApiKeyAuth X-Client-Application-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Application-Id-1");
-    X-Client-Application-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-Client-Application-Id
+    ApiKeyAuth X-Client-Application-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Application-Id");
+    X-Client-Application-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-Client-Application-Id-1.setApiKeyPrefix("Token");
+    //X-Client-Application-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-Client-Token-1
-    ApiKeyAuth X-Client-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Token-1");
-    X-Client-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-Client-Token
+    ApiKeyAuth X-Client-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Token");
+    X-Client-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-Client-Token-1.setApiKeyPrefix("Token");
+    //X-Client-Token.setApiKeyPrefix("Token");
 
     StackableDiscountsApi apiInstance = new StackableDiscountsApi(defaultClient);
     String origin = "origin_example"; // String | Indicates the origin (scheme, hostname, and port).
@@ -151,7 +151,7 @@ public class Example {
 
 ### Authorization
 
-[X-Client-Application-Id-1](../README.md#X-Client-Application-Id-1), [X-Client-Token-1](../README.md#X-Client-Token-1)
+[X-Client-Application-Id](../README.md#X-Client-Application-Id), [X-Client-Token](../README.md#X-Client-Token)
 
 ### HTTP request headers
 
@@ -186,17 +186,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     StackableDiscountsApi apiInstance = new StackableDiscountsApi(defaultClient);
     String parentRedemptionId = "parentRedemptionId_example"; // String | Unique identifier of a parent redemption, e.g. `r_JQfm73zWSJFQxs3bGxweYjgm`.
@@ -232,7 +232,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -267,17 +267,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     StackableDiscountsApi apiInstance = new StackableDiscountsApi(defaultClient);
     ValidationsValidateRequestBody validationsValidateRequestBody = new ValidationsValidateRequestBody(); // ValidationsValidateRequestBody | 
@@ -307,7 +307,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -342,17 +342,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-Client-Application-Id-1
-    ApiKeyAuth X-Client-Application-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Application-Id-1");
-    X-Client-Application-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-Client-Application-Id
+    ApiKeyAuth X-Client-Application-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Application-Id");
+    X-Client-Application-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-Client-Application-Id-1.setApiKeyPrefix("Token");
+    //X-Client-Application-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-Client-Token-1
-    ApiKeyAuth X-Client-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Token-1");
-    X-Client-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-Client-Token
+    ApiKeyAuth X-Client-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Token");
+    X-Client-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-Client-Token-1.setApiKeyPrefix("Token");
+    //X-Client-Token.setApiKeyPrefix("Token");
 
     StackableDiscountsApi apiInstance = new StackableDiscountsApi(defaultClient);
     String origin = "origin_example"; // String | Indicates the origin (scheme, hostname, and port).
@@ -384,7 +384,7 @@ public class Example {
 
 ### Authorization
 
-[X-Client-Application-Id-1](../README.md#X-Client-Application-Id-1), [X-Client-Token-1](../README.md#X-Client-Token-1)
+[X-Client-Application-Id](../README.md#X-Client-Application-Id), [X-Client-Token](../README.md#X-Client-Token)
 
 ### HTTP request headers
 

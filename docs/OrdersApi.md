@@ -35,17 +35,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OrdersCreateRequestBody ordersCreateRequestBody = new OrdersCreateRequestBody(); // OrdersCreateRequestBody | Specify the order parameters.
@@ -75,7 +75,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -110,17 +110,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     OrdersExportCreateRequestBody ordersExportCreateRequestBody = new OrdersExportCreateRequestBody(); // OrdersExportCreateRequestBody | Specify which order parameters you would like to export.
@@ -150,7 +150,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -185,17 +185,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     String orderId = "orderId_example"; // String | Unique Voucherify order ID or order source ID.
@@ -225,7 +225,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -260,17 +260,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     List<OrdersImportCreateRequestBodyItem> ordersImportCreateRequestBodyItem = Arrays.asList(); // List<OrdersImportCreateRequestBodyItem> | The request body is sent in the form of an array of order objects.
@@ -300,7 +300,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -335,17 +335,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
@@ -379,7 +379,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 
@@ -414,17 +414,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.voucherify.io");
     
-    // Configure API key authorization: X-App-Id-1
-    ApiKeyAuth X-App-Id-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id-1");
-    X-App-Id-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id-1.setApiKeyPrefix("Token");
+    //X-App-Id.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: X-App-Token-1
-    ApiKeyAuth X-App-Token-1 = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token-1");
-    X-App-Token-1.setApiKey("YOUR API KEY");
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token-1.setApiKeyPrefix("Token");
+    //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     String orderId = "orderId_example"; // String | Unique Voucherify order ID or order source ID.
@@ -456,7 +456,7 @@ public class Example {
 
 ### Authorization
 
-[X-App-Id-1](../README.md#X-App-Id-1), [X-App-Token-1](../README.md#X-App-Token-1)
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
 
 ### HTTP request headers
 

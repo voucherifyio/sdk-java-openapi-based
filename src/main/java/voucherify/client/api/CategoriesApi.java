@@ -130,7 +130,7 @@ public class CategoriesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id-1", "X-App-Token-1" };
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -247,7 +247,7 @@ public class CategoriesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id-1", "X-App-Token-1" };
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -366,7 +366,7 @@ public class CategoriesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id-1", "X-App-Token-1" };
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -487,7 +487,7 @@ public class CategoriesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id-1", "X-App-Token-1" };
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -604,7 +604,7 @@ public class CategoriesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id-1", "X-App-Token-1" };
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

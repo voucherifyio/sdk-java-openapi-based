@@ -132,11 +132,10 @@ public class ApiClient {
         initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("X-App-Id-1", new ApiKeyAuth("header", "X-App-Id"));
-        authentications.put("X-App-Token-1", new ApiKeyAuth("header", "X-App-Token"));
-        authentications.put("X-Client-Token-1", new ApiKeyAuth("header", "X-Client-Token"));
-        authentications.put("X-Client-Application-Id-1", new ApiKeyAuth("header", "X-Client-Application-Id"));
-        authentications.put("Download-Token-1", new ApiKeyAuth("query", "token"));
+        authentications.put("X-App-Id", new ApiKeyAuth("header", "X-App-Id"));
+        authentications.put("X-App-Token", new ApiKeyAuth("header", "X-App-Token"));
+        authentications.put("X-Client-Token", new ApiKeyAuth("header", "X-Client-Token"));
+        authentications.put("X-Client-Application-Id", new ApiKeyAuth("header", "X-Client-Application-Id"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -152,11 +151,10 @@ public class ApiClient {
         httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("X-App-Id-1", new ApiKeyAuth("header", "X-App-Id"));
-        authentications.put("X-App-Token-1", new ApiKeyAuth("header", "X-App-Token"));
-        authentications.put("X-Client-Token-1", new ApiKeyAuth("header", "X-Client-Token"));
-        authentications.put("X-Client-Application-Id-1", new ApiKeyAuth("header", "X-Client-Application-Id"));
-        authentications.put("Download-Token-1", new ApiKeyAuth("query", "token"));
+        authentications.put("X-App-Id", new ApiKeyAuth("header", "X-App-Id"));
+        authentications.put("X-App-Token", new ApiKeyAuth("header", "X-App-Token"));
+        authentications.put("X-Client-Token", new ApiKeyAuth("header", "X-Client-Token"));
+        authentications.put("X-Client-Application-Id", new ApiKeyAuth("header", "X-Client-Application-Id"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
