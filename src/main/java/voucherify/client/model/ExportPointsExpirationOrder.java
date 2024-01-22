@@ -28,29 +28,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportPointsExpirationOrder.Adapter.class)
 public enum ExportPointsExpirationOrder {
   
-  ID("id"),
+  _EXPIRES_AT("-expires_at"),
   
-  _ID("-id"),
-  
-  CAMPAIGN_ID("campaign_id"),
-  
-  _CAMPAIGN_ID("-campaign_id"),
-  
-  VOUCHER_ID("voucher_id"),
-  
-  _VOUCHER_ID("-voucher_id"),
-  
-  POINTS("points"),
-  
-  _POINTS("-points"),
-  
-  STATUS("status"),
-  
-  _STATUS("-status"),
-  
-  EXPIRES_AT("expires_at"),
-  
-  _EXPIRES_AT("-expires_at");
+  EXPIRES_AT("expires_at");
 
   private String value;
 

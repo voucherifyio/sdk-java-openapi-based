@@ -6,6 +6,7 @@ All URIs are relative to *https://api.voucherify.io*
 |------------- | ------------- | -------------|
 | [**createExport**](ExportsApi.md#createExport) | **POST** /v1/exports | Create Export |
 | [**deleteExport**](ExportsApi.md#deleteExport) | **DELETE** /v1/exports/{exportId} | Delete Export |
+| [**downloadExport**](ExportsApi.md#downloadExport) | **GET** /v1/exports/{export_Id} | Download Export |
 | [**getExport**](ExportsApi.md#getExport) | **GET** /v1/exports/{exportId} | Get Export |
 | [**listExports**](ExportsApi.md#listExports) | **GET** /v1/exports | List Exports |
 
@@ -158,6 +159,70 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Returns no content if deletion is successful. |  -  |
+
+<a id="downloadExport"></a>
+# **downloadExport**
+> String downloadExport(exportId, token)
+
+Download Export
+
+Download the contents of the exported CSV file.   &lt;!-- theme: info --&gt;  &gt; 📘 Important notes &gt; &gt; **Base URL:**  &gt; - &#x60;https://download.voucherify.io&#x60; (Europe)  &gt; - &#x60;https://us1.download.voucherify.io&#x60; (US)  &gt; - &#x60;https://as1.download.voucherify.io&#x60; (Asia)  &gt; &gt; **Token:** Can be found within the &#x60;result&#x60; parameter of the &lt;!-- [Get Export](OpenAPI.json/paths/~1exports~1{exportId}/get) --&gt;[Get Export](ref:get-export) method response.
+
+### Example
+```java
+// Import classes:
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.models.*;
+import voucherify.client.api.ExportsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.voucherify.io");
+
+    ExportsApi apiInstance = new ExportsApi(defaultClient);
+    String exportId = "exp_ex6zq0x0EEa9S0N68QcqhxcQ"; // String | Unique export object ID.
+    String token = "token_example"; // String | Token that was issued to the export, to get this token, get the export first
+    try {
+      String result = apiInstance.downloadExport(exportId, token);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ExportsApi#downloadExport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **exportId** | **String**| Unique export object ID. | |
+| **token** | **String**| Token that was issued to the export, to get this token, get the export first | [optional] |
+
+### Return type
+
+**String**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns contents of CSV file. |  -  |
 
 <a id="getExport"></a>
 # **getExport**

@@ -28,37 +28,29 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportPublicationOrder.Adapter.class)
 public enum ExportPublicationOrder {
   
-  VOUCHER_CODE("voucher_code"),
+  _ID("-id"),
+  
+  ID("id"),
   
   _VOUCHER_CODE("-voucher_code"),
   
-  CUSTOMER_ID("customer_id"),
+  VOUCHER_CODE("voucher_code"),
+  
+  _TRACKING_ID("-tracking_id"),
+  
+  TRACKING_ID("tracking_id"),
   
   _CUSTOMER_ID("-customer_id"),
   
-  CUSTOMER_SOURCE_ID("customer_source_id"),
+  CUSTOMER_ID("customer_id"),
   
-  _CUSTOMER_SOURCE_ID("-customer_source_id"),
+  _CREATED_AT("-created_at"),
   
-  DATE("date"),
-  
-  _DATE("-date"),
-  
-  CHANNEL("channel"),
+  CREATED_AT("created_at"),
   
   _CHANNEL("-channel"),
   
-  CAMPAIGN("campaign"),
-  
-  _CAMPAIGN("-campaign"),
-  
-  IS_WINNER("is_winner"),
-  
-  _IS_WINNER("-is_winner"),
-  
-  METADATA("metadata"),
-  
-  _METADATA("-metadata");
+  CHANNEL("channel");
 
   private String value;
 

@@ -28,73 +28,25 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportRedemptionOrder.Adapter.class)
 public enum ExportRedemptionOrder {
   
-  ID("id"),
-  
   _ID("-id"),
   
-  OBJECT("object"),
-  
-  _OBJECT("-object"),
-  
-  DATE("date"),
-  
-  _DATE("-date"),
-  
-  VOUCHER_CODE("voucher_code"),
+  ID("id"),
   
   _VOUCHER_CODE("-voucher_code"),
   
-  CAMPAIGN("campaign"),
-  
-  _CAMPAIGN("-campaign"),
-  
-  PROMOTION_TIER_ID("promotion_tier_id"),
-  
-  _PROMOTION_TIER_ID("-promotion_tier_id"),
-  
-  CUSTOMER_ID("customer_id"),
-  
-  _CUSTOMER_ID("-customer_id"),
-  
-  CUSTOMER_SOURCE_ID("customer_source_id"),
-  
-  _CUSTOMER_SOURCE_ID("-customer_source_id"),
-  
-  CUSTOMER_NAME("customer_name"),
-  
-  _CUSTOMER_NAME("-customer_name"),
-  
-  TRACKING_ID("tracking_id"),
+  VOUCHER_CODE("voucher_code"),
   
   _TRACKING_ID("-tracking_id"),
   
-  ORDER_AMOUNT("order_amount"),
+  TRACKING_ID("tracking_id"),
   
-  _ORDER_AMOUNT("-order_amount"),
+  _CUSTOMER_ID("-customer_id"),
   
-  GIFT_AMOUNT("gift_amount"),
+  CUSTOMER_ID("customer_id"),
   
-  _GIFT_AMOUNT("-gift_amount"),
+  _CREATED_AT("-created_at"),
   
-  LOYALTY_POINTS("loyalty_points"),
-  
-  _LOYALTY_POINTS("-loyalty_points"),
-  
-  RESULT("result"),
-  
-  _RESULT("-result"),
-  
-  FAILURE_CODE("failure_code"),
-  
-  _FAILURE_CODE("-failure_code"),
-  
-  FAILURE_MESSAGE("failure_message"),
-  
-  _FAILURE_MESSAGE("-failure_message"),
-  
-  METADATA("metadata"),
-  
-  _METADATA("-metadata");
+  CREATED_AT("created_at");
 
   private String value;
 

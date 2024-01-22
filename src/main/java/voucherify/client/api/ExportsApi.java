@@ -313,6 +313,137 @@ public class ExportsApi {
         return localVarCall;
     }
     /**
+     * Build call for downloadExport
+     * @param exportId Unique export object ID. (required)
+     * @param token Token that was issued to the export, to get this token, get the export first (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns contents of CSV file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadExportCall(String exportId, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/exports/{export_Id}"
+            .replace("{" + "export_Id" + "}", localVarApiClient.escapeString(exportId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (token != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call downloadExportValidateBeforeCall(String exportId, String token, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'exportId' is set
+        if (exportId == null) {
+            throw new ApiException("Missing the required parameter 'exportId' when calling downloadExport(Async)");
+        }
+
+        return downloadExportCall(exportId, token, _callback);
+
+    }
+
+    /**
+     * Download Export
+     * Download the contents of the exported CSV file.   &lt;!-- theme: info --&gt;  &gt; 📘 Important notes &gt; &gt; **Base URL:**  &gt; - &#x60;https://download.voucherify.io&#x60; (Europe)  &gt; - &#x60;https://us1.download.voucherify.io&#x60; (US)  &gt; - &#x60;https://as1.download.voucherify.io&#x60; (Asia)  &gt; &gt; **Token:** Can be found within the &#x60;result&#x60; parameter of the &lt;!-- [Get Export](OpenAPI.json/paths/~1exports~1{exportId}/get) --&gt;[Get Export](ref:get-export) method response.
+     * @param exportId Unique export object ID. (required)
+     * @param token Token that was issued to the export, to get this token, get the export first (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns contents of CSV file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public String downloadExport(String exportId, String token) throws ApiException {
+        ApiResponse<String> localVarResp = downloadExportWithHttpInfo(exportId, token);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Download Export
+     * Download the contents of the exported CSV file.   &lt;!-- theme: info --&gt;  &gt; 📘 Important notes &gt; &gt; **Base URL:**  &gt; - &#x60;https://download.voucherify.io&#x60; (Europe)  &gt; - &#x60;https://us1.download.voucherify.io&#x60; (US)  &gt; - &#x60;https://as1.download.voucherify.io&#x60; (Asia)  &gt; &gt; **Token:** Can be found within the &#x60;result&#x60; parameter of the &lt;!-- [Get Export](OpenAPI.json/paths/~1exports~1{exportId}/get) --&gt;[Get Export](ref:get-export) method response.
+     * @param exportId Unique export object ID. (required)
+     * @param token Token that was issued to the export, to get this token, get the export first (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns contents of CSV file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<String> downloadExportWithHttpInfo(String exportId, String token) throws ApiException {
+        okhttp3.Call localVarCall = downloadExportValidateBeforeCall(exportId, token, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Download Export (asynchronously)
+     * Download the contents of the exported CSV file.   &lt;!-- theme: info --&gt;  &gt; 📘 Important notes &gt; &gt; **Base URL:**  &gt; - &#x60;https://download.voucherify.io&#x60; (Europe)  &gt; - &#x60;https://us1.download.voucherify.io&#x60; (US)  &gt; - &#x60;https://as1.download.voucherify.io&#x60; (Asia)  &gt; &gt; **Token:** Can be found within the &#x60;result&#x60; parameter of the &lt;!-- [Get Export](OpenAPI.json/paths/~1exports~1{exportId}/get) --&gt;[Get Export](ref:get-export) method response.
+     * @param exportId Unique export object ID. (required)
+     * @param token Token that was issued to the export, to get this token, get the export first (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns contents of CSV file. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadExportAsync(String exportId, String token, final ApiCallback<String> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = downloadExportValidateBeforeCall(exportId, token, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getExport
      * @param exportId Unique export object ID of previously created export. This object can be a: &#x60;voucher&#x60;, &#x60;redemption&#x60;, &#x60;publication&#x60;, &#x60;customer&#x60;, &#x60;order&#x60;, &#x60;points_expiration&#x60;, or &#x60;voucher_transactions&#x60;. (required)
      * @param _callback Callback for upload/download progress

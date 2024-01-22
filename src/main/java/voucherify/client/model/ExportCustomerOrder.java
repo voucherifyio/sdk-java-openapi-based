@@ -28,125 +28,29 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportCustomerOrder.Adapter.class)
 public enum ExportCustomerOrder {
   
-  NAME("name"),
-  
   _NAME("-name"),
   
-  ID("id"),
+  NAME("name"),
   
   _ID("-id"),
   
-  DESCRIPTION("description"),
-  
-  _DESCRIPTION("-description"),
-  
-  EMAIL("email"),
+  ID("id"),
   
   _EMAIL("-email"),
   
-  SOURCE_ID("source_id"),
+  EMAIL("email"),
   
   _SOURCE_ID("-source_id"),
   
-  CREATED_AT("created_at"),
+  SOURCE_ID("source_id"),
   
   _CREATED_AT("-created_at"),
   
-  ADDRESS_CITY("address_city"),
-  
-  _ADDRESS_CITY("-address_city"),
-  
-  ADDRESS_STATE("address_state"),
-  
-  _ADDRESS_STATE("-address_state"),
-  
-  ADDRESS_LINE_1("address_line_1"),
-  
-  _ADDRESS_LINE_1("-address_line_1"),
-  
-  ADDRESS_LINE_2("address_line_2"),
-  
-  _ADDRESS_LINE_2("-address_line_2"),
-  
-  ADDRESS_COUNTRY("address_country"),
-  
-  _ADDRESS_COUNTRY("-address_country"),
-  
-  ADDRESS_POSTAL_CODE("address_postal_code"),
-  
-  _ADDRESS_POSTAL_CODE("-address_postal_code"),
-  
-  REDEMPTIONS_TOTAL_REDEEMED("redemptions_total_redeemed"),
-  
-  _REDEMPTIONS_TOTAL_REDEEMED("-redemptions_total_redeemed"),
-  
-  REDEMPTIONS_TOTAL_FAILED("redemptions_total_failed"),
-  
-  _REDEMPTIONS_TOTAL_FAILED("-redemptions_total_failed"),
-  
-  REDEMPTIONS_TOTAL_SUCCEEDED("redemptions_total_succeeded"),
-  
-  _REDEMPTIONS_TOTAL_SUCCEEDED("-redemptions_total_succeeded"),
-  
-  REDEMPTIONS_TOTAL_ROLLED_BACK("redemptions_total_rolled_back"),
-  
-  _REDEMPTIONS_TOTAL_ROLLED_BACK("-redemptions_total_rolled_back"),
-  
-  REDEMPTIONS_TOTAL_ROLLBACK_FAILED("redemptions_total_rollback_failed"),
-  
-  _REDEMPTIONS_TOTAL_ROLLBACK_FAILED("-redemptions_total_rollback_failed"),
-  
-  REDEMPTIONS_TOTAL_ROLLBACK_SUCCEEDED("redemptions_total_rollback_succeeded"),
-  
-  _REDEMPTIONS_TOTAL_ROLLBACK_SUCCEEDED("-redemptions_total_rollback_succeeded"),
-  
-  ORDERS_TOTAL_AMOUNT("orders_total_amount"),
-  
-  _ORDERS_TOTAL_AMOUNT("-orders_total_amount"),
-  
-  ORDERS_TOTAL_COUNT("orders_total_count"),
-  
-  _ORDERS_TOTAL_COUNT("-orders_total_count"),
-  
-  ORDERS_AVERAGE_AMOUNT("orders_average_amount"),
-  
-  _ORDERS_AVERAGE_AMOUNT("-orders_average_amount"),
-  
-  ORDERS_LAST_ORDER_AMOUNT("orders_last_order_amount"),
-  
-  _ORDERS_LAST_ORDER_AMOUNT("-orders_last_order_amount"),
-  
-  ORDERS_LAST_ORDER_DATE("orders_last_order_date"),
-  
-  _ORDERS_LAST_ORDER_DATE("-orders_last_order_date"),
-  
-  LOYALTY_POINTS("loyalty_points"),
-  
-  _LOYALTY_POINTS("-loyalty_points"),
-  
-  LOYALTY_REFERRED_CUSTOMERS("loyalty_referred_customers"),
-  
-  _LOYALTY_REFERRED_CUSTOMERS("-loyalty_referred_customers"),
-  
-  UPDATED_AT("updated_at"),
+  CREATED_AT("created_at"),
   
   _UPDATED_AT("-updated_at"),
   
-  PHONE("phone"),
-  
-  _PHONE("-phone"),
-  
-  BIRTHDAY("birthday"),
-  
-  _BIRTHDAY("-birthday"),
-  
-  METADATA("metadata"),
-  
-  _METADATA("-metadata"),
-  
-  BIRTHDATE("birthdate"),
-  
-  _BIRTHDATE("-birthdate");
+  UPDATED_AT("updated_at");
 
   private String value;
 

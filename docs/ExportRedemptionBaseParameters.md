@@ -10,7 +10,7 @@ List of available fields and filters that can be exported with an order along wi
 |------------ | ------------- | ------------- | -------------|
 |**order** | **ExportRedemptionOrder** |  |  [optional] |
 |**fields** | **List&lt;ExportRedemptionFields&gt;** | Array of strings containing the data in the export. These fields define the headers in the CSV file. |  [optional] |
-|**filters** | [**ExportRedemptionFilters**](ExportRedemptionFilters.md) |  |  [optional] |
+|**filters** | **Object** | Allowed additional properties must start with \&quot;metadata.\&quot; |  [optional] |
 
 
 
