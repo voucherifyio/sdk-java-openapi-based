@@ -20,5 +20,5 @@ RUN mvn install:install-file -Dfile=./target/voucherify-java-sdk-1.0.0.jar -Dgro
 
 RUN mvn -f ./__tests__ clean install
 
-CMD mvn -f ./__tests__ exec:java
+CMD mvn -f ./__tests__ test
 

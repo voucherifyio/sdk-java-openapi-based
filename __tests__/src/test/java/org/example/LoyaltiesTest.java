@@ -2,65 +2,80 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Voucherify;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
-import voucherify.client.api.CustomersApi;
 import voucherify.client.api.LoyaltiesApi;
 import voucherify.client.model.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class Loyalties {
-    public void test(ApiClient defaultClient) {
-        LoyaltiesApi loyalties = new LoyaltiesApi(defaultClient);
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
+@Order(5)
+public class LoyaltiesTest {
+    public static ApiClient defaultClient = null;
+    public static LoyaltiesApi loyalties = null;
+
+    @BeforeAll
+    public static void beforeAll() {
+        defaultClient = Utils.getClient();
+        loyalties = new LoyaltiesApi(defaultClient);
+    }
+
+    @Test
+    public void updateLoyaltyCardBalanceTest() {
         try {
             LoyaltiesMembersBalanceUpdateRequestBody loyaltiesMembersBalanceUpdateRequestBody = new LoyaltiesMembersBalanceUpdateRequestBody();
             loyaltiesMembersBalanceUpdateRequestBody.setPoints(1000);
 
-            loyalties.updateLoyaltyCardBalance(Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0), loyaltiesMembersBalanceUpdateRequestBody);
+            LoyaltiesMembersBalanceUpdateResponseBody responseBody = loyalties.updateLoyaltyCardBalance(Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0), loyaltiesMembersBalanceUpdateRequestBody);
 
-            System.out.println("Calling LoyaltiesApi#updateLoyaltyCardBalance 1 OK");
+            assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling LoyaltiesApi#updateLoyaltyCardBalance 1");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
+    }
 
+    @Test
+    public void updateLoyaltyCardBalance2Test() {
         try {
             LoyaltiesMembersBalanceUpdateRequestBody loyaltiesMembersBalanceUpdateRequestBody = new LoyaltiesMembersBalanceUpdateRequestBody();
             loyaltiesMembersBalanceUpdateRequestBody.setPoints(1000);
 
-            loyalties.updateLoyaltyCardBalance1(
+            LoyaltiesMembersBalanceUpdateResponseBody responseBody = loyalties.updateLoyaltyCardBalance1(
                 Voucherify.getInstance().getLoyaltyCampaign().getId(),
                 Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0),
                 loyaltiesMembersBalanceUpdateRequestBody
             );
 
-            System.out.println("Calling LoyaltiesApi#updateLoyaltyCardBalance 2 OK");
+            assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling LoyaltiesApi#updateLoyaltyCardBalance 2");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
+    }
 
+    @Test
+    public void loyaltiesMembersTransactionsListTest() {
         try {
-            loyalties.listLoyaltyCardTransactions(
+            LoyaltiesMembersTransactionsListResponseBody responseBody = loyalties.listLoyaltyCardTransactions(
                 Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0),
                 10,
                 1
             );
 
-            System.out.println("Calling LoyaltiesApi#loyaltiesMembersTransactionsListResponseBody OK");
+            assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling LoyaltiesApi#loyaltiesMembersTransactionsListResponseBody");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
+    }
 
+    @Test
+    public void createInBulkLoyaltyTiersTest() {
         try {
             List<LoyaltiesTiersCreateInBulkRequestBodyItem> tiers = new ArrayList<>();
 
@@ -87,33 +102,14 @@ public class Loyalties {
 
             tiers.add(item);
 
-            loyalties.createInBulkLoyaltyTiers(
+            List<LoyaltyTier> loyaltyTiers = loyalties.createInBulkLoyaltyTiers(
                 Voucherify.getInstance().getLoyaltyCampaign().getId(),
                 tiers
             );
 
-            ApplicableTo applicableTo = new ApplicableTo();
-            applicableTo.effect(ApplicableToEffect.EVERY);
-
-            System.out.println("Calling LoyaltiesApi#createInBulkLoyaltyTiers OK");
+            assertNotNull(loyaltyTiers);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling LoyaltiesApi#createInBulkLoyaltyTiers");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
-
-//        try {
-//            LoyaltiesTiersRewardsListResponseBody loyaltiesTiersRewardsListResponseBody = loyalties.listLoyaltyTierRewards(
-//                Voucherify.getInstance().getLoyaltyCampaign().getId(),
-//                Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0)
-//            );
-//
-//            System.out.println(loyaltiesTiersRewardsListResponseBody);
-//            System.out.println("Calling LoyaltiesApi#listLoyaltyTierRewards OK");
-//        } catch (ApiException | JsonSyntaxException e) {
-//            System.err.println("Exception when calling LoyaltiesApi#listLoyaltyTierRewards");
-//            System.err.println("Status message: " + e.getMessage());
-//            e.printStackTrace();
-//        }
     }
 }

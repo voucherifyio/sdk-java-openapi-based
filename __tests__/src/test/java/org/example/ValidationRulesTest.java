@@ -1,8 +1,10 @@
 package org.example;
 
 import com.google.gson.JsonSyntaxException;
-import kotlin.contracts.Effect;
 import org.example.data.Voucherify;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
 import voucherify.client.api.ValidationRulesApi;
@@ -13,13 +15,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ValidationRules {
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
-    public void test(ApiClient defaultClient) {
+@Order(4)
+public class ValidationRulesTest {
+    public static ApiClient defaultClient = null;
+    public static ValidationRulesApi validationRules = null;
+
+    @BeforeAll
+    public static void beforeAll() {
+        defaultClient = Utils.getClient();
+        validationRules = new ValidationRulesApi(defaultClient);
+    }
+
+    @Test
+    public void addValidationRuleTest() {
 
         try {
-            ValidationRulesApi validationRules = new ValidationRulesApi(defaultClient);
-
             ValidationRulesCreateRequestBody validationRulesCreateRequestBody = new ValidationRulesCreateRequestBody();
 
             Map<String, Object> condition = new HashMap<>();
@@ -71,13 +84,11 @@ public class ValidationRules {
                 validationRulesCreateRequestBody
             );
 
-            Voucherify.getInstance().getCouponCampaign().getValidationRuleIds().add(validationRulesCreateResponseBody.getId());
+            assertNotNull(validationRulesCreateResponseBody);
 
-            System.out.println("Calling ValidationRulesApi#createValidationRules OK");
+            Voucherify.getInstance().getCouponCampaign().getValidationRuleIds().add(validationRulesCreateResponseBody.getId());
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling ValidationRulesApi#createValidationRules");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
     }
 }

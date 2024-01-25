@@ -3,17 +3,31 @@ package org.example;
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Product;
 import org.example.data.Voucherify;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
 import voucherify.client.api.ProductsApi;
 import voucherify.client.model.ProductsCreateRequestBody;
 import voucherify.client.model.ProductsCreateResponseBody;
 
-public class Products {
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
-    public void test(ApiClient defaultClient) {
-        ProductsApi products = new ProductsApi(defaultClient);
+@Order(3)
+public class ProductsTest {
+    public static ApiClient defaultClient = null;
+    public static ProductsApi products = null;
 
+    @BeforeAll
+    public static void beforeAll() {
+        defaultClient = Utils.getClient();
+        products = new ProductsApi(defaultClient);
+    }
+
+    @Test
+    public void createProductTest() {
         try {
             ProductsCreateRequestBody productsCreateRequestBody = new ProductsCreateRequestBody();
 
@@ -27,15 +41,13 @@ public class Products {
 
             String productId = productsCreateResponseBody.getId();
 
+            assertNotNull(productId);
+
             Voucherify.getInstance().getProducts().add(
                 new Product(productId, productName, productSourceId)
             );
-
-            System.out.println("Calling ProductsApi#createProduct OK");
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling ProductsApi#createProduct");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
     }
 }

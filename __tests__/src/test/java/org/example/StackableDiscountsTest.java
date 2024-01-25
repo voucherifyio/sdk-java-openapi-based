@@ -2,31 +2,40 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
 import voucherify.client.api.StackableDiscountsApi;
 import voucherify.client.model.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StackableDiscounts {
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
-    public void test(ApiClient defaultClient) {
-        StackableDiscountsApi apiInstance = new StackableDiscountsApi(defaultClient);
+@org.junit.jupiter.api.Order(7) //Multiple Order type
+public class StackableDiscountsTest {
+    public static ApiClient defaultClient = null;
+    public static StackableDiscountsApi stackableDiscounts = null;
 
+    @BeforeAll
+    public static void beforeAll() {
+        defaultClient = Utils.getClient();
+        stackableDiscounts = new StackableDiscountsApi(defaultClient);
+    }
+
+    @Test
+    public void validateStackedDiscountsTest() {
         ValidationsValidateRequestBody validationsValidateRequestBody = getValidationsValidateRequestBody();
 
-        //THIS TEST NOT WORKING YET. DUE TO MISSING `application_mode` IN API RESPONSE
         try {
-            apiInstance.validateStackedDiscounts(validationsValidateRequestBody);
+            ValidationsValidateResponseBody responseBody = stackableDiscounts.validateStackedDiscounts(validationsValidateRequestBody);
 
-            System.out.println("Calling StackableDiscountsApi#validateStackedDiscounts OK");
+            assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling StackableDiscountsApi#validateStackedDiscounts OK");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
     }
 
@@ -35,10 +44,10 @@ public class StackableDiscounts {
         Order order = getOrder();
 
         StackableValidateRedeemBaseRedeemablesItem redeemable = new StackableValidateRedeemBaseRedeemablesItem();
-        
+
         RedeemVoucher redeemVoucher = new RedeemVoucher();
         redeemVoucher.setId("test");
-        
+
         redeemable.setActualInstance(redeemVoucher);
 
         ValidationsValidateRequestBody validationsValidateRequestBody = new ValidationsValidateRequestBody();
