@@ -39,7 +39,7 @@ public class CampaignsTest {
         campaignLoyaltyVoucher.loyaltyCard(campaignLoyaltyCard);
 
         CampaignsCreateLoyaltyCampaign campaign = new CampaignsCreateLoyaltyCampaign();
-        campaign.setCampaignType(CampaignsCreateLoyaltyCampaign.CampaignTypeEnum.LOYALTY_CARD);
+        campaign.setCampaignType(CampaignsCreateLoyaltyCampaign.CampaignTypeEnum.LOYALTY_PROGRAM);
         campaign.setType(CampaignsCreateLoyaltyCampaign.TypeEnum.AUTO_UPDATE);
         campaign.setName(Utils.getAlphaNumericString(20));
 
