@@ -22738,10 +22738,10 @@ components:
           `/campaigns`.
         properties:
           campaign_type:
-            default: LOYALTY_CARD
+            default: LOYALTY_PROGRAM
             description: Type of campaign.
             enum:
-            - LOYALTY_CARD
+            - LOYALTY_PROGRAM
             type: string
           voucher:
             $ref: '#/components/schemas/CampaignLoyaltyVoucher'
