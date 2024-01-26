@@ -23,6 +23,8 @@ If you prefer to run tests locally, here are the steps you need to follow.
 5. Run `mvn -f ./__tests__ clean install` command for install dependencies
 6. Run `mvn -f ./__tests__ test` for start the test suit
 
+**Note that running tests will affect your Voucherify project data. Run tests only on development projects.**
+
 ## Contributing
 
 All new tests should be added to the `src/test/java/org/example` directory.
