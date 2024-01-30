@@ -58,53 +58,17 @@ public class ExportVoucherTransactionsFilters {
   @SerializedName(SERIALIZED_NAME_JUNCTION)
   private Junction junction;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private FieldConditions id;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private FieldConditions campaignId;
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private FieldConditions createdAt;
 
   public static final String SERIALIZED_NAME_VOUCHER_ID = "voucher_id";
   @SerializedName(SERIALIZED_NAME_VOUCHER_ID)
   private FieldConditions voucherId;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private FieldConditions type;
-
-  public static final String SERIALIZED_NAME_SOURCE_ID = "source_id";
-  @SerializedName(SERIALIZED_NAME_SOURCE_ID)
-  private FieldConditions sourceId;
-
-  public static final String SERIALIZED_NAME_REASON = "reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
-  private FieldConditions reason;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private FieldConditions source;
-
-  public static final String SERIALIZED_NAME_BALANCE = "balance";
-  @SerializedName(SERIALIZED_NAME_BALANCE)
-  private FieldConditions balance;
-
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private FieldConditions amount;
-
-  public static final String SERIALIZED_NAME_RELATED_TRANSACTION_ID = "related_transaction_id";
-  @SerializedName(SERIALIZED_NAME_RELATED_TRANSACTION_ID)
-  private FieldConditions relatedTransactionId;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private FieldConditions createdAt;
-
-  public static final String SERIALIZED_NAME_DETAILS = "details";
-  @SerializedName(SERIALIZED_NAME_DETAILS)
-  private FieldConditions details;
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private FieldConditions campaignId;
 
   public ExportVoucherTransactionsFilters() {
   }
@@ -130,45 +94,24 @@ public class ExportVoucherTransactionsFilters {
   }
 
 
-  public ExportVoucherTransactionsFilters id(FieldConditions id) {
+  public ExportVoucherTransactionsFilters createdAt(FieldConditions createdAt) {
     
-    this.id = id;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get createdAt
+   * @return createdAt
   **/
   @javax.annotation.Nullable
-  public FieldConditions getId() {
-    return id;
+  public FieldConditions getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setId(FieldConditions id) {
-    this.id = id;
-  }
-
-
-  public ExportVoucherTransactionsFilters campaignId(FieldConditions campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * Get campaignId
-   * @return campaignId
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getCampaignId() {
-    return campaignId;
-  }
-
-
-  public void setCampaignId(FieldConditions campaignId) {
-    this.campaignId = campaignId;
+  public void setCreatedAt(FieldConditions createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -193,192 +136,24 @@ public class ExportVoucherTransactionsFilters {
   }
 
 
-  public ExportVoucherTransactionsFilters type(FieldConditions type) {
+  public ExportVoucherTransactionsFilters campaignId(FieldConditions campaignId) {
     
-    this.type = type;
+    this.campaignId = campaignId;
     return this;
   }
 
    /**
-   * Get type
-   * @return type
+   * Get campaignId
+   * @return campaignId
   **/
   @javax.annotation.Nullable
-  public FieldConditions getType() {
-    return type;
+  public FieldConditions getCampaignId() {
+    return campaignId;
   }
 
 
-  public void setType(FieldConditions type) {
-    this.type = type;
-  }
-
-
-  public ExportVoucherTransactionsFilters sourceId(FieldConditions sourceId) {
-    
-    this.sourceId = sourceId;
-    return this;
-  }
-
-   /**
-   * Get sourceId
-   * @return sourceId
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getSourceId() {
-    return sourceId;
-  }
-
-
-  public void setSourceId(FieldConditions sourceId) {
-    this.sourceId = sourceId;
-  }
-
-
-  public ExportVoucherTransactionsFilters reason(FieldConditions reason) {
-    
-    this.reason = reason;
-    return this;
-  }
-
-   /**
-   * Get reason
-   * @return reason
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getReason() {
-    return reason;
-  }
-
-
-  public void setReason(FieldConditions reason) {
-    this.reason = reason;
-  }
-
-
-  public ExportVoucherTransactionsFilters source(FieldConditions source) {
-    
-    this.source = source;
-    return this;
-  }
-
-   /**
-   * Get source
-   * @return source
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getSource() {
-    return source;
-  }
-
-
-  public void setSource(FieldConditions source) {
-    this.source = source;
-  }
-
-
-  public ExportVoucherTransactionsFilters balance(FieldConditions balance) {
-    
-    this.balance = balance;
-    return this;
-  }
-
-   /**
-   * Get balance
-   * @return balance
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getBalance() {
-    return balance;
-  }
-
-
-  public void setBalance(FieldConditions balance) {
-    this.balance = balance;
-  }
-
-
-  public ExportVoucherTransactionsFilters amount(FieldConditions amount) {
-    
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * Get amount
-   * @return amount
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getAmount() {
-    return amount;
-  }
-
-
-  public void setAmount(FieldConditions amount) {
-    this.amount = amount;
-  }
-
-
-  public ExportVoucherTransactionsFilters relatedTransactionId(FieldConditions relatedTransactionId) {
-    
-    this.relatedTransactionId = relatedTransactionId;
-    return this;
-  }
-
-   /**
-   * Get relatedTransactionId
-   * @return relatedTransactionId
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getRelatedTransactionId() {
-    return relatedTransactionId;
-  }
-
-
-  public void setRelatedTransactionId(FieldConditions relatedTransactionId) {
-    this.relatedTransactionId = relatedTransactionId;
-  }
-
-
-  public ExportVoucherTransactionsFilters createdAt(FieldConditions createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(FieldConditions createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public ExportVoucherTransactionsFilters details(FieldConditions details) {
-    
-    this.details = details;
-    return this;
-  }
-
-   /**
-   * Get details
-   * @return details
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getDetails() {
-    return details;
-  }
-
-
-  public void setDetails(FieldConditions details) {
-    this.details = details;
+  public void setCampaignId(FieldConditions campaignId) {
+    this.campaignId = campaignId;
   }
 
 
@@ -393,23 +168,14 @@ public class ExportVoucherTransactionsFilters {
     }
     ExportVoucherTransactionsFilters exportVoucherTransactionsFilters = (ExportVoucherTransactionsFilters) o;
     return Objects.equals(this.junction, exportVoucherTransactionsFilters.junction) &&
-        Objects.equals(this.id, exportVoucherTransactionsFilters.id) &&
-        Objects.equals(this.campaignId, exportVoucherTransactionsFilters.campaignId) &&
-        Objects.equals(this.voucherId, exportVoucherTransactionsFilters.voucherId) &&
-        Objects.equals(this.type, exportVoucherTransactionsFilters.type) &&
-        Objects.equals(this.sourceId, exportVoucherTransactionsFilters.sourceId) &&
-        Objects.equals(this.reason, exportVoucherTransactionsFilters.reason) &&
-        Objects.equals(this.source, exportVoucherTransactionsFilters.source) &&
-        Objects.equals(this.balance, exportVoucherTransactionsFilters.balance) &&
-        Objects.equals(this.amount, exportVoucherTransactionsFilters.amount) &&
-        Objects.equals(this.relatedTransactionId, exportVoucherTransactionsFilters.relatedTransactionId) &&
         Objects.equals(this.createdAt, exportVoucherTransactionsFilters.createdAt) &&
-        Objects.equals(this.details, exportVoucherTransactionsFilters.details);
+        Objects.equals(this.voucherId, exportVoucherTransactionsFilters.voucherId) &&
+        Objects.equals(this.campaignId, exportVoucherTransactionsFilters.campaignId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(junction, id, campaignId, voucherId, type, sourceId, reason, source, balance, amount, relatedTransactionId, createdAt, details);
+    return Objects.hash(junction, createdAt, voucherId, campaignId);
   }
 
   @Override
@@ -417,18 +183,9 @@ public class ExportVoucherTransactionsFilters {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExportVoucherTransactionsFilters {\n");
     sb.append("    junction: ").append(toIndentedString(junction)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    voucherId: ").append(toIndentedString(voucherId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    relatedTransactionId: ").append(toIndentedString(relatedTransactionId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    voucherId: ").append(toIndentedString(voucherId)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -452,18 +209,9 @@ public class ExportVoucherTransactionsFilters {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("junction");
-    openapiFields.add("id");
-    openapiFields.add("campaign_id");
-    openapiFields.add("voucher_id");
-    openapiFields.add("type");
-    openapiFields.add("source_id");
-    openapiFields.add("reason");
-    openapiFields.add("source");
-    openapiFields.add("balance");
-    openapiFields.add("amount");
-    openapiFields.add("related_transaction_id");
     openapiFields.add("created_at");
-    openapiFields.add("details");
+    openapiFields.add("voucher_id");
+    openapiFields.add("campaign_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -490,53 +238,17 @@ public class ExportVoucherTransactionsFilters {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `id`
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("id"));
-      }
-      // validate the optional field `campaign_id`
-      if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
+      // validate the optional field `created_at`
+      if (jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) {
+        FieldConditions.validateJsonElement(jsonObj.get("created_at"));
       }
       // validate the optional field `voucher_id`
       if (jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) {
         FieldConditions.validateJsonElement(jsonObj.get("voucher_id"));
       }
-      // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("type"));
-      }
-      // validate the optional field `source_id`
-      if (jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("source_id"));
-      }
-      // validate the optional field `reason`
-      if (jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("reason"));
-      }
-      // validate the optional field `source`
-      if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("source"));
-      }
-      // validate the optional field `balance`
-      if (jsonObj.get("balance") != null && !jsonObj.get("balance").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("balance"));
-      }
-      // validate the optional field `amount`
-      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("amount"));
-      }
-      // validate the optional field `related_transaction_id`
-      if (jsonObj.get("related_transaction_id") != null && !jsonObj.get("related_transaction_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("related_transaction_id"));
-      }
-      // validate the optional field `created_at`
-      if (jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("created_at"));
-      }
-      // validate the optional field `details`
-      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("details"));
+      // validate the optional field `campaign_id`
+      if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
+        FieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
       }
   }
 

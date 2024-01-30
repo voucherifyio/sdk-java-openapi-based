@@ -27,8 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import voucherify.client.model.CampaignsCreateRequestBody;
-import voucherify.client.model.CampaignsCreateResponseBody;
 import voucherify.client.model.ParameterCreatedBeforeAfter;
 import voucherify.client.model.ParameterOrderListAllPromotionStacks;
 import voucherify.client.model.ParameterUpdatedBeforeAfter;
@@ -86,124 +84,6 @@ public class PromotionsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for createCampaign
-     * @param campaignsCreateRequestBody Specify the details of the campaign that you would like to create. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a campaign object if the call succeeded. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCampaignCall(CampaignsCreateRequestBody campaignsCreateRequestBody, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = campaignsCreateRequestBody;
-
-        // create path and map variables
-        String localVarPath = "/v1/campaigns";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCampaignValidateBeforeCall(CampaignsCreateRequestBody campaignsCreateRequestBody, final ApiCallback _callback) throws ApiException {
-        return createCampaignCall(campaignsCreateRequestBody, _callback);
-
-    }
-
-    /**
-     * Create Campaign
-     * Method to create a batch of vouchers aggregated in one campaign. You can choose a variety of voucher types and define a unique pattern for generating codes.   &lt;!-- theme: info --&gt;  &gt; 📘 Global uniqueness &gt; &gt; All campaign codes are unique across the whole project. Voucherify will not allow you to generate 2 campaigns with the same coupon code.   &lt;!-- theme: warning --&gt; &gt; 🚧 Code generation status &gt; &gt; This is an asynchronous action; you can&#39;t read or modify a newly created campaign until the code generation is completed. See the &#x60;creation_status&#x60; field in the &lt;!-- [campaign object](OpenAPI.json/components/schemas/Campaign) --&gt;[campaign object](ref:get-campaign) description.
-     * @param campaignsCreateRequestBody Specify the details of the campaign that you would like to create. (optional)
-     * @return CampaignsCreateResponseBody
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a campaign object if the call succeeded. </td><td>  -  </td></tr>
-     </table>
-     */
-    public CampaignsCreateResponseBody createCampaign(CampaignsCreateRequestBody campaignsCreateRequestBody) throws ApiException {
-        ApiResponse<CampaignsCreateResponseBody> localVarResp = createCampaignWithHttpInfo(campaignsCreateRequestBody);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create Campaign
-     * Method to create a batch of vouchers aggregated in one campaign. You can choose a variety of voucher types and define a unique pattern for generating codes.   &lt;!-- theme: info --&gt;  &gt; 📘 Global uniqueness &gt; &gt; All campaign codes are unique across the whole project. Voucherify will not allow you to generate 2 campaigns with the same coupon code.   &lt;!-- theme: warning --&gt; &gt; 🚧 Code generation status &gt; &gt; This is an asynchronous action; you can&#39;t read or modify a newly created campaign until the code generation is completed. See the &#x60;creation_status&#x60; field in the &lt;!-- [campaign object](OpenAPI.json/components/schemas/Campaign) --&gt;[campaign object](ref:get-campaign) description.
-     * @param campaignsCreateRequestBody Specify the details of the campaign that you would like to create. (optional)
-     * @return ApiResponse&lt;CampaignsCreateResponseBody&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a campaign object if the call succeeded. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CampaignsCreateResponseBody> createCampaignWithHttpInfo(CampaignsCreateRequestBody campaignsCreateRequestBody) throws ApiException {
-        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(campaignsCreateRequestBody, null);
-        Type localVarReturnType = new TypeToken<CampaignsCreateResponseBody>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Create Campaign (asynchronously)
-     * Method to create a batch of vouchers aggregated in one campaign. You can choose a variety of voucher types and define a unique pattern for generating codes.   &lt;!-- theme: info --&gt;  &gt; 📘 Global uniqueness &gt; &gt; All campaign codes are unique across the whole project. Voucherify will not allow you to generate 2 campaigns with the same coupon code.   &lt;!-- theme: warning --&gt; &gt; 🚧 Code generation status &gt; &gt; This is an asynchronous action; you can&#39;t read or modify a newly created campaign until the code generation is completed. See the &#x60;creation_status&#x60; field in the &lt;!-- [campaign object](OpenAPI.json/components/schemas/Campaign) --&gt;[campaign object](ref:get-campaign) description.
-     * @param campaignsCreateRequestBody Specify the details of the campaign that you would like to create. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a campaign object if the call succeeded. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createCampaignAsync(CampaignsCreateRequestBody campaignsCreateRequestBody, final ApiCallback<CampaignsCreateResponseBody> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(campaignsCreateRequestBody, _callback);
-        Type localVarReturnType = new TypeToken<CampaignsCreateResponseBody>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for createPromotionStack
      * @param campaignId Unique campaign ID. (required)

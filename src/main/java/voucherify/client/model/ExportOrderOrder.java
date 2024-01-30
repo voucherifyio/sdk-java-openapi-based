@@ -28,57 +28,17 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportOrderOrder.Adapter.class)
 public enum ExportOrderOrder {
   
-  ID("id"),
-  
-  _ID("-id"),
-  
-  SOURCE_ID("source_id"),
-  
-  _SOURCE_ID("-source_id"),
+  _CREATED_AT("-created_at"),
   
   CREATED_AT("created_at"),
   
-  _CREATED_AT("-created_at"),
+  _UPDATED_AT("-updated_at"),
   
   UPDATED_AT("updated_at"),
   
-  _UPDATED_AT("-updated_at"),
-  
-  STATUS("status"),
-  
   _STATUS("-status"),
   
-  AMOUNT("amount"),
-  
-  _AMOUNT("-amount"),
-  
-  DISCOUNT_AMOUNT("discount_amount"),
-  
-  _DISCOUNT_AMOUNT("-discount_amount"),
-  
-  ITEMS_DISCOUNT_AMOUNT("items_discount_amount"),
-  
-  _ITEMS_DISCOUNT_AMOUNT("-items_discount_amount"),
-  
-  TOTAL_DISCOUNT_AMOUNT("total_discount_amount"),
-  
-  _TOTAL_DISCOUNT_AMOUNT("-total_discount_amount"),
-  
-  TOTAL_AMOUNT("total_amount"),
-  
-  _TOTAL_AMOUNT("-total_amount"),
-  
-  CUSTOMER_ID("customer_id"),
-  
-  _CUSTOMER_ID("-customer_id"),
-  
-  REFERRER_ID("referrer_id"),
-  
-  _REFERRER_ID("-referrer_id"),
-  
-  METADATA("metadata"),
-  
-  _METADATA("-metadata");
+  STATUS("status");
 
   private String value;
 

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import voucherify.client.model.ExportVoucherFields;
-import voucherify.client.model.ExportVoucherFilters;
 import voucherify.client.model.ExportVoucherOrder;
 
 import com.google.gson.Gson;
@@ -67,7 +66,7 @@ public class ExportVoucherBaseParameters {
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
-  private ExportVoucherFilters filters;
+  private Object filters;
 
   public ExportVoucherBaseParameters() {
   }
@@ -122,23 +121,23 @@ public class ExportVoucherBaseParameters {
   }
 
 
-  public ExportVoucherBaseParameters filters(ExportVoucherFilters filters) {
+  public ExportVoucherBaseParameters filters(Object filters) {
     
     this.filters = filters;
     return this;
   }
 
    /**
-   * Get filters
+   * Allowed additional properties must start with \&quot;metadata.\&quot; or \&quot;redemption.\&quot;
    * @return filters
   **/
   @javax.annotation.Nullable
-  public ExportVoucherFilters getFilters() {
+  public Object getFilters() {
     return filters;
   }
 
 
-  public void setFilters(ExportVoucherFilters filters) {
+  public void setFilters(Object filters) {
     this.filters = filters;
   }
 
@@ -224,10 +223,6 @@ public class ExportVoucherBaseParameters {
       // ensure the optional json data is an array if present
       if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
-      }
-      // validate the optional field `filters`
-      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
-        ExportVoucherFilters.validateJsonElement(jsonObj.get("filters"));
       }
   }
 

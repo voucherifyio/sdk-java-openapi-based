@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import voucherify.client.model.ExportCustomerFields;
-import voucherify.client.model.ExportCustomerFilters;
 import voucherify.client.model.ExportCustomerOrder;
 
 import com.google.gson.Gson;
@@ -67,7 +66,7 @@ public class ExportCustomerBaseParameters {
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
-  private ExportCustomerFilters filters;
+  private Object filters;
 
   public ExportCustomerBaseParameters() {
   }
@@ -122,23 +121,23 @@ public class ExportCustomerBaseParameters {
   }
 
 
-  public ExportCustomerBaseParameters filters(ExportCustomerFilters filters) {
+  public ExportCustomerBaseParameters filters(Object filters) {
     
     this.filters = filters;
     return this;
   }
 
    /**
-   * Get filters
+   * Allowed additional properties must start with \&quot;metadata.\&quot; or \&quot;address.\&quot; or \&quot;summary.\&quot; or \&quot;loyalty.\&quot; or \&quot;loyalty_tier.\&quot; or \&quot;loyalty_points.\&quot; or \&quot;system_metadata.\&quot;
    * @return filters
   **/
   @javax.annotation.Nullable
-  public ExportCustomerFilters getFilters() {
+  public Object getFilters() {
     return filters;
   }
 
 
-  public void setFilters(ExportCustomerFilters filters) {
+  public void setFilters(Object filters) {
     this.filters = filters;
   }
 
@@ -224,10 +223,6 @@ public class ExportCustomerBaseParameters {
       // ensure the optional json data is an array if present
       if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
-      }
-      // validate the optional field `filters`
-      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
-        ExportCustomerFilters.validateJsonElement(jsonObj.get("filters"));
       }
   }
 

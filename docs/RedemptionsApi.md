@@ -200,7 +200,7 @@ public class Example {
     Integer page = 56; // Integer | Which page of results to return.
     String result = "result_example"; // String | A filter on the list based on the redemption result. Available options are: `SUCCESS`, `FAILURE`. You can provide multiple values by repeating the param.
     String campaign = "campaign_example"; // String | A filter by the campaign **name** that the redemption resources originate from.
-    String customer = "customer_example"; // String | Return redemptions performed by the customer with given `id`.
+    String customer = "customer_example"; // String | Return redemptions performed by the customer with given `id` or `source_id`.
     ParameterOrderListRedemptions order = ParameterOrderListRedemptions.fromValue("created_at"); // ParameterOrderListRedemptions | Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order.
     ParameterCreatedBeforeAfter createdAt = new ParameterCreatedBeforeAfter(); // ParameterCreatedBeforeAfter | A filter on the list based on the object `created_at` field. The value is a dictionary with the following options: `before`, `after`. A date value must be presented in ISO 8601 format (`2016-11-16T14:14:31Z` or `2016-11-16`). An example: `[created_at][before]=2017-09-08T13:52:18.227Z`
     ParameterFiltersListRedemptions filters = new ParameterFiltersListRedemptions(); // ParameterFiltersListRedemptions | Filters for listing responses.
@@ -226,7 +226,7 @@ public class Example {
 | **page** | **Integer**| Which page of results to return. | [optional] |
 | **result** | **String**| A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. | [optional] |
 | **campaign** | **String**| A filter by the campaign **name** that the redemption resources originate from. | [optional] |
-| **customer** | **String**| Return redemptions performed by the customer with given &#x60;id&#x60;. | [optional] |
+| **customer** | **String**| Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. | [optional] |
 | **order** | [**ParameterOrderListRedemptions**](.md)| Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, id, -id, voucher_code, -voucher_code, tracking_id, -tracking_id, customer_id, -customer_id] |
 | **createdAt** | [**ParameterCreatedBeforeAfter**](.md)| A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; | [optional] |
 | **filters** | [**ParameterFiltersListRedemptions**](.md)| Filters for listing responses. | [optional] |

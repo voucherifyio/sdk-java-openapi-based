@@ -168,6 +168,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**trackCustomEventClientSide**](docs/EventsApi.md#trackCustomEventClientSide) | **POST** /client/v1/events | Track Custom Event (client-side)
 *ExportsApi* | [**createExport**](docs/ExportsApi.md#createExport) | **POST** /v1/exports | Create Export
 *ExportsApi* | [**deleteExport**](docs/ExportsApi.md#deleteExport) | **DELETE** /v1/exports/{exportId} | Delete Export
+*ExportsApi* | [**downloadExport**](docs/ExportsApi.md#downloadExport) | **GET** /v1/exports/{export_Id} | Download Export
 *ExportsApi* | [**getExport**](docs/ExportsApi.md#getExport) | **GET** /v1/exports/{exportId} | Get Export
 *ExportsApi* | [**listExports**](docs/ExportsApi.md#listExports) | **GET** /v1/exports | List Exports
 *LoyaltiesApi* | [**createInBulkLoyaltyTiers**](docs/LoyaltiesApi.md#createInBulkLoyaltyTiers) | **POST** /v1/loyalties/{campaignId}/tiers | Create loyalty tiers
@@ -221,7 +222,6 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**updateProductsInBulk**](docs/ProductsApi.md#updateProductsInBulk) | **POST** /v1/products/bulk/async | Update Products in bulk
 *ProductsApi* | [**updateProductsMetadataInBulk**](docs/ProductsApi.md#updateProductsMetadataInBulk) | **POST** /v1/products/metadata/async | Update Products&#39; Metadata in bulk
 *ProductsApi* | [**updateSku**](docs/ProductsApi.md#updateSku) | **PUT** /v1/products/{productId}/skus/{skuId} | Update SKU
-*PromotionsApi* | [**createCampaign**](docs/PromotionsApi.md#createCampaign) | **POST** /v1/campaigns | Create Campaign
 *PromotionsApi* | [**createPromotionStack**](docs/PromotionsApi.md#createPromotionStack) | **POST** /v1/promotions/{campaignId}/stacks | Create Promotion Stack
 *PromotionsApi* | [**deletePromotionStack**](docs/PromotionsApi.md#deletePromotionStack) | **DELETE** /v1/promotions/{campaignId}/stacks/{stackId} | Delete Promotion Stack
 *PromotionsApi* | [**deletePromotionTier**](docs/PromotionsApi.md#deletePromotionTier) | **DELETE** /v1/promotions/tiers/{promotionTierId} | Delete Promotion Tier
@@ -518,13 +518,11 @@ Class | Method | HTTP request | Description
  - [ExportCustomerBase](docs/ExportCustomerBase.md)
  - [ExportCustomerBaseParameters](docs/ExportCustomerBaseParameters.md)
  - [ExportCustomerFields](docs/ExportCustomerFields.md)
- - [ExportCustomerFilters](docs/ExportCustomerFilters.md)
  - [ExportCustomerOrder](docs/ExportCustomerOrder.md)
  - [ExportCustomerScheduled](docs/ExportCustomerScheduled.md)
  - [ExportOrder](docs/ExportOrder.md)
  - [ExportOrderBase](docs/ExportOrderBase.md)
  - [ExportOrderFields](docs/ExportOrderFields.md)
- - [ExportOrderFilters](docs/ExportOrderFilters.md)
  - [ExportOrderOrder](docs/ExportOrderOrder.md)
  - [ExportOrderScheduled](docs/ExportOrderScheduled.md)
  - [ExportPointsExpiration](docs/ExportPointsExpiration.md)
@@ -538,14 +536,12 @@ Class | Method | HTTP request | Description
  - [ExportPublicationBase](docs/ExportPublicationBase.md)
  - [ExportPublicationBaseParameters](docs/ExportPublicationBaseParameters.md)
  - [ExportPublicationFields](docs/ExportPublicationFields.md)
- - [ExportPublicationFilters](docs/ExportPublicationFilters.md)
  - [ExportPublicationOrder](docs/ExportPublicationOrder.md)
  - [ExportPublicationScheduled](docs/ExportPublicationScheduled.md)
  - [ExportRedemption](docs/ExportRedemption.md)
  - [ExportRedemptionBase](docs/ExportRedemptionBase.md)
  - [ExportRedemptionBaseParameters](docs/ExportRedemptionBaseParameters.md)
  - [ExportRedemptionFields](docs/ExportRedemptionFields.md)
- - [ExportRedemptionFilters](docs/ExportRedemptionFilters.md)
  - [ExportRedemptionOrder](docs/ExportRedemptionOrder.md)
  - [ExportRedemptionScheduled](docs/ExportRedemptionScheduled.md)
  - [ExportScheduledBase](docs/ExportScheduledBase.md)
@@ -553,7 +549,6 @@ Class | Method | HTTP request | Description
  - [ExportVoucherBase](docs/ExportVoucherBase.md)
  - [ExportVoucherBaseParameters](docs/ExportVoucherBaseParameters.md)
  - [ExportVoucherFields](docs/ExportVoucherFields.md)
- - [ExportVoucherFilters](docs/ExportVoucherFilters.md)
  - [ExportVoucherOrder](docs/ExportVoucherOrder.md)
  - [ExportVoucherScheduled](docs/ExportVoucherScheduled.md)
  - [ExportVoucherTransactions](docs/ExportVoucherTransactions.md)

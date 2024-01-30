@@ -5,37 +5,29 @@
 ## Enum
 
 
-* `VOUCHER_CODE` (value: `"voucher_code"`)
+* `_ID` (value: `"-id"`)
+
+* `ID` (value: `"id"`)
 
 * `_VOUCHER_CODE` (value: `"-voucher_code"`)
 
-* `CUSTOMER_ID` (value: `"customer_id"`)
+* `VOUCHER_CODE` (value: `"voucher_code"`)
+
+* `_TRACKING_ID` (value: `"-tracking_id"`)
+
+* `TRACKING_ID` (value: `"tracking_id"`)
 
 * `_CUSTOMER_ID` (value: `"-customer_id"`)
 
-* `CUSTOMER_SOURCE_ID` (value: `"customer_source_id"`)
+* `CUSTOMER_ID` (value: `"customer_id"`)
 
-* `_CUSTOMER_SOURCE_ID` (value: `"-customer_source_id"`)
+* `_CREATED_AT` (value: `"-created_at"`)
 
-* `DATE` (value: `"date"`)
-
-* `_DATE` (value: `"-date"`)
-
-* `CHANNEL` (value: `"channel"`)
+* `CREATED_AT` (value: `"created_at"`)
 
 * `_CHANNEL` (value: `"-channel"`)
 
-* `CAMPAIGN` (value: `"campaign"`)
-
-* `_CAMPAIGN` (value: `"-campaign"`)
-
-* `IS_WINNER` (value: `"is_winner"`)
-
-* `_IS_WINNER` (value: `"-is_winner"`)
-
-* `METADATA` (value: `"metadata"`)
-
-* `_METADATA` (value: `"-metadata"`)
+* `CHANNEL` (value: `"channel"`)
 
 
 

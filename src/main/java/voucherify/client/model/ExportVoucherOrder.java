@@ -28,125 +28,17 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportVoucherOrder.Adapter.class)
 public enum ExportVoucherOrder {
   
-  CODE("code"),
-  
-  _CODE("-code"),
-  
-  VOUCHER_TYPE("voucher_type"),
-  
-  _VOUCHER_TYPE("-voucher_type"),
-  
-  VALUE("value"),
-  
-  _VALUE("-value"),
-  
-  DISCOUNT_TYPE("discount_type"),
-  
-  _DISCOUNT_TYPE("-discount_type"),
-  
-  CAMPAIGN("campaign"),
-  
-  _CAMPAIGN("-campaign"),
-  
-  CATEGORY("category"),
-  
-  _CATEGORY("-category"),
-  
-  START_DATE("start_date"),
-  
-  _START_DATE("-start_date"),
-  
-  EXPIRATION_DATE("expiration_date"),
-  
-  _EXPIRATION_DATE("-expiration_date"),
-  
-  GIFT_BALANCE("gift_balance"),
-  
-  _GIFT_BALANCE("-gift_balance"),
-  
-  LOYALTY_BALANCE("loyalty_balance"),
-  
-  _LOYALTY_BALANCE("-loyalty_balance"),
-  
-  REDEMPTION_QUANTITY("redemption_quantity"),
-  
-  _REDEMPTION_QUANTITY("-redemption_quantity"),
-  
-  REDEMPTION_COUNT("redemption_count"),
-  
-  _REDEMPTION_COUNT("-redemption_count"),
-  
-  ACTIVE("active"),
-  
-  _ACTIVE("-active"),
-  
-  QR_CODE("qr_code"),
-  
-  _QR_CODE("-qr_code"),
-  
-  BAR_CODE("bar_code"),
-  
-  _BAR_CODE("-bar_code"),
-  
-  METADATA("metadata"),
-  
-  _METADATA("-metadata"),
-  
-  ID("id"),
-  
-  _ID("-id"),
-  
-  IS_REFERRAL_CODE("is_referral_code"),
-  
-  _IS_REFERRAL_CODE("-is_referral_code"),
+  _CREATED_AT("-created_at"),
   
   CREATED_AT("created_at"),
   
-  _CREATED_AT("-created_at"),
+  _UPDATED_AT("-updated_at"),
   
   UPDATED_AT("updated_at"),
   
-  _UPDATED_AT("-updated_at"),
+  _CODE("-code"),
   
-  VALIDITY_TIMEFRAME_INTERVAL("validity_timeframe_interval"),
-  
-  _VALIDITY_TIMEFRAME_INTERVAL("-validity_timeframe_interval"),
-  
-  VALIDITY_TIMEFRAME_DURATION("validity_timeframe_duration"),
-  
-  _VALIDITY_TIMEFRAME_DURATION("-validity_timeframe_duration"),
-  
-  VALIDITY_DAY_OF_WEEK("validity_day_of_week"),
-  
-  _VALIDITY_DAY_OF_WEEK("-validity_day_of_week"),
-  
-  DISCOUNT_AMOUNT_LIMIT("discount_amount_limit"),
-  
-  _DISCOUNT_AMOUNT_LIMIT("-discount_amount_limit"),
-  
-  CAMPAIGN_ID("campaign_id"),
-  
-  _CAMPAIGN_ID("-campaign_id"),
-  
-  ADDITIONAL_INFO("additional_info"),
-  
-  _ADDITIONAL_INFO("-additional_info"),
-  
-  CUSTOMER_ID("customer_id"),
-  
-  _CUSTOMER_ID("-customer_id"),
-  
-  DISCOUNT_UNIT_TYPE("discount_unit_type"),
-  
-  _DISCOUNT_UNIT_TYPE("-discount_unit_type"),
-  
-  DISCOUNT_UNIT_EFFECT("discount_unit_effect"),
-  
-  _DISCOUNT_UNIT_EFFECT("-discount_unit_effect"),
-  
-  CUSTOMER_SOURCE_ID("customer_source_id"),
-  
-  _CUSTOMER_SOURCE_ID("-customer_source_id");
+  CODE("code");
 
   private String value;
 

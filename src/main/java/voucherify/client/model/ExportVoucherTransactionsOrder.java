@@ -28,53 +28,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ExportVoucherTransactionsOrder.Adapter.class)
 public enum ExportVoucherTransactionsOrder {
   
-  ID("id"),
-  
-  _ID("-id"),
-  
-  CAMPAIGN_ID("campaign_id"),
-  
-  _CAMPAIGN_ID("-campaign_id"),
-  
-  VOUCHER_ID("voucher_id"),
-  
-  _VOUCHER_ID("-voucher_id"),
-  
-  TYPE("type"),
-  
-  _TYPE("-type"),
-  
-  SOURCE_ID("source_id"),
-  
-  _SOURCE_ID("-source_id"),
-  
-  REASON("reason"),
-  
-  _REASON("-reason"),
-  
-  SOURCE("source"),
-  
-  _SOURCE("-source"),
-  
-  BALANCE("balance"),
-  
-  _BALANCE("-balance"),
-  
-  AMOUNT("amount"),
-  
-  _AMOUNT("-amount"),
-  
-  RELATED_TRANSACTION_ID("related_transaction_id"),
-  
-  _RELATED_TRANSACTION_ID("-related_transaction_id"),
-  
-  CREATED_AT("created_at"),
-  
   _CREATED_AT("-created_at"),
   
-  DETAILS("details"),
-  
-  _DETAILS("-details");
+  CREATED_AT("created_at");
 
   private String value;
 

@@ -58,10 +58,6 @@ public class ExportPointsExpirationFilters {
   @SerializedName(SERIALIZED_NAME_JUNCTION)
   private Junction junction;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private FieldConditions id;
-
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private FieldConditions campaignId;
@@ -69,18 +65,6 @@ public class ExportPointsExpirationFilters {
   public static final String SERIALIZED_NAME_VOUCHER_ID = "voucher_id";
   @SerializedName(SERIALIZED_NAME_VOUCHER_ID)
   private FieldConditions voucherId;
-
-  public static final String SERIALIZED_NAME_POINTS = "points";
-  @SerializedName(SERIALIZED_NAME_POINTS)
-  private FieldConditions points;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private FieldConditions status;
-
-  public static final String SERIALIZED_NAME_EXPIRES_AT = "expires_at";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
-  private FieldConditions expiresAt;
 
   public ExportPointsExpirationFilters() {
   }
@@ -103,27 +87,6 @@ public class ExportPointsExpirationFilters {
 
   public void setJunction(Junction junction) {
     this.junction = junction;
-  }
-
-
-  public ExportPointsExpirationFilters id(FieldConditions id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getId() {
-    return id;
-  }
-
-
-  public void setId(FieldConditions id) {
-    this.id = id;
   }
 
 
@@ -169,69 +132,6 @@ public class ExportPointsExpirationFilters {
   }
 
 
-  public ExportPointsExpirationFilters points(FieldConditions points) {
-    
-    this.points = points;
-    return this;
-  }
-
-   /**
-   * Get points
-   * @return points
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getPoints() {
-    return points;
-  }
-
-
-  public void setPoints(FieldConditions points) {
-    this.points = points;
-  }
-
-
-  public ExportPointsExpirationFilters status(FieldConditions status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(FieldConditions status) {
-    this.status = status;
-  }
-
-
-  public ExportPointsExpirationFilters expiresAt(FieldConditions expiresAt) {
-    
-    this.expiresAt = expiresAt;
-    return this;
-  }
-
-   /**
-   * Get expiresAt
-   * @return expiresAt
-  **/
-  @javax.annotation.Nullable
-  public FieldConditions getExpiresAt() {
-    return expiresAt;
-  }
-
-
-  public void setExpiresAt(FieldConditions expiresAt) {
-    this.expiresAt = expiresAt;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -243,17 +143,13 @@ public class ExportPointsExpirationFilters {
     }
     ExportPointsExpirationFilters exportPointsExpirationFilters = (ExportPointsExpirationFilters) o;
     return Objects.equals(this.junction, exportPointsExpirationFilters.junction) &&
-        Objects.equals(this.id, exportPointsExpirationFilters.id) &&
         Objects.equals(this.campaignId, exportPointsExpirationFilters.campaignId) &&
-        Objects.equals(this.voucherId, exportPointsExpirationFilters.voucherId) &&
-        Objects.equals(this.points, exportPointsExpirationFilters.points) &&
-        Objects.equals(this.status, exportPointsExpirationFilters.status) &&
-        Objects.equals(this.expiresAt, exportPointsExpirationFilters.expiresAt);
+        Objects.equals(this.voucherId, exportPointsExpirationFilters.voucherId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(junction, id, campaignId, voucherId, points, status, expiresAt);
+    return Objects.hash(junction, campaignId, voucherId);
   }
 
   @Override
@@ -261,12 +157,8 @@ public class ExportPointsExpirationFilters {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExportPointsExpirationFilters {\n");
     sb.append("    junction: ").append(toIndentedString(junction)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    voucherId: ").append(toIndentedString(voucherId)).append("\n");
-    sb.append("    points: ").append(toIndentedString(points)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -290,12 +182,8 @@ public class ExportPointsExpirationFilters {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("junction");
-    openapiFields.add("id");
     openapiFields.add("campaign_id");
     openapiFields.add("voucher_id");
-    openapiFields.add("points");
-    openapiFields.add("status");
-    openapiFields.add("expires_at");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -322,10 +210,6 @@ public class ExportPointsExpirationFilters {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `id`
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("id"));
-      }
       // validate the optional field `campaign_id`
       if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
         FieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
@@ -333,18 +217,6 @@ public class ExportPointsExpirationFilters {
       // validate the optional field `voucher_id`
       if (jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) {
         FieldConditions.validateJsonElement(jsonObj.get("voucher_id"));
-      }
-      // validate the optional field `points`
-      if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("points"));
-      }
-      // validate the optional field `status`
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("status"));
-      }
-      // validate the optional field `expires_at`
-      if (jsonObj.get("expires_at") != null && !jsonObj.get("expires_at").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("expires_at"));
       }
   }
 

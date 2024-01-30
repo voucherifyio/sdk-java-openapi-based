@@ -73,28 +73,10 @@ public class ApiClient {
             Arrays.asList(
               "api",
               "us1.api",
-              "as1.api"
-            )
-          )
-        ));
-      }}
-    ),
-    new ServerConfiguration(
-      "https://download.voucherify.io",
-      "EU Download Export Base URL",
-      new HashMap<String, ServerVariable>()
-    ),
-    new ServerConfiguration(
-      "https://{downloadcluster}.download.voucherify.io",
-      "US and AS Download Export Base URL",
-      new HashMap<String, ServerVariable>() {{
-        put("downloadcluster", new ServerVariable(
-          "No description provided",
-          "us1",
-          new HashSet<String>(
-            Arrays.asList(
-              "us1",
-              "as1"
+              "as1.api",
+              "download",
+              "us1.download",
+              "as1.download"
             )
           )
         ));

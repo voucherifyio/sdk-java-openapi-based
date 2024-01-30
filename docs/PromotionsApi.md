@@ -4,7 +4,6 @@ All URIs are relative to *https://api.voucherify.io*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createCampaign**](PromotionsApi.md#createCampaign) | **POST** /v1/campaigns | Create Campaign |
 | [**createPromotionStack**](PromotionsApi.md#createPromotionStack) | **POST** /v1/promotions/{campaignId}/stacks | Create Promotion Stack |
 | [**deletePromotionStack**](PromotionsApi.md#deletePromotionStack) | **DELETE** /v1/promotions/{campaignId}/stacks/{stackId} | Delete Promotion Stack |
 | [**deletePromotionTier**](PromotionsApi.md#deletePromotionTier) | **DELETE** /v1/promotions/tiers/{promotionTierId} | Delete Promotion Tier |
@@ -17,81 +16,6 @@ All URIs are relative to *https://api.voucherify.io*
 | [**listPromotionTiersFromCampaign**](PromotionsApi.md#listPromotionTiersFromCampaign) | **GET** /v1/promotions/{campaignId}/tiers | List Promotion Tiers from Campaign |
 | [**updatePromotionStack**](PromotionsApi.md#updatePromotionStack) | **PUT** /v1/promotions/{campaignId}/stacks/{stackId} | Update Promotion Stack |
 
-
-<a id="createCampaign"></a>
-# **createCampaign**
-> CampaignsCreateResponseBody createCampaign(campaignsCreateRequestBody)
-
-Create Campaign
-
-Method to create a batch of vouchers aggregated in one campaign. You can choose a variety of voucher types and define a unique pattern for generating codes.   &lt;!-- theme: info --&gt;  &gt; 📘 Global uniqueness &gt; &gt; All campaign codes are unique across the whole project. Voucherify will not allow you to generate 2 campaigns with the same coupon code.   &lt;!-- theme: warning --&gt; &gt; 🚧 Code generation status &gt; &gt; This is an asynchronous action; you can&#39;t read or modify a newly created campaign until the code generation is completed. See the &#x60;creation_status&#x60; field in the &lt;!-- [campaign object](OpenAPI.json/components/schemas/Campaign) --&gt;[campaign object](ref:get-campaign) description.
-
-### Example
-```java
-// Import classes:
-import voucherify.client.ApiClient;
-import voucherify.client.ApiException;
-import voucherify.client.Configuration;
-import voucherify.client.auth.*;
-import voucherify.client.models.*;
-import voucherify.client.api.PromotionsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.voucherify.io");
-    
-    // Configure API key authorization: X-App-Id
-    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
-    X-App-Id.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: X-App-Token
-    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
-    X-App-Token.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token.setApiKeyPrefix("Token");
-
-    PromotionsApi apiInstance = new PromotionsApi(defaultClient);
-    CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody(); // CampaignsCreateRequestBody | Specify the details of the campaign that you would like to create.
-    try {
-      CampaignsCreateResponseBody result = apiInstance.createCampaign(campaignsCreateRequestBody);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PromotionsApi#createCampaign");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignsCreateRequestBody** | [**CampaignsCreateRequestBody**](CampaignsCreateRequestBody.md)| Specify the details of the campaign that you would like to create. | [optional] |
-
-### Return type
-
-[**CampaignsCreateResponseBody**](CampaignsCreateResponseBody.md)
-
-### Authorization
-
-[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Returns a campaign object if the call succeeded. |  -  |
 
 <a id="createPromotionStack"></a>
 # **createPromotionStack**
