@@ -2,6 +2,8 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Voucherify;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
 import voucherify.client.api.QualificationsApi;
@@ -9,25 +11,21 @@ import voucherify.client.model.*;
 
 import java.util.ArrayList;
 
-public class Qualifications {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public void test(ApiClient defaultClient) {
-        QualificationsApi qualifications = new QualificationsApi(defaultClient);
+@org.junit.jupiter.api.Order(9) //Multiple Order type
+public class QualificationsTest {
+    public static ApiClient defaultClient = null;
+    public static QualificationsApi qualifications = null;
 
+    @BeforeAll
+    public static void beforeAll() {
+        defaultClient = Utils.getClient();
+        qualifications = new QualificationsApi(defaultClient);
+    }
 
-        //TO ENSURE DATA FOR QUALIFICATIONS WAS CALCULATED PROPERLY
-        System.out.println("Doing sleep()");
-        if (Thread.currentThread().isAlive()) {
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Sleep currently working");
-        }
-        System.out.println("Done sleep()");
-        
+    @Test
+    public void checkEligibilityTest() {
         try {
             QualificationsCheckEligibilityRequestBody qualificationsCheckEligibilityRequestBody = new QualificationsCheckEligibilityRequestBody();
 
@@ -48,14 +46,11 @@ public class Qualifications {
 
             qualificationsCheckEligibilityRequestBody.setOrder(order);
 
+            QualificationsCheckEligibilityResponseBody responseBody = qualifications.checkEligibility(qualificationsCheckEligibilityRequestBody);
 
-            qualifications.checkEligibility(qualificationsCheckEligibilityRequestBody);
-
-            System.out.println("Calling QualificationsApi#checkEligibility OK");
+            assertFalse(responseBody.getRedeemables().getData().isEmpty());
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling QualificationsApi#qualificationsCheckEligibility");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
     }
 }

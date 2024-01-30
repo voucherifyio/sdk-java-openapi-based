@@ -41,7 +41,7 @@
 
 | Name | Value |
 |---- | -----|
-| LOYALTY_CARD | &quot;LOYALTY_CARD&quot; |
+| LOYALTY_PROGRAM | &quot;LOYALTY_PROGRAM&quot; |
 
 
 

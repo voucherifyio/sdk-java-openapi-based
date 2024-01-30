@@ -2,17 +2,33 @@ package org.example;
 
 import com.google.gson.JsonSyntaxException;
 import org.example.data.Voucherify;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Order;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
 import voucherify.client.api.PublicationsApi;
 import voucherify.client.model.*;
 
-public class Publications {
-    public void test(ApiClient defaultClient) {
-        PublicationsApi publications = new PublicationsApi(defaultClient);
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
+@Order(6)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class PublicationsTest {
+    public static ApiClient defaultClient = null;
+    public static PublicationsApi publications = null;
+
+    @BeforeAll
+    public static void beforeAll() {
+        defaultClient = Utils.getClient();
+        publications = new PublicationsApi(defaultClient);
+    }
+
+    @Test
+    @Order(1)
+    public void listPublicationsTest() {
         try {
-            publications.listPublications(
+            PublicationsListResponseBody responseBody = publications.listPublications(
                 10,
                 1,
                 null,
@@ -25,13 +41,16 @@ public class Publications {
                 null,
                 null
             );
-            System.out.println("Calling PublicationsApi#listPublications OK");
-        } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling PublicationsApi#listPublications");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
-        }
 
+            assertNotNull(responseBody);
+        } catch (ApiException | JsonSyntaxException e) {
+            fail();
+        }
+    }
+
+    @Test
+    @Order(2)
+    public void CreatePublicationWithSpecificVoucherTest() {
         try {
             CreatePublicationWithSpecificVoucher createPublicationWithSpecificVoucher = new CreatePublicationWithSpecificVoucher();
 
@@ -44,15 +63,17 @@ public class Publications {
             PublicationsCreateRequestBody publicationsCreateRequestBody = new PublicationsCreateRequestBody();
             publicationsCreateRequestBody.setActualInstance(createPublicationWithSpecificVoucher);
 
-            publications.createPublication(false, publicationsCreateRequestBody);
+            PublicationsCreateResponseBody responseBody = publications.createPublication(false, publicationsCreateRequestBody);
 
-            System.out.println("Calling PublicationsApi#createPublication OK");
+            assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling PublicationsApi#listPublications");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
+    }
 
+    @Test
+    @Order(3)
+    public void CreatePublicationWithCampaignTest() {
         try {
             CreatePublicationWithCampaign createPublicationWithCampaign = new CreatePublicationWithCampaign();
 
@@ -69,13 +90,11 @@ public class Publications {
             PublicationsCreateRequestBody publicationsCreateRequestBody = new PublicationsCreateRequestBody();
             publicationsCreateRequestBody.setActualInstance(createPublicationWithCampaign);
 
-            publications.createPublication(false, publicationsCreateRequestBody);
+            PublicationsCreateResponseBody responseBody = publications.createPublication(false, publicationsCreateRequestBody);
 
-            System.out.println("Calling PublicationsApi#createPublication OK");
+            assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.err.println("Exception when calling PublicationsApi#listPublications");
-            System.err.println("Status message: " + e.getMessage());
-            e.printStackTrace();
+            fail();
         }
     }
 }

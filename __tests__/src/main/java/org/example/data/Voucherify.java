@@ -1,6 +1,5 @@
 package org.example.data;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +8,6 @@ public class Voucherify {
     private final Campaign loyaltyCampaign;
     private final Customer customer;
     private final List<Product> products;
-
-    //FIXME: FIND BETTER SOLUTION FOR REMOVING COUPLINGS
-    private boolean dataEnsured = false;
 
     private Voucherify() {
         couponCampaign = new Campaign();
@@ -42,13 +38,5 @@ public class Voucherify {
 
     public List<Product> getProducts() {
         return products;
-    }
-
-    public boolean isDataEnsured() {
-        return dataEnsured;
-    }
-
-    public void setDataEnsured(boolean dataEnsured) {
-        this.dataEnsured = dataEnsured;
     }
 }

@@ -173,7 +173,7 @@ public class CampaignsCreateLoyaltyCampaign {
    */
   @JsonAdapter(CampaignTypeEnum.Adapter.class)
   public enum CampaignTypeEnum {
-    LOYALTY_CARD("LOYALTY_CARD");
+    LOYALTY_PROGRAM("LOYALTY_PROGRAM");
 
     private String value;
 
@@ -215,7 +215,7 @@ public class CampaignsCreateLoyaltyCampaign {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaign_type";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
-  private CampaignTypeEnum campaignType = CampaignTypeEnum.LOYALTY_CARD;
+  private CampaignTypeEnum campaignType = CampaignTypeEnum.LOYALTY_PROGRAM;
 
   public static final String SERIALIZED_NAME_VOUCHER = "voucher";
   @SerializedName(SERIALIZED_NAME_VOUCHER)
