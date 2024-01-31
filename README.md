@@ -151,6 +151,11 @@ Class | Method | HTTP request | Description
 *CategoriesApi* | [**getCategory**](docs/CategoriesApi.md#getCategory) | **GET** /v1/categories/{categoryId} | Get Category
 *CategoriesApi* | [**listCategories**](docs/CategoriesApi.md#listCategories) | **GET** /v1/categories | List Categories
 *CategoriesApi* | [**updateCategory**](docs/CategoriesApi.md#updateCategory) | **PUT** /v1/categories/{categoryId} | Update Category
+*ClientSideApi* | [**checkEligibilityClientSide**](docs/ClientSideApi.md#checkEligibilityClientSide) | **POST** /client/v1/qualifications | Check Eligibility (client-side)
+*ClientSideApi* | [**redeemStackedDiscountsClientSide**](docs/ClientSideApi.md#redeemStackedDiscountsClientSide) | **POST** /client/v1/redemptions | Redeem Stackable Discounts (client-side)
+*ClientSideApi* | [**trackCustomEventClientSide**](docs/ClientSideApi.md#trackCustomEventClientSide) | **POST** /client/v1/events | Track Custom Event (client-side)
+*ClientSideApi* | [**updateCustomersConsentsClientSide**](docs/ClientSideApi.md#updateCustomersConsentsClientSide) | **PUT** /client/v1/customers/{customerId}/consents | Update Customer&#39;s consents (client-side)
+*ClientSideApi* | [**validateStackedDiscountsClientSide**](docs/ClientSideApi.md#validateStackedDiscountsClientSide) | **POST** /client/v1/validations | Validate Stackable Discounts (client-side)
 *CustomersApi* | [**createCustomer**](docs/CustomersApi.md#createCustomer) | **POST** /v1/customers | Create Customer
 *CustomersApi* | [**customerPermanentlyDeletion**](docs/CustomersApi.md#customerPermanentlyDeletion) | **POST** /v1/customers/{customerId}/permanent-deletion | Delete Customer Permanently
 *CustomersApi* | [**deleteCustomer**](docs/CustomersApi.md#deleteCustomer) | **DELETE** /v1/customers/{customerId} | Delete Customer
@@ -161,11 +166,9 @@ Class | Method | HTTP request | Description
 *CustomersApi* | [**listCustomers**](docs/CustomersApi.md#listCustomers) | **GET** /v1/customers | List Customers
 *CustomersApi* | [**updateCustomer**](docs/CustomersApi.md#updateCustomer) | **PUT** /v1/customers/{customerId} | Update Customer
 *CustomersApi* | [**updateCustomersConsents**](docs/CustomersApi.md#updateCustomersConsents) | **PUT** /v1/customers/{customerId}/consents | Update Customer&#39;s consents
-*CustomersApi* | [**updateCustomersConsentsClientSide**](docs/CustomersApi.md#updateCustomersConsentsClientSide) | **PUT** /client/v1/customers/{customerId}/consents | Update Customer&#39;s consents (client-side)
 *CustomersApi* | [**updateCustomersInBulk**](docs/CustomersApi.md#updateCustomersInBulk) | **POST** /v1/customers/bulk/async | Update Customers in bulk
 *CustomersApi* | [**updateCustomersMetadataInBulk**](docs/CustomersApi.md#updateCustomersMetadataInBulk) | **POST** /v1/customers/metadata/async | Update Customers&#39; Metadata in bulk
 *EventsApi* | [**trackCustomEvent**](docs/EventsApi.md#trackCustomEvent) | **POST** /v1/events | Track Custom Event
-*EventsApi* | [**trackCustomEventClientSide**](docs/EventsApi.md#trackCustomEventClientSide) | **POST** /client/v1/events | Track Custom Event (client-side)
 *ExportsApi* | [**createExport**](docs/ExportsApi.md#createExport) | **POST** /v1/exports | Create Export
 *ExportsApi* | [**deleteExport**](docs/ExportsApi.md#deleteExport) | **DELETE** /v1/exports/{exportId} | Delete Export
 *ExportsApi* | [**downloadExport**](docs/ExportsApi.md#downloadExport) | **GET** /v1/exports/{export_Id} | Download Export
@@ -237,11 +240,12 @@ Class | Method | HTTP request | Description
 *PublicationsApi* | [**createPublication1**](docs/PublicationsApi.md#createPublication1) | **GET** /v1/publications/create | Create Publication
 *PublicationsApi* | [**listPublications**](docs/PublicationsApi.md#listPublications) | **GET** /v1/publications | List Publications
 *QualificationsApi* | [**checkEligibility**](docs/QualificationsApi.md#checkEligibility) | **POST** /v1/qualifications | Check Eligibility
-*QualificationsApi* | [**checkEligibilityClientSide**](docs/QualificationsApi.md#checkEligibilityClientSide) | **POST** /client/v1/qualifications | Check Eligibility (client-side)
 *RedemptionsApi* | [**getRedemption**](docs/RedemptionsApi.md#getRedemption) | **GET** /v1/redemptions/{redemptionId} | Get Redemption
 *RedemptionsApi* | [**getVoucherRedemptions**](docs/RedemptionsApi.md#getVoucherRedemptions) | **GET** /v1/vouchers/{code}/redemption | Get Voucher&#39;s Redemptions
 *RedemptionsApi* | [**listRedemptions**](docs/RedemptionsApi.md#listRedemptions) | **GET** /v1/redemptions | List Redemptions
+*RedemptionsApi* | [**redeemStackedDiscounts**](docs/RedemptionsApi.md#redeemStackedDiscounts) | **POST** /v1/redemptions | Redeem Stackable Discounts
 *RedemptionsApi* | [**rollbackRedemption**](docs/RedemptionsApi.md#rollbackRedemption) | **POST** /v1/redemptions/{redemptionId}/rollback | Rollback Redemption
+*RedemptionsApi* | [**rollbackStackedRedemptions**](docs/RedemptionsApi.md#rollbackStackedRedemptions) | **POST** /v1/redemptions/{parentRedemptionId}/rollbacks | Rollback Stackable Redemptions
 *RewardsApi* | [**createRewardAssignment**](docs/RewardsApi.md#createRewardAssignment) | **POST** /v1/rewards/{rewardId}/assignments | Create Reward Assignment
 *RewardsApi* | [**deleteReward**](docs/RewardsApi.md#deleteReward) | **DELETE** /v1/rewards/{rewardId} | Delete Reward
 *RewardsApi* | [**deleteRewardAssignment**](docs/RewardsApi.md#deleteRewardAssignment) | **DELETE** /v1/rewards/{rewardId}/assignments/{assignmentId} | Delete Reward Assignment
@@ -249,11 +253,6 @@ Class | Method | HTTP request | Description
 *RewardsApi* | [**listRewardAssignments**](docs/RewardsApi.md#listRewardAssignments) | **GET** /v1/rewards/{rewardId}/assignments | List Reward Assignments
 *RewardsApi* | [**updateRewardAssignment**](docs/RewardsApi.md#updateRewardAssignment) | **PUT** /v1/rewards/{rewardId}/assignments/{assignmentId} | Update Reward Assignment
 *SegmentsApi* | [**deleteSegment**](docs/SegmentsApi.md#deleteSegment) | **DELETE** /v1/segments/{segmentId} | Delete Segment
-*StackableDiscountsApi* | [**redeemStackedDiscounts**](docs/StackableDiscountsApi.md#redeemStackedDiscounts) | **POST** /v1/redemptions | Redeem Stackable Discounts
-*StackableDiscountsApi* | [**redeemStackedDiscountsClientSide**](docs/StackableDiscountsApi.md#redeemStackedDiscountsClientSide) | **POST** /client/v1/redemptions | Redeem Stackable Discounts (client-side)
-*StackableDiscountsApi* | [**rollbackStackedRedemptions**](docs/StackableDiscountsApi.md#rollbackStackedRedemptions) | **POST** /v1/redemptions/{parentRedemptionId}/rollbacks | Rollback Stackable Redemptions
-*StackableDiscountsApi* | [**validateStackedDiscounts**](docs/StackableDiscountsApi.md#validateStackedDiscounts) | **POST** /v1/validations | Validate Stackable Discounts
-*StackableDiscountsApi* | [**validateStackedDiscountsClientSide**](docs/StackableDiscountsApi.md#validateStackedDiscountsClientSide) | **POST** /client/v1/validations | Validate Stackable Discounts (client-side)
 *ValidationRulesApi* | [**createValidationRules**](docs/ValidationRulesApi.md#createValidationRules) | **POST** /v1/validation-rules | Create Validation Rules
 *ValidationRulesApi* | [**deleteValidationRuleAssignment**](docs/ValidationRulesApi.md#deleteValidationRuleAssignment) | **DELETE** /v1/validation-rules/{validationRuleId}/assignments/{assignmentId} | Delete Validation Rule Assignment
 *ValidationRulesApi* | [**deleteValidationRules**](docs/ValidationRulesApi.md#deleteValidationRules) | **DELETE** /v1/validation-rules/{validationRuleId} | Delete Validation Rule
@@ -262,6 +261,7 @@ Class | Method | HTTP request | Description
 *ValidationRulesApi* | [**listValidationRules**](docs/ValidationRulesApi.md#listValidationRules) | **GET** /v1/validation-rules | List Validation Rules
 *ValidationRulesApi* | [**listValidationRulesAssignments**](docs/ValidationRulesApi.md#listValidationRulesAssignments) | **GET** /v1/validation-rules-assignments | List Validation Rules&#39; Assignment(s)
 *ValidationRulesApi* | [**updateValidationRule**](docs/ValidationRulesApi.md#updateValidationRule) | **PUT** /v1/validation-rules/{validationRuleId} | Update Validation Rule
+*ValidationsApi* | [**validateStackedDiscounts**](docs/ValidationsApi.md#validateStackedDiscounts) | **POST** /v1/validations | Validate Stackable Discounts
 *VouchersApi* | [**deleteVoucher**](docs/VouchersApi.md#deleteVoucher) | **DELETE** /v1/vouchers/{code} | Delete Voucher
 *VouchersApi* | [**disableVoucher**](docs/VouchersApi.md#disableVoucher) | **POST** /v1/vouchers/{code}/disable | Disable Voucher
 *VouchersApi* | [**enableVoucher**](docs/VouchersApi.md#enableVoucher) | **POST** /v1/vouchers/{code}/enable | Enable Voucher
