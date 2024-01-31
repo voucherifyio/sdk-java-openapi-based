@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import voucherify.client.ApiClient;
 import voucherify.client.ApiException;
-import voucherify.client.api.StackableDiscountsApi;
+import voucherify.client.api.ValidationsApi;
 import voucherify.client.model.*;
 
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 @org.junit.jupiter.api.Order(7) //Multiple Order type
-public class StackableDiscountsTest {
+public class ValidationsTest {
     public static ApiClient defaultClient = null;
-    public static StackableDiscountsApi stackableDiscounts = null;
+    public static ValidationsApi validationsApi = null;
 
     @BeforeAll
     public static void beforeAll() {
         defaultClient = Utils.getClient();
-        stackableDiscounts = new StackableDiscountsApi(defaultClient);
+        validationsApi = new ValidationsApi(defaultClient);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class StackableDiscountsTest {
         ValidationsValidateRequestBody validationsValidateRequestBody = getValidationsValidateRequestBody();
 
         try {
-            ValidationsValidateResponseBody responseBody = stackableDiscounts.validateStackedDiscounts(validationsValidateRequestBody);
+            ValidationsValidateResponseBody responseBody = validationsApi.validateStackedDiscounts(validationsValidateRequestBody);
 
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
