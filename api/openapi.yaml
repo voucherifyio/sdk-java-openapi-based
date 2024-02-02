@@ -21982,19 +21982,6 @@ components:
         inapplicable_redeemables:
         - ""
         - ""
-        stacking_rules:
-          joint_categories:
-          - joint_categories
-          - joint_categories
-          exclusive_categories:
-          - exclusive_categories
-          - exclusive_categories
-          applicable_redeemables_per_category_limit: 18
-          redeemables_application_mode: ALL
-          applicable_exclusive_redeemables_limit: 5
-          redeemables_sorting_rule: REQUESTED_ORDER
-          applicable_redeemables_limit: 18
-          redeemables_limit: 3
         skipped_redeemables:
         - ""
         - ""
@@ -22037,10 +22024,7 @@ components:
           type: string
         session:
           $ref: '#/components/schemas/Session'
-        stacking_rules:
-          $ref: '#/components/schemas/StackingRules'
       required:
-      - application_mode
       - redeemables
       - valid
       title: Validations Validate Response Body
@@ -27812,6 +27796,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
       title: Referrer With Summary Loyalty Referrals
+    ResourceTypes:
+      description: Types of usable resources.
+      enum:
+      - campaign
+      - voucher
+      - promotion_tier
+      title: Resource Types
+      type: string
     RewardAssignmentBase:
       properties:
         id:
@@ -31717,6 +31709,32 @@ components:
         orders:
           $ref: '#/components/schemas/PromotionTier_summary_orders'
       type: object
+    QualificationsOption_filters_resource_type_conditions:
+      description: Data filters used to narrow the data records to be returned in
+        the result.
+      properties:
+        $is:
+          $ref: '#/components/schemas/ResourceTypes'
+        $is_not:
+          $ref: '#/components/schemas/ResourceTypes'
+        $in:
+          description: Array of qualified redeemables. Accepts more than one value.
+            Returns the resource types entered in the array.
+          items:
+            $ref: '#/components/schemas/ResourceTypes'
+          type: array
+        $not_in:
+          description: Array of qualified redeemables. Accepts more than one value.
+            Returns the resource types except those entered in the array.
+          items:
+            $ref: '#/components/schemas/ResourceTypes'
+          type: array
+      type: object
+    QualificationsOption_filters_resource_type:
+      properties:
+        conditions:
+          $ref: '#/components/schemas/QualificationsOption_filters_resource_type_conditions'
+      type: object
     QualificationsOption_filters:
       additionalProperties: false
       description: A set of filters to return only a specific category or type of
@@ -31731,7 +31749,7 @@ components:
         resource_id:
           $ref: '#/components/schemas/QualificationsFieldConditions'
         resource_type:
-          $ref: '#/components/schemas/QualificationsFieldConditions'
+          $ref: '#/components/schemas/QualificationsOption_filters_resource_type'
         voucher_type:
           $ref: '#/components/schemas/QualificationsFieldConditions'
         code:

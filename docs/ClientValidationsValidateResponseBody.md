@@ -15,7 +15,6 @@ Response body schema for POST `/validations`.
 |**order** | [**OrderCalculated**](OrderCalculated.md) |  |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**session** | [**Session**](Session.md) |  |  [optional] |
-|**stackingRules** | [**StackingRules**](StackingRules.md) |  |  [optional] |
 
 
 

@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.Session;
-import voucherify.client.model.StackingRules;
 import voucherify.client.model.ValidationsRedeemableInapplicable;
 import voucherify.client.model.ValidationsValidateAllResponseBodyRedeemablesItem;
 
@@ -86,10 +85,6 @@ public class ValidationsValidateResponseBody {
   public static final String SERIALIZED_NAME_SESSION = "session";
   @SerializedName(SERIALIZED_NAME_SESSION)
   private Session session;
-
-  public static final String SERIALIZED_NAME_STACKING_RULES = "stacking_rules";
-  @SerializedName(SERIALIZED_NAME_STACKING_RULES)
-  private StackingRules stackingRules;
 
   public ValidationsValidateResponseBody() {
   }
@@ -265,27 +260,6 @@ public class ValidationsValidateResponseBody {
   }
 
 
-  public ValidationsValidateResponseBody stackingRules(StackingRules stackingRules) {
-    
-    this.stackingRules = stackingRules;
-    return this;
-  }
-
-   /**
-   * Get stackingRules
-   * @return stackingRules
-  **/
-  @javax.annotation.Nullable
-  public StackingRules getStackingRules() {
-    return stackingRules;
-  }
-
-
-  public void setStackingRules(StackingRules stackingRules) {
-    this.stackingRules = stackingRules;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -302,13 +276,12 @@ public class ValidationsValidateResponseBody {
         Objects.equals(this.inapplicableRedeemables, validationsValidateResponseBody.inapplicableRedeemables) &&
         Objects.equals(this.order, validationsValidateResponseBody.order) &&
         Objects.equals(this.trackingId, validationsValidateResponseBody.trackingId) &&
-        Objects.equals(this.session, validationsValidateResponseBody.session) &&
-        Objects.equals(this.stackingRules, validationsValidateResponseBody.stackingRules);
+        Objects.equals(this.session, validationsValidateResponseBody.session);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(valid, redeemables, skippedRedeemables, inapplicableRedeemables, order, trackingId, session, stackingRules);
+    return Objects.hash(valid, redeemables, skippedRedeemables, inapplicableRedeemables, order, trackingId, session);
   }
 
   @Override
@@ -322,7 +295,6 @@ public class ValidationsValidateResponseBody {
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
     sb.append("    session: ").append(toIndentedString(session)).append("\n");
-    sb.append("    stackingRules: ").append(toIndentedString(stackingRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -352,7 +324,6 @@ public class ValidationsValidateResponseBody {
     openapiFields.add("order");
     openapiFields.add("tracking_id");
     openapiFields.add("session");
-    openapiFields.add("stacking_rules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -436,10 +407,6 @@ public class ValidationsValidateResponseBody {
       // validate the optional field `session`
       if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
         Session.validateJsonElement(jsonObj.get("session"));
-      }
-      // validate the optional field `stacking_rules`
-      if (jsonObj.get("stacking_rules") != null && !jsonObj.get("stacking_rules").isJsonNull()) {
-        StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
       }
   }
 

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.Junction;
 import voucherify.client.model.QualificationsFieldConditions;
+import voucherify.client.model.QualificationsOptionFiltersResourceType;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -72,7 +73,7 @@ public class QualificationsOptionFilters {
 
   public static final String SERIALIZED_NAME_RESOURCE_TYPE = "resource_type";
   @SerializedName(SERIALIZED_NAME_RESOURCE_TYPE)
-  private QualificationsFieldConditions resourceType;
+  private QualificationsOptionFiltersResourceType resourceType;
 
   public static final String SERIALIZED_NAME_VOUCHER_TYPE = "voucher_type";
   @SerializedName(SERIALIZED_NAME_VOUCHER_TYPE)
@@ -169,7 +170,7 @@ public class QualificationsOptionFilters {
   }
 
 
-  public QualificationsOptionFilters resourceType(QualificationsFieldConditions resourceType) {
+  public QualificationsOptionFilters resourceType(QualificationsOptionFiltersResourceType resourceType) {
     
     this.resourceType = resourceType;
     return this;
@@ -180,12 +181,12 @@ public class QualificationsOptionFilters {
    * @return resourceType
   **/
   @javax.annotation.Nullable
-  public QualificationsFieldConditions getResourceType() {
+  public QualificationsOptionFiltersResourceType getResourceType() {
     return resourceType;
   }
 
 
-  public void setResourceType(QualificationsFieldConditions resourceType) {
+  public void setResourceType(QualificationsOptionFiltersResourceType resourceType) {
     this.resourceType = resourceType;
   }
 
@@ -336,7 +337,7 @@ public class QualificationsOptionFilters {
       }
       // validate the optional field `resource_type`
       if (jsonObj.get("resource_type") != null && !jsonObj.get("resource_type").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("resource_type"));
+        QualificationsOptionFiltersResourceType.validateJsonElement(jsonObj.get("resource_type"));
       }
       // validate the optional field `voucher_type`
       if (jsonObj.get("voucher_type") != null && !jsonObj.get("voucher_type").isJsonNull()) {
