@@ -1,0 +1,21 @@
+
+
+# EventCustomerRedemptionSucceeded
+
+Event data object schema for `customer.redemption.succeeded`.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
+|**order** | [**SimpleOrder**](SimpleOrder.md) |  |  [optional] |
+|**campaign** | [**SimpleCampaign**](SimpleCampaign.md) |  |  [optional] |
+|**voucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |  [optional] |
+|**holder** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
+|**promotionTier** | [**SimplePromotionTier**](SimplePromotionTier.md) |  |  [optional] |
+|**promotionStack** | [**SimplePromotionStack**](SimplePromotionStack.md) |  |  [optional] |
+|**redemption** | [**SimpleRedemption**](SimpleRedemption.md) |  |  [optional] |
+
+
+
