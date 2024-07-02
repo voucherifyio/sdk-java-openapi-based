@@ -10,8 +10,9 @@ This is an object representing customer activity.    This is a general object wh
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Unique event ID, assigned by Voucherify. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Event type. |  [optional] |
-|**data** | [**List&lt;CustomerActivityData&gt;**](CustomerActivityData.md) | Contains details about the event. The objects that are returned in the data attribute differ based on the context of the event type. |  [optional] |
+|**data** | [**CustomerActivityData**](CustomerActivityData.md) |  |  [optional] |
 |**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the customer activity occurred in ISO 8601 format. |  [optional] |
+|**groupId** | **String** | Unique identifier of the request that caused the event. |  [optional] |
 
 
 

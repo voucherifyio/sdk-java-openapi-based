@@ -9,12 +9,12 @@ All URIs are relative to *https://api.voucherify.io*
 | [**deleteCustomer**](CustomersApi.md#deleteCustomer) | **DELETE** /v1/customers/{customerId} | Delete Customer |
 | [**getCustomer**](CustomersApi.md#getCustomer) | **GET** /v1/customers/{customerId} | Get Customer |
 | [**importCustomersUsingCsv**](CustomersApi.md#importCustomersUsingCsv) | **POST** /v1/customers/importCSV | Import and Update Customers using CSV |
-| [**listCustomerActivities**](CustomersApi.md#listCustomerActivities) | **GET** /v1/customers/{customerId}/activities | List Customer Activities |
+| [**listCustomerActivity**](CustomersApi.md#listCustomerActivity) | **GET** /v1/customers/{customerId}/activity | List Customer Activity |
+| [**listCustomerRedeemables**](CustomersApi.md#listCustomerRedeemables) | **GET** /v1/customers/{customerId}/redeemables | List Customer&#39;s Redeemables [Beta] |
 | [**listCustomerSegments**](CustomersApi.md#listCustomerSegments) | **GET** /v1/customers/{customerId}/segments | List Customer&#39;s Segments |
 | [**listCustomers**](CustomersApi.md#listCustomers) | **GET** /v1/customers | List Customers |
 | [**updateCustomer**](CustomersApi.md#updateCustomer) | **PUT** /v1/customers/{customerId} | Update Customer |
 | [**updateCustomersConsents**](CustomersApi.md#updateCustomersConsents) | **PUT** /v1/customers/{customerId}/consents | Update Customer&#39;s consents |
-| [**updateCustomersConsentsClientSide**](CustomersApi.md#updateCustomersConsentsClientSide) | **PUT** /client/v1/customers/{customerId}/consents | Update Customer&#39;s consents (client-side) |
 | [**updateCustomersInBulk**](CustomersApi.md#updateCustomersInBulk) | **POST** /v1/customers/bulk/async | Update Customers in bulk |
 | [**updateCustomersMetadataInBulk**](CustomersApi.md#updateCustomersMetadataInBulk) | **POST** /v1/customers/metadata/async | Update Customers&#39; Metadata in bulk |
 
@@ -393,11 +393,11 @@ public class Example {
 |-------------|-------------|------------------|
 | **202** | Returns ID of the scheduled async action. The response informs you that your request has been accepted and customers will be added to the repository asynchronously. To check the import status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using the &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. |  -  |
 
-<a id="listCustomerActivities"></a>
-# **listCustomerActivities**
-> CustomersActivitiesListResponseBody listCustomerActivities(customerId, limit, order, startingAfter, startingAfterId, campaignType, campaignId, productId, startDate, endDate)
+<a id="listCustomerActivity"></a>
+# **listCustomerActivity**
+> CustomersActivityListResponseBody listCustomerActivity(customerId, limit, order, startingAfterId, startDate, endDate, campaignId, campaignType, category, type)
 
-List Customer Activities
+List Customer Activity
 
 Retrieve customer activities.
 
@@ -430,20 +430,20 @@ public class Example {
 
     CustomersApi apiInstance = new CustomersApi(defaultClient);
     String customerId = "customerId_example"; // String | A Voucherify customer's `id` or source ID of the customer who performed the activities.
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    ParameterOrder order = ParameterOrder.fromValue("created_at"); // ParameterOrder | Sorts the results using one of the filtering options, where the dash `-` preceding a sorting option means sorting in a descending order.
-    OffsetDateTime startingAfter = OffsetDateTime.now(); // OffsetDateTime | A cursor for use in pagination. `starting_after` is a date-time value that defines your place in the list based on `created_at` property from the activity object. For instance, if you make a list request and receive 100 objects, ending with an object created at `2020-05-24T13:43:09.024Z`, your subsequent call can include `starting_after=2020-05-24T13:43:09.024Z` in order to fetch the next page of the list.
-    String startingAfterId = "startingAfterId_example"; // String | By applying this filter value, you will get events starting after an event with the given ID.
-    ParameterCampaignType campaignType = ParameterCampaignType.fromValue("PROMOTION"); // ParameterCampaignType | Through this parameter you can control a type of campaign by which Voucherify will filter related customer's activity. API will return only records related to that given type. Allowed values: DISCOUNT_COUPONS, REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM
-    String campaignId = "campaignId_example"; // String | By applying this parameter you request only events related to specific campaign identified by its ID.
-    String productId = "productId_example"; // String | By applying this parameter you request only events related to specific product identified by its ID.
-    OffsetDateTime startDate = OffsetDateTime.now(); // OffsetDateTime | Timestamp representing the date and time which results must end on. Represented in ISO 8601 format.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    ParameterOrderCreatedAt order = ParameterOrderCreatedAt.fromValue("created_at"); // ParameterOrderCreatedAt | Apply this filter to order the events according the date and time when it was created. 
+    String startingAfterId = "startingAfterId_example"; // String | A cursor for pagination. It retrieves the results starting after the given ID.
+    OffsetDateTime startDate = OffsetDateTime.now(); // OffsetDateTime | Timestamp representing the date and time which results must begin on. Represented in ISO 8601 format.
     OffsetDateTime endDate = OffsetDateTime.now(); // OffsetDateTime | Timestamp representing the date and time which results must end on. Represented in ISO 8601 format.
+    String campaignId = "campaignId_example"; // String | Requests only events related to specific campaign identified by its ID.
+    ParameterCampaignType campaignType = ParameterCampaignType.fromValue("PROMOTION"); // ParameterCampaignType | Filters related customer's activity for the selected campaign types. Allowed values:  `DISCOUNT_COUPONS`, `REFERRAL_PROGRAM`, `GIFT_VOUCHERS`, `PROMOTION`, `LOYALTY_PROGRAM`.
+    ParameterCategory category = ParameterCategory.fromValue("ACTION"); // ParameterCategory | Filters activities for actions or effects. Allowed values:  `ACTION`, `EFFECT`.
+    ParameterCustomerEvent type = ParameterCustomerEvent.fromValue("customer.confirmed"); // ParameterCustomerEvent | Event name of the customer event.
     try {
-      CustomersActivitiesListResponseBody result = apiInstance.listCustomerActivities(customerId, limit, order, startingAfter, startingAfterId, campaignType, campaignId, productId, startDate, endDate);
+      CustomersActivityListResponseBody result = apiInstance.listCustomerActivity(customerId, limit, order, startingAfterId, startDate, endDate, campaignId, campaignType, category, type);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CustomersApi#listCustomerActivities");
+      System.err.println("Exception when calling CustomersApi#listCustomerActivity");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -458,19 +458,19 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or source ID of the customer who performed the activities. | |
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **order** | [**ParameterOrder**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at, type, -type, code, -code, campaign, -campaign, category, -category] |
-| **startingAfter** | **OffsetDateTime**| A cursor for use in pagination. &#x60;starting_after&#x60; is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the activity object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list. | [optional] |
-| **startingAfterId** | **String**| By applying this filter value, you will get events starting after an event with the given ID. | [optional] |
-| **campaignType** | [**ParameterCampaignType**](.md)| Through this parameter you can control a type of campaign by which Voucherify will filter related customer&#39;s activity. API will return only records related to that given type. Allowed values: DISCOUNT_COUPONS, REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM | [optional] [enum: PROMOTION, GIFT_VOUCHERS, REFERRAL_PROGRAM, DISCOUNT_COUPONS, LOYALTY_PROGRAM, LUCKY_DRAW] |
-| **campaignId** | **String**| By applying this parameter you request only events related to specific campaign identified by its ID. | [optional] |
-| **productId** | **String**| By applying this parameter you request only events related to specific product identified by its ID. | [optional] |
-| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **order** | [**ParameterOrderCreatedAt**](.md)| Apply this filter to order the events according the date and time when it was created.  | [optional] [enum: created_at, -created_at] |
+| **startingAfterId** | **String**| A cursor for pagination. It retrieves the results starting after the given ID. | [optional] |
+| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must begin on. Represented in ISO 8601 format. | [optional] |
 | **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
+| **campaignId** | **String**| Requests only events related to specific campaign identified by its ID. | [optional] |
+| **campaignType** | [**ParameterCampaignType**](.md)| Filters related customer&#39;s activity for the selected campaign types. Allowed values:  &#x60;DISCOUNT_COUPONS&#x60;, &#x60;REFERRAL_PROGRAM&#x60;, &#x60;GIFT_VOUCHERS&#x60;, &#x60;PROMOTION&#x60;, &#x60;LOYALTY_PROGRAM&#x60;. | [optional] [enum: PROMOTION, GIFT_VOUCHERS, REFERRAL_PROGRAM, DISCOUNT_COUPONS, LOYALTY_PROGRAM, LUCKY_DRAW] |
+| **category** | [**ParameterCategory**](.md)| Filters activities for actions or effects. Allowed values:  &#x60;ACTION&#x60;, &#x60;EFFECT&#x60;. | [optional] [enum: ACTION, EFFECT] |
+| **type** | [**ParameterCustomerEvent**](.md)| Event name of the customer event. | [optional] [enum: customer.confirmed, customer.created, customer.updated, customer.deleted, customer.referred, customer.custom_event, customer.segment.entered, customer.segment.left, customer.sms.sent, customer.sms.recovered, customer.sms.failed, customer.email.sent, customer.email.recovered, customer.email.failed, customer.activecampaign.sent, customer.activecampaign.recovered, customer.activecampaign.failed, customer.braze.sent, customer.braze.recovered, customer.braze.failed, customer.mailchimp.sent, customer.mailchimp.recovered, customer.mailchimp.failed, customer.intercom.sent, customer.intercom.recovered, customer.intercom.failed, customer.shopify.sent, customer.shopify.recovered, customer.shopify.failed, customer.klaviyo.sent, customer.klaviyo.recovered, customer.klaviyo.failed, customer.batch.sent, customer.batch.recovered, customer.batch.failed, customer.rewarded, customer.rewarded.loyalty_points, customer.voucher.gift.balance_added, customer.voucher.loyalty_card.points_added, customer.voucher.loyalty_card.points_transferred, customer.voucher.loyalty_card.points_expired, customer.voucher.deleted, customer.publication.succeeded, customer.publication.failed, customer.validation.succeeded, customer.validation.failed, customer.redemption.failed, customer.redemption.succeeded, customer.redemption.rollback.failed, customer.redemption.rollback.succeeded, customer.consents.given, customer.consents.revoked, customer.order.canceled, customer.order.created, customer.order.fulfilled, customer.order.paid, customer.order.processing, customer.order.updated, customer.reward_redemptions.created, customer.reward_redemptions.pending, customer.reward_redemptions.completed, customer.reward_redemptions.rolledback, customer.loyalty.updated, customer.loyalty.tier.upgraded, customer.loyalty.tier.downgraded, customer.loyalty.tier.prolonged, customer.loyalty.tier.expiration.changed, customer.loyalty.tier.joined, customer.loyalty.tier.left] |
 
 ### Return type
 
-[**CustomersActivitiesListResponseBody**](CustomersActivitiesListResponseBody.md)
+[**CustomersActivityListResponseBody**](CustomersActivityListResponseBody.md)
 
 ### Authorization
 
@@ -485,6 +485,89 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Returns a dictionary with customer activities. |  -  |
+
+<a id="listCustomerRedeemables"></a>
+# **listCustomerRedeemables**
+> CustomersRedeemablesListResponseBody listCustomerRedeemables(customerId, limit, order, startingAfterId, filters)
+
+List Customer&#39;s Redeemables [Beta]
+
+Retrieves all the redeemables that have been assigned to the customer. &gt;🚧 User Permissions &gt; &gt;The users of this endpoint must have the Read Customers (&#x60;customers.details.read&#x60;) permission granted.
+
+### Example
+```java
+// Import classes:
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.CustomersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.voucherify.io");
+    
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Id.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Token.setApiKeyPrefix("Token");
+
+    CustomersApi apiInstance = new CustomersApi(defaultClient);
+    String customerId = "customerId_example"; // String | Unique identifier of a customer represented by an internal customer ID or customer source ID.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    ParameterOrderListRedeemables order = ParameterOrderListRedeemables.fromValue("created_at"); // ParameterOrderListRedeemables | Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order.
+    String startingAfterId = "startingAfterId_example"; // String | A cursor for pagination. It retrieves the results starting after the given ID.
+    ParameterFiltersListCustomerRedeemables filters = new ParameterFiltersListCustomerRedeemables(); // ParameterFiltersListCustomerRedeemables | Filters for listing customer redeemables.
+    try {
+      CustomersRedeemablesListResponseBody result = apiInstance.listCustomerRedeemables(customerId, limit, order, startingAfterId, filters);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CustomersApi#listCustomerRedeemables");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customerId** | **String**| Unique identifier of a customer represented by an internal customer ID or customer source ID. | |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **order** | [**ParameterOrderListRedeemables**](.md)| Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, id, -id] |
+| **startingAfterId** | **String**| A cursor for pagination. It retrieves the results starting after the given ID. | [optional] |
+| **filters** | [**ParameterFiltersListCustomerRedeemables**](.md)| Filters for listing customer redeemables. | [optional] |
+
+### Return type
+
+[**CustomersRedeemablesListResponseBody**](CustomersRedeemablesListResponseBody.md)
+
+### Authorization
+
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The method returns redeemable(s) to which the given customer is assigned. |  -  |
 
 <a id="listCustomerSegments"></a>
 # **listCustomerSegments**
@@ -597,8 +680,8 @@ public class Example {
     //X-App-Token.setApiKeyPrefix("Token");
 
     CustomersApi apiInstance = new CustomersApi(defaultClient);
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     String email = "email_example"; // String | Limit the customers to the ones that have this specific email address.
     String city = "city_example"; // String | Limit the customers to the ones that are located in the specified city.
     String name = "name_example"; // String | Filter customers by the name property.
@@ -608,7 +691,7 @@ public class Example {
     OffsetDateTime updatedAtBefore = OffsetDateTime.now(); // OffsetDateTime | Filter customers by date customer was updated last time.
     OffsetDateTime updatedAtAfter = OffsetDateTime.now(); // OffsetDateTime | Filter customers by date customer was updated last time.
     ParameterOrderListCustomers order = ParameterOrderListCustomers.fromValue("created_at"); // ParameterOrderListCustomers | This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash `-` preceding a sorting option means sorting in a descending order.
-    OffsetDateTime startingAfter = OffsetDateTime.now(); // OffsetDateTime | A cursor for use in pagination. This is a date-time value that defines your place in the list based on `created_at` property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at `2020-05-24T13:43:09.024Z`, your subsequent call can include `starting_after=2020-05-24T13:43:09.024Z` in order to fetch the next page of the list.  <!-- title: Options --> | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set `starting_after` parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the `order` parameter set to `created_at` or `updated_at`<br>- set `starting_after` to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. | 
+    OffsetDateTime startingAfter = OffsetDateTime.now(); // OffsetDateTime | A cursor for pagination. This is a date-time value that defines your place in the list based on `created_at` property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at `2020-05-24T13:43:09.024Z`, your subsequent call can include `starting_after=2020-05-24T13:43:09.024Z` in order to fetch the next page of the list.  <!-- title: Options --> | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set `starting_after` parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the `order` parameter set to `created_at` or `updated_at`<br>- set `starting_after` to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. | 
     try {
       CustomersListResponseBody result = apiInstance.listCustomers(limit, page, email, city, name, segmentId, createdAtBefore, createdAtAfter, updatedAtBefore, updatedAtAfter, order, startingAfter);
       System.out.println(result);
@@ -627,8 +710,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 | **email** | **String**| Limit the customers to the ones that have this specific email address. | [optional] |
 | **city** | **String**| Limit the customers to the ones that are located in the specified city. | [optional] |
 | **name** | **String**| Filter customers by the name property. | [optional] |
@@ -638,7 +721,7 @@ public class Example {
 | **updatedAtBefore** | **OffsetDateTime**| Filter customers by date customer was updated last time. | [optional] |
 | **updatedAtAfter** | **OffsetDateTime**| Filter customers by date customer was updated last time. | [optional] |
 | **order** | [**ParameterOrderListCustomers**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at, source_id, -source_id] |
-| **startingAfter** | **OffsetDateTime**| A cursor for use in pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  | [optional] |
+| **startingAfter** | **OffsetDateTime**| A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  | [optional] |
 
 ### Return type
 
@@ -800,82 +883,6 @@ null (empty response body)
 ### Authorization
 
 [X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Returns no content if the consents were updated successfully. |  -  |
-
-<a id="updateCustomersConsentsClientSide"></a>
-# **updateCustomersConsentsClientSide**
-> updateCustomersConsentsClientSide(customerId, body)
-
-Update Customer&#39;s consents (client-side)
-
-Update marketing permissions for the specified customer.
-
-### Example
-```java
-// Import classes:
-import voucherify.client.ApiClient;
-import voucherify.client.ApiException;
-import voucherify.client.Configuration;
-import voucherify.client.auth.*;
-import voucherify.client.models.*;
-import voucherify.client.api.CustomersApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.voucherify.io");
-    
-    // Configure API key authorization: X-Client-Application-Id
-    ApiKeyAuth X-Client-Application-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Application-Id");
-    X-Client-Application-Id.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-Client-Application-Id.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: X-Client-Token
-    ApiKeyAuth X-Client-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-Client-Token");
-    X-Client-Token.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-Client-Token.setApiKeyPrefix("Token");
-
-    CustomersApi apiInstance = new CustomersApi(defaultClient);
-    String customerId = "customerId_example"; // String | A Voucherify customer identifier or `source_id`
-    Object body = {"cnst_6jQ5XcUOLnj5L7ImQAdBsJ1I":true,"cnst_VCmucIvAsmDYw2PPAok6bcYy":false}; // Object | Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \"unsubscribed\" as a consent identifier and \"true\" as its value.    #### Examples  <!-- title: \"Request Body\" lineNumbers: true --> ```json {     \"cnst_aIdUulAh0SCsOCaS3005y7yS\": true,     \"cnst_aIdUulAhwewqaS31213fdsfds\": false } ```  Opt-out from all communication:  <!-- title: \"Request Body\" lineNumbers: true --> ```json {     \"unsubscribed\": true } ```
-    try {
-      apiInstance.updateCustomersConsentsClientSide(customerId, body);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CustomersApi#updateCustomersConsentsClientSide");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A Voucherify customer identifier or &#x60;source_id&#x60; | |
-| **body** | **Object**| Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[X-Client-Application-Id](../README.md#X-Client-Application-Id), [X-Client-Token](../README.md#X-Client-Token)
 
 ### HTTP request headers
 

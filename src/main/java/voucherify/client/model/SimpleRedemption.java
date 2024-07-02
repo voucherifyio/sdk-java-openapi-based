@@ -231,7 +231,7 @@ public class SimpleRedemption {
   }
 
    /**
-   * Timestamp representing the date and time when the redemption was created in ISO 8601 format.
+   * Timestamp representing the date and time when the redemption was created. The value is shown in the ISO 8601 format.
    * @return date
   **/
   @javax.annotation.Nullable
@@ -420,7 +420,7 @@ public class SimpleRedemption {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;redemption&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;redemption&#x60;.
    * @return _object
   **/
   @javax.annotation.Nullable

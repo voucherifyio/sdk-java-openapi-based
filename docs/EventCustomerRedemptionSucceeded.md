@@ -14,6 +14,7 @@ Event data object schema for `customer.redemption.succeeded`.
 |**voucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |  [optional] |
 |**holder** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
 |**promotionTier** | [**SimplePromotionTier**](SimplePromotionTier.md) |  |  [optional] |
+|**promotionStack** | [**SimplePromotionStack**](SimplePromotionStack.md) |  |  [optional] |
 |**redemption** | [**SimpleRedemption**](SimpleRedemption.md) |  |  [optional] |
 
 

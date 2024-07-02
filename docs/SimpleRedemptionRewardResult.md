@@ -14,10 +14,10 @@
 |**sku** | [**SimpleSku**](SimpleSku.md) |  |  [optional] |
 |**loyaltyTierId** | **String** | Unique loyalty tier ID assigned by Voucherify. |  [optional] |
 |**id** | **String** | Unique reward ID, assigned by Voucherify. |  [optional] |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by the JSON. This object stores information about the reward. |  [optional] |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON. This object stores information about the reward. |  [optional] |
 |**name** | **String** | Reward name. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the reward was created in ISO 8601 format. |  [optional] |
-|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the reward was updated in ISO 8601 format. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the reward was created. The value is shown in the ISO 8601 format. |  [optional] |
+|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the reward was updated. The value is shown in the ISO 8601 format. |  [optional] |
 |**parameters** | **Object** | Defines how the reward is generated. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Reward type. |  [optional] |
 

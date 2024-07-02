@@ -210,7 +210,7 @@ public class ValidationEntity {
   }
 
    /**
-   * Timestamp representing the date and time when the validation was created in ISO 8601 format.
+   * Timestamp representing the date and time when the validation was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable

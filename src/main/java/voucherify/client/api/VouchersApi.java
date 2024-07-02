@@ -84,7 +84,7 @@ public class VouchersApi {
     /**
      * Build call for deleteVoucher
      * @param code A unique **code** that identifies the voucher. (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -155,9 +155,9 @@ public class VouchersApi {
 
     /**
      * Delete Voucher
-     * Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.
+     * Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the voucher will be moved to [the bin](ref:list-bin-entries).
      * @param code A unique **code** that identifies the voucher. (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -171,9 +171,9 @@ public class VouchersApi {
 
     /**
      * Delete Voucher
-     * Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.
+     * Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the voucher will be moved to [the bin](ref:list-bin-entries).
      * @param code A unique **code** that identifies the voucher. (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,9 +189,9 @@ public class VouchersApi {
 
     /**
      * Delete Voucher (asynchronously)
-     * Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.
+     * Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the voucher will be moved to [the bin](ref:list-bin-entries).
      * @param code A unique **code** that identifies the voucher. (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -829,8 +829,8 @@ public class VouchersApi {
     /**
      * Build call for listVoucherTransactions
      * @param code A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify, i.e. &#x60;v_TzD19aeNiqGc9LWciMWknyEZT8IW7u4u&#x60;. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -908,8 +908,8 @@ public class VouchersApi {
      * List Voucher Transactions
      * List transactions that are associated with credit movements on a gift card or loyalty card.
      * @param code A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify, i.e. &#x60;v_TzD19aeNiqGc9LWciMWknyEZT8IW7u4u&#x60;. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return VouchersTransactionsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -927,8 +927,8 @@ public class VouchersApi {
      * List Voucher Transactions
      * List transactions that are associated with credit movements on a gift card or loyalty card.
      * @param code A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify, i.e. &#x60;v_TzD19aeNiqGc9LWciMWknyEZT8IW7u4u&#x60;. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return ApiResponse&lt;VouchersTransactionsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -947,8 +947,8 @@ public class VouchersApi {
      * List Voucher Transactions (asynchronously)
      * List transactions that are associated with credit movements on a gift card or loyalty card.
      * @param code A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify, i.e. &#x60;v_TzD19aeNiqGc9LWciMWknyEZT8IW7u4u&#x60;. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

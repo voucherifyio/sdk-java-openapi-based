@@ -107,7 +107,7 @@ public class VoucherTransactionDetailsBalance {
   private Integer total;
 
   /**
-   * The type of object represented by the JSON.
+   * The type of the object represented by the JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -198,7 +198,7 @@ public class VoucherTransactionDetailsBalance {
   }
 
    /**
-   * The available points prior to the transaction.
+   * The number of all points accumulated on the card as affected by add or subtract operations.
    * @return total
   **/
   @javax.annotation.Nonnull
@@ -219,7 +219,7 @@ public class VoucherTransactionDetailsBalance {
   }
 
    /**
-   * The type of object represented by the JSON.
+   * The type of the object represented by the JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -240,7 +240,7 @@ public class VoucherTransactionDetailsBalance {
   }
 
    /**
-   * The amount of points being used up in the transaction.
+   * Points added or subtracted in the transaction.
    * @return points
   **/
   @javax.annotation.Nonnull
@@ -261,7 +261,7 @@ public class VoucherTransactionDetailsBalance {
   }
 
    /**
-   * The points balance on the loyalty card after the points in the transaction are subtracted from the loyalty card.
+   * The available points on the card after the transaction as affected by redemption or rollback.
    * @return balance
   **/
   @javax.annotation.Nonnull

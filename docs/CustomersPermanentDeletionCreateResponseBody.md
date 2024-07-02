@@ -14,7 +14,7 @@ Response body schema for **POST** `/customers/{customerId}/permanent-deletion`.
 |**relatedObject** | **String** | Object being deleted. |  |
 |**status** | **String** | Deletion status. |  |
 |**dataJson** | [**CustomersPermanentDeletionCreateResponseBodyDataJson**](CustomersPermanentDeletionCreateResponseBodyDataJson.md) |  |  |
-|**_object** | **String** | The type of object represented by JSON. |  |
+|**_object** | **String** | The type of the object represented by JSON. |  |
 
 
 

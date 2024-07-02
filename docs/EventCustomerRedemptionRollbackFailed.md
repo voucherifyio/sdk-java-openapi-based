@@ -14,6 +14,7 @@ Event data object schema for `customer.redemption.rollback.failed`.
 |**voucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |  [optional] |
 |**holder** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
 |**promotionTier** | [**SimplePromotionTier**](SimplePromotionTier.md) |  |  [optional] |
+|**promotionStack** | [**SimplePromotionStack**](SimplePromotionStack.md) |  |  [optional] |
 |**redemption** | [**SimpleRedemption**](SimpleRedemption.md) |  |  [optional] |
 |**redemptionRollback** | [**SimpleRedemption**](SimpleRedemption.md) |  |  [optional] |
 

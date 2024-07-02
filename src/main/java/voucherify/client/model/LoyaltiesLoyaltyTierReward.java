@@ -63,7 +63,7 @@ public class LoyaltiesLoyaltyTierReward {
   private RewardAssignment assignment;
 
   /**
-   * The type of object represented by JSON. This object stores information about the loyalty tier reward.
+   * The type of the object represented by JSON. This object stores information about the loyalty tier reward.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -163,7 +163,7 @@ public class LoyaltiesLoyaltyTierReward {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the loyalty tier reward.
+   * The type of the object represented by JSON. This object stores information about the loyalty tier reward.
    * @return _object
   **/
   @javax.annotation.Nonnull

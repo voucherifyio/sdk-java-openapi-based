@@ -12,9 +12,9 @@ Assignments of business validation rule
 |**ruleId** | **String** | The unique identifier for a rule |  |
 |**relatedObjectId** | **String** | The unique identifier for a related object |  |
 |**relatedObjectType** | **String** | The type of related object |  |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the object was created in ISO 8601 format. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the object was last updated in ISO 8601 format. |  [optional] |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
 |**validationStatus** | [**ValidationStatusEnum**](#ValidationStatusEnum) | The validation status of the assignment |  [optional] |
 |**validationOmittedRules** | **List&lt;String&gt;** | The list of omitted rules |  [optional] |
 

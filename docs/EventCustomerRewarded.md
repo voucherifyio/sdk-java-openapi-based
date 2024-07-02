@@ -15,7 +15,7 @@ Event data object schema for `customer.rewarded`.
 |**redemption** | [**RedemptionInternal**](RedemptionInternal.md) |  |  [optional] |
 |**reward** | [**SimpleRedemptionRewardResult**](SimpleRedemptionRewardResult.md) |  |  [optional] |
 |**referralTier** | [**SimpleReferralTier**](SimpleReferralTier.md) |  |  [optional] |
-|**balance** | **Integer** |  |  [optional] |
+|**balance** | [**EventCustomerRewardedBalance**](EventCustomerRewardedBalance.md) |  |  [optional] |
 |**customEvent** | [**CustomEvent**](CustomEvent.md) |  |  [optional] |
 |**customerEvent** | **Object** |  |  [optional] |
 

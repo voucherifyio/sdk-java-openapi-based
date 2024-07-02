@@ -10,7 +10,7 @@ Event data object schema for `customer.publication.failed`.
 |------------ | ------------- | ------------- | -------------|
 |**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
 |**campaign** | [**SimpleCampaign**](SimpleCampaign.md) |  |  [optional] |
-|**publication** | **Object** |  |  [optional] |
+|**publication** | [**ListPublicationsItemValidSingleVoucher**](ListPublicationsItemValidSingleVoucher.md) |  |  [optional] |
 
 
 

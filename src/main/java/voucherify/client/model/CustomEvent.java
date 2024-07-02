@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import voucherify.client.model.CustomEventLoyalty;
 import voucherify.client.model.CustomEventReferral;
 import voucherify.client.model.SimpleCustomerRequiredObjectType;
 
@@ -122,7 +123,7 @@ public class CustomEvent {
 
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
-  private Object loyalty;
+  private CustomEventLoyalty loyalty;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -240,7 +241,7 @@ public class CustomEvent {
   }
 
 
-  public CustomEvent loyalty(Object loyalty) {
+  public CustomEvent loyalty(CustomEventLoyalty loyalty) {
     
     this.loyalty = loyalty;
     return this;
@@ -251,12 +252,12 @@ public class CustomEvent {
    * @return loyalty
   **/
   @javax.annotation.Nonnull
-  public Object getLoyalty() {
+  public CustomEventLoyalty getLoyalty() {
     return loyalty;
   }
 
 
-  public void setLoyalty(Object loyalty) {
+  public void setLoyalty(CustomEventLoyalty loyalty) {
     this.loyalty = loyalty;
   }
 
@@ -268,7 +269,7 @@ public class CustomEvent {
   }
 
    /**
-   * A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the custom event.
+   * A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the customer object.
    * @return metadata
   **/
   @javax.annotation.Nullable
@@ -289,7 +290,7 @@ public class CustomEvent {
   }
 
    /**
-   * Timestamp representing the date and time when the custom event was created in ISO 8601 format.
+   * Timestamp representing the date and time when the custom event was created. Timestamp is presented in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -434,6 +435,8 @@ public class CustomEvent {
       SimpleCustomerRequiredObjectType.validateJsonElement(jsonObj.get("customer"));
       // validate the required field `referral`
       CustomEventReferral.validateJsonElement(jsonObj.get("referral"));
+      // validate the required field `loyalty`
+      CustomEventLoyalty.validateJsonElement(jsonObj.get("loyalty"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

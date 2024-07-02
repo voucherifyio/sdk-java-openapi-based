@@ -11,8 +11,9 @@ A set of filters to return only a specific category or type of redeemable.
 |**junction** | **Junction** |  |  [optional] |
 |**categoryId** | [**QualificationsFieldConditions**](QualificationsFieldConditions.md) |  |  [optional] |
 |**campaignId** | [**QualificationsFieldConditions**](QualificationsFieldConditions.md) |  |  [optional] |
+|**campaignType** | [**QualificationsCampaignTypeConditions**](QualificationsCampaignTypeConditions.md) |  |  [optional] |
 |**resourceId** | [**QualificationsFieldConditions**](QualificationsFieldConditions.md) |  |  [optional] |
-|**resourceType** | [**QualificationsFieldConditions**](QualificationsFieldConditions.md) |  |  [optional] |
+|**resourceType** | [**QualificationsOptionFiltersResourceType**](QualificationsOptionFiltersResourceType.md) |  |  [optional] |
 |**voucherType** | [**QualificationsFieldConditions**](QualificationsFieldConditions.md) |  |  [optional] |
 |**code** | [**QualificationsFieldConditions**](QualificationsFieldConditions.md) |  |  [optional] |
 

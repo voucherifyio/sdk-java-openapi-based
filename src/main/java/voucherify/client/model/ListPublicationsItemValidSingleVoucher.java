@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerWithSummaryLoyaltyReferrals;
+import voucherify.client.model.ListPublicationsItemBaseMetadata;
 import voucherify.client.model.ListPublicationsItemVoucher;
 
 import com.google.gson.Gson;
@@ -63,7 +64,7 @@ public class ListPublicationsItemValidSingleVoucher {
   private String id;
 
   /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -125,7 +126,7 @@ public class ListPublicationsItemValidSingleVoucher {
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
-  private Object metadata;
+  private ListPublicationsItemBaseMetadata metadata;
 
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
@@ -227,7 +228,7 @@ public class ListPublicationsItemValidSingleVoucher {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -248,7 +249,7 @@ public class ListPublicationsItemValidSingleVoucher {
   }
 
    /**
-   * Timestamp representing the date and time when the publication was created in ISO 8601 format.
+   * Timestamp representing the date and time when the publication was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -304,23 +305,23 @@ public class ListPublicationsItemValidSingleVoucher {
   }
 
 
-  public ListPublicationsItemValidSingleVoucher metadata(Object metadata) {
+  public ListPublicationsItemValidSingleVoucher metadata(ListPublicationsItemBaseMetadata metadata) {
     
     this.metadata = metadata;
     return this;
   }
 
    /**
-   * The metadata object stores all custom attributes assigned to the publication. A set of key/value pairs that you can attach to a publication object. It can be useful for storing additional information about the publication in a structured format.
+   * Get metadata
    * @return metadata
   **/
   @javax.annotation.Nonnull
-  public Object getMetadata() {
+  public ListPublicationsItemBaseMetadata getMetadata() {
     return metadata;
   }
 
 
-  public void setMetadata(Object metadata) {
+  public void setMetadata(ListPublicationsItemBaseMetadata metadata) {
     this.metadata = metadata;
   }
 
@@ -617,6 +618,8 @@ public class ListPublicationsItemValidSingleVoucher {
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
       }
+      // validate the required field `metadata`
+      ListPublicationsItemBaseMetadata.validateJsonElement(jsonObj.get("metadata"));
       if (!jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }

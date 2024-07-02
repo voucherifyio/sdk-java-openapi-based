@@ -216,7 +216,7 @@ public class CategoriesUpdateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the category was created in ISO 8601 format.
+   * Timestamp representing the date and time when the category was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -237,7 +237,7 @@ public class CategoriesUpdateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the category was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the category was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nonnull

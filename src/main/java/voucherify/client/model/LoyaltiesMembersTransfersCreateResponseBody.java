@@ -31,6 +31,7 @@ import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyLoyalt
 import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyPublish;
 import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyRedemption;
 import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe;
+import voucherify.client.model.ValidityHours;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -155,9 +156,70 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
   private LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe validityTimeframe;
 
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
-  private List<Integer> validityDayOfWeek;
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
 
   public static final String SERIALIZED_NAME_PUBLISH = "publish";
   @SerializedName(SERIALIZED_NAME_PUBLISH)
@@ -462,13 +524,13 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
   }
 
 
-  public LoyaltiesMembersTransfersCreateResponseBody validityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public LoyaltiesMembersTransfersCreateResponseBody validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     
     this.validityDayOfWeek = validityDayOfWeek;
     return this;
   }
 
-  public LoyaltiesMembersTransfersCreateResponseBody addValidityDayOfWeekItem(Integer validityDayOfWeekItem) {
+  public LoyaltiesMembersTransfersCreateResponseBody addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
     if (this.validityDayOfWeek == null) {
       this.validityDayOfWeek = new ArrayList<>();
     }
@@ -481,13 +543,34 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
-  public List<Integer> getValidityDayOfWeek() {
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
     return validityDayOfWeek;
   }
 
 
-  public void setValidityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public LoyaltiesMembersTransfersCreateResponseBody validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
   }
 
 
@@ -645,7 +728,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
   }
 
    /**
-   * Unique customer ID of voucher owner.
+   * Unique identifier of the customer who owns the voucher.
    * @return holderId
   **/
   @javax.annotation.Nullable
@@ -724,6 +807,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
         Objects.equals(this.expirationDate, loyaltiesMembersTransfersCreateResponseBody.expirationDate) &&
         Objects.equals(this.validityTimeframe, loyaltiesMembersTransfersCreateResponseBody.validityTimeframe) &&
         Objects.equals(this.validityDayOfWeek, loyaltiesMembersTransfersCreateResponseBody.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, loyaltiesMembersTransfersCreateResponseBody.validityHours) &&
         Objects.equals(this.publish, loyaltiesMembersTransfersCreateResponseBody.publish) &&
         Objects.equals(this.redemption, loyaltiesMembersTransfersCreateResponseBody.redemption) &&
         Objects.equals(this.active, loyaltiesMembersTransfersCreateResponseBody.active) &&
@@ -742,7 +826,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, campaign, campaignId, category, categoryId, categories, type, loyaltyCard, startDate, expirationDate, validityTimeframe, validityDayOfWeek, publish, redemption, active, additionalInfo, metadata, assets, isReferralCode, holderId, updatedAt, createdAt);
+    return Objects.hash(id, code, campaign, campaignId, category, categoryId, categories, type, loyaltyCard, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, publish, redemption, active, additionalInfo, metadata, assets, isReferralCode, holderId, updatedAt, createdAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -769,6 +853,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
     sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
     sb.append("    publish: ").append(toIndentedString(publish)).append("\n");
     sb.append("    redemption: ").append(toIndentedString(redemption)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
@@ -814,6 +899,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
     openapiFields.add("expiration_date");
     openapiFields.add("validity_timeframe");
     openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
     openapiFields.add("publish");
     openapiFields.add("redemption");
     openapiFields.add("active");
@@ -922,6 +1008,10 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
       // ensure the optional json data is an array if present
       if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
       // validate the optional field `publish`
       if (jsonObj.get("publish") != null && !jsonObj.get("publish").isJsonNull()) {

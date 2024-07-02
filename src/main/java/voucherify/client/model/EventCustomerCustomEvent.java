@@ -21,7 +21,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.CustomerWithSummaryLoyaltyReferrals;
+import org.openapitools.jackson.nullable.JsonNullable;
+import voucherify.client.model.CustomEvent;
+import voucherify.client.model.EventCustomerCustomEventLoyalty;
+import voucherify.client.model.EventCustomerCustomEventReferral;
+import voucherify.client.model.SimpleCustomEvent;
+import voucherify.client.model.SimpleCustomer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,14 +58,72 @@ import voucherify.client.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
 public class EventCustomerCustomEvent {
+  public static final String SERIALIZED_NAME_EVENT = "event";
+  @SerializedName(SERIALIZED_NAME_EVENT)
+  private CustomEvent event;
+
+  public static final String SERIALIZED_NAME_EVENT_SCHEMA = "event_schema";
+  @SerializedName(SERIALIZED_NAME_EVENT_SCHEMA)
+  private SimpleCustomEvent eventSchema;
+
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
-  private CustomerWithSummaryLoyaltyReferrals customer;
+  private SimpleCustomer customer;
+
+  public static final String SERIALIZED_NAME_REFERRAL = "referral";
+  @SerializedName(SERIALIZED_NAME_REFERRAL)
+  private EventCustomerCustomEventReferral referral;
+
+  public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
+  @SerializedName(SERIALIZED_NAME_LOYALTY)
+  private EventCustomerCustomEventLoyalty loyalty;
 
   public EventCustomerCustomEvent() {
   }
 
-  public EventCustomerCustomEvent customer(CustomerWithSummaryLoyaltyReferrals customer) {
+  public EventCustomerCustomEvent event(CustomEvent event) {
+    
+    this.event = event;
+    return this;
+  }
+
+   /**
+   * Get event
+   * @return event
+  **/
+  @javax.annotation.Nonnull
+  public CustomEvent getEvent() {
+    return event;
+  }
+
+
+  public void setEvent(CustomEvent event) {
+    this.event = event;
+  }
+
+
+  public EventCustomerCustomEvent eventSchema(SimpleCustomEvent eventSchema) {
+    
+    this.eventSchema = eventSchema;
+    return this;
+  }
+
+   /**
+   * Get eventSchema
+   * @return eventSchema
+  **/
+  @javax.annotation.Nonnull
+  public SimpleCustomEvent getEventSchema() {
+    return eventSchema;
+  }
+
+
+  public void setEventSchema(SimpleCustomEvent eventSchema) {
+    this.eventSchema = eventSchema;
+  }
+
+
+  public EventCustomerCustomEvent customer(SimpleCustomer customer) {
     
     this.customer = customer;
     return this;
@@ -71,59 +134,57 @@ public class EventCustomerCustomEvent {
    * @return customer
   **/
   @javax.annotation.Nonnull
-  public CustomerWithSummaryLoyaltyReferrals getCustomer() {
+  public SimpleCustomer getCustomer() {
     return customer;
   }
 
 
-  public void setCustomer(CustomerWithSummaryLoyaltyReferrals customer) {
+  public void setCustomer(SimpleCustomer customer) {
     this.customer = customer;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
 
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the EventCustomerCustomEvent instance itself
-   */
-  public EventCustomerCustomEvent putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
+  public EventCustomerCustomEvent referral(EventCustomerCustomEventReferral referral) {
+    
+    this.referral = referral;
     return this;
   }
 
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
+   /**
+   * Get referral
+   * @return referral
+  **/
+  @javax.annotation.Nullable
+  public EventCustomerCustomEventReferral getReferral() {
+    return referral;
   }
 
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
+
+  public void setReferral(EventCustomerCustomEventReferral referral) {
+    this.referral = referral;
   }
+
+
+  public EventCustomerCustomEvent loyalty(EventCustomerCustomEventLoyalty loyalty) {
+    
+    this.loyalty = loyalty;
+    return this;
+  }
+
+   /**
+   * Get loyalty
+   * @return loyalty
+  **/
+  @javax.annotation.Nullable
+  public EventCustomerCustomEventLoyalty getLoyalty() {
+    return loyalty;
+  }
+
+
+  public void setLoyalty(EventCustomerCustomEventLoyalty loyalty) {
+    this.loyalty = loyalty;
+  }
+
 
 
   @Override
@@ -135,21 +196,38 @@ public class EventCustomerCustomEvent {
       return false;
     }
     EventCustomerCustomEvent eventCustomerCustomEvent = (EventCustomerCustomEvent) o;
-    return Objects.equals(this.customer, eventCustomerCustomEvent.customer)&&
-        Objects.equals(this.additionalProperties, eventCustomerCustomEvent.additionalProperties);
+    return Objects.equals(this.event, eventCustomerCustomEvent.event) &&
+        Objects.equals(this.eventSchema, eventCustomerCustomEvent.eventSchema) &&
+        Objects.equals(this.customer, eventCustomerCustomEvent.customer) &&
+        Objects.equals(this.referral, eventCustomerCustomEvent.referral) &&
+        Objects.equals(this.loyalty, eventCustomerCustomEvent.loyalty);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customer, additionalProperties);
+    return Objects.hash(event, eventSchema, customer, referral, loyalty);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EventCustomerCustomEvent {\n");
+    sb.append("    event: ").append(toIndentedString(event)).append("\n");
+    sb.append("    eventSchema: ").append(toIndentedString(eventSchema)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
+    sb.append("    referral: ").append(toIndentedString(referral)).append("\n");
+    sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,10 +250,16 @@ public class EventCustomerCustomEvent {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("event");
+    openapiFields.add("event_schema");
     openapiFields.add("customer");
+    openapiFields.add("referral");
+    openapiFields.add("loyalty");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("event");
+    openapiRequiredFields.add("event_schema");
     openapiRequiredFields.add("customer");
   }
 
@@ -192,6 +276,14 @@ public class EventCustomerCustomEvent {
         }
       }
 
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!EventCustomerCustomEvent.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EventCustomerCustomEvent` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : EventCustomerCustomEvent.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
@@ -199,8 +291,20 @@ public class EventCustomerCustomEvent {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `event`
+      CustomEvent.validateJsonElement(jsonObj.get("event"));
+      // validate the required field `event_schema`
+      SimpleCustomEvent.validateJsonElement(jsonObj.get("event_schema"));
       // validate the required field `customer`
-      CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonObj.get("customer"));
+      SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
+      // validate the optional field `referral`
+      if (jsonObj.get("referral") != null && !jsonObj.get("referral").isJsonNull()) {
+        EventCustomerCustomEventReferral.validateJsonElement(jsonObj.get("referral"));
+      }
+      // validate the optional field `loyalty`
+      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
+        EventCustomerCustomEventLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -218,23 +322,6 @@ public class EventCustomerCustomEvent {
            @Override
            public void write(JsonWriter out, EventCustomerCustomEvent value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -242,28 +329,7 @@ public class EventCustomerCustomEvent {
            public EventCustomerCustomEvent read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
-             // store additional fields in the deserialized instance
-             EventCustomerCustomEvent instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

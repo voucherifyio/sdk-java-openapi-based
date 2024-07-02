@@ -71,7 +71,7 @@ public class ParameterUpdatedBeforeAfter {
   }
 
    /**
-   * Timestamp representing the date and time before the voucher was updated in ISO 8601 format.
+   * Timestamp representing the date and time before the voucher was updated. The value is shown in the ISO 8601 format.
    * @return before
   **/
   @javax.annotation.Nullable
@@ -92,7 +92,7 @@ public class ParameterUpdatedBeforeAfter {
   }
 
    /**
-   * Timestamp representing the date and time after the voucher was updated in ISO 8601 format.
+   * Timestamp representing the date and time after the voucher was updated. The value is shown in the ISO 8601 format.
    * @return after
   **/
   @javax.annotation.Nullable

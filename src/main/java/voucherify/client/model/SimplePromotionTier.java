@@ -69,6 +69,10 @@ public class SimplePromotionTier {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
   private SimplePromotionTierCampaign campaign;
 
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
   public SimplePromotionTier() {
   }
 
@@ -156,6 +160,27 @@ public class SimplePromotionTier {
   }
 
 
+  public SimplePromotionTier metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * A set of custom key/value pairs that you can attach to a promotion tier. The metadata object stores all custom attributes assigned to the promotion tier.
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,12 +194,13 @@ public class SimplePromotionTier {
     return Objects.equals(this.id, simplePromotionTier.id) &&
         Objects.equals(this.name, simplePromotionTier.name) &&
         Objects.equals(this.banner, simplePromotionTier.banner) &&
-        Objects.equals(this.campaign, simplePromotionTier.campaign);
+        Objects.equals(this.campaign, simplePromotionTier.campaign) &&
+        Objects.equals(this.metadata, simplePromotionTier.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, banner, campaign);
+    return Objects.hash(id, name, banner, campaign, metadata);
   }
 
   @Override
@@ -185,6 +211,7 @@ public class SimplePromotionTier {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    banner: ").append(toIndentedString(banner)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -211,6 +238,7 @@ public class SimplePromotionTier {
     openapiFields.add("name");
     openapiFields.add("banner");
     openapiFields.add("campaign");
+    openapiFields.add("metadata");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

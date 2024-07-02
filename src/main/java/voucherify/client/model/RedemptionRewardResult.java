@@ -92,7 +92,7 @@ public class RedemptionRewardResult {
   private String name;
 
   /**
-   * The type of object represented by the JSON
+   * The type of the object represented by the JSON
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -383,7 +383,7 @@ public class RedemptionRewardResult {
   }
 
    /**
-   * The type of object represented by the JSON
+   * The type of the object represented by the JSON
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -404,7 +404,7 @@ public class RedemptionRewardResult {
   }
 
    /**
-   * Timestamp representing the date and time when the redemption was created in ISO 8601 format.
+   * Timestamp representing the date and time when the redemption was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable

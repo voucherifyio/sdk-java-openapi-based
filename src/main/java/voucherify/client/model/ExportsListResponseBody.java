@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 
 public class ExportsListResponseBody {
   /**
-   * The type of object represented by JSON. This object stores information about exports.
+   * The type of the object represented by JSON. This object stores information about exports.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -171,7 +171,7 @@ public class ExportsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about exports.
+   * The type of the object represented by JSON. This object stores information about exports.
    * @return _object
   **/
   @javax.annotation.Nonnull

@@ -464,7 +464,7 @@ public class ValidationRulesUpdateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the validation rule was created in ISO 8601 format.
+   * Timestamp representing the date and time when the validation rule was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -485,7 +485,7 @@ public class ValidationRulesUpdateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the validation rule was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the validation rule was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -527,7 +527,7 @@ public class ValidationRulesUpdateResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the validation rule.
+   * The type of the object represented by JSON. This object stores information about the validation rule.
    * @return _object
   **/
   @javax.annotation.Nonnull

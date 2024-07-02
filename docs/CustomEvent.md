@@ -12,9 +12,9 @@
 |**type** | **String** | The event name. |  |
 |**customer** | [**SimpleCustomerRequiredObjectType**](SimpleCustomerRequiredObjectType.md) |  |  |
 |**referral** | [**CustomEventReferral**](CustomEventReferral.md) |  |  |
-|**loyalty** | **Object** |  |  |
-|**metadata** | **Object** | A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the custom event. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the custom event was created in ISO 8601 format. |  [optional] |
+|**loyalty** | [**CustomEventLoyalty**](CustomEventLoyalty.md) |  |  |
+|**metadata** | **Object** | A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the customer object. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the custom event was created. Timestamp is presented in the ISO 8601 format. |  [optional] |
 
 
 

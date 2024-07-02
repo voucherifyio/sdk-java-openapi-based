@@ -21,9 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import voucherify.client.model.CustomerActivityData;
 
 import com.google.gson.Gson;
@@ -247,11 +245,15 @@ public class CustomerActivity {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CustomerActivityData> data;
+  private CustomerActivityData data;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
+  @SerializedName(SERIALIZED_NAME_GROUP_ID)
+  private String groupId;
 
   public CustomerActivity() {
   }
@@ -298,31 +300,23 @@ public class CustomerActivity {
   }
 
 
-  public CustomerActivity data(List<CustomerActivityData> data) {
+  public CustomerActivity data(CustomerActivityData data) {
     
     this.data = data;
     return this;
   }
 
-  public CustomerActivity addDataItem(CustomerActivityData dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<>();
-    }
-    this.data.add(dataItem);
-    return this;
-  }
-
    /**
-   * Contains details about the event. The objects that are returned in the data attribute differ based on the context of the event type.
+   * Get data
    * @return data
   **/
   @javax.annotation.Nullable
-  public List<CustomerActivityData> getData() {
+  public CustomerActivityData getData() {
     return data;
   }
 
 
-  public void setData(List<CustomerActivityData> data) {
+  public void setData(CustomerActivityData data) {
     this.data = data;
   }
 
@@ -348,6 +342,27 @@ public class CustomerActivity {
   }
 
 
+  public CustomerActivity groupId(String groupId) {
+    
+    this.groupId = groupId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the request that caused the event.
+   * @return groupId
+  **/
+  @javax.annotation.Nullable
+  public String getGroupId() {
+    return groupId;
+  }
+
+
+  public void setGroupId(String groupId) {
+    this.groupId = groupId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -361,12 +376,13 @@ public class CustomerActivity {
     return Objects.equals(this.id, customerActivity.id) &&
         Objects.equals(this.type, customerActivity.type) &&
         Objects.equals(this.data, customerActivity.data) &&
-        Objects.equals(this.createdAt, customerActivity.createdAt);
+        Objects.equals(this.createdAt, customerActivity.createdAt) &&
+        Objects.equals(this.groupId, customerActivity.groupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, data, createdAt);
+    return Objects.hash(id, type, data, createdAt, groupId);
   }
 
   @Override
@@ -377,6 +393,7 @@ public class CustomerActivity {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -403,6 +420,7 @@ public class CustomerActivity {
     openapiFields.add("type");
     openapiFields.add("data");
     openapiFields.add("created_at");
+    openapiFields.add("group_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -448,19 +466,12 @@ public class CustomerActivity {
           throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
         }
       }
+      // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-        if (jsonArraydata != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("data").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-          }
-
-          // validate the optional field `data` (array)
-          for (int i = 0; i < jsonArraydata.size(); i++) {
-            CustomerActivityData.validateJsonElement(jsonArraydata.get(i));
-          };
-        }
+        CustomerActivityData.validateJsonElement(jsonObj.get("data"));
+      }
+      if ((jsonObj.get("group_id") != null && !jsonObj.get("group_id").isJsonNull()) && !jsonObj.get("group_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_id").toString()));
       }
   }
 

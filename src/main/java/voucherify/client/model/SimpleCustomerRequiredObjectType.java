@@ -191,7 +191,7 @@ public class SimpleCustomerRequiredObjectType {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the customer.
+   * The type of the object represented by the JSON. This object stores information about the customer.
    * @return _object
   **/
   @javax.annotation.Nonnull

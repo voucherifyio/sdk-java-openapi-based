@@ -27,8 +27,8 @@ import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.PromotionTier;
 import voucherify.client.model.RedemptionInternalRelatedRedemptions;
 import voucherify.client.model.RedemptionRewardResult;
+import voucherify.client.model.RedemptionVoucher;
 import voucherify.client.model.SimpleCustomer;
-import voucherify.client.model.Voucher;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -350,7 +350,7 @@ public class RedemptionInternal {
 
   public static final String SERIALIZED_NAME_VOUCHER = "voucher";
   @SerializedName(SERIALIZED_NAME_VOUCHER)
-  private Voucher voucher;
+  private RedemptionVoucher voucher;
 
   public static final String SERIALIZED_NAME_PROMOTION_TIER = "promotion_tier";
   @SerializedName(SERIALIZED_NAME_PROMOTION_TIER)
@@ -387,7 +387,7 @@ public class RedemptionInternal {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;redemption&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;redemption&#x60;.
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -408,7 +408,7 @@ public class RedemptionInternal {
   }
 
    /**
-   * Timestamp representing the date and time when the redemption was created in ISO 8601 format.
+   * Timestamp representing the date and time when the redemption was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -884,7 +884,7 @@ public class RedemptionInternal {
   }
 
 
-  public RedemptionInternal voucher(Voucher voucher) {
+  public RedemptionInternal voucher(RedemptionVoucher voucher) {
     
     this.voucher = voucher;
     return this;
@@ -895,12 +895,12 @@ public class RedemptionInternal {
    * @return voucher
   **/
   @javax.annotation.Nullable
-  public Voucher getVoucher() {
+  public RedemptionVoucher getVoucher() {
     return voucher;
   }
 
 
-  public void setVoucher(Voucher voucher) {
+  public void setVoucher(RedemptionVoucher voucher) {
     this.voucher = voucher;
   }
 
@@ -1212,7 +1212,7 @@ public class RedemptionInternal {
       }
       // validate the optional field `voucher`
       if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
-        Voucher.validateJsonElement(jsonObj.get("voucher"));
+        RedemptionVoucher.validateJsonElement(jsonObj.get("voucher"));
       }
       // validate the optional field `promotion_tier`
       if (jsonObj.get("promotion_tier") != null && !jsonObj.get("promotion_tier").isJsonNull()) {

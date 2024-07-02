@@ -55,7 +55,7 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Response bofy for **POST** &#x60;/customers&#x60;.
+ * Response body for **POST** &#x60;/customers&#x60;.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
@@ -97,7 +97,7 @@ public class CustomersCreateResponseBody {
   private CustomerResponseDataAssets assets;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -313,7 +313,7 @@ public class CustomersCreateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the customer was created in ISO 8601 format.
+   * Timestamp representing the date and time when the customer was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -334,7 +334,7 @@ public class CustomersCreateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the customer was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the customer was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -376,7 +376,7 @@ public class CustomersCreateResponseBody {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -481,7 +481,7 @@ public class CustomersCreateResponseBody {
   }
 
    /**
-   * *Deprecated* Customer&#39;s birthdate; format YYYY-MM-DD.
+   * &#x60;Deprecated&#x60;. ~~Customer&#39;s birthdate; format YYYY-MM-DD~~.
    * @return birthday
   **/
   @javax.annotation.Nullable

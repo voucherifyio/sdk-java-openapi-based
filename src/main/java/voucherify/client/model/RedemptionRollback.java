@@ -68,7 +68,7 @@ public class RedemptionRollback {
   private String id;
 
   /**
-   * The type of object represented by the JSON
+   * The type of the object represented by the JSON
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -378,7 +378,7 @@ public class RedemptionRollback {
   }
 
    /**
-   * The type of object represented by the JSON
+   * The type of the object represented by the JSON
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -399,7 +399,7 @@ public class RedemptionRollback {
   }
 
    /**
-   * Timestamp representing the date and time when the object was created in ISO 8601 format.
+   * Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format.
    * @return date
   **/
   @javax.annotation.Nonnull

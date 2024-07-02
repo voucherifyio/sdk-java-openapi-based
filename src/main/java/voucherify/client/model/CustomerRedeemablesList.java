@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.CustomerActivity;
+import voucherify.client.model.CustomerRedeemable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,11 +50,11 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Request body schema for **GET** &#x60;/customers/{customerId}/activities&#x60;.
+ * List of customer&#39;s redeemables
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class CustomersActivitiesListResponseBody {
+public class CustomerRedeemablesList {
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
   private String _object = "list";
@@ -65,23 +65,31 @@ public class CustomersActivitiesListResponseBody {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CustomerActivity> data = new ArrayList<>();
+  private List<CustomerRedeemable> data = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private Integer total;
 
-  public CustomersActivitiesListResponseBody() {
+  public static final String SERIALIZED_NAME_HAS_MORE = "has_more";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
+  public static final String SERIALIZED_NAME_MORE_STARTING_AFTER = "more_starting_after";
+  @SerializedName(SERIALIZED_NAME_MORE_STARTING_AFTER)
+  private String moreStartingAfter;
+
+  public CustomerRedeemablesList() {
   }
 
-  public CustomersActivitiesListResponseBody _object(String _object) {
+  public CustomerRedeemablesList _object(String _object) {
     
     this._object = _object;
     return this;
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about customer activities in a dictionary.
+   * The type of the object represented by JSON. This object stores information about customer redeemables.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -95,14 +103,14 @@ public class CustomersActivitiesListResponseBody {
   }
 
 
-  public CustomersActivitiesListResponseBody dataRef(String dataRef) {
+  public CustomerRedeemablesList dataRef(String dataRef) {
     
     this.dataRef = dataRef;
     return this;
   }
 
    /**
-   * Identifies the name of the attribute that contains the array of customer activity objects.
+   * Identifies the name of the JSON property that contains the array of redeemables.
    * @return dataRef
   **/
   @javax.annotation.Nonnull
@@ -116,13 +124,13 @@ public class CustomersActivitiesListResponseBody {
   }
 
 
-  public CustomersActivitiesListResponseBody data(List<CustomerActivity> data) {
+  public CustomerRedeemablesList data(List<CustomerRedeemable> data) {
     
     this.data = data;
     return this;
   }
 
-  public CustomersActivitiesListResponseBody addDataItem(CustomerActivity dataItem) {
+  public CustomerRedeemablesList addDataItem(CustomerRedeemable dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -131,28 +139,28 @@ public class CustomersActivitiesListResponseBody {
   }
 
    /**
-   * Array of customer activity objects.
+   * A dictionary that contains an array of redeemables.
    * @return data
   **/
   @javax.annotation.Nonnull
-  public List<CustomerActivity> getData() {
+  public List<CustomerRedeemable> getData() {
     return data;
   }
 
 
-  public void setData(List<CustomerActivity> data) {
+  public void setData(List<CustomerRedeemable> data) {
     this.data = data;
   }
 
 
-  public CustomersActivitiesListResponseBody total(Integer total) {
+  public CustomerRedeemablesList total(Integer total) {
     
     this.total = total;
     return this;
   }
 
    /**
-   * Total number of customer activities.
+   * Total number of results returned.
    * @return total
   **/
   @javax.annotation.Nonnull
@@ -166,6 +174,48 @@ public class CustomersActivitiesListResponseBody {
   }
 
 
+  public CustomerRedeemablesList hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * As query results are always limited (by the limit parameter), the &#x60;has_more&#x60; flag indicates if there are more records for given filter parameters. This lets you know if you can run another request with a &#x60;starting_after_id&#x60; query or a different limit to get more records returned in the results.
+   * @return hasMore
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
+
+
+  public CustomerRedeemablesList moreStartingAfter(String moreStartingAfter) {
+    
+    this.moreStartingAfter = moreStartingAfter;
+    return this;
+  }
+
+   /**
+   * Returns an ID that can be used to return another page of results. Use the ID in the &#x60;starting_after_id&#x60; query parameter to display another page of the results occuring after the field with that ID.
+   * @return moreStartingAfter
+  **/
+  @javax.annotation.Nullable
+  public String getMoreStartingAfter() {
+    return moreStartingAfter;
+  }
+
+
+  public void setMoreStartingAfter(String moreStartingAfter) {
+    this.moreStartingAfter = moreStartingAfter;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -175,26 +225,30 @@ public class CustomersActivitiesListResponseBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomersActivitiesListResponseBody customersActivitiesListResponseBody = (CustomersActivitiesListResponseBody) o;
-    return Objects.equals(this._object, customersActivitiesListResponseBody._object) &&
-        Objects.equals(this.dataRef, customersActivitiesListResponseBody.dataRef) &&
-        Objects.equals(this.data, customersActivitiesListResponseBody.data) &&
-        Objects.equals(this.total, customersActivitiesListResponseBody.total);
+    CustomerRedeemablesList customerRedeemablesList = (CustomerRedeemablesList) o;
+    return Objects.equals(this._object, customerRedeemablesList._object) &&
+        Objects.equals(this.dataRef, customerRedeemablesList.dataRef) &&
+        Objects.equals(this.data, customerRedeemablesList.data) &&
+        Objects.equals(this.total, customerRedeemablesList.total) &&
+        Objects.equals(this.hasMore, customerRedeemablesList.hasMore) &&
+        Objects.equals(this.moreStartingAfter, customerRedeemablesList.moreStartingAfter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_object, dataRef, data, total);
+    return Objects.hash(_object, dataRef, data, total, hasMore, moreStartingAfter);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomersActivitiesListResponseBody {\n");
+    sb.append("class CustomerRedeemablesList {\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    dataRef: ").append(toIndentedString(dataRef)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    moreStartingAfter: ").append(toIndentedString(moreStartingAfter)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -221,6 +275,8 @@ public class CustomersActivitiesListResponseBody {
     openapiFields.add("data_ref");
     openapiFields.add("data");
     openapiFields.add("total");
+    openapiFields.add("has_more");
+    openapiFields.add("more_starting_after");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -228,31 +284,32 @@ public class CustomersActivitiesListResponseBody {
     openapiRequiredFields.add("data_ref");
     openapiRequiredFields.add("data");
     openapiRequiredFields.add("total");
+    openapiRequiredFields.add("has_more");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CustomersActivitiesListResponseBody
+  * @throws IOException if the JSON Element is invalid with respect to CustomerRedeemablesList
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CustomersActivitiesListResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersActivitiesListResponseBody is not found in the empty JSON string", CustomersActivitiesListResponseBody.openapiRequiredFields.toString()));
+        if (!CustomerRedeemablesList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerRedeemablesList is not found in the empty JSON string", CustomerRedeemablesList.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CustomersActivitiesListResponseBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CustomersActivitiesListResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CustomerRedeemablesList.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CustomerRedeemablesList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersActivitiesListResponseBody.openapiRequiredFields) {
+      for (String requiredField : CustomerRedeemablesList.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -272,30 +329,33 @@ public class CustomersActivitiesListResponseBody {
       JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
       // validate the required field `data` (array)
       for (int i = 0; i < jsonArraydata.size(); i++) {
-        CustomerActivity.validateJsonElement(jsonArraydata.get(i));
+        CustomerRedeemable.validateJsonElement(jsonArraydata.get(i));
       };
+      if ((jsonObj.get("more_starting_after") != null && !jsonObj.get("more_starting_after").isJsonNull()) && !jsonObj.get("more_starting_after").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `more_starting_after` to be a primitive type in the JSON string but got `%s`", jsonObj.get("more_starting_after").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CustomersActivitiesListResponseBody.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CustomersActivitiesListResponseBody' and its subtypes
+       if (!CustomerRedeemablesList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomerRedeemablesList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CustomersActivitiesListResponseBody> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CustomersActivitiesListResponseBody.class));
+       final TypeAdapter<CustomerRedeemablesList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomerRedeemablesList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CustomersActivitiesListResponseBody>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomerRedeemablesList>() {
            @Override
-           public void write(JsonWriter out, CustomersActivitiesListResponseBody value) throws IOException {
+           public void write(JsonWriter out, CustomerRedeemablesList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CustomersActivitiesListResponseBody read(JsonReader in) throws IOException {
+           public CustomerRedeemablesList read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -306,18 +366,18 @@ public class CustomersActivitiesListResponseBody {
   }
 
  /**
-  * Create an instance of CustomersActivitiesListResponseBody given an JSON string
+  * Create an instance of CustomerRedeemablesList given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CustomersActivitiesListResponseBody
-  * @throws IOException if the JSON string is invalid with respect to CustomersActivitiesListResponseBody
+  * @return An instance of CustomerRedeemablesList
+  * @throws IOException if the JSON string is invalid with respect to CustomerRedeemablesList
   */
-  public static CustomersActivitiesListResponseBody fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CustomersActivitiesListResponseBody.class);
+  public static CustomerRedeemablesList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomerRedeemablesList.class);
   }
 
  /**
-  * Convert an instance of CustomersActivitiesListResponseBody to an JSON string
+  * Convert an instance of CustomerRedeemablesList to an JSON string
   *
   * @return JSON string
   */

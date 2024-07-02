@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import voucherify.client.model.ListPublicationsItemValidSingleVoucher;
 import voucherify.client.model.SimpleCampaign;
 import voucherify.client.model.SimpleCustomer;
 
@@ -64,7 +65,7 @@ public class EventCustomerPublicationSucceeded {
 
   public static final String SERIALIZED_NAME_PUBLICATION = "publication";
   @SerializedName(SERIALIZED_NAME_PUBLICATION)
-  private Object publication;
+  private ListPublicationsItemValidSingleVoucher publication;
 
   public EventCustomerPublicationSucceeded() {
   }
@@ -111,7 +112,7 @@ public class EventCustomerPublicationSucceeded {
   }
 
 
-  public EventCustomerPublicationSucceeded publication(Object publication) {
+  public EventCustomerPublicationSucceeded publication(ListPublicationsItemValidSingleVoucher publication) {
     
     this.publication = publication;
     return this;
@@ -122,12 +123,12 @@ public class EventCustomerPublicationSucceeded {
    * @return publication
   **/
   @javax.annotation.Nullable
-  public Object getPublication() {
+  public ListPublicationsItemValidSingleVoucher getPublication() {
     return publication;
   }
 
 
-  public void setPublication(Object publication) {
+  public void setPublication(ListPublicationsItemValidSingleVoucher publication) {
     this.publication = publication;
   }
 
@@ -217,6 +218,10 @@ public class EventCustomerPublicationSucceeded {
       // validate the optional field `campaign`
       if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
         SimpleCampaign.validateJsonElement(jsonObj.get("campaign"));
+      }
+      // validate the optional field `publication`
+      if (jsonObj.get("publication") != null && !jsonObj.get("publication").isJsonNull()) {
+        ListPublicationsItemValidSingleVoucher.validateJsonElement(jsonObj.get("publication"));
       }
   }
 

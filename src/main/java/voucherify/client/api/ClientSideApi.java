@@ -27,16 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import voucherify.client.model.ClientEventsCreateRequestBody;
+import voucherify.client.model.ClientEventsCreateResponseBody;
+import voucherify.client.model.ClientQualificationsCheckEligibilityRequestBody;
+import voucherify.client.model.ClientQualificationsCheckEligibilityResponseBody;
 import voucherify.client.model.ClientRedemptionsRedeemRequestBody;
 import voucherify.client.model.ClientRedemptionsRedeemResponseBody;
 import voucherify.client.model.ClientValidationsValidateRequestBody;
 import voucherify.client.model.ClientValidationsValidateResponseBody;
-import voucherify.client.model.RedemptionsRedeemRequestBody;
-import voucherify.client.model.RedemptionsRedeemResponseBody;
-import voucherify.client.model.RedemptionsRollbacksCreateRequestBody;
-import voucherify.client.model.RedemptionsRollbacksCreateResponseBody;
-import voucherify.client.model.ValidationsValidateRequestBody;
-import voucherify.client.model.ValidationsValidateResponseBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -44,16 +42,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StackableDiscountsApi {
+public class ClientSideApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public StackableDiscountsApi() {
+    public ClientSideApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public StackableDiscountsApi(ApiClient apiClient) {
+    public ClientSideApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -82,18 +80,18 @@ public class StackableDiscountsApi {
     }
 
     /**
-     * Build call for redeemStackedDiscounts
-     * @param redemptionsRedeemRequestBody  (optional)
+     * Build call for checkEligibilityClientSide
+     * @param clientQualificationsCheckEligibilityRequestBody Define order and customer context. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a qualifications object. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call redeemStackedDiscountsCall(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkEligibilityClientSideCall(ClientQualificationsCheckEligibilityRequestBody clientQualificationsCheckEligibilityRequestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,10 +105,10 @@ public class StackableDiscountsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = redemptionsRedeemRequestBody;
+        Object localVarPostBody = clientQualificationsCheckEligibilityRequestBody;
 
         // create path and map variables
-        String localVarPath = "/v1/redemptions";
+        String localVarPath = "/client/v1/qualifications";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -134,68 +132,68 @@ public class StackableDiscountsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        String[] localVarAuthNames = new String[] { "X-Client-Application-Id", "X-Client-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call redeemStackedDiscountsValidateBeforeCall(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody, final ApiCallback _callback) throws ApiException {
-        return redeemStackedDiscountsCall(redemptionsRedeemRequestBody, _callback);
+    private okhttp3.Call checkEligibilityClientSideValidateBeforeCall(ClientQualificationsCheckEligibilityRequestBody clientQualificationsCheckEligibilityRequestBody, final ApiCallback _callback) throws ApiException {
+        return checkEligibilityClientSideCall(clientQualificationsCheckEligibilityRequestBody, _callback);
 
     }
 
     /**
-     * Redeem Stackable Discounts
-     * ## How API returns calculated discounts and order amounts in the response  In the table below, you can see the logic the API follows to calculate discounts and amounts:  | **Field** | **Calculation** | **Description** | |:---|:---|:---| | amount | N/A | This field shows the order amount before applying any discount | | total_amount | &#x60;total_amount&#x60; &#x3D; &#x60;amount&#x60; - &#x60;total_discount_amount&#x60; | This field shows the order amount after applying all the discounts | | discount_amount | &#x60;discount_amount&#x60; &#x3D; &#x60;previous_discount_amount&#x60; + &#x60;applied_discount_amount&#x60; | This field sums up all order-level discounts up to and including the specific discount being calculated for the stacked redemption. | | items_discount_amount | sum(items, i &#x3D;&gt; i.discount_amount) | This field sums up all product-specific discounts | | total_discount_amount | &#x60;total_discount_amount&#x60; &#x3D; &#x60;discount_amount&#x60; + &#x60;items_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts | | applied_discount_amount | N/A | This field shows the order-level discount applied in a particular request | | items_applied_discount_amount | sum(items, i &#x3D;&gt; i.applied_discount_amount) | This field sums up all product-specific discounts applied in a particular request | | total_applied_discount_amount | &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts applied in a particular request |  &lt;!-- theme: info --&gt; &gt; 📘 Rollbacks &gt; &gt; You can&#39;t roll back a child redemption. When you call rollback on a stacked redemption, all child redemptions will be rolled back. You need to refer to a parent redemption ID in your &lt;!-- [rollback request](OpenAPI.json/paths/~1redemptions~1{parentRedemptionId}~1rollbacks/post) --&gt;[rollback request](ref:rollback-stacked-redemptions).      &lt;!-- theme: info --&gt; &gt; 📘 Also available on client-side &gt; &gt; This method is also accessible through public keys which you can use in client-side​ apps: mobile and web browser apps. Go to the dedicated [endpoint](ref:redeem-stacked-discounts-client-side) to learn more. &gt; - Use &#x60;X-Client-Application-Id&#x60; as the application ID header. &gt; - Use &#x60;X-Client-Token&#x60; as the appliction secret key header. &gt; - Use client-side base URL. &gt; - Use an &#x60;origin&#x60; header for your custom domain.
-     * @param redemptionsRedeemRequestBody  (optional)
-     * @return RedemptionsRedeemResponseBody
+     * Check Eligibility (client-side)
+     * Generate a list of redeemables that are applicable in the context of the customer and order.  The new qualifications method is an improved version of [Campaign Qualifications](ref:examine-campaigns-qualification), [Voucher Qualifications](ref:examine-vouchers-qualification), and [Promotions Validation](ref:validate-promotions) API requests. The new qualification method introduces the following improvements:  - Qualification results are returned faster - No limit on the number of returned redeemables - Introduces new qualification scenarios, not available in the previous version  &gt; 👍 Scenario Guide &gt; &gt; Read our dedicated guide to learn about some use cases this endpoint can cover [here](doc:checking-eligibility).  ## Paging   The Voucherify Qualifications API request will return to you all of the redeemables available for the customer in batches of up to 50 redeemables. To get the next batch of redeemables, you need to use the &#x60;starting_after&#x60; cursor.  To process of paging the redeemables works in the following manner:  - You send the first API request for Qualifications without the &#x60;starting_after&#x60; parameter. - The response will contain a parameter named &#x60;has_more&#x60;. If the parameter&#39;s value is set to &#x60;true&#x60;, then more redeemables are available. - Get the value of the &#x60;created_at&#x60; parameter of the last returned redeemable. The value of this parameter will be used as a cursor to retrieve the next page of redeemables. - Send another API request for Qualification with the &#x60;starting_after&#x60; parameter set to the value taken from the &#x60;created_at&#x60; parameter from the last returned redeemable. - Voucherify will return the next page of redeemables. - If the &#x60;has_more&#x60; parameter is set to &#x60;true&#x60;, apply steps 3-5 to get the next page of redeemables.
+     * @param clientQualificationsCheckEligibilityRequestBody Define order and customer context. (optional)
+     * @return ClientQualificationsCheckEligibilityResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a qualifications object. </td><td>  -  </td></tr>
      </table>
      */
-    public RedemptionsRedeemResponseBody redeemStackedDiscounts(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody) throws ApiException {
-        ApiResponse<RedemptionsRedeemResponseBody> localVarResp = redeemStackedDiscountsWithHttpInfo(redemptionsRedeemRequestBody);
+    public ClientQualificationsCheckEligibilityResponseBody checkEligibilityClientSide(ClientQualificationsCheckEligibilityRequestBody clientQualificationsCheckEligibilityRequestBody) throws ApiException {
+        ApiResponse<ClientQualificationsCheckEligibilityResponseBody> localVarResp = checkEligibilityClientSideWithHttpInfo(clientQualificationsCheckEligibilityRequestBody);
         return localVarResp.getData();
     }
 
     /**
-     * Redeem Stackable Discounts
-     * ## How API returns calculated discounts and order amounts in the response  In the table below, you can see the logic the API follows to calculate discounts and amounts:  | **Field** | **Calculation** | **Description** | |:---|:---|:---| | amount | N/A | This field shows the order amount before applying any discount | | total_amount | &#x60;total_amount&#x60; &#x3D; &#x60;amount&#x60; - &#x60;total_discount_amount&#x60; | This field shows the order amount after applying all the discounts | | discount_amount | &#x60;discount_amount&#x60; &#x3D; &#x60;previous_discount_amount&#x60; + &#x60;applied_discount_amount&#x60; | This field sums up all order-level discounts up to and including the specific discount being calculated for the stacked redemption. | | items_discount_amount | sum(items, i &#x3D;&gt; i.discount_amount) | This field sums up all product-specific discounts | | total_discount_amount | &#x60;total_discount_amount&#x60; &#x3D; &#x60;discount_amount&#x60; + &#x60;items_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts | | applied_discount_amount | N/A | This field shows the order-level discount applied in a particular request | | items_applied_discount_amount | sum(items, i &#x3D;&gt; i.applied_discount_amount) | This field sums up all product-specific discounts applied in a particular request | | total_applied_discount_amount | &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts applied in a particular request |  &lt;!-- theme: info --&gt; &gt; 📘 Rollbacks &gt; &gt; You can&#39;t roll back a child redemption. When you call rollback on a stacked redemption, all child redemptions will be rolled back. You need to refer to a parent redemption ID in your &lt;!-- [rollback request](OpenAPI.json/paths/~1redemptions~1{parentRedemptionId}~1rollbacks/post) --&gt;[rollback request](ref:rollback-stacked-redemptions).      &lt;!-- theme: info --&gt; &gt; 📘 Also available on client-side &gt; &gt; This method is also accessible through public keys which you can use in client-side​ apps: mobile and web browser apps. Go to the dedicated [endpoint](ref:redeem-stacked-discounts-client-side) to learn more. &gt; - Use &#x60;X-Client-Application-Id&#x60; as the application ID header. &gt; - Use &#x60;X-Client-Token&#x60; as the appliction secret key header. &gt; - Use client-side base URL. &gt; - Use an &#x60;origin&#x60; header for your custom domain.
-     * @param redemptionsRedeemRequestBody  (optional)
-     * @return ApiResponse&lt;RedemptionsRedeemResponseBody&gt;
+     * Check Eligibility (client-side)
+     * Generate a list of redeemables that are applicable in the context of the customer and order.  The new qualifications method is an improved version of [Campaign Qualifications](ref:examine-campaigns-qualification), [Voucher Qualifications](ref:examine-vouchers-qualification), and [Promotions Validation](ref:validate-promotions) API requests. The new qualification method introduces the following improvements:  - Qualification results are returned faster - No limit on the number of returned redeemables - Introduces new qualification scenarios, not available in the previous version  &gt; 👍 Scenario Guide &gt; &gt; Read our dedicated guide to learn about some use cases this endpoint can cover [here](doc:checking-eligibility).  ## Paging   The Voucherify Qualifications API request will return to you all of the redeemables available for the customer in batches of up to 50 redeemables. To get the next batch of redeemables, you need to use the &#x60;starting_after&#x60; cursor.  To process of paging the redeemables works in the following manner:  - You send the first API request for Qualifications without the &#x60;starting_after&#x60; parameter. - The response will contain a parameter named &#x60;has_more&#x60;. If the parameter&#39;s value is set to &#x60;true&#x60;, then more redeemables are available. - Get the value of the &#x60;created_at&#x60; parameter of the last returned redeemable. The value of this parameter will be used as a cursor to retrieve the next page of redeemables. - Send another API request for Qualification with the &#x60;starting_after&#x60; parameter set to the value taken from the &#x60;created_at&#x60; parameter from the last returned redeemable. - Voucherify will return the next page of redeemables. - If the &#x60;has_more&#x60; parameter is set to &#x60;true&#x60;, apply steps 3-5 to get the next page of redeemables.
+     * @param clientQualificationsCheckEligibilityRequestBody Define order and customer context. (optional)
+     * @return ApiResponse&lt;ClientQualificationsCheckEligibilityResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a qualifications object. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RedemptionsRedeemResponseBody> redeemStackedDiscountsWithHttpInfo(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody) throws ApiException {
-        okhttp3.Call localVarCall = redeemStackedDiscountsValidateBeforeCall(redemptionsRedeemRequestBody, null);
-        Type localVarReturnType = new TypeToken<RedemptionsRedeemResponseBody>(){}.getType();
+    public ApiResponse<ClientQualificationsCheckEligibilityResponseBody> checkEligibilityClientSideWithHttpInfo(ClientQualificationsCheckEligibilityRequestBody clientQualificationsCheckEligibilityRequestBody) throws ApiException {
+        okhttp3.Call localVarCall = checkEligibilityClientSideValidateBeforeCall(clientQualificationsCheckEligibilityRequestBody, null);
+        Type localVarReturnType = new TypeToken<ClientQualificationsCheckEligibilityResponseBody>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Redeem Stackable Discounts (asynchronously)
-     * ## How API returns calculated discounts and order amounts in the response  In the table below, you can see the logic the API follows to calculate discounts and amounts:  | **Field** | **Calculation** | **Description** | |:---|:---|:---| | amount | N/A | This field shows the order amount before applying any discount | | total_amount | &#x60;total_amount&#x60; &#x3D; &#x60;amount&#x60; - &#x60;total_discount_amount&#x60; | This field shows the order amount after applying all the discounts | | discount_amount | &#x60;discount_amount&#x60; &#x3D; &#x60;previous_discount_amount&#x60; + &#x60;applied_discount_amount&#x60; | This field sums up all order-level discounts up to and including the specific discount being calculated for the stacked redemption. | | items_discount_amount | sum(items, i &#x3D;&gt; i.discount_amount) | This field sums up all product-specific discounts | | total_discount_amount | &#x60;total_discount_amount&#x60; &#x3D; &#x60;discount_amount&#x60; + &#x60;items_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts | | applied_discount_amount | N/A | This field shows the order-level discount applied in a particular request | | items_applied_discount_amount | sum(items, i &#x3D;&gt; i.applied_discount_amount) | This field sums up all product-specific discounts applied in a particular request | | total_applied_discount_amount | &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts applied in a particular request |  &lt;!-- theme: info --&gt; &gt; 📘 Rollbacks &gt; &gt; You can&#39;t roll back a child redemption. When you call rollback on a stacked redemption, all child redemptions will be rolled back. You need to refer to a parent redemption ID in your &lt;!-- [rollback request](OpenAPI.json/paths/~1redemptions~1{parentRedemptionId}~1rollbacks/post) --&gt;[rollback request](ref:rollback-stacked-redemptions).      &lt;!-- theme: info --&gt; &gt; 📘 Also available on client-side &gt; &gt; This method is also accessible through public keys which you can use in client-side​ apps: mobile and web browser apps. Go to the dedicated [endpoint](ref:redeem-stacked-discounts-client-side) to learn more. &gt; - Use &#x60;X-Client-Application-Id&#x60; as the application ID header. &gt; - Use &#x60;X-Client-Token&#x60; as the appliction secret key header. &gt; - Use client-side base URL. &gt; - Use an &#x60;origin&#x60; header for your custom domain.
-     * @param redemptionsRedeemRequestBody  (optional)
+     * Check Eligibility (client-side) (asynchronously)
+     * Generate a list of redeemables that are applicable in the context of the customer and order.  The new qualifications method is an improved version of [Campaign Qualifications](ref:examine-campaigns-qualification), [Voucher Qualifications](ref:examine-vouchers-qualification), and [Promotions Validation](ref:validate-promotions) API requests. The new qualification method introduces the following improvements:  - Qualification results are returned faster - No limit on the number of returned redeemables - Introduces new qualification scenarios, not available in the previous version  &gt; 👍 Scenario Guide &gt; &gt; Read our dedicated guide to learn about some use cases this endpoint can cover [here](doc:checking-eligibility).  ## Paging   The Voucherify Qualifications API request will return to you all of the redeemables available for the customer in batches of up to 50 redeemables. To get the next batch of redeemables, you need to use the &#x60;starting_after&#x60; cursor.  To process of paging the redeemables works in the following manner:  - You send the first API request for Qualifications without the &#x60;starting_after&#x60; parameter. - The response will contain a parameter named &#x60;has_more&#x60;. If the parameter&#39;s value is set to &#x60;true&#x60;, then more redeemables are available. - Get the value of the &#x60;created_at&#x60; parameter of the last returned redeemable. The value of this parameter will be used as a cursor to retrieve the next page of redeemables. - Send another API request for Qualification with the &#x60;starting_after&#x60; parameter set to the value taken from the &#x60;created_at&#x60; parameter from the last returned redeemable. - Voucherify will return the next page of redeemables. - If the &#x60;has_more&#x60; parameter is set to &#x60;true&#x60;, apply steps 3-5 to get the next page of redeemables.
+     * @param clientQualificationsCheckEligibilityRequestBody Define order and customer context. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns a qualifications object. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call redeemStackedDiscountsAsync(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody, final ApiCallback<RedemptionsRedeemResponseBody> _callback) throws ApiException {
+    public okhttp3.Call checkEligibilityClientSideAsync(ClientQualificationsCheckEligibilityRequestBody clientQualificationsCheckEligibilityRequestBody, final ApiCallback<ClientQualificationsCheckEligibilityResponseBody> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = redeemStackedDiscountsValidateBeforeCall(redemptionsRedeemRequestBody, _callback);
-        Type localVarReturnType = new TypeToken<RedemptionsRedeemResponseBody>(){}.getType();
+        okhttp3.Call localVarCall = checkEligibilityClientSideValidateBeforeCall(clientQualificationsCheckEligibilityRequestBody, _callback);
+        Type localVarReturnType = new TypeToken<ClientQualificationsCheckEligibilityResponseBody>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -331,21 +329,19 @@ public class StackableDiscountsApi {
         return localVarCall;
     }
     /**
-     * Build call for rollbackStackedRedemptions
-     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
-     * @param reason Reason for the rollback. (optional)
-     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
-     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
+     * Build call for trackCustomEventClientSide
+     * @param origin Indicates the origin (scheme, hostname, and port). (required)
+     * @param clientEventsCreateRequestBody Specify the details of the custom event. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the event type if the event was received by the application. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call rollbackStackedRedemptionsCall(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call trackCustomEventClientSideCall(String origin, ClientEventsCreateRequestBody clientEventsCreateRequestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -359,11 +355,10 @@ public class StackableDiscountsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = redemptionsRollbacksCreateRequestBody;
+        Object localVarPostBody = clientEventsCreateRequestBody;
 
         // create path and map variables
-        String localVarPath = "/v1/redemptions/{parentRedemptionId}/rollbacks"
-            .replace("{" + "parentRedemptionId" + "}", localVarApiClient.escapeString(parentRedemptionId.toString()));
+        String localVarPath = "/client/v1/events";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -371,12 +366,8 @@ public class StackableDiscountsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (reason != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("reason", reason));
-        }
-
-        if (trackingId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tracking_id", trackingId));
+        if (origin != null) {
+            localVarHeaderParams.put("origin", localVarApiClient.parameterToString(origin));
         }
 
         final String[] localVarAccepts = {
@@ -395,98 +386,93 @@ public class StackableDiscountsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        String[] localVarAuthNames = new String[] { "X-Client-Application-Id", "X-Client-Token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call rollbackStackedRedemptionsValidateBeforeCall(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'parentRedemptionId' is set
-        if (parentRedemptionId == null) {
-            throw new ApiException("Missing the required parameter 'parentRedemptionId' when calling rollbackStackedRedemptions(Async)");
+    private okhttp3.Call trackCustomEventClientSideValidateBeforeCall(String origin, ClientEventsCreateRequestBody clientEventsCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'origin' is set
+        if (origin == null) {
+            throw new ApiException("Missing the required parameter 'origin' when calling trackCustomEventClientSide(Async)");
         }
 
-        return rollbackStackedRedemptionsCall(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody, _callback);
+        return trackCustomEventClientSideCall(origin, clientEventsCreateRequestBody, _callback);
 
     }
 
     /**
-     * Rollback Stackable Redemptions
-     * Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.
-     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
-     * @param reason Reason for the rollback. (optional)
-     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
-     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
-     * @return RedemptionsRollbacksCreateResponseBody
+     * Track Custom Event (client-side)
+     * To track a custom event, you create an event object.    The event object must be linked to the customer who performs the action. If a customer doesn&#39;t exist in Voucherify, the customer will be created.
+     * @param origin Indicates the origin (scheme, hostname, and port). (required)
+     * @param clientEventsCreateRequestBody Specify the details of the custom event. (optional)
+     * @return ClientEventsCreateResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the event type if the event was received by the application. </td><td>  -  </td></tr>
      </table>
      */
-    public RedemptionsRollbacksCreateResponseBody rollbackStackedRedemptions(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody) throws ApiException {
-        ApiResponse<RedemptionsRollbacksCreateResponseBody> localVarResp = rollbackStackedRedemptionsWithHttpInfo(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody);
+    public ClientEventsCreateResponseBody trackCustomEventClientSide(String origin, ClientEventsCreateRequestBody clientEventsCreateRequestBody) throws ApiException {
+        ApiResponse<ClientEventsCreateResponseBody> localVarResp = trackCustomEventClientSideWithHttpInfo(origin, clientEventsCreateRequestBody);
         return localVarResp.getData();
     }
 
     /**
-     * Rollback Stackable Redemptions
-     * Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.
-     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
-     * @param reason Reason for the rollback. (optional)
-     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
-     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
-     * @return ApiResponse&lt;RedemptionsRollbacksCreateResponseBody&gt;
+     * Track Custom Event (client-side)
+     * To track a custom event, you create an event object.    The event object must be linked to the customer who performs the action. If a customer doesn&#39;t exist in Voucherify, the customer will be created.
+     * @param origin Indicates the origin (scheme, hostname, and port). (required)
+     * @param clientEventsCreateRequestBody Specify the details of the custom event. (optional)
+     * @return ApiResponse&lt;ClientEventsCreateResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the event type if the event was received by the application. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RedemptionsRollbacksCreateResponseBody> rollbackStackedRedemptionsWithHttpInfo(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody) throws ApiException {
-        okhttp3.Call localVarCall = rollbackStackedRedemptionsValidateBeforeCall(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody, null);
-        Type localVarReturnType = new TypeToken<RedemptionsRollbacksCreateResponseBody>(){}.getType();
+    public ApiResponse<ClientEventsCreateResponseBody> trackCustomEventClientSideWithHttpInfo(String origin, ClientEventsCreateRequestBody clientEventsCreateRequestBody) throws ApiException {
+        okhttp3.Call localVarCall = trackCustomEventClientSideValidateBeforeCall(origin, clientEventsCreateRequestBody, null);
+        Type localVarReturnType = new TypeToken<ClientEventsCreateResponseBody>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Rollback Stackable Redemptions (asynchronously)
-     * Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.
-     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
-     * @param reason Reason for the rollback. (optional)
-     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
-     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
+     * Track Custom Event (client-side) (asynchronously)
+     * To track a custom event, you create an event object.    The event object must be linked to the customer who performs the action. If a customer doesn&#39;t exist in Voucherify, the customer will be created.
+     * @param origin Indicates the origin (scheme, hostname, and port). (required)
+     * @param clientEventsCreateRequestBody Specify the details of the custom event. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the event type if the event was received by the application. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call rollbackStackedRedemptionsAsync(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody, final ApiCallback<RedemptionsRollbacksCreateResponseBody> _callback) throws ApiException {
+    public okhttp3.Call trackCustomEventClientSideAsync(String origin, ClientEventsCreateRequestBody clientEventsCreateRequestBody, final ApiCallback<ClientEventsCreateResponseBody> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = rollbackStackedRedemptionsValidateBeforeCall(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody, _callback);
-        Type localVarReturnType = new TypeToken<RedemptionsRollbacksCreateResponseBody>(){}.getType();
+        okhttp3.Call localVarCall = trackCustomEventClientSideValidateBeforeCall(origin, clientEventsCreateRequestBody, _callback);
+        Type localVarReturnType = new TypeToken<ClientEventsCreateResponseBody>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for validateStackedDiscounts
-     * @param validationsValidateRequestBody  (optional)
+     * Build call for updateCustomersConsentsClientSide
+     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
+     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid validation. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call validateStackedDiscountsCall(ValidationsValidateRequestBody validationsValidateRequestBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCustomersConsentsClientSideCall(String customerId, Object body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,10 +486,11 @@ public class StackableDiscountsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = validationsValidateRequestBody;
+        Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/v1/validations";
+        String localVarPath = "/client/v1/customers/{customerId}/consents"
+            .replace("{" + "customerId" + "}", localVarApiClient.escapeString(customerId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -512,7 +499,6 @@ public class StackableDiscountsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -527,69 +513,73 @@ public class StackableDiscountsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "X-Client-Application-Id", "X-Client-Token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call validateStackedDiscountsValidateBeforeCall(ValidationsValidateRequestBody validationsValidateRequestBody, final ApiCallback _callback) throws ApiException {
-        return validateStackedDiscountsCall(validationsValidateRequestBody, _callback);
+    private okhttp3.Call updateCustomersConsentsClientSideValidateBeforeCall(String customerId, Object body, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'customerId' is set
+        if (customerId == null) {
+            throw new ApiException("Missing the required parameter 'customerId' when calling updateCustomersConsentsClientSide(Async)");
+        }
+
+        return updateCustomersConsentsClientSideCall(customerId, body, _callback);
 
     }
 
     /**
-     * Validate Stackable Discounts
-     * Verify redeemables provided in the request. This method is designed for server side integration which means that it is accessible only through private keys.
-     * @param validationsValidateRequestBody  (optional)
-     * @return ValidationsValidateResponseBody
+     * Update Customer&#39;s consents (client-side)
+     * Update marketing permissions for the specified customer.
+     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
+     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid validation. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
      </table>
      */
-    public ValidationsValidateResponseBody validateStackedDiscounts(ValidationsValidateRequestBody validationsValidateRequestBody) throws ApiException {
-        ApiResponse<ValidationsValidateResponseBody> localVarResp = validateStackedDiscountsWithHttpInfo(validationsValidateRequestBody);
-        return localVarResp.getData();
+    public void updateCustomersConsentsClientSide(String customerId, Object body) throws ApiException {
+        updateCustomersConsentsClientSideWithHttpInfo(customerId, body);
     }
 
     /**
-     * Validate Stackable Discounts
-     * Verify redeemables provided in the request. This method is designed for server side integration which means that it is accessible only through private keys.
-     * @param validationsValidateRequestBody  (optional)
-     * @return ApiResponse&lt;ValidationsValidateResponseBody&gt;
+     * Update Customer&#39;s consents (client-side)
+     * Update marketing permissions for the specified customer.
+     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
+     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid validation. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValidationsValidateResponseBody> validateStackedDiscountsWithHttpInfo(ValidationsValidateRequestBody validationsValidateRequestBody) throws ApiException {
-        okhttp3.Call localVarCall = validateStackedDiscountsValidateBeforeCall(validationsValidateRequestBody, null);
-        Type localVarReturnType = new TypeToken<ValidationsValidateResponseBody>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    public ApiResponse<Void> updateCustomersConsentsClientSideWithHttpInfo(String customerId, Object body) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomersConsentsClientSideValidateBeforeCall(customerId, body, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Validate Stackable Discounts (asynchronously)
-     * Verify redeemables provided in the request. This method is designed for server side integration which means that it is accessible only through private keys.
-     * @param validationsValidateRequestBody  (optional)
+     * Update Customer&#39;s consents (client-side) (asynchronously)
+     * Update marketing permissions for the specified customer.
+     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
+     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid validation. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call validateStackedDiscountsAsync(ValidationsValidateRequestBody validationsValidateRequestBody, final ApiCallback<ValidationsValidateResponseBody> _callback) throws ApiException {
+    public okhttp3.Call updateCustomersConsentsClientSideAsync(String customerId, Object body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = validateStackedDiscountsValidateBeforeCall(validationsValidateRequestBody, _callback);
-        Type localVarReturnType = new TypeToken<ValidationsValidateResponseBody>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = updateCustomersConsentsClientSideValidateBeforeCall(customerId, body, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

@@ -9,8 +9,8 @@ Model Used for internal communication
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Unique redemption ID. |  [optional] |
-|**_object** | **String** | The type of object represented by the JSON. This object stores information about the &#x60;redemption&#x60;. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the redemption was created in ISO 8601 format. |  [optional] |
+|**_object** | **String** | The type of the object represented by the JSON. This object stores information about the &#x60;redemption&#x60;. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the redemption was created. The value is shown in the ISO 8601 format. |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |  [optional] |
 |**channelType** | [**ChannelTypeEnum**](#ChannelTypeEnum) | The source of the channel for the redemption rollback. A &#x60;USER&#x60; corresponds to the Voucherify Dashboard and an &#x60;API&#x60; corresponds to the API. |  [optional] |
@@ -33,7 +33,7 @@ Model Used for internal communication
 |**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher. |  [optional] |
 |**relatedObjectParentId** | **String** | Unique related parent object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher. |  [optional] |
 |**campaignName** | **String** | Campaign name |  [optional] |
-|**voucher** | [**Voucher**](Voucher.md) |  |  [optional] |
+|**voucher** | [**RedemptionVoucher**](RedemptionVoucher.md) |  |  [optional] |
 |**promotionTier** | [**PromotionTier**](PromotionTier.md) |  |  [optional] |
 
 

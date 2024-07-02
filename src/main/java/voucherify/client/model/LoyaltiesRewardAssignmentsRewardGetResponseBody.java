@@ -146,7 +146,7 @@ public class LoyaltiesRewardAssignmentsRewardGetResponseBody {
   private OffsetDateTime updatedAt;
 
   /**
-   * The type of object represented by the JSON. This object stores information about the reward.
+   * The type of the object represented by the JSON. This object stores information about the reward.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -372,7 +372,7 @@ public class LoyaltiesRewardAssignmentsRewardGetResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the reward was created in ISO 8601 format.
+   * Timestamp representing the date and time when the reward was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -393,7 +393,7 @@ public class LoyaltiesRewardAssignmentsRewardGetResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the reward was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the reward was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -414,7 +414,7 @@ public class LoyaltiesRewardAssignmentsRewardGetResponseBody {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the reward.
+   * The type of the object represented by the JSON. This object stores information about the reward.
    * @return _object
   **/
   @javax.annotation.Nonnull

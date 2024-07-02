@@ -24,6 +24,7 @@ import java.util.Arrays;
 import voucherify.client.model.SimpleCampaign;
 import voucherify.client.model.SimpleCustomer;
 import voucherify.client.model.SimpleOrder;
+import voucherify.client.model.SimplePromotionStack;
 import voucherify.client.model.SimplePromotionTier;
 import voucherify.client.model.SimpleRedemption;
 import voucherify.client.model.SimpleVoucher;
@@ -81,6 +82,10 @@ public class EventCustomerRedemptionRollbackSucceeded {
   public static final String SERIALIZED_NAME_PROMOTION_TIER = "promotion_tier";
   @SerializedName(SERIALIZED_NAME_PROMOTION_TIER)
   private SimplePromotionTier promotionTier;
+
+  public static final String SERIALIZED_NAME_PROMOTION_STACK = "promotion_stack";
+  @SerializedName(SERIALIZED_NAME_PROMOTION_STACK)
+  private SimplePromotionStack promotionStack;
 
   public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
   @SerializedName(SERIALIZED_NAME_REDEMPTION)
@@ -219,6 +224,27 @@ public class EventCustomerRedemptionRollbackSucceeded {
   }
 
 
+  public EventCustomerRedemptionRollbackSucceeded promotionStack(SimplePromotionStack promotionStack) {
+    
+    this.promotionStack = promotionStack;
+    return this;
+  }
+
+   /**
+   * Get promotionStack
+   * @return promotionStack
+  **/
+  @javax.annotation.Nullable
+  public SimplePromotionStack getPromotionStack() {
+    return promotionStack;
+  }
+
+
+  public void setPromotionStack(SimplePromotionStack promotionStack) {
+    this.promotionStack = promotionStack;
+  }
+
+
   public EventCustomerRedemptionRollbackSucceeded redemption(SimpleRedemption redemption) {
     
     this.redemption = redemption;
@@ -277,13 +303,14 @@ public class EventCustomerRedemptionRollbackSucceeded {
         Objects.equals(this.voucher, eventCustomerRedemptionRollbackSucceeded.voucher) &&
         Objects.equals(this.holder, eventCustomerRedemptionRollbackSucceeded.holder) &&
         Objects.equals(this.promotionTier, eventCustomerRedemptionRollbackSucceeded.promotionTier) &&
+        Objects.equals(this.promotionStack, eventCustomerRedemptionRollbackSucceeded.promotionStack) &&
         Objects.equals(this.redemption, eventCustomerRedemptionRollbackSucceeded.redemption) &&
         Objects.equals(this.redemptionRollback, eventCustomerRedemptionRollbackSucceeded.redemptionRollback);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customer, order, campaign, voucher, holder, promotionTier, redemption, redemptionRollback);
+    return Objects.hash(customer, order, campaign, voucher, holder, promotionTier, promotionStack, redemption, redemptionRollback);
   }
 
   @Override
@@ -296,6 +323,7 @@ public class EventCustomerRedemptionRollbackSucceeded {
     sb.append("    voucher: ").append(toIndentedString(voucher)).append("\n");
     sb.append("    holder: ").append(toIndentedString(holder)).append("\n");
     sb.append("    promotionTier: ").append(toIndentedString(promotionTier)).append("\n");
+    sb.append("    promotionStack: ").append(toIndentedString(promotionStack)).append("\n");
     sb.append("    redemption: ").append(toIndentedString(redemption)).append("\n");
     sb.append("    redemptionRollback: ").append(toIndentedString(redemptionRollback)).append("\n");
     sb.append("}");
@@ -326,6 +354,7 @@ public class EventCustomerRedemptionRollbackSucceeded {
     openapiFields.add("voucher");
     openapiFields.add("holder");
     openapiFields.add("promotion_tier");
+    openapiFields.add("promotion_stack");
     openapiFields.add("redemption");
     openapiFields.add("redemption_rollback");
 
@@ -377,6 +406,10 @@ public class EventCustomerRedemptionRollbackSucceeded {
       // validate the optional field `promotion_tier`
       if (jsonObj.get("promotion_tier") != null && !jsonObj.get("promotion_tier").isJsonNull()) {
         SimplePromotionTier.validateJsonElement(jsonObj.get("promotion_tier"));
+      }
+      // validate the optional field `promotion_stack`
+      if (jsonObj.get("promotion_stack") != null && !jsonObj.get("promotion_stack").isJsonNull()) {
+        SimplePromotionStack.validateJsonElement(jsonObj.get("promotion_stack"));
       }
       // validate the optional field `redemption`
       if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {

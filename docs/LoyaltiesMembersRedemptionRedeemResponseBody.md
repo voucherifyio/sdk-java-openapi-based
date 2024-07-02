@@ -9,12 +9,12 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Unique redemption ID. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by the JSON |  |
-|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created in ISO 8601 format. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON |  |
+|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |  |
 |**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |  [optional] |
-|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts. |  [optional] |
+|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. |  [optional] |
 |**redemption** | **String** | Unique redemption ID of the parent redemption. |  [optional] |
 |**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Redemption status. |  |
@@ -26,7 +26,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 |**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
 |**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object. |  |
 |**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher. |  |
-|**voucher** | [**Voucher**](Voucher.md) |  |  [optional] |
+|**voucher** | [**RedemptionVoucher**](RedemptionVoucher.md) |  |  [optional] |
 |**promotionTier** | [**PromotionTier**](PromotionTier.md) |  |  [optional] |
 |**reward** | [**RedemptionRewardResult**](RedemptionRewardResult.md) |  |  |
 |**gift** | [**RedemptionGift**](RedemptionGift.md) |  |  [optional] |

@@ -207,8 +207,8 @@ public class Example {
     //X-App-Token.setApiKeyPrefix("Token");
 
     PublicationsApi apiInstance = new PublicationsApi(defaultClient);
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     ParameterOrderListPublications order = ParameterOrderListPublications.fromValue("id"); // ParameterOrderListPublications | Sorts the results using one of the filtering options, where the dash `-` preceding a sorting option means sorting in a descending order.
     String campaign = "campaign_example"; // String | Filters by a given campaign name.
     String customer = "customer_example"; // String | Filters by a unique customer ID.
@@ -236,8 +236,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 | **order** | [**ParameterOrderListPublications**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: id, -id, voucher_code, -voucher_code, tracking_id, -tracking_id, customer_id, -customer_id, created_at, -created_at, channel, -channel] |
 | **campaign** | **String**| Filters by a given campaign name. | [optional] |
 | **customer** | **String**| Filters by a unique customer ID. | [optional] |

@@ -8,7 +8,11 @@ Event data object schema for `customer.custom_event`.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**customer** | [**CustomerWithSummaryLoyaltyReferrals**](CustomerWithSummaryLoyaltyReferrals.md) |  |  |
+|**event** | [**CustomEvent**](CustomEvent.md) |  |  |
+|**eventSchema** | [**SimpleCustomEvent**](SimpleCustomEvent.md) |  |  |
+|**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |  |
+|**referral** | [**EventCustomerCustomEventReferral**](EventCustomerCustomEventReferral.md) |  |  [optional] |
+|**loyalty** | [**EventCustomerCustomEventLoyalty**](EventCustomerCustomEventLoyalty.md) |  |  [optional] |
 
 
 

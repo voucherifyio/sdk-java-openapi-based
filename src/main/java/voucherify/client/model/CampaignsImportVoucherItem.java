@@ -20,14 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import voucherify.client.model.CampaignBaseValidityTimeframe;
 import voucherify.client.model.CampaignsImportVoucherItemRedemption;
 import voucherify.client.model.CampaignsImportVoucherLoyaltyCard;
-import voucherify.client.model.Discount;
 import voucherify.client.model.Gift;
 
 import com.google.gson.Gson;
@@ -135,25 +130,9 @@ public class CampaignsImportVoucherItem {
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private String category;
 
-  public static final String SERIALIZED_NAME_START_DATE = "start_date";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
-
-  public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
-  @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private CampaignBaseValidityTimeframe validityTimeframe;
-
-  public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
-  @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
-  private List<Integer> validityDayOfWeek;
-
   public static final String SERIALIZED_NAME_ADDITIONAL_INFO = "additional_info";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_INFO)
   private String additionalInfo;
-
-  public static final String SERIALIZED_NAME_DISCOUNT = "discount";
-  @SerializedName(SERIALIZED_NAME_DISCOUNT)
-  private Discount discount;
 
   public static final String SERIALIZED_NAME_GIFT = "gift";
   @SerializedName(SERIALIZED_NAME_GIFT)
@@ -292,77 +271,6 @@ public class CampaignsImportVoucherItem {
   }
 
 
-  public CampaignsImportVoucherItem startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Activation timestamp defines when the campaign starts to be active in ISO 8601 format. Campaign is *inactive before* this date. 
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public CampaignsImportVoucherItem validityTimeframe(CampaignBaseValidityTimeframe validityTimeframe) {
-    
-    this.validityTimeframe = validityTimeframe;
-    return this;
-  }
-
-   /**
-   * Get validityTimeframe
-   * @return validityTimeframe
-  **/
-  @javax.annotation.Nullable
-  public CampaignBaseValidityTimeframe getValidityTimeframe() {
-    return validityTimeframe;
-  }
-
-
-  public void setValidityTimeframe(CampaignBaseValidityTimeframe validityTimeframe) {
-    this.validityTimeframe = validityTimeframe;
-  }
-
-
-  public CampaignsImportVoucherItem validityDayOfWeek(List<Integer> validityDayOfWeek) {
-    
-    this.validityDayOfWeek = validityDayOfWeek;
-    return this;
-  }
-
-  public CampaignsImportVoucherItem addValidityDayOfWeekItem(Integer validityDayOfWeekItem) {
-    if (this.validityDayOfWeek == null) {
-      this.validityDayOfWeek = new ArrayList<>();
-    }
-    this.validityDayOfWeek.add(validityDayOfWeekItem);
-    return this;
-  }
-
-   /**
-   * Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60;  Sunday   - &#x60;1&#x60;  Monday   - &#x60;2&#x60;  Tuesday   - &#x60;3&#x60;  Wednesday   - &#x60;4&#x60;  Thursday   - &#x60;5&#x60;  Friday   - &#x60;6&#x60;  Saturday  
-   * @return validityDayOfWeek
-  **/
-  @javax.annotation.Nullable
-  public List<Integer> getValidityDayOfWeek() {
-    return validityDayOfWeek;
-  }
-
-
-  public void setValidityDayOfWeek(List<Integer> validityDayOfWeek) {
-    this.validityDayOfWeek = validityDayOfWeek;
-  }
-
-
   public CampaignsImportVoucherItem additionalInfo(String additionalInfo) {
     
     this.additionalInfo = additionalInfo;
@@ -381,27 +289,6 @@ public class CampaignsImportVoucherItem {
 
   public void setAdditionalInfo(String additionalInfo) {
     this.additionalInfo = additionalInfo;
-  }
-
-
-  public CampaignsImportVoucherItem discount(Discount discount) {
-    
-    this.discount = discount;
-    return this;
-  }
-
-   /**
-   * Get discount
-   * @return discount
-  **/
-  @javax.annotation.Nullable
-  public Discount getDiscount() {
-    return discount;
-  }
-
-
-  public void setDiscount(Discount discount) {
-    this.discount = discount;
   }
 
 
@@ -463,18 +350,14 @@ public class CampaignsImportVoucherItem {
         Objects.equals(this.active, campaignsImportVoucherItem.active) &&
         Objects.equals(this.metadata, campaignsImportVoucherItem.metadata) &&
         Objects.equals(this.category, campaignsImportVoucherItem.category) &&
-        Objects.equals(this.startDate, campaignsImportVoucherItem.startDate) &&
-        Objects.equals(this.validityTimeframe, campaignsImportVoucherItem.validityTimeframe) &&
-        Objects.equals(this.validityDayOfWeek, campaignsImportVoucherItem.validityDayOfWeek) &&
         Objects.equals(this.additionalInfo, campaignsImportVoucherItem.additionalInfo) &&
-        Objects.equals(this.discount, campaignsImportVoucherItem.discount) &&
         Objects.equals(this.gift, campaignsImportVoucherItem.gift) &&
         Objects.equals(this.loyaltyCard, campaignsImportVoucherItem.loyaltyCard);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, type, redemption, active, metadata, category, startDate, validityTimeframe, validityDayOfWeek, additionalInfo, discount, gift, loyaltyCard);
+    return Objects.hash(code, type, redemption, active, metadata, category, additionalInfo, gift, loyaltyCard);
   }
 
   @Override
@@ -487,11 +370,7 @@ public class CampaignsImportVoucherItem {
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
-    sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
-    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
     sb.append("    loyaltyCard: ").append(toIndentedString(loyaltyCard)).append("\n");
     sb.append("}");
@@ -522,11 +401,7 @@ public class CampaignsImportVoucherItem {
     openapiFields.add("active");
     openapiFields.add("metadata");
     openapiFields.add("category");
-    openapiFields.add("start_date");
-    openapiFields.add("validity_timeframe");
-    openapiFields.add("validity_day_of_week");
     openapiFields.add("additional_info");
-    openapiFields.add("discount");
     openapiFields.add("gift");
     openapiFields.add("loyalty_card");
 
@@ -589,20 +464,8 @@ public class CampaignsImportVoucherItem {
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
-      }
       if ((jsonObj.get("additional_info") != null && !jsonObj.get("additional_info").isJsonNull()) && !jsonObj.get("additional_info").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `additional_info` to be a primitive type in the JSON string but got `%s`", jsonObj.get("additional_info").toString()));
-      }
-      // validate the optional field `discount`
-      if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
-        Discount.validateJsonElement(jsonObj.get("discount"));
       }
       // validate the optional field `gift`
       if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {

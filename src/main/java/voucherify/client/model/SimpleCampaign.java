@@ -21,8 +21,14 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import voucherify.client.model.Category;
+import voucherify.client.model.LuckyDraw;
 import voucherify.client.model.ReferralProgram;
+import voucherify.client.model.SimpleCampaignVoucher;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +55,7 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Request body schema for creating a discount voucher campaign using **POST** &#x60;/campaigns&#x60;.
+ * Simplified campaign data.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
@@ -123,11 +129,11 @@ public class SimpleCampaign {
 
   public static final String SERIALIZED_NAME_VOUCHER = "voucher";
   @SerializedName(SERIALIZED_NAME_VOUCHER)
-  private Object voucher;
+  private SimpleCampaignVoucher voucher;
 
   public static final String SERIALIZED_NAME_LUCKY_DRAW = "lucky_draw";
   @SerializedName(SERIALIZED_NAME_LUCKY_DRAW)
-  private Object luckyDraw;
+  private LuckyDraw luckyDraw;
 
   public static final String SERIALIZED_NAME_REFERRAL_PROGRAM = "referral_program";
   @SerializedName(SERIALIZED_NAME_REFERRAL_PROGRAM)
@@ -145,12 +151,44 @@ public class SimpleCampaign {
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   private Boolean active;
 
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private String category;
+
+  public static final String SERIALIZED_NAME_CATEGORY_ID = "category_id";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
+  private String categoryId;
+
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<Category> categories;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  public static final String SERIALIZED_NAME_START_DATE = "start_date";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expiration_date";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+  private OffsetDateTime expirationDate;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
 
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
   /**
-   * The type of object represented by JSON. This object stores information about the campaign.
+   * The type of the object represented by JSON. This object stores information about the campaign.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -208,7 +246,7 @@ public class SimpleCampaign {
   }
 
    /**
-   * Campaign name.
+   * Campaign ID.
    * @return id
   **/
   @javax.annotation.Nullable
@@ -306,7 +344,7 @@ public class SimpleCampaign {
   }
 
 
-  public SimpleCampaign voucher(Object voucher) {
+  public SimpleCampaign voucher(SimpleCampaignVoucher voucher) {
     
     this.voucher = voucher;
     return this;
@@ -317,17 +355,17 @@ public class SimpleCampaign {
    * @return voucher
   **/
   @javax.annotation.Nullable
-  public Object getVoucher() {
+  public SimpleCampaignVoucher getVoucher() {
     return voucher;
   }
 
 
-  public void setVoucher(Object voucher) {
+  public void setVoucher(SimpleCampaignVoucher voucher) {
     this.voucher = voucher;
   }
 
 
-  public SimpleCampaign luckyDraw(Object luckyDraw) {
+  public SimpleCampaign luckyDraw(LuckyDraw luckyDraw) {
     
     this.luckyDraw = luckyDraw;
     return this;
@@ -338,12 +376,12 @@ public class SimpleCampaign {
    * @return luckyDraw
   **/
   @javax.annotation.Nullable
-  public Object getLuckyDraw() {
+  public LuckyDraw getLuckyDraw() {
     return luckyDraw;
   }
 
 
-  public void setLuckyDraw(Object luckyDraw) {
+  public void setLuckyDraw(LuckyDraw luckyDraw) {
     this.luckyDraw = luckyDraw;
   }
 
@@ -376,7 +414,7 @@ public class SimpleCampaign {
   }
 
    /**
-   * Indicates whether customers will be able to auto-join a loyalty campaign if any earning rule is fulfilled.
+   * Indicates whether customers will be able to auto-join the campaign if any earning rule is fulfilled.
    * @return autoJoin
   **/
   @javax.annotation.Nullable
@@ -418,7 +456,7 @@ public class SimpleCampaign {
   }
 
    /**
-   * Indicates whether campaign is active
+   * Indicates whether the campaign is active.
    * @return active
   **/
   @javax.annotation.Nullable
@@ -432,6 +470,161 @@ public class SimpleCampaign {
   }
 
 
+  public SimpleCampaign category(String category) {
+    
+    this.category = category;
+    return this;
+  }
+
+   /**
+   * Unique category name.
+   * @return category
+  **/
+  @javax.annotation.Nullable
+  public String getCategory() {
+    return category;
+  }
+
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+
+  public SimpleCampaign categoryId(String categoryId) {
+    
+    this.categoryId = categoryId;
+    return this;
+  }
+
+   /**
+   * The unique category ID that this campaign belongs to.
+   * @return categoryId
+  **/
+  @javax.annotation.Nullable
+  public String getCategoryId() {
+    return categoryId;
+  }
+
+
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
+  }
+
+
+  public SimpleCampaign categories(List<Category> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public SimpleCampaign addCategoriesItem(Category categoriesItem) {
+    if (this.categories == null) {
+      this.categories = new ArrayList<>();
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Contains details about the category.
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
+  }
+
+
+  public SimpleCampaign metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * A set of custom key/value pairs that you can attach to a campaign. The metadata object stores all custom attributes assigned to the campaign.
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public SimpleCampaign startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Activation timestamp defines when the campaign starts to be active in ISO 8601 format. Campaign is inactive *before* this date. 
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public SimpleCampaign expirationDate(OffsetDateTime expirationDate) {
+    
+    this.expirationDate = expirationDate;
+    return this;
+  }
+
+   /**
+   * Expiration timestamp defines when the campaign expires in ISO 8601 format.  Campaign is inactive *after* this date.
+   * @return expirationDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getExpirationDate() {
+    return expirationDate;
+  }
+
+
+  public void setExpirationDate(OffsetDateTime expirationDate) {
+    this.expirationDate = expirationDate;
+  }
+
+
+  public SimpleCampaign description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * An optional field to keep extra textual information about the campaign such as a campaign description and details.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
   public SimpleCampaign createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -439,7 +632,7 @@ public class SimpleCampaign {
   }
 
    /**
-   * Timestamp representing the date and time when the campaign was created in ISO 8601 format.
+   * Timestamp representing the date and time when the campaign was created. Timestamp is presented in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -453,6 +646,27 @@ public class SimpleCampaign {
   }
 
 
+  public SimpleCampaign updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp representing the date and time when the campaign was updated in the ISO 8601 format.
+   * @return updatedAt
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
   public SimpleCampaign _object(ObjectEnum _object) {
     
     this._object = _object;
@@ -460,7 +674,7 @@ public class SimpleCampaign {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the campaign.
+   * The type of the object represented by JSON. This object stores information about the campaign.
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -495,13 +709,32 @@ public class SimpleCampaign {
         Objects.equals(this.autoJoin, simpleCampaign.autoJoin) &&
         Objects.equals(this.joinOnce, simpleCampaign.joinOnce) &&
         Objects.equals(this.active, simpleCampaign.active) &&
+        Objects.equals(this.category, simpleCampaign.category) &&
+        Objects.equals(this.categoryId, simpleCampaign.categoryId) &&
+        Objects.equals(this.categories, simpleCampaign.categories) &&
+        Objects.equals(this.metadata, simpleCampaign.metadata) &&
+        Objects.equals(this.startDate, simpleCampaign.startDate) &&
+        Objects.equals(this.expirationDate, simpleCampaign.expirationDate) &&
+        Objects.equals(this.description, simpleCampaign.description) &&
         Objects.equals(this.createdAt, simpleCampaign.createdAt) &&
+        Objects.equals(this.updatedAt, simpleCampaign.updatedAt) &&
         Objects.equals(this._object, simpleCampaign._object);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, campaignType, type, isReferralCode, voucher, luckyDraw, referralProgram, autoJoin, joinOnce, active, createdAt, _object);
+    return Objects.hash(id, name, campaignType, type, isReferralCode, voucher, luckyDraw, referralProgram, autoJoin, joinOnce, active, category, categoryId, categories, metadata, startDate, expirationDate, description, createdAt, updatedAt, _object);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -519,7 +752,15 @@ public class SimpleCampaign {
     sb.append("    autoJoin: ").append(toIndentedString(autoJoin)).append("\n");
     sb.append("    joinOnce: ").append(toIndentedString(joinOnce)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -554,7 +795,15 @@ public class SimpleCampaign {
     openapiFields.add("auto_join");
     openapiFields.add("join_once");
     openapiFields.add("active");
+    openapiFields.add("category");
+    openapiFields.add("category_id");
+    openapiFields.add("categories");
+    openapiFields.add("metadata");
+    openapiFields.add("start_date");
+    openapiFields.add("expiration_date");
+    openapiFields.add("description");
     openapiFields.add("created_at");
+    openapiFields.add("updated_at");
     openapiFields.add("object");
 
     // a set of required properties/fields (JSON key names)
@@ -607,9 +856,40 @@ public class SimpleCampaign {
           throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
         }
       }
+      // validate the optional field `voucher`
+      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
+        SimpleCampaignVoucher.validateJsonElement(jsonObj.get("voucher"));
+      }
+      // validate the optional field `lucky_draw`
+      if (jsonObj.get("lucky_draw") != null && !jsonObj.get("lucky_draw").isJsonNull()) {
+        LuckyDraw.validateJsonElement(jsonObj.get("lucky_draw"));
+      }
       // validate the optional field `referral_program`
       if (jsonObj.get("referral_program") != null && !jsonObj.get("referral_program").isJsonNull()) {
         ReferralProgram.validateJsonElement(jsonObj.get("referral_program"));
+      }
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+      }
+      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+      }
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
+        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
+        if (jsonArraycategories != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+          }
+
+          // validate the optional field `categories` (array)
+          for (int i = 0; i < jsonArraycategories.size(); i++) {
+            Category.validateJsonElement(jsonArraycategories.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));

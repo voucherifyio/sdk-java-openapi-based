@@ -114,7 +114,7 @@ public class Error {
    * Short string describing the kind of error which occurred.
    * @return key
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getKey() {
     return key;
   }
@@ -177,7 +177,7 @@ public class Error {
    * This ID is useful when troubleshooting and/or finding the root cause of an error response by our support team.
    * @return requestId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
@@ -298,10 +298,8 @@ public class Error {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
-    openapiRequiredFields.add("key");
     openapiRequiredFields.add("message");
     openapiRequiredFields.add("details");
-    openapiRequiredFields.add("request_id");
   }
 
  /**
@@ -332,7 +330,7 @@ public class Error {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("key").isJsonPrimitive()) {
+      if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
       }
       if (!jsonObj.get("message").isJsonPrimitive()) {
@@ -341,7 +339,7 @@ public class Error {
       if (!jsonObj.get("details").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
       }
-      if (!jsonObj.get("request_id").isJsonPrimitive()) {
+      if ((jsonObj.get("request_id") != null && !jsonObj.get("request_id").isJsonNull()) && !jsonObj.get("request_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("request_id").toString()));
       }
       if ((jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) && !jsonObj.get("resource_id").isJsonPrimitive()) {

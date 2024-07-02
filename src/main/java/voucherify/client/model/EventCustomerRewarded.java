@@ -21,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomEvent;
+import voucherify.client.model.EventCustomerRewardedBalance;
 import voucherify.client.model.RedemptionInternal;
 import voucherify.client.model.SimpleCampaign;
 import voucherify.client.model.SimpleCustomer;
@@ -89,7 +91,7 @@ public class EventCustomerRewarded {
 
   public static final String SERIALIZED_NAME_BALANCE = "balance";
   @SerializedName(SERIALIZED_NAME_BALANCE)
-  private Integer balance;
+  private EventCustomerRewardedBalance balance;
 
   public static final String SERIALIZED_NAME_CUSTOM_EVENT = "custom_event";
   @SerializedName(SERIALIZED_NAME_CUSTOM_EVENT)
@@ -249,7 +251,7 @@ public class EventCustomerRewarded {
   }
 
 
-  public EventCustomerRewarded balance(Integer balance) {
+  public EventCustomerRewarded balance(EventCustomerRewardedBalance balance) {
     
     this.balance = balance;
     return this;
@@ -260,12 +262,12 @@ public class EventCustomerRewarded {
    * @return balance
   **/
   @javax.annotation.Nullable
-  public Integer getBalance() {
+  public EventCustomerRewardedBalance getBalance() {
     return balance;
   }
 
 
-  public void setBalance(Integer balance) {
+  public void setBalance(EventCustomerRewardedBalance balance) {
     this.balance = balance;
   }
 
@@ -334,9 +336,20 @@ public class EventCustomerRewarded {
         Objects.equals(this.customerEvent, eventCustomerRewarded.customerEvent);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(customer, holder, voucher, campaign, redemption, reward, referralTier, balance, customEvent, customerEvent);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -438,6 +451,10 @@ public class EventCustomerRewarded {
       // validate the optional field `referral_tier`
       if (jsonObj.get("referral_tier") != null && !jsonObj.get("referral_tier").isJsonNull()) {
         SimpleReferralTier.validateJsonElement(jsonObj.get("referral_tier"));
+      }
+      // validate the optional field `balance`
+      if (jsonObj.get("balance") != null && !jsonObj.get("balance").isJsonNull()) {
+        EventCustomerRewardedBalance.validateJsonElement(jsonObj.get("balance"));
       }
       // validate the optional field `custom_event`
       if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {

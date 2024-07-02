@@ -238,7 +238,7 @@ public class StackingRules {
    /**
    * Defines how many redeemables with an exclusive category can be applied in one request.
    * minimum: 1
-   * maximum: 30
+   * maximum: 5
    * @return applicableExclusiveRedeemablesLimit
   **/
   @javax.annotation.Nonnull
@@ -261,7 +261,7 @@ public class StackingRules {
    /**
    * Defines how many redeemables per category can be applied in one request.
    * minimum: 1
-   * maximum: 30
+   * maximum: 5
    * @return applicableRedeemablesPerCategoryLimit
   **/
   @javax.annotation.Nullable

@@ -571,8 +571,8 @@ public class ValidationRulesApi {
     /**
      * Build call for listValidationRuleAssignments
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -655,8 +655,8 @@ public class ValidationRulesApi {
      * List Validation Rule Assignments
      * Retrieve validation rule assignments for a specific validation rule.
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ValidationRulesAssignmentsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -675,8 +675,8 @@ public class ValidationRulesApi {
      * List Validation Rule Assignments
      * Retrieve validation rule assignments for a specific validation rule.
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ApiResponse&lt;ValidationRulesAssignmentsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -696,8 +696,8 @@ public class ValidationRulesApi {
      * List Validation Rule Assignments (asynchronously)
      * Retrieve validation rule assignments for a specific validation rule.
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -717,8 +717,8 @@ public class ValidationRulesApi {
     }
     /**
      * Build call for listValidationRules
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -804,8 +804,8 @@ public class ValidationRulesApi {
     /**
      * List Validation Rules
      * Retrieve validation rules.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -825,8 +825,8 @@ public class ValidationRulesApi {
     /**
      * List Validation Rules
      * Retrieve validation rules.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -847,8 +847,8 @@ public class ValidationRulesApi {
     /**
      * List Validation Rules (asynchronously)
      * Retrieve validation rules.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -872,8 +872,8 @@ public class ValidationRulesApi {
      * Build call for listValidationRulesAssignments
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -959,8 +959,8 @@ public class ValidationRulesApi {
      * List all validation rules&#39; assignments or filter the results using the related object ID or the validation rule ID query parameters.   ## How to retrieve specific validation rule assignments(s)  ### Related object ID  To find an assignment for a particular resource, you can use the ID of the object to which the validation rule was assigned. This could be, for example, an ID of a: voucher, campaign, distribution, reward assignment, earning rule, promotion tier.     &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?related_object_id&#x3D;promo_kJliy076IuJYtuYWSHE9fSuT &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_tZaqxeO8gP4q91jG\&quot;,             \&quot;rule_id\&quot;: \&quot;val_WB6ETAiFztw5\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_kJliy076IuJYtuYWSHE9fSuT\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-08-10T10:30:39.986Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 1 } &#x60;&#x60;&#x60;  ### Validation rule ID  You can use the validation rule ID to find assignment(s) for a specific validation rule.   &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?rule&#x3D;val_ZEZmA9oit8aU &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_vef0G6d9Al0rABxq\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;camp_rRsfatlwN7unSeUIJDCYedal\&quot;,             \&quot;related_object_type\&quot;: \&quot;campaign\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:43:52.953Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_sFV4wEFvldwIvgfb\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;distr_9QKI02wqgjWyvZXeQkFEPmkkYe\&quot;,             \&quot;related_object_type\&quot;: \&quot;distribution\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:41:07.680Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_69Qifyv6UZynFIIQ\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_g83qUzYZpfX0OMAFOVoQuOYG\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:29:41.906Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 3 } &#x60;&#x60;&#x60; 
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ValidationRulesAssignmentsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -980,8 +980,8 @@ public class ValidationRulesApi {
      * List all validation rules&#39; assignments or filter the results using the related object ID or the validation rule ID query parameters.   ## How to retrieve specific validation rule assignments(s)  ### Related object ID  To find an assignment for a particular resource, you can use the ID of the object to which the validation rule was assigned. This could be, for example, an ID of a: voucher, campaign, distribution, reward assignment, earning rule, promotion tier.     &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?related_object_id&#x3D;promo_kJliy076IuJYtuYWSHE9fSuT &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_tZaqxeO8gP4q91jG\&quot;,             \&quot;rule_id\&quot;: \&quot;val_WB6ETAiFztw5\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_kJliy076IuJYtuYWSHE9fSuT\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-08-10T10:30:39.986Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 1 } &#x60;&#x60;&#x60;  ### Validation rule ID  You can use the validation rule ID to find assignment(s) for a specific validation rule.   &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?rule&#x3D;val_ZEZmA9oit8aU &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_vef0G6d9Al0rABxq\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;camp_rRsfatlwN7unSeUIJDCYedal\&quot;,             \&quot;related_object_type\&quot;: \&quot;campaign\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:43:52.953Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_sFV4wEFvldwIvgfb\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;distr_9QKI02wqgjWyvZXeQkFEPmkkYe\&quot;,             \&quot;related_object_type\&quot;: \&quot;distribution\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:41:07.680Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_69Qifyv6UZynFIIQ\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_g83qUzYZpfX0OMAFOVoQuOYG\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:29:41.906Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 3 } &#x60;&#x60;&#x60; 
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ApiResponse&lt;ValidationRulesAssignmentsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1002,8 +1002,8 @@ public class ValidationRulesApi {
      * List all validation rules&#39; assignments or filter the results using the related object ID or the validation rule ID query parameters.   ## How to retrieve specific validation rule assignments(s)  ### Related object ID  To find an assignment for a particular resource, you can use the ID of the object to which the validation rule was assigned. This could be, for example, an ID of a: voucher, campaign, distribution, reward assignment, earning rule, promotion tier.     &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?related_object_id&#x3D;promo_kJliy076IuJYtuYWSHE9fSuT &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_tZaqxeO8gP4q91jG\&quot;,             \&quot;rule_id\&quot;: \&quot;val_WB6ETAiFztw5\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_kJliy076IuJYtuYWSHE9fSuT\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-08-10T10:30:39.986Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 1 } &#x60;&#x60;&#x60;  ### Validation rule ID  You can use the validation rule ID to find assignment(s) for a specific validation rule.   &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?rule&#x3D;val_ZEZmA9oit8aU &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_vef0G6d9Al0rABxq\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;camp_rRsfatlwN7unSeUIJDCYedal\&quot;,             \&quot;related_object_type\&quot;: \&quot;campaign\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:43:52.953Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_sFV4wEFvldwIvgfb\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;distr_9QKI02wqgjWyvZXeQkFEPmkkYe\&quot;,             \&quot;related_object_type\&quot;: \&quot;distribution\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:41:07.680Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_69Qifyv6UZynFIIQ\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_g83qUzYZpfX0OMAFOVoQuOYG\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:29:41.906Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 3 } &#x60;&#x60;&#x60; 
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

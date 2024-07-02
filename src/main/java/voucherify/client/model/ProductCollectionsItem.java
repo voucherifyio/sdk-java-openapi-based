@@ -129,7 +129,7 @@ public class ProductCollectionsItem {
   private OffsetDateTime createdAt;
 
   /**
-   * The type of object represented by JSON. This object stores information about the static product collection.
+   * The type of the object represented by JSON. This object stores information about the static product collection.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -300,7 +300,7 @@ public class ProductCollectionsItem {
   }
 
    /**
-   * Timestamp representing the date and time when the product collection was created in ISO 8601 format.
+   * Timestamp representing the date and time when the product collection was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -321,7 +321,7 @@ public class ProductCollectionsItem {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the static product collection.
+   * The type of the object represented by JSON. This object stores information about the static product collection.
    * @return _object
   **/
   @javax.annotation.Nonnull

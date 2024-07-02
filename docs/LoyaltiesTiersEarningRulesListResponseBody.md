@@ -8,7 +8,7 @@ Response body schema for **GET** `/loyalties/{campaignId}/tiers/{loyaltyTierId}/
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. This object stores information about earning rules in a dictionary. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about earning rules in a dictionary. |  |
 |**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of earning rule objects. |  |
 |**data** | [**List&lt;EarningRule&gt;**](EarningRule.md) | Contains array of earning rule objects. |  |
 |**total** | **Integer** | Total number of earning rule objects. |  |

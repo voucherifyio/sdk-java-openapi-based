@@ -21,7 +21,7 @@ All URIs are relative to *https://api.voucherify.io*
 
 Delete Voucher
 
-Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.
+Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the voucher will be moved to [the bin](ref:list-bin-entries).
 
 ### Example
 ```java
@@ -52,7 +52,7 @@ public class Example {
 
     VouchersApi apiInstance = new VouchersApi(defaultClient);
     String code = "code_example"; // String | A unique **code** that identifies the voucher.
-    Boolean force = true; // Boolean | If this flag is set to `true`, the voucher will be removed permanently. Going forward, the user will be able to create another voucher with exactly the same code.
+    Boolean force = true; // Boolean | If this flag is set to `true`, the voucher will be removed permanently. If it is set to `false` or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code.
     try {
       apiInstance.deleteVoucher(code, force);
     } catch (ApiException e) {
@@ -71,7 +71,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **code** | **String**| A unique **code** that identifies the voucher. | |
-| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. Going forward, the user will be able to create another voucher with exactly the same code. | [optional] |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code. | [optional] |
 
 ### Return type
 
@@ -505,8 +505,8 @@ public class Example {
 
     VouchersApi apiInstance = new VouchersApi(defaultClient);
     String code = "code_example"; // String | A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify, i.e. `v_TzD19aeNiqGc9LWciMWknyEZT8IW7u4u`.
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     try {
       VouchersTransactionsListResponseBody result = apiInstance.listVoucherTransactions(code, limit, page);
       System.out.println(result);
@@ -526,8 +526,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **code** | **String**| A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify, i.e. &#x60;v_TzD19aeNiqGc9LWciMWknyEZT8IW7u4u&#x60;. | |
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 
 ### Return type
 

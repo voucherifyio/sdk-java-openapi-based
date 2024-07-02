@@ -32,8 +32,12 @@ import voucherify.client.model.ParameterFiltersListRedemptions;
 import voucherify.client.model.ParameterOrderListRedemptions;
 import voucherify.client.model.RedemptionsGetResponseBody;
 import voucherify.client.model.RedemptionsListResponseBody;
+import voucherify.client.model.RedemptionsRedeemRequestBody;
+import voucherify.client.model.RedemptionsRedeemResponseBody;
 import voucherify.client.model.RedemptionsRollbackCreateRequestBody;
 import voucherify.client.model.RedemptionsRollbackCreateResponseBody;
+import voucherify.client.model.RedemptionsRollbacksCreateRequestBody;
+import voucherify.client.model.RedemptionsRollbacksCreateResponseBody;
 import voucherify.client.model.VouchersRedemptionGetResponseBody;
 
 import java.lang.reflect.Type;
@@ -327,8 +331,8 @@ public class RedemptionsApi {
     }
     /**
      * Build call for listRedemptions
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param result A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. (optional)
      * @param campaign A filter by the campaign **name** that the redemption resources originate from. (optional)
      * @param customer Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. (optional)
@@ -429,8 +433,8 @@ public class RedemptionsApi {
     /**
      * List Redemptions
      * Returns a list of redemptions previously created. The redemptions are returned in a sorted order, with the most recent redemptions appearing first. The response returns a list of redemptions of all vouchers.   ## Filtering results The result can be narrowed according to specified (or default) filters, for example, you can sort redemptions by date: &#x60;https://api.voucherify.io/v1/redemptions?limit&#x3D;3&amp;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60;. A filter based on the object &#x60;created_at&#x60; field narrows down the results and lists redemptions done before or after a particular date time. You can use the following options: &#x60;[created_at][after]&#x60;, &#x60;[created_at][before]&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60;.  ## Failed Redemptions  A redemption may fail for various reasons. You can figure out an exact reason from the &#x60;failure_code&#x60;: - &#x60;resource_not_found&#x60; - voucher with given code does not exist - &#x60;voucher_not_active&#x60; - voucher is not active yet (before start date) - &#x60;voucher_expired&#x60; - voucher has already expired (after expiration date) - &#x60;voucher_disabled&#x60; -  voucher has been disabled (&#x60;active: false&#x60;) - &#x60;quantity_exceeded&#x60; - voucher&#39;s redemptions limit has been exceeded - &#x60;gift_amount_exceeded&#x60; - gift amount has been exceeded - &#x60;customer_rules_violated&#x60; - customer did not match the segment - &#x60;order_rules_violated&#x60; - order did not match validation rules - &#x60;invalid_order&#x60; - order was specified incorrectly - &#x60;invalid_amount&#x60; - order amount was specified incorrectly - &#x60;missing_amount&#x60; - order amount was not specified - &#x60;missing_order_items&#x60; - order items were not specified - &#x60;missing_customer&#x60; - customer was not specified
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param result A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. (optional)
      * @param campaign A filter by the campaign **name** that the redemption resources originate from. (optional)
      * @param customer Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. (optional)
@@ -453,8 +457,8 @@ public class RedemptionsApi {
     /**
      * List Redemptions
      * Returns a list of redemptions previously created. The redemptions are returned in a sorted order, with the most recent redemptions appearing first. The response returns a list of redemptions of all vouchers.   ## Filtering results The result can be narrowed according to specified (or default) filters, for example, you can sort redemptions by date: &#x60;https://api.voucherify.io/v1/redemptions?limit&#x3D;3&amp;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60;. A filter based on the object &#x60;created_at&#x60; field narrows down the results and lists redemptions done before or after a particular date time. You can use the following options: &#x60;[created_at][after]&#x60;, &#x60;[created_at][before]&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60;.  ## Failed Redemptions  A redemption may fail for various reasons. You can figure out an exact reason from the &#x60;failure_code&#x60;: - &#x60;resource_not_found&#x60; - voucher with given code does not exist - &#x60;voucher_not_active&#x60; - voucher is not active yet (before start date) - &#x60;voucher_expired&#x60; - voucher has already expired (after expiration date) - &#x60;voucher_disabled&#x60; -  voucher has been disabled (&#x60;active: false&#x60;) - &#x60;quantity_exceeded&#x60; - voucher&#39;s redemptions limit has been exceeded - &#x60;gift_amount_exceeded&#x60; - gift amount has been exceeded - &#x60;customer_rules_violated&#x60; - customer did not match the segment - &#x60;order_rules_violated&#x60; - order did not match validation rules - &#x60;invalid_order&#x60; - order was specified incorrectly - &#x60;invalid_amount&#x60; - order amount was specified incorrectly - &#x60;missing_amount&#x60; - order amount was not specified - &#x60;missing_order_items&#x60; - order items were not specified - &#x60;missing_customer&#x60; - customer was not specified
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param result A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. (optional)
      * @param campaign A filter by the campaign **name** that the redemption resources originate from. (optional)
      * @param customer Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. (optional)
@@ -478,8 +482,8 @@ public class RedemptionsApi {
     /**
      * List Redemptions (asynchronously)
      * Returns a list of redemptions previously created. The redemptions are returned in a sorted order, with the most recent redemptions appearing first. The response returns a list of redemptions of all vouchers.   ## Filtering results The result can be narrowed according to specified (or default) filters, for example, you can sort redemptions by date: &#x60;https://api.voucherify.io/v1/redemptions?limit&#x3D;3&amp;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60;. A filter based on the object &#x60;created_at&#x60; field narrows down the results and lists redemptions done before or after a particular date time. You can use the following options: &#x60;[created_at][after]&#x60;, &#x60;[created_at][before]&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60;.  ## Failed Redemptions  A redemption may fail for various reasons. You can figure out an exact reason from the &#x60;failure_code&#x60;: - &#x60;resource_not_found&#x60; - voucher with given code does not exist - &#x60;voucher_not_active&#x60; - voucher is not active yet (before start date) - &#x60;voucher_expired&#x60; - voucher has already expired (after expiration date) - &#x60;voucher_disabled&#x60; -  voucher has been disabled (&#x60;active: false&#x60;) - &#x60;quantity_exceeded&#x60; - voucher&#39;s redemptions limit has been exceeded - &#x60;gift_amount_exceeded&#x60; - gift amount has been exceeded - &#x60;customer_rules_violated&#x60; - customer did not match the segment - &#x60;order_rules_violated&#x60; - order did not match validation rules - &#x60;invalid_order&#x60; - order was specified incorrectly - &#x60;invalid_amount&#x60; - order amount was specified incorrectly - &#x60;missing_amount&#x60; - order amount was not specified - &#x60;missing_order_items&#x60; - order items were not specified - &#x60;missing_customer&#x60; - customer was not specified
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param result A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. (optional)
      * @param campaign A filter by the campaign **name** that the redemption resources originate from. (optional)
      * @param customer Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. (optional)
@@ -499,6 +503,124 @@ public class RedemptionsApi {
 
         okhttp3.Call localVarCall = listRedemptionsValidateBeforeCall(limit, page, result, campaign, customer, order, createdAt, filters, _callback);
         Type localVarReturnType = new TypeToken<RedemptionsListResponseBody>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for redeemStackedDiscounts
+     * @param redemptionsRedeemRequestBody  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call redeemStackedDiscountsCall(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = redemptionsRedeemRequestBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/redemptions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call redeemStackedDiscountsValidateBeforeCall(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody, final ApiCallback _callback) throws ApiException {
+        return redeemStackedDiscountsCall(redemptionsRedeemRequestBody, _callback);
+
+    }
+
+    /**
+     * Redeem Stackable Discounts
+     * ## How API returns calculated discounts and order amounts in the response  In the table below, you can see the logic the API follows to calculate discounts and amounts:  | **Field** | **Calculation** | **Description** | |:---|:---|:---| | amount | N/A | This field shows the order amount before applying any discount | | total_amount | &#x60;total_amount&#x60; &#x3D; &#x60;amount&#x60; - &#x60;total_discount_amount&#x60; | This field shows the order amount after applying all the discounts | | discount_amount | &#x60;discount_amount&#x60; &#x3D; &#x60;previous_discount_amount&#x60; + &#x60;applied_discount_amount&#x60; | This field sums up all order-level discounts up to and including the specific discount being calculated for the stacked redemption. | | items_discount_amount | sum(items, i &#x3D;&gt; i.discount_amount) | This field sums up all product-specific discounts | | total_discount_amount | &#x60;total_discount_amount&#x60; &#x3D; &#x60;discount_amount&#x60; + &#x60;items_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts | | applied_discount_amount | N/A | This field shows the order-level discount applied in a particular request | | items_applied_discount_amount | sum(items, i &#x3D;&gt; i.applied_discount_amount) | This field sums up all product-specific discounts applied in a particular request | | total_applied_discount_amount | &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts applied in a particular request |  &lt;!-- theme: info --&gt; &gt; 📘 Rollbacks &gt; &gt; You can&#39;t roll back a child redemption. When you call rollback on a stacked redemption, all child redemptions will be rolled back. You need to refer to a parent redemption ID in your &lt;!-- [rollback request](OpenAPI.json/paths/~1redemptions~1{parentRedemptionId}~1rollbacks/post) --&gt;[rollback request](ref:rollback-stacked-redemptions).      &lt;!-- theme: info --&gt; &gt; 📘 Also available on client-side &gt; &gt; This method is also accessible through public keys which you can use in client-side​ apps: mobile and web browser apps. Go to the dedicated [endpoint](ref:redeem-stacked-discounts-client-side) to learn more. &gt; - Use &#x60;X-Client-Application-Id&#x60; as the application ID header. &gt; - Use &#x60;X-Client-Token&#x60; as the appliction secret key header. &gt; - Use client-side base URL. &gt; - Use an &#x60;origin&#x60; header for your custom domain.
+     * @param redemptionsRedeemRequestBody  (optional)
+     * @return RedemptionsRedeemResponseBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+     </table>
+     */
+    public RedemptionsRedeemResponseBody redeemStackedDiscounts(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody) throws ApiException {
+        ApiResponse<RedemptionsRedeemResponseBody> localVarResp = redeemStackedDiscountsWithHttpInfo(redemptionsRedeemRequestBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Redeem Stackable Discounts
+     * ## How API returns calculated discounts and order amounts in the response  In the table below, you can see the logic the API follows to calculate discounts and amounts:  | **Field** | **Calculation** | **Description** | |:---|:---|:---| | amount | N/A | This field shows the order amount before applying any discount | | total_amount | &#x60;total_amount&#x60; &#x3D; &#x60;amount&#x60; - &#x60;total_discount_amount&#x60; | This field shows the order amount after applying all the discounts | | discount_amount | &#x60;discount_amount&#x60; &#x3D; &#x60;previous_discount_amount&#x60; + &#x60;applied_discount_amount&#x60; | This field sums up all order-level discounts up to and including the specific discount being calculated for the stacked redemption. | | items_discount_amount | sum(items, i &#x3D;&gt; i.discount_amount) | This field sums up all product-specific discounts | | total_discount_amount | &#x60;total_discount_amount&#x60; &#x3D; &#x60;discount_amount&#x60; + &#x60;items_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts | | applied_discount_amount | N/A | This field shows the order-level discount applied in a particular request | | items_applied_discount_amount | sum(items, i &#x3D;&gt; i.applied_discount_amount) | This field sums up all product-specific discounts applied in a particular request | | total_applied_discount_amount | &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts applied in a particular request |  &lt;!-- theme: info --&gt; &gt; 📘 Rollbacks &gt; &gt; You can&#39;t roll back a child redemption. When you call rollback on a stacked redemption, all child redemptions will be rolled back. You need to refer to a parent redemption ID in your &lt;!-- [rollback request](OpenAPI.json/paths/~1redemptions~1{parentRedemptionId}~1rollbacks/post) --&gt;[rollback request](ref:rollback-stacked-redemptions).      &lt;!-- theme: info --&gt; &gt; 📘 Also available on client-side &gt; &gt; This method is also accessible through public keys which you can use in client-side​ apps: mobile and web browser apps. Go to the dedicated [endpoint](ref:redeem-stacked-discounts-client-side) to learn more. &gt; - Use &#x60;X-Client-Application-Id&#x60; as the application ID header. &gt; - Use &#x60;X-Client-Token&#x60; as the appliction secret key header. &gt; - Use client-side base URL. &gt; - Use an &#x60;origin&#x60; header for your custom domain.
+     * @param redemptionsRedeemRequestBody  (optional)
+     * @return ApiResponse&lt;RedemptionsRedeemResponseBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RedemptionsRedeemResponseBody> redeemStackedDiscountsWithHttpInfo(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody) throws ApiException {
+        okhttp3.Call localVarCall = redeemStackedDiscountsValidateBeforeCall(redemptionsRedeemRequestBody, null);
+        Type localVarReturnType = new TypeToken<RedemptionsRedeemResponseBody>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Redeem Stackable Discounts (asynchronously)
+     * ## How API returns calculated discounts and order amounts in the response  In the table below, you can see the logic the API follows to calculate discounts and amounts:  | **Field** | **Calculation** | **Description** | |:---|:---|:---| | amount | N/A | This field shows the order amount before applying any discount | | total_amount | &#x60;total_amount&#x60; &#x3D; &#x60;amount&#x60; - &#x60;total_discount_amount&#x60; | This field shows the order amount after applying all the discounts | | discount_amount | &#x60;discount_amount&#x60; &#x3D; &#x60;previous_discount_amount&#x60; + &#x60;applied_discount_amount&#x60; | This field sums up all order-level discounts up to and including the specific discount being calculated for the stacked redemption. | | items_discount_amount | sum(items, i &#x3D;&gt; i.discount_amount) | This field sums up all product-specific discounts | | total_discount_amount | &#x60;total_discount_amount&#x60; &#x3D; &#x60;discount_amount&#x60; + &#x60;items_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts | | applied_discount_amount | N/A | This field shows the order-level discount applied in a particular request | | items_applied_discount_amount | sum(items, i &#x3D;&gt; i.applied_discount_amount) | This field sums up all product-specific discounts applied in a particular request | | total_applied_discount_amount | &#x60;total_applied_discount_amount&#x60; &#x3D; &#x60;applied_discount_amount&#x60; + &#x60;items_applied_discount_amount&#x60; | This field sums up all order-level and all product-specific discounts applied in a particular request |  &lt;!-- theme: info --&gt; &gt; 📘 Rollbacks &gt; &gt; You can&#39;t roll back a child redemption. When you call rollback on a stacked redemption, all child redemptions will be rolled back. You need to refer to a parent redemption ID in your &lt;!-- [rollback request](OpenAPI.json/paths/~1redemptions~1{parentRedemptionId}~1rollbacks/post) --&gt;[rollback request](ref:rollback-stacked-redemptions).      &lt;!-- theme: info --&gt; &gt; 📘 Also available on client-side &gt; &gt; This method is also accessible through public keys which you can use in client-side​ apps: mobile and web browser apps. Go to the dedicated [endpoint](ref:redeem-stacked-discounts-client-side) to learn more. &gt; - Use &#x60;X-Client-Application-Id&#x60; as the application ID header. &gt; - Use &#x60;X-Client-Token&#x60; as the appliction secret key header. &gt; - Use client-side base URL. &gt; - Use an &#x60;origin&#x60; header for your custom domain.
+     * @param redemptionsRedeemRequestBody  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Depending on your project settings: all redeemables must be valid or just one must be valid to result as valid redemption. See https://support.voucherify.io/article/604-stacking-rules#application-rules </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call redeemStackedDiscountsAsync(RedemptionsRedeemRequestBody redemptionsRedeemRequestBody, final ApiCallback<RedemptionsRedeemResponseBody> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = redeemStackedDiscountsValidateBeforeCall(redemptionsRedeemRequestBody, _callback);
+        Type localVarReturnType = new TypeToken<RedemptionsRedeemResponseBody>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -584,7 +706,7 @@ public class RedemptionsApi {
 
     /**
      * Rollback Redemption
-     * Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
+     * Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.  &gt;🚧  &gt;You can roll back a redemption up to 3 months back.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
      * @param redemptionId The original redemption ID to be rolled back (undone). (required)
      * @param reason Reason for the rollback. (optional)
      * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
@@ -604,7 +726,7 @@ public class RedemptionsApi {
 
     /**
      * Rollback Redemption
-     * Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
+     * Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.  &gt;🚧  &gt;You can roll back a redemption up to 3 months back.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
      * @param redemptionId The original redemption ID to be rolled back (undone). (required)
      * @param reason Reason for the rollback. (optional)
      * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
@@ -625,7 +747,7 @@ public class RedemptionsApi {
 
     /**
      * Rollback Redemption (asynchronously)
-     * Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
+     * Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.  &gt;🚧  &gt;You can roll back a redemption up to 3 months back.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
      * @param redemptionId The original redemption ID to be rolled back (undone). (required)
      * @param reason Reason for the rollback. (optional)
      * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
@@ -643,6 +765,150 @@ public class RedemptionsApi {
 
         okhttp3.Call localVarCall = rollbackRedemptionValidateBeforeCall(redemptionId, reason, trackingId, redemptionsRollbackCreateRequestBody, _callback);
         Type localVarReturnType = new TypeToken<RedemptionsRollbackCreateResponseBody>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for rollbackStackedRedemptions
+     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
+     * @param reason Reason for the rollback. (optional)
+     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
+     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call rollbackStackedRedemptionsCall(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = redemptionsRollbacksCreateRequestBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/redemptions/{parentRedemptionId}/rollbacks"
+            .replace("{" + "parentRedemptionId" + "}", localVarApiClient.escapeString(parentRedemptionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (reason != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("reason", reason));
+        }
+
+        if (trackingId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tracking_id", trackingId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call rollbackStackedRedemptionsValidateBeforeCall(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'parentRedemptionId' is set
+        if (parentRedemptionId == null) {
+            throw new ApiException("Missing the required parameter 'parentRedemptionId' when calling rollbackStackedRedemptions(Async)");
+        }
+
+        return rollbackStackedRedemptionsCall(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody, _callback);
+
+    }
+
+    /**
+     * Rollback Stackable Redemptions
+     * Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.  &gt;🚧  &gt; You can roll back a redemption up to 3 months back.
+     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
+     * @param reason Reason for the rollback. (optional)
+     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
+     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
+     * @return RedemptionsRollbacksCreateResponseBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RedemptionsRollbacksCreateResponseBody rollbackStackedRedemptions(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody) throws ApiException {
+        ApiResponse<RedemptionsRollbacksCreateResponseBody> localVarResp = rollbackStackedRedemptionsWithHttpInfo(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Rollback Stackable Redemptions
+     * Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.  &gt;🚧  &gt; You can roll back a redemption up to 3 months back.
+     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
+     * @param reason Reason for the rollback. (optional)
+     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
+     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
+     * @return ApiResponse&lt;RedemptionsRollbacksCreateResponseBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RedemptionsRollbacksCreateResponseBody> rollbackStackedRedemptionsWithHttpInfo(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody) throws ApiException {
+        okhttp3.Call localVarCall = rollbackStackedRedemptionsValidateBeforeCall(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody, null);
+        Type localVarReturnType = new TypeToken<RedemptionsRollbacksCreateResponseBody>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Rollback Stackable Redemptions (asynchronously)
+     * Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.  &gt;🚧  &gt; You can roll back a redemption up to 3 months back.
+     * @param parentRedemptionId Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. (required)
+     * @param reason Reason for the rollback. (optional)
+     * @param trackingId Customer&#39;s &#x60;source_id&#x60;. (optional)
+     * @param redemptionsRollbacksCreateRequestBody Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns an array with the individual redemption rollback results along with the parent rollback result and related order. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call rollbackStackedRedemptionsAsync(String parentRedemptionId, String reason, String trackingId, RedemptionsRollbacksCreateRequestBody redemptionsRollbacksCreateRequestBody, final ApiCallback<RedemptionsRollbacksCreateResponseBody> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = rollbackStackedRedemptionsValidateBeforeCall(parentRedemptionId, reason, trackingId, redemptionsRollbacksCreateRequestBody, _callback);
+        Type localVarReturnType = new TypeToken<RedemptionsRollbacksCreateResponseBody>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

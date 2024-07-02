@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Unique segment ID. |  |
 |**name** | **String** | Segment name. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by the ID. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the ID. |  |
 
 
 

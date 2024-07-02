@@ -81,7 +81,7 @@ public class PublicationsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about publications in a dictionary.
+   * The type of the object represented by JSON. This object stores information about publications in a dictionary.
    * @return _object
   **/
   @javax.annotation.Nonnull

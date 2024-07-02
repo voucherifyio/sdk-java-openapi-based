@@ -93,7 +93,7 @@ public class ProductWithoutSkus {
   private OffsetDateTime updatedAt;
 
   /**
-   * The type of object represented by JSON. This object stores information about the product.
+   * The type of the object represented by JSON. This object stores information about the product.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -306,7 +306,7 @@ public class ProductWithoutSkus {
   }
 
    /**
-   * Timestamp representing the date and time when the product was created in ISO 8601 format.
+   * Timestamp representing the date and time when the product was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -327,7 +327,7 @@ public class ProductWithoutSkus {
   }
 
    /**
-   * Timestamp representing the date and time when the product was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the product was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -348,7 +348,7 @@ public class ProductWithoutSkus {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the product.
+   * The type of the object represented by JSON. This object stores information about the product.
    * @return _object
   **/
   @javax.annotation.Nonnull

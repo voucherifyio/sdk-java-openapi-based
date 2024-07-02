@@ -9,8 +9,8 @@ Response body schema for **GET** `/redemptions/{redemptionId}
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Unique redemption ID. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by the JSON |  |
-|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created in ISO 8601 format. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON |  |
+|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |  |
 |**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |  [optional] |

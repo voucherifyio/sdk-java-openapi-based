@@ -53,7 +53,7 @@ import voucherify.client.JSON;
 
 public class SimpleOrderItem {
   /**
-   * The type of object represented by JSON. This object stores information about the &#x60;order_item&#x60;.
+   * The type of the object represented by JSON. This object stores information about the &#x60;order_item&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -198,7 +198,7 @@ public class SimpleOrderItem {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the &#x60;order_item&#x60;.
+   * The type of the object represented by JSON. This object stores information about the &#x60;order_item&#x60;.
    * @return _object
   **/
   @javax.annotation.Nullable

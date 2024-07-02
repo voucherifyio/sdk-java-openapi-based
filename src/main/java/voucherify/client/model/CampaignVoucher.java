@@ -21,13 +21,16 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import voucherify.client.model.CampaignBaseValidityTimeframe;
 import voucherify.client.model.CampaignLoyaltyCard;
 import voucherify.client.model.CampaignLoyaltyVoucherRedemption;
 import voucherify.client.model.CodeConfigRequiredLengthCharsetPattern;
 import voucherify.client.model.Discount;
 import voucherify.client.model.Gift;
+import voucherify.client.model.ValidityHours;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -98,6 +101,71 @@ public class CampaignVoucher {
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
   private CampaignBaseValidityTimeframe validityTimeframe;
+
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
 
   public CampaignVoucher() {
   }
@@ -312,6 +380,56 @@ public class CampaignVoucher {
   }
 
 
+  public CampaignVoucher validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
+    
+    this.validityDayOfWeek = validityDayOfWeek;
+    return this;
+  }
+
+  public CampaignVoucher addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
+    if (this.validityDayOfWeek == null) {
+      this.validityDayOfWeek = new ArrayList<>();
+    }
+    this.validityDayOfWeek.add(validityDayOfWeekItem);
+    return this;
+  }
+
+   /**
+   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
+   * @return validityDayOfWeek
+  **/
+  @javax.annotation.Nullable
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
+    return validityDayOfWeek;
+  }
+
+
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
+    this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public CampaignVoucher validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -331,12 +449,14 @@ public class CampaignVoucher {
         Objects.equals(this.isReferralCode, campaignVoucher.isReferralCode) &&
         Objects.equals(this.startDate, campaignVoucher.startDate) &&
         Objects.equals(this.expirationDate, campaignVoucher.expirationDate) &&
-        Objects.equals(this.validityTimeframe, campaignVoucher.validityTimeframe);
+        Objects.equals(this.validityTimeframe, campaignVoucher.validityTimeframe) &&
+        Objects.equals(this.validityDayOfWeek, campaignVoucher.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, campaignVoucher.validityHours);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, discount, gift, loyaltyCard, redemption, codeConfig, isReferralCode, startDate, expirationDate, validityTimeframe);
+    return Objects.hash(type, discount, gift, loyaltyCard, redemption, codeConfig, isReferralCode, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours);
   }
 
   @Override
@@ -353,6 +473,8 @@ public class CampaignVoucher {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
+    sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -385,6 +507,8 @@ public class CampaignVoucher {
     openapiFields.add("start_date");
     openapiFields.add("expiration_date");
     openapiFields.add("validity_timeframe");
+    openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -444,6 +568,14 @@ public class CampaignVoucher {
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
   }
 

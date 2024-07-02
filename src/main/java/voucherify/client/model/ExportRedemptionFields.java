@@ -48,6 +48,8 @@ public enum ExportRedemptionFields {
   
   TRACKING_ID("tracking_id"),
   
+  ORDER_ID("order_id"),
+  
   ORDER_AMOUNT("order_amount"),
   
   GIFT_AMOUNT("gift_amount"),

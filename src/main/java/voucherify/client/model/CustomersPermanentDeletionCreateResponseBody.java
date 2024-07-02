@@ -218,7 +218,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull
