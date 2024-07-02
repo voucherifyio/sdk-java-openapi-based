@@ -671,6 +671,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRuleBase.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRuleBaseApplicableTo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRuleBaseError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRulesAssignmentsCreateRequestBody.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRulesAssignmentsCreateResponseBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRulesAssignmentsList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRulesAssignmentsListResponseBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ValidationRulesCreateRequestBody.CustomTypeAdapterFactory());

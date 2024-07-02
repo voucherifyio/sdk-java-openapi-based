@@ -4,6 +4,7 @@ All URIs are relative to *https://api.voucherify.io*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**createValidationRuleAssignment**](ValidationRulesApi.md#createValidationRuleAssignment) | **POST** /v1/validation-rules/{validationRuleId}/assignments | Create Validation Rules Assignments |
 | [**createValidationRules**](ValidationRulesApi.md#createValidationRules) | **POST** /v1/validation-rules | Create Validation Rules |
 | [**deleteValidationRuleAssignment**](ValidationRulesApi.md#deleteValidationRuleAssignment) | **DELETE** /v1/validation-rules/{validationRuleId}/assignments/{assignmentId} | Delete Validation Rule Assignment |
 | [**deleteValidationRules**](ValidationRulesApi.md#deleteValidationRules) | **DELETE** /v1/validation-rules/{validationRuleId} | Delete Validation Rule |
@@ -13,6 +14,85 @@ All URIs are relative to *https://api.voucherify.io*
 | [**listValidationRulesAssignments**](ValidationRulesApi.md#listValidationRulesAssignments) | **GET** /v1/validation-rules-assignments | List Validation Rules&#39; Assignment(s) |
 | [**updateValidationRule**](ValidationRulesApi.md#updateValidationRule) | **PUT** /v1/validation-rules/{validationRuleId} | Update Validation Rule |
 
+
+<a id="createValidationRuleAssignment"></a>
+# **createValidationRuleAssignment**
+> ValidationRulesAssignmentsCreateResponseBody createValidationRuleAssignment(validationRuleId, force, validationRulesAssignmentsCreateRequestBody)
+
+Create Validation Rules Assignments
+
+Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+
+### Example
+```java
+// Import classes:
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.ValidationRulesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.voucherify.io");
+    
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Id.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Token.setApiKeyPrefix("Token");
+
+    ValidationRulesApi apiInstance = new ValidationRulesApi(defaultClient);
+    String validationRuleId = "validationRuleId_example"; // String | Unique validation rule ID.
+    Boolean force = true; // Boolean | If this flag is set to `true`, the previous assignment with the same data will be deleted and a new one will be added.
+    ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody = new ValidationRulesAssignmentsCreateRequestBody(); // ValidationRulesAssignmentsCreateRequestBody | Specify the resource that you would like to assign the validation rule to.
+    try {
+      ValidationRulesAssignmentsCreateResponseBody result = apiInstance.createValidationRuleAssignment(validationRuleId, force, validationRulesAssignmentsCreateRequestBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ValidationRulesApi#createValidationRuleAssignment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **validationRuleId** | **String**| Unique validation rule ID. | |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. | [optional] |
+| **validationRulesAssignmentsCreateRequestBody** | [**ValidationRulesAssignmentsCreateRequestBody**](ValidationRulesAssignmentsCreateRequestBody.md)| Specify the resource that you would like to assign the validation rule to. | [optional] |
+
+### Return type
+
+[**ValidationRulesAssignmentsCreateResponseBody**](ValidationRulesAssignmentsCreateResponseBody.md)
+
+### Authorization
+
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Returns a validation rules assignment object. |  -  |
 
 <a id="createValidationRules"></a>
 # **createValidationRules**

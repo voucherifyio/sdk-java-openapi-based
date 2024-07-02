@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import voucherify.client.model.ParameterOrderListValidationRuleAssignments;
 import voucherify.client.model.ParameterOrderListValidationRules;
+import voucherify.client.model.ValidationRulesAssignmentsCreateRequestBody;
+import voucherify.client.model.ValidationRulesAssignmentsCreateResponseBody;
 import voucherify.client.model.ValidationRulesAssignmentsListResponseBody;
 import voucherify.client.model.ValidationRulesCreateRequestBody;
 import voucherify.client.model.ValidationRulesCreateResponseBody;
@@ -81,6 +83,142 @@ public class ValidationRulesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createValidationRuleAssignment
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createValidationRuleAssignmentCall(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = validationRulesAssignmentsCreateRequestBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/validation-rules/{validationRuleId}/assignments"
+            .replace("{" + "validationRuleId" + "}", localVarApiClient.escapeString(validationRuleId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (force != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("force", force));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createValidationRuleAssignmentValidateBeforeCall(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'validationRuleId' is set
+        if (validationRuleId == null) {
+            throw new ApiException("Missing the required parameter 'validationRuleId' when calling createValidationRuleAssignment(Async)");
+        }
+
+        return createValidationRuleAssignmentCall(validationRuleId, force, validationRulesAssignmentsCreateRequestBody, _callback);
+
+    }
+
+    /**
+     * Create Validation Rules Assignments
+     * Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @return ValidationRulesAssignmentsCreateResponseBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValidationRulesAssignmentsCreateResponseBody createValidationRuleAssignment(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody) throws ApiException {
+        ApiResponse<ValidationRulesAssignmentsCreateResponseBody> localVarResp = createValidationRuleAssignmentWithHttpInfo(validationRuleId, force, validationRulesAssignmentsCreateRequestBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create Validation Rules Assignments
+     * Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @return ApiResponse&lt;ValidationRulesAssignmentsCreateResponseBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValidationRulesAssignmentsCreateResponseBody> createValidationRuleAssignmentWithHttpInfo(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody) throws ApiException {
+        okhttp3.Call localVarCall = createValidationRuleAssignmentValidateBeforeCall(validationRuleId, force, validationRulesAssignmentsCreateRequestBody, null);
+        Type localVarReturnType = new TypeToken<ValidationRulesAssignmentsCreateResponseBody>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create Validation Rules Assignments (asynchronously)
+     * Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createValidationRuleAssignmentAsync(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody, final ApiCallback<ValidationRulesAssignmentsCreateResponseBody> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createValidationRuleAssignmentValidateBeforeCall(validationRuleId, force, validationRulesAssignmentsCreateRequestBody, _callback);
+        Type localVarReturnType = new TypeToken<ValidationRulesAssignmentsCreateResponseBody>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createValidationRules
      * @param validationRulesCreateRequestBody Specify the validation rules parameters. (optional)

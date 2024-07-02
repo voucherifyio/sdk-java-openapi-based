@@ -16493,6 +16493,69 @@ paths:
       tags:
       - Validation Rules
       x-accepts: application/json
+    post:
+      description: "Assign validation rule to either one of the following objects:\
+        \ voucher, campaign, promotion tier, earning rule, reward, distribution."
+      operationId: create-validation-rule-assignment
+      parameters:
+      - description: Unique validation rule ID.
+        explode: false
+        in: path
+        name: validationRuleId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ParameterValidationRuleId'
+        style: simple
+      - description: "If this flag is set to `true`, the previous assignment with\
+          \ the same data will be deleted and a new one will be added."
+        explode: true
+        in: query
+        name: force
+        required: false
+        schema:
+          $ref: '#/components/schemas/ParameterBoolean'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Voucher:
+                value:
+                  voucher: v_ssR6vhswwh5odSloN2Vc3O60w7aea018
+              Campaign:
+                value:
+                  campaign: camp_Rv9EuIrkT08YEORb2pUMGSUo
+              Distribution:
+                value:
+                  distribution: distr_2nUIekYnS9L1Vm1I55vmC7kSvd
+            schema:
+              $ref: '#/components/schemas/ValidationRulesAssignmentsCreateRequestBody'
+        description: Specify the resource that you would like to assign the validation
+          rule to.
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Example:
+                  value:
+                    id: asgm_kPPiNW3smQLRMWiF
+                    rule_id: val_ZEZmA9oit8aU
+                    related_object_id: camp_Rv9EuIrkT08YEORb2pUMGSUo
+                    related_object_type: campaign
+                    created_at: 2022-09-14T07:06:49.557Z
+                    object: validation_rules_assignment
+              schema:
+                $ref: '#/components/schemas/ValidationRulesAssignmentsCreateResponseBody'
+          description: Returns a validation rules assignment object.
+      security:
+      - X-App-Id: []
+        X-App-Token: []
+      summary: Create Validation Rules Assignments
+      tags:
+      - Validation Rules
+      x-content-type: application/json
+      x-accepts: application/json
   /v1/validation-rules/{validationRuleId}/assignments/{assignmentId}:
     delete:
       description: This method deletes a validation rule assignment.
@@ -21591,6 +21654,35 @@ components:
       description: Response body schema for **POST** `/skus/importCSV`.
       title: Skus Import Csv Create Response Body
       type: object
+    ValidationRulesAssignmentsCreateRequestBody:
+      description: "Request body schema for **POST** `/validation-rules/{validationRuleId}/assignments`."
+      example:
+        related_object_type: voucher
+        related_object_id: related_object_id
+      properties:
+        related_object_type:
+          default: voucher
+          description: "Defines the related object, e.g. `voucher`."
+          enum:
+          - voucher
+          - promotion_tier
+          - campaign
+          - earning_rule
+          - distribution
+          - reward_assignment
+          type: string
+        related_object_id:
+          description: "Unique related object ID assigned by Voucherify, e.g. `v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno`\
+            \ for a voucher."
+          type: string
+      title: Create Validation Rule Assignments Request Body
+      type: object
+    ValidationRulesAssignmentsCreateResponseBody:
+      allOf:
+      - $ref: '#/components/schemas/ValidationRuleAssignment'
+      description: "Response body for **POST** `/validation-rules/{validationRuleId}/assignments`."
+      title: Validation Rules Assignments Create Response Body
+      type: object
     ValidationRulesAssignmentsListResponseBody:
       allOf:
       - $ref: '#/components/schemas/ValidationRuleAssignmentsList'
@@ -25081,6 +25173,52 @@ components:
         title: Validation Rule
         type: object
       title: Validation Rule
+    ValidationRuleAssignment:
+      description: This is an object representing a validation rule assignment.
+      properties:
+        id:
+          description: Validation rule assignment ID.
+          example: asgm_74F7QZoYbUoljwQO
+          type: string
+        rule_id:
+          description: Validation rule ID.
+          example: val_4j7DCRm2IS59
+          type: string
+        related_object_id:
+          description: The resource ID to which the validation rule was assigned.
+          example: v_JtWunK6jUo7X2qOFj0SyRHq4p9tgENlT
+          type: string
+        related_object_type:
+          description: The type of resource to which the validation rule was assigned.
+          enum:
+          - voucher
+          - campaign
+          - earning_rule
+          - reward_assignment
+          - promotion_tier
+          - distribution
+          type: string
+        created_at:
+          description: Timestamp representing the date and time when the validation
+            rule assignment was created. The value is shown in the ISO 8601 format.
+          example: 2022-02-17T08:18:15.085Z
+          format: date-time
+          type: string
+        object:
+          default: validation_rules_assignment
+          description: The type of the object represented by the ID.
+          enum:
+          - validation_rules_assignment
+          type: string
+      required:
+      - created_at
+      - id
+      - object
+      - related_object_id
+      - related_object_type
+      - rule_id
+      title: Validation Rule Assignment
+      type: object
     ValidationRuleAssignmentsList:
       description: Validation Rule Assignments List
       properties:
@@ -27933,52 +28071,6 @@ components:
       - object
       - total
       title: Skus List For Product
-      type: object
-    ValidationRuleAssignment:
-      description: This is an object representing a validation rule assignment.
-      properties:
-        id:
-          description: Validation rule assignment ID.
-          example: asgm_74F7QZoYbUoljwQO
-          type: string
-        rule_id:
-          description: Validation rule ID.
-          example: val_4j7DCRm2IS59
-          type: string
-        related_object_id:
-          description: The resource ID to which the validation rule was assigned.
-          example: v_JtWunK6jUo7X2qOFj0SyRHq4p9tgENlT
-          type: string
-        related_object_type:
-          description: The type of resource to which the validation rule was assigned.
-          enum:
-          - voucher
-          - campaign
-          - earning_rule
-          - reward_assignment
-          - promotion_tier
-          - distribution
-          type: string
-        created_at:
-          description: Timestamp representing the date and time when the validation
-            rule assignment was created. The value is shown in the ISO 8601 format.
-          example: 2022-02-17T08:18:15.085Z
-          format: date-time
-          type: string
-        object:
-          default: validation_rules_assignment
-          description: The type of the object represented by the ID.
-          enum:
-          - validation_rules_assignment
-          type: string
-      required:
-      - created_at
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - rule_id
-      title: Validation Rule Assignment
       type: object
     ValidationRuleRules:
       description: Contains all the rule definitions for the validation rule. It is
