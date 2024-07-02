@@ -9551,69 +9551,6 @@ paths:
       tags:
       - Loyalties
       x-accepts: application/json
-    put:
-      description: "Updates rewards parameters, i.e. the points cost for the specific\
-        \ reward."
-      operationId: update-reward-assignment-1
-      parameters:
-      - description: "The campaign ID or name of the loyalty campaign. You can either\
-          \ pass the campaign ID, which was assigned by Voucherify, or the `name`\
-          \ of the campaign as the path parameter value, e.g., `Loyalty%20Campaign`. "
-        explode: false
-        in: path
-        name: campaignId
-        required: true
-        schema:
-          $ref: '#/components/schemas/ParameterCampaignId'
-        style: simple
-      - description: A unique reward assignment ID.
-        explode: false
-        in: path
-        name: assignmentId
-        required: true
-        schema:
-          $ref: '#/components/schemas/ParameterRewardAssignmentId'
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            examples:
-              Example:
-                value:
-                  parameters:
-                    loyalty:
-                      points: 3
-            schema:
-              $ref: '#/components/schemas/LoyaltiesRewardsUpdateRequestBody'
-        description: Update the points cost for the reward assignment.
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                Example:
-                  value:
-                    id: rewa_Iw9VopmlLm0topBG17ZH1gp5
-                    reward_id: rew_wg2pvCr5LDhCq4uVQZ9LhuZm
-                    related_object_id: camp_fkZ28pe7DUAEmmabofkxHI8N
-                    related_object_type: campaign
-                    parameters:
-                      loyalty:
-                        points: 3
-                    created_at: 2022-11-28T18:54:19.747Z
-                    updated_at: 2022-11-28T19:27:40.604Z
-                    object: reward_assignment
-              schema:
-                $ref: '#/components/schemas/4_obj_reward_assignment_object'
-          description: Returns a reward assignment with an updated points value.
-      security:
-      - X-App-Id: []
-        X-App-Token: []
-      summary: Update Reward Assignment
-      tags:
-      - Loyalties
-      x-content-type: application/json
-      x-accepts: application/json
   /v1/loyalties/{campaignId}/members/{memberId}/redemption:
     post:
       description: "Exchange points from a loyalty card for a specified reward. This\
@@ -17826,57 +17763,6 @@ components:
       - $ref: '#/components/schemas/CampaignsVouchersCreateInBulkResponseBody'
       title: Campaigns Vouchers Create Combined Response Body
       type: object
-    "4_obj_reward_assignment_object":
-      description: This is an object representing a reward assignment.
-      example:
-        updated_at: 2022-08-11T16:01:34.885Z
-        related_object_type: campaign
-        related_object_id: camp_wciTvaOfYmAa3EmIIW3QpXXZ
-        created_at: 2022-08-11T14:49:22.586Z
-        reward_id: rew_C7wS9eHFDN4CIbXI5PpLSkGY
-        id: rewa_PbIRoMXpwe5QhobW4JKu0VjH
-        parameters:
-          loyalty:
-            points: 0
-        object: reward_assignment
-      properties:
-        id:
-          description: "Unique reward assignment ID, assigned by Voucherify."
-          example: rewa_PbIRoMXpwe5QhobW4JKu0VjH
-          type: string
-        reward_id:
-          description: Associated reward ID.
-          example: rew_C7wS9eHFDN4CIbXI5PpLSkGY
-          type: string
-        related_object_id:
-          description: Related object ID to which the reward was assigned.
-          example: camp_wciTvaOfYmAa3EmIIW3QpXXZ
-          type: string
-        related_object_type:
-          description: Related object type to which the reward was assigned.
-          example: campaign
-          type: string
-        parameters:
-          $ref: '#/components/schemas/_4_obj_reward_assignment_object_parameters'
-        created_at:
-          description: Timestamp representing the date and time when the reward assignment
-            was created. The value is shown in the ISO 8601 format.
-          example: 2022-08-11T14:49:22.586Z
-          format: date-time
-          type: string
-        updated_at:
-          description: Timestamp representing the date and time when the reward assignment
-            was updated. The value is shown in the ISO 8601 format.
-          example: 2022-08-11T16:01:34.885Z
-          format: date-time
-          type: string
-        object:
-          default: reward_assignment
-          description: The type of the object represented by the JSON. This object
-            stores information about the reward assignment.
-          type: string
-      title: Reward Assignment Object
-      type: object
     CampaignsCreateRequestBody:
       description: Request body schema for **POST** `/campaigns`.
       oneOf:
@@ -19885,18 +19771,6 @@ components:
       description: "Response body schema for **GET** `/loyalties/{campaignId}/rewards/{assignmentId}`"
       title: Loyalties Reward Assignments Get Response Body
       type: object
-    LoyaltiesRewardsUpdateRequestBody:
-      description: "Request body schema for **PUT** `/loyalties/{campaignId}/rewards/{assignmentId}`\
-        \ and **PUT** `/rewards/{rewardId}/assignments/{assignmentId}`."
-      example:
-        parameters:
-          loyalty:
-            points: 0
-      properties:
-        parameters:
-          $ref: '#/components/schemas/LoyaltiesRewardsUpdateRequestBody_parameters'
-      title: Loyalties Rewards Update Request Body
-      type: object
     LoyaltiesTiersCreateInBulkRequestBody:
       description: "Request body schema for **POST** `/loyalties/{campaignId}/tiers`"
       items:
@@ -21690,7 +21564,7 @@ components:
             points: 0
       properties:
         parameters:
-          $ref: '#/components/schemas/LoyaltiesRewardsUpdateRequestBody_parameters'
+          $ref: '#/components/schemas/RewardsAssignmentsUpdateRequestBody_parameters'
       title: Rewards Assignments Update Request Body
       type: object
     RewardsAssignmentsUpdateResponseBody:
@@ -30736,24 +30610,6 @@ components:
           type: integer
       title: Simple Order Item
       type: object
-    _4_obj_reward_assignment_object_parameters_loyalty:
-      description: Defines the equivalent points value of the reward.
-      example:
-        points: 0
-      properties:
-        points:
-          description: The number of points required to redeem the reward.
-          type: integer
-      type: object
-    _4_obj_reward_assignment_object_parameters:
-      description: Defines the cost of the reward.
-      example:
-        loyalty:
-          points: 0
-      properties:
-        loyalty:
-          $ref: '#/components/schemas/_4_obj_reward_assignment_object_parameters_loyalty'
-      type: object
     ClientEventsCreateRequestBody_referral:
       description: "If a **conversion event** for a referral program is set to a custom\
         \ event, then you need to send the referral code in the payload to make a\
@@ -31226,24 +31082,6 @@ components:
         barcode:
           $ref: '#/components/schemas/LoyaltiesMembersTransfersCreateResponseBody_assets_barcode'
       type: object
-    LoyaltiesRewardsUpdateRequestBody_parameters_loyalty:
-      description: Stores the points parameter.
-      example:
-        points: 0
-      properties:
-        points:
-          description: Defines how many points are required to obtain the reward.
-          type: integer
-      type: object
-    LoyaltiesRewardsUpdateRequestBody_parameters:
-      description: An object that defines the price of the reward in loyalty points.
-      example:
-        loyalty:
-          points: 0
-      properties:
-        loyalty:
-          $ref: '#/components/schemas/LoyaltiesRewardsUpdateRequestBody_parameters_loyalty'
-      type: object
     Loyalties_Tiers_Create_In_Bulk_Request_Body_Item:
       allOf:
       - $ref: '#/components/schemas/LoyaltyTierBase'
@@ -31406,6 +31244,24 @@ components:
       - $ref: '#/components/schemas/Redemption'
       - $ref: '#/components/schemas/RedemptionRollback'
       title: Redemptions List Response Body Redemptions Item
+    RewardsAssignmentsUpdateRequestBody_parameters_loyalty:
+      description: Stores the points parameter.
+      example:
+        points: 0
+      properties:
+        points:
+          description: Defines how many points are required to obtain the reward.
+          type: integer
+      type: object
+    RewardsAssignmentsUpdateRequestBody_parameters:
+      description: An object that defines the price of the reward in loyalty points.
+      example:
+        loyalty:
+          points: 0
+      properties:
+        loyalty:
+          $ref: '#/components/schemas/RewardsAssignmentsUpdateRequestBody_parameters_loyalty'
+      type: object
     Validations_Validate_All_Response_Body_Redeemables_Item:
       oneOf:
       - $ref: '#/components/schemas/ValidationsRedeemableApplicable'
@@ -33237,11 +33093,18 @@ components:
             \ For example, $100 amount is written as 10000."
           type: string
       type: object
+    RewardAssignmentParameters_parameters_loyalty:
+      description: Defines the equivalent points value of the reward.
+      properties:
+        points:
+          description: The number of points required to redeem the reward.
+          type: integer
+      type: object
     RewardAssignmentParameters_parameters:
       description: Defines the cost of the reward.
       properties:
         loyalty:
-          $ref: '#/components/schemas/_4_obj_reward_assignment_object_parameters_loyalty'
+          $ref: '#/components/schemas/RewardAssignmentParameters_parameters_loyalty'
       required:
       - loyalty
       type: object

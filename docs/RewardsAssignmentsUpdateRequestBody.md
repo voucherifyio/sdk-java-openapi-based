@@ -8,7 +8,7 @@ Request body schema for **PUT** `/loyalties/{campaignId}/rewards/{assignmentId}`
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**parameters** | [**LoyaltiesRewardsUpdateRequestBodyParameters**](LoyaltiesRewardsUpdateRequestBodyParameters.md) |  |  [optional] |
+|**parameters** | [**RewardsAssignmentsUpdateRequestBodyParameters**](RewardsAssignmentsUpdateRequestBodyParameters.md) |  |  [optional] |
 
 
 

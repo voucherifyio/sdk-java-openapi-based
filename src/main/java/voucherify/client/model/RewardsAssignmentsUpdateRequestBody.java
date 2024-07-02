@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.LoyaltiesRewardsUpdateRequestBodyParameters;
+import voucherify.client.model.RewardsAssignmentsUpdateRequestBodyParameters;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,12 +55,12 @@ import voucherify.client.JSON;
 public class RewardsAssignmentsUpdateRequestBody {
   public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
   @SerializedName(SERIALIZED_NAME_PARAMETERS)
-  private LoyaltiesRewardsUpdateRequestBodyParameters parameters;
+  private RewardsAssignmentsUpdateRequestBodyParameters parameters;
 
   public RewardsAssignmentsUpdateRequestBody() {
   }
 
-  public RewardsAssignmentsUpdateRequestBody parameters(LoyaltiesRewardsUpdateRequestBodyParameters parameters) {
+  public RewardsAssignmentsUpdateRequestBody parameters(RewardsAssignmentsUpdateRequestBodyParameters parameters) {
     
     this.parameters = parameters;
     return this;
@@ -71,12 +71,12 @@ public class RewardsAssignmentsUpdateRequestBody {
    * @return parameters
   **/
   @javax.annotation.Nullable
-  public LoyaltiesRewardsUpdateRequestBodyParameters getParameters() {
+  public RewardsAssignmentsUpdateRequestBodyParameters getParameters() {
     return parameters;
   }
 
 
-  public void setParameters(LoyaltiesRewardsUpdateRequestBodyParameters parameters) {
+  public void setParameters(RewardsAssignmentsUpdateRequestBodyParameters parameters) {
     this.parameters = parameters;
   }
 
@@ -155,7 +155,7 @@ public class RewardsAssignmentsUpdateRequestBody {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `parameters`
       if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
-        LoyaltiesRewardsUpdateRequestBodyParameters.validateJsonElement(jsonObj.get("parameters"));
+        RewardsAssignmentsUpdateRequestBodyParameters.validateJsonElement(jsonObj.get("parameters"));
       }
   }
 

@@ -29,7 +29,6 @@ All URIs are relative to *https://api.voucherify.io*
 | [**transferPoints**](LoyaltiesApi.md#transferPoints) | **POST** /v1/loyalties/{campaignId}/members/{memberId}/transfers | Transfer Loyalty Points |
 | [**updateLoyaltyCardBalance**](LoyaltiesApi.md#updateLoyaltyCardBalance) | **POST** /v1/loyalties/members/{memberId}/balance | Add or Remove Loyalty Card Balance |
 | [**updateLoyaltyCardBalance1**](LoyaltiesApi.md#updateLoyaltyCardBalance1) | **POST** /v1/loyalties/{campaignId}/members/{memberId}/balance | Add or Remove Loyalty Card Balance |
-| [**updateRewardAssignment1**](LoyaltiesApi.md#updateRewardAssignment1) | **PUT** /v1/loyalties/{campaignId}/rewards/{assignmentId} | Update Reward Assignment |
 
 
 <a id="createInBulkLoyaltyTiers"></a>
@@ -1977,83 +1976,4 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Returns a balance object. |  -  |
-
-<a id="updateRewardAssignment1"></a>
-# **updateRewardAssignment1**
-> Model4ObjRewardAssignmentObject updateRewardAssignment1(campaignId, assignmentId, loyaltiesRewardsUpdateRequestBody)
-
-Update Reward Assignment
-
-Updates rewards parameters, i.e. the points cost for the specific reward.
-
-### Example
-```java
-// Import classes:
-import voucherify.client.ApiClient;
-import voucherify.client.ApiException;
-import voucherify.client.Configuration;
-import voucherify.client.auth.*;
-import voucherify.client.models.*;
-import voucherify.client.api.LoyaltiesApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.voucherify.io");
-    
-    // Configure API key authorization: X-App-Id
-    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
-    X-App-Id.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: X-App-Token
-    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
-    X-App-Token.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token.setApiKeyPrefix("Token");
-
-    LoyaltiesApi apiInstance = new LoyaltiesApi(defaultClient);
-    String campaignId = "campaignId_example"; // String | The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the `name` of the campaign as the path parameter value, e.g., `Loyalty%20Campaign`. 
-    String assignmentId = "assignmentId_example"; // String | A unique reward assignment ID.
-    LoyaltiesRewardsUpdateRequestBody loyaltiesRewardsUpdateRequestBody = new LoyaltiesRewardsUpdateRequestBody(); // LoyaltiesRewardsUpdateRequestBody | Update the points cost for the reward assignment.
-    try {
-      Model4ObjRewardAssignmentObject result = apiInstance.updateRewardAssignment1(campaignId, assignmentId, loyaltiesRewardsUpdateRequestBody);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LoyaltiesApi#updateRewardAssignment1");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **assignmentId** | **String**| A unique reward assignment ID. | |
-| **loyaltiesRewardsUpdateRequestBody** | [**LoyaltiesRewardsUpdateRequestBody**](LoyaltiesRewardsUpdateRequestBody.md)| Update the points cost for the reward assignment. | [optional] |
-
-### Return type
-
-[**Model4ObjRewardAssignmentObject**](Model4ObjRewardAssignmentObject.md)
-
-### Authorization
-
-[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Returns a reward assignment with an updated points value. |  -  |
 

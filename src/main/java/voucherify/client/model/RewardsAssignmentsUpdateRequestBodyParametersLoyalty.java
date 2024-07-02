@@ -51,15 +51,15 @@ import voucherify.client.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {
+public class RewardsAssignmentsUpdateRequestBodyParametersLoyalty {
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
   private Integer points;
 
-  public LoyaltiesRewardsUpdateRequestBodyParametersLoyalty() {
+  public RewardsAssignmentsUpdateRequestBodyParametersLoyalty() {
   }
 
-  public LoyaltiesRewardsUpdateRequestBodyParametersLoyalty points(Integer points) {
+  public RewardsAssignmentsUpdateRequestBodyParametersLoyalty points(Integer points) {
     
     this.points = points;
     return this;
@@ -89,8 +89,8 @@ public class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoyaltiesRewardsUpdateRequestBodyParametersLoyalty loyaltiesRewardsUpdateRequestBodyParametersLoyalty = (LoyaltiesRewardsUpdateRequestBodyParametersLoyalty) o;
-    return Objects.equals(this.points, loyaltiesRewardsUpdateRequestBodyParametersLoyalty.points);
+    RewardsAssignmentsUpdateRequestBodyParametersLoyalty rewardsAssignmentsUpdateRequestBodyParametersLoyalty = (RewardsAssignmentsUpdateRequestBodyParametersLoyalty) o;
+    return Objects.equals(this.points, rewardsAssignmentsUpdateRequestBodyParametersLoyalty.points);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {\n");
+    sb.append("class RewardsAssignmentsUpdateRequestBodyParametersLoyalty {\n");
     sb.append("    points: ").append(toIndentedString(points)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -135,20 +135,20 @@ public class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesRewardsUpdateRequestBodyParametersLoyalty
+  * @throws IOException if the JSON Element is invalid with respect to RewardsAssignmentsUpdateRequestBodyParametersLoyalty
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesRewardsUpdateRequestBodyParametersLoyalty is not found in the empty JSON string", LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.openapiRequiredFields.toString()));
+        if (!RewardsAssignmentsUpdateRequestBodyParametersLoyalty.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RewardsAssignmentsUpdateRequestBodyParametersLoyalty is not found in the empty JSON string", RewardsAssignmentsUpdateRequestBodyParametersLoyalty.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoyaltiesRewardsUpdateRequestBodyParametersLoyalty` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!RewardsAssignmentsUpdateRequestBodyParametersLoyalty.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RewardsAssignmentsUpdateRequestBodyParametersLoyalty` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -158,22 +158,22 @@ public class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LoyaltiesRewardsUpdateRequestBodyParametersLoyalty' and its subtypes
+       if (!RewardsAssignmentsUpdateRequestBodyParametersLoyalty.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RewardsAssignmentsUpdateRequestBodyParametersLoyalty' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LoyaltiesRewardsUpdateRequestBodyParametersLoyalty> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.class));
+       final TypeAdapter<RewardsAssignmentsUpdateRequestBodyParametersLoyalty> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RewardsAssignmentsUpdateRequestBodyParametersLoyalty.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LoyaltiesRewardsUpdateRequestBodyParametersLoyalty>() {
+       return (TypeAdapter<T>) new TypeAdapter<RewardsAssignmentsUpdateRequestBodyParametersLoyalty>() {
            @Override
-           public void write(JsonWriter out, LoyaltiesRewardsUpdateRequestBodyParametersLoyalty value) throws IOException {
+           public void write(JsonWriter out, RewardsAssignmentsUpdateRequestBodyParametersLoyalty value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LoyaltiesRewardsUpdateRequestBodyParametersLoyalty read(JsonReader in) throws IOException {
+           public RewardsAssignmentsUpdateRequestBodyParametersLoyalty read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -184,18 +184,18 @@ public class LoyaltiesRewardsUpdateRequestBodyParametersLoyalty {
   }
 
  /**
-  * Create an instance of LoyaltiesRewardsUpdateRequestBodyParametersLoyalty given an JSON string
+  * Create an instance of RewardsAssignmentsUpdateRequestBodyParametersLoyalty given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LoyaltiesRewardsUpdateRequestBodyParametersLoyalty
-  * @throws IOException if the JSON string is invalid with respect to LoyaltiesRewardsUpdateRequestBodyParametersLoyalty
+  * @return An instance of RewardsAssignmentsUpdateRequestBodyParametersLoyalty
+  * @throws IOException if the JSON string is invalid with respect to RewardsAssignmentsUpdateRequestBodyParametersLoyalty
   */
-  public static LoyaltiesRewardsUpdateRequestBodyParametersLoyalty fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.class);
+  public static RewardsAssignmentsUpdateRequestBodyParametersLoyalty fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RewardsAssignmentsUpdateRequestBodyParametersLoyalty.class);
   }
 
  /**
-  * Convert an instance of LoyaltiesRewardsUpdateRequestBodyParametersLoyalty to an JSON string
+  * Convert an instance of RewardsAssignmentsUpdateRequestBodyParametersLoyalty to an JSON string
   *
   * @return JSON string
   */

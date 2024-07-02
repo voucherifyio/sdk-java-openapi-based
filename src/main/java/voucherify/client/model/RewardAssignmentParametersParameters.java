@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.Model4ObjRewardAssignmentObjectParametersLoyalty;
+import voucherify.client.model.RewardAssignmentParametersParametersLoyalty;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,12 +55,12 @@ import voucherify.client.JSON;
 public class RewardAssignmentParametersParameters {
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
-  private Model4ObjRewardAssignmentObjectParametersLoyalty loyalty;
+  private RewardAssignmentParametersParametersLoyalty loyalty;
 
   public RewardAssignmentParametersParameters() {
   }
 
-  public RewardAssignmentParametersParameters loyalty(Model4ObjRewardAssignmentObjectParametersLoyalty loyalty) {
+  public RewardAssignmentParametersParameters loyalty(RewardAssignmentParametersParametersLoyalty loyalty) {
     
     this.loyalty = loyalty;
     return this;
@@ -71,12 +71,12 @@ public class RewardAssignmentParametersParameters {
    * @return loyalty
   **/
   @javax.annotation.Nonnull
-  public Model4ObjRewardAssignmentObjectParametersLoyalty getLoyalty() {
+  public RewardAssignmentParametersParametersLoyalty getLoyalty() {
     return loyalty;
   }
 
 
-  public void setLoyalty(Model4ObjRewardAssignmentObjectParametersLoyalty loyalty) {
+  public void setLoyalty(RewardAssignmentParametersParametersLoyalty loyalty) {
     this.loyalty = loyalty;
   }
 
@@ -162,7 +162,7 @@ public class RewardAssignmentParametersParameters {
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `loyalty`
-      Model4ObjRewardAssignmentObjectParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      RewardAssignmentParametersParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -199,7 +199,6 @@ Class | Method | HTTP request | Description
 *LoyaltiesApi* | [**transferPoints**](docs/LoyaltiesApi.md#transferPoints) | **POST** /v1/loyalties/{campaignId}/members/{memberId}/transfers | Transfer Loyalty Points
 *LoyaltiesApi* | [**updateLoyaltyCardBalance**](docs/LoyaltiesApi.md#updateLoyaltyCardBalance) | **POST** /v1/loyalties/members/{memberId}/balance | Add or Remove Loyalty Card Balance
 *LoyaltiesApi* | [**updateLoyaltyCardBalance1**](docs/LoyaltiesApi.md#updateLoyaltyCardBalance1) | **POST** /v1/loyalties/{campaignId}/members/{memberId}/balance | Add or Remove Loyalty Card Balance
-*LoyaltiesApi* | [**updateRewardAssignment1**](docs/LoyaltiesApi.md#updateRewardAssignment1) | **PUT** /v1/loyalties/{campaignId}/rewards/{assignmentId} | Update Reward Assignment
 *OrdersApi* | [**createOrder**](docs/OrdersApi.md#createOrder) | **POST** /v1/orders | Create Order
 *OrdersApi* | [**createOrderExport**](docs/OrdersApi.md#createOrderExport) | **POST** /v1/orders/export | Create Orders Export
 *OrdersApi* | [**getOrder**](docs/OrdersApi.md#getOrder) | **GET** /v1/orders/{orderId} | Get Order
@@ -609,9 +608,6 @@ Class | Method | HTTP request | Description
  - [LoyaltiesRewardAssignmentsGetResponseBody](docs/LoyaltiesRewardAssignmentsGetResponseBody.md)
  - [LoyaltiesRewardAssignmentsRewardGetResponseBody](docs/LoyaltiesRewardAssignmentsRewardGetResponseBody.md)
  - [LoyaltiesRewardsGetResponseBody](docs/LoyaltiesRewardsGetResponseBody.md)
- - [LoyaltiesRewardsUpdateRequestBody](docs/LoyaltiesRewardsUpdateRequestBody.md)
- - [LoyaltiesRewardsUpdateRequestBodyParameters](docs/LoyaltiesRewardsUpdateRequestBodyParameters.md)
- - [LoyaltiesRewardsUpdateRequestBodyParametersLoyalty](docs/LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.md)
  - [LoyaltiesTiersCreateInBulkRequestBodyItem](docs/LoyaltiesTiersCreateInBulkRequestBodyItem.md)
  - [LoyaltiesTiersEarningRulesListResponseBody](docs/LoyaltiesTiersEarningRulesListResponseBody.md)
  - [LoyaltiesTiersGetResponseBody](docs/LoyaltiesTiersGetResponseBody.md)
@@ -634,9 +630,6 @@ Class | Method | HTTP request | Description
  - [MappingFixed](docs/MappingFixed.md)
  - [MappingMultiply](docs/MappingMultiply.md)
  - [MappingPoints](docs/MappingPoints.md)
- - [Model4ObjRewardAssignmentObject](docs/Model4ObjRewardAssignmentObject.md)
- - [Model4ObjRewardAssignmentObjectParameters](docs/Model4ObjRewardAssignmentObjectParameters.md)
- - [Model4ObjRewardAssignmentObjectParametersLoyalty](docs/Model4ObjRewardAssignmentObjectParametersLoyalty.md)
  - [Order](docs/Order.md)
  - [OrderBase](docs/OrderBase.md)
  - [OrderCalculated](docs/OrderCalculated.md)
@@ -830,6 +823,7 @@ Class | Method | HTTP request | Description
  - [RewardAssignmentBase](docs/RewardAssignmentBase.md)
  - [RewardAssignmentParameters](docs/RewardAssignmentParameters.md)
  - [RewardAssignmentParametersParameters](docs/RewardAssignmentParametersParameters.md)
+ - [RewardAssignmentParametersParametersLoyalty](docs/RewardAssignmentParametersParametersLoyalty.md)
  - [RewardAssignmentsCreateCoinRewardRequestBody](docs/RewardAssignmentsCreateCoinRewardRequestBody.md)
  - [RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody](docs/RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody.md)
  - [RewardAssignmentsCreateDigitalOrMaterialRewardRequestBodyParameters](docs/RewardAssignmentsCreateDigitalOrMaterialRewardRequestBodyParameters.md)
@@ -847,6 +841,8 @@ Class | Method | HTTP request | Description
  - [RewardsAssignmentsGetResponseBody](docs/RewardsAssignmentsGetResponseBody.md)
  - [RewardsAssignmentsListResponseBody](docs/RewardsAssignmentsListResponseBody.md)
  - [RewardsAssignmentsUpdateRequestBody](docs/RewardsAssignmentsUpdateRequestBody.md)
+ - [RewardsAssignmentsUpdateRequestBodyParameters](docs/RewardsAssignmentsUpdateRequestBodyParameters.md)
+ - [RewardsAssignmentsUpdateRequestBodyParametersLoyalty](docs/RewardsAssignmentsUpdateRequestBodyParametersLoyalty.md)
  - [RewardsAssignmentsUpdateResponseBody](docs/RewardsAssignmentsUpdateResponseBody.md)
  - [SchemaThatContainsUniquePropertiesForPromotionCampaignPromotion](docs/SchemaThatContainsUniquePropertiesForPromotionCampaignPromotion.md)
  - [Session](docs/Session.md)
