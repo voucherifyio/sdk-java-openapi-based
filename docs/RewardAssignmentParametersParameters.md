@@ -8,7 +8,7 @@ Defines the cost of the reward.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**loyalty** | [**RewardAssignmentParametersParametersLoyalty**](RewardAssignmentParametersParametersLoyalty.md) |  |  |
+|**loyalty** | [**Model4ObjRewardAssignmentObjectParametersLoyalty**](Model4ObjRewardAssignmentObjectParametersLoyalty.md) |  |  |
 
 
 

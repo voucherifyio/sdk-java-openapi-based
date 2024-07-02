@@ -52,15 +52,15 @@ import voucherify.client.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class RewardAssignmentParametersParameters {
+public class Model4ObjRewardAssignmentObjectParameters {
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
   private Model4ObjRewardAssignmentObjectParametersLoyalty loyalty;
 
-  public RewardAssignmentParametersParameters() {
+  public Model4ObjRewardAssignmentObjectParameters() {
   }
 
-  public RewardAssignmentParametersParameters loyalty(Model4ObjRewardAssignmentObjectParametersLoyalty loyalty) {
+  public Model4ObjRewardAssignmentObjectParameters loyalty(Model4ObjRewardAssignmentObjectParametersLoyalty loyalty) {
     
     this.loyalty = loyalty;
     return this;
@@ -70,7 +70,7 @@ public class RewardAssignmentParametersParameters {
    * Get loyalty
    * @return loyalty
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Model4ObjRewardAssignmentObjectParametersLoyalty getLoyalty() {
     return loyalty;
   }
@@ -90,8 +90,8 @@ public class RewardAssignmentParametersParameters {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RewardAssignmentParametersParameters rewardAssignmentParametersParameters = (RewardAssignmentParametersParameters) o;
-    return Objects.equals(this.loyalty, rewardAssignmentParametersParameters.loyalty);
+    Model4ObjRewardAssignmentObjectParameters _4objRewardAssignmentObjectParameters = (Model4ObjRewardAssignmentObjectParameters) o;
+    return Objects.equals(this.loyalty, _4objRewardAssignmentObjectParameters.loyalty);
   }
 
   @Override
@@ -102,7 +102,7 @@ public class RewardAssignmentParametersParameters {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RewardAssignmentParametersParameters {\n");
+    sb.append("class Model4ObjRewardAssignmentObjectParameters {\n");
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -130,61 +130,55 @@ public class RewardAssignmentParametersParameters {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("loyalty");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RewardAssignmentParametersParameters
+  * @throws IOException if the JSON Element is invalid with respect to Model4ObjRewardAssignmentObjectParameters
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RewardAssignmentParametersParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RewardAssignmentParametersParameters is not found in the empty JSON string", RewardAssignmentParametersParameters.openapiRequiredFields.toString()));
+        if (!Model4ObjRewardAssignmentObjectParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Model4ObjRewardAssignmentObjectParameters is not found in the empty JSON string", Model4ObjRewardAssignmentObjectParameters.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RewardAssignmentParametersParameters.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RewardAssignmentParametersParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RewardAssignmentParametersParameters.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!Model4ObjRewardAssignmentObjectParameters.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Model4ObjRewardAssignmentObjectParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `loyalty`
-      Model4ObjRewardAssignmentObjectParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      // validate the optional field `loyalty`
+      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
+        Model4ObjRewardAssignmentObjectParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RewardAssignmentParametersParameters.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RewardAssignmentParametersParameters' and its subtypes
+       if (!Model4ObjRewardAssignmentObjectParameters.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Model4ObjRewardAssignmentObjectParameters' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RewardAssignmentParametersParameters> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RewardAssignmentParametersParameters.class));
+       final TypeAdapter<Model4ObjRewardAssignmentObjectParameters> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Model4ObjRewardAssignmentObjectParameters.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RewardAssignmentParametersParameters>() {
+       return (TypeAdapter<T>) new TypeAdapter<Model4ObjRewardAssignmentObjectParameters>() {
            @Override
-           public void write(JsonWriter out, RewardAssignmentParametersParameters value) throws IOException {
+           public void write(JsonWriter out, Model4ObjRewardAssignmentObjectParameters value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RewardAssignmentParametersParameters read(JsonReader in) throws IOException {
+           public Model4ObjRewardAssignmentObjectParameters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -195,18 +189,18 @@ public class RewardAssignmentParametersParameters {
   }
 
  /**
-  * Create an instance of RewardAssignmentParametersParameters given an JSON string
+  * Create an instance of Model4ObjRewardAssignmentObjectParameters given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RewardAssignmentParametersParameters
-  * @throws IOException if the JSON string is invalid with respect to RewardAssignmentParametersParameters
+  * @return An instance of Model4ObjRewardAssignmentObjectParameters
+  * @throws IOException if the JSON string is invalid with respect to Model4ObjRewardAssignmentObjectParameters
   */
-  public static RewardAssignmentParametersParameters fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RewardAssignmentParametersParameters.class);
+  public static Model4ObjRewardAssignmentObjectParameters fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Model4ObjRewardAssignmentObjectParameters.class);
   }
 
  /**
-  * Convert an instance of RewardAssignmentParametersParameters to an JSON string
+  * Convert an instance of Model4ObjRewardAssignmentObjectParameters to an JSON string
   *
   * @return JSON string
   */

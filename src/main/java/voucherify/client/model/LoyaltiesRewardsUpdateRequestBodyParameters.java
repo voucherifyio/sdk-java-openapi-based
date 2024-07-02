@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.Model4ObjRewardAssignmentObjectParametersLoyalty;
+import voucherify.client.model.LoyaltiesRewardsUpdateRequestBodyParametersLoyalty;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,19 +48,19 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Defines the cost of the reward.
+ * An object that defines the price of the reward in loyalty points.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class RewardAssignmentParametersParameters {
+public class LoyaltiesRewardsUpdateRequestBodyParameters {
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
-  private Model4ObjRewardAssignmentObjectParametersLoyalty loyalty;
+  private LoyaltiesRewardsUpdateRequestBodyParametersLoyalty loyalty;
 
-  public RewardAssignmentParametersParameters() {
+  public LoyaltiesRewardsUpdateRequestBodyParameters() {
   }
 
-  public RewardAssignmentParametersParameters loyalty(Model4ObjRewardAssignmentObjectParametersLoyalty loyalty) {
+  public LoyaltiesRewardsUpdateRequestBodyParameters loyalty(LoyaltiesRewardsUpdateRequestBodyParametersLoyalty loyalty) {
     
     this.loyalty = loyalty;
     return this;
@@ -70,13 +70,13 @@ public class RewardAssignmentParametersParameters {
    * Get loyalty
    * @return loyalty
   **/
-  @javax.annotation.Nonnull
-  public Model4ObjRewardAssignmentObjectParametersLoyalty getLoyalty() {
+  @javax.annotation.Nullable
+  public LoyaltiesRewardsUpdateRequestBodyParametersLoyalty getLoyalty() {
     return loyalty;
   }
 
 
-  public void setLoyalty(Model4ObjRewardAssignmentObjectParametersLoyalty loyalty) {
+  public void setLoyalty(LoyaltiesRewardsUpdateRequestBodyParametersLoyalty loyalty) {
     this.loyalty = loyalty;
   }
 
@@ -90,8 +90,8 @@ public class RewardAssignmentParametersParameters {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RewardAssignmentParametersParameters rewardAssignmentParametersParameters = (RewardAssignmentParametersParameters) o;
-    return Objects.equals(this.loyalty, rewardAssignmentParametersParameters.loyalty);
+    LoyaltiesRewardsUpdateRequestBodyParameters loyaltiesRewardsUpdateRequestBodyParameters = (LoyaltiesRewardsUpdateRequestBodyParameters) o;
+    return Objects.equals(this.loyalty, loyaltiesRewardsUpdateRequestBodyParameters.loyalty);
   }
 
   @Override
@@ -102,7 +102,7 @@ public class RewardAssignmentParametersParameters {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RewardAssignmentParametersParameters {\n");
+    sb.append("class LoyaltiesRewardsUpdateRequestBodyParameters {\n");
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -130,61 +130,55 @@ public class RewardAssignmentParametersParameters {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("loyalty");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RewardAssignmentParametersParameters
+  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesRewardsUpdateRequestBodyParameters
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RewardAssignmentParametersParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RewardAssignmentParametersParameters is not found in the empty JSON string", RewardAssignmentParametersParameters.openapiRequiredFields.toString()));
+        if (!LoyaltiesRewardsUpdateRequestBodyParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesRewardsUpdateRequestBodyParameters is not found in the empty JSON string", LoyaltiesRewardsUpdateRequestBodyParameters.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RewardAssignmentParametersParameters.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RewardAssignmentParametersParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RewardAssignmentParametersParameters.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!LoyaltiesRewardsUpdateRequestBodyParameters.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoyaltiesRewardsUpdateRequestBodyParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `loyalty`
-      Model4ObjRewardAssignmentObjectParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      // validate the optional field `loyalty`
+      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
+        LoyaltiesRewardsUpdateRequestBodyParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RewardAssignmentParametersParameters.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RewardAssignmentParametersParameters' and its subtypes
+       if (!LoyaltiesRewardsUpdateRequestBodyParameters.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LoyaltiesRewardsUpdateRequestBodyParameters' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RewardAssignmentParametersParameters> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RewardAssignmentParametersParameters.class));
+       final TypeAdapter<LoyaltiesRewardsUpdateRequestBodyParameters> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LoyaltiesRewardsUpdateRequestBodyParameters.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RewardAssignmentParametersParameters>() {
+       return (TypeAdapter<T>) new TypeAdapter<LoyaltiesRewardsUpdateRequestBodyParameters>() {
            @Override
-           public void write(JsonWriter out, RewardAssignmentParametersParameters value) throws IOException {
+           public void write(JsonWriter out, LoyaltiesRewardsUpdateRequestBodyParameters value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RewardAssignmentParametersParameters read(JsonReader in) throws IOException {
+           public LoyaltiesRewardsUpdateRequestBodyParameters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -195,18 +189,18 @@ public class RewardAssignmentParametersParameters {
   }
 
  /**
-  * Create an instance of RewardAssignmentParametersParameters given an JSON string
+  * Create an instance of LoyaltiesRewardsUpdateRequestBodyParameters given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RewardAssignmentParametersParameters
-  * @throws IOException if the JSON string is invalid with respect to RewardAssignmentParametersParameters
+  * @return An instance of LoyaltiesRewardsUpdateRequestBodyParameters
+  * @throws IOException if the JSON string is invalid with respect to LoyaltiesRewardsUpdateRequestBodyParameters
   */
-  public static RewardAssignmentParametersParameters fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RewardAssignmentParametersParameters.class);
+  public static LoyaltiesRewardsUpdateRequestBodyParameters fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LoyaltiesRewardsUpdateRequestBodyParameters.class);
   }
 
  /**
-  * Convert an instance of RewardAssignmentParametersParameters to an JSON string
+  * Convert an instance of LoyaltiesRewardsUpdateRequestBodyParameters to an JSON string
   *
   * @return JSON string
   */

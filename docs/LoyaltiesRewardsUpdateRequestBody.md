@@ -1,6 +1,6 @@
 
 
-# RewardsAssignmentsUpdateRequestBody
+# LoyaltiesRewardsUpdateRequestBody
 
 Request body schema for **PUT** `/loyalties/{campaignId}/rewards/{assignmentId}` and **PUT** `/rewards/{rewardId}/assignments/{assignmentId}`.
 

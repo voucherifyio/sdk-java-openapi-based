@@ -5,7 +5,6 @@ All URIs are relative to *https://api.voucherify.io*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createPublication**](PublicationsApi.md#createPublication) | **POST** /v1/publications | Create Publication |
-| [**createPublication1**](PublicationsApi.md#createPublication1) | **GET** /v1/publications/create | Create Publication |
 | [**listPublications**](PublicationsApi.md#listPublications) | **GET** /v1/publications | List Publications |
 
 
@@ -85,91 +84,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Returns a publication object if a valid identifier was provided. |  -  |
-
-<a id="createPublication1"></a>
-# **createPublication1**
-> PublicationsCreateResponseBody createPublication1(customer, joinOnce, voucher, campaign, sourceId, metadata)
-
-Create Publication
-
-This method selects vouchers that are suitable for publication, adds a publish entry and returns the publication.  A voucher is suitable for publication when it&#39;s active and hasn&#39;t been published yet. &gt; ❗️ Limited access &gt; &gt; Access to this endpoint is limited. This endpoint is designed for specific integrations and the API keys need to be configured to access this endpoint. Navigate to the **Dashboard** &amp;rarr; **Project Settings** &amp;rarr; **General** &amp;rarr; **Integration Keys** to set up a pair of API keys and use them to send the request.    &lt;!-- theme: warning --&gt; &gt; 🚧 Clearly define the source of the voucher &gt; &gt; You must clearly define which source you want to publish the voucher code from. It can either be a code from a campaign or a specific voucher identified by a code.   &lt;!-- theme: warning --&gt; &gt; 🚧 Publish multiple vouchers &gt; This endpoint does not support the publishing of multiple vouchers from a single campaign. In case you want to publish multiple vouchers within a single publication, you need to use a [dedicated endpoint](ref:create-publication).    &lt;!-- theme: info --&gt;  &gt; 📘 Auto-update campaign &gt; &gt; In case you want to ensure the number of publishable codes increases automatically with the number of customers, you should use an **auto-update** campaign.    ## Example Request  &#x60;&#x60;&#x60;markdown Publication Query  /publications/create?campaign[name]&#x3D;BlackFriday&amp;customer[source_id]&#x3D;Customer_Source_ID  &#x60;&#x60;&#x60;    &lt;!-- theme: danger --&gt; &gt; ❗️ Required   &gt; &gt; Query param &#x60;voucher&#x60; OR &#x60;campaign&#x60; MUST be filled out. If you provide both, &#x60;campaign&#x60; param will be skipped.
-
-### Example
-```java
-// Import classes:
-import voucherify.client.ApiClient;
-import voucherify.client.ApiException;
-import voucherify.client.Configuration;
-import voucherify.client.auth.*;
-import voucherify.client.models.*;
-import voucherify.client.api.PublicationsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.voucherify.io");
-    
-    // Configure API key authorization: X-App-Id
-    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
-    X-App-Id.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: X-App-Token
-    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
-    X-App-Token.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token.setApiKeyPrefix("Token");
-
-    PublicationsApi apiInstance = new PublicationsApi(defaultClient);
-    Customer customer = new Customer(); // Customer | Contains information about the customer to whom the publication was directed.
-    Boolean joinOnce = true; // Boolean | Through this flag, you can control if a particular person gets only one and always the same code even if the app sends multiple publication requests. It means that if you have a referral program, a referrer is assigned only to one code if an integration sends publication requests more than once for the same customer.
-    String voucher = "voucher_example"; // String | Code of voucher being published.
-    CreatePublicationCampaign campaign = new CreatePublicationCampaign(); // CreatePublicationCampaign | Create publication with campaign.
-    String sourceId = "sourceId_example"; // String | The merchant’s publication ID if it is different from the Voucherify publication ID. It's an optional tracking identifier of a publication. It is really useful in case of an integration between multiple systems. It can be a publication ID from a CRM system, database or 3rd-party service. If `source_id` is provided only 1 voucher can be published per request.
-    Object metadata = null; // Object | The metadata object stores all custom attributes assigned to the publication. A set of key/value pairs that you can attach to a publication object. It can be useful for storing additional information about the publication in a structured format.
-    try {
-      PublicationsCreateResponseBody result = apiInstance.createPublication1(customer, joinOnce, voucher, campaign, sourceId, metadata);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PublicationsApi#createPublication1");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customer** | [**Customer**](.md)| Contains information about the customer to whom the publication was directed. | |
-| **joinOnce** | **Boolean**| Through this flag, you can control if a particular person gets only one and always the same code even if the app sends multiple publication requests. It means that if you have a referral program, a referrer is assigned only to one code if an integration sends publication requests more than once for the same customer. | [optional] |
-| **voucher** | **String**| Code of voucher being published. | [optional] |
-| **campaign** | [**CreatePublicationCampaign**](.md)| Create publication with campaign. | [optional] |
-| **sourceId** | **String**| The merchant’s publication ID if it is different from the Voucherify publication ID. It&#39;s an optional tracking identifier of a publication. It is really useful in case of an integration between multiple systems. It can be a publication ID from a CRM system, database or 3rd-party service. If &#x60;source_id&#x60; is provided only 1 voucher can be published per request. | [optional] |
-| **metadata** | [**Object**](.md)| The metadata object stores all custom attributes assigned to the publication. A set of key/value pairs that you can attach to a publication object. It can be useful for storing additional information about the publication in a structured format. | [optional] |
-
-### Return type
-
-[**PublicationsCreateResponseBody**](PublicationsCreateResponseBody.md)
-
-### Authorization
-
-[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Returns a publication object. |  -  |
 
 <a id="listPublications"></a>
 # **listPublications**
