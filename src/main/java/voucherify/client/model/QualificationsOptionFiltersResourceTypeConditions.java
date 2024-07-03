@@ -57,11 +57,11 @@ import voucherify.client.JSON;
 public class QualificationsOptionFiltersResourceTypeConditions {
   public static final String SERIALIZED_NAME_$_IS = "$is";
   @SerializedName(SERIALIZED_NAME_$_IS)
-  private ResourceTypes $is;
+  private List<ResourceTypes> $is;
 
   public static final String SERIALIZED_NAME_$_IS_NOT = "$is_not";
   @SerializedName(SERIALIZED_NAME_$_IS_NOT)
-  private ResourceTypes $isNot;
+  private List<ResourceTypes> $isNot;
 
   public static final String SERIALIZED_NAME_$_IN = "$in";
   @SerializedName(SERIALIZED_NAME_$_IN)
@@ -74,9 +74,17 @@ public class QualificationsOptionFiltersResourceTypeConditions {
   public QualificationsOptionFiltersResourceTypeConditions() {
   }
 
-  public QualificationsOptionFiltersResourceTypeConditions $is(ResourceTypes $is) {
+  public QualificationsOptionFiltersResourceTypeConditions $is(List<ResourceTypes> $is) {
     
     this.$is = $is;
+    return this;
+  }
+
+  public QualificationsOptionFiltersResourceTypeConditions add$IsItem(ResourceTypes $isItem) {
+    if (this.$is == null) {
+      this.$is = new ArrayList<>();
+    }
+    this.$is.add($isItem);
     return this;
   }
 
@@ -85,19 +93,27 @@ public class QualificationsOptionFiltersResourceTypeConditions {
    * @return $is
   **/
   @javax.annotation.Nullable
-  public ResourceTypes get$Is() {
+  public List<ResourceTypes> get$Is() {
     return $is;
   }
 
 
-  public void set$Is(ResourceTypes $is) {
+  public void set$Is(List<ResourceTypes> $is) {
     this.$is = $is;
   }
 
 
-  public QualificationsOptionFiltersResourceTypeConditions $isNot(ResourceTypes $isNot) {
+  public QualificationsOptionFiltersResourceTypeConditions $isNot(List<ResourceTypes> $isNot) {
     
     this.$isNot = $isNot;
+    return this;
+  }
+
+  public QualificationsOptionFiltersResourceTypeConditions add$IsNotItem(ResourceTypes $isNotItem) {
+    if (this.$isNot == null) {
+      this.$isNot = new ArrayList<>();
+    }
+    this.$isNot.add($isNotItem);
     return this;
   }
 
@@ -106,12 +122,12 @@ public class QualificationsOptionFiltersResourceTypeConditions {
    * @return $isNot
   **/
   @javax.annotation.Nullable
-  public ResourceTypes get$IsNot() {
+  public List<ResourceTypes> get$IsNot() {
     return $isNot;
   }
 
 
-  public void set$IsNot(ResourceTypes $isNot) {
+  public void set$IsNot(List<ResourceTypes> $isNot) {
     this.$isNot = $isNot;
   }
 
@@ -131,7 +147,7 @@ public class QualificationsOptionFiltersResourceTypeConditions {
   }
 
    /**
-   * Array of qualified redeemables. Accepts more than one value. Returns the resource types entered in the array.
+   * Get $in
    * @return $in
   **/
   @javax.annotation.Nullable
@@ -160,7 +176,7 @@ public class QualificationsOptionFiltersResourceTypeConditions {
   }
 
    /**
-   * Array of qualified redeemables. Accepts more than one value. Returns the resource types except those entered in the array.
+   * Get $notIn
    * @return $notIn
   **/
   @javax.annotation.Nullable
@@ -255,6 +271,14 @@ public class QualificationsOptionFiltersResourceTypeConditions {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$is") != null && !jsonObj.get("$is").isJsonNull() && !jsonObj.get("$is").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `$is` to be an array in the JSON string but got `%s`", jsonObj.get("$is").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull() && !jsonObj.get("$is_not").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `$is_not` to be an array in the JSON string but got `%s`", jsonObj.get("$is_not").toString()));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull() && !jsonObj.get("$in").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `$in` to be an array in the JSON string but got `%s`", jsonObj.get("$in").toString()));

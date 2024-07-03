@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**$is** | [**Any**](Any.md) |  |  [optional] |
-|**$isNot** | [**Any**](Any.md) |  |  [optional] |
+|**$is** | **List&lt;String&gt;** |  |  [optional] |
+|**$isNot** | **List&lt;String&gt;** |  |  [optional] |
 |**$hasValue** | [**Any**](Any.md) |  |  [optional] |
 |**$isUnknown** | [**Any**](Any.md) |  |  [optional] |
-|**$in** | [**Any**](Any.md) |  |  [optional] |
-|**$notIn** | [**Any**](Any.md) |  |  [optional] |
+|**$in** | **List&lt;String&gt;** |  |  [optional] |
+|**$notIn** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

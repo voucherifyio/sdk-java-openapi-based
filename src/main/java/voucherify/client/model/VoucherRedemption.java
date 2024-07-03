@@ -60,10 +60,6 @@ public class VoucherRedemption {
   @SerializedName(SERIALIZED_NAME_REDEEMED_QUANTITY)
   private Integer redeemedQuantity;
 
-  public static final String SERIALIZED_NAME_REDEEMED_AMOUNT = "redeemed_amount";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_AMOUNT)
-  private Integer redeemedAmount;
-
   public static final String SERIALIZED_NAME_REDEEMED_POINTS = "redeemed_points";
   @SerializedName(SERIALIZED_NAME_REDEEMED_POINTS)
   private Integer redeemedPoints;
@@ -121,27 +117,6 @@ public class VoucherRedemption {
   }
 
 
-  public VoucherRedemption redeemedAmount(Integer redeemedAmount) {
-    
-    this.redeemedAmount = redeemedAmount;
-    return this;
-  }
-
-   /**
-   * Total amount redeemed. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 balance is written as 10000.
-   * @return redeemedAmount
-  **/
-  @javax.annotation.Nullable
-  public Integer getRedeemedAmount() {
-    return redeemedAmount;
-  }
-
-
-  public void setRedeemedAmount(Integer redeemedAmount) {
-    this.redeemedAmount = redeemedAmount;
-  }
-
-
   public VoucherRedemption redeemedPoints(Integer redeemedPoints) {
     
     this.redeemedPoints = redeemedPoints;
@@ -170,7 +145,7 @@ public class VoucherRedemption {
   }
 
    /**
-   * The type of object represented is by default &#x60;list&#x60;. To get this list, you need to make a call to the endpoint returned in the url attribute.
+   * The type of the object represented is by default &#x60;list&#x60;. To get this list, you need to make a call to the endpoint returned in the url attribute.
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -217,7 +192,6 @@ public class VoucherRedemption {
     VoucherRedemption voucherRedemption = (VoucherRedemption) o;
     return Objects.equals(this.quantity, voucherRedemption.quantity) &&
         Objects.equals(this.redeemedQuantity, voucherRedemption.redeemedQuantity) &&
-        Objects.equals(this.redeemedAmount, voucherRedemption.redeemedAmount) &&
         Objects.equals(this.redeemedPoints, voucherRedemption.redeemedPoints) &&
         Objects.equals(this._object, voucherRedemption._object) &&
         Objects.equals(this.url, voucherRedemption.url);
@@ -225,7 +199,7 @@ public class VoucherRedemption {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, redeemedQuantity, redeemedAmount, redeemedPoints, _object, url);
+    return Objects.hash(quantity, redeemedQuantity, redeemedPoints, _object, url);
   }
 
   @Override
@@ -234,7 +208,6 @@ public class VoucherRedemption {
     sb.append("class VoucherRedemption {\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    redeemedQuantity: ").append(toIndentedString(redeemedQuantity)).append("\n");
-    sb.append("    redeemedAmount: ").append(toIndentedString(redeemedAmount)).append("\n");
     sb.append("    redeemedPoints: ").append(toIndentedString(redeemedPoints)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
@@ -262,7 +235,6 @@ public class VoucherRedemption {
     openapiFields = new HashSet<String>();
     openapiFields.add("quantity");
     openapiFields.add("redeemed_quantity");
-    openapiFields.add("redeemed_amount");
     openapiFields.add("redeemed_points");
     openapiFields.add("object");
     openapiFields.add("url");

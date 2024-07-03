@@ -10,7 +10,7 @@ Response body schema for **POST** `/orders`.
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Unique ID assigned by Voucherify of an existing order that will be linked to the redemption of this request. |  [optional] |
 |**sourceId** | **String** | Unique source ID of an existing order that will be linked to the redemption of this request. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the order was created in ISO 8601 format. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the order was created. The value is shown in the ISO 8601 format. |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the order was last updated in ISO 8601 format. |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | The order status. |  [optional] |
 |**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts. |  [optional] |
@@ -26,7 +26,7 @@ Response body schema for **POST** `/orders`.
 |**metadata** | **Object** | A set of custom key/value pairs that you can attach to an order. It can be useful for storing additional information about the order in a structured format. |  [optional] |
 |**customerId** | **String** | Unique customer ID of the customer making the purchase. |  [optional] |
 |**referrerId** | **String** | Unique referrer ID. |  [optional] |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
 |**redemptions** | [**Map&lt;String, OrderRedemptions&gt;**](OrderRedemptions.md) |  |  [optional] |
 |**customer** | [**OrderCalculatedCustomer**](OrderCalculatedCustomer.md) |  |  [optional] |
 |**referrer** | [**OrderCalculatedReferrer**](OrderCalculatedReferrer.md) |  |  [optional] |

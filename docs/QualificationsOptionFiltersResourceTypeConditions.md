@@ -8,10 +8,10 @@ Data filters used to narrow the data records to be returned in the result.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**$is** | **ResourceTypes** |  |  [optional] |
-|**$isNot** | **ResourceTypes** |  |  [optional] |
-|**$in** | **List&lt;ResourceTypes&gt;** | Array of qualified redeemables. Accepts more than one value. Returns the resource types entered in the array. |  [optional] |
-|**$notIn** | **List&lt;ResourceTypes&gt;** | Array of qualified redeemables. Accepts more than one value. Returns the resource types except those entered in the array. |  [optional] |
+|**$is** | **List&lt;ResourceTypes&gt;** |  |  [optional] |
+|**$isNot** | **List&lt;ResourceTypes&gt;** |  |  [optional] |
+|**$in** | **List&lt;ResourceTypes&gt;** |  |  [optional] |
+|**$notIn** | **List&lt;ResourceTypes&gt;** |  |  [optional] |
 
 
 

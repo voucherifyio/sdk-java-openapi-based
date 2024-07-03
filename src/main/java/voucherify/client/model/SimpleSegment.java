@@ -61,7 +61,7 @@ public class SimpleSegment {
   private String name;
 
   /**
-   * The type of object represented by the ID.
+   * The type of the object represented by the ID.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -161,7 +161,7 @@ public class SimpleSegment {
   }
 
    /**
-   * The type of object represented by the ID.
+   * The type of the object represented by the ID.
    * @return _object
   **/
   @javax.annotation.Nonnull

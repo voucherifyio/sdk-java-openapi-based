@@ -57,6 +57,10 @@ public class ValidationsRedeemableInapplicableResult {
   @SerializedName(SERIALIZED_NAME_ERROR)
   private Error error;
 
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private Object details;
+
   public ValidationsRedeemableInapplicableResult() {
   }
 
@@ -81,6 +85,27 @@ public class ValidationsRedeemableInapplicableResult {
   }
 
 
+  public ValidationsRedeemableInapplicableResult details(Object details) {
+    
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @javax.annotation.Nullable
+  public Object getDetails() {
+    return details;
+  }
+
+
+  public void setDetails(Object details) {
+    this.details = details;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -91,12 +116,13 @@ public class ValidationsRedeemableInapplicableResult {
       return false;
     }
     ValidationsRedeemableInapplicableResult validationsRedeemableInapplicableResult = (ValidationsRedeemableInapplicableResult) o;
-    return Objects.equals(this.error, validationsRedeemableInapplicableResult.error);
+    return Objects.equals(this.error, validationsRedeemableInapplicableResult.error) &&
+        Objects.equals(this.details, validationsRedeemableInapplicableResult.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error);
+    return Objects.hash(error, details);
   }
 
   @Override
@@ -104,6 +130,7 @@ public class ValidationsRedeemableInapplicableResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValidationsRedeemableInapplicableResult {\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -127,6 +154,7 @@ public class ValidationsRedeemableInapplicableResult {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("error");
+    openapiFields.add("details");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

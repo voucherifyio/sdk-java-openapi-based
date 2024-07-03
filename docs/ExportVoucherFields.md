@@ -11,6 +11,8 @@
 
 * `VALUE` (value: `"value"`)
 
+* `FORMULA` (value: `"formula"`)
+
 * `DISCOUNT_TYPE` (value: `"discount_type"`)
 
 * `CAMPAIGN` (value: `"campaign"`)
@@ -59,9 +61,13 @@
 
 * `CUSTOMER_ID` (value: `"customer_id"`)
 
+* `DISCOUNT_EFFECT` (value: `"discount_effect"`)
+
 * `DISCOUNT_UNIT_TYPE` (value: `"discount_unit_type"`)
 
 * `DISCOUNT_UNIT_EFFECT` (value: `"discount_unit_effect"`)
+
+* `VALIDATION_RULES_ID` (value: `"validation_rules_id"`)
 
 * `CUSTOMER_SOURCE_ID` (value: `"customer_source_id"`)
 

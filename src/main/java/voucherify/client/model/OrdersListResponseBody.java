@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 
 public class OrdersListResponseBody {
   /**
-   * The type of object represented by JSON. This object stores information about orders in a dictionary.
+   * The type of the object represented by JSON. This object stores information about orders in a dictionary.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -171,7 +171,7 @@ public class OrdersListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about orders in a dictionary.
+   * The type of the object represented by JSON. This object stores information about orders in a dictionary.
    * @return _object
   **/
   @javax.annotation.Nonnull

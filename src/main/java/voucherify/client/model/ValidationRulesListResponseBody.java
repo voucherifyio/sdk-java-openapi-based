@@ -81,7 +81,7 @@ public class ValidationRulesListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about validation rules.
+   * The type of the object represented by JSON. This object stores information about validation rules.
    * @return _object
   **/
   @javax.annotation.Nonnull

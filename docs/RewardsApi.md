@@ -5,7 +5,6 @@ All URIs are relative to *https://api.voucherify.io*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createRewardAssignment**](RewardsApi.md#createRewardAssignment) | **POST** /v1/rewards/{rewardId}/assignments | Create Reward Assignment |
-| [**deleteReward**](RewardsApi.md#deleteReward) | **DELETE** /v1/rewards/{rewardId} | Delete Reward |
 | [**deleteRewardAssignment**](RewardsApi.md#deleteRewardAssignment) | **DELETE** /v1/rewards/{rewardId}/assignments/{assignmentId} | Delete Reward Assignment |
 | [**getRewardAssignment**](RewardsApi.md#getRewardAssignment) | **GET** /v1/rewards/{rewardId}/assignments/{assignmentId} | Get Reward Assignment |
 | [**listRewardAssignments**](RewardsApi.md#listRewardAssignments) | **GET** /v1/rewards/{rewardId}/assignments | List Reward Assignments |
@@ -88,80 +87,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Returns a reward assignment object. |  -  |
-
-<a id="deleteReward"></a>
-# **deleteReward**
-> deleteReward(rewardId)
-
-Delete Reward
-
-Delete a reward.
-
-### Example
-```java
-// Import classes:
-import voucherify.client.ApiClient;
-import voucherify.client.ApiException;
-import voucherify.client.Configuration;
-import voucherify.client.auth.*;
-import voucherify.client.models.*;
-import voucherify.client.api.RewardsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.voucherify.io");
-    
-    // Configure API key authorization: X-App-Id
-    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
-    X-App-Id.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Id.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: X-App-Token
-    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
-    X-App-Token.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //X-App-Token.setApiKeyPrefix("Token");
-
-    RewardsApi apiInstance = new RewardsApi(defaultClient);
-    String rewardId = "rewardId_example"; // String | A unique reward ID.
-    try {
-      apiInstance.deleteReward(rewardId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling RewardsApi#deleteReward");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **rewardId** | **String**| A unique reward ID. | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Returns no content if deletion is successful. |  -  |
 
 <a id="deleteRewardAssignment"></a>
 # **deleteRewardAssignment**
@@ -353,8 +278,8 @@ public class Example {
 
     RewardsApi apiInstance = new RewardsApi(defaultClient);
     String rewardId = "rewardId_example"; // String | A unique reward ID.
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     try {
       RewardsAssignmentsListResponseBody result = apiInstance.listRewardAssignments(rewardId, limit, page);
       System.out.println(result);
@@ -374,8 +299,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **rewardId** | **String**| A unique reward ID. | |
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 
 ### Return type
 

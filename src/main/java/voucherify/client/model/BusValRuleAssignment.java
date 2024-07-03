@@ -80,7 +80,7 @@ public class BusValRuleAssignment {
   private OffsetDateTime updatedAt;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -279,7 +279,7 @@ public class BusValRuleAssignment {
   }
 
    /**
-   * Timestamp representing the date and time when the object was created in ISO 8601 format.
+   * Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -321,7 +321,7 @@ public class BusValRuleAssignment {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull

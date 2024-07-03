@@ -34,6 +34,8 @@ public enum ExportVoucherFields {
   
   VALUE("value"),
   
+  FORMULA("formula"),
+  
   DISCOUNT_TYPE("discount_type"),
   
   CAMPAIGN("campaign"),
@@ -82,9 +84,13 @@ public enum ExportVoucherFields {
   
   CUSTOMER_ID("customer_id"),
   
+  DISCOUNT_EFFECT("discount_effect"),
+  
   DISCOUNT_UNIT_TYPE("discount_unit_type"),
   
   DISCOUNT_UNIT_EFFECT("discount_unit_effect"),
+  
+  VALIDATION_RULES_ID("validation_rules_id"),
   
   CUSTOMER_SOURCE_ID("customer_source_id");
 

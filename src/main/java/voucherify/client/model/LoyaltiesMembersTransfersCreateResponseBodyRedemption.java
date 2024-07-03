@@ -72,7 +72,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   private List<String> redemptionEntries;
 
   /**
-   * The type of object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
+   * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -226,7 +226,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   }
 
    /**
-   * The type of object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
+   * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
    * @return _object
   **/
   @javax.annotation.Nullable

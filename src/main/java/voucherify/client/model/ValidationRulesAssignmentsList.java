@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 
 public class ValidationRulesAssignmentsList {
   /**
-   * The type of object represented by JSON. This object stores information about validation rules assignments.
+   * The type of the object represented by JSON. This object stores information about validation rules assignments.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -171,7 +171,7 @@ public class ValidationRulesAssignmentsList {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about validation rules assignments.
+   * The type of the object represented by JSON. This object stores information about validation rules assignments.
    * @return _object
   **/
   @javax.annotation.Nonnull

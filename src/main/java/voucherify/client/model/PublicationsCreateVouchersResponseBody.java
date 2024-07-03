@@ -62,7 +62,7 @@ public class PublicationsCreateVouchersResponseBody {
   private String id;
 
   /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -271,7 +271,7 @@ public class PublicationsCreateVouchersResponseBody {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -292,7 +292,7 @@ public class PublicationsCreateVouchersResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the publication was created in ISO 8601 format.
+   * Timestamp representing the date and time when the publication was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull

@@ -57,7 +57,7 @@ import voucherify.client.JSON;
 
 public class QualificationsRedeemables {
   /**
-   * The type of object represented by JSON. Default is &#x60;list&#x60;.
+   * The type of the object represented by JSON. Default is &#x60;list&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -180,7 +180,7 @@ public class QualificationsRedeemables {
   }
 
    /**
-   * The type of object represented by JSON. Default is &#x60;list&#x60;.
+   * The type of the object represented by JSON. Default is &#x60;list&#x60;.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -272,7 +272,7 @@ public class QualificationsRedeemables {
   }
 
    /**
-   * As results are always limited, the &#x60;has_more&#x60; flag indicates whether there are more records for given parameters. This let&#39;s you know if you are able to run another request (with different options) to get more records returned in the results.
+   * As results are always limited, the &#x60;has_more&#x60; flag indicates if there are more records for given parameters. This lets you know if you can run another request (with different options) to get more records returned in the results.
    * @return hasMore
   **/
   @javax.annotation.Nonnull
@@ -293,7 +293,7 @@ public class QualificationsRedeemables {
   }
 
    /**
-   * Timestamp representing the date and time to use in starting_after cursor to get more redeemables.
+   * Timestamp representing the date and time to use in &#x60;starting_after&#x60; cursor to get more redeemables.
    * @return moreStartingAfter
   **/
   @javax.annotation.Nullable

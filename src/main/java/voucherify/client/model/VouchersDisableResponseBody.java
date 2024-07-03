@@ -27,8 +27,8 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.Category;
 import voucherify.client.model.Discount;
-import voucherify.client.model.SimpleCustomer;
 import voucherify.client.model.ValidationRulesAssignmentsList;
+import voucherify.client.model.ValidityHours;
 import voucherify.client.model.VoucherAssets;
 import voucherify.client.model.VoucherGift;
 import voucherify.client.model.VoucherLoyaltyCard;
@@ -232,6 +232,10 @@ public class VouchersDisableResponseBody {
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
   private List<ValidityDayOfWeekEnum> validityDayOfWeek;
 
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
+
   public static final String SERIALIZED_NAME_ACTIVE = "active";
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   private Boolean active;
@@ -264,21 +268,13 @@ public class VouchersDisableResponseBody {
   @SerializedName(SERIALIZED_NAME_HOLDER_ID)
   private String holderId;
 
-  public static final String SERIALIZED_NAME_HOLDER = "holder";
-  @SerializedName(SERIALIZED_NAME_HOLDER)
-  private SimpleCustomer holder;
+  public static final String SERIALIZED_NAME_REFERRER_ID = "referrer_id";
+  @SerializedName(SERIALIZED_NAME_REFERRER_ID)
+  private String referrerId;
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
   private String _object = "voucher";
-
-  public static final String SERIALIZED_NAME_DISTRIBUTIONS = "distributions";
-  @SerializedName(SERIALIZED_NAME_DISTRIBUTIONS)
-  private List<Object> distributions;
-
-  public static final String SERIALIZED_NAME_DELETED = "deleted";
-  @SerializedName(SERIALIZED_NAME_DELETED)
-  private Boolean deleted;
 
   public static final String SERIALIZED_NAME_VALIDATION_RULES_ASSIGNMENTS = "validation_rules_assignments";
   @SerializedName(SERIALIZED_NAME_VALIDATION_RULES_ASSIGNMENTS)
@@ -612,7 +608,7 @@ public class VouchersDisableResponseBody {
   }
 
    /**
-   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60;  Sunday   - &#x60;1&#x60;  Monday   - &#x60;2&#x60;  Tuesday   - &#x60;3&#x60;  Wednesday   - &#x60;4&#x60;  Thursday   - &#x60;5&#x60;  Friday   - &#x60;6&#x60;  Saturday  
+   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
@@ -623,6 +619,27 @@ public class VouchersDisableResponseBody {
 
   public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public VouchersDisableResponseBody validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
   }
 
 
@@ -738,7 +755,7 @@ public class VouchersDisableResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the voucher was created in ISO 8601 format.
+   * Timestamp representing the date and time when the voucher was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -780,7 +797,7 @@ public class VouchersDisableResponseBody {
   }
 
    /**
-   * Unique customer ID of voucher owner.
+   * Unique identifier of the customer who owns the voucher.
    * @return holderId
   **/
   @javax.annotation.Nullable
@@ -794,24 +811,24 @@ public class VouchersDisableResponseBody {
   }
 
 
-  public VouchersDisableResponseBody holder(SimpleCustomer holder) {
+  public VouchersDisableResponseBody referrerId(String referrerId) {
     
-    this.holder = holder;
+    this.referrerId = referrerId;
     return this;
   }
 
    /**
-   * Get holder
-   * @return holder
+   * Unique identifier of the referring person.
+   * @return referrerId
   **/
   @javax.annotation.Nullable
-  public SimpleCustomer getHolder() {
-    return holder;
+  public String getReferrerId() {
+    return referrerId;
   }
 
 
-  public void setHolder(SimpleCustomer holder) {
-    this.holder = holder;
+  public void setReferrerId(String referrerId) {
+    this.referrerId = referrerId;
   }
 
 
@@ -822,7 +839,7 @@ public class VouchersDisableResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. Default is &#x60;voucher&#x60;.
+   * The type of the object represented by JSON. Default is &#x60;voucher&#x60;.
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -833,56 +850,6 @@ public class VouchersDisableResponseBody {
 
   public void setObject(String _object) {
     this._object = _object;
-  }
-
-
-  public VouchersDisableResponseBody distributions(List<Object> distributions) {
-    
-    this.distributions = distributions;
-    return this;
-  }
-
-  public VouchersDisableResponseBody addDistributionsItem(Object distributionsItem) {
-    if (this.distributions == null) {
-      this.distributions = new ArrayList<>();
-    }
-    this.distributions.add(distributionsItem);
-    return this;
-  }
-
-   /**
-   * Get distributions
-   * @return distributions
-  **/
-  @javax.annotation.Nullable
-  public List<Object> getDistributions() {
-    return distributions;
-  }
-
-
-  public void setDistributions(List<Object> distributions) {
-    this.distributions = distributions;
-  }
-
-
-  public VouchersDisableResponseBody deleted(Boolean deleted) {
-    
-    this.deleted = deleted;
-    return this;
-  }
-
-   /**
-   * Flag indicating whether this voucher is deleted.
-   * @return deleted
-  **/
-  @javax.annotation.Nullable
-  public Boolean getDeleted() {
-    return deleted;
-  }
-
-
-  public void setDeleted(Boolean deleted) {
-    this.deleted = deleted;
   }
 
 
@@ -974,6 +941,7 @@ public class VouchersDisableResponseBody {
         Objects.equals(this.expirationDate, vouchersDisableResponseBody.expirationDate) &&
         Objects.equals(this.validityTimeframe, vouchersDisableResponseBody.validityTimeframe) &&
         Objects.equals(this.validityDayOfWeek, vouchersDisableResponseBody.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, vouchersDisableResponseBody.validityHours) &&
         Objects.equals(this.active, vouchersDisableResponseBody.active) &&
         Objects.equals(this.additionalInfo, vouchersDisableResponseBody.additionalInfo) &&
         Objects.equals(this.metadata, vouchersDisableResponseBody.metadata) &&
@@ -982,10 +950,8 @@ public class VouchersDisableResponseBody {
         Objects.equals(this.createdAt, vouchersDisableResponseBody.createdAt) &&
         Objects.equals(this.updatedAt, vouchersDisableResponseBody.updatedAt) &&
         Objects.equals(this.holderId, vouchersDisableResponseBody.holderId) &&
-        Objects.equals(this.holder, vouchersDisableResponseBody.holder) &&
+        Objects.equals(this.referrerId, vouchersDisableResponseBody.referrerId) &&
         Objects.equals(this._object, vouchersDisableResponseBody._object) &&
-        Objects.equals(this.distributions, vouchersDisableResponseBody.distributions) &&
-        Objects.equals(this.deleted, vouchersDisableResponseBody.deleted) &&
         Objects.equals(this.validationRulesAssignments, vouchersDisableResponseBody.validationRulesAssignments) &&
         Objects.equals(this.publish, vouchersDisableResponseBody.publish) &&
         Objects.equals(this.redemption, vouchersDisableResponseBody.redemption);
@@ -997,7 +963,7 @@ public class VouchersDisableResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, campaign, campaignId, category, categoryId, categories, type, discount, gift, loyaltyCard, startDate, expirationDate, validityTimeframe, validityDayOfWeek, active, additionalInfo, metadata, assets, isReferralCode, createdAt, updatedAt, holderId, holder, _object, distributions, deleted, validationRulesAssignments, publish, redemption);
+    return Objects.hash(id, code, campaign, campaignId, category, categoryId, categories, type, discount, gift, loyaltyCard, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, active, additionalInfo, metadata, assets, isReferralCode, createdAt, updatedAt, holderId, referrerId, _object, validationRulesAssignments, publish, redemption);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1026,6 +992,7 @@ public class VouchersDisableResponseBody {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
     sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
@@ -1034,10 +1001,8 @@ public class VouchersDisableResponseBody {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    holderId: ").append(toIndentedString(holderId)).append("\n");
-    sb.append("    holder: ").append(toIndentedString(holder)).append("\n");
+    sb.append("    referrerId: ").append(toIndentedString(referrerId)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
-    sb.append("    distributions: ").append(toIndentedString(distributions)).append("\n");
-    sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    validationRulesAssignments: ").append(toIndentedString(validationRulesAssignments)).append("\n");
     sb.append("    publish: ").append(toIndentedString(publish)).append("\n");
     sb.append("    redemption: ").append(toIndentedString(redemption)).append("\n");
@@ -1078,6 +1043,7 @@ public class VouchersDisableResponseBody {
     openapiFields.add("expiration_date");
     openapiFields.add("validity_timeframe");
     openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
     openapiFields.add("active");
     openapiFields.add("additional_info");
     openapiFields.add("metadata");
@@ -1086,10 +1052,8 @@ public class VouchersDisableResponseBody {
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
     openapiFields.add("holder_id");
-    openapiFields.add("holder");
+    openapiFields.add("referrer_id");
     openapiFields.add("object");
-    openapiFields.add("distributions");
-    openapiFields.add("deleted");
     openapiFields.add("validation_rules_assignments");
     openapiFields.add("publish");
     openapiFields.add("redemption");
@@ -1187,6 +1151,10 @@ public class VouchersDisableResponseBody {
       if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
       }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
+      }
       if ((jsonObj.get("additional_info") != null && !jsonObj.get("additional_info").isJsonNull()) && !jsonObj.get("additional_info").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `additional_info` to be a primitive type in the JSON string but got `%s`", jsonObj.get("additional_info").toString()));
       }
@@ -1197,16 +1165,11 @@ public class VouchersDisableResponseBody {
       if ((jsonObj.get("holder_id") != null && !jsonObj.get("holder_id").isJsonNull()) && !jsonObj.get("holder_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holder_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holder_id").toString()));
       }
-      // validate the optional field `holder`
-      if (jsonObj.get("holder") != null && !jsonObj.get("holder").isJsonNull()) {
-        SimpleCustomer.validateJsonElement(jsonObj.get("holder"));
+      if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `referrer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referrer_id").toString()));
       }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("distributions") != null && !jsonObj.get("distributions").isJsonNull() && !jsonObj.get("distributions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `distributions` to be an array in the JSON string but got `%s`", jsonObj.get("distributions").toString()));
       }
       // validate the optional field `validation_rules_assignments`
       if (jsonObj.get("validation_rules_assignments") != null && !jsonObj.get("validation_rules_assignments").isJsonNull()) {

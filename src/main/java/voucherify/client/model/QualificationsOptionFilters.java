@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.Junction;
+import voucherify.client.model.QualificationsCampaignTypeConditions;
 import voucherify.client.model.QualificationsFieldConditions;
 import voucherify.client.model.QualificationsOptionFiltersResourceType;
 
@@ -66,6 +67,10 @@ public class QualificationsOptionFilters {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private QualificationsFieldConditions campaignId;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaign_type";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
+  private QualificationsCampaignTypeConditions campaignType;
 
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
@@ -146,6 +151,27 @@ public class QualificationsOptionFilters {
 
   public void setCampaignId(QualificationsFieldConditions campaignId) {
     this.campaignId = campaignId;
+  }
+
+
+  public QualificationsOptionFilters campaignType(QualificationsCampaignTypeConditions campaignType) {
+    
+    this.campaignType = campaignType;
+    return this;
+  }
+
+   /**
+   * Get campaignType
+   * @return campaignType
+  **/
+  @javax.annotation.Nullable
+  public QualificationsCampaignTypeConditions getCampaignType() {
+    return campaignType;
+  }
+
+
+  public void setCampaignType(QualificationsCampaignTypeConditions campaignType) {
+    this.campaignType = campaignType;
   }
 
 
@@ -246,6 +272,7 @@ public class QualificationsOptionFilters {
     return Objects.equals(this.junction, qualificationsOptionFilters.junction) &&
         Objects.equals(this.categoryId, qualificationsOptionFilters.categoryId) &&
         Objects.equals(this.campaignId, qualificationsOptionFilters.campaignId) &&
+        Objects.equals(this.campaignType, qualificationsOptionFilters.campaignType) &&
         Objects.equals(this.resourceId, qualificationsOptionFilters.resourceId) &&
         Objects.equals(this.resourceType, qualificationsOptionFilters.resourceType) &&
         Objects.equals(this.voucherType, qualificationsOptionFilters.voucherType) &&
@@ -254,7 +281,7 @@ public class QualificationsOptionFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(junction, categoryId, campaignId, resourceId, resourceType, voucherType, code);
+    return Objects.hash(junction, categoryId, campaignId, campaignType, resourceId, resourceType, voucherType, code);
   }
 
   @Override
@@ -264,6 +291,7 @@ public class QualificationsOptionFilters {
     sb.append("    junction: ").append(toIndentedString(junction)).append("\n");
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    resourceType: ").append(toIndentedString(resourceType)).append("\n");
     sb.append("    voucherType: ").append(toIndentedString(voucherType)).append("\n");
@@ -293,6 +321,7 @@ public class QualificationsOptionFilters {
     openapiFields.add("junction");
     openapiFields.add("category_id");
     openapiFields.add("campaign_id");
+    openapiFields.add("campaign_type");
     openapiFields.add("resource_id");
     openapiFields.add("resource_type");
     openapiFields.add("voucher_type");
@@ -330,6 +359,10 @@ public class QualificationsOptionFilters {
       // validate the optional field `campaign_id`
       if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
         QualificationsFieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
+      }
+      // validate the optional field `campaign_type`
+      if (jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) {
+        QualificationsCampaignTypeConditions.validateJsonElement(jsonObj.get("campaign_type"));
       }
       // validate the optional field `resource_id`
       if (jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) {

@@ -74,7 +74,7 @@ public class VoucherPublish {
   }
 
    /**
-   * The type of object represented is by default &#x60;list&#x60;. To get this list, you need to make a call to the endpoint returned in the &#x60;url&#x60; attribute.
+   * The type of the object represented is by default &#x60;list&#x60;. To get this list, you need to make a call to the endpoint returned in the &#x60;url&#x60; attribute.
    * @return _object
   **/
   @javax.annotation.Nullable

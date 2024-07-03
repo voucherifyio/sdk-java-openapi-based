@@ -117,7 +117,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
   private TypeEnum type;
 
   /**
-   * The type of object represented by JSON. Default is balance.
+   * The type of the object represented by JSON. Default is balance.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -315,7 +315,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. Default is balance.
+   * The type of the object represented by JSON. Default is balance.
    * @return _object
   **/
   @javax.annotation.Nonnull

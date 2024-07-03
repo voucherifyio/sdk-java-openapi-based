@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**code** | **String** | Voucher code. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
 |**campaign** | **String** | Campaign name |  |
 |**gift** | [**Gift**](Gift.md) |  |  [optional] |
 |**loyaltyCard** | **Object** | Defines the loyalty card details. |  [optional] |

@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 
 public class LoyaltiesMembersRewardsListResponseBody {
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -171,7 +171,7 @@ public class LoyaltiesMembersRewardsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull

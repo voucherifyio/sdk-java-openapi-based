@@ -49,7 +49,7 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Request body schema for **POST** &#x60;/loyalties/{campaignId}/members/{memberId}/redemption&#x60; and for **POST** and &#x60;/loyalties/members/{memberId}/redemption&#x60;.
+ * Request body schema for **POST** &#x60;/loyalties/{campaignId}/members/{memberId}/redemption&#x60; and for **POST** &#x60;/loyalties/members/{memberId}/redemption&#x60;.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 

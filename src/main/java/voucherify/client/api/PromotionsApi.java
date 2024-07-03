@@ -341,124 +341,6 @@ public class PromotionsApi {
         return localVarCall;
     }
     /**
-     * Build call for deletePromotionTier
-     * @param promotionTierId Unique promotion tier ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePromotionTierCall(String promotionTierId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/promotions/tiers/{promotionTierId}"
-            .replace("{" + "promotionTierId" + "}", localVarApiClient.escapeString(promotionTierId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePromotionTierValidateBeforeCall(String promotionTierId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'promotionTierId' is set
-        if (promotionTierId == null) {
-            throw new ApiException("Missing the required parameter 'promotionTierId' when calling deletePromotionTier(Async)");
-        }
-
-        return deletePromotionTierCall(promotionTierId, _callback);
-
-    }
-
-    /**
-     * Delete Promotion Tier
-     * This method deletes a promotion tier.
-     * @param promotionTierId Unique promotion tier ID. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deletePromotionTier(String promotionTierId) throws ApiException {
-        deletePromotionTierWithHttpInfo(promotionTierId);
-    }
-
-    /**
-     * Delete Promotion Tier
-     * This method deletes a promotion tier.
-     * @param promotionTierId Unique promotion tier ID. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deletePromotionTierWithHttpInfo(String promotionTierId) throws ApiException {
-        okhttp3.Call localVarCall = deletePromotionTierValidateBeforeCall(promotionTierId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Delete Promotion Tier (asynchronously)
-     * This method deletes a promotion tier.
-     * @param promotionTierId Unique promotion tier ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePromotionTierAsync(String promotionTierId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deletePromotionTierValidateBeforeCall(promotionTierId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for disablePromotionTier
      * @param promotionTierId Unique promotion tier ID. (required)
      * @param _callback Callback for upload/download progress
@@ -962,8 +844,8 @@ public class PromotionsApi {
     }
     /**
      * Build call for listAllPromotionStacks
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param createdAt A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
      * @param updatedAt A filter on the list based on the object &#x60;updated_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[updated_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
@@ -1049,8 +931,8 @@ public class PromotionsApi {
     /**
      * List Promotion Stacks
      * This method enables you to list promotion stacks irrespective of the campaign they are associated with.   You can use filters in the query parameters to specify the stacks to be returned in the response.  ## Advanced filters for fetching promotion stacks  | **Filters** | **Examples** | | :--- | :--- | | Created Before | - &#x60;[created_at][before]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][created_at][conditions][$before][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Created After | - &#x60;[created_at][after]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][created_at][conditions][$after][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Updated Before | - &#x60;[updated_at][before]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][updated_at][conditions][$before][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Updated After | - &#x60;[updated_at][after]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][updated_at][conditions][$after][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; |
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param createdAt A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
      * @param updatedAt A filter on the list based on the object &#x60;updated_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[updated_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
@@ -1070,8 +952,8 @@ public class PromotionsApi {
     /**
      * List Promotion Stacks
      * This method enables you to list promotion stacks irrespective of the campaign they are associated with.   You can use filters in the query parameters to specify the stacks to be returned in the response.  ## Advanced filters for fetching promotion stacks  | **Filters** | **Examples** | | :--- | :--- | | Created Before | - &#x60;[created_at][before]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][created_at][conditions][$before][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Created After | - &#x60;[created_at][after]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][created_at][conditions][$after][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Updated Before | - &#x60;[updated_at][before]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][updated_at][conditions][$before][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Updated After | - &#x60;[updated_at][after]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][updated_at][conditions][$after][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; |
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param createdAt A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
      * @param updatedAt A filter on the list based on the object &#x60;updated_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[updated_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
@@ -1092,8 +974,8 @@ public class PromotionsApi {
     /**
      * List Promotion Stacks (asynchronously)
      * This method enables you to list promotion stacks irrespective of the campaign they are associated with.   You can use filters in the query parameters to specify the stacks to be returned in the response.  ## Advanced filters for fetching promotion stacks  | **Filters** | **Examples** | | :--- | :--- | | Created Before | - &#x60;[created_at][before]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][created_at][conditions][$before][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Created After | - &#x60;[created_at][after]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][created_at][conditions][$after][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Updated Before | - &#x60;[updated_at][before]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][updated_at][conditions][$before][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; | | Updated After | - &#x60;[updated_at][after]&#x3D;2021-12-30T13:52:18.227Z&#x60;&lt;br&gt;- &#x60;[filters][updated_at][conditions][$after][0]&#x3D;2021-12-30T13:52:18.227Z&#x60; |
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param createdAt A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)
      * @param updatedAt A filter on the list based on the object &#x60;updated_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[updated_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; (optional)

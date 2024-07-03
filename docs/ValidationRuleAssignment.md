@@ -12,8 +12,8 @@ This is an object representing a validation rule assignment.
 |**ruleId** | **String** | Validation rule ID. |  |
 |**relatedObjectId** | **String** | The resource ID to which the validation rule was assigned. |  |
 |**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | The type of resource to which the validation rule was assigned. |  |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the validation rule assignment was created in ISO 8601 format. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by the ID. |  |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the validation rule assignment was created. The value is shown in the ISO 8601 format. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the ID. |  |
 
 
 

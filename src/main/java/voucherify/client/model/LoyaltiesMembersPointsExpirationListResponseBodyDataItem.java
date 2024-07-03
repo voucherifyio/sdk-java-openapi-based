@@ -87,7 +87,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBodyDataItem {
   private OffsetDateTime updatedAt;
 
   /**
-   * The type of object represented by JSON. This object stores information about the loyalty points bucket.
+   * The type of the object represented by JSON. This object stores information about the loyalty points bucket.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -229,7 +229,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBodyDataItem {
   }
 
    /**
-   * Timestamp representing the date and time when the loyalty points bucket object was created in ISO 8601 format.
+   * Timestamp representing the date and time when the loyalty points bucket object was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -292,7 +292,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBodyDataItem {
   }
 
    /**
-   * Timestamp representing the date and time when the loyalty points bucket object was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the loyalty points bucket object was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -313,7 +313,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBodyDataItem {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the loyalty points bucket.
+   * The type of the object represented by JSON. This object stores information about the loyalty points bucket.
    * @return _object
   **/
   @javax.annotation.Nonnull

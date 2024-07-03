@@ -30,6 +30,7 @@ import voucherify.client.model.PromotionTierCampaign;
 import voucherify.client.model.PromotionTierSummary;
 import voucherify.client.model.PromotionTierValidityTimeframe;
 import voucherify.client.model.ValidationRuleAssignmentsList;
+import voucherify.client.model.ValidityHours;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -125,6 +126,10 @@ public class PromotionsTiersDisableResponseBody {
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
   private List<Integer> validityDayOfWeek;
 
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
+
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
   private PromotionTierSummary summary;
@@ -176,7 +181,7 @@ public class PromotionsTiersDisableResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the promotion tier was created in ISO 8601 format.
+   * Timestamp representing the date and time when the promotion tier was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -197,7 +202,7 @@ public class PromotionsTiersDisableResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the promotion tier was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the promotion tier was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -478,7 +483,7 @@ public class PromotionsTiersDisableResponseBody {
   }
 
    /**
-   * Integer array corresponding to the particular days of the week in which the promotion tier is valid.  - &#x60;0&#x60;  Sunday   - &#x60;1&#x60;  Monday   - &#x60;2&#x60;  Tuesday   - &#x60;3&#x60;  Wednesday   - &#x60;4&#x60;  Thursday   - &#x60;5&#x60;  Friday   - &#x60;6&#x60;  Saturday  
+   * Integer array corresponding to the particular days of the week in which the promotion tier is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
@@ -489,6 +494,27 @@ public class PromotionsTiersDisableResponseBody {
 
   public void setValidityDayOfWeek(List<Integer> validityDayOfWeek) {
     this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public PromotionsTiersDisableResponseBody validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
   }
 
 
@@ -520,7 +546,7 @@ public class PromotionsTiersDisableResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the promotion tier.
+   * The type of the object represented by JSON. This object stores information about the promotion tier.
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -631,6 +657,7 @@ public class PromotionsTiersDisableResponseBody {
         Objects.equals(this.expirationDate, promotionsTiersDisableResponseBody.expirationDate) &&
         Objects.equals(this.validityTimeframe, promotionsTiersDisableResponseBody.validityTimeframe) &&
         Objects.equals(this.validityDayOfWeek, promotionsTiersDisableResponseBody.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, promotionsTiersDisableResponseBody.validityHours) &&
         Objects.equals(this.summary, promotionsTiersDisableResponseBody.summary) &&
         Objects.equals(this._object, promotionsTiersDisableResponseBody._object) &&
         Objects.equals(this.validationRuleAssignments, promotionsTiersDisableResponseBody.validationRuleAssignments) &&
@@ -640,7 +667,7 @@ public class PromotionsTiersDisableResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, name, banner, action, metadata, hierarchy, promotionId, campaign, campaignId, active, startDate, expirationDate, validityTimeframe, validityDayOfWeek, summary, _object, validationRuleAssignments, categoryId, categories);
+    return Objects.hash(id, createdAt, updatedAt, name, banner, action, metadata, hierarchy, promotionId, campaign, campaignId, active, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, summary, _object, validationRuleAssignments, categoryId, categories);
   }
 
   @Override
@@ -663,6 +690,7 @@ public class PromotionsTiersDisableResponseBody {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
     sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    validationRuleAssignments: ").append(toIndentedString(validationRuleAssignments)).append("\n");
@@ -706,6 +734,7 @@ public class PromotionsTiersDisableResponseBody {
     openapiFields.add("expiration_date");
     openapiFields.add("validity_timeframe");
     openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
     openapiFields.add("summary");
     openapiFields.add("object");
     openapiFields.add("validation_rule_assignments");
@@ -767,6 +796,10 @@ public class PromotionsTiersDisableResponseBody {
       // ensure the optional json data is an array if present
       if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
       // validate the optional field `summary`
       if (jsonObj.get("summary") != null && !jsonObj.get("summary").isJsonNull()) {

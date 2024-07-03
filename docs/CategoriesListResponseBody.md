@@ -8,7 +8,7 @@ Response body schema for **GET** `/categories`.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. This object stores information about categories in a dictionary. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about categories in a dictionary. |  |
 |**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of category objects. |  |
 |**data** | [**List&lt;Category&gt;**](Category.md) |  |  |
 |**total** | **Integer** | Total number of categories. |  |

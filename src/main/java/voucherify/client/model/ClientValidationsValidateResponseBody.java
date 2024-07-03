@@ -25,7 +25,9 @@ import java.util.Arrays;
 import java.util.List;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.Session;
+import voucherify.client.model.StackingRules;
 import voucherify.client.model.ValidationsRedeemableInapplicable;
+import voucherify.client.model.ValidationsRedeemableSkipped;
 import voucherify.client.model.ValidationsValidateAllResponseBodyRedeemablesItem;
 
 import com.google.gson.Gson;
@@ -68,7 +70,7 @@ public class ClientValidationsValidateResponseBody {
 
   public static final String SERIALIZED_NAME_SKIPPED_REDEEMABLES = "skipped_redeemables";
   @SerializedName(SERIALIZED_NAME_SKIPPED_REDEEMABLES)
-  private List<ValidationsRedeemableInapplicable> skippedRedeemables;
+  private List<ValidationsRedeemableSkipped> skippedRedeemables;
 
   public static final String SERIALIZED_NAME_INAPPLICABLE_REDEEMABLES = "inapplicable_redeemables";
   @SerializedName(SERIALIZED_NAME_INAPPLICABLE_REDEEMABLES)
@@ -85,6 +87,10 @@ public class ClientValidationsValidateResponseBody {
   public static final String SERIALIZED_NAME_SESSION = "session";
   @SerializedName(SERIALIZED_NAME_SESSION)
   private Session session;
+
+  public static final String SERIALIZED_NAME_STACKING_RULES = "stacking_rules";
+  @SerializedName(SERIALIZED_NAME_STACKING_RULES)
+  private StackingRules stackingRules;
 
   public ClientValidationsValidateResponseBody() {
   }
@@ -139,13 +145,13 @@ public class ClientValidationsValidateResponseBody {
   }
 
 
-  public ClientValidationsValidateResponseBody skippedRedeemables(List<ValidationsRedeemableInapplicable> skippedRedeemables) {
+  public ClientValidationsValidateResponseBody skippedRedeemables(List<ValidationsRedeemableSkipped> skippedRedeemables) {
     
     this.skippedRedeemables = skippedRedeemables;
     return this;
   }
 
-  public ClientValidationsValidateResponseBody addSkippedRedeemablesItem(ValidationsRedeemableInapplicable skippedRedeemablesItem) {
+  public ClientValidationsValidateResponseBody addSkippedRedeemablesItem(ValidationsRedeemableSkipped skippedRedeemablesItem) {
     if (this.skippedRedeemables == null) {
       this.skippedRedeemables = new ArrayList<>();
     }
@@ -158,12 +164,12 @@ public class ClientValidationsValidateResponseBody {
    * @return skippedRedeemables
   **/
   @javax.annotation.Nullable
-  public List<ValidationsRedeemableInapplicable> getSkippedRedeemables() {
+  public List<ValidationsRedeemableSkipped> getSkippedRedeemables() {
     return skippedRedeemables;
   }
 
 
-  public void setSkippedRedeemables(List<ValidationsRedeemableInapplicable> skippedRedeemables) {
+  public void setSkippedRedeemables(List<ValidationsRedeemableSkipped> skippedRedeemables) {
     this.skippedRedeemables = skippedRedeemables;
   }
 
@@ -260,6 +266,27 @@ public class ClientValidationsValidateResponseBody {
   }
 
 
+  public ClientValidationsValidateResponseBody stackingRules(StackingRules stackingRules) {
+    
+    this.stackingRules = stackingRules;
+    return this;
+  }
+
+   /**
+   * Get stackingRules
+   * @return stackingRules
+  **/
+  @javax.annotation.Nonnull
+  public StackingRules getStackingRules() {
+    return stackingRules;
+  }
+
+
+  public void setStackingRules(StackingRules stackingRules) {
+    this.stackingRules = stackingRules;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -276,12 +303,13 @@ public class ClientValidationsValidateResponseBody {
         Objects.equals(this.inapplicableRedeemables, clientValidationsValidateResponseBody.inapplicableRedeemables) &&
         Objects.equals(this.order, clientValidationsValidateResponseBody.order) &&
         Objects.equals(this.trackingId, clientValidationsValidateResponseBody.trackingId) &&
-        Objects.equals(this.session, clientValidationsValidateResponseBody.session);
+        Objects.equals(this.session, clientValidationsValidateResponseBody.session) &&
+        Objects.equals(this.stackingRules, clientValidationsValidateResponseBody.stackingRules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(valid, redeemables, skippedRedeemables, inapplicableRedeemables, order, trackingId, session);
+    return Objects.hash(valid, redeemables, skippedRedeemables, inapplicableRedeemables, order, trackingId, session, stackingRules);
   }
 
   @Override
@@ -295,6 +323,7 @@ public class ClientValidationsValidateResponseBody {
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
     sb.append("    session: ").append(toIndentedString(session)).append("\n");
+    sb.append("    stackingRules: ").append(toIndentedString(stackingRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -324,11 +353,13 @@ public class ClientValidationsValidateResponseBody {
     openapiFields.add("order");
     openapiFields.add("tracking_id");
     openapiFields.add("session");
+    openapiFields.add("stacking_rules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("valid");
     openapiRequiredFields.add("redeemables");
+    openapiRequiredFields.add("stacking_rules");
   }
 
  /**
@@ -379,7 +410,7 @@ public class ClientValidationsValidateResponseBody {
 
           // validate the optional field `skipped_redeemables` (array)
           for (int i = 0; i < jsonArrayskippedRedeemables.size(); i++) {
-            ValidationsRedeemableInapplicable.validateJsonElement(jsonArrayskippedRedeemables.get(i));
+            ValidationsRedeemableSkipped.validateJsonElement(jsonArrayskippedRedeemables.get(i));
           };
         }
       }
@@ -408,6 +439,8 @@ public class ClientValidationsValidateResponseBody {
       if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
         Session.validateJsonElement(jsonObj.get("session"));
       }
+      // validate the required field `stacking_rules`
+      StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -31,6 +31,7 @@ import voucherify.client.model.EarningRuleBaseSegment;
 import voucherify.client.model.EarningRuleBaseSource;
 import voucherify.client.model.EarningRuleBaseValidityTimeframe;
 import voucherify.client.model.EarningRuleEvent;
+import voucherify.client.model.ValidityHours;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,7 +92,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
   private EarningRuleBaseSource source;
 
   /**
-   * The type of object represented by JSON. Default is earning_rule.
+   * The type of the object represented by JSON. Default is earning_rule.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -155,9 +156,70 @@ public class LoyaltiesEarningRulesGetResponseBody {
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
   private EarningRuleBaseValidityTimeframe validityTimeframe;
 
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
-  private List<Integer> validityDayOfWeek;
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -206,7 +268,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the earning rule was created in ISO 8601 format.
+   * Timestamp representing the date and time when the earning rule was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -332,7 +394,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. Default is earning_rule.
+   * The type of the object represented by JSON. Default is earning_rule.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -374,7 +436,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
   }
 
    /**
-   * Start date defines when the earning rule starts to be active. Activation timestamp in ISO 8601 format. Earning rule is inactive before this date. If you don&#39;t define the start date for an earning rule, it&#39;ll inherit the campaign start date by default.
+   * Start date defines when the earning rule starts to be active. Activation timestamp is presented in the ISO 8601 format. Earning rule is inactive before this date. If you don&#39;t define the start date for an earning rule, it&#39;ll inherit the campaign start date by default.
    * @return startDate
   **/
   @javax.annotation.Nullable
@@ -395,7 +457,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
   }
 
    /**
-   * Expiration date defines when the earning rule expires. Expiration timestamp in ISO 8601 format. Earning rule is inactive after this date.If you don&#39;t define the expiration date for an earning rule, it&#39;ll inherit the campaign expiration date by default.
+   * Expiration date defines when the earning rule expires. Expiration timestamp is presented in the ISO 8601 format. Earning rule is inactive after this date.If you don&#39;t define the expiration date for an earning rule, it&#39;ll inherit the campaign expiration date by default.
    * @return expirationDate
   **/
   @javax.annotation.Nullable
@@ -430,13 +492,13 @@ public class LoyaltiesEarningRulesGetResponseBody {
   }
 
 
-  public LoyaltiesEarningRulesGetResponseBody validityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public LoyaltiesEarningRulesGetResponseBody validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     
     this.validityDayOfWeek = validityDayOfWeek;
     return this;
   }
 
-  public LoyaltiesEarningRulesGetResponseBody addValidityDayOfWeekItem(Integer validityDayOfWeekItem) {
+  public LoyaltiesEarningRulesGetResponseBody addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
     if (this.validityDayOfWeek == null) {
       this.validityDayOfWeek = new ArrayList<>();
     }
@@ -449,13 +511,34 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
-  public List<Integer> getValidityDayOfWeek() {
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
     return validityDayOfWeek;
   }
 
 
-  public void setValidityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public LoyaltiesEarningRulesGetResponseBody validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
   }
 
 
@@ -566,6 +649,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
         Objects.equals(this.expirationDate, loyaltiesEarningRulesGetResponseBody.expirationDate) &&
         Objects.equals(this.validityTimeframe, loyaltiesEarningRulesGetResponseBody.validityTimeframe) &&
         Objects.equals(this.validityDayOfWeek, loyaltiesEarningRulesGetResponseBody.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, loyaltiesEarningRulesGetResponseBody.validityHours) &&
         Objects.equals(this.metadata, loyaltiesEarningRulesGetResponseBody.metadata) &&
         Objects.equals(this.validationRuleId, loyaltiesEarningRulesGetResponseBody.validationRuleId) &&
         Objects.equals(this.updatedAt, loyaltiesEarningRulesGetResponseBody.updatedAt) &&
@@ -578,7 +662,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, loyalty, event, customEvent, segment, source, _object, automationId, startDate, expirationDate, validityTimeframe, validityDayOfWeek, metadata, validationRuleId, updatedAt, active);
+    return Objects.hash(id, createdAt, loyalty, event, customEvent, segment, source, _object, automationId, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, metadata, validationRuleId, updatedAt, active);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -605,6 +689,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
     sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    validationRuleId: ").append(toIndentedString(validationRuleId)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -644,6 +729,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
     openapiFields.add("expiration_date");
     openapiFields.add("validity_timeframe");
     openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
     openapiFields.add("metadata");
     openapiFields.add("validation_rule_id");
     openapiFields.add("updated_at");
@@ -736,6 +822,10 @@ public class LoyaltiesEarningRulesGetResponseBody {
       // ensure the optional json data is an array if present
       if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
       if ((jsonObj.get("validation_rule_id") != null && !jsonObj.get("validation_rule_id").isJsonNull()) && !jsonObj.get("validation_rule_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `validation_rule_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("validation_rule_id").toString()));

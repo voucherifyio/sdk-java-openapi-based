@@ -64,7 +64,7 @@ public class ApplicableToResultList {
   private Integer total;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -113,7 +113,7 @@ public class ApplicableToResultList {
   private ObjectEnum _object = ObjectEnum.LIST;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(DataRefEnum.Adapter.class)
   public enum DataRefEnum {
@@ -222,7 +222,7 @@ public class ApplicableToResultList {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -243,7 +243,7 @@ public class ApplicableToResultList {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return dataRef
   **/
   @javax.annotation.Nonnull

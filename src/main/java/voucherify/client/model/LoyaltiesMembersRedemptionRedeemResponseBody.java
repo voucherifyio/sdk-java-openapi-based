@@ -30,8 +30,8 @@ import voucherify.client.model.RedemptionGift;
 import voucherify.client.model.RedemptionLoyaltyCard;
 import voucherify.client.model.RedemptionRelatedRedemptions;
 import voucherify.client.model.RedemptionRewardResult;
+import voucherify.client.model.RedemptionVoucher;
 import voucherify.client.model.SimpleCustomer;
-import voucherify.client.model.Voucher;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -68,7 +68,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
   private String id;
 
   /**
-   * The type of object represented by the JSON
+   * The type of the object represented by the JSON
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -327,7 +327,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
 
   public static final String SERIALIZED_NAME_VOUCHER = "voucher";
   @SerializedName(SERIALIZED_NAME_VOUCHER)
-  private Voucher voucher;
+  private RedemptionVoucher voucher;
 
   public static final String SERIALIZED_NAME_PROMOTION_TIER = "promotion_tier";
   @SerializedName(SERIALIZED_NAME_PROMOTION_TIER)
@@ -376,7 +376,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
   }
 
    /**
-   * The type of object represented by the JSON
+   * The type of the object represented by the JSON
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -397,7 +397,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the object was created in ISO 8601 format.
+   * Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format.
    * @return date
   **/
   @javax.annotation.Nonnull
@@ -481,7 +481,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
   }
 
    /**
-   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts.
+   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card.
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -726,7 +726,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
   }
 
 
-  public LoyaltiesMembersRedemptionRedeemResponseBody voucher(Voucher voucher) {
+  public LoyaltiesMembersRedemptionRedeemResponseBody voucher(RedemptionVoucher voucher) {
     
     this.voucher = voucher;
     return this;
@@ -737,12 +737,12 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
    * @return voucher
   **/
   @javax.annotation.Nullable
-  public Voucher getVoucher() {
+  public RedemptionVoucher getVoucher() {
     return voucher;
   }
 
 
-  public void setVoucher(Voucher voucher) {
+  public void setVoucher(RedemptionVoucher voucher) {
     this.voucher = voucher;
   }
 
@@ -1097,7 +1097,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
       }
       // validate the optional field `voucher`
       if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
-        Voucher.validateJsonElement(jsonObj.get("voucher"));
+        RedemptionVoucher.validateJsonElement(jsonObj.get("voucher"));
       }
       // validate the optional field `promotion_tier`
       if (jsonObj.get("promotion_tier") != null && !jsonObj.get("promotion_tier").isJsonNull()) {

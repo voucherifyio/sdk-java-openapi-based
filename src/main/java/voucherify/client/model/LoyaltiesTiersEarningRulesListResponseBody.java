@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 
 public class LoyaltiesTiersEarningRulesListResponseBody {
   /**
-   * The type of object represented by JSON. This object stores information about earning rules in a dictionary.
+   * The type of the object represented by JSON. This object stores information about earning rules in a dictionary.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -171,7 +171,7 @@ public class LoyaltiesTiersEarningRulesListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about earning rules in a dictionary.
+   * The type of the object represented by JSON. This object stores information about earning rules in a dictionary.
    * @return _object
   **/
   @javax.annotation.Nonnull

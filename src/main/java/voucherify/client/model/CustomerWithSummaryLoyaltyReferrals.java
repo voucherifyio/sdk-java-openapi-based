@@ -129,7 +129,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
   private CustomerResponseDataAssets assets;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -271,7 +271,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
   }
 
    /**
-   * *Deprecated* Customer&#39;s birthdate; format YYYY-MM-DD.
+   * &#x60;Deprecated&#x60;. ~~Customer&#39;s birthdate; format YYYY-MM-DD~~.
    * @return birthday
   **/
   @javax.annotation.Nullable
@@ -481,7 +481,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
   }
 
    /**
-   * Timestamp representing the date and time when the customer was created in ISO 8601 format.
+   * Timestamp representing the date and time when the customer was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -502,7 +502,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
   }
 
    /**
-   * Timestamp representing the date and time when the customer was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the customer was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -544,7 +544,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull

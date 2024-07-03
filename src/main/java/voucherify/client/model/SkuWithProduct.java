@@ -100,7 +100,7 @@ public class SkuWithProduct {
   private OffsetDateTime updatedAt;
 
   /**
-   * The type of object represented by JSON. This object stores information about the &#x60;SKU&#x60;.
+   * The type of the object represented by JSON. This object stores information about the &#x60;SKU&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -351,7 +351,7 @@ public class SkuWithProduct {
   }
 
    /**
-   * Timestamp representing the date and time when the SKU was created in ISO 8601 format.
+   * Timestamp representing the date and time when the SKU was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -372,7 +372,7 @@ public class SkuWithProduct {
   }
 
    /**
-   * Timestamp representing the date and time when the SKU was updated in ISO 8601 format.
+   * Timestamp representing the date and time when the SKU was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
   @javax.annotation.Nullable
@@ -393,7 +393,7 @@ public class SkuWithProduct {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about the &#x60;SKU&#x60;.
+   * The type of the object represented by JSON. This object stores information about the &#x60;SKU&#x60;.
    * @return _object
   **/
   @javax.annotation.Nonnull

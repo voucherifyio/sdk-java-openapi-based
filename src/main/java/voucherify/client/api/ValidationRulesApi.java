@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import voucherify.client.model.ParameterOrderListValidationRuleAssignments;
 import voucherify.client.model.ParameterOrderListValidationRules;
+import voucherify.client.model.ValidationRulesAssignmentsCreateRequestBody;
+import voucherify.client.model.ValidationRulesAssignmentsCreateResponseBody;
 import voucherify.client.model.ValidationRulesAssignmentsListResponseBody;
 import voucherify.client.model.ValidationRulesCreateRequestBody;
 import voucherify.client.model.ValidationRulesCreateResponseBody;
@@ -81,6 +83,142 @@ public class ValidationRulesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for createValidationRuleAssignment
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createValidationRuleAssignmentCall(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = validationRulesAssignmentsCreateRequestBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/validation-rules/{validationRuleId}/assignments"
+            .replace("{" + "validationRuleId" + "}", localVarApiClient.escapeString(validationRuleId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (force != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("force", force));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createValidationRuleAssignmentValidateBeforeCall(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'validationRuleId' is set
+        if (validationRuleId == null) {
+            throw new ApiException("Missing the required parameter 'validationRuleId' when calling createValidationRuleAssignment(Async)");
+        }
+
+        return createValidationRuleAssignmentCall(validationRuleId, force, validationRulesAssignmentsCreateRequestBody, _callback);
+
+    }
+
+    /**
+     * Create Validation Rules Assignments
+     * Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @return ValidationRulesAssignmentsCreateResponseBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValidationRulesAssignmentsCreateResponseBody createValidationRuleAssignment(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody) throws ApiException {
+        ApiResponse<ValidationRulesAssignmentsCreateResponseBody> localVarResp = createValidationRuleAssignmentWithHttpInfo(validationRuleId, force, validationRulesAssignmentsCreateRequestBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create Validation Rules Assignments
+     * Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @return ApiResponse&lt;ValidationRulesAssignmentsCreateResponseBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValidationRulesAssignmentsCreateResponseBody> createValidationRuleAssignmentWithHttpInfo(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody) throws ApiException {
+        okhttp3.Call localVarCall = createValidationRuleAssignmentValidateBeforeCall(validationRuleId, force, validationRulesAssignmentsCreateRequestBody, null);
+        Type localVarReturnType = new TypeToken<ValidationRulesAssignmentsCreateResponseBody>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create Validation Rules Assignments (asynchronously)
+     * Assign validation rule to either one of the following objects: voucher, campaign, promotion tier, earning rule, reward, distribution.
+     * @param validationRuleId Unique validation rule ID. (required)
+     * @param force If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. (optional)
+     * @param validationRulesAssignmentsCreateRequestBody Specify the resource that you would like to assign the validation rule to. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Returns a validation rules assignment object. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createValidationRuleAssignmentAsync(String validationRuleId, Boolean force, ValidationRulesAssignmentsCreateRequestBody validationRulesAssignmentsCreateRequestBody, final ApiCallback<ValidationRulesAssignmentsCreateResponseBody> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createValidationRuleAssignmentValidateBeforeCall(validationRuleId, force, validationRulesAssignmentsCreateRequestBody, _callback);
+        Type localVarReturnType = new TypeToken<ValidationRulesAssignmentsCreateResponseBody>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createValidationRules
      * @param validationRulesCreateRequestBody Specify the validation rules parameters. (optional)
@@ -571,8 +709,8 @@ public class ValidationRulesApi {
     /**
      * Build call for listValidationRuleAssignments
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -655,8 +793,8 @@ public class ValidationRulesApi {
      * List Validation Rule Assignments
      * Retrieve validation rule assignments for a specific validation rule.
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ValidationRulesAssignmentsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -675,8 +813,8 @@ public class ValidationRulesApi {
      * List Validation Rule Assignments
      * Retrieve validation rule assignments for a specific validation rule.
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ApiResponse&lt;ValidationRulesAssignmentsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -696,8 +834,8 @@ public class ValidationRulesApi {
      * List Validation Rule Assignments (asynchronously)
      * Retrieve validation rule assignments for a specific validation rule.
      * @param validationRuleId Unique validation rule ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -717,8 +855,8 @@ public class ValidationRulesApi {
     }
     /**
      * Build call for listValidationRules
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -804,8 +942,8 @@ public class ValidationRulesApi {
     /**
      * List Validation Rules
      * Retrieve validation rules.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -825,8 +963,8 @@ public class ValidationRulesApi {
     /**
      * List Validation Rules
      * Retrieve validation rules.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -847,8 +985,8 @@ public class ValidationRulesApi {
     /**
      * List Validation Rules (asynchronously)
      * Retrieve validation rules.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param startDate Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. (optional)
      * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
@@ -872,8 +1010,8 @@ public class ValidationRulesApi {
      * Build call for listValidationRulesAssignments
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -959,8 +1097,8 @@ public class ValidationRulesApi {
      * List all validation rules&#39; assignments or filter the results using the related object ID or the validation rule ID query parameters.   ## How to retrieve specific validation rule assignments(s)  ### Related object ID  To find an assignment for a particular resource, you can use the ID of the object to which the validation rule was assigned. This could be, for example, an ID of a: voucher, campaign, distribution, reward assignment, earning rule, promotion tier.     &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?related_object_id&#x3D;promo_kJliy076IuJYtuYWSHE9fSuT &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_tZaqxeO8gP4q91jG\&quot;,             \&quot;rule_id\&quot;: \&quot;val_WB6ETAiFztw5\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_kJliy076IuJYtuYWSHE9fSuT\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-08-10T10:30:39.986Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 1 } &#x60;&#x60;&#x60;  ### Validation rule ID  You can use the validation rule ID to find assignment(s) for a specific validation rule.   &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?rule&#x3D;val_ZEZmA9oit8aU &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_vef0G6d9Al0rABxq\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;camp_rRsfatlwN7unSeUIJDCYedal\&quot;,             \&quot;related_object_type\&quot;: \&quot;campaign\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:43:52.953Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_sFV4wEFvldwIvgfb\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;distr_9QKI02wqgjWyvZXeQkFEPmkkYe\&quot;,             \&quot;related_object_type\&quot;: \&quot;distribution\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:41:07.680Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_69Qifyv6UZynFIIQ\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_g83qUzYZpfX0OMAFOVoQuOYG\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:29:41.906Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 3 } &#x60;&#x60;&#x60; 
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ValidationRulesAssignmentsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -980,8 +1118,8 @@ public class ValidationRulesApi {
      * List all validation rules&#39; assignments or filter the results using the related object ID or the validation rule ID query parameters.   ## How to retrieve specific validation rule assignments(s)  ### Related object ID  To find an assignment for a particular resource, you can use the ID of the object to which the validation rule was assigned. This could be, for example, an ID of a: voucher, campaign, distribution, reward assignment, earning rule, promotion tier.     &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?related_object_id&#x3D;promo_kJliy076IuJYtuYWSHE9fSuT &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_tZaqxeO8gP4q91jG\&quot;,             \&quot;rule_id\&quot;: \&quot;val_WB6ETAiFztw5\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_kJliy076IuJYtuYWSHE9fSuT\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-08-10T10:30:39.986Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 1 } &#x60;&#x60;&#x60;  ### Validation rule ID  You can use the validation rule ID to find assignment(s) for a specific validation rule.   &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?rule&#x3D;val_ZEZmA9oit8aU &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_vef0G6d9Al0rABxq\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;camp_rRsfatlwN7unSeUIJDCYedal\&quot;,             \&quot;related_object_type\&quot;: \&quot;campaign\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:43:52.953Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_sFV4wEFvldwIvgfb\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;distr_9QKI02wqgjWyvZXeQkFEPmkkYe\&quot;,             \&quot;related_object_type\&quot;: \&quot;distribution\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:41:07.680Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_69Qifyv6UZynFIIQ\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_g83qUzYZpfX0OMAFOVoQuOYG\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:29:41.906Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 3 } &#x60;&#x60;&#x60; 
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @return ApiResponse&lt;ValidationRulesAssignmentsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1002,8 +1140,8 @@ public class ValidationRulesApi {
      * List all validation rules&#39; assignments or filter the results using the related object ID or the validation rule ID query parameters.   ## How to retrieve specific validation rule assignments(s)  ### Related object ID  To find an assignment for a particular resource, you can use the ID of the object to which the validation rule was assigned. This could be, for example, an ID of a: voucher, campaign, distribution, reward assignment, earning rule, promotion tier.     &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?related_object_id&#x3D;promo_kJliy076IuJYtuYWSHE9fSuT &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_tZaqxeO8gP4q91jG\&quot;,             \&quot;rule_id\&quot;: \&quot;val_WB6ETAiFztw5\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_kJliy076IuJYtuYWSHE9fSuT\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-08-10T10:30:39.986Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 1 } &#x60;&#x60;&#x60;  ### Validation rule ID  You can use the validation rule ID to find assignment(s) for a specific validation rule.   &lt;!-- title: \&quot;Request\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;curl curl -X GET \\   -H \&quot;X-App-Id: c70a6f00-cf91-4756-9df5-47628850002b\&quot; \\   -H \&quot;X-App-Token: 3266b9f8-e246-4f79-bdf0-833929b1380c\&quot; \\   -H \&quot;Content-Type: application/json\&quot; \\   https://api.voucherify.io/v1/validation-rules-assignments?rule&#x3D;val_ZEZmA9oit8aU &#x60;&#x60;&#x60; &lt;!-- title: \&quot;Response\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;object\&quot;: \&quot;list\&quot;,     \&quot;data_ref\&quot;: \&quot;data\&quot;,     \&quot;data\&quot;: [         {             \&quot;id\&quot;: \&quot;asgm_vef0G6d9Al0rABxq\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;camp_rRsfatlwN7unSeUIJDCYedal\&quot;,             \&quot;related_object_type\&quot;: \&quot;campaign\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:43:52.953Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_sFV4wEFvldwIvgfb\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;distr_9QKI02wqgjWyvZXeQkFEPmkkYe\&quot;,             \&quot;related_object_type\&quot;: \&quot;distribution\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:41:07.680Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         },         {             \&quot;id\&quot;: \&quot;asgm_69Qifyv6UZynFIIQ\&quot;,             \&quot;rule_id\&quot;: \&quot;val_ZEZmA9oit8aU\&quot;,             \&quot;related_object_id\&quot;: \&quot;promo_g83qUzYZpfX0OMAFOVoQuOYG\&quot;,             \&quot;related_object_type\&quot;: \&quot;promotion_tier\&quot;,             \&quot;created_at\&quot;: \&quot;2022-06-29T11:29:41.906Z\&quot;,             \&quot;object\&quot;: \&quot;validation_rules_assignment\&quot;         }     ],     \&quot;total\&quot;: 3 } &#x60;&#x60;&#x60; 
      * @param relatedObjectId The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. (optional)
      * @param rule Validation rule ID. (optional)
-     * @param page Which page of results to return. (optional)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

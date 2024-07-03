@@ -21,9 +21,15 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import voucherify.client.model.Category;
 import voucherify.client.model.Discount;
 import voucherify.client.model.Gift;
+import voucherify.client.model.SimpleLoyaltyCard;
+import voucherify.client.model.SimpleVoucherRedemption;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +56,7 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * SimpleVoucher
+ * Simplified voucher data.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
@@ -73,14 +79,18 @@ public class SimpleVoucher {
 
   public static final String SERIALIZED_NAME_LOYALTY_CARD = "loyalty_card";
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARD)
-  private Object loyaltyCard;
+  private SimpleLoyaltyCard loyaltyCard;
 
   /**
-   * Type of the object.
+   * Type of the voucher.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    VOUCHER("voucher");
+    DISCOUNT_VOUCHER("DISCOUNT_VOUCHER"),
+    
+    LOYALTY_CARD("LOYALTY_CARD"),
+    
+    GIFT_VOUCHER("GIFT_VOUCHER");
 
     private String value;
 
@@ -122,11 +132,11 @@ public class SimpleVoucher {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type = TypeEnum.VOUCHER;
+  private TypeEnum type;
 
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Object campaign;
+  private String campaign;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
@@ -144,12 +154,44 @@ public class SimpleVoucher {
   @SerializedName(SERIALIZED_NAME_REFERRER_ID)
   private String referrerId;
 
+  public static final String SERIALIZED_NAME_CATEGORY_ID = "category_id";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
+  private String categoryId;
+
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<Category> categories;
+
+  public static final String SERIALIZED_NAME_ACTIVE = "active";
+  @SerializedName(SERIALIZED_NAME_ACTIVE)
+  private Boolean active;
+
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
 
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
+  public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
+  @SerializedName(SERIALIZED_NAME_REDEMPTION)
+  private SimpleVoucherRedemption redemption;
+
+  public static final String SERIALIZED_NAME_START_DATE = "start_date";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expiration_date";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+  private OffsetDateTime expirationDate;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -284,23 +326,23 @@ public class SimpleVoucher {
   }
 
 
-  public SimpleVoucher loyaltyCard(Object loyaltyCard) {
+  public SimpleVoucher loyaltyCard(SimpleLoyaltyCard loyaltyCard) {
     
     this.loyaltyCard = loyaltyCard;
     return this;
   }
 
    /**
-   * Defines the loyalty card details.
+   * Get loyaltyCard
    * @return loyaltyCard
   **/
   @javax.annotation.Nullable
-  public Object getLoyaltyCard() {
+  public SimpleLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
 
 
-  public void setLoyaltyCard(Object loyaltyCard) {
+  public void setLoyaltyCard(SimpleLoyaltyCard loyaltyCard) {
     this.loyaltyCard = loyaltyCard;
   }
 
@@ -312,10 +354,10 @@ public class SimpleVoucher {
   }
 
    /**
-   * Type of the object.
+   * Type of the voucher.
    * @return type
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public TypeEnum getType() {
     return type;
   }
@@ -326,23 +368,23 @@ public class SimpleVoucher {
   }
 
 
-  public SimpleVoucher campaign(Object campaign) {
+  public SimpleVoucher campaign(String campaign) {
     
     this.campaign = campaign;
     return this;
   }
 
    /**
-   * Campaign object
+   * Campaign name.
    * @return campaign
   **/
   @javax.annotation.Nullable
-  public Object getCampaign() {
+  public String getCampaign() {
     return campaign;
   }
 
 
-  public void setCampaign(Object campaign) {
+  public void setCampaign(String campaign) {
     this.campaign = campaign;
   }
 
@@ -396,7 +438,7 @@ public class SimpleVoucher {
   }
 
    /**
-   * Unique customer ID of campaign owner.
+   * Unique customer ID of the campaign owner.
    * @return holderId
   **/
   @javax.annotation.Nullable
@@ -417,7 +459,7 @@ public class SimpleVoucher {
   }
 
    /**
-   * Unique referrer ID.
+   * Unique identifier of the referrer assigned by Voucherify.
    * @return referrerId
   **/
   @javax.annotation.Nullable
@@ -431,6 +473,77 @@ public class SimpleVoucher {
   }
 
 
+  public SimpleVoucher categoryId(String categoryId) {
+    
+    this.categoryId = categoryId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the category that this voucher belongs to.
+   * @return categoryId
+  **/
+  @javax.annotation.Nullable
+  public String getCategoryId() {
+    return categoryId;
+  }
+
+
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
+  }
+
+
+  public SimpleVoucher categories(List<Category> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public SimpleVoucher addCategoriesItem(Category categoriesItem) {
+    if (this.categories == null) {
+      this.categories = new ArrayList<>();
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Contains details about the category.
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
+  }
+
+
+  public SimpleVoucher active(Boolean active) {
+    
+    this.active = active;
+    return this;
+  }
+
+   /**
+   * Shows whether the voucher is on or off. &#x60;true&#x60; indicates an *active* voucher and &#x60;false&#x60; indicates an *inactive* voucher.
+   * @return active
+  **/
+  @javax.annotation.Nullable
+  public Boolean getActive() {
+    return active;
+  }
+
+
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
+
+
   public SimpleVoucher createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -438,10 +551,10 @@ public class SimpleVoucher {
   }
 
    /**
-   * Timestamp representing the date and time when the order was created in ISO 8601 format.
+   * Timestamp representing the date and time when the order was created. Timestamp is presented in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -452,6 +565,111 @@ public class SimpleVoucher {
   }
 
 
+  public SimpleVoucher updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp representing the date and time when the voucher was updated in the ISO 8601 format.
+   * @return updatedAt
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
+  public SimpleVoucher redemption(SimpleVoucherRedemption redemption) {
+    
+    this.redemption = redemption;
+    return this;
+  }
+
+   /**
+   * Get redemption
+   * @return redemption
+  **/
+  @javax.annotation.Nullable
+  public SimpleVoucherRedemption getRedemption() {
+    return redemption;
+  }
+
+
+  public void setRedemption(SimpleVoucherRedemption redemption) {
+    this.redemption = redemption;
+  }
+
+
+  public SimpleVoucher startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Activation timestamp defines when the code starts to be active in ISO 8601 format. Voucher is *inactive before* this date.
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public SimpleVoucher expirationDate(OffsetDateTime expirationDate) {
+    
+    this.expirationDate = expirationDate;
+    return this;
+  }
+
+   /**
+   * Expiration timestamp defines when the code expires in ISO 8601 format.  Voucher is *inactive after* this date.
+   * @return expirationDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getExpirationDate() {
+    return expirationDate;
+  }
+
+
+  public void setExpirationDate(OffsetDateTime expirationDate) {
+    this.expirationDate = expirationDate;
+  }
+
+
+  public SimpleVoucher metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * A set of custom key/value pairs that you can attach to a voucher. The metadata object stores all custom attributes assigned to the voucher.
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
   public SimpleVoucher _object(ObjectEnum _object) {
     
     this._object = _object;
@@ -459,10 +677,10 @@ public class SimpleVoucher {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ObjectEnum getObject() {
     return _object;
   }
@@ -494,13 +712,32 @@ public class SimpleVoucher {
         Objects.equals(this.isReferralCode, simpleVoucher.isReferralCode) &&
         Objects.equals(this.holderId, simpleVoucher.holderId) &&
         Objects.equals(this.referrerId, simpleVoucher.referrerId) &&
+        Objects.equals(this.categoryId, simpleVoucher.categoryId) &&
+        Objects.equals(this.categories, simpleVoucher.categories) &&
+        Objects.equals(this.active, simpleVoucher.active) &&
         Objects.equals(this.createdAt, simpleVoucher.createdAt) &&
+        Objects.equals(this.updatedAt, simpleVoucher.updatedAt) &&
+        Objects.equals(this.redemption, simpleVoucher.redemption) &&
+        Objects.equals(this.startDate, simpleVoucher.startDate) &&
+        Objects.equals(this.expirationDate, simpleVoucher.expirationDate) &&
+        Objects.equals(this.metadata, simpleVoucher.metadata) &&
         Objects.equals(this._object, simpleVoucher._object);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, gift, discount, loyaltyCard, type, campaign, campaignId, isReferralCode, holderId, referrerId, createdAt, _object);
+    return Objects.hash(id, code, gift, discount, loyaltyCard, type, campaign, campaignId, isReferralCode, holderId, referrerId, categoryId, categories, active, createdAt, updatedAt, redemption, startDate, expirationDate, metadata, _object);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -518,7 +755,15 @@ public class SimpleVoucher {
     sb.append("    isReferralCode: ").append(toIndentedString(isReferralCode)).append("\n");
     sb.append("    holderId: ").append(toIndentedString(holderId)).append("\n");
     sb.append("    referrerId: ").append(toIndentedString(referrerId)).append("\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    redemption: ").append(toIndentedString(redemption)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -553,12 +798,23 @@ public class SimpleVoucher {
     openapiFields.add("is_referral_code");
     openapiFields.add("holder_id");
     openapiFields.add("referrer_id");
+    openapiFields.add("category_id");
+    openapiFields.add("categories");
+    openapiFields.add("active");
     openapiFields.add("created_at");
+    openapiFields.add("updated_at");
+    openapiFields.add("redemption");
+    openapiFields.add("start_date");
+    openapiFields.add("expiration_date");
+    openapiFields.add("metadata");
     openapiFields.add("object");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("object");
   }
 
  /**
@@ -603,7 +859,11 @@ public class SimpleVoucher {
       if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
         Discount.validateJsonElement(jsonObj.get("discount"));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      // validate the optional field `loyalty_card`
+      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
+        SimpleLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {
@@ -619,6 +879,9 @@ public class SimpleVoucher {
           throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
         }
       }
+      if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign").toString()));
+      }
       if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
       }
@@ -628,7 +891,28 @@ public class SimpleVoucher {
       if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `referrer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referrer_id").toString()));
       }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+      }
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
+        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
+        if (jsonArraycategories != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+          }
+
+          // validate the optional field `categories` (array)
+          for (int i = 0; i < jsonArraycategories.size(); i++) {
+            Category.validateJsonElement(jsonArraycategories.get(i));
+          };
+        }
+      }
+      // validate the optional field `redemption`
+      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
+        SimpleVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
+      }
+      if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

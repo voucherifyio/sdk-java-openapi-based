@@ -14,9 +14,9 @@
 |**attributes** | **Object** | The attributes object stores values for all custom attributes inherited by the SKU from the parent product. A set of key/value pairs that are attached to a SKU object and are unique to each SKU within a product family. |  |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the SKU. A set of key/value pairs that you can attach to a SKU object. It can be useful for storing additional information about the SKU in a structured format. |  |
 |**imageUrl** | **String** | The HTTPS URL pointing to the .png or .jpg file that will be used to render the SKU image. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the SKU was created in ISO 8601 format. |  |
-|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the SKU was updated in ISO 8601 format. |  [optional] |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. This object stores information about the &#x60;SKU&#x60;. |  |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the SKU was created. The value is shown in the ISO 8601 format. |  |
+|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the SKU was updated. The value is shown in the ISO 8601 format. |  [optional] |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about the &#x60;SKU&#x60;. |  |
 |**productId** | **String** | The parent product&#39;s unique ID. |  |
 |**sku** | **String** | Unique user-defined SKU name. |  [optional] |
 |**currency** | **String** | SKU price currency. |  [optional] |

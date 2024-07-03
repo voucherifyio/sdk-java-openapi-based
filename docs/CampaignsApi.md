@@ -256,7 +256,7 @@ public class Example {
 
 Delete Campaign
 
-Permanently deletes a campaign and all related vouchers. This action cannot be undone. Also, this method immediately removes any redemptions on the voucher.  This API request starts a process that affects Voucherify data in bulk.   In case of small jobs (like bulk update) the request is put into a queue and processed once every other bulk request placed in the queue prior to this request is finished. However, when the job takes a longer time (like vouchers generation) then it is processed in small portions in a round-robin fashion. When there is a list of vouchers generation scheduled, then they will all have the &#x60;IN_PROGRESS&#x60; status shortly. This way, small jobs added just after scheduling big jobs of the same type will be processed in a short time window.   The result will return the async ID. You can verify the status of your request via this [API request](ref:get-async-action).
+Deletes a campaign and all related vouchers. This action cannot be undone. Also, this method immediately removes any redemptions on the voucher.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the campaign and all related vouchers will be moved to [the bin](ref:list-bin-entries).  This API request starts a process that affects Voucherify data in bulk.   In case of small jobs (like bulk update) the request is put into a queue and processed once every other bulk request placed in the queue prior to this request is finished. However, when the job takes a longer time (like vouchers generation) then it is processed in small portions in a round-robin fashion. When there is a list of vouchers generation scheduled, then they will all have the &#x60;IN_PROGRESS&#x60; status shortly. This way, small jobs added just after scheduling big jobs of the same type will be processed in a short time window.   The result will return the async ID. You can verify the status of your request via this [API request](ref:get-async-action).
 
 ### Example
 ```java
@@ -287,7 +287,7 @@ public class Example {
 
     CampaignsApi apiInstance = new CampaignsApi(defaultClient);
     String campaignId = "campaignId_example"; // String | You can either pass the campaign ID, which was assigned by Voucherify, or the name of the campaign as the path parameter value.
-    Boolean force = true; // Boolean | If this flag is set to `true`, the campaign and related vouchers will be removed permanently. Going forward, the user will be able to create the next campaign with exactly the same name.
+    Boolean force = true; // Boolean | If this flag is set to `true`, the campaign and related vouchers will be removed permanently. If it is set to `false` or not set at all, the campaign and related vouchers will be moved to the bin. Going forward, the user will be able to create the next campaign with exactly the same name.
     try {
       CampaignsDeleteResponseBody result = apiInstance.deleteCampaign(campaignId, force);
       System.out.println(result);
@@ -307,7 +307,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **campaignId** | **String**| You can either pass the campaign ID, which was assigned by Voucherify, or the name of the campaign as the path parameter value. | |
-| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. Going forward, the user will be able to create the next campaign with exactly the same name. | [optional] |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the campaign and related vouchers will be moved to the bin. Going forward, the user will be able to create the next campaign with exactly the same name. | [optional] |
 
 ### Return type
 
@@ -742,8 +742,8 @@ public class Example {
     //X-App-Token.setApiKeyPrefix("Token");
 
     CampaignsApi apiInstance = new CampaignsApi(defaultClient);
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     ParameterCampaignType campaignType = ParameterCampaignType.fromValue("PROMOTION"); // ParameterCampaignType | This attribute allows filtering by campaign type.
     ParameterExpandListCampaigns expand = ParameterExpandListCampaigns.fromValue("category"); // ParameterExpandListCampaigns | Include an expanded `categories` object in the response.
     ParameterOrderListCampaigns order = ParameterOrderListCampaigns.fromValue("created_at"); // ParameterOrderListCampaigns | Sorts the results using one of the filtering options, where the dash `-` preceding a sorting option means sorting in a descending order.
@@ -765,8 +765,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 | **campaignType** | [**ParameterCampaignType**](.md)| This attribute allows filtering by campaign type. | [optional] [enum: PROMOTION, GIFT_VOUCHERS, REFERRAL_PROGRAM, DISCOUNT_COUPONS, LOYALTY_PROGRAM, LUCKY_DRAW] |
 | **expand** | [**ParameterExpandListCampaigns**](.md)| Include an expanded &#x60;categories&#x60; object in the response. | [optional] [default to category] [enum: category] |
 | **order** | [**ParameterOrderListCampaigns**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at] |

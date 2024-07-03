@@ -57,7 +57,7 @@ public class CustomerId {
   private String id;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -136,7 +136,7 @@ public class CustomerId {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull

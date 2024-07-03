@@ -348,8 +348,8 @@ public class Example {
     //X-App-Token.setApiKeyPrefix("Token");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     ParameterOrderListOrders order = ParameterOrderListOrders.fromValue("created_at"); // ParameterOrderListOrders | This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash `-` preceding a sorting option means sorting in a descending order.
     try {
       OrdersListResponseBody result = apiInstance.listOrders(limit, page, order);
@@ -369,8 +369,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 | **order** | [**ParameterOrderListOrders**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at] |
 
 ### Return type

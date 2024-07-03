@@ -184,7 +184,7 @@ public class OrderCalculatedBase {
   private String referrerId;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -288,7 +288,7 @@ public class OrderCalculatedBase {
   }
 
    /**
-   * Timestamp representing the date and time when the order was created in ISO 8601 format.
+   * Timestamp representing the date and time when the order was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -632,7 +632,7 @@ public class OrderCalculatedBase {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull

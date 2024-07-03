@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerWithSummaryLoyaltyReferrals;
+import voucherify.client.model.ListPublicationsItemBaseMetadata;
 import voucherify.client.model.ListPublicationsItemInvalid;
 import voucherify.client.model.ListPublicationsItemValidMultipleVouchers;
 import voucherify.client.model.ListPublicationsItemValidSingleVoucher;

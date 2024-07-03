@@ -198,8 +198,8 @@ public class Example {
     //X-App-Token.setApiKeyPrefix("Token");
 
     RedemptionsApi apiInstance = new RedemptionsApi(defaultClient);
-    Integer limit = 56; // Integer | A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-    Integer page = 56; // Integer | Which page of results to return.
+    Integer limit = 56; // Integer | Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items.
+    Integer page = 56; // Integer | Which page of results to return. The lowest value is `1`.
     String result = "result_example"; // String | A filter on the list based on the redemption result. Available options are: `SUCCESS`, `FAILURE`. You can provide multiple values by repeating the param.
     String campaign = "campaign_example"; // String | A filter by the campaign **name** that the redemption resources originate from.
     String customer = "customer_example"; // String | Return redemptions performed by the customer with given `id` or `source_id`.
@@ -224,8 +224,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| A limit on the number of objects to be returned. Limit can range between 1 and 100 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. | [optional] |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
 | **result** | **String**| A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. | [optional] |
 | **campaign** | **String**| A filter by the campaign **name** that the redemption resources originate from. | [optional] |
 | **customer** | **String**| Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. | [optional] |
@@ -332,7 +332,7 @@ public class Example {
 
 Rollback Redemption
 
-Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
+Your business logic may include a case when you need to undo a redemption. You can revert a redemption by calling this API endpoint.  &gt;🚧  &gt;You can roll back a redemption up to 3 months back.    ## Effect  The operation  - creates a rollback entry in voucher&#39;s redemption history (&#x60;redemption.redemption_entries&#x60;) and  - gives 1 redemption back to the pool (decreases &#x60;redeemed_quantity&#x60; by 1).  ## Returned funds  In case of *gift card vouchers*, this method returns funds back according to the source redemption. In case of *loyalty card vouchers*, this method returns points back according to the source redemption.
 
 ### Example
 ```java
@@ -413,7 +413,7 @@ public class Example {
 
 Rollback Stackable Redemptions
 
-Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.
+Rollback a stackable redemption. When you rollback a stacked redemption, all child redemptions will be rolled back. Provide the parent redemption ID as the path parameter.  &gt;🚧  &gt; You can roll back a redemption up to 3 months back.
 
 ### Example
 ```java
