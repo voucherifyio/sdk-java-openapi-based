@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import voucherify.client.model.Any;
 
 import com.google.gson.Gson;
@@ -55,11 +57,11 @@ import voucherify.client.JSON;
 public class QualificationsFiltersCondition {
   public static final String SERIALIZED_NAME_$_IS = "$is";
   @SerializedName(SERIALIZED_NAME_$_IS)
-  private Any $is;
+  private List<String> $is;
 
   public static final String SERIALIZED_NAME_$_IS_NOT = "$is_not";
   @SerializedName(SERIALIZED_NAME_$_IS_NOT)
-  private Any $isNot;
+  private List<String> $isNot;
 
   public static final String SERIALIZED_NAME_$_HAS_VALUE = "$has_value";
   @SerializedName(SERIALIZED_NAME_$_HAS_VALUE)
@@ -71,18 +73,26 @@ public class QualificationsFiltersCondition {
 
   public static final String SERIALIZED_NAME_$_IN = "$in";
   @SerializedName(SERIALIZED_NAME_$_IN)
-  private Any $in;
+  private List<String> $in;
 
   public static final String SERIALIZED_NAME_$_NOT_IN = "$not_in";
   @SerializedName(SERIALIZED_NAME_$_NOT_IN)
-  private Any $notIn;
+  private List<String> $notIn;
 
   public QualificationsFiltersCondition() {
   }
 
-  public QualificationsFiltersCondition $is(Any $is) {
+  public QualificationsFiltersCondition $is(List<String> $is) {
     
     this.$is = $is;
+    return this;
+  }
+
+  public QualificationsFiltersCondition add$IsItem(String $isItem) {
+    if (this.$is == null) {
+      this.$is = new ArrayList<>();
+    }
+    this.$is.add($isItem);
     return this;
   }
 
@@ -91,19 +101,27 @@ public class QualificationsFiltersCondition {
    * @return $is
   **/
   @javax.annotation.Nullable
-  public Any get$Is() {
+  public List<String> get$Is() {
     return $is;
   }
 
 
-  public void set$Is(Any $is) {
+  public void set$Is(List<String> $is) {
     this.$is = $is;
   }
 
 
-  public QualificationsFiltersCondition $isNot(Any $isNot) {
+  public QualificationsFiltersCondition $isNot(List<String> $isNot) {
     
     this.$isNot = $isNot;
+    return this;
+  }
+
+  public QualificationsFiltersCondition add$IsNotItem(String $isNotItem) {
+    if (this.$isNot == null) {
+      this.$isNot = new ArrayList<>();
+    }
+    this.$isNot.add($isNotItem);
     return this;
   }
 
@@ -112,12 +130,12 @@ public class QualificationsFiltersCondition {
    * @return $isNot
   **/
   @javax.annotation.Nullable
-  public Any get$IsNot() {
+  public List<String> get$IsNot() {
     return $isNot;
   }
 
 
-  public void set$IsNot(Any $isNot) {
+  public void set$IsNot(List<String> $isNot) {
     this.$isNot = $isNot;
   }
 
@@ -164,9 +182,17 @@ public class QualificationsFiltersCondition {
   }
 
 
-  public QualificationsFiltersCondition $in(Any $in) {
+  public QualificationsFiltersCondition $in(List<String> $in) {
     
     this.$in = $in;
+    return this;
+  }
+
+  public QualificationsFiltersCondition add$InItem(String $inItem) {
+    if (this.$in == null) {
+      this.$in = new ArrayList<>();
+    }
+    this.$in.add($inItem);
     return this;
   }
 
@@ -175,19 +201,27 @@ public class QualificationsFiltersCondition {
    * @return $in
   **/
   @javax.annotation.Nullable
-  public Any get$In() {
+  public List<String> get$In() {
     return $in;
   }
 
 
-  public void set$In(Any $in) {
+  public void set$In(List<String> $in) {
     this.$in = $in;
   }
 
 
-  public QualificationsFiltersCondition $notIn(Any $notIn) {
+  public QualificationsFiltersCondition $notIn(List<String> $notIn) {
     
     this.$notIn = $notIn;
+    return this;
+  }
+
+  public QualificationsFiltersCondition add$NotInItem(String $notInItem) {
+    if (this.$notIn == null) {
+      this.$notIn = new ArrayList<>();
+    }
+    this.$notIn.add($notInItem);
     return this;
   }
 
@@ -196,12 +230,12 @@ public class QualificationsFiltersCondition {
    * @return $notIn
   **/
   @javax.annotation.Nullable
-  public Any get$NotIn() {
+  public List<String> get$NotIn() {
     return $notIn;
   }
 
 
-  public void set$NotIn(Any $notIn) {
+  public void set$NotIn(List<String> $notIn) {
     this.$notIn = $notIn;
   }
 
@@ -293,13 +327,13 @@ public class QualificationsFiltersCondition {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `$is`
-      if (jsonObj.get("$is") != null && !jsonObj.get("$is").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$is") != null && !jsonObj.get("$is").isJsonNull() && !jsonObj.get("$is").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `$is` to be an array in the JSON string but got `%s`", jsonObj.get("$is").toString()));
       }
-      // validate the optional field `$is_not`
-      if (jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is_not"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull() && !jsonObj.get("$is_not").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `$is_not` to be an array in the JSON string but got `%s`", jsonObj.get("$is_not").toString()));
       }
       // validate the optional field `$has_value`
       if (jsonObj.get("$has_value") != null && !jsonObj.get("$has_value").isJsonNull()) {
@@ -309,13 +343,13 @@ public class QualificationsFiltersCondition {
       if (jsonObj.get("$is_unknown") != null && !jsonObj.get("$is_unknown").isJsonNull()) {
         Any.validateJsonElement(jsonObj.get("$is_unknown"));
       }
-      // validate the optional field `$in`
-      if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$in"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull() && !jsonObj.get("$in").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `$in` to be an array in the JSON string but got `%s`", jsonObj.get("$in").toString()));
       }
-      // validate the optional field `$not_in`
-      if (jsonObj.get("$not_in") != null && !jsonObj.get("$not_in").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$not_in"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$not_in") != null && !jsonObj.get("$not_in").isJsonNull() && !jsonObj.get("$not_in").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `$not_in` to be an array in the JSON string but got `%s`", jsonObj.get("$not_in").toString()));
       }
   }
 

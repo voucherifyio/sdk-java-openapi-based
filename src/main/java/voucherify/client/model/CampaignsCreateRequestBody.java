@@ -35,6 +35,7 @@ import voucherify.client.model.GiveawayCampaignVoucher;
 import voucherify.client.model.LuckyDraw;
 import voucherify.client.model.ReferralProgram;
 import voucherify.client.model.SchemaThatContainsUniquePropertiesForPromotionCampaignPromotion;
+import voucherify.client.model.ValidityHours;
 
 
 

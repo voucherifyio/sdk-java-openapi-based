@@ -22,7 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.Junction;
+import voucherify.client.model.QualificationsCampaignTypeConditions;
 import voucherify.client.model.QualificationsFieldConditions;
+import voucherify.client.model.QualificationsOptionFiltersResourceType;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,13 +68,17 @@ public class QualificationsOptionFilters {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private QualificationsFieldConditions campaignId;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaign_type";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
+  private QualificationsCampaignTypeConditions campaignType;
+
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
   private QualificationsFieldConditions resourceId;
 
   public static final String SERIALIZED_NAME_RESOURCE_TYPE = "resource_type";
   @SerializedName(SERIALIZED_NAME_RESOURCE_TYPE)
-  private QualificationsFieldConditions resourceType;
+  private QualificationsOptionFiltersResourceType resourceType;
 
   public static final String SERIALIZED_NAME_VOUCHER_TYPE = "voucher_type";
   @SerializedName(SERIALIZED_NAME_VOUCHER_TYPE)
@@ -148,6 +154,27 @@ public class QualificationsOptionFilters {
   }
 
 
+  public QualificationsOptionFilters campaignType(QualificationsCampaignTypeConditions campaignType) {
+    
+    this.campaignType = campaignType;
+    return this;
+  }
+
+   /**
+   * Get campaignType
+   * @return campaignType
+  **/
+  @javax.annotation.Nullable
+  public QualificationsCampaignTypeConditions getCampaignType() {
+    return campaignType;
+  }
+
+
+  public void setCampaignType(QualificationsCampaignTypeConditions campaignType) {
+    this.campaignType = campaignType;
+  }
+
+
   public QualificationsOptionFilters resourceId(QualificationsFieldConditions resourceId) {
     
     this.resourceId = resourceId;
@@ -169,7 +196,7 @@ public class QualificationsOptionFilters {
   }
 
 
-  public QualificationsOptionFilters resourceType(QualificationsFieldConditions resourceType) {
+  public QualificationsOptionFilters resourceType(QualificationsOptionFiltersResourceType resourceType) {
     
     this.resourceType = resourceType;
     return this;
@@ -180,12 +207,12 @@ public class QualificationsOptionFilters {
    * @return resourceType
   **/
   @javax.annotation.Nullable
-  public QualificationsFieldConditions getResourceType() {
+  public QualificationsOptionFiltersResourceType getResourceType() {
     return resourceType;
   }
 
 
-  public void setResourceType(QualificationsFieldConditions resourceType) {
+  public void setResourceType(QualificationsOptionFiltersResourceType resourceType) {
     this.resourceType = resourceType;
   }
 
@@ -245,6 +272,7 @@ public class QualificationsOptionFilters {
     return Objects.equals(this.junction, qualificationsOptionFilters.junction) &&
         Objects.equals(this.categoryId, qualificationsOptionFilters.categoryId) &&
         Objects.equals(this.campaignId, qualificationsOptionFilters.campaignId) &&
+        Objects.equals(this.campaignType, qualificationsOptionFilters.campaignType) &&
         Objects.equals(this.resourceId, qualificationsOptionFilters.resourceId) &&
         Objects.equals(this.resourceType, qualificationsOptionFilters.resourceType) &&
         Objects.equals(this.voucherType, qualificationsOptionFilters.voucherType) &&
@@ -253,7 +281,7 @@ public class QualificationsOptionFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(junction, categoryId, campaignId, resourceId, resourceType, voucherType, code);
+    return Objects.hash(junction, categoryId, campaignId, campaignType, resourceId, resourceType, voucherType, code);
   }
 
   @Override
@@ -263,6 +291,7 @@ public class QualificationsOptionFilters {
     sb.append("    junction: ").append(toIndentedString(junction)).append("\n");
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    resourceType: ").append(toIndentedString(resourceType)).append("\n");
     sb.append("    voucherType: ").append(toIndentedString(voucherType)).append("\n");
@@ -292,6 +321,7 @@ public class QualificationsOptionFilters {
     openapiFields.add("junction");
     openapiFields.add("category_id");
     openapiFields.add("campaign_id");
+    openapiFields.add("campaign_type");
     openapiFields.add("resource_id");
     openapiFields.add("resource_type");
     openapiFields.add("voucher_type");
@@ -330,13 +360,17 @@ public class QualificationsOptionFilters {
       if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
         QualificationsFieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
       }
+      // validate the optional field `campaign_type`
+      if (jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) {
+        QualificationsCampaignTypeConditions.validateJsonElement(jsonObj.get("campaign_type"));
+      }
       // validate the optional field `resource_id`
       if (jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) {
         QualificationsFieldConditions.validateJsonElement(jsonObj.get("resource_id"));
       }
       // validate the optional field `resource_type`
       if (jsonObj.get("resource_type") != null && !jsonObj.get("resource_type").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("resource_type"));
+        QualificationsOptionFiltersResourceType.validateJsonElement(jsonObj.get("resource_type"));
       }
       // validate the optional field `voucher_type`
       if (jsonObj.get("voucher_type") != null && !jsonObj.get("voucher_type").isJsonNull()) {

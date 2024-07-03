@@ -25,6 +25,8 @@
 
 * `TRACKING_ID` (value: `"tracking_id"`)
 
+* `ORDER_ID` (value: `"order_id"`)
+
 * `ORDER_AMOUNT` (value: `"order_amount"`)
 
 * `GIFT_AMOUNT` (value: `"gift_amount"`)

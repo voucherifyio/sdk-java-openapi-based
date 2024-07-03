@@ -9,18 +9,19 @@ Response body schema for **GET** `/loyalties/{campaignId}/earning-rules/{earning
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | Assigned by the Voucherify API, identifies the earning rule object. |  |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the earning rule was created in ISO 8601 format. |  |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the earning rule was created. The value is shown in the ISO 8601 format. |  |
 |**loyalty** | [**EarningRuleBaseLoyalty**](EarningRuleBaseLoyalty.md) |  |  |
 |**event** | **EarningRuleEvent** |  |  [optional] |
 |**customEvent** | [**EarningRuleBaseCustomEvent**](EarningRuleBaseCustomEvent.md) |  |  [optional] |
 |**segment** | [**EarningRuleBaseSegment**](EarningRuleBaseSegment.md) |  |  [optional] |
 |**source** | [**EarningRuleBaseSource**](EarningRuleBaseSource.md) |  |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. Default is earning_rule. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. Default is earning_rule. |  |
 |**automationId** | **String** | For internal use by Voucherify. |  |
-|**startDate** | **String** | Start date defines when the earning rule starts to be active. Activation timestamp in ISO 8601 format. Earning rule is inactive before this date. If you don&#39;t define the start date for an earning rule, it&#39;ll inherit the campaign start date by default. |  [optional] |
-|**expirationDate** | **String** | Expiration date defines when the earning rule expires. Expiration timestamp in ISO 8601 format. Earning rule is inactive after this date.If you don&#39;t define the expiration date for an earning rule, it&#39;ll inherit the campaign expiration date by default. |  [optional] |
+|**startDate** | **String** | Start date defines when the earning rule starts to be active. Activation timestamp is presented in the ISO 8601 format. Earning rule is inactive before this date. If you don&#39;t define the start date for an earning rule, it&#39;ll inherit the campaign start date by default. |  [optional] |
+|**expirationDate** | **String** | Expiration date defines when the earning rule expires. Expiration timestamp is presented in the ISO 8601 format. Earning rule is inactive after this date.If you don&#39;t define the expiration date for an earning rule, it&#39;ll inherit the campaign expiration date by default. |  [optional] |
 |**validityTimeframe** | [**EarningRuleBaseValidityTimeframe**](EarningRuleBaseValidityTimeframe.md) |  |  [optional] |
-|**validityDayOfWeek** | **List&lt;Integer&gt;** | Integer array corresponding to the particular days of the week in which the earning rule is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |  [optional] |
+|**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the earning rule is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |  [optional] |
+|**validityHours** | [**ValidityHours**](ValidityHours.md) |  |  [optional] |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the earning rule. A set of key/value pairs that you can attach to an earning rule object. It can be useful for storing additional information about the earning rule in a structured format. |  |
 |**validationRuleId** | **String** | A unique validation rule identifier assigned by the Voucherify API. The validation rule is verified before points are added to the balance. |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the earning rule was last updated in ISO 8601 format. |  [optional] |
@@ -33,6 +34,20 @@ Response body schema for **GET** `/loyalties/{campaignId}/earning-rules/{earning
 | Name | Value |
 |---- | -----|
 | EARNING_RULE | &quot;earning_rule&quot; |
+
+
+
+## Enum: List&lt;ValidityDayOfWeekEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| NUMBER_0 | 0 |
+| NUMBER_1 | 1 |
+| NUMBER_2 | 2 |
+| NUMBER_3 | 3 |
+| NUMBER_4 | 4 |
+| NUMBER_5 | 5 |
+| NUMBER_6 | 6 |
 
 
 

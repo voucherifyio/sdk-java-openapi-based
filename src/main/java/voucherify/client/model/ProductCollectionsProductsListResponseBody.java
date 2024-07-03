@@ -81,7 +81,7 @@ public class ProductCollectionsProductsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about products and SKUs.
+   * The type of the object represented by JSON. This object stores information about products and SKUs.
    * @return _object
   **/
   @javax.annotation.Nonnull

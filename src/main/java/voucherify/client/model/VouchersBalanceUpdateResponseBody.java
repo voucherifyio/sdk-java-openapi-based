@@ -166,7 +166,7 @@ public class VouchersBalanceUpdateResponseBody {
   private OperationTypeEnum operationType = OperationTypeEnum.MANUAL;
 
   /**
-   * The type of object represented by JSON. Default is &#x60;balance&#x60;.
+   * The type of the object represented by JSON. Default is &#x60;balance&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -333,7 +333,7 @@ public class VouchersBalanceUpdateResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. Default is &#x60;balance&#x60;.
+   * The type of the object represented by JSON. Default is &#x60;balance&#x60;.
    * @return _object
   **/
   @javax.annotation.Nonnull

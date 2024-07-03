@@ -8,6 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**error** | [**Error**](Error.md) |  |  [optional] |
+|**details** | **Object** |  |  [optional] |
 
 
 

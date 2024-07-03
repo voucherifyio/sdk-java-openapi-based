@@ -11,10 +11,10 @@ Response body schema for **PUT** `/promotions/{campaignId}/stacks/{stackId}`.
 |**name** | **String** | Promotion stack name. |  |
 |**tiers** | [**PromotionStackBaseTiers**](PromotionStackBaseTiers.md) |  |  |
 |**id** | **String** | Unique promotion stack ID. |  |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the promotion stack was created in ISO 8601 format. |  |
-|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the promotion stack was updated in ISO 8601 format. |  |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the promotion stack was created. The value is shown in the ISO 8601 format. |  |
+|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the promotion stack was updated. The value is shown in the ISO 8601 format. |  |
 |**campaignId** | **String** | Promotion stack&#39;s parent campaign&#39;s unique ID. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON.  |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON.  |  |
 |**categoryId** | **String** | Promotion stack category ID. |  [optional] |
 |**categories** | [**List&lt;PromotionStackBase&gt;**](PromotionStackBase.md) | Details about the category assigned to the promotion stack. |  |
 

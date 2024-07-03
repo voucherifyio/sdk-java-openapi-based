@@ -12,7 +12,7 @@ Response body schema for **POST** `/categories`.
 |**name** | **String** | Category name. |  |
 |**hierarchy** | **Integer** | Category hierarchy. |  |
 |**_object** | [**ObjectEnum**](#ObjectEnum) |  |  |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the category was created in ISO 8601 format. |  |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the category was created. The value is shown in the ISO 8601 format. |  |
 
 
 

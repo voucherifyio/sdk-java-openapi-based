@@ -212,7 +212,7 @@ public class CategoriesCreateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the category was created in ISO 8601 format.
+   * Timestamp representing the date and time when the category was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull

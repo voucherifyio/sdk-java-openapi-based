@@ -20,17 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.CustomerBaseAddress;
-import voucherify.client.model.CustomerLoyalty;
-import voucherify.client.model.CustomerReferrals;
-import voucherify.client.model.CustomerResponseDataAssets;
-import voucherify.client.model.CustomerSummary;
 import voucherify.client.model.ReferrerId;
-import voucherify.client.model.ReferrerWithSummaryLoyaltyReferrals;
 
 
 
@@ -80,7 +71,6 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'OrderCalculatedReferrer' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<ReferrerWithSummaryLoyaltyReferrals> adapterReferrerWithSummaryLoyaltyReferrals = gson.getDelegateAdapter(this, TypeToken.get(ReferrerWithSummaryLoyaltyReferrals.class));
             final TypeAdapter<ReferrerId> adapterReferrerId = gson.getDelegateAdapter(this, TypeToken.get(ReferrerId.class));
 
             return (TypeAdapter<T>) new TypeAdapter<OrderCalculatedReferrer>() {
@@ -91,19 +81,13 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `ReferrerWithSummaryLoyaltyReferrals`
-                    if (value.getActualInstance() instanceof ReferrerWithSummaryLoyaltyReferrals) {
-                      JsonElement element = adapterReferrerWithSummaryLoyaltyReferrals.toJsonTree((ReferrerWithSummaryLoyaltyReferrals)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
                     // check if the actual instance is of the type `ReferrerId`
                     if (value.getActualInstance() instanceof ReferrerId) {
                       JsonElement element = adapterReferrerId.toJsonTree((ReferrerId)value.getActualInstance());
                       elementAdapter.write(out, element);
                       return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ReferrerId, ReferrerWithSummaryLoyaltyReferrals");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ReferrerId");
                 }
 
                 @Override
@@ -115,18 +99,6 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize ReferrerWithSummaryLoyaltyReferrals
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ReferrerWithSummaryLoyaltyReferrals.validateJsonElement(jsonElement);
-                      actualAdapter = adapterReferrerWithSummaryLoyaltyReferrals;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ReferrerWithSummaryLoyaltyReferrals'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ReferrerWithSummaryLoyaltyReferrals failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ReferrerWithSummaryLoyaltyReferrals'", e);
-                    }
                     // deserialize ReferrerId
                     try {
                       // validate the JSON object to see if any exception is thrown
@@ -164,13 +136,7 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
-    public OrderCalculatedReferrer(ReferrerWithSummaryLoyaltyReferrals o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
     static {
-        schemas.put("ReferrerWithSummaryLoyaltyReferrals", ReferrerWithSummaryLoyaltyReferrals.class);
         schemas.put("ReferrerId", ReferrerId.class);
     }
 
@@ -182,46 +148,31 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * ReferrerId, ReferrerWithSummaryLoyaltyReferrals
+     * ReferrerId
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof ReferrerWithSummaryLoyaltyReferrals) {
-            super.setActualInstance(instance);
-            return;
-        }
-
         if (instance instanceof ReferrerId) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be ReferrerId, ReferrerWithSummaryLoyaltyReferrals");
+        throw new RuntimeException("Invalid instance type. Must be ReferrerId");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * ReferrerId, ReferrerWithSummaryLoyaltyReferrals
+     * ReferrerId
      *
-     * @return The actual instance (ReferrerId, ReferrerWithSummaryLoyaltyReferrals)
+     * @return The actual instance (ReferrerId)
      */
     @Override
     public Object getActualInstance() {
         return super.getActualInstance();
     }
 
-    /**
-     * Get the actual instance of `ReferrerWithSummaryLoyaltyReferrals`. If the actual instance is not `ReferrerWithSummaryLoyaltyReferrals`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ReferrerWithSummaryLoyaltyReferrals`
-     * @throws ClassCastException if the instance is not `ReferrerWithSummaryLoyaltyReferrals`
-     */
-    public ReferrerWithSummaryLoyaltyReferrals getReferrerWithSummaryLoyaltyReferrals() throws ClassCastException {
-        return (ReferrerWithSummaryLoyaltyReferrals)super.getActualInstance();
-    }
     /**
      * Get the actual instance of `ReferrerId`. If the actual instance is not `ReferrerId`,
      * the ClassCastException will be thrown.
@@ -243,14 +194,6 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with ReferrerWithSummaryLoyaltyReferrals
-    try {
-      ReferrerWithSummaryLoyaltyReferrals.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ReferrerWithSummaryLoyaltyReferrals failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
     // validate the json string with ReferrerId
     try {
       ReferrerId.validateJsonElement(jsonElement);
@@ -260,7 +203,7 @@ public class OrderCalculatedReferrer extends AbstractOpenApiSchema {
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for OrderCalculatedReferrer with oneOf schemas: ReferrerId, ReferrerWithSummaryLoyaltyReferrals. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      throw new IOException(String.format("The JSON string is invalid for OrderCalculatedReferrer with oneOf schemas: ReferrerId. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

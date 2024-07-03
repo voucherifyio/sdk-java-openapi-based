@@ -231,7 +231,7 @@ public class CustomersCreateRequestBody {
   }
 
    /**
-   * *Deprecated* Customer&#39;s birthdate; format YYYY-MM-DD.
+   * &#x60;Deprecated&#x60;. ~~Customer&#39;s birthdate; format YYYY-MM-DD~~.
    * @return birthday
   **/
   @javax.annotation.Nullable

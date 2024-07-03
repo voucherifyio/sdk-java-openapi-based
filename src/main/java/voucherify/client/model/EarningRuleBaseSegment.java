@@ -47,7 +47,7 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Contains the id of a customer segment. Required for the customer.segment.entered option in event.
+ * Contains the ID of a customer segment. Required for the customer.segment.entered option in event.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 

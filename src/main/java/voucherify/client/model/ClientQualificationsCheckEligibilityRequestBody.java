@@ -63,57 +63,6 @@ public class ClientQualificationsCheckEligibilityRequestBody {
   @SerializedName(SERIALIZED_NAME_ORDER)
   private Order order;
 
-  /**
-   * Defines which resources Voucherify will use. The &#x60;ADVANCED&#x60; mode is available after purchase only.
-   */
-  @JsonAdapter(ModeEnum.Adapter.class)
-  public enum ModeEnum {
-    BASIC("BASIC"),
-    
-    ADVANCED("ADVANCED");
-
-    private String value;
-
-    ModeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ModeEnum fromValue(String value) {
-      for (ModeEnum b : ModeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ModeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ModeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ModeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MODE = "mode";
-  @SerializedName(SERIALIZED_NAME_MODE)
-  private ModeEnum mode;
-
   public static final String SERIALIZED_NAME_TRACKING_ID = "tracking_id";
   @SerializedName(SERIALIZED_NAME_TRACKING_ID)
   private String trackingId;
@@ -234,27 +183,6 @@ public class ClientQualificationsCheckEligibilityRequestBody {
   }
 
 
-  public ClientQualificationsCheckEligibilityRequestBody mode(ModeEnum mode) {
-    
-    this.mode = mode;
-    return this;
-  }
-
-   /**
-   * Defines which resources Voucherify will use. The &#x60;ADVANCED&#x60; mode is available after purchase only.
-   * @return mode
-  **/
-  @javax.annotation.Nullable
-  public ModeEnum getMode() {
-    return mode;
-  }
-
-
-  public void setMode(ModeEnum mode) {
-    this.mode = mode;
-  }
-
-
   public ClientQualificationsCheckEligibilityRequestBody trackingId(String trackingId) {
     
     this.trackingId = trackingId;
@@ -351,7 +279,6 @@ public class ClientQualificationsCheckEligibilityRequestBody {
     ClientQualificationsCheckEligibilityRequestBody clientQualificationsCheckEligibilityRequestBody = (ClientQualificationsCheckEligibilityRequestBody) o;
     return Objects.equals(this.customer, clientQualificationsCheckEligibilityRequestBody.customer) &&
         Objects.equals(this.order, clientQualificationsCheckEligibilityRequestBody.order) &&
-        Objects.equals(this.mode, clientQualificationsCheckEligibilityRequestBody.mode) &&
         Objects.equals(this.trackingId, clientQualificationsCheckEligibilityRequestBody.trackingId) &&
         Objects.equals(this.scenario, clientQualificationsCheckEligibilityRequestBody.scenario) &&
         Objects.equals(this.options, clientQualificationsCheckEligibilityRequestBody.options) &&
@@ -360,7 +287,7 @@ public class ClientQualificationsCheckEligibilityRequestBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customer, order, mode, trackingId, scenario, options, metadata);
+    return Objects.hash(customer, order, trackingId, scenario, options, metadata);
   }
 
   @Override
@@ -369,7 +296,6 @@ public class ClientQualificationsCheckEligibilityRequestBody {
     sb.append("class ClientQualificationsCheckEligibilityRequestBody {\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
-    sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
     sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
@@ -398,7 +324,6 @@ public class ClientQualificationsCheckEligibilityRequestBody {
     openapiFields = new HashSet<String>();
     openapiFields.add("customer");
     openapiFields.add("order");
-    openapiFields.add("mode");
     openapiFields.add("tracking_id");
     openapiFields.add("scenario");
     openapiFields.add("options");
@@ -436,22 +361,6 @@ public class ClientQualificationsCheckEligibilityRequestBody {
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         Order.validateJsonElement(jsonObj.get("order"));
-      }
-      if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("mode");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ModeEnum.fromValue(objectElement.getAsString());
-        } else {
-          throw new IllegalArgumentException("Expected the field `mode` to be not null");
-        }
-      } catch (IllegalArgumentException e) {
-        if(jsonObj.get("mode") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `mode` to be a valid element of ModeEnum enum got `%s` instead", jsonObj.get("mode").toString()));
-        }
       }
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));

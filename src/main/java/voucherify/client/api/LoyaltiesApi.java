@@ -226,144 +226,16 @@ public class LoyaltiesApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteEarningRule
-     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param earningRuleId A unique earning rule ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteEarningRuleCall(String campaignId, String earningRuleId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/loyalties/{campaignId}/earning-rules/{earningRuleId}"
-            .replace("{" + "campaignId" + "}", localVarApiClient.escapeString(campaignId.toString()))
-            .replace("{" + "earningRuleId" + "}", localVarApiClient.escapeString(earningRuleId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteEarningRuleValidateBeforeCall(String campaignId, String earningRuleId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignId' is set
-        if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling deleteEarningRule(Async)");
-        }
-
-        // verify the required parameter 'earningRuleId' is set
-        if (earningRuleId == null) {
-            throw new ApiException("Missing the required parameter 'earningRuleId' when calling deleteEarningRule(Async)");
-        }
-
-        return deleteEarningRuleCall(campaignId, earningRuleId, _callback);
-
-    }
-
-    /**
-     * Delete Earning Rule
-     * This method deletes an earning rule for a specific loyalty campaign.
-     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param earningRuleId A unique earning rule ID. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteEarningRule(String campaignId, String earningRuleId) throws ApiException {
-        deleteEarningRuleWithHttpInfo(campaignId, earningRuleId);
-    }
-
-    /**
-     * Delete Earning Rule
-     * This method deletes an earning rule for a specific loyalty campaign.
-     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param earningRuleId A unique earning rule ID. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteEarningRuleWithHttpInfo(String campaignId, String earningRuleId) throws ApiException {
-        okhttp3.Call localVarCall = deleteEarningRuleValidateBeforeCall(campaignId, earningRuleId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Delete Earning Rule (asynchronously)
-     * This method deletes an earning rule for a specific loyalty campaign.
-     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param earningRuleId A unique earning rule ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteEarningRuleAsync(String campaignId, String earningRuleId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteEarningRuleValidateBeforeCall(campaignId, earningRuleId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for deleteLoyaltyProgram
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. Going forward, the user will be able to create the next campaign with the same name. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the id of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the ID of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteLoyaltyProgramCall(String campaignId, Boolean force, final ApiCallback _callback) throws ApiException {
@@ -428,15 +300,15 @@ public class LoyaltiesApi {
 
     /**
      * Delete Loyalty Campaign
-     * This method permanently deletes a loyalty campaign and all related loyalty cards. This action cannot be undone. Also, it immediately removes any redemptions on loyalty cards.
+     * Deletes a loyalty campaign and all related loyalty cards. This action cannot be undone. Also, it immediately removes any redemptions on loyalty cards.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to [the bin](ref:list-bin-entries).
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. Going forward, the user will be able to create the next campaign with the same name. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. (optional)
      * @return LoyaltiesDeleteResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the id of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the ID of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
      </table>
      */
     public LoyaltiesDeleteResponseBody deleteLoyaltyProgram(String campaignId, Boolean force) throws ApiException {
@@ -446,15 +318,15 @@ public class LoyaltiesApi {
 
     /**
      * Delete Loyalty Campaign
-     * This method permanently deletes a loyalty campaign and all related loyalty cards. This action cannot be undone. Also, it immediately removes any redemptions on loyalty cards.
+     * Deletes a loyalty campaign and all related loyalty cards. This action cannot be undone. Also, it immediately removes any redemptions on loyalty cards.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to [the bin](ref:list-bin-entries).
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. Going forward, the user will be able to create the next campaign with the same name. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. (optional)
      * @return ApiResponse&lt;LoyaltiesDeleteResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the id of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the ID of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LoyaltiesDeleteResponseBody> deleteLoyaltyProgramWithHttpInfo(String campaignId, Boolean force) throws ApiException {
@@ -465,16 +337,16 @@ public class LoyaltiesApi {
 
     /**
      * Delete Loyalty Campaign (asynchronously)
-     * This method permanently deletes a loyalty campaign and all related loyalty cards. This action cannot be undone. Also, it immediately removes any redemptions on loyalty cards.
+     * Deletes a loyalty campaign and all related loyalty cards. This action cannot be undone. Also, it immediately removes any redemptions on loyalty cards.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to [the bin](ref:list-bin-entries).
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
-     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. Going forward, the user will be able to create the next campaign with the same name. (optional)
+     * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns the id of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Returns the ID of the scheduled asynchronous action, informing you that your request has been accepted and the loyalty campaign will be deleted from the repository asynchronously. To check the deletion status and result, copy the &#x60;async_action_id&#x60; from the response and pass it using &lt;!-- [Get Async Action](OpenAPI.json/paths/~1async-actions~1{asyncActionId}/get) --&gt;[Get Async Action](ref:get-async-action) endpoint. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteLoyaltyProgramAsync(String campaignId, Boolean force, final ApiCallback<LoyaltiesDeleteResponseBody> _callback) throws ApiException {
@@ -1812,8 +1684,8 @@ public class LoyaltiesApi {
     /**
      * Build call for listLoyaltyCardTransactions
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1891,8 +1763,8 @@ public class LoyaltiesApi {
      * List Loyalty Card Transactions
      * Retrieve transaction data related to point movements for a specific loyalty card.
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return LoyaltiesMembersTransactionsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1910,8 +1782,8 @@ public class LoyaltiesApi {
      * List Loyalty Card Transactions
      * Retrieve transaction data related to point movements for a specific loyalty card.
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return ApiResponse&lt;LoyaltiesMembersTransactionsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1930,8 +1802,8 @@ public class LoyaltiesApi {
      * List Loyalty Card Transactions (asynchronously)
      * Retrieve transaction data related to point movements for a specific loyalty card.
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1952,8 +1824,8 @@ public class LoyaltiesApi {
      * Build call for listLoyaltyCardTransactions1
      * @param campaignId A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to return. (required)
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2038,8 +1910,8 @@ public class LoyaltiesApi {
      * Retrieve transaction data related to point movements for a specific loyalty card.
      * @param campaignId A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to return. (required)
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return LoyaltiesMembersTransactionsListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2058,8 +1930,8 @@ public class LoyaltiesApi {
      * Retrieve transaction data related to point movements for a specific loyalty card.
      * @param campaignId A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to return. (required)
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return ApiResponse&lt;LoyaltiesMembersTransactionsListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2079,8 +1951,8 @@ public class LoyaltiesApi {
      * Retrieve transaction data related to point movements for a specific loyalty card.
      * @param campaignId A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to return. (required)
      * @param memberId A unique code identifying the loyalty card that you are looking to retrieve transaction data for. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2101,8 +1973,8 @@ public class LoyaltiesApi {
      * Build call for listLoyaltyTierEarningRules
      * @param campaignId Unique campaign ID or name. (required)
      * @param loyaltyTierId Unique loyalty tier ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2187,8 +2059,8 @@ public class LoyaltiesApi {
      * Retrieve available earning rules for a given tier and the calculation method for earning points.
      * @param campaignId Unique campaign ID or name. (required)
      * @param loyaltyTierId Unique loyalty tier ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return LoyaltiesTiersEarningRulesListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2207,8 +2079,8 @@ public class LoyaltiesApi {
      * Retrieve available earning rules for a given tier and the calculation method for earning points.
      * @param campaignId Unique campaign ID or name. (required)
      * @param loyaltyTierId Unique loyalty tier ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return ApiResponse&lt;LoyaltiesTiersEarningRulesListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2228,8 +2100,8 @@ public class LoyaltiesApi {
      * Retrieve available earning rules for a given tier and the calculation method for earning points.
      * @param campaignId Unique campaign ID or name. (required)
      * @param loyaltyTierId Unique loyalty tier ID. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2382,7 +2254,7 @@ public class LoyaltiesApi {
     /**
      * Build call for listLoyaltyTiers
      * @param campaignId Unique loyalty campaign ID or name. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2461,7 +2333,7 @@ public class LoyaltiesApi {
      * List Loyalty Tiers
      * Retrieve a list of loyalty tiers which were added to the loyalty program.
      * @param campaignId Unique loyalty campaign ID or name. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. (optional)
      * @return LoyaltiesTiersListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2480,7 +2352,7 @@ public class LoyaltiesApi {
      * List Loyalty Tiers
      * Retrieve a list of loyalty tiers which were added to the loyalty program.
      * @param campaignId Unique loyalty campaign ID or name. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. (optional)
      * @return ApiResponse&lt;LoyaltiesTiersListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2500,7 +2372,7 @@ public class LoyaltiesApi {
      * List Loyalty Tiers (asynchronously)
      * Retrieve a list of loyalty tiers which were added to the loyalty program.
      * @param campaignId Unique loyalty campaign ID or name. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
      * @param order Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2776,8 +2648,8 @@ public class LoyaltiesApi {
      * Build call for listPointsExpiration
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
      * @param memberId Loyalty card code. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2862,8 +2734,8 @@ public class LoyaltiesApi {
      * Retrieve loyalty point expiration buckets for a given loyalty card. Expired point buckets are not returned in this endpoint. You can use the [Exports API](ref:create-export) to retrieve a list of both &#x60;ACTIVE&#x60; and &#x60;EXPIRED&#x60; point buckets.
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
      * @param memberId Loyalty card code. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return LoyaltiesMembersPointsExpirationListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2882,8 +2754,8 @@ public class LoyaltiesApi {
      * Retrieve loyalty point expiration buckets for a given loyalty card. Expired point buckets are not returned in this endpoint. You can use the [Exports API](ref:create-export) to retrieve a list of both &#x60;ACTIVE&#x60; and &#x60;EXPIRED&#x60; point buckets.
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
      * @param memberId Loyalty card code. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @return ApiResponse&lt;LoyaltiesMembersPointsExpirationListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2903,8 +2775,8 @@ public class LoyaltiesApi {
      * Retrieve loyalty point expiration buckets for a given loyalty card. Expired point buckets are not returned in this endpoint. You can use the [Exports API](ref:create-export) to retrieve a list of both &#x60;ACTIVE&#x60; and &#x60;EXPIRED&#x60; point buckets.
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
      * @param memberId Loyalty card code. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3397,7 +3269,7 @@ public class LoyaltiesApi {
 
     /**
      * Add or Remove Loyalty Card Balance
-     * This method gives adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.   &lt;!-- theme: info --&gt; &gt; 📘 Alternative endpoint &gt; This endpoint is an alternative to this &lt;!-- [endpoint](OpenAPI.json/paths/~1loyalties~1{campaignId}~1members~1{memberId}~1balance) --&gt;[endpoint](ref:update-loyalty-card-balance-1). The URL was re-designed to allow you to add or remove loyalty card balance without having to provide the &#x60;campaignId&#x60; as a path parameter.
+     * This method gives adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.   &lt;!-- theme: info --&gt;   &gt;🚧 Async Action &gt;  &gt; This is an async action. If you want to perform several add or remove loyalty card balance actions in a short time and their order matters, set up sufficient time-out between the calls.   &gt; 📘 Alternative endpoint &gt; This endpoint is an alternative to this &lt;!-- [endpoint](OpenAPI.json/paths/~1loyalties~1{campaignId}~1members~1{memberId}~1balance) --&gt;[endpoint](ref:update-loyalty-card-balance-1). The URL was re-designed to allow you to add or remove loyalty card balance without having to provide the &#x60;campaignId&#x60; as a path parameter.
      * @param memberId Unique loyalty card assigned to a particular customer. (required)
      * @param loyaltiesMembersBalanceUpdateRequestBody Specify the point adjustment along with the expiration mechanism. (optional)
      * @return LoyaltiesMembersBalanceUpdateResponseBody
@@ -3415,7 +3287,7 @@ public class LoyaltiesApi {
 
     /**
      * Add or Remove Loyalty Card Balance
-     * This method gives adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.   &lt;!-- theme: info --&gt; &gt; 📘 Alternative endpoint &gt; This endpoint is an alternative to this &lt;!-- [endpoint](OpenAPI.json/paths/~1loyalties~1{campaignId}~1members~1{memberId}~1balance) --&gt;[endpoint](ref:update-loyalty-card-balance-1). The URL was re-designed to allow you to add or remove loyalty card balance without having to provide the &#x60;campaignId&#x60; as a path parameter.
+     * This method gives adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.   &lt;!-- theme: info --&gt;   &gt;🚧 Async Action &gt;  &gt; This is an async action. If you want to perform several add or remove loyalty card balance actions in a short time and their order matters, set up sufficient time-out between the calls.   &gt; 📘 Alternative endpoint &gt; This endpoint is an alternative to this &lt;!-- [endpoint](OpenAPI.json/paths/~1loyalties~1{campaignId}~1members~1{memberId}~1balance) --&gt;[endpoint](ref:update-loyalty-card-balance-1). The URL was re-designed to allow you to add or remove loyalty card balance without having to provide the &#x60;campaignId&#x60; as a path parameter.
      * @param memberId Unique loyalty card assigned to a particular customer. (required)
      * @param loyaltiesMembersBalanceUpdateRequestBody Specify the point adjustment along with the expiration mechanism. (optional)
      * @return ApiResponse&lt;LoyaltiesMembersBalanceUpdateResponseBody&gt;
@@ -3434,7 +3306,7 @@ public class LoyaltiesApi {
 
     /**
      * Add or Remove Loyalty Card Balance (asynchronously)
-     * This method gives adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.   &lt;!-- theme: info --&gt; &gt; 📘 Alternative endpoint &gt; This endpoint is an alternative to this &lt;!-- [endpoint](OpenAPI.json/paths/~1loyalties~1{campaignId}~1members~1{memberId}~1balance) --&gt;[endpoint](ref:update-loyalty-card-balance-1). The URL was re-designed to allow you to add or remove loyalty card balance without having to provide the &#x60;campaignId&#x60; as a path parameter.
+     * This method gives adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.   &lt;!-- theme: info --&gt;   &gt;🚧 Async Action &gt;  &gt; This is an async action. If you want to perform several add or remove loyalty card balance actions in a short time and their order matters, set up sufficient time-out between the calls.   &gt; 📘 Alternative endpoint &gt; This endpoint is an alternative to this &lt;!-- [endpoint](OpenAPI.json/paths/~1loyalties~1{campaignId}~1members~1{memberId}~1balance) --&gt;[endpoint](ref:update-loyalty-card-balance-1). The URL was re-designed to allow you to add or remove loyalty card balance without having to provide the &#x60;campaignId&#x60; as a path parameter.
      * @param memberId Unique loyalty card assigned to a particular customer. (required)
      * @param loyaltiesMembersBalanceUpdateRequestBody Specify the point adjustment along with the expiration mechanism. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -3532,7 +3404,7 @@ public class LoyaltiesApi {
 
     /**
      * Add or Remove Loyalty Card Balance
-     * This method adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.
+     * This method adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.    &gt;🚧 Async Action &gt;  &gt; This is an async action. If you want to perform several add or remove loyalty card balance actions in a short time and their order matters, set up sufficient time-out between the calls.
      * @param campaignId Unique campaign ID. (required)
      * @param memberId A code that identifies the loyalty card. (required)
      * @param loyaltiesMembersBalanceUpdateRequestBody Specify the point adjustment along with the expiration mechanism. (optional)
@@ -3551,7 +3423,7 @@ public class LoyaltiesApi {
 
     /**
      * Add or Remove Loyalty Card Balance
-     * This method adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.
+     * This method adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.    &gt;🚧 Async Action &gt;  &gt; This is an async action. If you want to perform several add or remove loyalty card balance actions in a short time and their order matters, set up sufficient time-out between the calls.
      * @param campaignId Unique campaign ID. (required)
      * @param memberId A code that identifies the loyalty card. (required)
      * @param loyaltiesMembersBalanceUpdateRequestBody Specify the point adjustment along with the expiration mechanism. (optional)
@@ -3571,7 +3443,7 @@ public class LoyaltiesApi {
 
     /**
      * Add or Remove Loyalty Card Balance (asynchronously)
-     * This method adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.
+     * This method adds or removes balance to an existing loyalty card. The removal of points will consume the points that expire the soonest.    &gt;🚧 Async Action &gt;  &gt; This is an async action. If you want to perform several add or remove loyalty card balance actions in a short time and their order matters, set up sufficient time-out between the calls.
      * @param campaignId Unique campaign ID. (required)
      * @param memberId A code that identifies the loyalty card. (required)
      * @param loyaltiesMembersBalanceUpdateRequestBody Specify the point adjustment along with the expiration mechanism. (optional)

@@ -13,8 +13,8 @@ Defines loyalty tier expiration date.
 |**tierId** | **String** | Unique tier ID, assigned by Voucherify. |  |
 |**startDate** | **String** | Activation timestamp defines when the loyalty tier starts to be active in ISO 8601 format. Loyalty tier is inactive before this date. |  [optional] |
 |**expirationDate** | **String** | Expiration timestamp defines when the loyalty tier expires in ISO 8601 format. Loyalty tier is inactive after this date. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the loyalty tier was created in ISO 8601 format. |  |
-|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the loyalty tier was updated in ISO 8601 format. |  [optional] |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the loyalty tier was created. The value is shown in the ISO 8601 format. |  |
+|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the loyalty tier was updated. The value is shown in the ISO 8601 format. |  [optional] |
 
 
 

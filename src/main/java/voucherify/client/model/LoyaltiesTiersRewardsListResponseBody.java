@@ -81,7 +81,7 @@ public class LoyaltiesTiersRewardsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about loyalty tier rewards in a dictionary.
+   * The type of the object represented by JSON. This object stores information about loyalty tier rewards in a dictionary.
    * @return _object
   **/
   @javax.annotation.Nonnull

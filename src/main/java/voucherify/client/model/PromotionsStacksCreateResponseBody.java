@@ -79,7 +79,7 @@ public class PromotionsStacksCreateResponseBody {
   private String campaignId;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -208,7 +208,7 @@ public class PromotionsStacksCreateResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the promotion stack was created in ISO 8601 format.
+   * Timestamp representing the date and time when the promotion stack was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -250,7 +250,7 @@ public class PromotionsStacksCreateResponseBody {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull

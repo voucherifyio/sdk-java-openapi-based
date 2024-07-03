@@ -186,7 +186,7 @@ public class OrdersGetResponseBody {
   private String referrerId;
 
   /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -298,7 +298,7 @@ public class OrdersGetResponseBody {
   }
 
    /**
-   * Timestamp representing the date and time when the order was created in ISO 8601 format.
+   * Timestamp representing the date and time when the order was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -642,7 +642,7 @@ public class OrdersGetResponseBody {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -938,14 +938,6 @@ public class OrdersGetResponseBody {
         if(jsonObj.get("object") != null) {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
-      }
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        CustomerId.validateJsonElement(jsonObj.get("customer"));
-      }
-      // validate the optional field `referrer`
-      if (jsonObj.get("referrer") != null && !jsonObj.get("referrer").isJsonNull()) {
-        ReferrerId.validateJsonElement(jsonObj.get("referrer"));
       }
   }
 

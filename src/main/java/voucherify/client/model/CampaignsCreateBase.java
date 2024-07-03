@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import voucherify.client.model.CampaignBaseValidityTimeframe;
+import voucherify.client.model.ValidityHours;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -143,9 +144,70 @@ public class CampaignsCreateBase {
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
   private CampaignBaseValidityTimeframe validityTimeframe;
 
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
-  private List<Integer> validityDayOfWeek;
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
 
   public static final String SERIALIZED_NAME_ACTIVITY_DURATION_AFTER_PUBLISHING = "activity_duration_after_publishing";
   @SerializedName(SERIALIZED_NAME_ACTIVITY_DURATION_AFTER_PUBLISHING)
@@ -380,13 +442,13 @@ public class CampaignsCreateBase {
   }
 
 
-  public CampaignsCreateBase validityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public CampaignsCreateBase validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     
     this.validityDayOfWeek = validityDayOfWeek;
     return this;
   }
 
-  public CampaignsCreateBase addValidityDayOfWeekItem(Integer validityDayOfWeekItem) {
+  public CampaignsCreateBase addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
     if (this.validityDayOfWeek == null) {
       this.validityDayOfWeek = new ArrayList<>();
     }
@@ -395,17 +457,38 @@ public class CampaignsCreateBase {
   }
 
    /**
-   * Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60;  Sunday   - &#x60;1&#x60;  Monday   - &#x60;2&#x60;  Tuesday   - &#x60;3&#x60;  Wednesday   - &#x60;4&#x60;  Thursday   - &#x60;5&#x60;  Friday   - &#x60;6&#x60;  Saturday  
+   * Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
-  public List<Integer> getValidityDayOfWeek() {
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
     return validityDayOfWeek;
   }
 
 
-  public void setValidityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public CampaignsCreateBase validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
   }
 
 
@@ -543,6 +626,7 @@ public class CampaignsCreateBase {
         Objects.equals(this.expirationDate, campaignsCreateBase.expirationDate) &&
         Objects.equals(this.validityTimeframe, campaignsCreateBase.validityTimeframe) &&
         Objects.equals(this.validityDayOfWeek, campaignsCreateBase.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, campaignsCreateBase.validityHours) &&
         Objects.equals(this.activityDurationAfterPublishing, campaignsCreateBase.activityDurationAfterPublishing) &&
         Objects.equals(this.validationRules, campaignsCreateBase.validationRules) &&
         Objects.equals(this.categoryId, campaignsCreateBase.categoryId) &&
@@ -552,7 +636,7 @@ public class CampaignsCreateBase {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, type, joinOnce, autoJoin, useVoucherMetadataSchema, vouchersCount, startDate, expirationDate, validityTimeframe, validityDayOfWeek, activityDurationAfterPublishing, validationRules, categoryId, category, metadata);
+    return Objects.hash(name, description, type, joinOnce, autoJoin, useVoucherMetadataSchema, vouchersCount, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, validationRules, categoryId, category, metadata);
   }
 
   @Override
@@ -570,6 +654,7 @@ public class CampaignsCreateBase {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
     sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
     sb.append("    activityDurationAfterPublishing: ").append(toIndentedString(activityDurationAfterPublishing)).append("\n");
     sb.append("    validationRules: ").append(toIndentedString(validationRules)).append("\n");
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
@@ -608,6 +693,7 @@ public class CampaignsCreateBase {
     openapiFields.add("expiration_date");
     openapiFields.add("validity_timeframe");
     openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
     openapiFields.add("activity_duration_after_publishing");
     openapiFields.add("validation_rules");
     openapiFields.add("category_id");
@@ -668,6 +754,10 @@ public class CampaignsCreateBase {
       // ensure the optional json data is an array if present
       if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
       if ((jsonObj.get("activity_duration_after_publishing") != null && !jsonObj.get("activity_duration_after_publishing").isJsonNull()) && !jsonObj.get("activity_duration_after_publishing").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `activity_duration_after_publishing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("activity_duration_after_publishing").toString()));

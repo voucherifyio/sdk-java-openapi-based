@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import voucherify.client.model.CustomersActivitiesListResponseBody;
 import voucherify.client.model.CustomersCreateRequestBody;
 import voucherify.client.model.CustomersCreateResponseBody;
 import voucherify.client.model.CustomersGetResponseBody;
@@ -43,8 +42,6 @@ import voucherify.client.model.CustomersUpdateRequestBody;
 import voucherify.client.model.CustomersUpdateResponseBody;
 import java.io.File;
 import java.time.OffsetDateTime;
-import voucherify.client.model.ParameterCampaignType;
-import voucherify.client.model.ParameterOrder;
 import voucherify.client.model.ParameterOrderListCustomers;
 
 import java.lang.reflect.Type;
@@ -278,7 +275,7 @@ public class CustomersApi {
 
     /**
      * Delete Customer Permanently
-     * The organization user can remove consumer data permanently from the Voucherify system by using this API method. It d​eletes all customer data and connected resources. It makes the customer profile forgotten by Voucherify.
+     * The organization user can remove consumer data permanently from the Voucherify system by using this API method. It deletes all customer data and connected resources. It makes the customer profile forgotten by Voucherify.
      * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. (required)
      * @return CustomersPermanentDeletionCreateResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -295,7 +292,7 @@ public class CustomersApi {
 
     /**
      * Delete Customer Permanently
-     * The organization user can remove consumer data permanently from the Voucherify system by using this API method. It d​eletes all customer data and connected resources. It makes the customer profile forgotten by Voucherify.
+     * The organization user can remove consumer data permanently from the Voucherify system by using this API method. It deletes all customer data and connected resources. It makes the customer profile forgotten by Voucherify.
      * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. (required)
      * @return ApiResponse&lt;CustomersPermanentDeletionCreateResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -313,7 +310,7 @@ public class CustomersApi {
 
     /**
      * Delete Customer Permanently (asynchronously)
-     * The organization user can remove consumer data permanently from the Voucherify system by using this API method. It d​eletes all customer data and connected resources. It makes the customer profile forgotten by Voucherify.
+     * The organization user can remove consumer data permanently from the Voucherify system by using this API method. It deletes all customer data and connected resources. It makes the customer profile forgotten by Voucherify.
      * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -695,201 +692,6 @@ public class CustomersApi {
         return localVarCall;
     }
     /**
-     * Build call for listCustomerActivities
-     * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or source ID of the customer who performed the activities. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. &#x60;starting_after&#x60; is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the activity object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list. (optional)
-     * @param startingAfterId By applying this filter value, you will get events starting after an event with the given ID. (optional)
-     * @param campaignType Through this parameter you can control a type of campaign by which Voucherify will filter related customer&#39;s activity. API will return only records related to that given type. Allowed values: DISCOUNT_COUPONS, REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM (optional)
-     * @param campaignId By applying this parameter you request only events related to specific campaign identified by its ID. (optional)
-     * @param productId By applying this parameter you request only events related to specific product identified by its ID. (optional)
-     * @param startDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a dictionary with customer activities. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustomerActivitiesCall(String customerId, Integer limit, ParameterOrder order, OffsetDateTime startingAfter, String startingAfterId, ParameterCampaignType campaignType, String campaignId, String productId, OffsetDateTime startDate, OffsetDateTime endDate, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/customers/{customerId}/activities"
-            .replace("{" + "customerId" + "}", localVarApiClient.escapeString(customerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (order != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order", order));
-        }
-
-        if (startingAfter != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("starting_after", startingAfter));
-        }
-
-        if (startingAfterId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("starting_after_id", startingAfterId));
-        }
-
-        if (campaignType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaign_type", campaignType));
-        }
-
-        if (campaignId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaign_id", campaignId));
-        }
-
-        if (productId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("product_id", productId));
-        }
-
-        if (startDate != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start_date", startDate));
-        }
-
-        if (endDate != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("end_date", endDate));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCustomerActivitiesValidateBeforeCall(String customerId, Integer limit, ParameterOrder order, OffsetDateTime startingAfter, String startingAfterId, ParameterCampaignType campaignType, String campaignId, String productId, OffsetDateTime startDate, OffsetDateTime endDate, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'customerId' is set
-        if (customerId == null) {
-            throw new ApiException("Missing the required parameter 'customerId' when calling listCustomerActivities(Async)");
-        }
-
-        return listCustomerActivitiesCall(customerId, limit, order, startingAfter, startingAfterId, campaignType, campaignId, productId, startDate, endDate, _callback);
-
-    }
-
-    /**
-     * List Customer Activities
-     * Retrieve customer activities.
-     * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or source ID of the customer who performed the activities. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. &#x60;starting_after&#x60; is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the activity object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list. (optional)
-     * @param startingAfterId By applying this filter value, you will get events starting after an event with the given ID. (optional)
-     * @param campaignType Through this parameter you can control a type of campaign by which Voucherify will filter related customer&#39;s activity. API will return only records related to that given type. Allowed values: DISCOUNT_COUPONS, REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM (optional)
-     * @param campaignId By applying this parameter you request only events related to specific campaign identified by its ID. (optional)
-     * @param productId By applying this parameter you request only events related to specific product identified by its ID. (optional)
-     * @param startDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @return CustomersActivitiesListResponseBody
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a dictionary with customer activities. </td><td>  -  </td></tr>
-     </table>
-     */
-    public CustomersActivitiesListResponseBody listCustomerActivities(String customerId, Integer limit, ParameterOrder order, OffsetDateTime startingAfter, String startingAfterId, ParameterCampaignType campaignType, String campaignId, String productId, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-        ApiResponse<CustomersActivitiesListResponseBody> localVarResp = listCustomerActivitiesWithHttpInfo(customerId, limit, order, startingAfter, startingAfterId, campaignType, campaignId, productId, startDate, endDate);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List Customer Activities
-     * Retrieve customer activities.
-     * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or source ID of the customer who performed the activities. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. &#x60;starting_after&#x60; is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the activity object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list. (optional)
-     * @param startingAfterId By applying this filter value, you will get events starting after an event with the given ID. (optional)
-     * @param campaignType Through this parameter you can control a type of campaign by which Voucherify will filter related customer&#39;s activity. API will return only records related to that given type. Allowed values: DISCOUNT_COUPONS, REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM (optional)
-     * @param campaignId By applying this parameter you request only events related to specific campaign identified by its ID. (optional)
-     * @param productId By applying this parameter you request only events related to specific product identified by its ID. (optional)
-     * @param startDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @return ApiResponse&lt;CustomersActivitiesListResponseBody&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a dictionary with customer activities. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CustomersActivitiesListResponseBody> listCustomerActivitiesWithHttpInfo(String customerId, Integer limit, ParameterOrder order, OffsetDateTime startingAfter, String startingAfterId, ParameterCampaignType campaignType, String campaignId, String productId, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-        okhttp3.Call localVarCall = listCustomerActivitiesValidateBeforeCall(customerId, limit, order, startingAfter, startingAfterId, campaignType, campaignId, productId, startDate, endDate, null);
-        Type localVarReturnType = new TypeToken<CustomersActivitiesListResponseBody>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List Customer Activities (asynchronously)
-     * Retrieve customer activities.
-     * @param customerId A Voucherify customer&#39;s &#x60;id&#x60; or source ID of the customer who performed the activities. (required)
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param order Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. &#x60;starting_after&#x60; is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the activity object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list. (optional)
-     * @param startingAfterId By applying this filter value, you will get events starting after an event with the given ID. (optional)
-     * @param campaignType Through this parameter you can control a type of campaign by which Voucherify will filter related customer&#39;s activity. API will return only records related to that given type. Allowed values: DISCOUNT_COUPONS, REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM (optional)
-     * @param campaignId By applying this parameter you request only events related to specific campaign identified by its ID. (optional)
-     * @param productId By applying this parameter you request only events related to specific product identified by its ID. (optional)
-     * @param startDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @param endDate Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Returns a dictionary with customer activities. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listCustomerActivitiesAsync(String customerId, Integer limit, ParameterOrder order, OffsetDateTime startingAfter, String startingAfterId, ParameterCampaignType campaignType, String campaignId, String productId, OffsetDateTime startDate, OffsetDateTime endDate, final ApiCallback<CustomersActivitiesListResponseBody> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listCustomerActivitiesValidateBeforeCall(customerId, limit, order, startingAfter, startingAfterId, campaignType, campaignId, productId, startDate, endDate, _callback);
-        Type localVarReturnType = new TypeToken<CustomersActivitiesListResponseBody>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for listCustomerSegments
      * @param customerId Unique identifier of a customer represented by an internal customer ID or customer source ID. (required)
      * @param _callback Callback for upload/download progress
@@ -1014,8 +816,8 @@ public class CustomersApi {
     }
     /**
      * Build call for listCustomers
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param email Limit the customers to the ones that have this specific email address. (optional)
      * @param city Limit the customers to the ones that are located in the specified city. (optional)
      * @param name Filter customers by the name property. (optional)
@@ -1025,7 +827,7 @@ public class CustomersApi {
      * @param updatedAtBefore Filter customers by date customer was updated last time. (optional)
      * @param updatedAtAfter Filter customers by date customer was updated last time. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
+     * @param startingAfter A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1136,8 +938,8 @@ public class CustomersApi {
     /**
      * List Customers
      * Returns a list of customers.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param email Limit the customers to the ones that have this specific email address. (optional)
      * @param city Limit the customers to the ones that are located in the specified city. (optional)
      * @param name Filter customers by the name property. (optional)
@@ -1147,7 +949,7 @@ public class CustomersApi {
      * @param updatedAtBefore Filter customers by date customer was updated last time. (optional)
      * @param updatedAtAfter Filter customers by date customer was updated last time. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
+     * @param startingAfter A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
      * @return CustomersListResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1164,8 +966,8 @@ public class CustomersApi {
     /**
      * List Customers
      * Returns a list of customers.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param email Limit the customers to the ones that have this specific email address. (optional)
      * @param city Limit the customers to the ones that are located in the specified city. (optional)
      * @param name Filter customers by the name property. (optional)
@@ -1175,7 +977,7 @@ public class CustomersApi {
      * @param updatedAtBefore Filter customers by date customer was updated last time. (optional)
      * @param updatedAtAfter Filter customers by date customer was updated last time. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
+     * @param startingAfter A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
      * @return ApiResponse&lt;CustomersListResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1193,8 +995,8 @@ public class CustomersApi {
     /**
      * List Customers (asynchronously)
      * Returns a list of customers.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items. (optional)
-     * @param page Which page of results to return. (optional)
+     * @param limit Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. (optional)
+     * @param page Which page of results to return. The lowest value is &#x60;1&#x60;. (optional)
      * @param email Limit the customers to the ones that have this specific email address. (optional)
      * @param city Limit the customers to the ones that are located in the specified city. (optional)
      * @param name Filter customers by the name property. (optional)
@@ -1204,7 +1006,7 @@ public class CustomersApi {
      * @param updatedAtBefore Filter customers by date customer was updated last time. (optional)
      * @param updatedAtAfter Filter customers by date customer was updated last time. (optional)
      * @param order This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. (optional)
-     * @param startingAfter A cursor for use in pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
+     * @param startingAfter A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1469,129 +1271,6 @@ public class CustomersApi {
     public okhttp3.Call updateCustomersConsentsAsync(String customerId, Object body, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateCustomersConsentsValidateBeforeCall(customerId, body, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateCustomersConsentsClientSide
-     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
-     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateCustomersConsentsClientSideCall(String customerId, Object body, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = body;
-
-        // create path and map variables
-        String localVarPath = "/client/v1/customers/{customerId}/consents"
-            .replace("{" + "customerId" + "}", localVarApiClient.escapeString(customerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "X-Client-Application-Id", "X-Client-Token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomersConsentsClientSideValidateBeforeCall(String customerId, Object body, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'customerId' is set
-        if (customerId == null) {
-            throw new ApiException("Missing the required parameter 'customerId' when calling updateCustomersConsentsClientSide(Async)");
-        }
-
-        return updateCustomersConsentsClientSideCall(customerId, body, _callback);
-
-    }
-
-    /**
-     * Update Customer&#39;s consents (client-side)
-     * Update marketing permissions for the specified customer.
-     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
-     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
-     </table>
-     */
-    public void updateCustomersConsentsClientSide(String customerId, Object body) throws ApiException {
-        updateCustomersConsentsClientSideWithHttpInfo(customerId, body);
-    }
-
-    /**
-     * Update Customer&#39;s consents (client-side)
-     * Update marketing permissions for the specified customer.
-     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
-     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> updateCustomersConsentsClientSideWithHttpInfo(String customerId, Object body) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomersConsentsClientSideValidateBeforeCall(customerId, body, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Update Customer&#39;s consents (client-side) (asynchronously)
-     * Update marketing permissions for the specified customer.
-     * @param customerId A Voucherify customer identifier or &#x60;source_id&#x60; (required)
-     * @param body Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Returns no content if the consents were updated successfully. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateCustomersConsentsClientSideAsync(String customerId, Object body, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateCustomersConsentsClientSideValidateBeforeCall(customerId, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

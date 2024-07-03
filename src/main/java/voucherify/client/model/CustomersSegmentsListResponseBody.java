@@ -81,7 +81,7 @@ public class CustomersSegmentsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about customer segments.
+   * The type of the object represented by JSON. This object stores information about customer segments.
    * @return _object
   **/
   @javax.annotation.Nonnull

@@ -37,6 +37,7 @@ import voucherify.client.model.Gift;
 import voucherify.client.model.LoyaltyTiersExpirationAll;
 import voucherify.client.model.PropertiesForLoyaltyCampaignOptions;
 import voucherify.client.model.ReferralProgram;
+import voucherify.client.model.ValidityHours;
 
 
 

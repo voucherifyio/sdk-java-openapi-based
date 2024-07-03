@@ -30,6 +30,7 @@ import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.ValidationsRedeemableApplicable;
 import voucherify.client.model.ValidationsRedeemableInapplicable;
 import voucherify.client.model.ValidationsRedeemableSkipped;
+import voucherify.client.model.ValidationsRedeemableSkippedResult;
 
 
 

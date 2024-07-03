@@ -20,7 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import voucherify.client.model.Category;
+import voucherify.client.model.ValidationsRedeemableSkippedResult;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -158,7 +162,15 @@ public class ValidationsRedeemableSkipped {
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
-  private Object result;
+  private ValidationsRedeemableSkippedResult result;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<Category> categories;
 
   public ValidationsRedeemableSkipped() {
   }
@@ -173,7 +185,7 @@ public class ValidationsRedeemableSkipped {
    * Indicates whether the redeemable can be applied or not applied based on the validation rules.
    * @return status
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public StatusEnum getStatus() {
     return status;
   }
@@ -194,7 +206,7 @@ public class ValidationsRedeemableSkipped {
    * Redeemable ID, i.e. the voucher code.
    * @return id
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -215,7 +227,7 @@ public class ValidationsRedeemableSkipped {
    * Redeemable&#39;s object type.
    * @return _object
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ObjectEnum getObject() {
     return _object;
   }
@@ -226,7 +238,7 @@ public class ValidationsRedeemableSkipped {
   }
 
 
-  public ValidationsRedeemableSkipped result(Object result) {
+  public ValidationsRedeemableSkipped result(ValidationsRedeemableSkippedResult result) {
     
     this.result = result;
     return this;
@@ -236,14 +248,64 @@ public class ValidationsRedeemableSkipped {
    * Get result
    * @return result
   **/
-  @javax.annotation.Nullable
-  public Object getResult() {
+  @javax.annotation.Nonnull
+  public ValidationsRedeemableSkippedResult getResult() {
     return result;
   }
 
 
-  public void setResult(Object result) {
+  public void setResult(ValidationsRedeemableSkippedResult result) {
     this.result = result;
+  }
+
+
+  public ValidationsRedeemableSkipped metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * The metadata object stores all custom attributes in the form of key/value pairs assigned to the redeemable.
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public ValidationsRedeemableSkipped categories(List<Category> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public ValidationsRedeemableSkipped addCategoriesItem(Category categoriesItem) {
+    if (this.categories == null) {
+      this.categories = new ArrayList<>();
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Get categories
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
   }
 
 
@@ -260,12 +322,14 @@ public class ValidationsRedeemableSkipped {
     return Objects.equals(this.status, validationsRedeemableSkipped.status) &&
         Objects.equals(this.id, validationsRedeemableSkipped.id) &&
         Objects.equals(this._object, validationsRedeemableSkipped._object) &&
-        Objects.equals(this.result, validationsRedeemableSkipped.result);
+        Objects.equals(this.result, validationsRedeemableSkipped.result) &&
+        Objects.equals(this.metadata, validationsRedeemableSkipped.metadata) &&
+        Objects.equals(this.categories, validationsRedeemableSkipped.categories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, id, _object, result);
+    return Objects.hash(status, id, _object, result, metadata, categories);
   }
 
   @Override
@@ -276,6 +340,8 @@ public class ValidationsRedeemableSkipped {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -302,9 +368,15 @@ public class ValidationsRedeemableSkipped {
     openapiFields.add("id");
     openapiFields.add("object");
     openapiFields.add("result");
+    openapiFields.add("metadata");
+    openapiFields.add("categories");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("object");
+    openapiRequiredFields.add("result");
   }
 
  /**
@@ -327,8 +399,15 @@ public class ValidationsRedeemableSkipped {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidationsRedeemableSkipped` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ValidationsRedeemableSkipped.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -344,10 +423,10 @@ public class ValidationsRedeemableSkipped {
           throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+      if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -361,6 +440,22 @@ public class ValidationsRedeemableSkipped {
       } catch (IllegalArgumentException e) {
         if(jsonObj.get("object") != null) {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
+      }
+      // validate the required field `result`
+      ValidationsRedeemableSkippedResult.validateJsonElement(jsonObj.get("result"));
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
+        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
+        if (jsonArraycategories != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+          }
+
+          // validate the optional field `categories` (array)
+          for (int i = 0; i < jsonArraycategories.size(); i++) {
+            Category.validateJsonElement(jsonArraycategories.get(i));
+          };
         }
       }
   }

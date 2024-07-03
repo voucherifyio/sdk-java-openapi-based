@@ -16,7 +16,7 @@
 |**type** | **LoyaltyCardTransactionsType** |  |  |
 |**details** | [**VoucherTransactionDetails**](VoucherTransactionDetails.md) |  |  |
 |**relatedTransactionId** | **String** | The related transaction ID on the receiving card. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the transaction was created in ISO 8601 format. |  |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the transaction was created. The value is shown in the ISO 8601 format. |  |
 
 
 

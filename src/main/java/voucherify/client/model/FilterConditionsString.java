@@ -104,7 +104,7 @@ public class FilterConditionsString {
   }
 
    /**
-   * Array of resource values that should be included in the results. (multiple values)
+   * Array of resource values that should be included in the results (multiple values).
    * @return $in
   **/
   @javax.annotation.Nullable
@@ -133,7 +133,7 @@ public class FilterConditionsString {
   }
 
    /**
-   * Array of resource values that should be included in the results. (multiple values)
+   * Array of resource values that should be included in the results (multiple values).
    * @return $notIn
   **/
   @javax.annotation.Nullable
@@ -154,7 +154,7 @@ public class FilterConditionsString {
   }
 
    /**
-   * Value is exactly this value. (single value)
+   * Value is exactly this value (single value).
    * @return $is
   **/
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class FilterConditionsString {
   }
 
    /**
-   * Results omit this value. (single value)
+   * Results omit this value (single value).
    * @return $isNot
   **/
   @javax.annotation.Nullable

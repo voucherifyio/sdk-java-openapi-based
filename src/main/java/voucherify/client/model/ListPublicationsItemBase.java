@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerWithSummaryLoyaltyReferrals;
+import voucherify.client.model.ListPublicationsItemBaseMetadata;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,7 +63,7 @@ public class ListPublicationsItemBase {
   private String id;
 
   /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -124,7 +125,7 @@ public class ListPublicationsItemBase {
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
-  private Object metadata;
+  private ListPublicationsItemBaseMetadata metadata;
 
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
@@ -137,6 +138,10 @@ public class ListPublicationsItemBase {
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
   private CustomerWithSummaryLoyaltyReferrals customer;
+
+  public static final String SERIALIZED_NAME_VOUCHERS = "vouchers";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS)
+  private List<String> vouchers;
 
   public static final String SERIALIZED_NAME_VOUCHERS_ID = "vouchers_id";
   @SerializedName(SERIALIZED_NAME_VOUCHERS_ID)
@@ -173,7 +178,7 @@ public class ListPublicationsItemBase {
   }
 
    /**
-   * The type of object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -194,7 +199,7 @@ public class ListPublicationsItemBase {
   }
 
    /**
-   * Timestamp representing the date and time when the publication was created in ISO 8601 format.
+   * Timestamp representing the date and time when the publication was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -250,23 +255,23 @@ public class ListPublicationsItemBase {
   }
 
 
-  public ListPublicationsItemBase metadata(Object metadata) {
+  public ListPublicationsItemBase metadata(ListPublicationsItemBaseMetadata metadata) {
     
     this.metadata = metadata;
     return this;
   }
 
    /**
-   * The metadata object stores all custom attributes assigned to the publication. A set of key/value pairs that you can attach to a publication object. It can be useful for storing additional information about the publication in a structured format.
+   * Get metadata
    * @return metadata
   **/
   @javax.annotation.Nonnull
-  public Object getMetadata() {
+  public ListPublicationsItemBaseMetadata getMetadata() {
     return metadata;
   }
 
 
-  public void setMetadata(Object metadata) {
+  public void setMetadata(ListPublicationsItemBaseMetadata metadata) {
     this.metadata = metadata;
   }
 
@@ -334,6 +339,35 @@ public class ListPublicationsItemBase {
   }
 
 
+  public ListPublicationsItemBase vouchers(List<String> vouchers) {
+    
+    this.vouchers = vouchers;
+    return this;
+  }
+
+  public ListPublicationsItemBase addVouchersItem(String vouchersItem) {
+    if (this.vouchers == null) {
+      this.vouchers = new ArrayList<>();
+    }
+    this.vouchers.add(vouchersItem);
+    return this;
+  }
+
+   /**
+   * Contains the voucher IDs that was assigned by Voucherify.
+   * @return vouchers
+  **/
+  @javax.annotation.Nullable
+  public List<String> getVouchers() {
+    return vouchers;
+  }
+
+
+  public void setVouchers(List<String> vouchers) {
+    this.vouchers = vouchers;
+  }
+
+
   public ListPublicationsItemBase vouchersId(List<String> vouchersId) {
     
     this.vouchersId = vouchersId;
@@ -349,7 +383,7 @@ public class ListPublicationsItemBase {
   }
 
    /**
-   * Contains the unique internal voucher ID that was assigned by Voucherify.
+   * Contains the unique internal voucher IDs that was assigned by Voucherify.
    * @return vouchersId
   **/
   @javax.annotation.Nonnull
@@ -382,6 +416,7 @@ public class ListPublicationsItemBase {
         Objects.equals(this.channel, listPublicationsItemBase.channel) &&
         Objects.equals(this.sourceId, listPublicationsItemBase.sourceId) &&
         Objects.equals(this.customer, listPublicationsItemBase.customer) &&
+        Objects.equals(this.vouchers, listPublicationsItemBase.vouchers) &&
         Objects.equals(this.vouchersId, listPublicationsItemBase.vouchersId);
   }
 
@@ -391,7 +426,7 @@ public class ListPublicationsItemBase {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchersId);
+    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchers, vouchersId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -414,6 +449,7 @@ public class ListPublicationsItemBase {
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    vouchers: ").append(toIndentedString(vouchers)).append("\n");
     sb.append("    vouchersId: ").append(toIndentedString(vouchersId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -446,6 +482,7 @@ public class ListPublicationsItemBase {
     openapiFields.add("channel");
     openapiFields.add("source_id");
     openapiFields.add("customer");
+    openapiFields.add("vouchers");
     openapiFields.add("vouchers_id");
 
     // a set of required properties/fields (JSON key names)
@@ -513,6 +550,8 @@ public class ListPublicationsItemBase {
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
       }
+      // validate the required field `metadata`
+      ListPublicationsItemBaseMetadata.validateJsonElement(jsonObj.get("metadata"));
       if (!jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
@@ -521,6 +560,10 @@ public class ListPublicationsItemBase {
       }
       // validate the required field `customer`
       CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonObj.get("customer"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("vouchers") != null && !jsonObj.get("vouchers").isJsonNull() && !jsonObj.get("vouchers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("vouchers_id") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");

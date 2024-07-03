@@ -81,7 +81,7 @@ public class RewardsAssignmentsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON. This object stores information about reward assignments in a dictionary.
+   * The type of the object represented by JSON. This object stores information about reward assignments in a dictionary.
    * @return _object
   **/
   @javax.annotation.Nonnull

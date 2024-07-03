@@ -12,7 +12,7 @@ Response schema for **POST** `/loyalties/members/{memberId}/balance` and for **P
 |**total** | **Integer** | The total of points accrued over the lifetime of the loyalty card. |  |
 |**balance** | **Integer** | The balance after adding/removing points. |  |
 |**type** | [**TypeEnum**](#TypeEnum) | The type of voucher being modified. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. Default is balance. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. Default is balance. |  |
 |**relatedObject** | [**LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject**](LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject.md) |  |  |
 |**operationType** | [**OperationTypeEnum**](#OperationTypeEnum) |  |  [optional] |
 

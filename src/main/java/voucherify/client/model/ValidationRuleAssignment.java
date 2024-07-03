@@ -129,7 +129,7 @@ public class ValidationRuleAssignment {
   private OffsetDateTime createdAt;
 
   /**
-   * The type of object represented by the ID.
+   * The type of the object represented by the ID.
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
@@ -271,7 +271,7 @@ public class ValidationRuleAssignment {
   }
 
    /**
-   * Timestamp representing the date and time when the validation rule assignment was created in ISO 8601 format.
+   * Timestamp representing the date and time when the validation rule assignment was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -292,7 +292,7 @@ public class ValidationRuleAssignment {
   }
 
    /**
-   * The type of object represented by the ID.
+   * The type of the object represented by the ID.
    * @return _object
   **/
   @javax.annotation.Nonnull

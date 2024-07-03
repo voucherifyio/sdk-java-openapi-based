@@ -13,7 +13,7 @@ Response body schema for `vouchers/{code}/balance.`
 |**balance** | **Integer** | The balance after adding or subtracting a specified amount. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000. |  |
 |**type** | [**TypeEnum**](#TypeEnum) | The type of voucher being modified. |  |
 |**operationType** | [**OperationTypeEnum**](#OperationTypeEnum) |  |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of object represented by JSON. Default is &#x60;balance&#x60;. |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. Default is &#x60;balance&#x60;. |  |
 |**relatedObject** | [**VouchersBalanceUpdateResponseBodyRelatedObject**](VouchersBalanceUpdateResponseBodyRelatedObject.md) |  |  |
 
 

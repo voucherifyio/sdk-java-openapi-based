@@ -81,7 +81,7 @@ public class VouchersTransactionsListResponseBody {
   }
 
    /**
-   * The type of object represented by JSON.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nonnull
@@ -152,7 +152,7 @@ public class VouchersTransactionsListResponseBody {
   }
 
    /**
-   * As query results are always limited (by the limit parameter), the &#x60;has_more&#x60; flag indicates whether there are more records for given filter parameters. This let&#39;s you know if you are able to run another request (with a different page or a different start date filter) to get more records returned in the results.
+   * As query results are always limited (by the limit parameter), the &#x60;has_more&#x60; flag indicates if there are more records for given filter parameters. This lets you know if you can run another request (with a different page or a different start date filter) to get more records returned in the results.
    * @return hasMore
   **/
   @javax.annotation.Nonnull
