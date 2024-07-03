@@ -18,6 +18,7 @@ public class StackableDiscounts {
 
         ValidationsValidateRequestBody validationsValidateRequestBody = getValidationsValidateRequestBody();
 
+
         //THIS TEST NOT WORKING YET. DUE TO MISSING `application_mode` IN API RESPONSE
         try {
             apiInstance.validateStackedDiscounts(validationsValidateRequestBody);
@@ -35,10 +36,10 @@ public class StackableDiscounts {
         Order order = getOrder();
 
         StackableValidateRedeemBaseRedeemablesItem redeemable = new StackableValidateRedeemBaseRedeemablesItem();
-        
+
         RedeemVoucher redeemVoucher = new RedeemVoucher();
         redeemVoucher.setId("test");
-        
+
         redeemable.setActualInstance(redeemVoucher);
 
         ValidationsValidateRequestBody validationsValidateRequestBody = new ValidationsValidateRequestBody();
