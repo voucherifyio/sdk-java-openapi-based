@@ -62,13 +62,17 @@ public class StackingRules {
   @SerializedName(SERIALIZED_NAME_APPLICABLE_REDEEMABLES_LIMIT)
   private Integer applicableRedeemablesLimit = 5;
 
+  public static final String SERIALIZED_NAME_APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT = "applicable_redeemables_per_category_limit";
+  @SerializedName(SERIALIZED_NAME_APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT)
+  private Integer applicableRedeemablesPerCategoryLimit = 1;
+
   public static final String SERIALIZED_NAME_APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT = "applicable_exclusive_redeemables_limit";
   @SerializedName(SERIALIZED_NAME_APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT)
   private Integer applicableExclusiveRedeemablesLimit = 1;
 
-  public static final String SERIALIZED_NAME_APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT = "applicable_redeemables_per_category_limit";
-  @SerializedName(SERIALIZED_NAME_APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT)
-  private Integer applicableRedeemablesPerCategoryLimit = 1;
+  public static final String SERIALIZED_NAME_APPLICABLE_EXCLUSIVE_REDEEMABLES_PER_CATEGORY_LIMIT = "applicable_exclusive_redeemables_per_category_limit";
+  @SerializedName(SERIALIZED_NAME_APPLICABLE_EXCLUSIVE_REDEEMABLES_PER_CATEGORY_LIMIT)
+  private Integer applicableExclusiveRedeemablesPerCategoryLimit = 1;
 
   public static final String SERIALIZED_NAME_EXCLUSIVE_CATEGORIES = "exclusive_categories";
   @SerializedName(SERIALIZED_NAME_EXCLUSIVE_CATEGORIES)
@@ -229,6 +233,29 @@ public class StackingRules {
   }
 
 
+  public StackingRules applicableRedeemablesPerCategoryLimit(Integer applicableRedeemablesPerCategoryLimit) {
+    
+    this.applicableRedeemablesPerCategoryLimit = applicableRedeemablesPerCategoryLimit;
+    return this;
+  }
+
+   /**
+   * Defines how many redeemables per category can be applied in one request.
+   * minimum: 1
+   * maximum: 5
+   * @return applicableRedeemablesPerCategoryLimit
+  **/
+  @javax.annotation.Nullable
+  public Integer getApplicableRedeemablesPerCategoryLimit() {
+    return applicableRedeemablesPerCategoryLimit;
+  }
+
+
+  public void setApplicableRedeemablesPerCategoryLimit(Integer applicableRedeemablesPerCategoryLimit) {
+    this.applicableRedeemablesPerCategoryLimit = applicableRedeemablesPerCategoryLimit;
+  }
+
+
   public StackingRules applicableExclusiveRedeemablesLimit(Integer applicableExclusiveRedeemablesLimit) {
     
     this.applicableExclusiveRedeemablesLimit = applicableExclusiveRedeemablesLimit;
@@ -252,26 +279,26 @@ public class StackingRules {
   }
 
 
-  public StackingRules applicableRedeemablesPerCategoryLimit(Integer applicableRedeemablesPerCategoryLimit) {
+  public StackingRules applicableExclusiveRedeemablesPerCategoryLimit(Integer applicableExclusiveRedeemablesPerCategoryLimit) {
     
-    this.applicableRedeemablesPerCategoryLimit = applicableRedeemablesPerCategoryLimit;
+    this.applicableExclusiveRedeemablesPerCategoryLimit = applicableExclusiveRedeemablesPerCategoryLimit;
     return this;
   }
 
    /**
-   * Defines how many redeemables per category can be applied in one request.
+   * Defines how many redeemables with an exclusive category per category in stacking rules can be applied in one request.
    * minimum: 1
    * maximum: 5
-   * @return applicableRedeemablesPerCategoryLimit
+   * @return applicableExclusiveRedeemablesPerCategoryLimit
   **/
   @javax.annotation.Nullable
-  public Integer getApplicableRedeemablesPerCategoryLimit() {
-    return applicableRedeemablesPerCategoryLimit;
+  public Integer getApplicableExclusiveRedeemablesPerCategoryLimit() {
+    return applicableExclusiveRedeemablesPerCategoryLimit;
   }
 
 
-  public void setApplicableRedeemablesPerCategoryLimit(Integer applicableRedeemablesPerCategoryLimit) {
-    this.applicableRedeemablesPerCategoryLimit = applicableRedeemablesPerCategoryLimit;
+  public void setApplicableExclusiveRedeemablesPerCategoryLimit(Integer applicableExclusiveRedeemablesPerCategoryLimit) {
+    this.applicableExclusiveRedeemablesPerCategoryLimit = applicableExclusiveRedeemablesPerCategoryLimit;
   }
 
 
@@ -343,7 +370,7 @@ public class StackingRules {
    * Defines redeemables application mode.
    * @return redeemablesApplicationMode
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public RedeemablesApplicationModeEnum getRedeemablesApplicationMode() {
     return redeemablesApplicationMode;
   }
@@ -364,7 +391,7 @@ public class StackingRules {
    * Defines redeemables sorting rule.
    * @return redeemablesSortingRule
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public RedeemablesSortingRuleEnum getRedeemablesSortingRule() {
     return redeemablesSortingRule;
   }
@@ -387,8 +414,9 @@ public class StackingRules {
     StackingRules stackingRules = (StackingRules) o;
     return Objects.equals(this.redeemablesLimit, stackingRules.redeemablesLimit) &&
         Objects.equals(this.applicableRedeemablesLimit, stackingRules.applicableRedeemablesLimit) &&
-        Objects.equals(this.applicableExclusiveRedeemablesLimit, stackingRules.applicableExclusiveRedeemablesLimit) &&
         Objects.equals(this.applicableRedeemablesPerCategoryLimit, stackingRules.applicableRedeemablesPerCategoryLimit) &&
+        Objects.equals(this.applicableExclusiveRedeemablesLimit, stackingRules.applicableExclusiveRedeemablesLimit) &&
+        Objects.equals(this.applicableExclusiveRedeemablesPerCategoryLimit, stackingRules.applicableExclusiveRedeemablesPerCategoryLimit) &&
         Objects.equals(this.exclusiveCategories, stackingRules.exclusiveCategories) &&
         Objects.equals(this.jointCategories, stackingRules.jointCategories) &&
         Objects.equals(this.redeemablesApplicationMode, stackingRules.redeemablesApplicationMode) &&
@@ -397,7 +425,7 @@ public class StackingRules {
 
   @Override
   public int hashCode() {
-    return Objects.hash(redeemablesLimit, applicableRedeemablesLimit, applicableExclusiveRedeemablesLimit, applicableRedeemablesPerCategoryLimit, exclusiveCategories, jointCategories, redeemablesApplicationMode, redeemablesSortingRule);
+    return Objects.hash(redeemablesLimit, applicableRedeemablesLimit, applicableRedeemablesPerCategoryLimit, applicableExclusiveRedeemablesLimit, applicableExclusiveRedeemablesPerCategoryLimit, exclusiveCategories, jointCategories, redeemablesApplicationMode, redeemablesSortingRule);
   }
 
   @Override
@@ -406,8 +434,9 @@ public class StackingRules {
     sb.append("class StackingRules {\n");
     sb.append("    redeemablesLimit: ").append(toIndentedString(redeemablesLimit)).append("\n");
     sb.append("    applicableRedeemablesLimit: ").append(toIndentedString(applicableRedeemablesLimit)).append("\n");
-    sb.append("    applicableExclusiveRedeemablesLimit: ").append(toIndentedString(applicableExclusiveRedeemablesLimit)).append("\n");
     sb.append("    applicableRedeemablesPerCategoryLimit: ").append(toIndentedString(applicableRedeemablesPerCategoryLimit)).append("\n");
+    sb.append("    applicableExclusiveRedeemablesLimit: ").append(toIndentedString(applicableExclusiveRedeemablesLimit)).append("\n");
+    sb.append("    applicableExclusiveRedeemablesPerCategoryLimit: ").append(toIndentedString(applicableExclusiveRedeemablesPerCategoryLimit)).append("\n");
     sb.append("    exclusiveCategories: ").append(toIndentedString(exclusiveCategories)).append("\n");
     sb.append("    jointCategories: ").append(toIndentedString(jointCategories)).append("\n");
     sb.append("    redeemablesApplicationMode: ").append(toIndentedString(redeemablesApplicationMode)).append("\n");
@@ -436,8 +465,9 @@ public class StackingRules {
     openapiFields = new HashSet<String>();
     openapiFields.add("redeemables_limit");
     openapiFields.add("applicable_redeemables_limit");
-    openapiFields.add("applicable_exclusive_redeemables_limit");
     openapiFields.add("applicable_redeemables_per_category_limit");
+    openapiFields.add("applicable_exclusive_redeemables_limit");
+    openapiFields.add("applicable_exclusive_redeemables_per_category_limit");
     openapiFields.add("exclusive_categories");
     openapiFields.add("joint_categories");
     openapiFields.add("redeemables_application_mode");
@@ -450,6 +480,8 @@ public class StackingRules {
     openapiRequiredFields.add("applicable_exclusive_redeemables_limit");
     openapiRequiredFields.add("exclusive_categories");
     openapiRequiredFields.add("joint_categories");
+    openapiRequiredFields.add("redeemables_application_mode");
+    openapiRequiredFields.add("redeemables_sorting_rule");
   }
 
  /**
@@ -492,7 +524,7 @@ public class StackingRules {
       } else if (!jsonObj.get("joint_categories").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `joint_categories` to be an array in the JSON string but got `%s`", jsonObj.get("joint_categories").toString()));
       }
-      if ((jsonObj.get("redeemables_application_mode") != null && !jsonObj.get("redeemables_application_mode").isJsonNull()) && !jsonObj.get("redeemables_application_mode").isJsonPrimitive()) {
+      if (!jsonObj.get("redeemables_application_mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redeemables_application_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redeemables_application_mode").toString()));
       }
       try {
@@ -508,7 +540,7 @@ public class StackingRules {
           throw new IllegalArgumentException(String.format("Expected the field `redeemables_application_mode` to be a valid element of RedeemablesApplicationModeEnum enum got `%s` instead", jsonObj.get("redeemables_application_mode").toString()));
         }
       }
-      if ((jsonObj.get("redeemables_sorting_rule") != null && !jsonObj.get("redeemables_sorting_rule").isJsonNull()) && !jsonObj.get("redeemables_sorting_rule").isJsonPrimitive()) {
+      if (!jsonObj.get("redeemables_sorting_rule").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redeemables_sorting_rule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redeemables_sorting_rule").toString()));
       }
       try {

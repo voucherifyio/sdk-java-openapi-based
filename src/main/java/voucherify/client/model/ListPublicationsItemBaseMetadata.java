@@ -77,7 +77,7 @@ public class ListPublicationsItemBaseMetadata {
    * Defines the type of the distribution source.
    * @return sourceType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getSourceType() {
     return sourceType;
   }
@@ -98,7 +98,7 @@ public class ListPublicationsItemBaseMetadata {
    * Unique identifier of the distribution source.
    * @return sourceId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getSourceId() {
     return sourceId;
   }
@@ -119,7 +119,7 @@ public class ListPublicationsItemBaseMetadata {
    * Unique identifier of the distribution.
    * @return distributionId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDistributionId() {
     return distributionId;
   }
@@ -185,9 +185,6 @@ public class ListPublicationsItemBaseMetadata {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("source_type");
-    openapiRequiredFields.add("source_id");
-    openapiRequiredFields.add("distribution_id");
   }
 
  /**
@@ -210,21 +207,14 @@ public class ListPublicationsItemBaseMetadata {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ListPublicationsItemBaseMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ListPublicationsItemBaseMetadata.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("source_type").isJsonPrimitive()) {
+      if ((jsonObj.get("source_type") != null && !jsonObj.get("source_type").isJsonNull()) && !jsonObj.get("source_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
       }
-      if (!jsonObj.get("source_id").isJsonPrimitive()) {
+      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
       }
-      if (!jsonObj.get("distribution_id").isJsonPrimitive()) {
+      if ((jsonObj.get("distribution_id") != null && !jsonObj.get("distribution_id").isJsonNull()) && !jsonObj.get("distribution_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `distribution_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("distribution_id").toString()));
       }
   }

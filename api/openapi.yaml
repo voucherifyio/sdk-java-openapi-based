@@ -12498,7 +12498,7 @@ paths:
   /v1/customers/{customerId}/permanent-deletion:
     post:
       description: The organization user can remove consumer data permanently from
-        the Voucherify system by using this API method. It d​eletes all customer data
+        the Voucherify system by using this API method. It deletes all customer data
         and connected resources. It makes the customer profile forgotten by Voucherify.
       operationId: customer-permanently-deletion
       parameters:
@@ -12809,127 +12809,6 @@ paths:
       tags:
       - Customers
       x-content-type: application/json
-      x-accepts: application/json
-  /v1/customers/{customerId}/activities:
-    get:
-      deprecated: true
-      description: "> ❗️ Deprecated  \n>\n> This endpoint represents the deprecated\
-        \ version of the API responsible for listing customer activities and we do\
-        \ not recommend using it. Developers are encouraged to migrate to the latest\
-        \ version to take advantage of the latest enhancements and bug fixes. No updates\
-        \ will be provided to the deprecated endpoint.\n\nRetrieve customer activities."
-      operationId: list-customer-activities
-      parameters:
-      - description: A Voucherify customer's `id` or source ID of the customer who
-          performed the activities.
-        explode: false
-        in: path
-        name: customerId
-        required: true
-        schema:
-          $ref: '#/components/schemas/ParameterCustomerId'
-        style: simple
-      - description: "Limits the number of objects to be returned. The limit can range\
-          \ between 1 and 100 items. If no limit is set, it returns 10 items."
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterLimit'
-        style: form
-      - description: "Sorts the results using one of the filtering options, where\
-          \ the dash `-` preceding a sorting option means sorting in a descending\
-          \ order."
-        explode: true
-        in: query
-        name: order
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterOrder'
-        style: form
-      - description: "A cursor for pagination. `starting_after` is a date-time value\
-          \ that defines your place in the list based on `created_at` property from\
-          \ the activity object. For instance, if you make a list request and receive\
-          \ 100 objects, ending with an object created at `2020-05-24T13:43:09.024Z`,\
-          \ your subsequent call can include `starting_after=2020-05-24T13:43:09.024Z`\
-          \ in order to fetch the next page of the list."
-        explode: true
-        in: query
-        name: starting_after
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterDate'
-        style: form
-      - description: A cursor for pagination. It retrieves the events starting after
-          an event with the given ID.
-        explode: true
-        in: query
-        name: starting_after_id
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterString'
-        style: form
-      - description: "Through this parameter you can control a type of campaign by\
-          \ which Voucherify will filter related customer's activity. API will return\
-          \ only records related to that given type. Allowed values: DISCOUNT_COUPONS,\
-          \ REFERRAL_PROGRAM, GIFT_VOUCHERS, PROMOTION, LOYALTY_PROGRAM"
-        explode: true
-        in: query
-        name: campaign_type
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterCampaignType'
-        style: form
-      - description: By applying this parameter you request only events related to
-          specific campaign identified by its ID.
-        explode: true
-        in: query
-        name: campaign_id
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterCampaignId'
-        style: form
-      - description: By applying this parameter you request only events related to
-          specific product identified by its ID.
-        explode: true
-        in: query
-        name: product_id
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterProductId'
-        style: form
-      - description: Timestamp representing the date and time which results must end
-          on. Represented in ISO 8601 format.
-        explode: true
-        in: query
-        name: start_date
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterDate'
-        style: form
-      - description: Timestamp representing the date and time which results must end
-          on. Represented in ISO 8601 format.
-        explode: true
-        in: query
-        name: end_date
-        required: false
-        schema:
-          $ref: '#/components/schemas/ParameterDate'
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomersActivitiesListResponseBody'
-          description: Returns a dictionary with customer activities.
-      security:
-      - X-App-Id: []
-        X-App-Token: []
-      summary: List Customer Activities
-      tags:
-      - Customers
       x-accepts: application/json
   /v1/customers/{customerId}/segments:
     get:
@@ -17893,7 +17772,7 @@ components:
     CampaignsListResponseBody:
       description: Schema model for **GET** `/campaigns`.
       example:
-        total: 9
+        total: 7
         campaigns:
         - metadata: "{}"
           voucher:
@@ -17949,7 +17828,7 @@ components:
                 unit: MONTH
                 type: MONTH
                 strategy: START
-                value: 7
+                value: 2
               type: END_OF_PERIOD
             start_date:
               type: IMMEDIATE
@@ -17964,14 +17843,14 @@ components:
           id: camp_f7fBbQxUuTN7dI7tGOo5XMDA
           categories:
           - updated_at: 2022-08-16T10:52:08.094Z
-            hierarchy: 2
+            hierarchy: 7
             name: name
             created_at: 2022-07-14T10:45:13.156Z
             id: id
             stacking_rules_type: JOINT
             object: category
           - updated_at: 2022-08-16T10:52:08.094Z
-            hierarchy: 2
+            hierarchy: 7
             name: name
             created_at: 2022-07-14T10:45:13.156Z
             id: id
@@ -18058,7 +17937,7 @@ components:
                 unit: MONTH
                 type: MONTH
                 strategy: START
-                value: 7
+                value: 2
               type: END_OF_PERIOD
             start_date:
               type: IMMEDIATE
@@ -18073,14 +17952,14 @@ components:
           id: camp_f7fBbQxUuTN7dI7tGOo5XMDA
           categories:
           - updated_at: 2022-08-16T10:52:08.094Z
-            hierarchy: 2
+            hierarchy: 7
             name: name
             created_at: 2022-07-14T10:45:13.156Z
             id: id
             stacking_rules_type: JOINT
             object: category
           - updated_at: 2022-08-16T10:52:08.094Z
-            hierarchy: 2
+            hierarchy: 7
             name: name
             created_at: 2022-07-14T10:45:13.156Z
             id: id
@@ -18251,14 +18130,14 @@ components:
         total: 0
         data:
         - updated_at: 2022-08-16T10:52:08.094Z
-          hierarchy: 2
+          hierarchy: 7
           name: name
           created_at: 2022-07-14T10:45:13.156Z
           id: id
           stacking_rules_type: JOINT
           object: category
         - updated_at: 2022-08-16T10:52:08.094Z
-          hierarchy: 2
+          hierarchy: 7
           name: name
           created_at: 2022-07-14T10:45:13.156Z
           id: id
@@ -18512,12 +18391,13 @@ components:
           joint_categories:
           - joint_categories
           - joint_categories
+          applicable_exclusive_redeemables_per_category_limit: 3
           exclusive_categories:
           - exclusive_categories
           - exclusive_categories
-          applicable_redeemables_per_category_limit: 3
+          applicable_redeemables_per_category_limit: 1
           redeemables_application_mode: ALL
-          applicable_exclusive_redeemables_limit: 1
+          applicable_exclusive_redeemables_limit: 3
           redeemables_sorting_rule: REQUESTED_ORDER
           applicable_redeemables_limit: 18
           redeemables_limit: 3
@@ -18552,6 +18432,7 @@ components:
       example:
         inapplicable_redeemables:
         - result:
+            details: "{}"
             error:
               code: 2
               resource_type: voucher
@@ -18560,10 +18441,27 @@ components:
               message: message
               request_id: v-0a885062c80375740f
               key: key
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: INAPPLICABLE
           object: voucher
         - result:
+            details: "{}"
             error:
               code: 2
               resource_type: voucher
@@ -18572,7 +18470,23 @@ components:
               message: message
               request_id: v-0a885062c80375740f
               key: key
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: INAPPLICABLE
           object: voucher
         redemptions:
@@ -18758,12 +18672,44 @@ components:
           order: ""
           customer: ""
         skipped_redeemables:
-        - result: "{}"
+        - result: null
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: SKIPPED
           object: voucher
-        - result: "{}"
+        - result: null
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: SKIPPED
           object: voucher
         order: ""
@@ -18805,65 +18751,6 @@ components:
       - $ref: '#/components/schemas/ValidationsValidateResponseBody'
       description: Response body schema for POST `/validations`.
       title: Client Validations Validate Response Body
-    CustomersActivitiesListResponseBody:
-      description: "Response body schema for **GET** `/customers/{customerId}/activities`."
-      example:
-        total: 0
-        data:
-        - data:
-            data: null
-            event_source:
-              api_key:
-                name: name
-                app_id: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-              channel: API
-              user:
-                id: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-          group_id: v-1f36113948e50fc4ge
-          created_at: 2022-08-30T09:14:07.66Z
-          id: evcus_0c150c51730c6b60b1
-          type: customer.confirmed
-        - data:
-            data: null
-            event_source:
-              api_key:
-                name: name
-                app_id: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-              channel: API
-              user:
-                id: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-          group_id: v-1f36113948e50fc4ge
-          created_at: 2022-08-30T09:14:07.66Z
-          id: evcus_0c150c51730c6b60b1
-          type: customer.confirmed
-        data_ref: data
-        object: list
-      properties:
-        object:
-          default: list
-          description: The type of the object represented by JSON. This object stores
-            information about customer activities in a dictionary.
-          type: string
-        data_ref:
-          default: data
-          description: Identifies the name of the attribute that contains the array
-            of customer activity objects.
-          type: string
-        data:
-          description: Array of customer activity objects.
-          items:
-            $ref: '#/components/schemas/CustomerActivity'
-          type: array
-        total:
-          description: Total number of customer activities.
-          type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
-      title: Customers Activities List Response Body
-      type: object
     CustomersConsentsUpdateRequestBody:
       description: "Request body schema for **PUT** `/customers/{customerId}/consents`."
       title: Customers Consents Update Request Body
@@ -19667,14 +19554,14 @@ components:
         id: id
         categories:
         - updated_at: 2022-08-16T10:52:08.094Z
-          hierarchy: 2
+          hierarchy: 7
           name: name
           created_at: 2022-07-14T10:45:13.156Z
           id: id
           stacking_rules_type: JOINT
           object: category
         - updated_at: 2022-08-16T10:52:08.094Z
-          hierarchy: 2
+          hierarchy: 7
           name: name
           created_at: 2022-07-14T10:45:13.156Z
           id: id
@@ -20101,15 +19988,6 @@ components:
       type: boolean
     ParameterCampaignId:
       example: camp_rRsfatlwN7unSeUIJDCYedal
-      type: string
-    ParameterCampaignType:
-      enum:
-      - PROMOTION
-      - GIFT_VOUCHERS
-      - REFERRAL_PROGRAM
-      - DISCOUNT_COUPONS
-      - LOYALTY_PROGRAM
-      - LUCKY_DRAW
       type: string
     ParameterCategoryId:
       example: cat_0bb81a481615a37b5e
@@ -20990,12 +20868,13 @@ components:
           joint_categories:
           - joint_categories
           - joint_categories
+          applicable_exclusive_redeemables_per_category_limit: 3
           exclusive_categories:
           - exclusive_categories
           - exclusive_categories
-          applicable_redeemables_per_category_limit: 3
+          applicable_redeemables_per_category_limit: 1
           redeemables_application_mode: ALL
-          applicable_exclusive_redeemables_limit: 1
+          applicable_exclusive_redeemables_limit: 3
           redeemables_sorting_rule: REQUESTED_ORDER
           applicable_redeemables_limit: 18
           redeemables_limit: 3
@@ -21070,6 +20949,7 @@ components:
       example:
         inapplicable_redeemables:
         - result:
+            details: "{}"
             error:
               code: 2
               resource_type: voucher
@@ -21078,10 +20958,27 @@ components:
               message: message
               request_id: v-0a885062c80375740f
               key: key
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: INAPPLICABLE
           object: voucher
         - result:
+            details: "{}"
             error:
               code: 2
               resource_type: voucher
@@ -21090,7 +20987,23 @@ components:
               message: message
               request_id: v-0a885062c80375740f
               key: key
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: INAPPLICABLE
           object: voucher
         redemptions:
@@ -21276,12 +21189,44 @@ components:
           order: ""
           customer: ""
         skipped_redeemables:
-        - result: "{}"
+        - result: null
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: SKIPPED
           object: voucher
-        - result: "{}"
+        - result: null
+          metadata: "{}"
           id: id
+          categories:
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
+          - updated_at: 2022-08-16T10:52:08.094Z
+            hierarchy: 7
+            name: name
+            created_at: 2022-07-14T10:45:13.156Z
+            id: id
+            stacking_rules_type: JOINT
+            object: category
           status: SKIPPED
           object: voucher
         order: ""
@@ -21775,6 +21720,20 @@ components:
         inapplicable_redeemables:
         - ""
         - ""
+        stacking_rules:
+          joint_categories:
+          - joint_categories
+          - joint_categories
+          applicable_exclusive_redeemables_per_category_limit: 3
+          exclusive_categories:
+          - exclusive_categories
+          - exclusive_categories
+          applicable_redeemables_per_category_limit: 1
+          redeemables_application_mode: ALL
+          applicable_exclusive_redeemables_limit: 3
+          redeemables_sorting_rule: REQUESTED_ORDER
+          applicable_redeemables_limit: 18
+          redeemables_limit: 3
         skipped_redeemables:
         - ""
         - ""
@@ -21801,7 +21760,7 @@ components:
           description: Lists validation results of each skipped redeemable.
           items:
             allOf:
-            - $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
+            - $ref: '#/components/schemas/ValidationsRedeemableSkipped'
           type: array
         inapplicable_redeemables:
           description: Lists validation results of each inapplicable redeemable.
@@ -21817,8 +21776,11 @@ components:
           type: string
         session:
           $ref: '#/components/schemas/Session'
+        stacking_rules:
+          $ref: '#/components/schemas/StackingRules'
       required:
       - redeemables
+      - stacking_rules
       - valid
       title: Validations Validate Response Body
       type: object
@@ -22156,6 +22118,15 @@ components:
           format: date-time
           type: string
       type: object
+    ParameterCampaignType:
+      enum:
+      - PROMOTION
+      - GIFT_VOUCHERS
+      - REFERRAL_PROGRAM
+      - DISCOUNT_COUPONS
+      - LOYALTY_PROGRAM
+      - LUCKY_DRAW
+      type: string
     ParameterUpdatedBeforeAfter:
       properties:
         before:
@@ -22269,7 +22240,7 @@ components:
               unit: MONTH
               type: MONTH
               strategy: START
-              value: 7
+              value: 2
             type: END_OF_PERIOD
           start_date:
             type: IMMEDIATE
@@ -22284,14 +22255,14 @@ components:
         id: camp_f7fBbQxUuTN7dI7tGOo5XMDA
         categories:
         - updated_at: 2022-08-16T10:52:08.094Z
-          hierarchy: 2
+          hierarchy: 7
           name: name
           created_at: 2022-07-14T10:45:13.156Z
           id: id
           stacking_rules_type: JOINT
           object: category
         - updated_at: 2022-08-16T10:52:08.094Z
-          hierarchy: 2
+          hierarchy: 7
           name: name
           created_at: 2022-07-14T10:45:13.156Z
           id: id
@@ -22778,7 +22749,7 @@ components:
       description: This is an object representing a category.
       example:
         updated_at: 2022-08-16T10:52:08.094Z
-        hierarchy: 2
+        hierarchy: 7
         name: name
         created_at: 2022-07-14T10:45:13.156Z
         id: id
@@ -22901,121 +22872,6 @@ components:
         type: object
       - $ref: '#/components/schemas/CustomerBase'
       title: Customer
-    CustomerActivity:
-      description: "This is an object representing customer activity.  \n\nThis is\
-        \ a general object which presents moments from customers' activity. There\
-        \ are all types of different events that customers perform during their journey\
-        \ once they participate in Promotions. Events describe moments when customers\
-        \ redeem coupons and earn points or rewards. The list of all types of activities\
-        \ is listed below.\n\nThe details describing the activity are collected in\
-        \ a property named `data`. In this object, software integrators will find\
-        \ all further information explaining the event context."
-      example:
-        data:
-          data: null
-          event_source:
-            api_key:
-              name: name
-              app_id: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-            channel: API
-            user:
-              id: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-        group_id: v-1f36113948e50fc4ge
-        created_at: 2022-08-30T09:14:07.66Z
-        id: evcus_0c150c51730c6b60b1
-        type: customer.confirmed
-      properties:
-        id:
-          description: "Unique event ID, assigned by Voucherify."
-          example: evcus_0c150c51730c6b60b1
-          type: string
-        type:
-          description: Event type.
-          enum:
-          - customer.confirmed
-          - customer.created
-          - customer.updated
-          - customer.deleted
-          - customer.referred
-          - customer.custom_event
-          - customer.segment.entered
-          - customer.segment.left
-          - customer.sms.sent
-          - customer.sms.recovered
-          - customer.sms.failed
-          - customer.email.sent
-          - customer.email.recovered
-          - customer.email.failed
-          - customer.activecampaign.sent
-          - customer.activecampaign.recovered
-          - customer.activecampaign.failed
-          - customer.braze.sent
-          - customer.braze.recovered
-          - customer.braze.failed
-          - customer.mailchimp.sent
-          - customer.mailchimp.recovered
-          - customer.mailchimp.failed
-          - customer.intercom.sent
-          - customer.intercom.recovered
-          - customer.intercom.failed
-          - customer.shopify.sent
-          - customer.shopify.recovered
-          - customer.shopify.failed
-          - customer.klaviyo.sent
-          - customer.klaviyo.recovered
-          - customer.klaviyo.failed
-          - customer.batch.sent
-          - customer.batch.recovered
-          - customer.batch.failed
-          - customer.rewarded
-          - customer.rewarded.loyalty_points
-          - customer.voucher.gift.balance_added
-          - customer.voucher.loyalty_card.points_added
-          - customer.voucher.loyalty_card.points_transferred
-          - customer.voucher.loyalty_card.points_expired
-          - customer.voucher.deleted
-          - customer.publication.succeeded
-          - customer.publication.failed
-          - customer.validation.succeeded
-          - customer.validation.failed
-          - customer.redemption.failed
-          - customer.redemption.succeeded
-          - customer.redemption.rollback.failed
-          - customer.redemption.rollback.succeeded
-          - customer.consents.given
-          - customer.consents.revoked
-          - customer.order.canceled
-          - customer.order.created
-          - customer.order.fulfilled
-          - customer.order.paid
-          - customer.order.processing
-          - customer.order.updated
-          - customer.reward_redemptions.created
-          - customer.reward_redemptions.pending
-          - customer.reward_redemptions.completed
-          - customer.reward_redemptions.rolledback
-          - customer.loyalty.updated
-          - customer.loyalty.tier.upgraded
-          - customer.loyalty.tier.downgraded
-          - customer.loyalty.tier.prolonged
-          - customer.loyalty.tier.expiration.changed
-          - customer.loyalty.tier.joined
-          - customer.loyalty.tier.left
-          type: string
-        data:
-          $ref: '#/components/schemas/CustomerActivity_data'
-        created_at:
-          description: Timestamp representing the date and time when the customer
-            activity occurred in ISO 8601 format.
-          example: 2022-08-30T09:14:07.66Z
-          format: date-time
-          type: string
-        group_id:
-          description: Unique identifier of the request that caused the event.
-          example: v-1f36113948e50fc4ge
-          type: string
-      title: Customer Activity
-      type: object
     CustomerBase:
       properties:
         name:
@@ -25055,12 +24911,13 @@ components:
         joint_categories:
         - joint_categories
         - joint_categories
+        applicable_exclusive_redeemables_per_category_limit: 3
         exclusive_categories:
         - exclusive_categories
         - exclusive_categories
-        applicable_redeemables_per_category_limit: 3
+        applicable_redeemables_per_category_limit: 1
         redeemables_application_mode: ALL
-        applicable_exclusive_redeemables_limit: 1
+        applicable_exclusive_redeemables_limit: 3
         redeemables_sorting_rule: REQUESTED_ORDER
         applicable_redeemables_limit: 18
         redeemables_limit: 3
@@ -25080,6 +24937,13 @@ components:
           maximum: 30
           minimum: 1
           type: integer
+        applicable_redeemables_per_category_limit:
+          default: 1
+          description: Defines how many redeemables per category can be applied in
+            one request.
+          maximum: 5
+          minimum: 1
+          type: integer
         applicable_exclusive_redeemables_limit:
           default: 1
           description: Defines how many redeemables with an exclusive category can
@@ -25087,10 +24951,10 @@ components:
           maximum: 5
           minimum: 1
           type: integer
-        applicable_redeemables_per_category_limit:
+        applicable_exclusive_redeemables_per_category_limit:
           default: 1
-          description: Defines how many redeemables per category can be applied in
-            one request.
+          description: Defines how many redeemables with an exclusive category per
+            category in stacking rules can be applied in one request.
           maximum: 5
           minimum: 1
           type: integer
@@ -25128,7 +24992,9 @@ components:
       - applicable_redeemables_limit
       - exclusive_categories
       - joint_categories
+      - redeemables_application_mode
       - redeemables_limit
+      - redeemables_sorting_rule
       title: Stacking Rules
       type: object
     ValidationRule:
@@ -25397,11 +25263,17 @@ components:
           items:
             $ref: '#/components/schemas/Category'
           type: array
+      required:
+      - id
+      - object
+      - result
+      - status
       title: Applicable Redeemable
       type: object
     ValidationsRedeemableInapplicable:
       example:
         result:
+          details: "{}"
           error:
             code: 2
             resource_type: voucher
@@ -25410,7 +25282,23 @@ components:
             message: message
             request_id: v-0a885062c80375740f
             key: key
+        metadata: "{}"
         id: id
+        categories:
+        - updated_at: 2022-08-16T10:52:08.094Z
+          hierarchy: 7
+          name: name
+          created_at: 2022-07-14T10:45:13.156Z
+          id: id
+          stacking_rules_type: JOINT
+          object: category
+        - updated_at: 2022-08-16T10:52:08.094Z
+          hierarchy: 7
+          name: name
+          created_at: 2022-07-14T10:45:13.156Z
+          id: id
+          stacking_rules_type: JOINT
+          object: category
         status: INAPPLICABLE
         object: voucher
       properties:
@@ -25432,12 +25320,41 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/ValidationsRedeemableInapplicable_result'
+        metadata:
+          description: The metadata object stores all custom attributes in the form
+            of key/value pairs assigned to the redeemable.
+          type: object
+        categories:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+      required:
+      - id
+      - object
+      - result
+      - status
       title: Inapplicable Redeemable
       type: object
     ValidationsRedeemableSkipped:
       example:
-        result: "{}"
+        result: null
+        metadata: "{}"
         id: id
+        categories:
+        - updated_at: 2022-08-16T10:52:08.094Z
+          hierarchy: 7
+          name: name
+          created_at: 2022-07-14T10:45:13.156Z
+          id: id
+          stacking_rules_type: JOINT
+          object: category
+        - updated_at: 2022-08-16T10:52:08.094Z
+          hierarchy: 7
+          name: name
+          created_at: 2022-07-14T10:45:13.156Z
+          id: id
+          stacking_rules_type: JOINT
+          object: category
         status: SKIPPED
         object: voucher
       properties:
@@ -25458,9 +25375,20 @@ components:
           - promotion_tier
           type: string
         result:
-          additionalProperties: false
-          properties: {}
+          $ref: '#/components/schemas/ValidationsRedeemableSkipped_result'
+        metadata:
+          description: The metadata object stores all custom attributes in the form
+            of key/value pairs assigned to the redeemable.
           type: object
+        categories:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+      required:
+      - id
+      - object
+      - result
+      - status
       title: Skipped Redeemable
       type: object
     ValidityHours:
@@ -26324,80 +26252,6 @@ components:
       - name
       title: Create Publication Campaign
       type: object
-    CustomerActivityData:
-      description: Event data object schema.
-      oneOf:
-      - $ref: '#/components/schemas/EventCustomerConfirmed'
-      - $ref: '#/components/schemas/EventCustomerCreated'
-      - $ref: '#/components/schemas/EventCustomerUpdated'
-      - $ref: '#/components/schemas/EventCustomerDeleted'
-      - $ref: '#/components/schemas/EventCustomerReferred'
-      - $ref: '#/components/schemas/EventCustomerCustomEvent'
-      - $ref: '#/components/schemas/EventCustomerSegmentEntered'
-      - $ref: '#/components/schemas/EventCustomerSegmentLeft'
-      - $ref: '#/components/schemas/EventCustomerSmsSent'
-      - $ref: '#/components/schemas/EventCustomerSmsRecovered'
-      - $ref: '#/components/schemas/EventCustomerSmsFailed'
-      - $ref: '#/components/schemas/EventCustomerEmailSent'
-      - $ref: '#/components/schemas/EventCustomerEmailRecovered'
-      - $ref: '#/components/schemas/EventCustomerEmailFailed'
-      - $ref: '#/components/schemas/EventCustomerActiveCampaignSent'
-      - $ref: '#/components/schemas/EventCustomerActiveCampaignRecovered'
-      - $ref: '#/components/schemas/EventCustomerActiveCampaignFailed'
-      - $ref: '#/components/schemas/EventCustomerBrazeSent'
-      - $ref: '#/components/schemas/EventCustomerBrazeRecovered'
-      - $ref: '#/components/schemas/EventCustomerBrazeFailed'
-      - $ref: '#/components/schemas/EventCustomerMailchimpSent'
-      - $ref: '#/components/schemas/EventCustomerMailchimpRecovered'
-      - $ref: '#/components/schemas/EventCustomerMailchimpFailed'
-      - $ref: '#/components/schemas/EventCustomerIntercomSent'
-      - $ref: '#/components/schemas/EventCustomerIntercomRecovered'
-      - $ref: '#/components/schemas/EventCustomerIntercomFailed'
-      - $ref: '#/components/schemas/EventCustomerShopifySent'
-      - $ref: '#/components/schemas/EventCustomerShopifyRecovered'
-      - $ref: '#/components/schemas/EventCustomerShopifyFailed'
-      - $ref: '#/components/schemas/EventCustomerKlaviyoSent'
-      - $ref: '#/components/schemas/EventCustomerKlaviyoRecovered'
-      - $ref: '#/components/schemas/EventCustomerKlaviyoFailed'
-      - $ref: '#/components/schemas/EventCustomerBatchSent'
-      - $ref: '#/components/schemas/EventCustomerBatchRecovered'
-      - $ref: '#/components/schemas/EventCustomerBatchFailed'
-      - $ref: '#/components/schemas/EventCustomerRewarded'
-      - $ref: '#/components/schemas/EventCustomerRewardedLoyaltyPoints'
-      - $ref: '#/components/schemas/EventCustomerGiftVoucherBalanceAdded'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyCardPointsAdded'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyCardPointsTransferred'
-      - $ref: '#/components/schemas/EventCustomerVouchersLoyaltyPointsExpired'
-      - $ref: '#/components/schemas/EventCustomerVoucherDeleted'
-      - $ref: '#/components/schemas/EventCustomerPublicationSucceeded'
-      - $ref: '#/components/schemas/EventCustomerPublicationFailed'
-      - $ref: '#/components/schemas/EventCustomerValidationSucceeded'
-      - $ref: '#/components/schemas/EventCustomerValidationFailed'
-      - $ref: '#/components/schemas/EventCustomerRedemptionSucceeded'
-      - $ref: '#/components/schemas/EventCustomerRedemptionFailed'
-      - $ref: '#/components/schemas/EventCustomerRedemptionRollbackSucceeded'
-      - $ref: '#/components/schemas/EventCustomerRedemptionRollbackFailed'
-      - $ref: '#/components/schemas/EventCustomerConsentsGiven'
-      - $ref: '#/components/schemas/EventCustomerConsentsRevoked'
-      - $ref: '#/components/schemas/EventCustomerOrderCanceled'
-      - $ref: '#/components/schemas/EventCustomerOrderCreated'
-      - $ref: '#/components/schemas/EventCustomerOrderFulfilled'
-      - $ref: '#/components/schemas/EventCustomerOrderPaid'
-      - $ref: '#/components/schemas/EventCustomerOrderProcessing'
-      - $ref: '#/components/schemas/EventCustomerOrderUpdated'
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptionsCreated'
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptionsPending'
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptionsCompleted'
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptionsRolledBack'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyUpdated'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierUpgraded'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierDowngraded'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierProlonged'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierExpirationChanged'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierJoined'
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierLeft'
-      title: Customer Activity Data
-      type: object
     CustomerId:
       properties:
         id:
@@ -26965,9 +26819,15 @@ components:
           type: string
         customer:
           $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
+        vouchers:
+          description: Contains the voucher IDs that was assigned by Voucherify.
+          items:
+            example: ZFMKNAEK
+            type: string
+          type: array
         vouchers_id:
-          description: Contains the unique internal voucher ID that was assigned by
-            Voucherify.
+          description: Contains the unique internal voucher IDs that was assigned
+            by Voucherify.
           items:
             example: v_Bw3qWZWv47yb1Onra8F2LlFI1enLakfA
             type: string
@@ -27081,7 +26941,7 @@ components:
             unit: MONTH
             type: MONTH
             strategy: START
-            value: 7
+            value: 2
           type: END_OF_PERIOD
         start_date:
           type: IMMEDIATE
@@ -28112,6 +27972,82 @@ components:
       - total
       title: Validation Rules Assignments List
       type: object
+    ValidationsRedeemableSkippedResultCategoryLimitExceeded:
+      description: When applicable_redeemables_per_category_limit from stacking_rules
+        is exceeded
+      properties:
+        key:
+          enum:
+          - applicable_redeemables_per_category_limit_exceeded
+          type: string
+        message:
+          enum:
+          - Applicable redeemables limit per category exceeded
+          type: string
+      type: object
+    ValidationsRedeemableSkippedResultExclusionRulesNotMet:
+      description: When regular is skipped due to non-fulfilled exclusion rules
+      properties:
+        key:
+          enum:
+          - exclusion_rules_not_met
+          type: string
+        message:
+          enum:
+          - Redeemable cannot be applied due to exclusion rules
+          type: string
+      type: object
+    ValidationsRedeemableSkippedResultLimitExceeded:
+      description: When applicable_redeemables_limit from stacking_rules is exceeded
+      properties:
+        key:
+          enum:
+          - applicable_redeemables_limit_exceeded
+          type: string
+        message:
+          enum:
+          - Applicable redeemables limit exceeded
+          type: string
+      type: object
+    ValidationsRedeemableSkippedResultPrecedingValidationFailed:
+      description: For ALL mode when one of the preceding redeeambles is INAPPLICABLE
+        so the rest is SKIPPED
+      properties:
+        key:
+          enum:
+          - preceding_validation_failed
+          type: string
+        message:
+          enum:
+          - Redeemable cannot be applied due to preceding validation failure
+          type: string
+      type: object
+    ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded:
+      description: When applicable_exclusive_redeemables_per_category_limit from stacking_rules
+        is exceeded
+      properties:
+        key:
+          enum:
+          - applicable_exclusive_redeemables_per_category_limit_exceeded
+          type: string
+        message:
+          enum:
+          - Applicable exclusive redeemables limit per category exceeded
+          type: string
+      type: object
+    ValidationsRedeemableSkippedResultRedeemablesLimitExceeded:
+      description: When applicable_exclusive_redeemables_limit from stacking_rules
+        is exceeded
+      properties:
+        key:
+          enum:
+          - applicable_exclusive_redeemables_limit_exceeded
+          type: string
+        message:
+          enum:
+          - Applicable exclusive redeemables limit exceeded
+          type: string
+      type: object
     VoucherAssets:
       description: Stores links to images of QR and barcode that correspond to an
         encrypted voucher code.
@@ -28558,619 +28494,6 @@ components:
       - $ref: '#/components/schemas/EarningRuleProportionalOrderItemsAmount'
       - $ref: '#/components/schemas/EarningRuleProportionalOrderItemsSubtotalAmount'
       title: Order Items
-    EventCustomerActiveCampaignFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.activecampaign.failed`.
-      title: Event Customer ActiveCampaign Failed
-    EventCustomerActiveCampaignRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.activecampaign.recovered`.
-      title: Event Customer ActiveCampaign Recovered
-    EventCustomerActiveCampaignSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.activecampaign.sent`.
-      title: Event Customer ActiveCampaign Sent
-    EventCustomerBatchFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.batch.failed`.
-      title: Event Customer Batch Failed
-    EventCustomerBatchRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.batch.recovered`.
-      title: Event Customer Batch Recovered
-    EventCustomerBatchSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.batch.sent`.
-      title: Event Customer Batch Sent
-    EventCustomerBrazeFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.braze.failed`.
-      title: Event Customer Braze Failed
-    EventCustomerBrazeRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.braze.recovered`.
-      title: Event Customer Braze Recovered
-    EventCustomerBrazeSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.braze.sent`.
-      title: Event Customer Braze Sent
-    EventCustomerConfirmed:
-      description: Event data object schema for `customer.confirmed`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
-        unconfirmed_customer:
-          $ref: '#/components/schemas/EventCustomerConfirmed_unconfirmed_customer'
-      title: Event Customer Confirmed
-      type: object
-    EventCustomerConsentsGiven:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerConsents'
-      description: Event data object schema for `customer.consents.given`.
-      title: Event Customer Consents Given
-    EventCustomerConsentsRevoked:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerConsents'
-      description: Event data object schema for `customer.consents.revoked`.
-      title: Event Customer Consents Revoked
-    EventCustomerCreated:
-      description: Event data object schema for `customer.created`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
-      title: Event Customer Created
-      type: object
-    EventCustomerCustomEvent:
-      description: Event data object schema for `customer.custom_event`.
-      properties:
-        event:
-          $ref: '#/components/schemas/CustomEvent'
-        event_schema:
-          $ref: '#/components/schemas/SimpleCustomEvent'
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        referral:
-          $ref: '#/components/schemas/EventCustomerCustomEvent_referral'
-        loyalty:
-          $ref: '#/components/schemas/EventCustomerCustomEvent_loyalty'
-      required:
-      - customer
-      - event
-      - event_schema
-      title: Event Customer Custom Event
-      type: object
-    EventCustomerDeleted:
-      description: Event data object schema for `customer.deleted`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
-      title: Event Customer Deleted
-      type: object
-    EventCustomerEmailFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.email.failed`.
-      title: Event Customer Email Failed
-    EventCustomerEmailRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.email.recovered`.
-      title: Event Customer Email Recovered
-    EventCustomerEmailSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.email.sent`.
-      title: Event Customer Email Sent
-    EventCustomerGiftVoucherBalanceAdded:
-      description: Event data object schema for `customer.voucher.gift.balance_added`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        balance:
-          type: integer
-        transaction:
-          $ref: '#/components/schemas/VoucherTransaction'
-      title: Event Customer Gift Voucher Balance Added
-      type: object
-    EventCustomerIntercomFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.intercom.failed`.
-      title: Event Customer Intercom Failed
-    EventCustomerIntercomRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.intercom.recovered`.
-      title: Event Customer Intercom Recovered
-    EventCustomerIntercomSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.intercom.sent`.
-      title: Event Customer Intercom Sent
-    EventCustomerKlaviyoFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.klaviyo.failed`.
-      title: Event Customer Klaviyo Failed
-    EventCustomerKlaviyoRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.klaviyo.recovered`.
-      title: Event Customer Klaviyo Recovered
-    EventCustomerKlaviyoSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.klaviyo.sent`.
-      title: Event Customer Klaviyo Sent
-    EventCustomerLoyaltyCardPointsAdded:
-      description: Event data object schema for `customer.voucher.loyalty_card.points_added`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        balance:
-          type: integer
-        transaction:
-          $ref: '#/components/schemas/VoucherTransaction'
-      title: Event Customer Loyalty Card Points Added
-      type: object
-    EventCustomerLoyaltyCardPointsTransferred:
-      description: Event data object schema for `customer.voucher.loyalty_card.points_transferred`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        source_voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        destination_voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        balance:
-          type: integer
-        transaction:
-          $ref: '#/components/schemas/VoucherTransaction'
-      title: Event Customer Loyalty Card Points Transferred
-      type: object
-    EventCustomerLoyaltyTierDowngraded:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierBase'
-      - properties:
-          loyalty_tier_from:
-            $ref: '#/components/schemas/LoyaltyTier'
-          loyalty_tier_to:
-            $ref: '#/components/schemas/LoyaltyTier'
-          created_at:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-        required:
-        - created_at
-        - loyalty_tier_from
-        title: Loyalty Tier Downgraded
-        type: object
-      description: Event data object schema for `customer.loyalty.tier.downgraded`.
-      title: Event Customer Loyalty Tier Downgraded
-    EventCustomerLoyaltyTierExpirationChanged:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierBase'
-      - properties:
-          loyalty_tier:
-            $ref: '#/components/schemas/LoyaltyTier'
-          created_at:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-          expiration_date:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-        required:
-        - created_at
-        - expiration_date
-        - loyalty_tier
-        title: Loyalty Tier Expiration Changed
-        type: object
-      description: Event data object schema for `customer.loyalty.tier.expiration.changed`.
-      title: Event Customer Loyalty Tier Expiration Changed
-    EventCustomerLoyaltyTierJoined:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierBase'
-      - properties:
-          loyalty_tier:
-            $ref: '#/components/schemas/LoyaltyTier'
-          created_at:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-        required:
-        - created_at
-        - loyalty_tier
-        title: Loyalty Tier Joined
-        type: object
-      description: Event data object schema for `customer.loyalty.tier.joined`.
-      title: Event Customer Loyalty Tier Joined
-    EventCustomerLoyaltyTierLeft:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierBase'
-      - properties:
-          loyalty_tier:
-            $ref: '#/components/schemas/LoyaltyTier'
-          created_at:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-        required:
-        - created_at
-        - loyalty_tier
-        title: Loyalty Tier Left
-        type: object
-      description: Event data object schema for `customer.loyalty.tier.left`.
-      title: Event Customer Loyalty Tier Left
-    EventCustomerLoyaltyTierProlonged:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierBase'
-      - properties:
-          loyalty_tier:
-            $ref: '#/components/schemas/LoyaltyTier'
-          created_at:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-        required:
-        - created_at
-        - loyalty_tier
-        title: Loyalty Tier Prolonged
-        type: object
-      description: Event data object schema for `customer.loyalty.tier.prolonged`.
-      title: Event Customer Loyalty Tier Prolonged
-    EventCustomerLoyaltyTierUpgraded:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerLoyaltyTierBase'
-      - properties:
-          loyalty_tier_from:
-            $ref: '#/components/schemas/LoyaltyTier'
-          loyalty_tier_to:
-            $ref: '#/components/schemas/LoyaltyTier'
-          created_at:
-            example: 2022-02-25T13:32:08.734Z
-            format: date-time
-            type: string
-        required:
-        - created_at
-        - loyalty_tier_to
-        title: Loyalty Tier Upgraded
-        type: object
-      description: Event data object schema for `customer.loyalty.tier.upgraded`.
-      title: Event Customer Loyalty Tier Upgraded
-    EventCustomerLoyaltyUpdated:
-      description: Event data object schema for `customer.loyalty.updated`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        loyalty:
-          type: object
-        created_at:
-          example: 2022-02-25T13:32:08.734Z
-          format: date-time
-          type: string
-      required:
-      - created_at
-      title: Event Customer Loyalty Updated
-      type: object
-    EventCustomerMailchimpFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.mailchimp.failed`.
-      title: Event Customer Mailchimp Failed
-    EventCustomerMailchimpRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.mailchimp.recovered`.
-      title: Event Customer Mailchimp Recovered
-    EventCustomerMailchimpSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.mailchimp.sent`.
-      title: Event Customer Mailchimp Sent
-    EventCustomerOrderCanceled:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerOrder'
-      description: Event data object schema for `customer.order.canceled`.
-      title: Event Customer Order Canceled
-    EventCustomerOrderCreated:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerOrder'
-      description: Event data object schema for `customer.order.created`.
-      title: Event Customer Order Created
-    EventCustomerOrderFulfilled:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerOrder'
-      description: Event data object schema for `customer.order.fulfilled`.
-      title: Event Customer Order Fulfilled
-    EventCustomerOrderPaid:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerOrder'
-      description: Event data object schema for `customer.order.paid`.
-      title: Event Customer Order Paid
-    EventCustomerOrderProcessing:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerOrder'
-      description: Event data object schema for `customer.order.processing`.
-      title: Event Customer Order Processing
-    EventCustomerOrderUpdated:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerOrder'
-      description: Event data object schema for `customer.order.updated`.
-      title: Event Customer Order Updated
-    EventCustomerPublicationFailed:
-      description: Event data object schema for `customer.publication.failed`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        publication:
-          $ref: '#/components/schemas/ListPublicationsItemValidSingleVoucher'
-      title: Event Customer Publication Failed
-      type: object
-    EventCustomerPublicationSucceeded:
-      description: Event data object schema for `customer.publication.succeeded`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        publication:
-          $ref: '#/components/schemas/ListPublicationsItemValidSingleVoucher'
-      title: Event Customer Publication Succeeded
-      type: object
-    EventCustomerRedemptionFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRedemption'
-      description: Event data object schema for `customer.redemption.failed`.
-      title: Event Customer Redemption Failed
-    EventCustomerRedemptionRollbackFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRedemption'
-      - properties:
-          redemption_rollback:
-            $ref: '#/components/schemas/SimpleRedemption'
-        type: object
-      description: Event data object schema for `customer.redemption.rollback.failed`.
-      title: Event Customer Redemption Rollback Failed
-    EventCustomerRedemptionRollbackSucceeded:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRedemption'
-      - properties:
-          redemption_rollback:
-            $ref: '#/components/schemas/SimpleRedemption'
-        type: object
-      description: Event data object schema for `customer.redemption.rollback.succeeded`.
-      title: Event Customer Redemption Rollback Succeeded
-    EventCustomerRedemptionSucceeded:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRedemption'
-      description: Event data object schema for `customer.redemption.succeeded`.
-      title: Event Customer Redemption Succeeded
-    EventCustomerReferred:
-      description: Event data object schema for `customer.referred`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        referrer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        custom_event:
-          $ref: '#/components/schemas/CustomEvent'
-        redemption:
-          $ref: '#/components/schemas/RedemptionInternal'
-      required:
-      - campaign
-      - custom_event
-      - referrer
-      - voucher
-      title: Event Customer Referred
-      type: object
-    EventCustomerRewardRedemptionsCompleted:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptions'
-      description: Event data object schema for `customer.reward_redemptions.completed`.
-      title: Event Customer Reward Redemptions Completed
-    EventCustomerRewardRedemptionsCreated:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptions'
-      description: Event data object schema for `customer.reward_redemptions.created`.
-      title: Event Customer Reward Redemptions Created
-    EventCustomerRewardRedemptionsPending:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptions'
-      description: Event data object schema for `customer.reward_redemptions.pending`.
-      title: Event Customer Reward Redemptions Pending
-    EventCustomerRewardRedemptionsRolledBack:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRewardRedemptions'
-      description: Event data object schema for `customer.reward_redemptions.rolledback`.
-      title: Event Customer Reward Redemptions Rolled Back
-    EventCustomerRewarded:
-      description: Event data object schema for `customer.rewarded`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        holder:
-          $ref: '#/components/schemas/SimpleCustomer'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        redemption:
-          $ref: '#/components/schemas/RedemptionInternal'
-        reward:
-          $ref: '#/components/schemas/SimpleRedemptionRewardResult'
-        referral_tier:
-          $ref: '#/components/schemas/SimpleReferralTier'
-        balance:
-          $ref: '#/components/schemas/EventCustomerRewarded_balance'
-        custom_event:
-          $ref: '#/components/schemas/CustomEvent'
-        customer_event:
-          type: object
-      title: Event Customer Rewarded
-      type: object
-    EventCustomerRewardedLoyaltyPoints:
-      description: Event data object schema for `customer.rewarded.loyalty_points`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        holder:
-          $ref: '#/components/schemas/SimpleCustomer'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        loyalty_tier:
-          $ref: '#/components/schemas/LoyaltyTier'
-        earning_rule:
-          $ref: '#/components/schemas/EarningRule'
-        balance:
-          type: integer
-        order:
-          $ref: '#/components/schemas/OrderCalculated'
-        event:
-          type: object
-      title: Event Customer Rewarded Loyalty Points
-      type: object
-    EventCustomerSegmentEntered:
-      description: Event data object schema for `customer.segment.entered`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
-        segment:
-          $ref: '#/components/schemas/SimpleSegment'
-      required:
-      - customer
-      - segment
-      title: Event Customer Segment Entered
-      type: object
-    EventCustomerSegmentLeft:
-      description: Event data object schema for `customer.segment.left`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
-        segment:
-          $ref: '#/components/schemas/SimpleSegment'
-      required:
-      - customer
-      - segment
-      title: Event Customer Segment Left
-      type: object
-    EventCustomerShopifyFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.shopify.failed`.
-      title: Event Customer Shopify Failed
-    EventCustomerShopifyRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.shopify.recovered`.
-      title: Event Customer Shopify Recovered
-    EventCustomerShopifySent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.shopify.sent`.
-      title: Event Customer Shopify Sent
-    EventCustomerSmsFailed:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerFailed'
-      description: Event data object schema for `customer.sms.failed`.
-      title: Event Customer SMS Failed
-    EventCustomerSmsRecovered:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerRecovered'
-      description: Event data object schema for `customer.sms.recovered`.
-      title: Event Customer SMS Recovered
-    EventCustomerSmsSent:
-      allOf:
-      - $ref: '#/components/schemas/EventCustomerSent'
-      description: Event data object schema for `customer.sms.sent`.
-      title: Event Customer SMS Sent
-    EventCustomerUpdated:
-      description: Event data object schema for `customer.updated`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/CustomerWithSummaryLoyaltyReferrals'
-      title: Event Customer Updated
-      type: object
-    EventCustomerValidationFailed:
-      description: Event data object schema for `customer.validation.failed`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        validation:
-          $ref: '#/components/schemas/ValidationEntity'
-      title: Event Customer Validation Failed
-      type: object
-    EventCustomerValidationSucceeded:
-      description: Event data object schema for `customer.validation.succeeded`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        validation:
-          $ref: '#/components/schemas/ValidationEntity'
-      title: Event Customer Validation Succeeded
-      type: object
-    EventCustomerVoucherDeleted:
-      description: Event data object schema for `customer.voucher.deleted`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-      title: Event Customer Voucher Deleted
-      type: object
-    EventCustomerVouchersLoyaltyPointsExpired:
-      description: Event data object schema for `customer.voucher.loyalty_card.points_expired`.
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        points:
-          type: integer
-        buckets:
-          items:
-            $ref: '#/components/schemas/VoucherTransaction'
-          type: array
-        transaction:
-          $ref: '#/components/schemas/VoucherTransaction'
-      title: Event Customer Loyalty Card Points Expired
-      type: object
     ExportBase:
       additionalProperties: false
       properties:
@@ -29593,47 +28916,6 @@ components:
       - title: object
         type: object
       title: Any
-    CustomEvent:
-      properties:
-        id:
-          description: Unique custom event ID.
-          type: string
-        object:
-          default: event
-          description: The object represented is an `event`.
-          enum:
-          - event
-          type: string
-        type:
-          description: The event name.
-          type: string
-        customer:
-          allOf:
-          - $ref: '#/components/schemas/SimpleCustomerRequiredObjectType'
-          description: A simple customer object
-        referral:
-          $ref: '#/components/schemas/CustomEvent_referral'
-        loyalty:
-          $ref: '#/components/schemas/CustomEvent_loyalty'
-        metadata:
-          description: A set of custom key/value pairs that you can attach to a customer.
-            The metadata object stores all custom attributes assigned to the customer
-            object.
-          type: object
-        created_at:
-          description: Timestamp representing the date and time when the custom event
-            was created. Timestamp is presented in the ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-      required:
-      - customer
-      - loyalty
-      - object
-      - referral
-      - type
-      title: Custom Event
-      type: object
     DiscountAmountVouchersEffectTypes:
       enum:
       - APPLY_TO_ORDER
@@ -29841,129 +29123,6 @@ components:
       - type
       title: Order Total Amount
       type: object
-    EventCustomerConsents:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        consents:
-          items:
-            $ref: '#/components/schemas/SimpleConsent'
-          type: array
-      title: Event Customer Consents
-      type: object
-    EventCustomerFailed:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        distribution:
-          type: object
-        failed_at:
-          description: Timestamp representing the date and time when the distribution
-            failed in ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-      required:
-      - failed_at
-      title: Event Customer Failed
-      type: object
-    EventCustomerLoyaltyTierBase:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-      required:
-      - created_at
-      - loyalty_tier_to
-      title: Event Customer Loyalty Tier Base
-      type: object
-    EventCustomerOrder:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        referrer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        order:
-          $ref: '#/components/schemas/OrderCalculated'
-        redemption:
-          $ref: '#/components/schemas/RedemptionInternal'
-      title: Event Customer Order
-      type: object
-    EventCustomerRecovered:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        distribution:
-          type: object
-        recovered_at:
-          description: Timestamp representing the date and time when the distribution
-            was recovered in ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-      required:
-      - recovered_at
-      title: Event Customer Recovered
-      type: object
-    EventCustomerRedemption:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        order:
-          $ref: '#/components/schemas/SimpleOrder'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        holder:
-          $ref: '#/components/schemas/SimpleCustomer'
-        promotion_tier:
-          $ref: '#/components/schemas/SimplePromotionTier'
-        promotion_stack:
-          $ref: '#/components/schemas/SimplePromotionStack'
-        redemption:
-          $ref: '#/components/schemas/SimpleRedemption'
-      title: Event Customer Redemption
-      type: object
-    EventCustomerRewardRedemptions:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        holder:
-          $ref: '#/components/schemas/SimpleCustomer'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-        reward_redemption:
-          type: object
-        reward:
-          $ref: '#/components/schemas/SimpleRedemptionRewardResult'
-        reward_assignment:
-          $ref: '#/components/schemas/RewardAssignment'
-        source:
-          type: string
-        balance:
-          type: integer
-      title: Event Customer Reward Redemptions
-      type: object
-    EventCustomerSent:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        distribution:
-          type: object
-        sent_at:
-          description: Timestamp representing the date and time when the distribution
-            was sent in ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-      required:
-      - sent_at
-      title: Event Customer Sent
-      type: object
     RedeemableResult:
       description: Information about redeemable result.
       properties:
@@ -29980,232 +29139,6 @@ components:
           - $ref: '#/components/schemas/Error'
           description: Error in result
       title: Redeemable Result
-    RedemptionInternal:
-      description: Model Used for internal communication
-      properties:
-        id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
-          type: string
-        object:
-          default: redemption
-          description: The type of the object represented by the JSON. This object
-            stores information about the `redemption`.
-          type: string
-        created_at:
-          description: Timestamp representing the date and time when the redemption
-            was created. The value is shown in the ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-        tracking_id:
-          description: Hashed customer source ID.
-          type: string
-        metadata:
-          description: The metadata object stores all custom attributes assigned to
-            the redemption.
-          type: object
-        channel_type:
-          description: The source of the channel for the redemption rollback. A `USER`
-            corresponds to the Voucherify Dashboard and an `API` corresponds to the
-            API.
-          enum:
-          - USER
-          - API
-          type: string
-        channel_id:
-          description: Unique channel ID of the user performing the redemption. This
-            is either a user ID from a user using the Voucherify Dashboard or an X-APP-Id
-            of a user using the API.
-          example: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
-          type: string
-        failure_code:
-          description: "If the result is `FAILURE`, this parameter will provide a\
-            \ generic reason as to why the redemption failed."
-          example: customer_rules_violated
-          type: string
-        failure_message:
-          description: "If the result is `FAILURE`, this parameter will provide a\
-            \ more expanded reason as to why the redemption failed."
-          type: string
-        order:
-          $ref: '#/components/schemas/OrderCalculated'
-        previous_order:
-          $ref: '#/components/schemas/OrderCalculated'
-        reward:
-          $ref: '#/components/schemas/RedemptionRewardResult'
-        amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the total amount of the order. This is the
-            sum of the order items' amounts.
-          example: 10000
-          type: integer
-        reason:
-          description: System generated cause for the redemption being invalid in
-            the context of the provided parameters.
-          type: string
-        result:
-          description: Redemption result.
-          enum:
-          - SUCCESS
-          - FAILURE
-          type: string
-        status:
-          description: Redemption status.
-          enum:
-          - SUCCEEDED
-          - FAILED
-          type: string
-        related_redemptions:
-          $ref: '#/components/schemas/RedemptionInternal_related_redemptions'
-        parent_redemption_id:
-          description: Unique redemption ID of the parent redemption.
-          example: r_0c656311b5878a2031
-          type: string
-        redemption:
-          description: Unique redemption ID of the parent redemption.
-          example: r_0c656311b5878a2031
-          type: string
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        customer_id:
-          description: Unique customer ID of the redeeming customer.
-          example: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
-          nullable: true
-          type: string
-        related_object_type:
-          description: Defines the related object.
-          enum:
-          - voucher
-          - promotion_tier
-          type: string
-        related_object_id:
-          description: "Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno\
-            \ for a voucher."
-          type: string
-        related_object_parent_id:
-          description: "Unique related parent object ID assigned by Voucherify, i.e.\
-            \ v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher."
-          type: string
-        campaign_name:
-          description: Campaign name
-          type: string
-        voucher:
-          $ref: '#/components/schemas/Redemption_voucher'
-        promotion_tier:
-          allOf:
-          - $ref: '#/components/schemas/PromotionTier'
-          description: Contains details of the promotion tier and the parent campaign.
-      title: Redemption Internal
-      type: object
-    SimpleCampaign:
-      description: Simplified campaign data.
-      properties:
-        id:
-          description: Campaign ID.
-          type: string
-        name:
-          description: Campaign name.
-          type: string
-        campaign_type:
-          description: Type of campaign.
-          type: string
-        type:
-          description: |-
-            Defines whether the campaign can be updated with new vouchers after campaign creation.
-            - `AUTO_UPDATE`: By choosing the auto update option you will create a campaign that can be enhanced by new vouchers after the time of creation (e.g. by publish vouchers method).
-            -  `STATIC`: vouchers need to be manually published.
-          enum:
-          - AUTO_UPDATE
-          - STATIC
-          type: string
-        is_referral_code:
-          description: Flag indicating whether this voucher is a referral code; `true`
-            for campaign type `REFERRAL_PROGRAM`.
-          type: boolean
-        voucher:
-          $ref: '#/components/schemas/SimpleCampaignVoucher'
-        lucky_draw:
-          allOf:
-          - $ref: '#/components/schemas/LuckyDraw'
-          type: object
-        referral_program:
-          $ref: '#/components/schemas/ReferralProgram'
-        auto_join:
-          description: Indicates whether customers will be able to auto-join the campaign
-            if any earning rule is fulfilled.
-          type: boolean
-        join_once:
-          description: "If this value is set to `true`, customers will be able to\
-            \ join the campaign only once."
-          type: boolean
-        active:
-          description: Indicates whether the campaign is active.
-          type: boolean
-        category:
-          description: Unique category name.
-          type: string
-        category_id:
-          description: The unique category ID that this campaign belongs to.
-          nullable: true
-          type: string
-        categories:
-          description: Contains details about the category.
-          items:
-            $ref: '#/components/schemas/Category'
-          type: array
-        metadata:
-          description: A set of custom key/value pairs that you can attach to a campaign.
-            The metadata object stores all custom attributes assigned to the campaign.
-          type: object
-        start_date:
-          description: 'Activation timestamp defines when the campaign starts to be
-            active in ISO 8601 format. Campaign is inactive *before* this date. '
-          example: 2022-09-20T00:00:00Z
-          format: date-time
-          type: string
-        expiration_date:
-          description: Expiration timestamp defines when the campaign expires in ISO
-            8601 format.  Campaign is inactive *after* this date.
-          example: 2022-09-30T00:00:00Z
-          format: date-time
-          type: string
-        description:
-          description: An optional field to keep extra textual information about the
-            campaign such as a campaign description and details.
-          type: string
-        created_at:
-          description: Timestamp representing the date and time when the campaign
-            was created. Timestamp is presented in the ISO 8601 format.
-          example: 2024-01-01T11:11:11.111Z
-          format: date-time
-          type: string
-        updated_at:
-          description: Timestamp representing the date and time when the campaign
-            was updated in the ISO 8601 format.
-          example: 2024-01-01T11:11:11.111Z
-          format: date-time
-          type: string
-        object:
-          default: campaign
-          description: The type of the object represented by JSON. This object stores
-            information about the campaign.
-          enum:
-          - campaign
-          type: string
-      title: Simple Campaign
-      type: object
-    SimpleCustomEvent:
-      description: Simplified custom event data.
-      properties:
-        id:
-          description: Unique identifier of the custom event.
-          type: string
-        name:
-          description: Name of the custom event.
-          type: string
-      title: Simple Custom Event
-      type: object
     SimpleProductDiscountUnit:
       properties:
         id:
@@ -30222,140 +29155,6 @@ components:
       - name
       title: Simple Product Discount Unit
       type: object
-    SimpleRedemption:
-      description: This is an object representing a simple redemption.
-      properties:
-        id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
-          type: string
-        customer_id:
-          description: Unique customer ID of the redeeming customer.
-          example: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
-          nullable: true
-          type: string
-        tracking_id:
-          description: Hashed customer source ID.
-          type: string
-        date:
-          description: Timestamp representing the date and time when the redemption
-            was created. The value is shown in the ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-        amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the total amount of the order. This is the
-            sum of the order items' amounts.
-          example: 10000
-          type: integer
-        order:
-          $ref: '#/components/schemas/SimpleOrder'
-        reward:
-          $ref: '#/components/schemas/SimpleRedemptionRewardResult'
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        result:
-          description: Redemption result.
-          enum:
-          - SUCCESS
-          - FAILURE
-          type: string
-        voucher:
-          allOf:
-          - $ref: '#/components/schemas/SimpleVoucher'
-          description: Defines the details of the voucher being redeemed.
-        promotion_tier:
-          $ref: '#/components/schemas/SimplePromotionTier'
-        redemption:
-          description: Unique redemption ID of the parent redemption.
-          example: r_0c656311b5878a2031
-          type: string
-        object:
-          default: redemption
-          description: The type of the object represented by the JSON. This object
-            stores information about the `redemption`.
-          type: string
-      title: Simple Redemption
-      type: object
-    SimpleRedemptionRewardResult:
-      properties:
-        customer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        assignment_id:
-          description: Unique reward assignment ID assigned by Voucherify.
-          type: string
-        voucher:
-          allOf:
-          - $ref: '#/components/schemas/SimpleVoucher'
-          description: Defines of the voucher.
-        product:
-          allOf:
-          - $ref: '#/components/schemas/SimpleProduct'
-          description: Defines of the product.
-        sku:
-          allOf:
-          - $ref: '#/components/schemas/SimpleSku'
-          description: Defines of the sku.
-        loyalty_tier_id:
-          description: Unique loyalty tier ID assigned by Voucherify.
-          type: string
-        id:
-          description: "Unique reward ID, assigned by Voucherify."
-          example: rew_nIy4gHpQHle2c3pNMwuj7G6j
-          type: string
-        object:
-          default: reward
-          description: The type of the object represented by the JSON. This object
-            stores information about the reward.
-          enum:
-          - reward
-          type: string
-        name:
-          description: Reward name.
-          type: string
-        created_at:
-          description: Timestamp representing the date and time when the reward was
-            created. The value is shown in the ISO 8601 format.
-          example: 2022-08-11T14:49:22.586Z
-          format: date-time
-          type: string
-        updated_at:
-          description: Timestamp representing the date and time when the reward was
-            updated. The value is shown in the ISO 8601 format.
-          example: 2022-08-11T16:01:34.885Z
-          format: date-time
-          nullable: true
-          type: string
-        parameters:
-          description: Defines how the reward is generated.
-          type: object
-        type:
-          description: Reward type.
-          enum:
-          - CAMPAIGN
-          - COIN
-          - MATERIAL
-          type: string
-      title: Simple Redemption Reward Result
-      type: object
-    SimpleReferralTier:
-      properties:
-        id:
-          description: Unique referral tier ID.
-          example: seg_DNAOhUtJffvX0f57ajLMFBYR
-          type: string
-        campaign_id:
-          description: Campaign Id.
-          type: string
-        banner:
-          description: Text to be displayed to your customers on your website.
-          type: string
-        parameters:
-          description: Referral tier parameters
-          type: object
-      title: Simple Referral Tier
-      type: object
     SimpleSkuDiscountUnit:
       properties:
         id:
@@ -30371,47 +29170,6 @@ components:
       - id
       - name
       title: Simple Sku Discount Unit
-      type: object
-    ValidationEntity:
-      properties:
-        id:
-          description: Unique validation id.
-          type: string
-        session_id:
-          description: Unique session id.
-          type: string
-        status:
-          description: The validation status
-          enum:
-          - VALID
-          - INVALID
-          type: string
-        created_at:
-          description: Timestamp representing the date and time when the validation
-            was created. The value is shown in the ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-        customer_id:
-          description: Unique customer ID of the customer making the purchase.
-          example: cust_7iUa6ICKyU6gH40dBU25kQU1
-          type: string
-        redeemables:
-          description: Lists validation results of each redeemable.
-          items:
-            $ref: '#/components/schemas/ValidationsRedeemableApplicable'
-          type: array
-        skipped_redeemables:
-          description: Lists validation results of each redeemable.
-          items:
-            $ref: '#/components/schemas/ValidationsRedeemableInapplicable'
-          type: array
-        inapplicable_redeemables:
-          description: Lists validation results of each redeemable.
-          items:
-            $ref: '#/components/schemas/ValidationsRedeemableSkipped'
-          type: array
-      title: Validation Entity
       type: object
     RedeemableGift:
       additionalProperties: false
@@ -30456,251 +29214,6 @@ components:
           title: Loyalties Transfer
           type: array
       title: Redeemable Loyalty Card
-      type: object
-    SimpleCampaignVoucher:
-      description: Simplified campaign voucher data.
-      properties:
-        type:
-          description: Type of the voucher.
-          enum:
-          - DISCOUNT_VOUCHER
-          - LOYALTY_CARD
-          - GIFT_VOUCHER
-          type: string
-        discount:
-          allOf:
-          - $ref: '#/components/schemas/Discount'
-          description: Defines the voucher discount type and details.
-        gift:
-          allOf:
-          - $ref: '#/components/schemas/Gift'
-          description: Defines the voucher gift details.
-        loyalty_card:
-          allOf:
-          - $ref: '#/components/schemas/CampaignLoyaltyCard'
-          description: Defines the voucher loyalty card details.
-        redemption:
-          $ref: '#/components/schemas/SimpleVoucher_redemption'
-        code_config:
-          $ref: '#/components/schemas/CodeConfigRequiredLengthCharsetPattern'
-      required:
-      - code_config
-      - redemption
-      - type
-      title: Simple Campaign Voucher
-      type: object
-    SimpleConsent:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        object:
-          default: consent
-          enum:
-          - consent
-          type: string
-      required:
-      - object
-      title: Simple Consent
-      type: object
-    SimpleOrder:
-      additionalProperties: false
-      description: Order information.
-      properties:
-        id:
-          description: |+
-            Unique ID assigned by Voucherify of an existing order that will be linked to the redemption of this request.
-
-          type: string
-        source_id:
-          description: Unique source ID of an existing order that will be linked to
-            the redemption of this request.
-          type: string
-        status:
-          description: The order status.
-          enum:
-          - CREATED
-          - PAID
-          - CANCELED
-          - FULFILLED
-          type: string
-        customer_id:
-          description: Unique customer ID of the customer making the purchase.
-          example: cust_7iUa6ICKyU6gH40dBU25kQU1
-          nullable: true
-          type: string
-        referrer_id:
-          description: Unique referrer ID.
-          example: cust_nM4jqPiaXUvQdVSA6vTRUnix
-          nullable: true
-          type: string
-        amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the total amount of the order. This is the
-            sum of the order items' amounts.
-          type: integer
-        discount_amount:
-          description: Sum of all order-level discounts applied to the order.
-          type: integer
-        applied_discount_amount:
-          description: This field shows the order-level discount applied.
-          type: integer
-        items_discount_amount:
-          description: Sum of all product-specific discounts applied to the order.
-          type: integer
-        items_applied_discount_amount:
-          description: "Sum of all product-specific discounts applied in a particular\
-            \ request.  \n`sum(items, i => i.applied_discount_amount)`"
-          type: integer
-        total_discount_amount:
-          description: Sum of all order-level AND all product-specific discounts applied
-            to the order.
-          type: integer
-        total_applied_discount_amount:
-          description: "Sum of all order-level AND all product-specific discounts\
-            \ applied in a particular request.  \n`total_applied_discount_amount`\
-            \ = `applied_discount_amount` + `items_applied_discount_amount`"
-          type: integer
-        total_amount:
-          description: Order amount after undoing all the discounts through the rollback
-            redemption.
-          type: integer
-        items:
-          description: Array of items applied to the order.
-          items:
-            $ref: '#/components/schemas/SimpleOrderItem'
-          type: array
-        metadata:
-          description: A set of custom key/value pairs that you can attach to an order.
-            It can be useful for storing additional information about the order in
-            a structured format.
-          type: object
-        object:
-          default: order
-          description: The type of the object represented by JSON.
-          enum:
-          - order
-          type: string
-      required:
-      - object
-      title: Simple Order
-      type: object
-    SimpleProduct:
-      properties:
-        id:
-          description: Unique product ID.
-          type: string
-        source_id:
-          description: Product source id.
-          type: string
-        name:
-          description: Product name.
-          type: string
-      title: Simple Product
-      type: object
-    SimplePromotionStack:
-      description: Represents simplified promotion stack data.
-      properties:
-        id:
-          description: Unique identifier of the promotion stack.
-          type: string
-        name:
-          description: Name of the promotion stack.
-          type: string
-        category_id:
-          description: Unique identifier of the category of the promotion stack.
-          type: string
-        campaign:
-          $ref: '#/components/schemas/SimplePromotionStack_campaign'
-        tiers:
-          $ref: '#/components/schemas/PromotionStackBase_tiers'
-      title: Simple Promotion Stack
-      type: object
-    SimplePromotionTier:
-      description: This is an object representing a simple promotion tier. Promotion
-        tiers are always assigned to a campaign and cannot be used standalone.
-      properties:
-        id:
-          description: Unique promotion tier ID.
-          example: promo_63fYCt81Aw0h7lzyRkrGZh9p
-          type: string
-        name:
-          description: Name of the promotion tier.
-          type: string
-        banner:
-          description: Text to be displayed to your customers on your website.
-          type: string
-        campaign:
-          $ref: '#/components/schemas/SimplePromotionTier_campaign'
-        metadata:
-          description: A set of custom key/value pairs that you can attach to a promotion
-            tier. The metadata object stores all custom attributes assigned to the
-            promotion tier.
-          type: object
-      title: Simple Promotion Tier
-      type: object
-    SimpleSku:
-      properties:
-        id:
-          description: Unique sku ID.
-          type: string
-        source_id:
-          description: Sku source id.
-          type: string
-        sku:
-          description: Sku name.
-          type: string
-      title: Simple Sku
-      type: object
-    SimpleOrderItem:
-      properties:
-        object:
-          default: order_item
-          description: The type of the object represented by JSON. This object stores
-            information about the `order_item`.
-          enum:
-          - order_item
-          type: string
-        source_id:
-          description: "The merchant’s product/SKU ID (if it is different from the\
-            \ Voucherify product/SKU ID). It is useful in the integration between\
-            \ multiple systems. It can be an ID from an eCommerce site, a database,\
-            \ or a third-party service."
-          type: string
-        related_object:
-          description: "Used along with the source_id property, can be set to either\
-            \ sku or product."
-          enum:
-          - product
-          - sku
-          type: string
-        product_id:
-          description: A unique product ID assigned by Voucherify.
-          type: string
-        sku_id:
-          description: A unique SKU ID assigned by Voucherify.
-          type: string
-        quantity:
-          description: The quantity of the particular item in the cart.
-          type: integer
-        discount_quantity:
-          description: Number of dicounted items.
-          type: integer
-        amount:
-          description: The total amount of the order item (price * quantity).
-          type: integer
-        discount_amount:
-          description: Sum of all order-item-level discounts applied to the order.
-          type: integer
-        applied_discount_amount:
-          description: This field shows the order-level discount applied.
-          type: integer
-        price:
-          description: Unit price of an item. Value is multiplied by 100 to precisely
-            represent 2 decimal places. For example `10000 cents` for `$100.00`.
-          type: integer
-      title: Simple Order Item
       type: object
     ClientEventsCreateRequestBody_referral:
       description: "If a **conversion event** for a referral program is set to a custom\
@@ -31432,77 +29945,6 @@ components:
           type: boolean
       type: object
       example: null
-    CustomerActivity_data_event_source_user:
-      description: Defines the user who triggered the event.
-      example:
-        id: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-      properties:
-        id:
-          description: Unique identifier of the user.
-          example: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-          type: string
-      type: object
-    CustomerActivity_data_event_source_api_key:
-      description: Determines the API key used to initiate the sendout.
-      example:
-        name: name
-        app_id: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-      properties:
-        name:
-          description: Channel name in the application keys.
-          type: string
-        app_id:
-          description: Contains the application ID from the Voucherify API key pair.
-          example: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-          type: string
-      required:
-      - app_id
-      - name
-      type: object
-    CustomerActivity_data_event_source:
-      description: Contains the source of the object that initiated the sendout.
-      example:
-        api_key:
-          name: name
-          app_id: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-        channel: API
-        user:
-          id: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-      properties:
-        channel:
-          description: Determines the channel that initiated the sendout.
-          enum:
-          - USER_PORTAL
-          - API
-          - CLIENT_API
-          - INTERNAL
-          example: API
-          type: string
-        user:
-          $ref: '#/components/schemas/CustomerActivity_data_event_source_user'
-        api_key:
-          $ref: '#/components/schemas/CustomerActivity_data_event_source_api_key'
-      required:
-      - channel
-      type: object
-    CustomerActivity_data:
-      description: Contains details about the event. The objects that are returned
-        in the data attribute differ based on the context of the event type.
-      example:
-        data: null
-        event_source:
-          api_key:
-            name: name
-            app_id: 1XXXX5XX-0XXX-XXXb-X7XX-XX2XXaXXX6XX
-          channel: API
-          user:
-            id: user_xyzfghSTprSTUVWXYlk6tuvXYst7FGH7
-      properties:
-        data:
-          $ref: '#/components/schemas/CustomerActivityData'
-        event_source:
-          $ref: '#/components/schemas/CustomerActivity_data_event_source'
-      type: object
     CustomerBase_address:
       description: Customer's address.
       nullable: true
@@ -32260,6 +30702,7 @@ components:
       - $ref: '#/components/schemas/RedeemableResultPromotionStack'
     ValidationsRedeemableInapplicable_result:
       example:
+        details: "{}"
         error:
           code: 2
           resource_type: voucher
@@ -32271,7 +30714,17 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/Error'
+        details:
+          type: object
       type: object
+    ValidationsRedeemableSkipped_result:
+      oneOf:
+      - $ref: '#/components/schemas/ValidationsRedeemableSkippedResultLimitExceeded'
+      - $ref: '#/components/schemas/ValidationsRedeemableSkippedResultCategoryLimitExceeded'
+      - $ref: '#/components/schemas/ValidationsRedeemableSkippedResultRedeemablesLimitExceeded'
+      - $ref: '#/components/schemas/ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded'
+      - $ref: '#/components/schemas/ValidationsRedeemableSkippedResultExclusionRulesNotMet'
+      - $ref: '#/components/schemas/ValidationsRedeemableSkippedResultPrecedingValidationFailed'
     ValidityHours_daily_inner:
       description: Defines the reccuring period(s) when the resource will be active.
       example:
@@ -32827,10 +31280,6 @@ components:
         distribution_id:
           description: Unique identifier of the distribution.
           type: string
-      required:
-      - distribution_id
-      - source_id
-      - source_type
       type: object
     LoyaltyTiersExpirationAll_start_date:
       description: Defines the conditions for the start date of the tier.
@@ -32854,7 +31303,7 @@ components:
         unit: MONTH
         type: MONTH
         strategy: START
-        value: 7
+        value: 2
       properties:
         type:
           description: This mechanism describes a custom rounding for the expiration
@@ -32895,7 +31344,7 @@ components:
           unit: MONTH
           type: MONTH
           strategy: START
-          value: 7
+          value: 2
         type: END_OF_PERIOD
       properties:
         type:
@@ -33330,46 +31779,6 @@ components:
       required:
       - metadata
       type: object
-    EventCustomerConfirmed_unconfirmed_customer:
-      properties:
-        id:
-          example: ucust_1qa70mVfYkl11Ab0ZxDPdWNa
-          type: string
-      type: object
-    EventCustomerCustomEvent_referral:
-      description: Details about the referral.
-      nullable: true
-      properties:
-        referrer:
-          $ref: '#/components/schemas/SimpleCustomer'
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-      required:
-      - campaign
-      - referrer
-      - voucher
-      type: object
-    EventCustomerCustomEvent_loyalty:
-      description: Details about the loyalty activity.
-      nullable: true
-      properties:
-        voucher:
-          $ref: '#/components/schemas/SimpleVoucher'
-        campaign:
-          $ref: '#/components/schemas/SimpleCampaign'
-      required:
-      - campaign
-      - voucher
-      type: object
-    EventCustomerRewarded_balance:
-      description: Balance changed by the event.
-      nullable: true
-      properties:
-        amount:
-          type: integer
-      type: object
     ExportBase_result:
       description: Contains the URL of the CSV file.
       nullable: true
@@ -33468,27 +31877,6 @@ components:
         type: number
       - title: object
         type: object
-    CustomEvent_referral:
-      description: Referral object.
-      properties:
-        referrer_id:
-          description: Unique referrer ID.
-          example: cust_nM4jqPiaXUvQdVSA6vTRUnix
-          type: string
-        code:
-          description: Voucher code.
-          type: string
-        id:
-          description: Unique voucher ID.
-          type: string
-      type: object
-    CustomEvent_loyalty:
-      description: Loyalty object.
-      properties:
-        code:
-          description: Loyalty card code.
-          type: string
-      type: object
     EarningRuleProportionalOrderAmount_order_amount:
       description: "Defines the ratio based on the property defined in the calculation_type\
         \ parameter. For every set of value (1, 10, etc) defined in the every parameter\
@@ -33605,59 +31993,6 @@ components:
           $ref: '#/components/schemas/EarningRuleProportionalOrderAmount_order_amount'
       required:
       - total_amount
-      type: object
-    Redemption_Internal_Related_Redemptions_Rollbacks_Item:
-      properties:
-        id:
-          description: Unique rollback redemption ID.
-          example: rr_0bc92f81a6801f9bca
-          type: string
-        date:
-          description: Timestamp representing the date and time when the object was
-            created. The value is shown in the ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-      title: Redemption Internal Related Redemptions Rollbacks Item
-      type: object
-    Redemption_Internal_Related_Redemptions_Item:
-      properties:
-        id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
-          type: string
-        date:
-          description: Timestamp representing the date and time when the object was
-            created. The value is shown in the ISO 8601 format.
-          example: 2021-12-22T10:13:06.487Z
-          format: date-time
-          type: string
-      title: Redemption Internal Related Redemptions Item
-      type: object
-    RedemptionInternal_related_redemptions:
-      properties:
-        rollbacks:
-          items:
-            $ref: '#/components/schemas/Redemption_Internal_Related_Redemptions_Rollbacks_Item'
-          type: array
-        redemptions:
-          items:
-            $ref: '#/components/schemas/Redemption_Internal_Related_Redemptions_Item'
-          type: array
-      type: object
-    SimplePromotionStack_campaign:
-      description: Represents simplified promotion stack campaign data.
-      properties:
-        id:
-          description: Unique identifier of the campaign.
-          type: string
-      type: object
-    SimplePromotionTier_campaign:
-      description: Contains details about promotion tier's parent campaign.
-      properties:
-        id:
-          description: Unique campaign ID.
-          type: string
       type: object
   securitySchemes:
     X-App-Id:

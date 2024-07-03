@@ -140,6 +140,10 @@ public class ListPublicationsItemValidSingleVoucher {
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
   private CustomerWithSummaryLoyaltyReferrals customer;
 
+  public static final String SERIALIZED_NAME_VOUCHERS = "vouchers";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS)
+  private List<String> vouchers;
+
   public static final String SERIALIZED_NAME_VOUCHERS_ID = "vouchers_id";
   @SerializedName(SERIALIZED_NAME_VOUCHERS_ID)
   private List<String> vouchersId = new ArrayList<>();
@@ -389,6 +393,35 @@ public class ListPublicationsItemValidSingleVoucher {
   }
 
 
+  public ListPublicationsItemValidSingleVoucher vouchers(List<String> vouchers) {
+    
+    this.vouchers = vouchers;
+    return this;
+  }
+
+  public ListPublicationsItemValidSingleVoucher addVouchersItem(String vouchersItem) {
+    if (this.vouchers == null) {
+      this.vouchers = new ArrayList<>();
+    }
+    this.vouchers.add(vouchersItem);
+    return this;
+  }
+
+   /**
+   * Contains the voucher IDs that was assigned by Voucherify.
+   * @return vouchers
+  **/
+  @javax.annotation.Nullable
+  public List<String> getVouchers() {
+    return vouchers;
+  }
+
+
+  public void setVouchers(List<String> vouchers) {
+    this.vouchers = vouchers;
+  }
+
+
   public ListPublicationsItemValidSingleVoucher vouchersId(List<String> vouchersId) {
     
     this.vouchersId = vouchersId;
@@ -404,7 +437,7 @@ public class ListPublicationsItemValidSingleVoucher {
   }
 
    /**
-   * Contains the unique internal voucher ID that was assigned by Voucherify.
+   * Contains the unique internal voucher IDs that was assigned by Voucherify.
    * @return vouchersId
   **/
   @javax.annotation.Nonnull
@@ -479,6 +512,7 @@ public class ListPublicationsItemValidSingleVoucher {
         Objects.equals(this.channel, listPublicationsItemValidSingleVoucher.channel) &&
         Objects.equals(this.sourceId, listPublicationsItemValidSingleVoucher.sourceId) &&
         Objects.equals(this.customer, listPublicationsItemValidSingleVoucher.customer) &&
+        Objects.equals(this.vouchers, listPublicationsItemValidSingleVoucher.vouchers) &&
         Objects.equals(this.vouchersId, listPublicationsItemValidSingleVoucher.vouchersId) &&
         Objects.equals(this.result, listPublicationsItemValidSingleVoucher.result) &&
         Objects.equals(this.voucher, listPublicationsItemValidSingleVoucher.voucher);
@@ -490,7 +524,7 @@ public class ListPublicationsItemValidSingleVoucher {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchersId, result, voucher);
+    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchers, vouchersId, result, voucher);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -513,6 +547,7 @@ public class ListPublicationsItemValidSingleVoucher {
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    vouchers: ").append(toIndentedString(vouchers)).append("\n");
     sb.append("    vouchersId: ").append(toIndentedString(vouchersId)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    voucher: ").append(toIndentedString(voucher)).append("\n");
@@ -547,6 +582,7 @@ public class ListPublicationsItemValidSingleVoucher {
     openapiFields.add("channel");
     openapiFields.add("source_id");
     openapiFields.add("customer");
+    openapiFields.add("vouchers");
     openapiFields.add("vouchers_id");
     openapiFields.add("result");
     openapiFields.add("voucher");
@@ -628,6 +664,10 @@ public class ListPublicationsItemValidSingleVoucher {
       }
       // validate the required field `customer`
       CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonObj.get("customer"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("vouchers") != null && !jsonObj.get("vouchers").isJsonNull() && !jsonObj.get("vouchers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("vouchers_id") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");

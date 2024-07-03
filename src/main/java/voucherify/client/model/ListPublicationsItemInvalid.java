@@ -139,6 +139,10 @@ public class ListPublicationsItemInvalid {
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
   private CustomerWithSummaryLoyaltyReferrals customer;
 
+  public static final String SERIALIZED_NAME_VOUCHERS = "vouchers";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS)
+  private List<String> vouchers = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_VOUCHERS_ID = "vouchers_id";
   @SerializedName(SERIALIZED_NAME_VOUCHERS_ID)
   private List<String> vouchersId = new ArrayList<>();
@@ -392,6 +396,35 @@ public class ListPublicationsItemInvalid {
   }
 
 
+  public ListPublicationsItemInvalid vouchers(List<String> vouchers) {
+    
+    this.vouchers = vouchers;
+    return this;
+  }
+
+  public ListPublicationsItemInvalid addVouchersItem(String vouchersItem) {
+    if (this.vouchers == null) {
+      this.vouchers = new ArrayList<>();
+    }
+    this.vouchers.add(vouchersItem);
+    return this;
+  }
+
+   /**
+   * Contains the voucher IDs that was assigned by Voucherify.
+   * @return vouchers
+  **/
+  @javax.annotation.Nonnull
+  public List<String> getVouchers() {
+    return vouchers;
+  }
+
+
+  public void setVouchers(List<String> vouchers) {
+    this.vouchers = vouchers;
+  }
+
+
   public ListPublicationsItemInvalid vouchersId(List<String> vouchersId) {
     
     this.vouchersId = vouchersId;
@@ -407,7 +440,7 @@ public class ListPublicationsItemInvalid {
   }
 
    /**
-   * Contains the unique internal voucher ID that was assigned by Voucherify.
+   * Contains the unique internal voucher IDs that was assigned by Voucherify.
    * @return vouchersId
   **/
   @javax.annotation.Nonnull
@@ -503,6 +536,7 @@ public class ListPublicationsItemInvalid {
         Objects.equals(this.channel, listPublicationsItemInvalid.channel) &&
         Objects.equals(this.sourceId, listPublicationsItemInvalid.sourceId) &&
         Objects.equals(this.customer, listPublicationsItemInvalid.customer) &&
+        Objects.equals(this.vouchers, listPublicationsItemInvalid.vouchers) &&
         Objects.equals(this.vouchersId, listPublicationsItemInvalid.vouchersId) &&
         Objects.equals(this.result, listPublicationsItemInvalid.result) &&
         Objects.equals(this.failureCode, listPublicationsItemInvalid.failureCode) &&
@@ -515,7 +549,7 @@ public class ListPublicationsItemInvalid {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchersId, result, failureCode, failureMessage);
+    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchers, vouchersId, result, failureCode, failureMessage);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -538,6 +572,7 @@ public class ListPublicationsItemInvalid {
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    vouchers: ").append(toIndentedString(vouchers)).append("\n");
     sb.append("    vouchersId: ").append(toIndentedString(vouchersId)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    failureCode: ").append(toIndentedString(failureCode)).append("\n");
@@ -573,6 +608,7 @@ public class ListPublicationsItemInvalid {
     openapiFields.add("channel");
     openapiFields.add("source_id");
     openapiFields.add("customer");
+    openapiFields.add("vouchers");
     openapiFields.add("vouchers_id");
     openapiFields.add("result");
     openapiFields.add("failure_code");
@@ -587,6 +623,7 @@ public class ListPublicationsItemInvalid {
     openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("channel");
     openapiRequiredFields.add("customer");
+    openapiRequiredFields.add("vouchers");
     openapiRequiredFields.add("vouchers_id");
     openapiRequiredFields.add("result");
   }
@@ -654,6 +691,12 @@ public class ListPublicationsItemInvalid {
       }
       // validate the required field `customer`
       CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonObj.get("customer"));
+      // ensure the required json array is present
+      if (jsonObj.get("vouchers") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("vouchers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("vouchers_id") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");

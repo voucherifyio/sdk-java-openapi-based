@@ -17,10 +17,10 @@ Response schema model for publishing vouchers to a specific customer.
 |**channel** | **String** | How the publication was originated. It can be your own custom channel or an example value provided here. |  |
 |**sourceId** | **String** | The merchant’s publication ID if it is different from the Voucherify publication ID. It&#39;s an optional tracking identifier of a publication. It is really useful in case of an integration between multiple systems. It can be a publication ID from a CRM system, database or 3rd-party service.  |  [optional] |
 |**customer** | [**CustomerWithSummaryLoyaltyReferrals**](CustomerWithSummaryLoyaltyReferrals.md) |  |  |
-|**vouchersId** | **List&lt;String&gt;** | Contains the unique internal voucher ID that was assigned by Voucherify. |  |
+|**vouchers** | **List&lt;String&gt;** | Contains the voucher IDs that was assigned by Voucherify. |  |
+|**vouchersId** | **List&lt;String&gt;** | Contains the unique internal voucher IDs that was assigned by Voucherify. |  |
 |**result** | [**ResultEnum**](#ResultEnum) | Status of the publication attempt. |  |
 |**voucher** | [**ListPublicationsItemVoucher**](ListPublicationsItemVoucher.md) |  |  |
-|**vouchers** | **List&lt;String&gt;** | Contains the unique voucher codes that was assigned by Voucherify. |  |
 |**failureCode** | **String** | Generic reason as to why the create publication operation failed. |  [optional] |
 |**failureMessage** | **String** | This parameter will provide more expanded reason as to why the create publication operation failed. |  [optional] |
 

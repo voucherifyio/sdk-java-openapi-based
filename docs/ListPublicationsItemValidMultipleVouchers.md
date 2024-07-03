@@ -16,9 +16,9 @@
 |**channel** | **String** | How the publication was originated. It can be your own custom channel or an example value provided here. |  |
 |**sourceId** | **String** | The merchant’s publication ID if it is different from the Voucherify publication ID. It&#39;s an optional tracking identifier of a publication. It is really useful in case of an integration between multiple systems. It can be a publication ID from a CRM system, database or 3rd-party service.  |  [optional] |
 |**customer** | [**CustomerWithSummaryLoyaltyReferrals**](CustomerWithSummaryLoyaltyReferrals.md) |  |  |
-|**vouchersId** | **List&lt;String&gt;** | Contains the unique internal voucher ID that was assigned by Voucherify. |  |
-|**result** | [**ResultEnum**](#ResultEnum) | Status of the publication attempt. |  |
 |**vouchers** | **List&lt;String&gt;** | Contains the unique voucher codes that was assigned by Voucherify. |  |
+|**vouchersId** | **List&lt;String&gt;** | Contains the unique internal voucher IDs that was assigned by Voucherify. |  |
+|**result** | [**ResultEnum**](#ResultEnum) | Status of the publication attempt. |  |
 
 
 

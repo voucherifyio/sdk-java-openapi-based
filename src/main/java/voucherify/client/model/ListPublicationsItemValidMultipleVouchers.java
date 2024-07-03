@@ -139,6 +139,10 @@ public class ListPublicationsItemValidMultipleVouchers {
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
   private CustomerWithSummaryLoyaltyReferrals customer;
 
+  public static final String SERIALIZED_NAME_VOUCHERS = "vouchers";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS)
+  private List<String> vouchers = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_VOUCHERS_ID = "vouchers_id";
   @SerializedName(SERIALIZED_NAME_VOUCHERS_ID)
   private List<String> vouchersId = new ArrayList<>();
@@ -191,10 +195,6 @@ public class ListPublicationsItemValidMultipleVouchers {
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
   private ResultEnum result = ResultEnum.SUCCESS;
-
-  public static final String SERIALIZED_NAME_VOUCHERS = "vouchers";
-  @SerializedName(SERIALIZED_NAME_VOUCHERS)
-  private List<String> vouchers = new ArrayList<>();
 
   public ListPublicationsItemValidMultipleVouchers() {
   }
@@ -388,6 +388,35 @@ public class ListPublicationsItemValidMultipleVouchers {
   }
 
 
+  public ListPublicationsItemValidMultipleVouchers vouchers(List<String> vouchers) {
+    
+    this.vouchers = vouchers;
+    return this;
+  }
+
+  public ListPublicationsItemValidMultipleVouchers addVouchersItem(String vouchersItem) {
+    if (this.vouchers == null) {
+      this.vouchers = new ArrayList<>();
+    }
+    this.vouchers.add(vouchersItem);
+    return this;
+  }
+
+   /**
+   * Contains the unique voucher codes that was assigned by Voucherify.
+   * @return vouchers
+  **/
+  @javax.annotation.Nonnull
+  public List<String> getVouchers() {
+    return vouchers;
+  }
+
+
+  public void setVouchers(List<String> vouchers) {
+    this.vouchers = vouchers;
+  }
+
+
   public ListPublicationsItemValidMultipleVouchers vouchersId(List<String> vouchersId) {
     
     this.vouchersId = vouchersId;
@@ -403,7 +432,7 @@ public class ListPublicationsItemValidMultipleVouchers {
   }
 
    /**
-   * Contains the unique internal voucher ID that was assigned by Voucherify.
+   * Contains the unique internal voucher IDs that was assigned by Voucherify.
    * @return vouchersId
   **/
   @javax.annotation.Nonnull
@@ -438,35 +467,6 @@ public class ListPublicationsItemValidMultipleVouchers {
   }
 
 
-  public ListPublicationsItemValidMultipleVouchers vouchers(List<String> vouchers) {
-    
-    this.vouchers = vouchers;
-    return this;
-  }
-
-  public ListPublicationsItemValidMultipleVouchers addVouchersItem(String vouchersItem) {
-    if (this.vouchers == null) {
-      this.vouchers = new ArrayList<>();
-    }
-    this.vouchers.add(vouchersItem);
-    return this;
-  }
-
-   /**
-   * Contains the unique voucher codes that was assigned by Voucherify.
-   * @return vouchers
-  **/
-  @javax.annotation.Nonnull
-  public List<String> getVouchers() {
-    return vouchers;
-  }
-
-
-  public void setVouchers(List<String> vouchers) {
-    this.vouchers = vouchers;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -486,9 +486,9 @@ public class ListPublicationsItemValidMultipleVouchers {
         Objects.equals(this.channel, listPublicationsItemValidMultipleVouchers.channel) &&
         Objects.equals(this.sourceId, listPublicationsItemValidMultipleVouchers.sourceId) &&
         Objects.equals(this.customer, listPublicationsItemValidMultipleVouchers.customer) &&
+        Objects.equals(this.vouchers, listPublicationsItemValidMultipleVouchers.vouchers) &&
         Objects.equals(this.vouchersId, listPublicationsItemValidMultipleVouchers.vouchersId) &&
-        Objects.equals(this.result, listPublicationsItemValidMultipleVouchers.result) &&
-        Objects.equals(this.vouchers, listPublicationsItemValidMultipleVouchers.vouchers);
+        Objects.equals(this.result, listPublicationsItemValidMultipleVouchers.result);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -497,7 +497,7 @@ public class ListPublicationsItemValidMultipleVouchers {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchersId, result, vouchers);
+    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, customer, vouchers, vouchersId, result);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -520,9 +520,9 @@ public class ListPublicationsItemValidMultipleVouchers {
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    vouchers: ").append(toIndentedString(vouchers)).append("\n");
     sb.append("    vouchersId: ").append(toIndentedString(vouchersId)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    vouchers: ").append(toIndentedString(vouchers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -554,9 +554,9 @@ public class ListPublicationsItemValidMultipleVouchers {
     openapiFields.add("channel");
     openapiFields.add("source_id");
     openapiFields.add("customer");
+    openapiFields.add("vouchers");
     openapiFields.add("vouchers_id");
     openapiFields.add("result");
-    openapiFields.add("vouchers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -567,9 +567,9 @@ public class ListPublicationsItemValidMultipleVouchers {
     openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("channel");
     openapiRequiredFields.add("customer");
+    openapiRequiredFields.add("vouchers");
     openapiRequiredFields.add("vouchers_id");
     openapiRequiredFields.add("result");
-    openapiRequiredFields.add("vouchers");
   }
 
  /**
@@ -636,6 +636,12 @@ public class ListPublicationsItemValidMultipleVouchers {
       // validate the required field `customer`
       CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonObj.get("customer"));
       // ensure the required json array is present
+      if (jsonObj.get("vouchers") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("vouchers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers").toString()));
+      }
+      // ensure the required json array is present
       if (jsonObj.get("vouchers_id") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("vouchers_id").isJsonArray()) {
@@ -656,12 +662,6 @@ public class ListPublicationsItemValidMultipleVouchers {
         if(jsonObj.get("result") != null) {
           throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
         }
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("vouchers") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("vouchers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vouchers` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers").toString()));
       }
   }
 

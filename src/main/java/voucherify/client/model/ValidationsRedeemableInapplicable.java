@@ -20,7 +20,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import voucherify.client.model.Category;
 import voucherify.client.model.ValidationsRedeemableInapplicableResult;
 
 import com.google.gson.Gson;
@@ -161,6 +164,14 @@ public class ValidationsRedeemableInapplicable {
   @SerializedName(SERIALIZED_NAME_RESULT)
   private ValidationsRedeemableInapplicableResult result;
 
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<Category> categories;
+
   public ValidationsRedeemableInapplicable() {
   }
 
@@ -174,7 +185,7 @@ public class ValidationsRedeemableInapplicable {
    * Indicates whether the redeemable can be applied or not applied based on the validation rules.
    * @return status
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public StatusEnum getStatus() {
     return status;
   }
@@ -195,7 +206,7 @@ public class ValidationsRedeemableInapplicable {
    * Redeemable ID, i.e. the voucher code.
    * @return id
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -216,7 +227,7 @@ public class ValidationsRedeemableInapplicable {
    * Redeemable&#39;s object type.
    * @return _object
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ObjectEnum getObject() {
     return _object;
   }
@@ -237,7 +248,7 @@ public class ValidationsRedeemableInapplicable {
    * Get result
    * @return result
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ValidationsRedeemableInapplicableResult getResult() {
     return result;
   }
@@ -245,6 +256,56 @@ public class ValidationsRedeemableInapplicable {
 
   public void setResult(ValidationsRedeemableInapplicableResult result) {
     this.result = result;
+  }
+
+
+  public ValidationsRedeemableInapplicable metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * The metadata object stores all custom attributes in the form of key/value pairs assigned to the redeemable.
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public ValidationsRedeemableInapplicable categories(List<Category> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public ValidationsRedeemableInapplicable addCategoriesItem(Category categoriesItem) {
+    if (this.categories == null) {
+      this.categories = new ArrayList<>();
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Get categories
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
   }
 
 
@@ -261,12 +322,14 @@ public class ValidationsRedeemableInapplicable {
     return Objects.equals(this.status, validationsRedeemableInapplicable.status) &&
         Objects.equals(this.id, validationsRedeemableInapplicable.id) &&
         Objects.equals(this._object, validationsRedeemableInapplicable._object) &&
-        Objects.equals(this.result, validationsRedeemableInapplicable.result);
+        Objects.equals(this.result, validationsRedeemableInapplicable.result) &&
+        Objects.equals(this.metadata, validationsRedeemableInapplicable.metadata) &&
+        Objects.equals(this.categories, validationsRedeemableInapplicable.categories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, id, _object, result);
+    return Objects.hash(status, id, _object, result, metadata, categories);
   }
 
   @Override
@@ -277,6 +340,8 @@ public class ValidationsRedeemableInapplicable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -303,9 +368,15 @@ public class ValidationsRedeemableInapplicable {
     openapiFields.add("id");
     openapiFields.add("object");
     openapiFields.add("result");
+    openapiFields.add("metadata");
+    openapiFields.add("categories");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("object");
+    openapiRequiredFields.add("result");
   }
 
  /**
@@ -328,8 +399,15 @@ public class ValidationsRedeemableInapplicable {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidationsRedeemableInapplicable` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ValidationsRedeemableInapplicable.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -345,10 +423,10 @@ public class ValidationsRedeemableInapplicable {
           throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+      if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -364,9 +442,21 @@ public class ValidationsRedeemableInapplicable {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      // validate the optional field `result`
-      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
-        ValidationsRedeemableInapplicableResult.validateJsonElement(jsonObj.get("result"));
+      // validate the required field `result`
+      ValidationsRedeemableInapplicableResult.validateJsonElement(jsonObj.get("result"));
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
+        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
+        if (jsonArraycategories != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+          }
+
+          // validate the optional field `categories` (array)
+          for (int i = 0; i < jsonArraycategories.size(); i++) {
+            Category.validateJsonElement(jsonArraycategories.get(i));
+          };
+        }
       }
   }
 

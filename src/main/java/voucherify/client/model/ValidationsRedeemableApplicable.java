@@ -200,7 +200,7 @@ public class ValidationsRedeemableApplicable {
    * Indicates whether the redeemable can be applied or not applied based on the validation rules.
    * @return status
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public StatusEnum getStatus() {
     return status;
   }
@@ -221,7 +221,7 @@ public class ValidationsRedeemableApplicable {
    * Redeemable ID, i.e. the voucher code.
    * @return id
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -242,7 +242,7 @@ public class ValidationsRedeemableApplicable {
    * Redeemable&#39;s object type.
    * @return _object
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ObjectEnum getObject() {
     return _object;
   }
@@ -326,7 +326,7 @@ public class ValidationsRedeemableApplicable {
    * Get result
    * @return result
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ValidationsRedeemableApplicableResult getResult() {
     return result;
   }
@@ -460,6 +460,10 @@ public class ValidationsRedeemableApplicable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("object");
+    openapiRequiredFields.add("result");
   }
 
  /**
@@ -482,8 +486,15 @@ public class ValidationsRedeemableApplicable {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidationsRedeemableApplicable` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ValidationsRedeemableApplicable.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -499,10 +510,10 @@ public class ValidationsRedeemableApplicable {
           throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+      if (!jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -530,10 +541,8 @@ public class ValidationsRedeemableApplicable {
       if (jsonObj.get("inapplicable_to") != null && !jsonObj.get("inapplicable_to").isJsonNull()) {
         InapplicableToResultList.validateJsonElement(jsonObj.get("inapplicable_to"));
       }
-      // validate the optional field `result`
-      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
-        ValidationsRedeemableApplicableResult.validateJsonElement(jsonObj.get("result"));
-      }
+      // validate the required field `result`
+      ValidationsRedeemableApplicableResult.validateJsonElement(jsonObj.get("result"));
       if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
         JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
         if (jsonArraycategories != null) {
