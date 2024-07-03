@@ -18,7 +18,6 @@ public class StackableDiscounts {
 
         ValidationsValidateRequestBody validationsValidateRequestBody = getValidationsValidateRequestBody();
 
-
         //THIS TEST NOT WORKING YET. DUE TO MISSING `application_mode` IN API RESPONSE
         try {
             apiInstance.validateStackedDiscounts(validationsValidateRequestBody);
