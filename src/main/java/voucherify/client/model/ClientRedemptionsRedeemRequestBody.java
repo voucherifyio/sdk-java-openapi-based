@@ -105,7 +105,7 @@ public class ClientRedemptionsRedeemRequestBody {
   }
 
    /**
-   * An array of redeemables. You can combine &#x60;voucher&#x60;(s) and &#x60;promotion_tier&#x60;(s). Alternatively, send one unique&#x60;promotion_stack&#x60; in the array.
+   * Get redeemables
    * @return redeemables
   **/
   @javax.annotation.Nonnull

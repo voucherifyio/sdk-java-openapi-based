@@ -23,218 +23,979 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.OrderCalculatedNoCustomerData;
-import voucherify.client.model.PromotionTier;
-import voucherify.client.model.Redemption;
-import voucherify.client.model.RedemptionChannel;
-import voucherify.client.model.RedemptionGift;
-import voucherify.client.model.RedemptionLoyaltyCard;
 import voucherify.client.model.RedemptionRewardResult;
-import voucherify.client.model.RedemptionRollback;
-import voucherify.client.model.RedemptionRollbackRelatedRedemptions;
-import voucherify.client.model.SimpleCustomer;
-import voucherify.client.model.Voucher;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemChannel;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemCustomer;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemGift;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemLoyaltyCard;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemOrder;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTier;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions;
+import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemVoucher;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * RedemptionsListResponseBodyRedemptionsItem
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class RedemptionsListResponseBodyRedemptionsItem extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(RedemptionsListResponseBodyRedemptionsItem.class.getName());
+public class RedemptionsListResponseBodyRedemptionsItem {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!RedemptionsListResponseBodyRedemptionsItem.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'RedemptionsListResponseBodyRedemptionsItem' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Redemption> adapterRedemption = gson.getDelegateAdapter(this, TypeToken.get(Redemption.class));
-            final TypeAdapter<RedemptionRollback> adapterRedemptionRollback = gson.getDelegateAdapter(this, TypeToken.get(RedemptionRollback.class));
+  /**
+   * Gets or Sets _object
+   */
+  @JsonAdapter(ObjectEnum.Adapter.class)
+  public enum ObjectEnum {
+    REDEMPTION("redemption"),
+    
+    REDEMPTION_ROLLBACK("redemption_rollback");
 
-            return (TypeAdapter<T>) new TypeAdapter<RedemptionsListResponseBodyRedemptionsItem>() {
-                @Override
-                public void write(JsonWriter out, RedemptionsListResponseBodyRedemptionsItem value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+    private String value;
 
-                    // check if the actual instance is of the type `Redemption`
-                    if (value.getActualInstance() instanceof Redemption) {
-                      JsonElement element = adapterRedemption.toJsonTree((Redemption)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RedemptionRollback`
-                    if (value.getActualInstance() instanceof RedemptionRollback) {
-                      JsonElement element = adapterRedemptionRollback.toJsonTree((RedemptionRollback)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Redemption, RedemptionRollback");
-                }
-
-                @Override
-                public RedemptionsListResponseBodyRedemptionsItem read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize Redemption
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      Redemption.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedemption;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'Redemption'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for Redemption failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'Redemption'", e);
-                    }
-                    // deserialize RedemptionRollback
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RedemptionRollback.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedemptionRollback;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RedemptionRollback'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RedemptionRollback failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RedemptionRollback'", e);
-                    }
-
-                    if (match == 1) {
-                        RedemptionsListResponseBodyRedemptionsItem ret = new RedemptionsListResponseBodyRedemptionsItem();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for RedemptionsListResponseBodyRedemptionsItem: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    ObjectEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public RedemptionsListResponseBodyRedemptionsItem() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public RedemptionsListResponseBodyRedemptionsItem(Redemption o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public RedemptionsListResponseBodyRedemptionsItem(RedemptionRollback o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("Redemption", Redemption.class);
-        schemas.put("RedemptionRollback", RedemptionRollback.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return RedemptionsListResponseBodyRedemptionsItem.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * Redemption, RedemptionRollback
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof Redemption) {
-            super.setActualInstance(instance);
-            return;
+    public static ObjectEnum fromValue(String value) {
+      for (ObjectEnum b : ObjectEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof RedemptionRollback) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be Redemption, RedemptionRollback");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * Redemption, RedemptionRollback
-     *
-     * @return The actual instance (Redemption, RedemptionRollback)
-     */
+    public static class Adapter extends TypeAdapter<ObjectEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ObjectEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ObjectEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OBJECT = "object";
+  @SerializedName(SERIALIZED_NAME_OBJECT)
+  private ObjectEnum _object;
+
+  public static final String SERIALIZED_NAME_DATE = "date";
+  @SerializedName(SERIALIZED_NAME_DATE)
+  private OffsetDateTime date;
+
+  public static final String SERIALIZED_NAME_CUSTOMER_ID = "customer_id";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
+  private String customerId;
+
+  public static final String SERIALIZED_NAME_TRACKING_ID = "tracking_id";
+  @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+  private String trackingId;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private Integer amount;
+
+  public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
+  @SerializedName(SERIALIZED_NAME_REDEMPTION)
+  private String redemption;
+
+  /**
+   * Redemption result.
+   */
+  @JsonAdapter(ResultEnum.Adapter.class)
+  public enum ResultEnum {
+    SUCCESS("SUCCESS"),
+    
+    FAILURE("FAILURE");
+
+    private String value;
+
+    ResultEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `Redemption`. If the actual instance is not `Redemption`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `Redemption`
-     * @throws ClassCastException if the instance is not `Redemption`
-     */
-    public Redemption getRedemption() throws ClassCastException {
-        return (Redemption)super.getActualInstance();
+    public static ResultEnum fromValue(String value) {
+      for (ResultEnum b : ResultEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `RedemptionRollback`. If the actual instance is not `RedemptionRollback`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RedemptionRollback`
-     * @throws ClassCastException if the instance is not `RedemptionRollback`
-     */
-    public RedemptionRollback getRedemptionRollback() throws ClassCastException {
-        return (RedemptionRollback)super.getActualInstance();
+
+    public static class Adapter extends TypeAdapter<ResultEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ResultEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ResultEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ResultEnum.fromValue(value);
+      }
     }
+  }
+
+  public static final String SERIALIZED_NAME_RESULT = "result";
+  @SerializedName(SERIALIZED_NAME_RESULT)
+  private ResultEnum result;
+
+  /**
+   * Gets or Sets status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    SUCCEEDED("SUCCEEDED"),
+    
+    FAILED("FAILED"),
+    
+    ROLLED_BACK("ROLLED_BACK");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_RELATED_REDEMPTIONS = "related_redemptions";
+  @SerializedName(SERIALIZED_NAME_RELATED_REDEMPTIONS)
+  private RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions relatedRedemptions;
+
+  public static final String SERIALIZED_NAME_FAILURE_CODE = "failure_code";
+  @SerializedName(SERIALIZED_NAME_FAILURE_CODE)
+  private String failureCode;
+
+  public static final String SERIALIZED_NAME_FAILURE_MESSAGE = "failure_message";
+  @SerializedName(SERIALIZED_NAME_FAILURE_MESSAGE)
+  private String failureMessage;
+
+  public static final String SERIALIZED_NAME_ORDER = "order";
+  @SerializedName(SERIALIZED_NAME_ORDER)
+  private RedemptionsListResponseBodyRedemptionsItemOrder order;
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private RedemptionsListResponseBodyRedemptionsItemChannel channel;
+
+  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER)
+  private RedemptionsListResponseBodyRedemptionsItemCustomer customer;
+
+  /**
+   * Defines the related object.
+   */
+  @JsonAdapter(RelatedObjectTypeEnum.Adapter.class)
+  public enum RelatedObjectTypeEnum {
+    VOUCHER("voucher"),
+    
+    PROMOTION_TIER("promotion_tier"),
+    
+    REDEMPTION("redemption");
+
+    private String value;
+
+    RelatedObjectTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RelatedObjectTypeEnum fromValue(String value) {
+      for (RelatedObjectTypeEnum b : RelatedObjectTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RelatedObjectTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RelatedObjectTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RelatedObjectTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_RELATED_OBJECT_TYPE = "related_object_type";
+  @SerializedName(SERIALIZED_NAME_RELATED_OBJECT_TYPE)
+  private RelatedObjectTypeEnum relatedObjectType;
+
+  public static final String SERIALIZED_NAME_RELATED_OBJECT_ID = "related_object_id";
+  @SerializedName(SERIALIZED_NAME_RELATED_OBJECT_ID)
+  private String relatedObjectId;
+
+  public static final String SERIALIZED_NAME_VOUCHER = "voucher";
+  @SerializedName(SERIALIZED_NAME_VOUCHER)
+  private RedemptionsListResponseBodyRedemptionsItemVoucher voucher;
+
+  public static final String SERIALIZED_NAME_PROMOTION_TIER = "promotion_tier";
+  @SerializedName(SERIALIZED_NAME_PROMOTION_TIER)
+  private RedemptionsListResponseBodyRedemptionsItemPromotionTier promotionTier;
+
+  public static final String SERIALIZED_NAME_REWARD = "reward";
+  @SerializedName(SERIALIZED_NAME_REWARD)
+  private RedemptionRewardResult reward;
+
+  public static final String SERIALIZED_NAME_GIFT = "gift";
+  @SerializedName(SERIALIZED_NAME_GIFT)
+  private RedemptionsListResponseBodyRedemptionsItemGift gift;
+
+  public static final String SERIALIZED_NAME_LOYALTY_CARD = "loyalty_card";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_CARD)
+  private RedemptionsListResponseBodyRedemptionsItemLoyaltyCard loyaltyCard;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
+
+  public RedemptionsListResponseBodyRedemptionsItem() {
+  }
+
+  public RedemptionsListResponseBodyRedemptionsItem id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique redemption ID.
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem _object(ObjectEnum _object) {
+    
+    this._object = _object;
+    return this;
+  }
+
+   /**
+   * Get _object
+   * @return _object
+  **/
+  @javax.annotation.Nonnull
+  public ObjectEnum getObject() {
+    return _object;
+  }
+
+
+  public void setObject(ObjectEnum _object) {
+    this._object = _object;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem date(OffsetDateTime date) {
+    
+    this.date = date;
+    return this;
+  }
+
+   /**
+   * Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format.
+   * @return date
+  **/
+  @javax.annotation.Nonnull
+  public OffsetDateTime getDate() {
+    return date;
+  }
+
+
+  public void setDate(OffsetDateTime date) {
+    this.date = date;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem customerId(String customerId) {
+    
+    this.customerId = customerId;
+    return this;
+  }
+
+   /**
+   * Unique customer ID of the redeeming customer.
+   * @return customerId
+  **/
+  @javax.annotation.Nullable
+  public String getCustomerId() {
+    return customerId;
+  }
+
+
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem trackingId(String trackingId) {
+    
+    this.trackingId = trackingId;
+    return this;
+  }
+
+   /**
+   * Hashed customer source ID.
+   * @return trackingId
+  **/
+  @javax.annotation.Nullable
+  public String getTrackingId() {
+    return trackingId;
+  }
+
+
+  public void setTrackingId(String trackingId) {
+    this.trackingId = trackingId;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem amount(Integer amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. and A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts.
+   * @return amount
+  **/
+  @javax.annotation.Nullable
+  public Integer getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(Integer amount) {
+    this.amount = amount;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem redemption(String redemption) {
+    
+    this.redemption = redemption;
+    return this;
+  }
+
+   /**
+   * Unique redemption ID of the parent redemption.
+   * @return redemption
+  **/
+  @javax.annotation.Nullable
+  public String getRedemption() {
+    return redemption;
+  }
+
+
+  public void setRedemption(String redemption) {
+    this.redemption = redemption;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem result(ResultEnum result) {
+    
+    this.result = result;
+    return this;
+  }
+
+   /**
+   * Redemption result.
+   * @return result
+  **/
+  @javax.annotation.Nonnull
+  public ResultEnum getResult() {
+    return result;
+  }
+
+
+  public void setResult(ResultEnum result) {
+    this.result = result;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem relatedRedemptions(RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions relatedRedemptions) {
+    
+    this.relatedRedemptions = relatedRedemptions;
+    return this;
+  }
+
+   /**
+   * Get relatedRedemptions
+   * @return relatedRedemptions
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions getRelatedRedemptions() {
+    return relatedRedemptions;
+  }
+
+
+  public void setRelatedRedemptions(RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions relatedRedemptions) {
+    this.relatedRedemptions = relatedRedemptions;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem failureCode(String failureCode) {
+    
+    this.failureCode = failureCode;
+    return this;
+  }
+
+   /**
+   * If the result is &#x60;FAILURE&#x60;, this parameter will provide a generic reason as to why the redemption failed.
+   * @return failureCode
+  **/
+  @javax.annotation.Nullable
+  public String getFailureCode() {
+    return failureCode;
+  }
+
+
+  public void setFailureCode(String failureCode) {
+    this.failureCode = failureCode;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem failureMessage(String failureMessage) {
+    
+    this.failureMessage = failureMessage;
+    return this;
+  }
+
+   /**
+   * If the result is &#x60;FAILURE&#x60;, this parameter will provide a more expanded reason as to why the redemption failed.
+   * @return failureMessage
+  **/
+  @javax.annotation.Nullable
+  public String getFailureMessage() {
+    return failureMessage;
+  }
+
+
+  public void setFailureMessage(String failureMessage) {
+    this.failureMessage = failureMessage;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem order(RedemptionsListResponseBodyRedemptionsItemOrder order) {
+    
+    this.order = order;
+    return this;
+  }
+
+   /**
+   * Get order
+   * @return order
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemOrder getOrder() {
+    return order;
+  }
+
+
+  public void setOrder(RedemptionsListResponseBodyRedemptionsItemOrder order) {
+    this.order = order;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem channel(RedemptionsListResponseBodyRedemptionsItemChannel channel) {
+    
+    this.channel = channel;
+    return this;
+  }
+
+   /**
+   * Get channel
+   * @return channel
+  **/
+  @javax.annotation.Nonnull
+  public RedemptionsListResponseBodyRedemptionsItemChannel getChannel() {
+    return channel;
+  }
+
+
+  public void setChannel(RedemptionsListResponseBodyRedemptionsItemChannel channel) {
+    this.channel = channel;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem customer(RedemptionsListResponseBodyRedemptionsItemCustomer customer) {
+    
+    this.customer = customer;
+    return this;
+  }
+
+   /**
+   * Get customer
+   * @return customer
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemCustomer getCustomer() {
+    return customer;
+  }
+
+
+  public void setCustomer(RedemptionsListResponseBodyRedemptionsItemCustomer customer) {
+    this.customer = customer;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem relatedObjectType(RelatedObjectTypeEnum relatedObjectType) {
+    
+    this.relatedObjectType = relatedObjectType;
+    return this;
+  }
+
+   /**
+   * Defines the related object.
+   * @return relatedObjectType
+  **/
+  @javax.annotation.Nonnull
+  public RelatedObjectTypeEnum getRelatedObjectType() {
+    return relatedObjectType;
+  }
+
+
+  public void setRelatedObjectType(RelatedObjectTypeEnum relatedObjectType) {
+    this.relatedObjectType = relatedObjectType;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem relatedObjectId(String relatedObjectId) {
+    
+    this.relatedObjectId = relatedObjectId;
+    return this;
+  }
+
+   /**
+   * Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher.
+   * @return relatedObjectId
+  **/
+  @javax.annotation.Nonnull
+  public String getRelatedObjectId() {
+    return relatedObjectId;
+  }
+
+
+  public void setRelatedObjectId(String relatedObjectId) {
+    this.relatedObjectId = relatedObjectId;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem voucher(RedemptionsListResponseBodyRedemptionsItemVoucher voucher) {
+    
+    this.voucher = voucher;
+    return this;
+  }
+
+   /**
+   * Get voucher
+   * @return voucher
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemVoucher getVoucher() {
+    return voucher;
+  }
+
+
+  public void setVoucher(RedemptionsListResponseBodyRedemptionsItemVoucher voucher) {
+    this.voucher = voucher;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem promotionTier(RedemptionsListResponseBodyRedemptionsItemPromotionTier promotionTier) {
+    
+    this.promotionTier = promotionTier;
+    return this;
+  }
+
+   /**
+   * Get promotionTier
+   * @return promotionTier
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemPromotionTier getPromotionTier() {
+    return promotionTier;
+  }
+
+
+  public void setPromotionTier(RedemptionsListResponseBodyRedemptionsItemPromotionTier promotionTier) {
+    this.promotionTier = promotionTier;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem reward(RedemptionRewardResult reward) {
+    
+    this.reward = reward;
+    return this;
+  }
+
+   /**
+   * Get reward
+   * @return reward
+  **/
+  @javax.annotation.Nullable
+  public RedemptionRewardResult getReward() {
+    return reward;
+  }
+
+
+  public void setReward(RedemptionRewardResult reward) {
+    this.reward = reward;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem gift(RedemptionsListResponseBodyRedemptionsItemGift gift) {
+    
+    this.gift = gift;
+    return this;
+  }
+
+   /**
+   * Get gift
+   * @return gift
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemGift getGift() {
+    return gift;
+  }
+
+
+  public void setGift(RedemptionsListResponseBodyRedemptionsItemGift gift) {
+    this.gift = gift;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem loyaltyCard(RedemptionsListResponseBodyRedemptionsItemLoyaltyCard loyaltyCard) {
+    
+    this.loyaltyCard = loyaltyCard;
+    return this;
+  }
+
+   /**
+   * Get loyaltyCard
+   * @return loyaltyCard
+  **/
+  @javax.annotation.Nullable
+  public RedemptionsListResponseBodyRedemptionsItemLoyaltyCard getLoyaltyCard() {
+    return loyaltyCard;
+  }
+
+
+  public void setLoyaltyCard(RedemptionsListResponseBodyRedemptionsItemLoyaltyCard loyaltyCard) {
+    this.loyaltyCard = loyaltyCard;
+  }
+
+
+  public RedemptionsListResponseBodyRedemptionsItem reason(String reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * System generated cause for the redemption being invalid in the context of the provided parameters.
+   * @return reason
+  **/
+  @javax.annotation.Nullable
+  public String getReason() {
+    return reason;
+  }
+
+
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    RedemptionsListResponseBodyRedemptionsItem redemptionsListResponseBodyRedemptionsItem = (RedemptionsListResponseBodyRedemptionsItem) o;
+    return Objects.equals(this.id, redemptionsListResponseBodyRedemptionsItem.id) &&
+        Objects.equals(this._object, redemptionsListResponseBodyRedemptionsItem._object) &&
+        Objects.equals(this.date, redemptionsListResponseBodyRedemptionsItem.date) &&
+        Objects.equals(this.customerId, redemptionsListResponseBodyRedemptionsItem.customerId) &&
+        Objects.equals(this.trackingId, redemptionsListResponseBodyRedemptionsItem.trackingId) &&
+        Objects.equals(this.metadata, redemptionsListResponseBodyRedemptionsItem.metadata) &&
+        Objects.equals(this.amount, redemptionsListResponseBodyRedemptionsItem.amount) &&
+        Objects.equals(this.redemption, redemptionsListResponseBodyRedemptionsItem.redemption) &&
+        Objects.equals(this.result, redemptionsListResponseBodyRedemptionsItem.result) &&
+        Objects.equals(this.status, redemptionsListResponseBodyRedemptionsItem.status) &&
+        Objects.equals(this.relatedRedemptions, redemptionsListResponseBodyRedemptionsItem.relatedRedemptions) &&
+        Objects.equals(this.failureCode, redemptionsListResponseBodyRedemptionsItem.failureCode) &&
+        Objects.equals(this.failureMessage, redemptionsListResponseBodyRedemptionsItem.failureMessage) &&
+        Objects.equals(this.order, redemptionsListResponseBodyRedemptionsItem.order) &&
+        Objects.equals(this.channel, redemptionsListResponseBodyRedemptionsItem.channel) &&
+        Objects.equals(this.customer, redemptionsListResponseBodyRedemptionsItem.customer) &&
+        Objects.equals(this.relatedObjectType, redemptionsListResponseBodyRedemptionsItem.relatedObjectType) &&
+        Objects.equals(this.relatedObjectId, redemptionsListResponseBodyRedemptionsItem.relatedObjectId) &&
+        Objects.equals(this.voucher, redemptionsListResponseBodyRedemptionsItem.voucher) &&
+        Objects.equals(this.promotionTier, redemptionsListResponseBodyRedemptionsItem.promotionTier) &&
+        Objects.equals(this.reward, redemptionsListResponseBodyRedemptionsItem.reward) &&
+        Objects.equals(this.gift, redemptionsListResponseBodyRedemptionsItem.gift) &&
+        Objects.equals(this.loyaltyCard, redemptionsListResponseBodyRedemptionsItem.loyaltyCard) &&
+        Objects.equals(this.reason, redemptionsListResponseBodyRedemptionsItem.reason);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, _object, date, customerId, trackingId, metadata, amount, redemption, result, status, relatedRedemptions, failureCode, failureMessage, order, channel, customer, relatedObjectType, relatedObjectId, voucher, promotionTier, reward, gift, loyaltyCard, reason);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class RedemptionsListResponseBodyRedemptionsItem {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    redemption: ").append(toIndentedString(redemption)).append("\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    relatedRedemptions: ").append(toIndentedString(relatedRedemptions)).append("\n");
+    sb.append("    failureCode: ").append(toIndentedString(failureCode)).append("\n");
+    sb.append("    failureMessage: ").append(toIndentedString(failureMessage)).append("\n");
+    sb.append("    order: ").append(toIndentedString(order)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    relatedObjectType: ").append(toIndentedString(relatedObjectType)).append("\n");
+    sb.append("    relatedObjectId: ").append(toIndentedString(relatedObjectId)).append("\n");
+    sb.append("    voucher: ").append(toIndentedString(voucher)).append("\n");
+    sb.append("    promotionTier: ").append(toIndentedString(promotionTier)).append("\n");
+    sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
+    sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
+    sb.append("    loyaltyCard: ").append(toIndentedString(loyaltyCard)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("object");
+    openapiFields.add("date");
+    openapiFields.add("customer_id");
+    openapiFields.add("tracking_id");
+    openapiFields.add("metadata");
+    openapiFields.add("amount");
+    openapiFields.add("redemption");
+    openapiFields.add("result");
+    openapiFields.add("status");
+    openapiFields.add("related_redemptions");
+    openapiFields.add("failure_code");
+    openapiFields.add("failure_message");
+    openapiFields.add("order");
+    openapiFields.add("channel");
+    openapiFields.add("customer");
+    openapiFields.add("related_object_type");
+    openapiFields.add("related_object_id");
+    openapiFields.add("voucher");
+    openapiFields.add("promotion_tier");
+    openapiFields.add("reward");
+    openapiFields.add("gift");
+    openapiFields.add("loyalty_card");
+    openapiFields.add("reason");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("object");
+    openapiRequiredFields.add("date");
+    openapiRequiredFields.add("result");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("channel");
+    openapiRequiredFields.add("related_object_type");
+    openapiRequiredFields.add("related_object_id");
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -243,27 +1004,177 @@ public class RedemptionsListResponseBodyRedemptionsItem extends AbstractOpenApiS
   * @throws IOException if the JSON Element is invalid with respect to RedemptionsListResponseBodyRedemptionsItem
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with Redemption
-    try {
-      Redemption.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for Redemption failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RedemptionRollback
-    try {
-      RedemptionRollback.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RedemptionRollback failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RedemptionsListResponseBodyRedemptionsItem with oneOf schemas: Redemption, RedemptionRollback. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!RedemptionsListResponseBodyRedemptionsItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsListResponseBodyRedemptionsItem is not found in the empty JSON string", RedemptionsListResponseBodyRedemptionsItem.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!RedemptionsListResponseBodyRedemptionsItem.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionsListResponseBodyRedemptionsItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RedemptionsListResponseBodyRedemptionsItem.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (!jsonObj.get("object").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
+      }
+      if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
+      }
+      if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
+      }
+      if ((jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) && !jsonObj.get("redemption").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `redemption` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redemption").toString()));
+      }
+      if (!jsonObj.get("result").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `result` to be a primitive type in the JSON string but got `%s`", jsonObj.get("result").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("result");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ResultEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `result` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("result") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+        }
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("status");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          StatusEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `status` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("status") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
+        }
+      }
+      // validate the optional field `related_redemptions`
+      if (jsonObj.get("related_redemptions") != null && !jsonObj.get("related_redemptions").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions.validateJsonElement(jsonObj.get("related_redemptions"));
+      }
+      if ((jsonObj.get("failure_code") != null && !jsonObj.get("failure_code").isJsonNull()) && !jsonObj.get("failure_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `failure_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failure_code").toString()));
+      }
+      if ((jsonObj.get("failure_message") != null && !jsonObj.get("failure_message").isJsonNull()) && !jsonObj.get("failure_message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `failure_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failure_message").toString()));
+      }
+      // validate the optional field `order`
+      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemOrder.validateJsonElement(jsonObj.get("order"));
+      }
+      // validate the required field `channel`
+      RedemptionsListResponseBodyRedemptionsItemChannel.validateJsonElement(jsonObj.get("channel"));
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemCustomer.validateJsonElement(jsonObj.get("customer"));
+      }
+      if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("related_object_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          RelatedObjectTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `related_object_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("related_object_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
+        }
+      }
+      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
+      }
+      // validate the optional field `voucher`
+      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemVoucher.validateJsonElement(jsonObj.get("voucher"));
+      }
+      // validate the optional field `promotion_tier`
+      if (jsonObj.get("promotion_tier") != null && !jsonObj.get("promotion_tier").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemPromotionTier.validateJsonElement(jsonObj.get("promotion_tier"));
+      }
+      // validate the optional field `reward`
+      if (jsonObj.get("reward") != null && !jsonObj.get("reward").isJsonNull()) {
+        RedemptionRewardResult.validateJsonElement(jsonObj.get("reward"));
+      }
+      // validate the optional field `gift`
+      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemGift.validateJsonElement(jsonObj.get("gift"));
+      }
+      // validate the optional field `loyalty_card`
+      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      }
+      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RedemptionsListResponseBodyRedemptionsItem.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionsListResponseBodyRedemptionsItem' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RedemptionsListResponseBodyRedemptionsItem> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionsListResponseBodyRedemptionsItem.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionsListResponseBodyRedemptionsItem>() {
+           @Override
+           public void write(JsonWriter out, RedemptionsListResponseBodyRedemptionsItem value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RedemptionsListResponseBodyRedemptionsItem read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

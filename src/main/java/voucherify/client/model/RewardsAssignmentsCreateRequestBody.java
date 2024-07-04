@@ -23,210 +23,181 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.RewardAssignmentsCreateCoinRewardRequestBody;
-import voucherify.client.model.RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody;
-import voucherify.client.model.RewardAssignmentsCreateDigitalOrMaterialRewardRequestBodyParameters;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.RewardsAssignmentsCreateRequestBodyParameters;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * RewardsAssignmentsCreateRequestBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class RewardsAssignmentsCreateRequestBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(RewardsAssignmentsCreateRequestBody.class.getName());
+public class RewardsAssignmentsCreateRequestBody {
+  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
+  private String campaign;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!RewardsAssignmentsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'RewardsAssignmentsCreateRequestBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody> adapterRewardAssignmentsCreateDigitalOrMaterialRewardRequestBody = gson.getDelegateAdapter(this, TypeToken.get(RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody.class));
-            final TypeAdapter<RewardAssignmentsCreateCoinRewardRequestBody> adapterRewardAssignmentsCreateCoinRewardRequestBody = gson.getDelegateAdapter(this, TypeToken.get(RewardAssignmentsCreateCoinRewardRequestBody.class));
+  public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
+  @SerializedName(SERIALIZED_NAME_PARAMETERS)
+  private RewardsAssignmentsCreateRequestBodyParameters parameters;
 
-            return (TypeAdapter<T>) new TypeAdapter<RewardsAssignmentsCreateRequestBody>() {
-                @Override
-                public void write(JsonWriter out, RewardsAssignmentsCreateRequestBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public static final String SERIALIZED_NAME_VALIDATION_RULES = "validation_rules";
+  @SerializedName(SERIALIZED_NAME_VALIDATION_RULES)
+  private List<String> validationRules;
 
-                    // check if the actual instance is of the type `RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody`
-                    if (value.getActualInstance() instanceof RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody) {
-                      JsonElement element = adapterRewardAssignmentsCreateDigitalOrMaterialRewardRequestBody.toJsonTree((RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RewardAssignmentsCreateCoinRewardRequestBody`
-                    if (value.getActualInstance() instanceof RewardAssignmentsCreateCoinRewardRequestBody) {
-                      JsonElement element = adapterRewardAssignmentsCreateCoinRewardRequestBody.toJsonTree((RewardAssignmentsCreateCoinRewardRequestBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RewardAssignmentsCreateCoinRewardRequestBody, RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody");
-                }
+  public RewardsAssignmentsCreateRequestBody() {
+  }
 
-                @Override
-                public RewardsAssignmentsCreateRequestBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public RewardsAssignmentsCreateRequestBody campaign(String campaign) {
+    
+    this.campaign = campaign;
+    return this;
+  }
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
+   /**
+   * The campaign ID of the campaign to which the reward is to be assigned.
+   * @return campaign
+  **/
+  @javax.annotation.Nonnull
+  public String getCampaign() {
+    return campaign;
+  }
 
-                    // deserialize RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRewardAssignmentsCreateDigitalOrMaterialRewardRequestBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody'", e);
-                    }
-                    // deserialize RewardAssignmentsCreateCoinRewardRequestBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RewardAssignmentsCreateCoinRewardRequestBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRewardAssignmentsCreateCoinRewardRequestBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RewardAssignmentsCreateCoinRewardRequestBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RewardAssignmentsCreateCoinRewardRequestBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RewardAssignmentsCreateCoinRewardRequestBody'", e);
-                    }
 
-                    if (match == 1) {
-                        RewardsAssignmentsCreateRequestBody ret = new RewardsAssignmentsCreateRequestBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+  public void setCampaign(String campaign) {
+    this.campaign = campaign;
+  }
 
-                    throw new IOException(String.format("Failed deserialization for RewardsAssignmentsCreateRequestBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+
+  public RewardsAssignmentsCreateRequestBody parameters(RewardsAssignmentsCreateRequestBodyParameters parameters) {
+    
+    this.parameters = parameters;
+    return this;
+  }
+
+   /**
+   * Get parameters
+   * @return parameters
+  **/
+  @javax.annotation.Nullable
+  public RewardsAssignmentsCreateRequestBodyParameters getParameters() {
+    return parameters;
+  }
+
+
+  public void setParameters(RewardsAssignmentsCreateRequestBodyParameters parameters) {
+    this.parameters = parameters;
+  }
+
+
+  public RewardsAssignmentsCreateRequestBody validationRules(List<String> validationRules) {
+    
+    this.validationRules = validationRules;
+    return this;
+  }
+
+  public RewardsAssignmentsCreateRequestBody addValidationRulesItem(String validationRulesItem) {
+    if (this.validationRules == null) {
+      this.validationRules = new ArrayList<>();
     }
+    this.validationRules.add(validationRulesItem);
+    return this;
+  }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+   /**
+   * Get validationRules
+   * @return validationRules
+  **/
+  @javax.annotation.Nullable
+  public List<String> getValidationRules() {
+    return validationRules;
+  }
 
-    public RewardsAssignmentsCreateRequestBody() {
-        super("oneOf", Boolean.FALSE);
+
+  public void setValidationRules(List<String> validationRules) {
+    this.validationRules = validationRules;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    public RewardsAssignmentsCreateRequestBody(RewardAssignmentsCreateCoinRewardRequestBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    RewardsAssignmentsCreateRequestBody rewardsAssignmentsCreateRequestBody = (RewardsAssignmentsCreateRequestBody) o;
+    return Objects.equals(this.campaign, rewardsAssignmentsCreateRequestBody.campaign) &&
+        Objects.equals(this.parameters, rewardsAssignmentsCreateRequestBody.parameters) &&
+        Objects.equals(this.validationRules, rewardsAssignmentsCreateRequestBody.validationRules);
+  }
 
-    public RewardsAssignmentsCreateRequestBody(RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
+  @Override
+  public int hashCode() {
+    return Objects.hash(campaign, parameters, validationRules);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class RewardsAssignmentsCreateRequestBody {\n");
+    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
+    sb.append("    validationRules: ").append(toIndentedString(validationRules)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 
-    static {
-        schemas.put("RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody", RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody.class);
-        schemas.put("RewardAssignmentsCreateCoinRewardRequestBody", RewardAssignmentsCreateCoinRewardRequestBody.class);
-    }
 
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return RewardsAssignmentsCreateRequestBody.schemas;
-    }
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * RewardAssignmentsCreateCoinRewardRequestBody, RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody) {
-            super.setActualInstance(instance);
-            return;
-        }
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("campaign");
+    openapiFields.add("parameters");
+    openapiFields.add("validation_rules");
 
-        if (instance instanceof RewardAssignmentsCreateCoinRewardRequestBody) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be RewardAssignmentsCreateCoinRewardRequestBody, RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * RewardAssignmentsCreateCoinRewardRequestBody, RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody
-     *
-     * @return The actual instance (RewardAssignmentsCreateCoinRewardRequestBody, RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody`. If the actual instance is not `RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody`
-     * @throws ClassCastException if the instance is not `RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody`
-     */
-    public RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody getRewardAssignmentsCreateDigitalOrMaterialRewardRequestBody() throws ClassCastException {
-        return (RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `RewardAssignmentsCreateCoinRewardRequestBody`. If the actual instance is not `RewardAssignmentsCreateCoinRewardRequestBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RewardAssignmentsCreateCoinRewardRequestBody`
-     * @throws ClassCastException if the instance is not `RewardAssignmentsCreateCoinRewardRequestBody`
-     */
-    public RewardAssignmentsCreateCoinRewardRequestBody getRewardAssignmentsCreateCoinRewardRequestBody() throws ClassCastException {
-        return (RewardAssignmentsCreateCoinRewardRequestBody)super.getActualInstance();
-    }
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("campaign");
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -235,27 +206,66 @@ public class RewardsAssignmentsCreateRequestBody extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to RewardsAssignmentsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody
-    try {
-      RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RewardAssignmentsCreateCoinRewardRequestBody
-    try {
-      RewardAssignmentsCreateCoinRewardRequestBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RewardAssignmentsCreateCoinRewardRequestBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RewardsAssignmentsCreateRequestBody with oneOf schemas: RewardAssignmentsCreateCoinRewardRequestBody, RewardAssignmentsCreateDigitalOrMaterialRewardRequestBody. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!RewardsAssignmentsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RewardsAssignmentsCreateRequestBody is not found in the empty JSON string", RewardsAssignmentsCreateRequestBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!RewardsAssignmentsCreateRequestBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RewardsAssignmentsCreateRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RewardsAssignmentsCreateRequestBody.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("campaign").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign").toString()));
+      }
+      // validate the optional field `parameters`
+      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
+        RewardsAssignmentsCreateRequestBodyParameters.validateJsonElement(jsonObj.get("parameters"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validation_rules") != null && !jsonObj.get("validation_rules").isJsonNull() && !jsonObj.get("validation_rules").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `validation_rules` to be an array in the JSON string but got `%s`", jsonObj.get("validation_rules").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RewardsAssignmentsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RewardsAssignmentsCreateRequestBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RewardsAssignmentsCreateRequestBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RewardsAssignmentsCreateRequestBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RewardsAssignmentsCreateRequestBody>() {
+           @Override
+           public void write(JsonWriter out, RewardsAssignmentsCreateRequestBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RewardsAssignmentsCreateRequestBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

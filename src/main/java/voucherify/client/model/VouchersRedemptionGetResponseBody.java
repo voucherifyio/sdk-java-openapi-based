@@ -228,7 +228,7 @@ public class VouchersRedemptionGetResponseBody {
   }
 
    /**
-   * Contains the array of successful and failed redemption objects.
+   * Get redemptionEntries
    * @return redemptionEntries
   **/
   @javax.annotation.Nonnull

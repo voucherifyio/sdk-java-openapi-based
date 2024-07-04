@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 import voucherify.client.model.CampaignBaseValidityTimeframe;
 import voucherify.client.model.CampaignLoyaltyCard;
-import voucherify.client.model.CampaignLoyaltyVoucherRedemption;
+import voucherify.client.model.CampaignVoucherRedemption;
 import voucherify.client.model.CodeConfigRequiredLengthCharsetPattern;
 import voucherify.client.model.Discount;
 import voucherify.client.model.Gift;
@@ -80,7 +80,7 @@ public class CampaignVoucher {
 
   public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
   @SerializedName(SERIALIZED_NAME_REDEMPTION)
-  private CampaignLoyaltyVoucherRedemption redemption;
+  private CampaignVoucherRedemption redemption;
 
   public static final String SERIALIZED_NAME_CODE_CONFIG = "code_config";
   @SerializedName(SERIALIZED_NAME_CODE_CONFIG)
@@ -254,7 +254,7 @@ public class CampaignVoucher {
   }
 
 
-  public CampaignVoucher redemption(CampaignLoyaltyVoucherRedemption redemption) {
+  public CampaignVoucher redemption(CampaignVoucherRedemption redemption) {
     
     this.redemption = redemption;
     return this;
@@ -265,12 +265,12 @@ public class CampaignVoucher {
    * @return redemption
   **/
   @javax.annotation.Nonnull
-  public CampaignLoyaltyVoucherRedemption getRedemption() {
+  public CampaignVoucherRedemption getRedemption() {
     return redemption;
   }
 
 
-  public void setRedemption(CampaignLoyaltyVoucherRedemption redemption) {
+  public void setRedemption(CampaignVoucherRedemption redemption) {
     this.redemption = redemption;
   }
 
@@ -562,7 +562,7 @@ public class CampaignVoucher {
         CampaignLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
       // validate the required field `redemption`
-      CampaignLoyaltyVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
+      CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
       // validate the required field `code_config`
       CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
       // validate the optional field `validity_timeframe`

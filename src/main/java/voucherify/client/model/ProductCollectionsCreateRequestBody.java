@@ -23,211 +23,256 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.ProductCollectionsCreateDynamicRequestBody;
-import voucherify.client.model.ProductCollectionsCreateDynamicRequestBodyFilter;
 import voucherify.client.model.ProductCollectionsCreateDynamicRequestBodyProductsItem;
-import voucherify.client.model.ProductCollectionsCreateStaticRequestBody;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.ProductCollectionsCreateRequestBodyFilter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * ProductCollectionsCreateRequestBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class ProductCollectionsCreateRequestBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(ProductCollectionsCreateRequestBody.class.getName());
+public class ProductCollectionsCreateRequestBody {
+  /**
+   * Show that the product collection is static (manually selected products).
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    STATIC("STATIC");
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!ProductCollectionsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'ProductCollectionsCreateRequestBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<ProductCollectionsCreateStaticRequestBody> adapterProductCollectionsCreateStaticRequestBody = gson.getDelegateAdapter(this, TypeToken.get(ProductCollectionsCreateStaticRequestBody.class));
-            final TypeAdapter<ProductCollectionsCreateDynamicRequestBody> adapterProductCollectionsCreateDynamicRequestBody = gson.getDelegateAdapter(this, TypeToken.get(ProductCollectionsCreateDynamicRequestBody.class));
+    private String value;
 
-            return (TypeAdapter<T>) new TypeAdapter<ProductCollectionsCreateRequestBody>() {
-                @Override
-                public void write(JsonWriter out, ProductCollectionsCreateRequestBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `ProductCollectionsCreateStaticRequestBody`
-                    if (value.getActualInstance() instanceof ProductCollectionsCreateStaticRequestBody) {
-                      JsonElement element = adapterProductCollectionsCreateStaticRequestBody.toJsonTree((ProductCollectionsCreateStaticRequestBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ProductCollectionsCreateDynamicRequestBody`
-                    if (value.getActualInstance() instanceof ProductCollectionsCreateDynamicRequestBody) {
-                      JsonElement element = adapterProductCollectionsCreateDynamicRequestBody.toJsonTree((ProductCollectionsCreateDynamicRequestBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ProductCollectionsCreateDynamicRequestBody, ProductCollectionsCreateStaticRequestBody");
-                }
-
-                @Override
-                public ProductCollectionsCreateRequestBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize ProductCollectionsCreateStaticRequestBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ProductCollectionsCreateStaticRequestBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterProductCollectionsCreateStaticRequestBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ProductCollectionsCreateStaticRequestBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ProductCollectionsCreateStaticRequestBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ProductCollectionsCreateStaticRequestBody'", e);
-                    }
-                    // deserialize ProductCollectionsCreateDynamicRequestBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ProductCollectionsCreateDynamicRequestBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterProductCollectionsCreateDynamicRequestBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ProductCollectionsCreateDynamicRequestBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ProductCollectionsCreateDynamicRequestBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ProductCollectionsCreateDynamicRequestBody'", e);
-                    }
-
-                    if (match == 1) {
-                        ProductCollectionsCreateRequestBody ret = new ProductCollectionsCreateRequestBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for ProductCollectionsCreateRequestBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    TypeEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public ProductCollectionsCreateRequestBody() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public ProductCollectionsCreateRequestBody(ProductCollectionsCreateDynamicRequestBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ProductCollectionsCreateRequestBody(ProductCollectionsCreateStaticRequestBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("ProductCollectionsCreateStaticRequestBody", ProductCollectionsCreateStaticRequestBody.class);
-        schemas.put("ProductCollectionsCreateDynamicRequestBody", ProductCollectionsCreateDynamicRequestBody.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return ProductCollectionsCreateRequestBody.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * ProductCollectionsCreateDynamicRequestBody, ProductCollectionsCreateStaticRequestBody
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof ProductCollectionsCreateStaticRequestBody) {
-            super.setActualInstance(instance);
-            return;
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof ProductCollectionsCreateDynamicRequestBody) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be ProductCollectionsCreateDynamicRequestBody, ProductCollectionsCreateStaticRequestBody");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * ProductCollectionsCreateDynamicRequestBody, ProductCollectionsCreateStaticRequestBody
-     *
-     * @return The actual instance (ProductCollectionsCreateDynamicRequestBody, ProductCollectionsCreateStaticRequestBody)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
 
-    /**
-     * Get the actual instance of `ProductCollectionsCreateStaticRequestBody`. If the actual instance is not `ProductCollectionsCreateStaticRequestBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProductCollectionsCreateStaticRequestBody`
-     * @throws ClassCastException if the instance is not `ProductCollectionsCreateStaticRequestBody`
-     */
-    public ProductCollectionsCreateStaticRequestBody getProductCollectionsCreateStaticRequestBody() throws ClassCastException {
-        return (ProductCollectionsCreateStaticRequestBody)super.getActualInstance();
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
     }
-    /**
-     * Get the actual instance of `ProductCollectionsCreateDynamicRequestBody`. If the actual instance is not `ProductCollectionsCreateDynamicRequestBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProductCollectionsCreateDynamicRequestBody`
-     * @throws ClassCastException if the instance is not `ProductCollectionsCreateDynamicRequestBody`
-     */
-    public ProductCollectionsCreateDynamicRequestBody getProductCollectionsCreateDynamicRequestBody() throws ClassCastException {
-        return (ProductCollectionsCreateDynamicRequestBody)super.getActualInstance();
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type = TypeEnum.STATIC;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_PRODUCTS = "products";
+  @SerializedName(SERIALIZED_NAME_PRODUCTS)
+  private List<ProductCollectionsCreateDynamicRequestBodyProductsItem> products;
+
+  public static final String SERIALIZED_NAME_FILTER = "filter";
+  @SerializedName(SERIALIZED_NAME_FILTER)
+  private ProductCollectionsCreateRequestBodyFilter filter;
+
+  public ProductCollectionsCreateRequestBody() {
+  }
+
+  public ProductCollectionsCreateRequestBody type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Show that the product collection is static (manually selected products).
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public ProductCollectionsCreateRequestBody name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Unique user-defined product collection name.
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ProductCollectionsCreateRequestBody products(List<ProductCollectionsCreateDynamicRequestBodyProductsItem> products) {
+    
+    this.products = products;
+    return this;
+  }
+
+  public ProductCollectionsCreateRequestBody addProductsItem(ProductCollectionsCreateDynamicRequestBodyProductsItem productsItem) {
+    if (this.products == null) {
+      this.products = new ArrayList<>();
     }
+    this.products.add(productsItem);
+    return this;
+  }
+
+   /**
+   * Defines a set of products for a &#x60;STATIC&#x60; product collection type.
+   * @return products
+  **/
+  @javax.annotation.Nullable
+  public List<ProductCollectionsCreateDynamicRequestBodyProductsItem> getProducts() {
+    return products;
+  }
+
+
+  public void setProducts(List<ProductCollectionsCreateDynamicRequestBodyProductsItem> products) {
+    this.products = products;
+  }
+
+
+  public ProductCollectionsCreateRequestBody filter(ProductCollectionsCreateRequestBodyFilter filter) {
+    
+    this.filter = filter;
+    return this;
+  }
+
+   /**
+   * Get filter
+   * @return filter
+  **/
+  @javax.annotation.Nullable
+  public ProductCollectionsCreateRequestBodyFilter getFilter() {
+    return filter;
+  }
+
+
+  public void setFilter(ProductCollectionsCreateRequestBodyFilter filter) {
+    this.filter = filter;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ProductCollectionsCreateRequestBody productCollectionsCreateRequestBody = (ProductCollectionsCreateRequestBody) o;
+    return Objects.equals(this.type, productCollectionsCreateRequestBody.type) &&
+        Objects.equals(this.name, productCollectionsCreateRequestBody.name) &&
+        Objects.equals(this.products, productCollectionsCreateRequestBody.products) &&
+        Objects.equals(this.filter, productCollectionsCreateRequestBody.filter);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type, name, products, filter);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ProductCollectionsCreateRequestBody {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("type");
+    openapiFields.add("name");
+    openapiFields.add("products");
+    openapiFields.add("filter");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("name");
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -236,27 +281,92 @@ public class ProductCollectionsCreateRequestBody extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to ProductCollectionsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with ProductCollectionsCreateStaticRequestBody
-    try {
-      ProductCollectionsCreateStaticRequestBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ProductCollectionsCreateStaticRequestBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ProductCollectionsCreateDynamicRequestBody
-    try {
-      ProductCollectionsCreateDynamicRequestBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ProductCollectionsCreateDynamicRequestBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for ProductCollectionsCreateRequestBody with oneOf schemas: ProductCollectionsCreateDynamicRequestBody, ProductCollectionsCreateStaticRequestBody. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!ProductCollectionsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductCollectionsCreateRequestBody is not found in the empty JSON string", ProductCollectionsCreateRequestBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!ProductCollectionsCreateRequestBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProductCollectionsCreateRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ProductCollectionsCreateRequestBody.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
+        JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
+        if (jsonArrayproducts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("products").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `products` to be an array in the JSON string but got `%s`", jsonObj.get("products").toString()));
+          }
+
+          // validate the optional field `products` (array)
+          for (int i = 0; i < jsonArrayproducts.size(); i++) {
+            ProductCollectionsCreateDynamicRequestBodyProductsItem.validateJsonElement(jsonArrayproducts.get(i));
+          };
+        }
+      }
+      // validate the optional field `filter`
+      if (jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) {
+        ProductCollectionsCreateRequestBodyFilter.validateJsonElement(jsonObj.get("filter"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ProductCollectionsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductCollectionsCreateRequestBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ProductCollectionsCreateRequestBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductCollectionsCreateRequestBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ProductCollectionsCreateRequestBody>() {
+           @Override
+           public void write(JsonWriter out, ProductCollectionsCreateRequestBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ProductCollectionsCreateRequestBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

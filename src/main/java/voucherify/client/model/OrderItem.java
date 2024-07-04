@@ -21,8 +21,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.OrderItemProduct;
-import voucherify.client.model.OrderItemSku;
+import voucherify.client.model.OrderItemCalculatedProduct;
+import voucherify.client.model.OrderItemCalculatedSku;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -147,11 +147,11 @@ public class OrderItem {
 
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
-  private OrderItemProduct product;
+  private OrderItemCalculatedProduct product;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
-  private OrderItemSku sku;
+  private OrderItemCalculatedSku sku;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -391,7 +391,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem product(OrderItemProduct product) {
+  public OrderItem product(OrderItemCalculatedProduct product) {
     
     this.product = product;
     return this;
@@ -402,17 +402,17 @@ public class OrderItem {
    * @return product
   **/
   @javax.annotation.Nullable
-  public OrderItemProduct getProduct() {
+  public OrderItemCalculatedProduct getProduct() {
     return product;
   }
 
 
-  public void setProduct(OrderItemProduct product) {
+  public void setProduct(OrderItemCalculatedProduct product) {
     this.product = product;
   }
 
 
-  public OrderItem sku(OrderItemSku sku) {
+  public OrderItem sku(OrderItemCalculatedSku sku) {
     
     this.sku = sku;
     return this;
@@ -423,12 +423,12 @@ public class OrderItem {
    * @return sku
   **/
   @javax.annotation.Nullable
-  public OrderItemSku getSku() {
+  public OrderItemCalculatedSku getSku() {
     return sku;
   }
 
 
-  public void setSku(OrderItemSku sku) {
+  public void setSku(OrderItemCalculatedSku sku) {
     this.sku = sku;
   }
 
@@ -592,11 +592,11 @@ public class OrderItem {
       }
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
-        OrderItemProduct.validateJsonElement(jsonObj.get("product"));
+        OrderItemCalculatedProduct.validateJsonElement(jsonObj.get("product"));
       }
       // validate the optional field `sku`
       if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
-        OrderItemSku.validateJsonElement(jsonObj.get("sku"));
+        OrderItemCalculatedSku.validateJsonElement(jsonObj.get("sku"));
       }
   }
 

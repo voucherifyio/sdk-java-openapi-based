@@ -21,334 +21,250 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.RedeemGiftCard;
-import voucherify.client.model.RedeemGiftCardAllOfGift;
-import voucherify.client.model.RedeemLoyaltyCard;
-import voucherify.client.model.RedeemLoyaltyCardAllOfReward;
-import voucherify.client.model.RedeemPromotionStack;
-import voucherify.client.model.RedeemPromotionTier;
-import voucherify.client.model.RedeemVoucher;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.StackableValidateRedeemBaseRedeemablesItemGift;
+import voucherify.client.model.StackableValidateRedeemBaseRedeemablesItemReward;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * StackableValidateRedeemBaseRedeemablesItem
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class StackableValidateRedeemBaseRedeemablesItem extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(StackableValidateRedeemBaseRedeemablesItem.class.getName());
+public class StackableValidateRedeemBaseRedeemablesItem {
+  /**
+   * Gets or Sets _object
+   */
+  @JsonAdapter(ObjectEnum.Adapter.class)
+  public enum ObjectEnum {
+    VOUCHER("voucher"),
+    
+    PROMOTION_TIER("promotion_tier"),
+    
+    PROMOTION_STACK("promotion_stack");
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!StackableValidateRedeemBaseRedeemablesItem.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'StackableValidateRedeemBaseRedeemablesItem' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<RedeemVoucher> adapterRedeemVoucher = gson.getDelegateAdapter(this, TypeToken.get(RedeemVoucher.class));
-            final TypeAdapter<RedeemPromotionTier> adapterRedeemPromotionTier = gson.getDelegateAdapter(this, TypeToken.get(RedeemPromotionTier.class));
-            final TypeAdapter<RedeemPromotionStack> adapterRedeemPromotionStack = gson.getDelegateAdapter(this, TypeToken.get(RedeemPromotionStack.class));
-            final TypeAdapter<RedeemGiftCard> adapterRedeemGiftCard = gson.getDelegateAdapter(this, TypeToken.get(RedeemGiftCard.class));
-            final TypeAdapter<RedeemLoyaltyCard> adapterRedeemLoyaltyCard = gson.getDelegateAdapter(this, TypeToken.get(RedeemLoyaltyCard.class));
+    private String value;
 
-            return (TypeAdapter<T>) new TypeAdapter<StackableValidateRedeemBaseRedeemablesItem>() {
-                @Override
-                public void write(JsonWriter out, StackableValidateRedeemBaseRedeemablesItem value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `RedeemVoucher`
-                    if (value.getActualInstance() instanceof RedeemVoucher) {
-                      JsonElement element = adapterRedeemVoucher.toJsonTree((RedeemVoucher)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RedeemPromotionTier`
-                    if (value.getActualInstance() instanceof RedeemPromotionTier) {
-                      JsonElement element = adapterRedeemPromotionTier.toJsonTree((RedeemPromotionTier)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RedeemPromotionStack`
-                    if (value.getActualInstance() instanceof RedeemPromotionStack) {
-                      JsonElement element = adapterRedeemPromotionStack.toJsonTree((RedeemPromotionStack)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RedeemGiftCard`
-                    if (value.getActualInstance() instanceof RedeemGiftCard) {
-                      JsonElement element = adapterRedeemGiftCard.toJsonTree((RedeemGiftCard)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RedeemLoyaltyCard`
-                    if (value.getActualInstance() instanceof RedeemLoyaltyCard) {
-                      JsonElement element = adapterRedeemLoyaltyCard.toJsonTree((RedeemLoyaltyCard)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RedeemGiftCard, RedeemLoyaltyCard, RedeemPromotionStack, RedeemPromotionTier, RedeemVoucher");
-                }
-
-                @Override
-                public StackableValidateRedeemBaseRedeemablesItem read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize RedeemVoucher
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RedeemVoucher.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedeemVoucher;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RedeemVoucher'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RedeemVoucher failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RedeemVoucher'", e);
-                    }
-                    // deserialize RedeemPromotionTier
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RedeemPromotionTier.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedeemPromotionTier;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RedeemPromotionTier'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RedeemPromotionTier failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RedeemPromotionTier'", e);
-                    }
-                    // deserialize RedeemPromotionStack
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RedeemPromotionStack.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedeemPromotionStack;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RedeemPromotionStack'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RedeemPromotionStack failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RedeemPromotionStack'", e);
-                    }
-                    // deserialize RedeemGiftCard
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RedeemGiftCard.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedeemGiftCard;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RedeemGiftCard'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RedeemGiftCard failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RedeemGiftCard'", e);
-                    }
-                    // deserialize RedeemLoyaltyCard
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RedeemLoyaltyCard.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRedeemLoyaltyCard;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RedeemLoyaltyCard'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RedeemLoyaltyCard failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RedeemLoyaltyCard'", e);
-                    }
-
-                    if (match == 1) {
-                        StackableValidateRedeemBaseRedeemablesItem ret = new StackableValidateRedeemBaseRedeemablesItem();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for StackableValidateRedeemBaseRedeemablesItem: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    ObjectEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public StackableValidateRedeemBaseRedeemablesItem() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public StackableValidateRedeemBaseRedeemablesItem(RedeemGiftCard o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public StackableValidateRedeemBaseRedeemablesItem(RedeemLoyaltyCard o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public StackableValidateRedeemBaseRedeemablesItem(RedeemPromotionStack o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public StackableValidateRedeemBaseRedeemablesItem(RedeemPromotionTier o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public StackableValidateRedeemBaseRedeemablesItem(RedeemVoucher o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("RedeemVoucher", RedeemVoucher.class);
-        schemas.put("RedeemPromotionTier", RedeemPromotionTier.class);
-        schemas.put("RedeemPromotionStack", RedeemPromotionStack.class);
-        schemas.put("RedeemGiftCard", RedeemGiftCard.class);
-        schemas.put("RedeemLoyaltyCard", RedeemLoyaltyCard.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return StackableValidateRedeemBaseRedeemablesItem.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * RedeemGiftCard, RedeemLoyaltyCard, RedeemPromotionStack, RedeemPromotionTier, RedeemVoucher
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof RedeemVoucher) {
-            super.setActualInstance(instance);
-            return;
+    public static ObjectEnum fromValue(String value) {
+      for (ObjectEnum b : ObjectEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof RedeemPromotionTier) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof RedeemPromotionStack) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof RedeemGiftCard) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof RedeemLoyaltyCard) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be RedeemGiftCard, RedeemLoyaltyCard, RedeemPromotionStack, RedeemPromotionTier, RedeemVoucher");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * RedeemGiftCard, RedeemLoyaltyCard, RedeemPromotionStack, RedeemPromotionTier, RedeemVoucher
-     *
-     * @return The actual instance (RedeemGiftCard, RedeemLoyaltyCard, RedeemPromotionStack, RedeemPromotionTier, RedeemVoucher)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
+    public static class Adapter extends TypeAdapter<ObjectEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
 
-    /**
-     * Get the actual instance of `RedeemVoucher`. If the actual instance is not `RedeemVoucher`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RedeemVoucher`
-     * @throws ClassCastException if the instance is not `RedeemVoucher`
-     */
-    public RedeemVoucher getRedeemVoucher() throws ClassCastException {
-        return (RedeemVoucher)super.getActualInstance();
+      @Override
+      public ObjectEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ObjectEnum.fromValue(value);
+      }
     }
-    /**
-     * Get the actual instance of `RedeemPromotionTier`. If the actual instance is not `RedeemPromotionTier`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RedeemPromotionTier`
-     * @throws ClassCastException if the instance is not `RedeemPromotionTier`
-     */
-    public RedeemPromotionTier getRedeemPromotionTier() throws ClassCastException {
-        return (RedeemPromotionTier)super.getActualInstance();
+  }
+
+  public static final String SERIALIZED_NAME_OBJECT = "object";
+  @SerializedName(SERIALIZED_NAME_OBJECT)
+  private ObjectEnum _object;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_GIFT = "gift";
+  @SerializedName(SERIALIZED_NAME_GIFT)
+  private StackableValidateRedeemBaseRedeemablesItemGift gift;
+
+  public static final String SERIALIZED_NAME_REWARD = "reward";
+  @SerializedName(SERIALIZED_NAME_REWARD)
+  private StackableValidateRedeemBaseRedeemablesItemReward reward;
+
+  public StackableValidateRedeemBaseRedeemablesItem() {
+  }
+
+  public StackableValidateRedeemBaseRedeemablesItem _object(ObjectEnum _object) {
+    
+    this._object = _object;
+    return this;
+  }
+
+   /**
+   * Get _object
+   * @return _object
+  **/
+  @javax.annotation.Nullable
+  public ObjectEnum getObject() {
+    return _object;
+  }
+
+
+  public void setObject(ObjectEnum _object) {
+    this._object = _object;
+  }
+
+
+  public StackableValidateRedeemBaseRedeemablesItem id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public StackableValidateRedeemBaseRedeemablesItem gift(StackableValidateRedeemBaseRedeemablesItemGift gift) {
+    
+    this.gift = gift;
+    return this;
+  }
+
+   /**
+   * Get gift
+   * @return gift
+  **/
+  @javax.annotation.Nullable
+  public StackableValidateRedeemBaseRedeemablesItemGift getGift() {
+    return gift;
+  }
+
+
+  public void setGift(StackableValidateRedeemBaseRedeemablesItemGift gift) {
+    this.gift = gift;
+  }
+
+
+  public StackableValidateRedeemBaseRedeemablesItem reward(StackableValidateRedeemBaseRedeemablesItemReward reward) {
+    
+    this.reward = reward;
+    return this;
+  }
+
+   /**
+   * Get reward
+   * @return reward
+  **/
+  @javax.annotation.Nullable
+  public StackableValidateRedeemBaseRedeemablesItemReward getReward() {
+    return reward;
+  }
+
+
+  public void setReward(StackableValidateRedeemBaseRedeemablesItemReward reward) {
+    this.reward = reward;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `RedeemPromotionStack`. If the actual instance is not `RedeemPromotionStack`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RedeemPromotionStack`
-     * @throws ClassCastException if the instance is not `RedeemPromotionStack`
-     */
-    public RedeemPromotionStack getRedeemPromotionStack() throws ClassCastException {
-        return (RedeemPromotionStack)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    /**
-     * Get the actual instance of `RedeemGiftCard`. If the actual instance is not `RedeemGiftCard`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RedeemGiftCard`
-     * @throws ClassCastException if the instance is not `RedeemGiftCard`
-     */
-    public RedeemGiftCard getRedeemGiftCard() throws ClassCastException {
-        return (RedeemGiftCard)super.getActualInstance();
+    StackableValidateRedeemBaseRedeemablesItem stackableValidateRedeemBaseRedeemablesItem = (StackableValidateRedeemBaseRedeemablesItem) o;
+    return Objects.equals(this._object, stackableValidateRedeemBaseRedeemablesItem._object) &&
+        Objects.equals(this.id, stackableValidateRedeemBaseRedeemablesItem.id) &&
+        Objects.equals(this.gift, stackableValidateRedeemBaseRedeemablesItem.gift) &&
+        Objects.equals(this.reward, stackableValidateRedeemBaseRedeemablesItem.reward);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(_object, id, gift, reward);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class StackableValidateRedeemBaseRedeemablesItem {\n");
+    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
+    sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-    /**
-     * Get the actual instance of `RedeemLoyaltyCard`. If the actual instance is not `RedeemLoyaltyCard`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RedeemLoyaltyCard`
-     * @throws ClassCastException if the instance is not `RedeemLoyaltyCard`
-     */
-    public RedeemLoyaltyCard getRedeemLoyaltyCard() throws ClassCastException {
-        return (RedeemLoyaltyCard)super.getActualInstance();
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("object");
+    openapiFields.add("id");
+    openapiFields.add("gift");
+    openapiFields.add("reward");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -357,51 +273,75 @@ public class StackableValidateRedeemBaseRedeemablesItem extends AbstractOpenApiS
   * @throws IOException if the JSON Element is invalid with respect to StackableValidateRedeemBaseRedeemablesItem
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with RedeemVoucher
-    try {
-      RedeemVoucher.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RedeemVoucher failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RedeemPromotionTier
-    try {
-      RedeemPromotionTier.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RedeemPromotionTier failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RedeemPromotionStack
-    try {
-      RedeemPromotionStack.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RedeemPromotionStack failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RedeemGiftCard
-    try {
-      RedeemGiftCard.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RedeemGiftCard failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RedeemLoyaltyCard
-    try {
-      RedeemLoyaltyCard.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RedeemLoyaltyCard failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for StackableValidateRedeemBaseRedeemablesItem with oneOf schemas: RedeemGiftCard, RedeemLoyaltyCard, RedeemPromotionStack, RedeemPromotionTier, RedeemVoucher. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!StackableValidateRedeemBaseRedeemablesItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in StackableValidateRedeemBaseRedeemablesItem is not found in the empty JSON string", StackableValidateRedeemBaseRedeemablesItem.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!StackableValidateRedeemBaseRedeemablesItem.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `StackableValidateRedeemBaseRedeemablesItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // validate the optional field `gift`
+      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
+        StackableValidateRedeemBaseRedeemablesItemGift.validateJsonElement(jsonObj.get("gift"));
+      }
+      // validate the optional field `reward`
+      if (jsonObj.get("reward") != null && !jsonObj.get("reward").isJsonNull()) {
+        StackableValidateRedeemBaseRedeemablesItemReward.validateJsonElement(jsonObj.get("reward"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!StackableValidateRedeemBaseRedeemablesItem.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'StackableValidateRedeemBaseRedeemablesItem' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<StackableValidateRedeemBaseRedeemablesItem> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(StackableValidateRedeemBaseRedeemablesItem.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<StackableValidateRedeemBaseRedeemablesItem>() {
+           @Override
+           public void write(JsonWriter out, StackableValidateRedeemBaseRedeemablesItem value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public StackableValidateRedeemBaseRedeemablesItem read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

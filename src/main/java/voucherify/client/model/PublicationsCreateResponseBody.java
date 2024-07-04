@@ -26,210 +26,614 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerWithSummaryLoyaltyReferrals;
-import voucherify.client.model.PublicationsCreateVoucherResponseBody;
-import voucherify.client.model.PublicationsCreateVouchersResponseBody;
 import voucherify.client.model.Voucher;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * PublicationsCreateResponseBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class PublicationsCreateResponseBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(PublicationsCreateResponseBody.class.getName());
+public class PublicationsCreateResponseBody {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PublicationsCreateResponseBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'PublicationsCreateResponseBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<PublicationsCreateVoucherResponseBody> adapterPublicationsCreateVoucherResponseBody = gson.getDelegateAdapter(this, TypeToken.get(PublicationsCreateVoucherResponseBody.class));
-            final TypeAdapter<PublicationsCreateVouchersResponseBody> adapterPublicationsCreateVouchersResponseBody = gson.getDelegateAdapter(this, TypeToken.get(PublicationsCreateVouchersResponseBody.class));
+  /**
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   */
+  @JsonAdapter(ObjectEnum.Adapter.class)
+  public enum ObjectEnum {
+    PUBLICATION("publication");
 
-            return (TypeAdapter<T>) new TypeAdapter<PublicationsCreateResponseBody>() {
-                @Override
-                public void write(JsonWriter out, PublicationsCreateResponseBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+    private String value;
 
-                    // check if the actual instance is of the type `PublicationsCreateVoucherResponseBody`
-                    if (value.getActualInstance() instanceof PublicationsCreateVoucherResponseBody) {
-                      JsonElement element = adapterPublicationsCreateVoucherResponseBody.toJsonTree((PublicationsCreateVoucherResponseBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `PublicationsCreateVouchersResponseBody`
-                    if (value.getActualInstance() instanceof PublicationsCreateVouchersResponseBody) {
-                      JsonElement element = adapterPublicationsCreateVouchersResponseBody.toJsonTree((PublicationsCreateVouchersResponseBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: PublicationsCreateVoucherResponseBody, PublicationsCreateVouchersResponseBody");
-                }
-
-                @Override
-                public PublicationsCreateResponseBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize PublicationsCreateVoucherResponseBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      PublicationsCreateVoucherResponseBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterPublicationsCreateVoucherResponseBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'PublicationsCreateVoucherResponseBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for PublicationsCreateVoucherResponseBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'PublicationsCreateVoucherResponseBody'", e);
-                    }
-                    // deserialize PublicationsCreateVouchersResponseBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      PublicationsCreateVouchersResponseBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterPublicationsCreateVouchersResponseBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'PublicationsCreateVouchersResponseBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for PublicationsCreateVouchersResponseBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'PublicationsCreateVouchersResponseBody'", e);
-                    }
-
-                    if (match == 1) {
-                        PublicationsCreateResponseBody ret = new PublicationsCreateResponseBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for PublicationsCreateResponseBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    ObjectEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public PublicationsCreateResponseBody() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public PublicationsCreateResponseBody(PublicationsCreateVoucherResponseBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public PublicationsCreateResponseBody(PublicationsCreateVouchersResponseBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("PublicationsCreateVoucherResponseBody", PublicationsCreateVoucherResponseBody.class);
-        schemas.put("PublicationsCreateVouchersResponseBody", PublicationsCreateVouchersResponseBody.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return PublicationsCreateResponseBody.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * PublicationsCreateVoucherResponseBody, PublicationsCreateVouchersResponseBody
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof PublicationsCreateVoucherResponseBody) {
-            super.setActualInstance(instance);
-            return;
+    public static ObjectEnum fromValue(String value) {
+      for (ObjectEnum b : ObjectEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof PublicationsCreateVouchersResponseBody) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be PublicationsCreateVoucherResponseBody, PublicationsCreateVouchersResponseBody");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * PublicationsCreateVoucherResponseBody, PublicationsCreateVouchersResponseBody
-     *
-     * @return The actual instance (PublicationsCreateVoucherResponseBody, PublicationsCreateVouchersResponseBody)
-     */
+    public static class Adapter extends TypeAdapter<ObjectEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ObjectEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ObjectEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OBJECT = "object";
+  @SerializedName(SERIALIZED_NAME_OBJECT)
+  private ObjectEnum _object = ObjectEnum.PUBLICATION;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_CUSTOMER_ID = "customer_id";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
+  private String customerId;
+
+  public static final String SERIALIZED_NAME_TRACKING_ID = "tracking_id";
+  @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+  private String trackingId;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  /**
+   * How the publication was originated. It can be your own custom channel or an example value provided here.
+   */
+  @JsonAdapter(ChannelEnum.Adapter.class)
+  public enum ChannelEnum {
+    API("API");
+
+    private String value;
+
+    ChannelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `PublicationsCreateVoucherResponseBody`. If the actual instance is not `PublicationsCreateVoucherResponseBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `PublicationsCreateVoucherResponseBody`
-     * @throws ClassCastException if the instance is not `PublicationsCreateVoucherResponseBody`
-     */
-    public PublicationsCreateVoucherResponseBody getPublicationsCreateVoucherResponseBody() throws ClassCastException {
-        return (PublicationsCreateVoucherResponseBody)super.getActualInstance();
+    public static ChannelEnum fromValue(String value) {
+      for (ChannelEnum b : ChannelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `PublicationsCreateVouchersResponseBody`. If the actual instance is not `PublicationsCreateVouchersResponseBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `PublicationsCreateVouchersResponseBody`
-     * @throws ClassCastException if the instance is not `PublicationsCreateVouchersResponseBody`
-     */
-    public PublicationsCreateVouchersResponseBody getPublicationsCreateVouchersResponseBody() throws ClassCastException {
-        return (PublicationsCreateVouchersResponseBody)super.getActualInstance();
+
+    public static class Adapter extends TypeAdapter<ChannelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ChannelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ChannelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ChannelEnum.fromValue(value);
+      }
     }
+  }
+
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  private ChannelEnum channel = ChannelEnum.API;
+
+  public static final String SERIALIZED_NAME_SOURCE_ID = "source_id";
+  @SerializedName(SERIALIZED_NAME_SOURCE_ID)
+  private String sourceId;
+
+  /**
+   * Status of the publication attempt.
+   */
+  @JsonAdapter(ResultEnum.Adapter.class)
+  public enum ResultEnum {
+    SUCCESS("SUCCESS");
+
+    private String value;
+
+    ResultEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ResultEnum fromValue(String value) {
+      for (ResultEnum b : ResultEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ResultEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ResultEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ResultEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ResultEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_RESULT = "result";
+  @SerializedName(SERIALIZED_NAME_RESULT)
+  private ResultEnum result = ResultEnum.SUCCESS;
+
+  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER)
+  private CustomerWithSummaryLoyaltyReferrals customer;
+
+  public static final String SERIALIZED_NAME_VOUCHERS_ID = "vouchers_id";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS_ID)
+  private List<String> vouchersId;
+
+  public static final String SERIALIZED_NAME_VOUCHER = "voucher";
+  @SerializedName(SERIALIZED_NAME_VOUCHER)
+  private Voucher voucher;
+
+  public static final String SERIALIZED_NAME_VOUCHERS = "vouchers";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS)
+  private List<String> vouchers;
+
+  public PublicationsCreateResponseBody() {
+  }
+
+  public PublicationsCreateResponseBody id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique publication ID, assigned by Voucherify.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public PublicationsCreateResponseBody _object(ObjectEnum _object) {
+    
+    this._object = _object;
+    return this;
+  }
+
+   /**
+   * The type of the object represented by the JSON. This object stores information about the &#x60;publication&#x60;.
+   * @return _object
+  **/
+  @javax.annotation.Nullable
+  public ObjectEnum getObject() {
+    return _object;
+  }
+
+
+  public void setObject(ObjectEnum _object) {
+    this._object = _object;
+  }
+
+
+  public PublicationsCreateResponseBody createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Timestamp representing the date and time when the publication was created. The value is shown in the ISO 8601 format.
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public PublicationsCreateResponseBody customerId(String customerId) {
+    
+    this.customerId = customerId;
+    return this;
+  }
+
+   /**
+   * Unique customer ID of the customer receiving the publication.
+   * @return customerId
+  **/
+  @javax.annotation.Nullable
+  public String getCustomerId() {
+    return customerId;
+  }
+
+
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
+  }
+
+
+  public PublicationsCreateResponseBody trackingId(String trackingId) {
+    
+    this.trackingId = trackingId;
+    return this;
+  }
+
+   /**
+   * Customer&#39;s &#x60;source_id&#x60;.
+   * @return trackingId
+  **/
+  @javax.annotation.Nullable
+  public String getTrackingId() {
+    return trackingId;
+  }
+
+
+  public void setTrackingId(String trackingId) {
+    this.trackingId = trackingId;
+  }
+
+
+  public PublicationsCreateResponseBody metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public PublicationsCreateResponseBody channel(ChannelEnum channel) {
+    
+    this.channel = channel;
+    return this;
+  }
+
+   /**
+   * How the publication was originated. It can be your own custom channel or an example value provided here.
+   * @return channel
+  **/
+  @javax.annotation.Nullable
+  public ChannelEnum getChannel() {
+    return channel;
+  }
+
+
+  public void setChannel(ChannelEnum channel) {
+    this.channel = channel;
+  }
+
+
+  public PublicationsCreateResponseBody sourceId(String sourceId) {
+    
+    this.sourceId = sourceId;
+    return this;
+  }
+
+   /**
+   * The merchant’s publication ID if it is different from the Voucherify publication ID. It&#39;s an optional tracking identifier of a publication. It is really useful in case of an integration between multiple systems. It can be a publication ID from a CRM system, database or 3rd-party service. 
+   * @return sourceId
+  **/
+  @javax.annotation.Nullable
+  public String getSourceId() {
+    return sourceId;
+  }
+
+
+  public void setSourceId(String sourceId) {
+    this.sourceId = sourceId;
+  }
+
+
+  public PublicationsCreateResponseBody result(ResultEnum result) {
+    
+    this.result = result;
+    return this;
+  }
+
+   /**
+   * Status of the publication attempt.
+   * @return result
+  **/
+  @javax.annotation.Nullable
+  public ResultEnum getResult() {
+    return result;
+  }
+
+
+  public void setResult(ResultEnum result) {
+    this.result = result;
+  }
+
+
+  public PublicationsCreateResponseBody customer(CustomerWithSummaryLoyaltyReferrals customer) {
+    
+    this.customer = customer;
+    return this;
+  }
+
+   /**
+   * Get customer
+   * @return customer
+  **/
+  @javax.annotation.Nullable
+  public CustomerWithSummaryLoyaltyReferrals getCustomer() {
+    return customer;
+  }
+
+
+  public void setCustomer(CustomerWithSummaryLoyaltyReferrals customer) {
+    this.customer = customer;
+  }
+
+
+  public PublicationsCreateResponseBody vouchersId(List<String> vouchersId) {
+    
+    this.vouchersId = vouchersId;
+    return this;
+  }
+
+  public PublicationsCreateResponseBody addVouchersIdItem(String vouchersIdItem) {
+    if (this.vouchersId == null) {
+      this.vouchersId = new ArrayList<>();
+    }
+    this.vouchersId.add(vouchersIdItem);
+    return this;
+  }
+
+   /**
+   * Contains the unique internal voucher ID that was assigned by Voucherify.
+   * @return vouchersId
+  **/
+  @javax.annotation.Nullable
+  public List<String> getVouchersId() {
+    return vouchersId;
+  }
+
+
+  public void setVouchersId(List<String> vouchersId) {
+    this.vouchersId = vouchersId;
+  }
+
+
+  public PublicationsCreateResponseBody voucher(Voucher voucher) {
+    
+    this.voucher = voucher;
+    return this;
+  }
+
+   /**
+   * Get voucher
+   * @return voucher
+  **/
+  @javax.annotation.Nullable
+  public Voucher getVoucher() {
+    return voucher;
+  }
+
+
+  public void setVoucher(Voucher voucher) {
+    this.voucher = voucher;
+  }
+
+
+  public PublicationsCreateResponseBody vouchers(List<String> vouchers) {
+    
+    this.vouchers = vouchers;
+    return this;
+  }
+
+  public PublicationsCreateResponseBody addVouchersItem(String vouchersItem) {
+    if (this.vouchers == null) {
+      this.vouchers = new ArrayList<>();
+    }
+    this.vouchers.add(vouchersItem);
+    return this;
+  }
+
+   /**
+   * Contains the unique voucher codes that was assigned by Voucherify.
+   * @return vouchers
+  **/
+  @javax.annotation.Nullable
+  public List<String> getVouchers() {
+    return vouchers;
+  }
+
+
+  public void setVouchers(List<String> vouchers) {
+    this.vouchers = vouchers;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PublicationsCreateResponseBody publicationsCreateResponseBody = (PublicationsCreateResponseBody) o;
+    return Objects.equals(this.id, publicationsCreateResponseBody.id) &&
+        Objects.equals(this._object, publicationsCreateResponseBody._object) &&
+        Objects.equals(this.createdAt, publicationsCreateResponseBody.createdAt) &&
+        Objects.equals(this.customerId, publicationsCreateResponseBody.customerId) &&
+        Objects.equals(this.trackingId, publicationsCreateResponseBody.trackingId) &&
+        Objects.equals(this.metadata, publicationsCreateResponseBody.metadata) &&
+        Objects.equals(this.channel, publicationsCreateResponseBody.channel) &&
+        Objects.equals(this.sourceId, publicationsCreateResponseBody.sourceId) &&
+        Objects.equals(this.result, publicationsCreateResponseBody.result) &&
+        Objects.equals(this.customer, publicationsCreateResponseBody.customer) &&
+        Objects.equals(this.vouchersId, publicationsCreateResponseBody.vouchersId) &&
+        Objects.equals(this.voucher, publicationsCreateResponseBody.voucher) &&
+        Objects.equals(this.vouchers, publicationsCreateResponseBody.vouchers);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, _object, createdAt, customerId, trackingId, metadata, channel, sourceId, result, customer, vouchersId, voucher, vouchers);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PublicationsCreateResponseBody {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    vouchersId: ").append(toIndentedString(vouchersId)).append("\n");
+    sb.append("    voucher: ").append(toIndentedString(voucher)).append("\n");
+    sb.append("    vouchers: ").append(toIndentedString(vouchers)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("object");
+    openapiFields.add("created_at");
+    openapiFields.add("customer_id");
+    openapiFields.add("tracking_id");
+    openapiFields.add("metadata");
+    openapiFields.add("channel");
+    openapiFields.add("source_id");
+    openapiFields.add("result");
+    openapiFields.add("customer");
+    openapiFields.add("vouchers_id");
+    openapiFields.add("voucher");
+    openapiFields.add("vouchers");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -238,27 +642,124 @@ public class PublicationsCreateResponseBody extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to PublicationsCreateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with PublicationsCreateVoucherResponseBody
-    try {
-      PublicationsCreateVoucherResponseBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for PublicationsCreateVoucherResponseBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with PublicationsCreateVouchersResponseBody
-    try {
-      PublicationsCreateVouchersResponseBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for PublicationsCreateVouchersResponseBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for PublicationsCreateResponseBody with oneOf schemas: PublicationsCreateVoucherResponseBody, PublicationsCreateVouchersResponseBody. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!PublicationsCreateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PublicationsCreateResponseBody is not found in the empty JSON string", PublicationsCreateResponseBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!PublicationsCreateResponseBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PublicationsCreateResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
+        }
+      }
+      if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
+      }
+      if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
+      }
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("channel");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ChannelEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `channel` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("channel") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `channel` to be a valid element of ChannelEnum enum got `%s` instead", jsonObj.get("channel").toString()));
+        }
+      }
+      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
+      }
+      if ((jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) && !jsonObj.get("result").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `result` to be a primitive type in the JSON string but got `%s`", jsonObj.get("result").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("result");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ResultEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `result` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("result") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
+        }
+      }
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonObj.get("customer"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("vouchers_id") != null && !jsonObj.get("vouchers_id").isJsonNull() && !jsonObj.get("vouchers_id").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers_id` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers_id").toString()));
+      }
+      // validate the optional field `voucher`
+      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
+        Voucher.validateJsonElement(jsonObj.get("voucher"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("vouchers") != null && !jsonObj.get("vouchers").isJsonNull() && !jsonObj.get("vouchers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `vouchers` to be an array in the JSON string but got `%s`", jsonObj.get("vouchers").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!PublicationsCreateResponseBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PublicationsCreateResponseBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<PublicationsCreateResponseBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PublicationsCreateResponseBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<PublicationsCreateResponseBody>() {
+           @Override
+           public void write(JsonWriter out, PublicationsCreateResponseBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public PublicationsCreateResponseBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**campaign** | [**RewardTypeCampaignCampaign**](RewardTypeCampaignCampaign.md) |  |  |
-|**coin** | [**RewardTypeCoinCoin**](RewardTypeCoinCoin.md) |  |  |
-|**product** | [**RewardTypeMaterialProduct**](RewardTypeMaterialProduct.md) |  |  |
+|**campaign** | [**RewardTypeCampaign**](RewardTypeCampaign.md) |  |  [optional] |
+|**coin** | [**RewardTypeCoin**](RewardTypeCoin.md) |  |  [optional] |
+|**product** | [**RewardTypeProduct**](RewardTypeProduct.md) |  |  [optional] |
 
 
 

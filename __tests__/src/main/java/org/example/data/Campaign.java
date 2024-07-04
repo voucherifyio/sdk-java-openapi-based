@@ -10,7 +10,6 @@ public class Campaign {
     private final ArrayList<String> validationRuleIds = new ArrayList<>();
 
     Campaign() {
-
     }
 
     public void setId(String id) {

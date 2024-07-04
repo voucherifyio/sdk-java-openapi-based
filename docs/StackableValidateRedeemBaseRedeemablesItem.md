@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | Redeemable object type. |  |
-|**id** | **String** | Redeemable code. |  |
-|**gift** | [**RedeemGiftCardAllOfGift**](RedeemGiftCardAllOfGift.md) |  |  [optional] |
-|**reward** | [**RedeemLoyaltyCardAllOfReward**](RedeemLoyaltyCardAllOfReward.md) |  |  [optional] |
+|**_object** | [**ObjectEnum**](#ObjectEnum) |  |  [optional] |
+|**id** | **String** |  |  [optional] |
+|**gift** | [**StackableValidateRedeemBaseRedeemablesItemGift**](StackableValidateRedeemBaseRedeemablesItemGift.md) |  |  [optional] |
+|**reward** | [**StackableValidateRedeemBaseRedeemablesItemReward**](StackableValidateRedeemBaseRedeemablesItemReward.md) |  |  [optional] |
 
 
 
@@ -19,6 +19,8 @@
 | Name | Value |
 |---- | -----|
 | VOUCHER | &quot;voucher&quot; |
+| PROMOTION_TIER | &quot;promotion_tier&quot; |
+| PROMOTION_STACK | &quot;promotion_stack&quot; |
 
 
 
