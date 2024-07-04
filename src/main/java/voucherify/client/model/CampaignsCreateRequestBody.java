@@ -24,379 +24,884 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.CampaignBaseValidityTimeframe;
-import voucherify.client.model.CampaignsCreateDiscountCouponsCampaign;
-import voucherify.client.model.CampaignsCreateGiftCampaign;
-import voucherify.client.model.CampaignsCreateGiveawayCampaign;
-import voucherify.client.model.CampaignsCreateLoyaltyCampaign;
-import voucherify.client.model.CampaignsCreatePromotionCampaign;
-import voucherify.client.model.CampaignsCreateReferralCampaign;
-import voucherify.client.model.GiveawayCampaignVoucher;
+import voucherify.client.model.CampaignsCreateRequestBodyPromotion;
+import voucherify.client.model.CampaignsCreateRequestBodyValidityTimeframe;
+import voucherify.client.model.CampaignsCreateRequestBodyVoucher;
 import voucherify.client.model.LuckyDraw;
 import voucherify.client.model.ReferralProgram;
-import voucherify.client.model.SchemaThatContainsUniquePropertiesForPromotionCampaignPromotion;
 import voucherify.client.model.ValidityHours;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * CampaignsCreateRequestBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class CampaignsCreateRequestBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(CampaignsCreateRequestBody.class.getName());
+public class CampaignsCreateRequestBody {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CampaignsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'CampaignsCreateRequestBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CampaignsCreateDiscountCouponsCampaign> adapterCampaignsCreateDiscountCouponsCampaign = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreateDiscountCouponsCampaign.class));
-            final TypeAdapter<CampaignsCreateReferralCampaign> adapterCampaignsCreateReferralCampaign = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreateReferralCampaign.class));
-            final TypeAdapter<CampaignsCreateGiftCampaign> adapterCampaignsCreateGiftCampaign = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreateGiftCampaign.class));
-            final TypeAdapter<CampaignsCreateLoyaltyCampaign> adapterCampaignsCreateLoyaltyCampaign = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreateLoyaltyCampaign.class));
-            final TypeAdapter<CampaignsCreatePromotionCampaign> adapterCampaignsCreatePromotionCampaign = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreatePromotionCampaign.class));
-            final TypeAdapter<CampaignsCreateGiveawayCampaign> adapterCampaignsCreateGiveawayCampaign = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreateGiveawayCampaign.class));
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
-            return (TypeAdapter<T>) new TypeAdapter<CampaignsCreateRequestBody>() {
-                @Override
-                public void write(JsonWriter out, CampaignsCreateRequestBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  /**
+   * Defines whether the campaign can be updated with new vouchers after campaign creation.      - &#x60;AUTO_UPDATE&#x60;: By choosing the auto update option you will create a campaign that can be enhanced by new vouchers after the time of creation (e.g. by publish vouchers method).     -  &#x60;STATIC&#x60;: vouchers need to be manually published.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    AUTO_UPDATE("AUTO_UPDATE"),
+    
+    STATIC("STATIC");
 
-                    // check if the actual instance is of the type `CampaignsCreateDiscountCouponsCampaign`
-                    if (value.getActualInstance() instanceof CampaignsCreateDiscountCouponsCampaign) {
-                      JsonElement element = adapterCampaignsCreateDiscountCouponsCampaign.toJsonTree((CampaignsCreateDiscountCouponsCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CampaignsCreateReferralCampaign`
-                    if (value.getActualInstance() instanceof CampaignsCreateReferralCampaign) {
-                      JsonElement element = adapterCampaignsCreateReferralCampaign.toJsonTree((CampaignsCreateReferralCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CampaignsCreateGiftCampaign`
-                    if (value.getActualInstance() instanceof CampaignsCreateGiftCampaign) {
-                      JsonElement element = adapterCampaignsCreateGiftCampaign.toJsonTree((CampaignsCreateGiftCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CampaignsCreateLoyaltyCampaign`
-                    if (value.getActualInstance() instanceof CampaignsCreateLoyaltyCampaign) {
-                      JsonElement element = adapterCampaignsCreateLoyaltyCampaign.toJsonTree((CampaignsCreateLoyaltyCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CampaignsCreatePromotionCampaign`
-                    if (value.getActualInstance() instanceof CampaignsCreatePromotionCampaign) {
-                      JsonElement element = adapterCampaignsCreatePromotionCampaign.toJsonTree((CampaignsCreatePromotionCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CampaignsCreateGiveawayCampaign`
-                    if (value.getActualInstance() instanceof CampaignsCreateGiveawayCampaign) {
-                      JsonElement element = adapterCampaignsCreateGiveawayCampaign.toJsonTree((CampaignsCreateGiveawayCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CampaignsCreateDiscountCouponsCampaign, CampaignsCreateGiftCampaign, CampaignsCreateGiveawayCampaign, CampaignsCreateLoyaltyCampaign, CampaignsCreatePromotionCampaign, CampaignsCreateReferralCampaign");
-                }
+    private String value;
 
-                @Override
-                public CampaignsCreateRequestBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize CampaignsCreateDiscountCouponsCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsCreateDiscountCouponsCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsCreateDiscountCouponsCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsCreateDiscountCouponsCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsCreateDiscountCouponsCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsCreateDiscountCouponsCampaign'", e);
-                    }
-                    // deserialize CampaignsCreateReferralCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsCreateReferralCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsCreateReferralCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsCreateReferralCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsCreateReferralCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsCreateReferralCampaign'", e);
-                    }
-                    // deserialize CampaignsCreateGiftCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsCreateGiftCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsCreateGiftCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsCreateGiftCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsCreateGiftCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsCreateGiftCampaign'", e);
-                    }
-                    // deserialize CampaignsCreateLoyaltyCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsCreateLoyaltyCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsCreateLoyaltyCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsCreateLoyaltyCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsCreateLoyaltyCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsCreateLoyaltyCampaign'", e);
-                    }
-                    // deserialize CampaignsCreatePromotionCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsCreatePromotionCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsCreatePromotionCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsCreatePromotionCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsCreatePromotionCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsCreatePromotionCampaign'", e);
-                    }
-                    // deserialize CampaignsCreateGiveawayCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsCreateGiveawayCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsCreateGiveawayCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsCreateGiveawayCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsCreateGiveawayCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsCreateGiveawayCampaign'", e);
-                    }
-
-                    if (match == 1) {
-                        CampaignsCreateRequestBody ret = new CampaignsCreateRequestBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for CampaignsCreateRequestBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    TypeEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public CampaignsCreateRequestBody() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public CampaignsCreateRequestBody(CampaignsCreateDiscountCouponsCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CampaignsCreateRequestBody(CampaignsCreateGiftCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CampaignsCreateRequestBody(CampaignsCreateGiveawayCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CampaignsCreateRequestBody(CampaignsCreateLoyaltyCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CampaignsCreateRequestBody(CampaignsCreatePromotionCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CampaignsCreateRequestBody(CampaignsCreateReferralCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("CampaignsCreateDiscountCouponsCampaign", CampaignsCreateDiscountCouponsCampaign.class);
-        schemas.put("CampaignsCreateReferralCampaign", CampaignsCreateReferralCampaign.class);
-        schemas.put("CampaignsCreateGiftCampaign", CampaignsCreateGiftCampaign.class);
-        schemas.put("CampaignsCreateLoyaltyCampaign", CampaignsCreateLoyaltyCampaign.class);
-        schemas.put("CampaignsCreatePromotionCampaign", CampaignsCreatePromotionCampaign.class);
-        schemas.put("CampaignsCreateGiveawayCampaign", CampaignsCreateGiveawayCampaign.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return CampaignsCreateRequestBody.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * CampaignsCreateDiscountCouponsCampaign, CampaignsCreateGiftCampaign, CampaignsCreateGiveawayCampaign, CampaignsCreateLoyaltyCampaign, CampaignsCreatePromotionCampaign, CampaignsCreateReferralCampaign
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_JOIN_ONCE = "join_once";
+  @SerializedName(SERIALIZED_NAME_JOIN_ONCE)
+  private Boolean joinOnce;
+
+  public static final String SERIALIZED_NAME_AUTO_JOIN = "auto_join";
+  @SerializedName(SERIALIZED_NAME_AUTO_JOIN)
+  private Boolean autoJoin;
+
+  public static final String SERIALIZED_NAME_USE_VOUCHER_METADATA_SCHEMA = "use_voucher_metadata_schema";
+  @SerializedName(SERIALIZED_NAME_USE_VOUCHER_METADATA_SCHEMA)
+  private Boolean useVoucherMetadataSchema;
+
+  public static final String SERIALIZED_NAME_VOUCHERS_COUNT = "vouchers_count";
+  @SerializedName(SERIALIZED_NAME_VOUCHERS_COUNT)
+  private Integer vouchersCount;
+
+  public static final String SERIALIZED_NAME_START_DATE = "start_date";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expiration_date";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+  private OffsetDateTime expirationDate;
+
+  public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
+  private CampaignsCreateRequestBodyValidityTimeframe validityTimeframe;
+
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof CampaignsCreateDiscountCouponsCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CampaignsCreateReferralCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CampaignsCreateGiftCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CampaignsCreateLoyaltyCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CampaignsCreatePromotionCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CampaignsCreateGiveawayCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CampaignsCreateDiscountCouponsCampaign, CampaignsCreateGiftCampaign, CampaignsCreateGiveawayCampaign, CampaignsCreateLoyaltyCampaign, CampaignsCreatePromotionCampaign, CampaignsCreateReferralCampaign");
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * CampaignsCreateDiscountCouponsCampaign, CampaignsCreateGiftCampaign, CampaignsCreateGiveawayCampaign, CampaignsCreateLoyaltyCampaign, CampaignsCreatePromotionCampaign, CampaignsCreateReferralCampaign
-     *
-     * @return The actual instance (CampaignsCreateDiscountCouponsCampaign, CampaignsCreateGiftCampaign, CampaignsCreateGiveawayCampaign, CampaignsCreateLoyaltyCampaign, CampaignsCreatePromotionCampaign, CampaignsCreateReferralCampaign)
-     */
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
+
+  public static final String SERIALIZED_NAME_ACTIVITY_DURATION_AFTER_PUBLISHING = "activity_duration_after_publishing";
+  @SerializedName(SERIALIZED_NAME_ACTIVITY_DURATION_AFTER_PUBLISHING)
+  private String activityDurationAfterPublishing;
+
+  public static final String SERIALIZED_NAME_VALIDATION_RULES = "validation_rules";
+  @SerializedName(SERIALIZED_NAME_VALIDATION_RULES)
+  private List<String> validationRules;
+
+  public static final String SERIALIZED_NAME_CATEGORY_ID = "category_id";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
+  private String categoryId;
+
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private String category;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  /**
+   * Gets or Sets campaignType
+   */
+  @JsonAdapter(CampaignTypeEnum.Adapter.class)
+  public enum CampaignTypeEnum {
+    DISCOUNT_COUPONS("DISCOUNT_COUPONS"),
+    
+    REFERRAL_PROGRAM("REFERRAL_PROGRAM"),
+    
+    GIFT_VOUCHERS("GIFT_VOUCHERS"),
+    
+    LOYALTY_PROGRAM("LOYALTY_PROGRAM"),
+    
+    PROMOTION("PROMOTION"),
+    
+    LUCKY_DRAW("LUCKY_DRAW");
+
+    private String value;
+
+    CampaignTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `CampaignsCreateDiscountCouponsCampaign`. If the actual instance is not `CampaignsCreateDiscountCouponsCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsCreateDiscountCouponsCampaign`
-     * @throws ClassCastException if the instance is not `CampaignsCreateDiscountCouponsCampaign`
-     */
-    public CampaignsCreateDiscountCouponsCampaign getCampaignsCreateDiscountCouponsCampaign() throws ClassCastException {
-        return (CampaignsCreateDiscountCouponsCampaign)super.getActualInstance();
+    public static CampaignTypeEnum fromValue(String value) {
+      for (CampaignTypeEnum b : CampaignTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `CampaignsCreateReferralCampaign`. If the actual instance is not `CampaignsCreateReferralCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsCreateReferralCampaign`
-     * @throws ClassCastException if the instance is not `CampaignsCreateReferralCampaign`
-     */
-    public CampaignsCreateReferralCampaign getCampaignsCreateReferralCampaign() throws ClassCastException {
-        return (CampaignsCreateReferralCampaign)super.getActualInstance();
+
+    public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CampaignTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CampaignTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CampaignTypeEnum.fromValue(value);
+      }
     }
-    /**
-     * Get the actual instance of `CampaignsCreateGiftCampaign`. If the actual instance is not `CampaignsCreateGiftCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsCreateGiftCampaign`
-     * @throws ClassCastException if the instance is not `CampaignsCreateGiftCampaign`
-     */
-    public CampaignsCreateGiftCampaign getCampaignsCreateGiftCampaign() throws ClassCastException {
-        return (CampaignsCreateGiftCampaign)super.getActualInstance();
+  }
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaign_type";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
+  private CampaignTypeEnum campaignType;
+
+  public static final String SERIALIZED_NAME_VOUCHER = "voucher";
+  @SerializedName(SERIALIZED_NAME_VOUCHER)
+  private CampaignsCreateRequestBodyVoucher voucher;
+
+  public static final String SERIALIZED_NAME_REFERRAL_PROGRAM = "referral_program";
+  @SerializedName(SERIALIZED_NAME_REFERRAL_PROGRAM)
+  private ReferralProgram referralProgram;
+
+  public static final String SERIALIZED_NAME_PROMOTION = "promotion";
+  @SerializedName(SERIALIZED_NAME_PROMOTION)
+  private CampaignsCreateRequestBodyPromotion promotion;
+
+  public static final String SERIALIZED_NAME_LUCKY_DRAW = "lucky_draw";
+  @SerializedName(SERIALIZED_NAME_LUCKY_DRAW)
+  private LuckyDraw luckyDraw;
+
+  public CampaignsCreateRequestBody() {
+  }
+
+  public CampaignsCreateRequestBody name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Campaign name.
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public CampaignsCreateRequestBody description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * An optional field to keep any extra textual information about the campaign such as a campaign description and details.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public CampaignsCreateRequestBody type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Defines whether the campaign can be updated with new vouchers after campaign creation.      - &#x60;AUTO_UPDATE&#x60;: By choosing the auto update option you will create a campaign that can be enhanced by new vouchers after the time of creation (e.g. by publish vouchers method).     -  &#x60;STATIC&#x60;: vouchers need to be manually published.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public CampaignsCreateRequestBody joinOnce(Boolean joinOnce) {
+    
+    this.joinOnce = joinOnce;
+    return this;
+  }
+
+   /**
+   * If this value is set to &#x60;true&#x60;, customers will be able to join the campaign only once.
+   * @return joinOnce
+  **/
+  @javax.annotation.Nullable
+  public Boolean getJoinOnce() {
+    return joinOnce;
+  }
+
+
+  public void setJoinOnce(Boolean joinOnce) {
+    this.joinOnce = joinOnce;
+  }
+
+
+  public CampaignsCreateRequestBody autoJoin(Boolean autoJoin) {
+    
+    this.autoJoin = autoJoin;
+    return this;
+  }
+
+   /**
+   * Indicates whether customers will be able to auto-join a loyalty campaign if any earning rule is fulfilled.
+   * @return autoJoin
+  **/
+  @javax.annotation.Nullable
+  public Boolean getAutoJoin() {
+    return autoJoin;
+  }
+
+
+  public void setAutoJoin(Boolean autoJoin) {
+    this.autoJoin = autoJoin;
+  }
+
+
+  public CampaignsCreateRequestBody useVoucherMetadataSchema(Boolean useVoucherMetadataSchema) {
+    
+    this.useVoucherMetadataSchema = useVoucherMetadataSchema;
+    return this;
+  }
+
+   /**
+   * Flag indicating whether the campaign is to use the voucher&#39;s metadata schema instead of the campaign metadata schema.
+   * @return useVoucherMetadataSchema
+  **/
+  @javax.annotation.Nullable
+  public Boolean getUseVoucherMetadataSchema() {
+    return useVoucherMetadataSchema;
+  }
+
+
+  public void setUseVoucherMetadataSchema(Boolean useVoucherMetadataSchema) {
+    this.useVoucherMetadataSchema = useVoucherMetadataSchema;
+  }
+
+
+  public CampaignsCreateRequestBody vouchersCount(Integer vouchersCount) {
+    
+    this.vouchersCount = vouchersCount;
+    return this;
+  }
+
+   /**
+   * Total number of unique vouchers in campaign (size of campaign).
+   * @return vouchersCount
+  **/
+  @javax.annotation.Nullable
+  public Integer getVouchersCount() {
+    return vouchersCount;
+  }
+
+
+  public void setVouchersCount(Integer vouchersCount) {
+    this.vouchersCount = vouchersCount;
+  }
+
+
+  public CampaignsCreateRequestBody startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Activation timestamp defines when the campaign starts to be active in ISO 8601 format. Campaign is *inactive before* this date. 
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public CampaignsCreateRequestBody expirationDate(OffsetDateTime expirationDate) {
+    
+    this.expirationDate = expirationDate;
+    return this;
+  }
+
+   /**
+   * Expiration timestamp defines when the campaign expires in ISO 8601 format.  Campaign is *inactive after* this date.
+   * @return expirationDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getExpirationDate() {
+    return expirationDate;
+  }
+
+
+  public void setExpirationDate(OffsetDateTime expirationDate) {
+    this.expirationDate = expirationDate;
+  }
+
+
+  public CampaignsCreateRequestBody validityTimeframe(CampaignsCreateRequestBodyValidityTimeframe validityTimeframe) {
+    
+    this.validityTimeframe = validityTimeframe;
+    return this;
+  }
+
+   /**
+   * Get validityTimeframe
+   * @return validityTimeframe
+  **/
+  @javax.annotation.Nullable
+  public CampaignsCreateRequestBodyValidityTimeframe getValidityTimeframe() {
+    return validityTimeframe;
+  }
+
+
+  public void setValidityTimeframe(CampaignsCreateRequestBodyValidityTimeframe validityTimeframe) {
+    this.validityTimeframe = validityTimeframe;
+  }
+
+
+  public CampaignsCreateRequestBody validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
+    
+    this.validityDayOfWeek = validityDayOfWeek;
+    return this;
+  }
+
+  public CampaignsCreateRequestBody addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
+    if (this.validityDayOfWeek == null) {
+      this.validityDayOfWeek = new ArrayList<>();
     }
-    /**
-     * Get the actual instance of `CampaignsCreateLoyaltyCampaign`. If the actual instance is not `CampaignsCreateLoyaltyCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsCreateLoyaltyCampaign`
-     * @throws ClassCastException if the instance is not `CampaignsCreateLoyaltyCampaign`
-     */
-    public CampaignsCreateLoyaltyCampaign getCampaignsCreateLoyaltyCampaign() throws ClassCastException {
-        return (CampaignsCreateLoyaltyCampaign)super.getActualInstance();
+    this.validityDayOfWeek.add(validityDayOfWeekItem);
+    return this;
+  }
+
+   /**
+   * Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
+   * @return validityDayOfWeek
+  **/
+  @javax.annotation.Nullable
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
+    return validityDayOfWeek;
+  }
+
+
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
+    this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public CampaignsCreateRequestBody validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
+  }
+
+
+  public CampaignsCreateRequestBody activityDurationAfterPublishing(String activityDurationAfterPublishing) {
+    
+    this.activityDurationAfterPublishing = activityDurationAfterPublishing;
+    return this;
+  }
+
+   /**
+   * Defines the amount of time the campaign will be active in ISO 8601 format after publishing. For example, a campaign with a &#x60;duration&#x60; of &#x60;P24D&#x60; will be valid for a duration of 24 days.
+   * @return activityDurationAfterPublishing
+  **/
+  @javax.annotation.Nullable
+  public String getActivityDurationAfterPublishing() {
+    return activityDurationAfterPublishing;
+  }
+
+
+  public void setActivityDurationAfterPublishing(String activityDurationAfterPublishing) {
+    this.activityDurationAfterPublishing = activityDurationAfterPublishing;
+  }
+
+
+  public CampaignsCreateRequestBody validationRules(List<String> validationRules) {
+    
+    this.validationRules = validationRules;
+    return this;
+  }
+
+  public CampaignsCreateRequestBody addValidationRulesItem(String validationRulesItem) {
+    if (this.validationRules == null) {
+      this.validationRules = new ArrayList<>();
     }
-    /**
-     * Get the actual instance of `CampaignsCreatePromotionCampaign`. If the actual instance is not `CampaignsCreatePromotionCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsCreatePromotionCampaign`
-     * @throws ClassCastException if the instance is not `CampaignsCreatePromotionCampaign`
-     */
-    public CampaignsCreatePromotionCampaign getCampaignsCreatePromotionCampaign() throws ClassCastException {
-        return (CampaignsCreatePromotionCampaign)super.getActualInstance();
+    this.validationRules.add(validationRulesItem);
+    return this;
+  }
+
+   /**
+   * Array containing the ID of the validation rule associated with the promotion tier.
+   * @return validationRules
+  **/
+  @javax.annotation.Nullable
+  public List<String> getValidationRules() {
+    return validationRules;
+  }
+
+
+  public void setValidationRules(List<String> validationRules) {
+    this.validationRules = validationRules;
+  }
+
+
+  public CampaignsCreateRequestBody categoryId(String categoryId) {
+    
+    this.categoryId = categoryId;
+    return this;
+  }
+
+   /**
+   * Unique category ID that this campaign belongs to. Either pass this parameter OR the &#x60;category&#x60;.
+   * @return categoryId
+  **/
+  @javax.annotation.Nullable
+  public String getCategoryId() {
+    return categoryId;
+  }
+
+
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
+  }
+
+
+  public CampaignsCreateRequestBody category(String category) {
+    
+    this.category = category;
+    return this;
+  }
+
+   /**
+   * The category assigned to the campaign. Either pass this parameter OR the &#x60;category_id&#x60;.
+   * @return category
+  **/
+  @javax.annotation.Nullable
+  public String getCategory() {
+    return category;
+  }
+
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+
+  public CampaignsCreateRequestBody metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public CampaignsCreateRequestBody campaignType(CampaignTypeEnum campaignType) {
+    
+    this.campaignType = campaignType;
+    return this;
+  }
+
+   /**
+   * Get campaignType
+   * @return campaignType
+  **/
+  @javax.annotation.Nullable
+  public CampaignTypeEnum getCampaignType() {
+    return campaignType;
+  }
+
+
+  public void setCampaignType(CampaignTypeEnum campaignType) {
+    this.campaignType = campaignType;
+  }
+
+
+  public CampaignsCreateRequestBody voucher(CampaignsCreateRequestBodyVoucher voucher) {
+    
+    this.voucher = voucher;
+    return this;
+  }
+
+   /**
+   * Get voucher
+   * @return voucher
+  **/
+  @javax.annotation.Nullable
+  public CampaignsCreateRequestBodyVoucher getVoucher() {
+    return voucher;
+  }
+
+
+  public void setVoucher(CampaignsCreateRequestBodyVoucher voucher) {
+    this.voucher = voucher;
+  }
+
+
+  public CampaignsCreateRequestBody referralProgram(ReferralProgram referralProgram) {
+    
+    this.referralProgram = referralProgram;
+    return this;
+  }
+
+   /**
+   * Get referralProgram
+   * @return referralProgram
+  **/
+  @javax.annotation.Nullable
+  public ReferralProgram getReferralProgram() {
+    return referralProgram;
+  }
+
+
+  public void setReferralProgram(ReferralProgram referralProgram) {
+    this.referralProgram = referralProgram;
+  }
+
+
+  public CampaignsCreateRequestBody promotion(CampaignsCreateRequestBodyPromotion promotion) {
+    
+    this.promotion = promotion;
+    return this;
+  }
+
+   /**
+   * Get promotion
+   * @return promotion
+  **/
+  @javax.annotation.Nullable
+  public CampaignsCreateRequestBodyPromotion getPromotion() {
+    return promotion;
+  }
+
+
+  public void setPromotion(CampaignsCreateRequestBodyPromotion promotion) {
+    this.promotion = promotion;
+  }
+
+
+  public CampaignsCreateRequestBody luckyDraw(LuckyDraw luckyDraw) {
+    
+    this.luckyDraw = luckyDraw;
+    return this;
+  }
+
+   /**
+   * Get luckyDraw
+   * @return luckyDraw
+  **/
+  @javax.annotation.Nullable
+  public LuckyDraw getLuckyDraw() {
+    return luckyDraw;
+  }
+
+
+  public void setLuckyDraw(LuckyDraw luckyDraw) {
+    this.luckyDraw = luckyDraw;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `CampaignsCreateGiveawayCampaign`. If the actual instance is not `CampaignsCreateGiveawayCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsCreateGiveawayCampaign`
-     * @throws ClassCastException if the instance is not `CampaignsCreateGiveawayCampaign`
-     */
-    public CampaignsCreateGiveawayCampaign getCampaignsCreateGiveawayCampaign() throws ClassCastException {
-        return (CampaignsCreateGiveawayCampaign)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    CampaignsCreateRequestBody campaignsCreateRequestBody = (CampaignsCreateRequestBody) o;
+    return Objects.equals(this.name, campaignsCreateRequestBody.name) &&
+        Objects.equals(this.description, campaignsCreateRequestBody.description) &&
+        Objects.equals(this.type, campaignsCreateRequestBody.type) &&
+        Objects.equals(this.joinOnce, campaignsCreateRequestBody.joinOnce) &&
+        Objects.equals(this.autoJoin, campaignsCreateRequestBody.autoJoin) &&
+        Objects.equals(this.useVoucherMetadataSchema, campaignsCreateRequestBody.useVoucherMetadataSchema) &&
+        Objects.equals(this.vouchersCount, campaignsCreateRequestBody.vouchersCount) &&
+        Objects.equals(this.startDate, campaignsCreateRequestBody.startDate) &&
+        Objects.equals(this.expirationDate, campaignsCreateRequestBody.expirationDate) &&
+        Objects.equals(this.validityTimeframe, campaignsCreateRequestBody.validityTimeframe) &&
+        Objects.equals(this.validityDayOfWeek, campaignsCreateRequestBody.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, campaignsCreateRequestBody.validityHours) &&
+        Objects.equals(this.activityDurationAfterPublishing, campaignsCreateRequestBody.activityDurationAfterPublishing) &&
+        Objects.equals(this.validationRules, campaignsCreateRequestBody.validationRules) &&
+        Objects.equals(this.categoryId, campaignsCreateRequestBody.categoryId) &&
+        Objects.equals(this.category, campaignsCreateRequestBody.category) &&
+        Objects.equals(this.metadata, campaignsCreateRequestBody.metadata) &&
+        Objects.equals(this.campaignType, campaignsCreateRequestBody.campaignType) &&
+        Objects.equals(this.voucher, campaignsCreateRequestBody.voucher) &&
+        Objects.equals(this.referralProgram, campaignsCreateRequestBody.referralProgram) &&
+        Objects.equals(this.promotion, campaignsCreateRequestBody.promotion) &&
+        Objects.equals(this.luckyDraw, campaignsCreateRequestBody.luckyDraw);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, description, type, joinOnce, autoJoin, useVoucherMetadataSchema, vouchersCount, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, validationRules, categoryId, category, metadata, campaignType, voucher, referralProgram, promotion, luckyDraw);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CampaignsCreateRequestBody {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    joinOnce: ").append(toIndentedString(joinOnce)).append("\n");
+    sb.append("    autoJoin: ").append(toIndentedString(autoJoin)).append("\n");
+    sb.append("    useVoucherMetadataSchema: ").append(toIndentedString(useVoucherMetadataSchema)).append("\n");
+    sb.append("    vouchersCount: ").append(toIndentedString(vouchersCount)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
+    sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
+    sb.append("    activityDurationAfterPublishing: ").append(toIndentedString(activityDurationAfterPublishing)).append("\n");
+    sb.append("    validationRules: ").append(toIndentedString(validationRules)).append("\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
+    sb.append("    voucher: ").append(toIndentedString(voucher)).append("\n");
+    sb.append("    referralProgram: ").append(toIndentedString(referralProgram)).append("\n");
+    sb.append("    promotion: ").append(toIndentedString(promotion)).append("\n");
+    sb.append("    luckyDraw: ").append(toIndentedString(luckyDraw)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("name");
+    openapiFields.add("description");
+    openapiFields.add("type");
+    openapiFields.add("join_once");
+    openapiFields.add("auto_join");
+    openapiFields.add("use_voucher_metadata_schema");
+    openapiFields.add("vouchers_count");
+    openapiFields.add("start_date");
+    openapiFields.add("expiration_date");
+    openapiFields.add("validity_timeframe");
+    openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
+    openapiFields.add("activity_duration_after_publishing");
+    openapiFields.add("validation_rules");
+    openapiFields.add("category_id");
+    openapiFields.add("category");
+    openapiFields.add("metadata");
+    openapiFields.add("campaign_type");
+    openapiFields.add("voucher");
+    openapiFields.add("referral_program");
+    openapiFields.add("promotion");
+    openapiFields.add("lucky_draw");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -405,59 +910,127 @@ public class CampaignsCreateRequestBody extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to CampaignsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with CampaignsCreateDiscountCouponsCampaign
-    try {
-      CampaignsCreateDiscountCouponsCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsCreateDiscountCouponsCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CampaignsCreateReferralCampaign
-    try {
-      CampaignsCreateReferralCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsCreateReferralCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CampaignsCreateGiftCampaign
-    try {
-      CampaignsCreateGiftCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsCreateGiftCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CampaignsCreateLoyaltyCampaign
-    try {
-      CampaignsCreateLoyaltyCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsCreateLoyaltyCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CampaignsCreatePromotionCampaign
-    try {
-      CampaignsCreatePromotionCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsCreatePromotionCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CampaignsCreateGiveawayCampaign
-    try {
-      CampaignsCreateGiveawayCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsCreateGiveawayCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for CampaignsCreateRequestBody with oneOf schemas: CampaignsCreateDiscountCouponsCampaign, CampaignsCreateGiftCampaign, CampaignsCreateGiveawayCampaign, CampaignsCreateLoyaltyCampaign, CampaignsCreatePromotionCampaign, CampaignsCreateReferralCampaign. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!CampaignsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsCreateRequestBody is not found in the empty JSON string", CampaignsCreateRequestBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!CampaignsCreateRequestBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignsCreateRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
+      // validate the optional field `validity_timeframe`
+      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
+        CampaignsCreateRequestBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
+      }
+      if ((jsonObj.get("activity_duration_after_publishing") != null && !jsonObj.get("activity_duration_after_publishing").isJsonNull()) && !jsonObj.get("activity_duration_after_publishing").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `activity_duration_after_publishing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("activity_duration_after_publishing").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validation_rules") != null && !jsonObj.get("validation_rules").isJsonNull() && !jsonObj.get("validation_rules").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `validation_rules` to be an array in the JSON string but got `%s`", jsonObj.get("validation_rules").toString()));
+      }
+      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+      }
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+      }
+      if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("campaign_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          CampaignTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `campaign_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("campaign_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a valid element of CampaignTypeEnum enum got `%s` instead", jsonObj.get("campaign_type").toString()));
+        }
+      }
+      // validate the optional field `voucher`
+      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
+        CampaignsCreateRequestBodyVoucher.validateJsonElement(jsonObj.get("voucher"));
+      }
+      // validate the optional field `referral_program`
+      if (jsonObj.get("referral_program") != null && !jsonObj.get("referral_program").isJsonNull()) {
+        ReferralProgram.validateJsonElement(jsonObj.get("referral_program"));
+      }
+      // validate the optional field `promotion`
+      if (jsonObj.get("promotion") != null && !jsonObj.get("promotion").isJsonNull()) {
+        CampaignsCreateRequestBodyPromotion.validateJsonElement(jsonObj.get("promotion"));
+      }
+      // validate the optional field `lucky_draw`
+      if (jsonObj.get("lucky_draw") != null && !jsonObj.get("lucky_draw").isJsonNull()) {
+        LuckyDraw.validateJsonElement(jsonObj.get("lucky_draw"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CampaignsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CampaignsCreateRequestBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CampaignsCreateRequestBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CampaignsCreateRequestBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CampaignsCreateRequestBody>() {
+           @Override
+           public void write(JsonWriter out, CampaignsCreateRequestBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CampaignsCreateRequestBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

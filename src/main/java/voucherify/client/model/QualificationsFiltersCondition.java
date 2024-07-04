@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.Any;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,11 +65,11 @@ public class QualificationsFiltersCondition {
 
   public static final String SERIALIZED_NAME_$_HAS_VALUE = "$has_value";
   @SerializedName(SERIALIZED_NAME_$_HAS_VALUE)
-  private Any $hasValue;
+  private Object $hasValue = null;
 
   public static final String SERIALIZED_NAME_$_IS_UNKNOWN = "$is_unknown";
   @SerializedName(SERIALIZED_NAME_$_IS_UNKNOWN)
-  private Any $isUnknown;
+  private Object $isUnknown = null;
 
   public static final String SERIALIZED_NAME_$_IN = "$in";
   @SerializedName(SERIALIZED_NAME_$_IN)
@@ -140,7 +140,7 @@ public class QualificationsFiltersCondition {
   }
 
 
-  public QualificationsFiltersCondition $hasValue(Any $hasValue) {
+  public QualificationsFiltersCondition $hasValue(Object $hasValue) {
     
     this.$hasValue = $hasValue;
     return this;
@@ -151,17 +151,17 @@ public class QualificationsFiltersCondition {
    * @return $hasValue
   **/
   @javax.annotation.Nullable
-  public Any get$HasValue() {
+  public Object get$HasValue() {
     return $hasValue;
   }
 
 
-  public void set$HasValue(Any $hasValue) {
+  public void set$HasValue(Object $hasValue) {
     this.$hasValue = $hasValue;
   }
 
 
-  public QualificationsFiltersCondition $isUnknown(Any $isUnknown) {
+  public QualificationsFiltersCondition $isUnknown(Object $isUnknown) {
     
     this.$isUnknown = $isUnknown;
     return this;
@@ -172,12 +172,12 @@ public class QualificationsFiltersCondition {
    * @return $isUnknown
   **/
   @javax.annotation.Nullable
-  public Any get$IsUnknown() {
+  public Object get$IsUnknown() {
     return $isUnknown;
   }
 
 
-  public void set$IsUnknown(Any $isUnknown) {
+  public void set$IsUnknown(Object $isUnknown) {
     this.$isUnknown = $isUnknown;
   }
 
@@ -258,9 +258,20 @@ public class QualificationsFiltersCondition {
         Objects.equals(this.$notIn, qualificationsFiltersCondition.$notIn);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash($is, $isNot, $hasValue, $isUnknown, $in, $notIn);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -334,14 +345,6 @@ public class QualificationsFiltersCondition {
       // ensure the optional json data is an array if present
       if (jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull() && !jsonObj.get("$is_not").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `$is_not` to be an array in the JSON string but got `%s`", jsonObj.get("$is_not").toString()));
-      }
-      // validate the optional field `$has_value`
-      if (jsonObj.get("$has_value") != null && !jsonObj.get("$has_value").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$has_value"));
-      }
-      // validate the optional field `$is_unknown`
-      if (jsonObj.get("$is_unknown") != null && !jsonObj.get("$is_unknown").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is_unknown"));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull() && !jsonObj.get("$in").isJsonArray()) {

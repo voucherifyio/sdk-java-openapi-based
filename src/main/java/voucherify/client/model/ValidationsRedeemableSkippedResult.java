@@ -21,373 +21,253 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.ValidationsRedeemableSkippedResultCategoryLimitExceeded;
-import voucherify.client.model.ValidationsRedeemableSkippedResultExclusionRulesNotMet;
-import voucherify.client.model.ValidationsRedeemableSkippedResultLimitExceeded;
-import voucherify.client.model.ValidationsRedeemableSkippedResultPrecedingValidationFailed;
-import voucherify.client.model.ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded;
-import voucherify.client.model.ValidationsRedeemableSkippedResultRedeemablesLimitExceeded;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * ValidationsRedeemableSkippedResult
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class ValidationsRedeemableSkippedResult extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(ValidationsRedeemableSkippedResult.class.getName());
+public class ValidationsRedeemableSkippedResult {
+  /**
+   * Gets or Sets key
+   */
+  @JsonAdapter(KeyEnum.Adapter.class)
+  public enum KeyEnum {
+    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("applicable_redeemables_limit_exceeded"),
+    
+    APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_redeemables_per_category_limit_exceeded"),
+    
+    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("applicable_exclusive_redeemables_limit_exceeded"),
+    
+    APPLICABLE_EXCLUSIVE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_exclusive_redeemables_per_category_limit_exceeded"),
+    
+    EXCLUSION_RULES_NOT_MET("exclusion_rules_not_met"),
+    
+    PRECEDING_VALIDATION_FAILED("preceding_validation_failed");
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!ValidationsRedeemableSkippedResult.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'ValidationsRedeemableSkippedResult' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<ValidationsRedeemableSkippedResultLimitExceeded> adapterValidationsRedeemableSkippedResultLimitExceeded = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResultLimitExceeded.class));
-            final TypeAdapter<ValidationsRedeemableSkippedResultCategoryLimitExceeded> adapterValidationsRedeemableSkippedResultCategoryLimitExceeded = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResultCategoryLimitExceeded.class));
-            final TypeAdapter<ValidationsRedeemableSkippedResultRedeemablesLimitExceeded> adapterValidationsRedeemableSkippedResultRedeemablesLimitExceeded = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResultRedeemablesLimitExceeded.class));
-            final TypeAdapter<ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded> adapterValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded.class));
-            final TypeAdapter<ValidationsRedeemableSkippedResultExclusionRulesNotMet> adapterValidationsRedeemableSkippedResultExclusionRulesNotMet = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResultExclusionRulesNotMet.class));
-            final TypeAdapter<ValidationsRedeemableSkippedResultPrecedingValidationFailed> adapterValidationsRedeemableSkippedResultPrecedingValidationFailed = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResultPrecedingValidationFailed.class));
+    private String value;
 
-            return (TypeAdapter<T>) new TypeAdapter<ValidationsRedeemableSkippedResult>() {
-                @Override
-                public void write(JsonWriter out, ValidationsRedeemableSkippedResult value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `ValidationsRedeemableSkippedResultLimitExceeded`
-                    if (value.getActualInstance() instanceof ValidationsRedeemableSkippedResultLimitExceeded) {
-                      JsonElement element = adapterValidationsRedeemableSkippedResultLimitExceeded.toJsonTree((ValidationsRedeemableSkippedResultLimitExceeded)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ValidationsRedeemableSkippedResultCategoryLimitExceeded`
-                    if (value.getActualInstance() instanceof ValidationsRedeemableSkippedResultCategoryLimitExceeded) {
-                      JsonElement element = adapterValidationsRedeemableSkippedResultCategoryLimitExceeded.toJsonTree((ValidationsRedeemableSkippedResultCategoryLimitExceeded)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ValidationsRedeemableSkippedResultRedeemablesLimitExceeded`
-                    if (value.getActualInstance() instanceof ValidationsRedeemableSkippedResultRedeemablesLimitExceeded) {
-                      JsonElement element = adapterValidationsRedeemableSkippedResultRedeemablesLimitExceeded.toJsonTree((ValidationsRedeemableSkippedResultRedeemablesLimitExceeded)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded`
-                    if (value.getActualInstance() instanceof ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded) {
-                      JsonElement element = adapterValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded.toJsonTree((ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ValidationsRedeemableSkippedResultExclusionRulesNotMet`
-                    if (value.getActualInstance() instanceof ValidationsRedeemableSkippedResultExclusionRulesNotMet) {
-                      JsonElement element = adapterValidationsRedeemableSkippedResultExclusionRulesNotMet.toJsonTree((ValidationsRedeemableSkippedResultExclusionRulesNotMet)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ValidationsRedeemableSkippedResultPrecedingValidationFailed`
-                    if (value.getActualInstance() instanceof ValidationsRedeemableSkippedResultPrecedingValidationFailed) {
-                      JsonElement element = adapterValidationsRedeemableSkippedResultPrecedingValidationFailed.toJsonTree((ValidationsRedeemableSkippedResultPrecedingValidationFailed)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ValidationsRedeemableSkippedResultCategoryLimitExceeded, ValidationsRedeemableSkippedResultExclusionRulesNotMet, ValidationsRedeemableSkippedResultLimitExceeded, ValidationsRedeemableSkippedResultPrecedingValidationFailed, ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded, ValidationsRedeemableSkippedResultRedeemablesLimitExceeded");
-                }
-
-                @Override
-                public ValidationsRedeemableSkippedResult read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize ValidationsRedeemableSkippedResultLimitExceeded
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ValidationsRedeemableSkippedResultLimitExceeded.validateJsonElement(jsonElement);
-                      actualAdapter = adapterValidationsRedeemableSkippedResultLimitExceeded;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ValidationsRedeemableSkippedResultLimitExceeded'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultLimitExceeded failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ValidationsRedeemableSkippedResultLimitExceeded'", e);
-                    }
-                    // deserialize ValidationsRedeemableSkippedResultCategoryLimitExceeded
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ValidationsRedeemableSkippedResultCategoryLimitExceeded.validateJsonElement(jsonElement);
-                      actualAdapter = adapterValidationsRedeemableSkippedResultCategoryLimitExceeded;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ValidationsRedeemableSkippedResultCategoryLimitExceeded'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultCategoryLimitExceeded failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ValidationsRedeemableSkippedResultCategoryLimitExceeded'", e);
-                    }
-                    // deserialize ValidationsRedeemableSkippedResultRedeemablesLimitExceeded
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ValidationsRedeemableSkippedResultRedeemablesLimitExceeded.validateJsonElement(jsonElement);
-                      actualAdapter = adapterValidationsRedeemableSkippedResultRedeemablesLimitExceeded;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ValidationsRedeemableSkippedResultRedeemablesLimitExceeded'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultRedeemablesLimitExceeded failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ValidationsRedeemableSkippedResultRedeemablesLimitExceeded'", e);
-                    }
-                    // deserialize ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded.validateJsonElement(jsonElement);
-                      actualAdapter = adapterValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded'", e);
-                    }
-                    // deserialize ValidationsRedeemableSkippedResultExclusionRulesNotMet
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ValidationsRedeemableSkippedResultExclusionRulesNotMet.validateJsonElement(jsonElement);
-                      actualAdapter = adapterValidationsRedeemableSkippedResultExclusionRulesNotMet;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ValidationsRedeemableSkippedResultExclusionRulesNotMet'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultExclusionRulesNotMet failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ValidationsRedeemableSkippedResultExclusionRulesNotMet'", e);
-                    }
-                    // deserialize ValidationsRedeemableSkippedResultPrecedingValidationFailed
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ValidationsRedeemableSkippedResultPrecedingValidationFailed.validateJsonElement(jsonElement);
-                      actualAdapter = adapterValidationsRedeemableSkippedResultPrecedingValidationFailed;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ValidationsRedeemableSkippedResultPrecedingValidationFailed'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultPrecedingValidationFailed failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ValidationsRedeemableSkippedResultPrecedingValidationFailed'", e);
-                    }
-
-                    if (match == 1) {
-                        ValidationsRedeemableSkippedResult ret = new ValidationsRedeemableSkippedResult();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for ValidationsRedeemableSkippedResult: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    KeyEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public ValidationsRedeemableSkippedResult() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public ValidationsRedeemableSkippedResult(ValidationsRedeemableSkippedResultCategoryLimitExceeded o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ValidationsRedeemableSkippedResult(ValidationsRedeemableSkippedResultExclusionRulesNotMet o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ValidationsRedeemableSkippedResult(ValidationsRedeemableSkippedResultLimitExceeded o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ValidationsRedeemableSkippedResult(ValidationsRedeemableSkippedResultPrecedingValidationFailed o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ValidationsRedeemableSkippedResult(ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ValidationsRedeemableSkippedResult(ValidationsRedeemableSkippedResultRedeemablesLimitExceeded o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("ValidationsRedeemableSkippedResultLimitExceeded", ValidationsRedeemableSkippedResultLimitExceeded.class);
-        schemas.put("ValidationsRedeemableSkippedResultCategoryLimitExceeded", ValidationsRedeemableSkippedResultCategoryLimitExceeded.class);
-        schemas.put("ValidationsRedeemableSkippedResultRedeemablesLimitExceeded", ValidationsRedeemableSkippedResultRedeemablesLimitExceeded.class);
-        schemas.put("ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded", ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded.class);
-        schemas.put("ValidationsRedeemableSkippedResultExclusionRulesNotMet", ValidationsRedeemableSkippedResultExclusionRulesNotMet.class);
-        schemas.put("ValidationsRedeemableSkippedResultPrecedingValidationFailed", ValidationsRedeemableSkippedResultPrecedingValidationFailed.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return ValidationsRedeemableSkippedResult.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * ValidationsRedeemableSkippedResultCategoryLimitExceeded, ValidationsRedeemableSkippedResultExclusionRulesNotMet, ValidationsRedeemableSkippedResultLimitExceeded, ValidationsRedeemableSkippedResultPrecedingValidationFailed, ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded, ValidationsRedeemableSkippedResultRedeemablesLimitExceeded
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    public static KeyEnum fromValue(String value) {
+      for (KeyEnum b : KeyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<KeyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final KeyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public KeyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return KeyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_KEY = "key";
+  @SerializedName(SERIALIZED_NAME_KEY)
+  private KeyEnum key;
+
+  /**
+   * Gets or Sets message
+   */
+  @JsonAdapter(MessageEnum.Adapter.class)
+  public enum MessageEnum {
+    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("Applicable redeemables limit exceeded"),
+    
+    APPLICABLE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable redeemables limit per category exceeded"),
+    
+    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("Applicable exclusive redeemables limit exceeded"),
+    
+    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable exclusive redeemables limit per category exceeded"),
+    
+    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_EXCLUSION_RULES("Redeemable cannot be applied due to exclusion rules"),
+    
+    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_PRECEDING_VALIDATION_FAILURE("Redeemable cannot be applied due to preceding validation failure");
+
+    private String value;
+
+    MessageEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof ValidationsRedeemableSkippedResultLimitExceeded) {
-            super.setActualInstance(instance);
-            return;
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MessageEnum fromValue(String value) {
+      for (MessageEnum b : MessageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof ValidationsRedeemableSkippedResultCategoryLimitExceeded) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ValidationsRedeemableSkippedResultRedeemablesLimitExceeded) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ValidationsRedeemableSkippedResultExclusionRulesNotMet) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ValidationsRedeemableSkippedResultPrecedingValidationFailed) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be ValidationsRedeemableSkippedResultCategoryLimitExceeded, ValidationsRedeemableSkippedResultExclusionRulesNotMet, ValidationsRedeemableSkippedResultLimitExceeded, ValidationsRedeemableSkippedResultPrecedingValidationFailed, ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded, ValidationsRedeemableSkippedResultRedeemablesLimitExceeded");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * ValidationsRedeemableSkippedResultCategoryLimitExceeded, ValidationsRedeemableSkippedResultExclusionRulesNotMet, ValidationsRedeemableSkippedResultLimitExceeded, ValidationsRedeemableSkippedResultPrecedingValidationFailed, ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded, ValidationsRedeemableSkippedResultRedeemablesLimitExceeded
-     *
-     * @return The actual instance (ValidationsRedeemableSkippedResultCategoryLimitExceeded, ValidationsRedeemableSkippedResultExclusionRulesNotMet, ValidationsRedeemableSkippedResultLimitExceeded, ValidationsRedeemableSkippedResultPrecedingValidationFailed, ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded, ValidationsRedeemableSkippedResultRedeemablesLimitExceeded)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
+    public static class Adapter extends TypeAdapter<MessageEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MessageEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
 
-    /**
-     * Get the actual instance of `ValidationsRedeemableSkippedResultLimitExceeded`. If the actual instance is not `ValidationsRedeemableSkippedResultLimitExceeded`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ValidationsRedeemableSkippedResultLimitExceeded`
-     * @throws ClassCastException if the instance is not `ValidationsRedeemableSkippedResultLimitExceeded`
-     */
-    public ValidationsRedeemableSkippedResultLimitExceeded getValidationsRedeemableSkippedResultLimitExceeded() throws ClassCastException {
-        return (ValidationsRedeemableSkippedResultLimitExceeded)super.getActualInstance();
+      @Override
+      public MessageEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MessageEnum.fromValue(value);
+      }
     }
-    /**
-     * Get the actual instance of `ValidationsRedeemableSkippedResultCategoryLimitExceeded`. If the actual instance is not `ValidationsRedeemableSkippedResultCategoryLimitExceeded`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ValidationsRedeemableSkippedResultCategoryLimitExceeded`
-     * @throws ClassCastException if the instance is not `ValidationsRedeemableSkippedResultCategoryLimitExceeded`
-     */
-    public ValidationsRedeemableSkippedResultCategoryLimitExceeded getValidationsRedeemableSkippedResultCategoryLimitExceeded() throws ClassCastException {
-        return (ValidationsRedeemableSkippedResultCategoryLimitExceeded)super.getActualInstance();
+  }
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private MessageEnum message;
+
+  public ValidationsRedeemableSkippedResult() {
+  }
+
+  public ValidationsRedeemableSkippedResult key(KeyEnum key) {
+    
+    this.key = key;
+    return this;
+  }
+
+   /**
+   * Get key
+   * @return key
+  **/
+  @javax.annotation.Nullable
+  public KeyEnum getKey() {
+    return key;
+  }
+
+
+  public void setKey(KeyEnum key) {
+    this.key = key;
+  }
+
+
+  public ValidationsRedeemableSkippedResult message(MessageEnum message) {
+    
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  @javax.annotation.Nullable
+  public MessageEnum getMessage() {
+    return message;
+  }
+
+
+  public void setMessage(MessageEnum message) {
+    this.message = message;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `ValidationsRedeemableSkippedResultRedeemablesLimitExceeded`. If the actual instance is not `ValidationsRedeemableSkippedResultRedeemablesLimitExceeded`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ValidationsRedeemableSkippedResultRedeemablesLimitExceeded`
-     * @throws ClassCastException if the instance is not `ValidationsRedeemableSkippedResultRedeemablesLimitExceeded`
-     */
-    public ValidationsRedeemableSkippedResultRedeemablesLimitExceeded getValidationsRedeemableSkippedResultRedeemablesLimitExceeded() throws ClassCastException {
-        return (ValidationsRedeemableSkippedResultRedeemablesLimitExceeded)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    /**
-     * Get the actual instance of `ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded`. If the actual instance is not `ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded`
-     * @throws ClassCastException if the instance is not `ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded`
-     */
-    public ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded getValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded() throws ClassCastException {
-        return (ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded)super.getActualInstance();
+    ValidationsRedeemableSkippedResult validationsRedeemableSkippedResult = (ValidationsRedeemableSkippedResult) o;
+    return Objects.equals(this.key, validationsRedeemableSkippedResult.key) &&
+        Objects.equals(this.message, validationsRedeemableSkippedResult.message);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(key, message);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ValidationsRedeemableSkippedResult {\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-    /**
-     * Get the actual instance of `ValidationsRedeemableSkippedResultExclusionRulesNotMet`. If the actual instance is not `ValidationsRedeemableSkippedResultExclusionRulesNotMet`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ValidationsRedeemableSkippedResultExclusionRulesNotMet`
-     * @throws ClassCastException if the instance is not `ValidationsRedeemableSkippedResultExclusionRulesNotMet`
-     */
-    public ValidationsRedeemableSkippedResultExclusionRulesNotMet getValidationsRedeemableSkippedResultExclusionRulesNotMet() throws ClassCastException {
-        return (ValidationsRedeemableSkippedResultExclusionRulesNotMet)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `ValidationsRedeemableSkippedResultPrecedingValidationFailed`. If the actual instance is not `ValidationsRedeemableSkippedResultPrecedingValidationFailed`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ValidationsRedeemableSkippedResultPrecedingValidationFailed`
-     * @throws ClassCastException if the instance is not `ValidationsRedeemableSkippedResultPrecedingValidationFailed`
-     */
-    public ValidationsRedeemableSkippedResultPrecedingValidationFailed getValidationsRedeemableSkippedResultPrecedingValidationFailed() throws ClassCastException {
-        return (ValidationsRedeemableSkippedResultPrecedingValidationFailed)super.getActualInstance();
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("key");
+    openapiFields.add("message");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -396,59 +276,80 @@ public class ValidationsRedeemableSkippedResult extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to ValidationsRedeemableSkippedResult
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with ValidationsRedeemableSkippedResultLimitExceeded
-    try {
-      ValidationsRedeemableSkippedResultLimitExceeded.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultLimitExceeded failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ValidationsRedeemableSkippedResultCategoryLimitExceeded
-    try {
-      ValidationsRedeemableSkippedResultCategoryLimitExceeded.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultCategoryLimitExceeded failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ValidationsRedeemableSkippedResultRedeemablesLimitExceeded
-    try {
-      ValidationsRedeemableSkippedResultRedeemablesLimitExceeded.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultRedeemablesLimitExceeded failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded
-    try {
-      ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ValidationsRedeemableSkippedResultExclusionRulesNotMet
-    try {
-      ValidationsRedeemableSkippedResultExclusionRulesNotMet.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultExclusionRulesNotMet failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ValidationsRedeemableSkippedResultPrecedingValidationFailed
-    try {
-      ValidationsRedeemableSkippedResultPrecedingValidationFailed.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ValidationsRedeemableSkippedResultPrecedingValidationFailed failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for ValidationsRedeemableSkippedResult with oneOf schemas: ValidationsRedeemableSkippedResultCategoryLimitExceeded, ValidationsRedeemableSkippedResultExclusionRulesNotMet, ValidationsRedeemableSkippedResultLimitExceeded, ValidationsRedeemableSkippedResultPrecedingValidationFailed, ValidationsRedeemableSkippedResultRedeemablesCategoryLimitExceeded, ValidationsRedeemableSkippedResultRedeemablesLimitExceeded. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!ValidationsRedeemableSkippedResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationsRedeemableSkippedResult is not found in the empty JSON string", ValidationsRedeemableSkippedResult.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!ValidationsRedeemableSkippedResult.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidationsRedeemableSkippedResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("key");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          KeyEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `key` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("key") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `key` to be a valid element of KeyEnum enum got `%s` instead", jsonObj.get("key").toString()));
+        }
+      }
+      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("message");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          MessageEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `message` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("message") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `message` to be a valid element of MessageEnum enum got `%s` instead", jsonObj.get("message").toString()));
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ValidationsRedeemableSkippedResult.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValidationsRedeemableSkippedResult' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ValidationsRedeemableSkippedResult> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValidationsRedeemableSkippedResult.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ValidationsRedeemableSkippedResult>() {
+           @Override
+           public void write(JsonWriter out, ValidationsRedeemableSkippedResult value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ValidationsRedeemableSkippedResult read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

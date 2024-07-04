@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.RewardTypeCampaignCampaign;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,36 +47,139 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * RewardTypeCampaign
+ * Objects stores information about the campaign related to the reward.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
 public class RewardTypeCampaign {
-  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private RewardTypeCampaignCampaign campaign;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_BALANCE = "balance";
+  @SerializedName(SERIALIZED_NAME_BALANCE)
+  private Integer balance;
+
+  /**
+   * Campaign type.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    DISCOUNT_COUPONS("DISCOUNT_COUPONS"),
+    
+    PROMOTION("PROMOTION"),
+    
+    GIFT_VOUCHERS("GIFT_VOUCHERS"),
+    
+    REFERRAL_PROGRAM("REFERRAL_PROGRAM"),
+    
+    LOYALTY_PROGRAM("LOYALTY_PROGRAM");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
 
   public RewardTypeCampaign() {
   }
 
-  public RewardTypeCampaign campaign(RewardTypeCampaignCampaign campaign) {
+  public RewardTypeCampaign id(String id) {
     
-    this.campaign = campaign;
+    this.id = id;
     return this;
   }
 
    /**
-   * Get campaign
-   * @return campaign
+   * Unique campaign ID, assigned by Voucherify.
+   * @return id
   **/
   @javax.annotation.Nonnull
-  public RewardTypeCampaignCampaign getCampaign() {
-    return campaign;
+  public String getId() {
+    return id;
   }
 
 
-  public void setCampaign(RewardTypeCampaignCampaign campaign) {
-    this.campaign = campaign;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public RewardTypeCampaign balance(Integer balance) {
+    
+    this.balance = balance;
+    return this;
+  }
+
+   /**
+   * The incremental amout to be added to the current balance on the gift card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
+   * @return balance
+  **/
+  @javax.annotation.Nullable
+  public Integer getBalance() {
+    return balance;
+  }
+
+
+  public void setBalance(Integer balance) {
+    this.balance = balance;
+  }
+
+
+  public RewardTypeCampaign type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Campaign type.
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -91,19 +193,23 @@ public class RewardTypeCampaign {
       return false;
     }
     RewardTypeCampaign rewardTypeCampaign = (RewardTypeCampaign) o;
-    return Objects.equals(this.campaign, rewardTypeCampaign.campaign);
+    return Objects.equals(this.id, rewardTypeCampaign.id) &&
+        Objects.equals(this.balance, rewardTypeCampaign.balance) &&
+        Objects.equals(this.type, rewardTypeCampaign.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign);
+    return Objects.hash(id, balance, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RewardTypeCampaign {\n");
-    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,11 +232,14 @@ public class RewardTypeCampaign {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("campaign");
+    openapiFields.add("id");
+    openapiFields.add("balance");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("campaign");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -161,8 +270,25 @@ public class RewardTypeCampaign {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `campaign`
-      RewardTypeCampaignCampaign.validateJsonElement(jsonObj.get("campaign"));
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

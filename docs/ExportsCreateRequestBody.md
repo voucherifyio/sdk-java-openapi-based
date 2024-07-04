@@ -2,14 +2,13 @@
 
 # ExportsCreateRequestBody
 
-Request body schema for **POST** `/exports`.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) | The type of object to be exported. |  |
-|**parameters** | [**LoyaltiesMembersTransactionsExportCreateRequestBodyParameters**](LoyaltiesMembersTransactionsExportCreateRequestBodyParameters.md) |  |  [optional] |
+|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) |  |  |
+|**parameters** | [**ExportsCreateRequestBodyParameters**](ExportsCreateRequestBodyParameters.md) |  |  [optional] |
 
 
 
@@ -17,6 +16,12 @@ Request body schema for **POST** `/exports`.
 
 | Name | Value |
 |---- | -----|
+| VOUCHER | &quot;voucher&quot; |
+| REDEMPTION | &quot;redemption&quot; |
+| CUSTOMER | &quot;customer&quot; |
+| PUBLICATION | &quot;publication&quot; |
+| ORDER | &quot;order&quot; |
+| POINTS_EXPIRATION | &quot;points_expiration&quot; |
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
 
 

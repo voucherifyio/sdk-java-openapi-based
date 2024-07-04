@@ -27,8 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.OrderCalculatedCustomer;
-import voucherify.client.model.OrderCalculatedReferrer;
+import voucherify.client.model.CustomerId;
 import voucherify.client.model.OrderItemCalculated;
 import voucherify.client.model.OrderRedemptions;
 
@@ -240,11 +239,11 @@ public class OrdersUpdateResponseBody {
 
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
-  private OrderCalculatedCustomer customer;
+  private CustomerId customer;
 
   public static final String SERIALIZED_NAME_REFERRER = "referrer";
   @SerializedName(SERIALIZED_NAME_REFERRER)
-  private OrderCalculatedReferrer referrer;
+  private CustomerId referrer;
 
   public OrdersUpdateResponseBody() {
   }
@@ -685,7 +684,7 @@ public class OrdersUpdateResponseBody {
   }
 
 
-  public OrdersUpdateResponseBody customer(OrderCalculatedCustomer customer) {
+  public OrdersUpdateResponseBody customer(CustomerId customer) {
     
     this.customer = customer;
     return this;
@@ -696,17 +695,17 @@ public class OrdersUpdateResponseBody {
    * @return customer
   **/
   @javax.annotation.Nullable
-  public OrderCalculatedCustomer getCustomer() {
+  public CustomerId getCustomer() {
     return customer;
   }
 
 
-  public void setCustomer(OrderCalculatedCustomer customer) {
+  public void setCustomer(CustomerId customer) {
     this.customer = customer;
   }
 
 
-  public OrdersUpdateResponseBody referrer(OrderCalculatedReferrer referrer) {
+  public OrdersUpdateResponseBody referrer(CustomerId referrer) {
     
     this.referrer = referrer;
     return this;
@@ -717,12 +716,12 @@ public class OrdersUpdateResponseBody {
    * @return referrer
   **/
   @javax.annotation.Nullable
-  public OrderCalculatedReferrer getReferrer() {
+  public CustomerId getReferrer() {
     return referrer;
   }
 
 
-  public void setReferrer(OrderCalculatedReferrer referrer) {
+  public void setReferrer(CustomerId referrer) {
     this.referrer = referrer;
   }
 
@@ -941,11 +940,11 @@ public class OrdersUpdateResponseBody {
       }
       // validate the optional field `customer`
       if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        OrderCalculatedCustomer.validateJsonElement(jsonObj.get("customer"));
+        CustomerId.validateJsonElement(jsonObj.get("customer"));
       }
       // validate the optional field `referrer`
       if (jsonObj.get("referrer") != null && !jsonObj.get("referrer").isJsonNull()) {
-        OrderCalculatedReferrer.validateJsonElement(jsonObj.get("referrer"));
+        CustomerId.validateJsonElement(jsonObj.get("referrer"));
       }
   }
 

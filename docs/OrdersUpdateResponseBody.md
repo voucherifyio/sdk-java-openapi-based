@@ -28,8 +28,8 @@ Response body schema for **PUT** `/orders/{orderId}`.
 |**referrerId** | **String** | Unique referrer ID. |  [optional] |
 |**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
 |**redemptions** | [**Map&lt;String, OrderRedemptions&gt;**](OrderRedemptions.md) |  |  [optional] |
-|**customer** | [**OrderCalculatedCustomer**](OrderCalculatedCustomer.md) |  |  [optional] |
-|**referrer** | [**OrderCalculatedReferrer**](OrderCalculatedReferrer.md) |  |  [optional] |
+|**customer** | [**CustomerId**](CustomerId.md) |  |  [optional] |
+|**referrer** | [**CustomerId**](CustomerId.md) |  |  [optional] |
 
 
 

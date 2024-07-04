@@ -21,415 +21,202 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.ExportCustomerBase;
-import voucherify.client.model.ExportOrderBase;
-import voucherify.client.model.ExportPointsExpirationBase;
-import voucherify.client.model.ExportPublicationBase;
-import voucherify.client.model.ExportRedemptionBase;
-import voucherify.client.model.ExportVoucherBase;
-import voucherify.client.model.ExportVoucherTransactionsBase;
-import voucherify.client.model.LoyaltiesMembersTransactionsExportCreateRequestBodyParameters;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.ExportsCreateRequestBodyParameters;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * ExportsCreateRequestBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class ExportsCreateRequestBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(ExportsCreateRequestBody.class.getName());
+public class ExportsCreateRequestBody {
+  /**
+   * Gets or Sets exportedObject
+   */
+  @JsonAdapter(ExportedObjectEnum.Adapter.class)
+  public enum ExportedObjectEnum {
+    VOUCHER("voucher"),
+    
+    REDEMPTION("redemption"),
+    
+    CUSTOMER("customer"),
+    
+    PUBLICATION("publication"),
+    
+    ORDER("order"),
+    
+    POINTS_EXPIRATION("points_expiration"),
+    
+    VOUCHER_TRANSACTIONS("voucher_transactions");
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!ExportsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'ExportsCreateRequestBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<ExportVoucherBase> adapterExportVoucherBase = gson.getDelegateAdapter(this, TypeToken.get(ExportVoucherBase.class));
-            final TypeAdapter<ExportRedemptionBase> adapterExportRedemptionBase = gson.getDelegateAdapter(this, TypeToken.get(ExportRedemptionBase.class));
-            final TypeAdapter<ExportCustomerBase> adapterExportCustomerBase = gson.getDelegateAdapter(this, TypeToken.get(ExportCustomerBase.class));
-            final TypeAdapter<ExportPublicationBase> adapterExportPublicationBase = gson.getDelegateAdapter(this, TypeToken.get(ExportPublicationBase.class));
-            final TypeAdapter<ExportOrderBase> adapterExportOrderBase = gson.getDelegateAdapter(this, TypeToken.get(ExportOrderBase.class));
-            final TypeAdapter<ExportPointsExpirationBase> adapterExportPointsExpirationBase = gson.getDelegateAdapter(this, TypeToken.get(ExportPointsExpirationBase.class));
-            final TypeAdapter<ExportVoucherTransactionsBase> adapterExportVoucherTransactionsBase = gson.getDelegateAdapter(this, TypeToken.get(ExportVoucherTransactionsBase.class));
+    private String value;
 
-            return (TypeAdapter<T>) new TypeAdapter<ExportsCreateRequestBody>() {
-                @Override
-                public void write(JsonWriter out, ExportsCreateRequestBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `ExportVoucherBase`
-                    if (value.getActualInstance() instanceof ExportVoucherBase) {
-                      JsonElement element = adapterExportVoucherBase.toJsonTree((ExportVoucherBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ExportRedemptionBase`
-                    if (value.getActualInstance() instanceof ExportRedemptionBase) {
-                      JsonElement element = adapterExportRedemptionBase.toJsonTree((ExportRedemptionBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ExportCustomerBase`
-                    if (value.getActualInstance() instanceof ExportCustomerBase) {
-                      JsonElement element = adapterExportCustomerBase.toJsonTree((ExportCustomerBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ExportPublicationBase`
-                    if (value.getActualInstance() instanceof ExportPublicationBase) {
-                      JsonElement element = adapterExportPublicationBase.toJsonTree((ExportPublicationBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ExportOrderBase`
-                    if (value.getActualInstance() instanceof ExportOrderBase) {
-                      JsonElement element = adapterExportOrderBase.toJsonTree((ExportOrderBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ExportPointsExpirationBase`
-                    if (value.getActualInstance() instanceof ExportPointsExpirationBase) {
-                      JsonElement element = adapterExportPointsExpirationBase.toJsonTree((ExportPointsExpirationBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `ExportVoucherTransactionsBase`
-                    if (value.getActualInstance() instanceof ExportVoucherTransactionsBase) {
-                      JsonElement element = adapterExportVoucherTransactionsBase.toJsonTree((ExportVoucherTransactionsBase)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ExportCustomerBase, ExportOrderBase, ExportPointsExpirationBase, ExportPublicationBase, ExportRedemptionBase, ExportVoucherBase, ExportVoucherTransactionsBase");
-                }
-
-                @Override
-                public ExportsCreateRequestBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize ExportVoucherBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportVoucherBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportVoucherBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportVoucherBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportVoucherBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportVoucherBase'", e);
-                    }
-                    // deserialize ExportRedemptionBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportRedemptionBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportRedemptionBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportRedemptionBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportRedemptionBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportRedemptionBase'", e);
-                    }
-                    // deserialize ExportCustomerBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportCustomerBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportCustomerBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportCustomerBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportCustomerBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportCustomerBase'", e);
-                    }
-                    // deserialize ExportPublicationBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportPublicationBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportPublicationBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportPublicationBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportPublicationBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportPublicationBase'", e);
-                    }
-                    // deserialize ExportOrderBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportOrderBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportOrderBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportOrderBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportOrderBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportOrderBase'", e);
-                    }
-                    // deserialize ExportPointsExpirationBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportPointsExpirationBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportPointsExpirationBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportPointsExpirationBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportPointsExpirationBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportPointsExpirationBase'", e);
-                    }
-                    // deserialize ExportVoucherTransactionsBase
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      ExportVoucherTransactionsBase.validateJsonElement(jsonElement);
-                      actualAdapter = adapterExportVoucherTransactionsBase;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'ExportVoucherTransactionsBase'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for ExportVoucherTransactionsBase failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'ExportVoucherTransactionsBase'", e);
-                    }
-
-                    if (match == 1) {
-                        ExportsCreateRequestBody ret = new ExportsCreateRequestBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for ExportsCreateRequestBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    ExportedObjectEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public ExportsCreateRequestBody() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public ExportsCreateRequestBody(ExportCustomerBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ExportsCreateRequestBody(ExportOrderBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ExportsCreateRequestBody(ExportPointsExpirationBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ExportsCreateRequestBody(ExportPublicationBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ExportsCreateRequestBody(ExportRedemptionBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ExportsCreateRequestBody(ExportVoucherBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public ExportsCreateRequestBody(ExportVoucherTransactionsBase o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("ExportVoucherBase", ExportVoucherBase.class);
-        schemas.put("ExportRedemptionBase", ExportRedemptionBase.class);
-        schemas.put("ExportCustomerBase", ExportCustomerBase.class);
-        schemas.put("ExportPublicationBase", ExportPublicationBase.class);
-        schemas.put("ExportOrderBase", ExportOrderBase.class);
-        schemas.put("ExportPointsExpirationBase", ExportPointsExpirationBase.class);
-        schemas.put("ExportVoucherTransactionsBase", ExportVoucherTransactionsBase.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return ExportsCreateRequestBody.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * ExportCustomerBase, ExportOrderBase, ExportPointsExpirationBase, ExportPublicationBase, ExportRedemptionBase, ExportVoucherBase, ExportVoucherTransactionsBase
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof ExportVoucherBase) {
-            super.setActualInstance(instance);
-            return;
+    public static ExportedObjectEnum fromValue(String value) {
+      for (ExportedObjectEnum b : ExportedObjectEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof ExportRedemptionBase) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ExportCustomerBase) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ExportPublicationBase) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ExportOrderBase) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ExportPointsExpirationBase) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ExportVoucherTransactionsBase) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be ExportCustomerBase, ExportOrderBase, ExportPointsExpirationBase, ExportPublicationBase, ExportRedemptionBase, ExportVoucherBase, ExportVoucherTransactionsBase");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * ExportCustomerBase, ExportOrderBase, ExportPointsExpirationBase, ExportPublicationBase, ExportRedemptionBase, ExportVoucherBase, ExportVoucherTransactionsBase
-     *
-     * @return The actual instance (ExportCustomerBase, ExportOrderBase, ExportPointsExpirationBase, ExportPublicationBase, ExportRedemptionBase, ExportVoucherBase, ExportVoucherTransactionsBase)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
+    public static class Adapter extends TypeAdapter<ExportedObjectEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ExportedObjectEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
 
-    /**
-     * Get the actual instance of `ExportVoucherBase`. If the actual instance is not `ExportVoucherBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportVoucherBase`
-     * @throws ClassCastException if the instance is not `ExportVoucherBase`
-     */
-    public ExportVoucherBase getExportVoucherBase() throws ClassCastException {
-        return (ExportVoucherBase)super.getActualInstance();
+      @Override
+      public ExportedObjectEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ExportedObjectEnum.fromValue(value);
+      }
     }
-    /**
-     * Get the actual instance of `ExportRedemptionBase`. If the actual instance is not `ExportRedemptionBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportRedemptionBase`
-     * @throws ClassCastException if the instance is not `ExportRedemptionBase`
-     */
-    public ExportRedemptionBase getExportRedemptionBase() throws ClassCastException {
-        return (ExportRedemptionBase)super.getActualInstance();
+  }
+
+  public static final String SERIALIZED_NAME_EXPORTED_OBJECT = "exported_object";
+  @SerializedName(SERIALIZED_NAME_EXPORTED_OBJECT)
+  private ExportedObjectEnum exportedObject;
+
+  public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
+  @SerializedName(SERIALIZED_NAME_PARAMETERS)
+  private ExportsCreateRequestBodyParameters parameters;
+
+  public ExportsCreateRequestBody() {
+  }
+
+  public ExportsCreateRequestBody exportedObject(ExportedObjectEnum exportedObject) {
+    
+    this.exportedObject = exportedObject;
+    return this;
+  }
+
+   /**
+   * Get exportedObject
+   * @return exportedObject
+  **/
+  @javax.annotation.Nonnull
+  public ExportedObjectEnum getExportedObject() {
+    return exportedObject;
+  }
+
+
+  public void setExportedObject(ExportedObjectEnum exportedObject) {
+    this.exportedObject = exportedObject;
+  }
+
+
+  public ExportsCreateRequestBody parameters(ExportsCreateRequestBodyParameters parameters) {
+    
+    this.parameters = parameters;
+    return this;
+  }
+
+   /**
+   * Get parameters
+   * @return parameters
+  **/
+  @javax.annotation.Nullable
+  public ExportsCreateRequestBodyParameters getParameters() {
+    return parameters;
+  }
+
+
+  public void setParameters(ExportsCreateRequestBodyParameters parameters) {
+    this.parameters = parameters;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `ExportCustomerBase`. If the actual instance is not `ExportCustomerBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportCustomerBase`
-     * @throws ClassCastException if the instance is not `ExportCustomerBase`
-     */
-    public ExportCustomerBase getExportCustomerBase() throws ClassCastException {
-        return (ExportCustomerBase)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    /**
-     * Get the actual instance of `ExportPublicationBase`. If the actual instance is not `ExportPublicationBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportPublicationBase`
-     * @throws ClassCastException if the instance is not `ExportPublicationBase`
-     */
-    public ExportPublicationBase getExportPublicationBase() throws ClassCastException {
-        return (ExportPublicationBase)super.getActualInstance();
+    ExportsCreateRequestBody exportsCreateRequestBody = (ExportsCreateRequestBody) o;
+    return Objects.equals(this.exportedObject, exportsCreateRequestBody.exportedObject) &&
+        Objects.equals(this.parameters, exportsCreateRequestBody.parameters);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(exportedObject, parameters);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ExportsCreateRequestBody {\n");
+    sb.append("    exportedObject: ").append(toIndentedString(exportedObject)).append("\n");
+    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-    /**
-     * Get the actual instance of `ExportOrderBase`. If the actual instance is not `ExportOrderBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportOrderBase`
-     * @throws ClassCastException if the instance is not `ExportOrderBase`
-     */
-    public ExportOrderBase getExportOrderBase() throws ClassCastException {
-        return (ExportOrderBase)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `ExportPointsExpirationBase`. If the actual instance is not `ExportPointsExpirationBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportPointsExpirationBase`
-     * @throws ClassCastException if the instance is not `ExportPointsExpirationBase`
-     */
-    public ExportPointsExpirationBase getExportPointsExpirationBase() throws ClassCastException {
-        return (ExportPointsExpirationBase)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `ExportVoucherTransactionsBase`. If the actual instance is not `ExportVoucherTransactionsBase`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ExportVoucherTransactionsBase`
-     * @throws ClassCastException if the instance is not `ExportVoucherTransactionsBase`
-     */
-    public ExportVoucherTransactionsBase getExportVoucherTransactionsBase() throws ClassCastException {
-        return (ExportVoucherTransactionsBase)super.getActualInstance();
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("exported_object");
+    openapiFields.add("parameters");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("exported_object");
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -438,67 +225,75 @@ public class ExportsCreateRequestBody extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to ExportsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with ExportVoucherBase
-    try {
-      ExportVoucherBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportVoucherBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ExportRedemptionBase
-    try {
-      ExportRedemptionBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportRedemptionBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ExportCustomerBase
-    try {
-      ExportCustomerBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportCustomerBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ExportPublicationBase
-    try {
-      ExportPublicationBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportPublicationBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ExportOrderBase
-    try {
-      ExportOrderBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportOrderBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ExportPointsExpirationBase
-    try {
-      ExportPointsExpirationBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportPointsExpirationBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with ExportVoucherTransactionsBase
-    try {
-      ExportVoucherTransactionsBase.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for ExportVoucherTransactionsBase failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for ExportsCreateRequestBody with oneOf schemas: ExportCustomerBase, ExportOrderBase, ExportPointsExpirationBase, ExportPublicationBase, ExportRedemptionBase, ExportVoucherBase, ExportVoucherTransactionsBase. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!ExportsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExportsCreateRequestBody is not found in the empty JSON string", ExportsCreateRequestBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!ExportsCreateRequestBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExportsCreateRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ExportsCreateRequestBody.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("exported_object").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exported_object").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("exported_object");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ExportedObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `exported_object` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("exported_object") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a valid element of ExportedObjectEnum enum got `%s` instead", jsonObj.get("exported_object").toString()));
+        }
+      }
+      // validate the optional field `parameters`
+      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
+        ExportsCreateRequestBodyParameters.validateJsonElement(jsonObj.get("parameters"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ExportsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExportsCreateRequestBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ExportsCreateRequestBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExportsCreateRequestBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ExportsCreateRequestBody>() {
+           @Override
+           public void write(JsonWriter out, ExportsCreateRequestBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ExportsCreateRequestBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

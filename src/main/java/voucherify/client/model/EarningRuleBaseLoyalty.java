@@ -21,213 +21,393 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.EarningRuleFixed;
-import voucherify.client.model.EarningRuleProportional;
-import voucherify.client.model.EarningRuleProportionalCustomEventCustomEvent;
-import voucherify.client.model.EarningRuleProportionalCustomerMetadataCustomer;
-import voucherify.client.model.EarningRuleProportionalOrderItemsSubtotalAmountOrderItems;
-import voucherify.client.model.EarningRuleProportionalOrderMetadataOrder;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.EarningRuleBaseLoyaltyCustomEvent;
+import voucherify.client.model.EarningRuleBaseLoyaltyCustomer;
+import voucherify.client.model.EarningRuleBaseLoyaltyOrder;
+import voucherify.client.model.EarningRuleBaseLoyaltyOrderItems;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * EarningRuleBaseLoyalty
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class EarningRuleBaseLoyalty extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(EarningRuleBaseLoyalty.class.getName());
+public class EarningRuleBaseLoyalty {
+  /**
+   * Gets or Sets type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    PROPORTIONAL("PROPORTIONAL"),
+    
+    FIXED("FIXED");
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!EarningRuleBaseLoyalty.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'EarningRuleBaseLoyalty' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<EarningRuleFixed> adapterEarningRuleFixed = gson.getDelegateAdapter(this, TypeToken.get(EarningRuleFixed.class));
-            final TypeAdapter<EarningRuleProportional> adapterEarningRuleProportional = gson.getDelegateAdapter(this, TypeToken.get(EarningRuleProportional.class));
+    private String value;
 
-            return (TypeAdapter<T>) new TypeAdapter<EarningRuleBaseLoyalty>() {
-                @Override
-                public void write(JsonWriter out, EarningRuleBaseLoyalty value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `EarningRuleFixed`
-                    if (value.getActualInstance() instanceof EarningRuleFixed) {
-                      JsonElement element = adapterEarningRuleFixed.toJsonTree((EarningRuleFixed)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `EarningRuleProportional`
-                    if (value.getActualInstance() instanceof EarningRuleProportional) {
-                      JsonElement element = adapterEarningRuleProportional.toJsonTree((EarningRuleProportional)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: EarningRuleFixed, EarningRuleProportional");
-                }
-
-                @Override
-                public EarningRuleBaseLoyalty read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize EarningRuleFixed
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      EarningRuleFixed.validateJsonElement(jsonElement);
-                      actualAdapter = adapterEarningRuleFixed;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'EarningRuleFixed'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for EarningRuleFixed failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'EarningRuleFixed'", e);
-                    }
-                    // deserialize EarningRuleProportional
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      EarningRuleProportional.validateJsonElement(jsonElement);
-                      actualAdapter = adapterEarningRuleProportional;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'EarningRuleProportional'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for EarningRuleProportional failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'EarningRuleProportional'", e);
-                    }
-
-                    if (match == 1) {
-                        EarningRuleBaseLoyalty ret = new EarningRuleBaseLoyalty();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for EarningRuleBaseLoyalty: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    TypeEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public EarningRuleBaseLoyalty() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public EarningRuleBaseLoyalty(EarningRuleFixed o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public EarningRuleBaseLoyalty(EarningRuleProportional o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("EarningRuleFixed", EarningRuleFixed.class);
-        schemas.put("EarningRuleProportional", EarningRuleProportional.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return EarningRuleBaseLoyalty.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * EarningRuleFixed, EarningRuleProportional
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof EarningRuleFixed) {
-            super.setActualInstance(instance);
-            return;
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof EarningRuleProportional) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be EarningRuleFixed, EarningRuleProportional");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * EarningRuleFixed, EarningRuleProportional
-     *
-     * @return The actual instance (EarningRuleFixed, EarningRuleProportional)
-     */
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
+  /**
+   * Gets or Sets calculationType
+   */
+  @JsonAdapter(CalculationTypeEnum.Adapter.class)
+  public enum CalculationTypeEnum {
+    ORDER_AMOUNT("ORDER_AMOUNT"),
+    
+    ORDER_TOTAL_AMOUNT("ORDER_TOTAL_AMOUNT"),
+    
+    ORDER_METADATA("ORDER_METADATA"),
+    
+    ORDER_ITEMS_QUANTITY("ORDER_ITEMS_QUANTITY"),
+    
+    ORDER_ITEMS_AMOUNT("ORDER_ITEMS_AMOUNT"),
+    
+    ORDER_ITEMS_SUBTOTAL_AMOUNT("ORDER_ITEMS_SUBTOTAL_AMOUNT"),
+    
+    CUSTOMER_METADATA("CUSTOMER_METADATA"),
+    
+    CUSTOM_EVENT_METADATA("CUSTOM_EVENT_METADATA");
+
+    private String value;
+
+    CalculationTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `EarningRuleFixed`. If the actual instance is not `EarningRuleFixed`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `EarningRuleFixed`
-     * @throws ClassCastException if the instance is not `EarningRuleFixed`
-     */
-    public EarningRuleFixed getEarningRuleFixed() throws ClassCastException {
-        return (EarningRuleFixed)super.getActualInstance();
+    public static CalculationTypeEnum fromValue(String value) {
+      for (CalculationTypeEnum b : CalculationTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `EarningRuleProportional`. If the actual instance is not `EarningRuleProportional`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `EarningRuleProportional`
-     * @throws ClassCastException if the instance is not `EarningRuleProportional`
-     */
-    public EarningRuleProportional getEarningRuleProportional() throws ClassCastException {
-        return (EarningRuleProportional)super.getActualInstance();
+
+    public static class Adapter extends TypeAdapter<CalculationTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CalculationTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CalculationTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CalculationTypeEnum.fromValue(value);
+      }
     }
+  }
+
+  public static final String SERIALIZED_NAME_CALCULATION_TYPE = "calculation_type";
+  @SerializedName(SERIALIZED_NAME_CALCULATION_TYPE)
+  private CalculationTypeEnum calculationType;
+
+  public static final String SERIALIZED_NAME_ORDER = "order";
+  @SerializedName(SERIALIZED_NAME_ORDER)
+  private EarningRuleBaseLoyaltyOrder order;
+
+  public static final String SERIALIZED_NAME_ORDER_ITEMS = "order_items";
+  @SerializedName(SERIALIZED_NAME_ORDER_ITEMS)
+  private EarningRuleBaseLoyaltyOrderItems orderItems;
+
+  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER)
+  private EarningRuleBaseLoyaltyCustomer customer;
+
+  public static final String SERIALIZED_NAME_CUSTOM_EVENT = "custom_event";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_EVENT)
+  private EarningRuleBaseLoyaltyCustomEvent customEvent;
+
+  public static final String SERIALIZED_NAME_POINTS = "points";
+  @SerializedName(SERIALIZED_NAME_POINTS)
+  private Integer points;
+
+  public EarningRuleBaseLoyalty() {
+  }
+
+  public EarningRuleBaseLoyalty type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public EarningRuleBaseLoyalty calculationType(CalculationTypeEnum calculationType) {
+    
+    this.calculationType = calculationType;
+    return this;
+  }
+
+   /**
+   * Get calculationType
+   * @return calculationType
+  **/
+  @javax.annotation.Nullable
+  public CalculationTypeEnum getCalculationType() {
+    return calculationType;
+  }
+
+
+  public void setCalculationType(CalculationTypeEnum calculationType) {
+    this.calculationType = calculationType;
+  }
+
+
+  public EarningRuleBaseLoyalty order(EarningRuleBaseLoyaltyOrder order) {
+    
+    this.order = order;
+    return this;
+  }
+
+   /**
+   * Get order
+   * @return order
+  **/
+  @javax.annotation.Nullable
+  public EarningRuleBaseLoyaltyOrder getOrder() {
+    return order;
+  }
+
+
+  public void setOrder(EarningRuleBaseLoyaltyOrder order) {
+    this.order = order;
+  }
+
+
+  public EarningRuleBaseLoyalty orderItems(EarningRuleBaseLoyaltyOrderItems orderItems) {
+    
+    this.orderItems = orderItems;
+    return this;
+  }
+
+   /**
+   * Get orderItems
+   * @return orderItems
+  **/
+  @javax.annotation.Nullable
+  public EarningRuleBaseLoyaltyOrderItems getOrderItems() {
+    return orderItems;
+  }
+
+
+  public void setOrderItems(EarningRuleBaseLoyaltyOrderItems orderItems) {
+    this.orderItems = orderItems;
+  }
+
+
+  public EarningRuleBaseLoyalty customer(EarningRuleBaseLoyaltyCustomer customer) {
+    
+    this.customer = customer;
+    return this;
+  }
+
+   /**
+   * Get customer
+   * @return customer
+  **/
+  @javax.annotation.Nullable
+  public EarningRuleBaseLoyaltyCustomer getCustomer() {
+    return customer;
+  }
+
+
+  public void setCustomer(EarningRuleBaseLoyaltyCustomer customer) {
+    this.customer = customer;
+  }
+
+
+  public EarningRuleBaseLoyalty customEvent(EarningRuleBaseLoyaltyCustomEvent customEvent) {
+    
+    this.customEvent = customEvent;
+    return this;
+  }
+
+   /**
+   * Get customEvent
+   * @return customEvent
+  **/
+  @javax.annotation.Nullable
+  public EarningRuleBaseLoyaltyCustomEvent getCustomEvent() {
+    return customEvent;
+  }
+
+
+  public void setCustomEvent(EarningRuleBaseLoyaltyCustomEvent customEvent) {
+    this.customEvent = customEvent;
+  }
+
+
+  public EarningRuleBaseLoyalty points(Integer points) {
+    
+    this.points = points;
+    return this;
+  }
+
+   /**
+   * Defines how the points will be added to the loyalty card. FIXED adds a fixed number of points.
+   * @return points
+  **/
+  @javax.annotation.Nullable
+  public Integer getPoints() {
+    return points;
+  }
+
+
+  public void setPoints(Integer points) {
+    this.points = points;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    EarningRuleBaseLoyalty earningRuleBaseLoyalty = (EarningRuleBaseLoyalty) o;
+    return Objects.equals(this.type, earningRuleBaseLoyalty.type) &&
+        Objects.equals(this.calculationType, earningRuleBaseLoyalty.calculationType) &&
+        Objects.equals(this.order, earningRuleBaseLoyalty.order) &&
+        Objects.equals(this.orderItems, earningRuleBaseLoyalty.orderItems) &&
+        Objects.equals(this.customer, earningRuleBaseLoyalty.customer) &&
+        Objects.equals(this.customEvent, earningRuleBaseLoyalty.customEvent) &&
+        Objects.equals(this.points, earningRuleBaseLoyalty.points);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type, calculationType, order, orderItems, customer, customEvent, points);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class EarningRuleBaseLoyalty {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    calculationType: ").append(toIndentedString(calculationType)).append("\n");
+    sb.append("    order: ").append(toIndentedString(order)).append("\n");
+    sb.append("    orderItems: ").append(toIndentedString(orderItems)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    customEvent: ").append(toIndentedString(customEvent)).append("\n");
+    sb.append("    points: ").append(toIndentedString(points)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("type");
+    openapiFields.add("calculation_type");
+    openapiFields.add("order");
+    openapiFields.add("order_items");
+    openapiFields.add("customer");
+    openapiFields.add("custom_event");
+    openapiFields.add("points");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -236,27 +416,96 @@ public class EarningRuleBaseLoyalty extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyalty
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with EarningRuleFixed
-    try {
-      EarningRuleFixed.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for EarningRuleFixed failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with EarningRuleProportional
-    try {
-      EarningRuleProportional.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for EarningRuleProportional failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for EarningRuleBaseLoyalty with oneOf schemas: EarningRuleFixed, EarningRuleProportional. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!EarningRuleBaseLoyalty.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyalty is not found in the empty JSON string", EarningRuleBaseLoyalty.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!EarningRuleBaseLoyalty.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EarningRuleBaseLoyalty` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
+      if ((jsonObj.get("calculation_type") != null && !jsonObj.get("calculation_type").isJsonNull()) && !jsonObj.get("calculation_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `calculation_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calculation_type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("calculation_type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          CalculationTypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `calculation_type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("calculation_type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `calculation_type` to be a valid element of CalculationTypeEnum enum got `%s` instead", jsonObj.get("calculation_type").toString()));
+        }
+      }
+      // validate the optional field `order`
+      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
+        EarningRuleBaseLoyaltyOrder.validateJsonElement(jsonObj.get("order"));
+      }
+      // validate the optional field `order_items`
+      if (jsonObj.get("order_items") != null && !jsonObj.get("order_items").isJsonNull()) {
+        EarningRuleBaseLoyaltyOrderItems.validateJsonElement(jsonObj.get("order_items"));
+      }
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        EarningRuleBaseLoyaltyCustomer.validateJsonElement(jsonObj.get("customer"));
+      }
+      // validate the optional field `custom_event`
+      if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
+        EarningRuleBaseLoyaltyCustomEvent.validateJsonElement(jsonObj.get("custom_event"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!EarningRuleBaseLoyalty.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EarningRuleBaseLoyalty' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<EarningRuleBaseLoyalty> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EarningRuleBaseLoyalty.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<EarningRuleBaseLoyalty>() {
+           @Override
+           public void write(JsonWriter out, EarningRuleBaseLoyalty value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public EarningRuleBaseLoyalty read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

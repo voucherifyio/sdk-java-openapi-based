@@ -24,7 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.ProductCollectionsCreateDynamicRequestBodyFilter;
+import voucherify.client.model.ProductCollectionsCreateRequestBodyFilter;
 import voucherify.client.model.ProductCollectionsItemProductsItem;
 
 import com.google.gson.Gson;
@@ -118,7 +118,7 @@ public class ProductCollectionsGetResponseBody {
 
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
-  private ProductCollectionsCreateDynamicRequestBodyFilter filter;
+  private ProductCollectionsCreateRequestBodyFilter filter;
 
   public static final String SERIALIZED_NAME_PRODUCTS = "products";
   @SerializedName(SERIALIZED_NAME_PRODUCTS)
@@ -243,7 +243,7 @@ public class ProductCollectionsGetResponseBody {
   }
 
 
-  public ProductCollectionsGetResponseBody filter(ProductCollectionsCreateDynamicRequestBodyFilter filter) {
+  public ProductCollectionsGetResponseBody filter(ProductCollectionsCreateRequestBodyFilter filter) {
     
     this.filter = filter;
     return this;
@@ -254,12 +254,12 @@ public class ProductCollectionsGetResponseBody {
    * @return filter
   **/
   @javax.annotation.Nullable
-  public ProductCollectionsCreateDynamicRequestBodyFilter getFilter() {
+  public ProductCollectionsCreateRequestBodyFilter getFilter() {
     return filter;
   }
 
 
-  public void setFilter(ProductCollectionsCreateDynamicRequestBodyFilter filter) {
+  public void setFilter(ProductCollectionsCreateRequestBodyFilter filter) {
     this.filter = filter;
   }
 
@@ -461,7 +461,7 @@ public class ProductCollectionsGetResponseBody {
       }
       // validate the optional field `filter`
       if (jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) {
-        ProductCollectionsCreateDynamicRequestBodyFilter.validateJsonElement(jsonObj.get("filter"));
+        ProductCollectionsCreateRequestBodyFilter.validateJsonElement(jsonObj.get("filter"));
       }
       if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
         JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");

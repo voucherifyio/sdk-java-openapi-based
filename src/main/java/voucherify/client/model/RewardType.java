@@ -22,252 +22,173 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.RewardTypeCampaign;
-import voucherify.client.model.RewardTypeCampaignCampaign;
 import voucherify.client.model.RewardTypeCoin;
-import voucherify.client.model.RewardTypeCoinCoin;
-import voucherify.client.model.RewardTypeMaterial;
-import voucherify.client.model.RewardTypeMaterialProduct;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.RewardTypeProduct;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * RewardType
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class RewardType extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(RewardType.class.getName());
+public class RewardType {
+  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
+  private RewardTypeCampaign campaign;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!RewardType.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'RewardType' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<RewardTypeCampaign> adapterRewardTypeCampaign = gson.getDelegateAdapter(this, TypeToken.get(RewardTypeCampaign.class));
-            final TypeAdapter<RewardTypeCoin> adapterRewardTypeCoin = gson.getDelegateAdapter(this, TypeToken.get(RewardTypeCoin.class));
-            final TypeAdapter<RewardTypeMaterial> adapterRewardTypeMaterial = gson.getDelegateAdapter(this, TypeToken.get(RewardTypeMaterial.class));
+  public static final String SERIALIZED_NAME_COIN = "coin";
+  @SerializedName(SERIALIZED_NAME_COIN)
+  private RewardTypeCoin coin;
 
-            return (TypeAdapter<T>) new TypeAdapter<RewardType>() {
-                @Override
-                public void write(JsonWriter out, RewardType value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private RewardTypeProduct product;
 
-                    // check if the actual instance is of the type `RewardTypeCampaign`
-                    if (value.getActualInstance() instanceof RewardTypeCampaign) {
-                      JsonElement element = adapterRewardTypeCampaign.toJsonTree((RewardTypeCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RewardTypeCoin`
-                    if (value.getActualInstance() instanceof RewardTypeCoin) {
-                      JsonElement element = adapterRewardTypeCoin.toJsonTree((RewardTypeCoin)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `RewardTypeMaterial`
-                    if (value.getActualInstance() instanceof RewardTypeMaterial) {
-                      JsonElement element = adapterRewardTypeMaterial.toJsonTree((RewardTypeMaterial)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RewardTypeCampaign, RewardTypeCoin, RewardTypeMaterial");
-                }
+  public RewardType() {
+  }
 
-                @Override
-                public RewardType read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public RewardType campaign(RewardTypeCampaign campaign) {
+    
+    this.campaign = campaign;
+    return this;
+  }
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
+   /**
+   * Get campaign
+   * @return campaign
+  **/
+  @javax.annotation.Nullable
+  public RewardTypeCampaign getCampaign() {
+    return campaign;
+  }
 
-                    // deserialize RewardTypeCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RewardTypeCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRewardTypeCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RewardTypeCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RewardTypeCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RewardTypeCampaign'", e);
-                    }
-                    // deserialize RewardTypeCoin
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RewardTypeCoin.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRewardTypeCoin;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RewardTypeCoin'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RewardTypeCoin failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RewardTypeCoin'", e);
-                    }
-                    // deserialize RewardTypeMaterial
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      RewardTypeMaterial.validateJsonElement(jsonElement);
-                      actualAdapter = adapterRewardTypeMaterial;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'RewardTypeMaterial'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for RewardTypeMaterial failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'RewardTypeMaterial'", e);
-                    }
 
-                    if (match == 1) {
-                        RewardType ret = new RewardType();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+  public void setCampaign(RewardTypeCampaign campaign) {
+    this.campaign = campaign;
+  }
 
-                    throw new IOException(String.format("Failed deserialization for RewardType: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+
+  public RewardType coin(RewardTypeCoin coin) {
+    
+    this.coin = coin;
+    return this;
+  }
+
+   /**
+   * Get coin
+   * @return coin
+  **/
+  @javax.annotation.Nullable
+  public RewardTypeCoin getCoin() {
+    return coin;
+  }
+
+
+  public void setCoin(RewardTypeCoin coin) {
+    this.coin = coin;
+  }
+
+
+  public RewardType product(RewardTypeProduct product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  public RewardTypeProduct getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(RewardTypeProduct product) {
+    this.product = product;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public RewardType() {
-        super("oneOf", Boolean.FALSE);
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    RewardType rewardType = (RewardType) o;
+    return Objects.equals(this.campaign, rewardType.campaign) &&
+        Objects.equals(this.coin, rewardType.coin) &&
+        Objects.equals(this.product, rewardType.product);
+  }
 
-    public RewardType(RewardTypeCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
+  @Override
+  public int hashCode() {
+    return Objects.hash(campaign, coin, product);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class RewardType {\n");
+    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    coin: ").append(toIndentedString(coin)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 
-    public RewardType(RewardTypeCoin o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
 
-    public RewardType(RewardTypeMaterial o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
 
-    static {
-        schemas.put("RewardTypeCampaign", RewardTypeCampaign.class);
-        schemas.put("RewardTypeCoin", RewardTypeCoin.class);
-        schemas.put("RewardTypeMaterial", RewardTypeMaterial.class);
-    }
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("campaign");
+    openapiFields.add("coin");
+    openapiFields.add("product");
 
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return RewardType.schemas;
-    }
-
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * RewardTypeCampaign, RewardTypeCoin, RewardTypeMaterial
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof RewardTypeCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof RewardTypeCoin) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof RewardTypeMaterial) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be RewardTypeCampaign, RewardTypeCoin, RewardTypeMaterial");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * RewardTypeCampaign, RewardTypeCoin, RewardTypeMaterial
-     *
-     * @return The actual instance (RewardTypeCampaign, RewardTypeCoin, RewardTypeMaterial)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `RewardTypeCampaign`. If the actual instance is not `RewardTypeCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RewardTypeCampaign`
-     * @throws ClassCastException if the instance is not `RewardTypeCampaign`
-     */
-    public RewardTypeCampaign getRewardTypeCampaign() throws ClassCastException {
-        return (RewardTypeCampaign)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `RewardTypeCoin`. If the actual instance is not `RewardTypeCoin`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RewardTypeCoin`
-     * @throws ClassCastException if the instance is not `RewardTypeCoin`
-     */
-    public RewardTypeCoin getRewardTypeCoin() throws ClassCastException {
-        return (RewardTypeCoin)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `RewardTypeMaterial`. If the actual instance is not `RewardTypeMaterial`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `RewardTypeMaterial`
-     * @throws ClassCastException if the instance is not `RewardTypeMaterial`
-     */
-    public RewardTypeMaterial getRewardTypeMaterial() throws ClassCastException {
-        return (RewardTypeMaterial)super.getActualInstance();
-    }
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -276,35 +197,60 @@ public class RewardType extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to RewardType
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with RewardTypeCampaign
-    try {
-      RewardTypeCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RewardTypeCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RewardTypeCoin
-    try {
-      RewardTypeCoin.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RewardTypeCoin failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with RewardTypeMaterial
-    try {
-      RewardTypeMaterial.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for RewardTypeMaterial failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RewardType with oneOf schemas: RewardTypeCampaign, RewardTypeCoin, RewardTypeMaterial. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!RewardType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RewardType is not found in the empty JSON string", RewardType.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!RewardType.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RewardType` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `campaign`
+      if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
+        RewardTypeCampaign.validateJsonElement(jsonObj.get("campaign"));
+      }
+      // validate the optional field `coin`
+      if (jsonObj.get("coin") != null && !jsonObj.get("coin").isJsonNull()) {
+        RewardTypeCoin.validateJsonElement(jsonObj.get("coin"));
+      }
+      // validate the optional field `product`
+      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
+        RewardTypeProduct.validateJsonElement(jsonObj.get("product"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RewardType.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RewardType' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RewardType> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RewardType.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RewardType>() {
+           @Override
+           public void write(JsonWriter out, RewardType value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RewardType read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

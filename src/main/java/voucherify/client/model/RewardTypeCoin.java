@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
-import voucherify.client.model.RewardTypeCoinCoin;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,36 +48,61 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * RewardTypeCoin
+ * Defines the ratio by mapping the number of loyalty points in points_ratio to a predefined cash amount in exchange_ratio.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
 public class RewardTypeCoin {
-  public static final String SERIALIZED_NAME_COIN = "coin";
-  @SerializedName(SERIALIZED_NAME_COIN)
-  private RewardTypeCoinCoin coin;
+  public static final String SERIALIZED_NAME_EXCHANGE_RATIO = "exchange_ratio";
+  @SerializedName(SERIALIZED_NAME_EXCHANGE_RATIO)
+  private BigDecimal exchangeRatio;
+
+  public static final String SERIALIZED_NAME_POINTS_RATIO = "points_ratio";
+  @SerializedName(SERIALIZED_NAME_POINTS_RATIO)
+  private Integer pointsRatio;
 
   public RewardTypeCoin() {
   }
 
-  public RewardTypeCoin coin(RewardTypeCoinCoin coin) {
+  public RewardTypeCoin exchangeRatio(BigDecimal exchangeRatio) {
     
-    this.coin = coin;
+    this.exchangeRatio = exchangeRatio;
     return this;
   }
 
    /**
-   * Get coin
-   * @return coin
+   * The cash equivalent of the points defined in the points_ratio property.
+   * @return exchangeRatio
   **/
   @javax.annotation.Nonnull
-  public RewardTypeCoinCoin getCoin() {
-    return coin;
+  public BigDecimal getExchangeRatio() {
+    return exchangeRatio;
   }
 
 
-  public void setCoin(RewardTypeCoinCoin coin) {
-    this.coin = coin;
+  public void setExchangeRatio(BigDecimal exchangeRatio) {
+    this.exchangeRatio = exchangeRatio;
+  }
+
+
+  public RewardTypeCoin pointsRatio(Integer pointsRatio) {
+    
+    this.pointsRatio = pointsRatio;
+    return this;
+  }
+
+   /**
+   * The number of loyalty points that will map to the predefined cash amount defined by the exchange_ratio property.
+   * @return pointsRatio
+  **/
+  @javax.annotation.Nullable
+  public Integer getPointsRatio() {
+    return pointsRatio;
+  }
+
+
+  public void setPointsRatio(Integer pointsRatio) {
+    this.pointsRatio = pointsRatio;
   }
 
 
@@ -91,19 +116,21 @@ public class RewardTypeCoin {
       return false;
     }
     RewardTypeCoin rewardTypeCoin = (RewardTypeCoin) o;
-    return Objects.equals(this.coin, rewardTypeCoin.coin);
+    return Objects.equals(this.exchangeRatio, rewardTypeCoin.exchangeRatio) &&
+        Objects.equals(this.pointsRatio, rewardTypeCoin.pointsRatio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coin);
+    return Objects.hash(exchangeRatio, pointsRatio);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RewardTypeCoin {\n");
-    sb.append("    coin: ").append(toIndentedString(coin)).append("\n");
+    sb.append("    exchangeRatio: ").append(toIndentedString(exchangeRatio)).append("\n");
+    sb.append("    pointsRatio: ").append(toIndentedString(pointsRatio)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,11 +153,12 @@ public class RewardTypeCoin {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("coin");
+    openapiFields.add("exchange_ratio");
+    openapiFields.add("points_ratio");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("coin");
+    openapiRequiredFields.add("exchange_ratio");
   }
 
  /**
@@ -161,8 +189,6 @@ public class RewardTypeCoin {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `coin`
-      RewardTypeCoinCoin.validateJsonElement(jsonObj.get("coin"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

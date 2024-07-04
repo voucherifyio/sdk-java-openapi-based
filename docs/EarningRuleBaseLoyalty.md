@@ -7,13 +7,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | The number of points to be added to the loyalty card. |  |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**calculationType** | [**CalculationTypeEnum**](#CalculationTypeEnum) |  |  [optional] |
+|**order** | [**EarningRuleBaseLoyaltyOrder**](EarningRuleBaseLoyaltyOrder.md) |  |  [optional] |
+|**orderItems** | [**EarningRuleBaseLoyaltyOrderItems**](EarningRuleBaseLoyaltyOrderItems.md) |  |  [optional] |
+|**customer** | [**EarningRuleBaseLoyaltyCustomer**](EarningRuleBaseLoyaltyCustomer.md) |  |  [optional] |
+|**customEvent** | [**EarningRuleBaseLoyaltyCustomEvent**](EarningRuleBaseLoyaltyCustomEvent.md) |  |  [optional] |
 |**points** | **Integer** | Defines how the points will be added to the loyalty card. FIXED adds a fixed number of points. |  [optional] |
-|**calculationType** | [**CalculationTypeEnum**](#CalculationTypeEnum) | CUSTOM_EVENT_METADATA: Custom event metadata (X points for every Y in metadata attribute). |  |
-|**order** | [**EarningRuleProportionalOrderMetadataOrder**](EarningRuleProportionalOrderMetadataOrder.md) |  |  |
-|**orderItems** | [**EarningRuleProportionalOrderItemsSubtotalAmountOrderItems**](EarningRuleProportionalOrderItemsSubtotalAmountOrderItems.md) |  |  |
-|**customer** | [**EarningRuleProportionalCustomerMetadataCustomer**](EarningRuleProportionalCustomerMetadataCustomer.md) |  |  |
-|**customEvent** | [**EarningRuleProportionalCustomEventCustomEvent**](EarningRuleProportionalCustomEventCustomEvent.md) |  |  |
 
 
 
@@ -21,8 +21,8 @@
 
 | Name | Value |
 |---- | -----|
-| FIXED | &quot;FIXED&quot; |
 | PROPORTIONAL | &quot;PROPORTIONAL&quot; |
+| FIXED | &quot;FIXED&quot; |
 
 
 
@@ -30,6 +30,13 @@
 
 | Name | Value |
 |---- | -----|
+| ORDER_AMOUNT | &quot;ORDER_AMOUNT&quot; |
+| ORDER_TOTAL_AMOUNT | &quot;ORDER_TOTAL_AMOUNT&quot; |
+| ORDER_METADATA | &quot;ORDER_METADATA&quot; |
+| ORDER_ITEMS_QUANTITY | &quot;ORDER_ITEMS_QUANTITY&quot; |
+| ORDER_ITEMS_AMOUNT | &quot;ORDER_ITEMS_AMOUNT&quot; |
+| ORDER_ITEMS_SUBTOTAL_AMOUNT | &quot;ORDER_ITEMS_SUBTOTAL_AMOUNT&quot; |
+| CUSTOMER_METADATA | &quot;CUSTOMER_METADATA&quot; |
 | CUSTOM_EVENT_METADATA | &quot;CUSTOM_EVENT_METADATA&quot; |
 
 

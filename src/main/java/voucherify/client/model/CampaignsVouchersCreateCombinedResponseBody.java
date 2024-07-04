@@ -25,219 +25,1070 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.CampaignsVouchersCreateInBulkResponseBody;
-import voucherify.client.model.CampaignsVouchersCreateResponseBody;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyGift;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyPublish;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyRedemption;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe;
 import voucherify.client.model.Category;
 import voucherify.client.model.Discount;
 import voucherify.client.model.ValidationRulesAssignmentsList;
 import voucherify.client.model.ValidityHours;
 import voucherify.client.model.VoucherAssets;
-import voucherify.client.model.VoucherGift;
-import voucherify.client.model.VoucherLoyaltyCard;
-import voucherify.client.model.VoucherPublish;
-import voucherify.client.model.VoucherRedemption;
-import voucherify.client.model.VoucherValidityTimeframe;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * CampaignsVouchersCreateCombinedResponseBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class CampaignsVouchersCreateCombinedResponseBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(CampaignsVouchersCreateCombinedResponseBody.class.getName());
+public class CampaignsVouchersCreateCombinedResponseBody {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CampaignsVouchersCreateCombinedResponseBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'CampaignsVouchersCreateCombinedResponseBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CampaignsVouchersCreateResponseBody> adapterCampaignsVouchersCreateResponseBody = gson.getDelegateAdapter(this, TypeToken.get(CampaignsVouchersCreateResponseBody.class));
-            final TypeAdapter<CampaignsVouchersCreateInBulkResponseBody> adapterCampaignsVouchersCreateInBulkResponseBody = gson.getDelegateAdapter(this, TypeToken.get(CampaignsVouchersCreateInBulkResponseBody.class));
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
 
-            return (TypeAdapter<T>) new TypeAdapter<CampaignsVouchersCreateCombinedResponseBody>() {
-                @Override
-                public void write(JsonWriter out, CampaignsVouchersCreateCombinedResponseBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
+  private String campaign;
 
-                    // check if the actual instance is of the type `CampaignsVouchersCreateResponseBody`
-                    if (value.getActualInstance() instanceof CampaignsVouchersCreateResponseBody) {
-                      JsonElement element = adapterCampaignsVouchersCreateResponseBody.toJsonTree((CampaignsVouchersCreateResponseBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CampaignsVouchersCreateInBulkResponseBody`
-                    if (value.getActualInstance() instanceof CampaignsVouchersCreateInBulkResponseBody) {
-                      JsonElement element = adapterCampaignsVouchersCreateInBulkResponseBody.toJsonTree((CampaignsVouchersCreateInBulkResponseBody)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CampaignsVouchersCreateInBulkResponseBody, CampaignsVouchersCreateResponseBody");
-                }
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaign_id";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private String campaignId;
 
-                @Override
-                public CampaignsVouchersCreateCombinedResponseBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private String category;
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
+  public static final String SERIALIZED_NAME_CATEGORY_ID = "category_id";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
+  private String categoryId;
 
-                    // deserialize CampaignsVouchersCreateResponseBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsVouchersCreateResponseBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsVouchersCreateResponseBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsVouchersCreateResponseBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsVouchersCreateResponseBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsVouchersCreateResponseBody'", e);
-                    }
-                    // deserialize CampaignsVouchersCreateInBulkResponseBody
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CampaignsVouchersCreateInBulkResponseBody.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCampaignsVouchersCreateInBulkResponseBody;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CampaignsVouchersCreateInBulkResponseBody'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CampaignsVouchersCreateInBulkResponseBody failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CampaignsVouchersCreateInBulkResponseBody'", e);
-                    }
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<Category> categories;
 
-                    if (match == 1) {
-                        CampaignsVouchersCreateCombinedResponseBody ret = new CampaignsVouchersCreateCombinedResponseBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+  /**
+   * Defines the type of the voucher. 
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    GIFT_VOUCHER("GIFT_VOUCHER"),
+    
+    DISCOUNT_VOUCHER("DISCOUNT_VOUCHER"),
+    
+    LOYALTY_CARD("LOYALTY_CARD");
 
-                    throw new IOException(String.format("Failed deserialization for CampaignsVouchersCreateCombinedResponseBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public CampaignsVouchersCreateCombinedResponseBody() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public CampaignsVouchersCreateCombinedResponseBody(CampaignsVouchersCreateInBulkResponseBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public CampaignsVouchersCreateCombinedResponseBody(CampaignsVouchersCreateResponseBody o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("CampaignsVouchersCreateResponseBody", CampaignsVouchersCreateResponseBody.class);
-        schemas.put("CampaignsVouchersCreateInBulkResponseBody", CampaignsVouchersCreateInBulkResponseBody.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return CampaignsVouchersCreateCombinedResponseBody.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * CampaignsVouchersCreateInBulkResponseBody, CampaignsVouchersCreateResponseBody
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof CampaignsVouchersCreateResponseBody) {
-            super.setActualInstance(instance);
-            return;
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof CampaignsVouchersCreateInBulkResponseBody) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CampaignsVouchersCreateInBulkResponseBody, CampaignsVouchersCreateResponseBody");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * CampaignsVouchersCreateInBulkResponseBody, CampaignsVouchersCreateResponseBody
-     *
-     * @return The actual instance (CampaignsVouchersCreateInBulkResponseBody, CampaignsVouchersCreateResponseBody)
-     */
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_DISCOUNT = "discount";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT)
+  private Discount discount;
+
+  public static final String SERIALIZED_NAME_GIFT = "gift";
+  @SerializedName(SERIALIZED_NAME_GIFT)
+  private CampaignsVouchersCreateCombinedResponseBodyGift gift;
+
+  public static final String SERIALIZED_NAME_LOYALTY_CARD = "loyalty_card";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_CARD)
+  private CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard loyaltyCard;
+
+  public static final String SERIALIZED_NAME_START_DATE = "start_date";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expiration_date";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+  private OffsetDateTime expirationDate;
+
+  public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
+  private CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe;
+
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `CampaignsVouchersCreateResponseBody`. If the actual instance is not `CampaignsVouchersCreateResponseBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsVouchersCreateResponseBody`
-     * @throws ClassCastException if the instance is not `CampaignsVouchersCreateResponseBody`
-     */
-    public CampaignsVouchersCreateResponseBody getCampaignsVouchersCreateResponseBody() throws ClassCastException {
-        return (CampaignsVouchersCreateResponseBody)super.getActualInstance();
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `CampaignsVouchersCreateInBulkResponseBody`. If the actual instance is not `CampaignsVouchersCreateInBulkResponseBody`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CampaignsVouchersCreateInBulkResponseBody`
-     * @throws ClassCastException if the instance is not `CampaignsVouchersCreateInBulkResponseBody`
-     */
-    public CampaignsVouchersCreateInBulkResponseBody getCampaignsVouchersCreateInBulkResponseBody() throws ClassCastException {
-        return (CampaignsVouchersCreateInBulkResponseBody)super.getActualInstance();
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
     }
+  }
+
+  public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+
+  public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
+  private ValidityHours validityHours;
+
+  public static final String SERIALIZED_NAME_ACTIVE = "active";
+  @SerializedName(SERIALIZED_NAME_ACTIVE)
+  private Boolean active;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_INFO = "additional_info";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_INFO)
+  private String additionalInfo;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  public static final String SERIALIZED_NAME_ASSETS = "assets";
+  @SerializedName(SERIALIZED_NAME_ASSETS)
+  private VoucherAssets assets;
+
+  public static final String SERIALIZED_NAME_IS_REFERRAL_CODE = "is_referral_code";
+  @SerializedName(SERIALIZED_NAME_IS_REFERRAL_CODE)
+  private Boolean isReferralCode;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
+  public static final String SERIALIZED_NAME_HOLDER_ID = "holder_id";
+  @SerializedName(SERIALIZED_NAME_HOLDER_ID)
+  private String holderId;
+
+  public static final String SERIALIZED_NAME_REFERRER_ID = "referrer_id";
+  @SerializedName(SERIALIZED_NAME_REFERRER_ID)
+  private String referrerId;
+
+  public static final String SERIALIZED_NAME_OBJECT = "object";
+  @SerializedName(SERIALIZED_NAME_OBJECT)
+  private String _object = "voucher";
+
+  public static final String SERIALIZED_NAME_VALIDATION_RULES_ASSIGNMENTS = "validation_rules_assignments";
+  @SerializedName(SERIALIZED_NAME_VALIDATION_RULES_ASSIGNMENTS)
+  private ValidationRulesAssignmentsList validationRulesAssignments;
+
+  public static final String SERIALIZED_NAME_PUBLISH = "publish";
+  @SerializedName(SERIALIZED_NAME_PUBLISH)
+  private CampaignsVouchersCreateCombinedResponseBodyPublish publish;
+
+  public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
+  @SerializedName(SERIALIZED_NAME_REDEMPTION)
+  private CampaignsVouchersCreateCombinedResponseBodyRedemption redemption;
+
+  public static final String SERIALIZED_NAME_ASYNC_ACTION_ID = "async_action_id";
+  @SerializedName(SERIALIZED_NAME_ASYNC_ACTION_ID)
+  private String asyncActionId;
+
+  public CampaignsVouchersCreateCombinedResponseBody() {
+  }
+
+  public CampaignsVouchersCreateCombinedResponseBody id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Assigned by the Voucherify API, identifies the voucher.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * A code that identifies a voucher. Pattern can use all letters of the English alphabet, Arabic numerals, and special characters.
+   * @return code
+  **/
+  @javax.annotation.Nullable
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody campaign(String campaign) {
+    
+    this.campaign = campaign;
+    return this;
+  }
+
+   /**
+   * A unique campaign name, identifies the voucher&#39;s parent campaign.
+   * @return campaign
+  **/
+  @javax.annotation.Nullable
+  public String getCampaign() {
+    return campaign;
+  }
+
+
+  public void setCampaign(String campaign) {
+    this.campaign = campaign;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * Assigned by the Voucherify API, identifies the voucher&#39;s parent campaign.
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+  public String getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody category(String category) {
+    
+    this.category = category;
+    return this;
+  }
+
+   /**
+   * Tag defining the category that this voucher belongs to. Useful when listing vouchers using the List Vouchers endpoint.
+   * @return category
+  **/
+  @javax.annotation.Nullable
+  public String getCategory() {
+    return category;
+  }
+
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody categoryId(String categoryId) {
+    
+    this.categoryId = categoryId;
+    return this;
+  }
+
+   /**
+   * Unique category ID assigned by Voucherify.
+   * @return categoryId
+  **/
+  @javax.annotation.Nullable
+  public String getCategoryId() {
+    return categoryId;
+  }
+
+
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody categories(List<Category> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public CampaignsVouchersCreateCombinedResponseBody addCategoriesItem(Category categoriesItem) {
+    if (this.categories == null) {
+      this.categories = new ArrayList<>();
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Contains details about the category.
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Defines the type of the voucher. 
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody discount(Discount discount) {
+    
+    this.discount = discount;
+    return this;
+  }
+
+   /**
+   * Get discount
+   * @return discount
+  **/
+  @javax.annotation.Nullable
+  public Discount getDiscount() {
+    return discount;
+  }
+
+
+  public void setDiscount(Discount discount) {
+    this.discount = discount;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody gift(CampaignsVouchersCreateCombinedResponseBodyGift gift) {
+    
+    this.gift = gift;
+    return this;
+  }
+
+   /**
+   * Get gift
+   * @return gift
+  **/
+  @javax.annotation.Nullable
+  public CampaignsVouchersCreateCombinedResponseBodyGift getGift() {
+    return gift;
+  }
+
+
+  public void setGift(CampaignsVouchersCreateCombinedResponseBodyGift gift) {
+    this.gift = gift;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody loyaltyCard(CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard loyaltyCard) {
+    
+    this.loyaltyCard = loyaltyCard;
+    return this;
+  }
+
+   /**
+   * Get loyaltyCard
+   * @return loyaltyCard
+  **/
+  @javax.annotation.Nullable
+  public CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard getLoyaltyCard() {
+    return loyaltyCard;
+  }
+
+
+  public void setLoyaltyCard(CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard loyaltyCard) {
+    this.loyaltyCard = loyaltyCard;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Activation timestamp defines when the code starts to be active in ISO 8601 format. Voucher is *inactive before* this date. 
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody expirationDate(OffsetDateTime expirationDate) {
+    
+    this.expirationDate = expirationDate;
+    return this;
+  }
+
+   /**
+   * Expiration timestamp defines when the code expires in ISO 8601 format.  Voucher is *inactive after* this date.
+   * @return expirationDate
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getExpirationDate() {
+    return expirationDate;
+  }
+
+
+  public void setExpirationDate(OffsetDateTime expirationDate) {
+    this.expirationDate = expirationDate;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody validityTimeframe(CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe) {
+    
+    this.validityTimeframe = validityTimeframe;
+    return this;
+  }
+
+   /**
+   * Get validityTimeframe
+   * @return validityTimeframe
+  **/
+  @javax.annotation.Nullable
+  public CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe getValidityTimeframe() {
+    return validityTimeframe;
+  }
+
+
+  public void setValidityTimeframe(CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe) {
+    this.validityTimeframe = validityTimeframe;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
+    
+    this.validityDayOfWeek = validityDayOfWeek;
+    return this;
+  }
+
+  public CampaignsVouchersCreateCombinedResponseBody addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
+    if (this.validityDayOfWeek == null) {
+      this.validityDayOfWeek = new ArrayList<>();
+    }
+    this.validityDayOfWeek.add(validityDayOfWeekItem);
+    return this;
+  }
+
+   /**
+   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
+   * @return validityDayOfWeek
+  **/
+  @javax.annotation.Nullable
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
+    return validityDayOfWeek;
+  }
+
+
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
+    this.validityDayOfWeek = validityDayOfWeek;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody validityHours(ValidityHours validityHours) {
+    
+    this.validityHours = validityHours;
+    return this;
+  }
+
+   /**
+   * Get validityHours
+   * @return validityHours
+  **/
+  @javax.annotation.Nullable
+  public ValidityHours getValidityHours() {
+    return validityHours;
+  }
+
+
+  public void setValidityHours(ValidityHours validityHours) {
+    this.validityHours = validityHours;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody active(Boolean active) {
+    
+    this.active = active;
+    return this;
+  }
+
+   /**
+   * A flag to toggle the voucher on or off. You can disable a voucher even though it&#39;s within the active period defined by the &#x60;start_date&#x60; and &#x60;expiration_date&#x60;.    - &#x60;true&#x60; indicates an *active* voucher - &#x60;false&#x60; indicates an *inactive* voucher
+   * @return active
+  **/
+  @javax.annotation.Nullable
+  public Boolean getActive() {
+    return active;
+  }
+
+
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody additionalInfo(String additionalInfo) {
+    
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+   /**
+   * An optional field to keep any extra textual information about the code such as a code description and details.
+   * @return additionalInfo
+  **/
+  @javax.annotation.Nullable
+  public String getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  public void setAdditionalInfo(String additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * The metadata object stores all custom attributes assigned to the code. A set of key/value pairs that you can attach to a voucher object. It can be useful for storing additional information about the voucher in a structured format.
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody assets(VoucherAssets assets) {
+    
+    this.assets = assets;
+    return this;
+  }
+
+   /**
+   * Get assets
+   * @return assets
+  **/
+  @javax.annotation.Nullable
+  public VoucherAssets getAssets() {
+    return assets;
+  }
+
+
+  public void setAssets(VoucherAssets assets) {
+    this.assets = assets;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody isReferralCode(Boolean isReferralCode) {
+    
+    this.isReferralCode = isReferralCode;
+    return this;
+  }
+
+   /**
+   * Flag indicating whether this voucher is a referral code; &#x60;true&#x60; for campaign type &#x60;REFERRAL_PROGRAM&#x60;.
+   * @return isReferralCode
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsReferralCode() {
+    return isReferralCode;
+  }
+
+
+  public void setIsReferralCode(Boolean isReferralCode) {
+    this.isReferralCode = isReferralCode;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Timestamp representing the date and time when the voucher was created. The value is shown in the ISO 8601 format.
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Timestamp representing the date and time when the voucher was last updated in ISO 8601 format.
+   * @return updatedAt
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody holderId(String holderId) {
+    
+    this.holderId = holderId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the customer who owns the voucher.
+   * @return holderId
+  **/
+  @javax.annotation.Nullable
+  public String getHolderId() {
+    return holderId;
+  }
+
+
+  public void setHolderId(String holderId) {
+    this.holderId = holderId;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody referrerId(String referrerId) {
+    
+    this.referrerId = referrerId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the referring person.
+   * @return referrerId
+  **/
+  @javax.annotation.Nullable
+  public String getReferrerId() {
+    return referrerId;
+  }
+
+
+  public void setReferrerId(String referrerId) {
+    this.referrerId = referrerId;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody _object(String _object) {
+    
+    this._object = _object;
+    return this;
+  }
+
+   /**
+   * The type of the object represented by JSON. Default is &#x60;voucher&#x60;.
+   * @return _object
+  **/
+  @javax.annotation.Nullable
+  public String getObject() {
+    return _object;
+  }
+
+
+  public void setObject(String _object) {
+    this._object = _object;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody validationRulesAssignments(ValidationRulesAssignmentsList validationRulesAssignments) {
+    
+    this.validationRulesAssignments = validationRulesAssignments;
+    return this;
+  }
+
+   /**
+   * Get validationRulesAssignments
+   * @return validationRulesAssignments
+  **/
+  @javax.annotation.Nullable
+  public ValidationRulesAssignmentsList getValidationRulesAssignments() {
+    return validationRulesAssignments;
+  }
+
+
+  public void setValidationRulesAssignments(ValidationRulesAssignmentsList validationRulesAssignments) {
+    this.validationRulesAssignments = validationRulesAssignments;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody publish(CampaignsVouchersCreateCombinedResponseBodyPublish publish) {
+    
+    this.publish = publish;
+    return this;
+  }
+
+   /**
+   * Get publish
+   * @return publish
+  **/
+  @javax.annotation.Nullable
+  public CampaignsVouchersCreateCombinedResponseBodyPublish getPublish() {
+    return publish;
+  }
+
+
+  public void setPublish(CampaignsVouchersCreateCombinedResponseBodyPublish publish) {
+    this.publish = publish;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody redemption(CampaignsVouchersCreateCombinedResponseBodyRedemption redemption) {
+    
+    this.redemption = redemption;
+    return this;
+  }
+
+   /**
+   * Get redemption
+   * @return redemption
+  **/
+  @javax.annotation.Nullable
+  public CampaignsVouchersCreateCombinedResponseBodyRedemption getRedemption() {
+    return redemption;
+  }
+
+
+  public void setRedemption(CampaignsVouchersCreateCombinedResponseBodyRedemption redemption) {
+    this.redemption = redemption;
+  }
+
+
+  public CampaignsVouchersCreateCombinedResponseBody asyncActionId(String asyncActionId) {
+    
+    this.asyncActionId = asyncActionId;
+    return this;
+  }
+
+   /**
+   * The ID of the scheduled asynchronous action.
+   * @return asyncActionId
+  **/
+  @javax.annotation.Nullable
+  public String getAsyncActionId() {
+    return asyncActionId;
+  }
+
+
+  public void setAsyncActionId(String asyncActionId) {
+    this.asyncActionId = asyncActionId;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CampaignsVouchersCreateCombinedResponseBody campaignsVouchersCreateCombinedResponseBody = (CampaignsVouchersCreateCombinedResponseBody) o;
+    return Objects.equals(this.id, campaignsVouchersCreateCombinedResponseBody.id) &&
+        Objects.equals(this.code, campaignsVouchersCreateCombinedResponseBody.code) &&
+        Objects.equals(this.campaign, campaignsVouchersCreateCombinedResponseBody.campaign) &&
+        Objects.equals(this.campaignId, campaignsVouchersCreateCombinedResponseBody.campaignId) &&
+        Objects.equals(this.category, campaignsVouchersCreateCombinedResponseBody.category) &&
+        Objects.equals(this.categoryId, campaignsVouchersCreateCombinedResponseBody.categoryId) &&
+        Objects.equals(this.categories, campaignsVouchersCreateCombinedResponseBody.categories) &&
+        Objects.equals(this.type, campaignsVouchersCreateCombinedResponseBody.type) &&
+        Objects.equals(this.discount, campaignsVouchersCreateCombinedResponseBody.discount) &&
+        Objects.equals(this.gift, campaignsVouchersCreateCombinedResponseBody.gift) &&
+        Objects.equals(this.loyaltyCard, campaignsVouchersCreateCombinedResponseBody.loyaltyCard) &&
+        Objects.equals(this.startDate, campaignsVouchersCreateCombinedResponseBody.startDate) &&
+        Objects.equals(this.expirationDate, campaignsVouchersCreateCombinedResponseBody.expirationDate) &&
+        Objects.equals(this.validityTimeframe, campaignsVouchersCreateCombinedResponseBody.validityTimeframe) &&
+        Objects.equals(this.validityDayOfWeek, campaignsVouchersCreateCombinedResponseBody.validityDayOfWeek) &&
+        Objects.equals(this.validityHours, campaignsVouchersCreateCombinedResponseBody.validityHours) &&
+        Objects.equals(this.active, campaignsVouchersCreateCombinedResponseBody.active) &&
+        Objects.equals(this.additionalInfo, campaignsVouchersCreateCombinedResponseBody.additionalInfo) &&
+        Objects.equals(this.metadata, campaignsVouchersCreateCombinedResponseBody.metadata) &&
+        Objects.equals(this.assets, campaignsVouchersCreateCombinedResponseBody.assets) &&
+        Objects.equals(this.isReferralCode, campaignsVouchersCreateCombinedResponseBody.isReferralCode) &&
+        Objects.equals(this.createdAt, campaignsVouchersCreateCombinedResponseBody.createdAt) &&
+        Objects.equals(this.updatedAt, campaignsVouchersCreateCombinedResponseBody.updatedAt) &&
+        Objects.equals(this.holderId, campaignsVouchersCreateCombinedResponseBody.holderId) &&
+        Objects.equals(this.referrerId, campaignsVouchersCreateCombinedResponseBody.referrerId) &&
+        Objects.equals(this._object, campaignsVouchersCreateCombinedResponseBody._object) &&
+        Objects.equals(this.validationRulesAssignments, campaignsVouchersCreateCombinedResponseBody.validationRulesAssignments) &&
+        Objects.equals(this.publish, campaignsVouchersCreateCombinedResponseBody.publish) &&
+        Objects.equals(this.redemption, campaignsVouchersCreateCombinedResponseBody.redemption) &&
+        Objects.equals(this.asyncActionId, campaignsVouchersCreateCombinedResponseBody.asyncActionId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, code, campaign, campaignId, category, categoryId, categories, type, discount, gift, loyaltyCard, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, active, additionalInfo, metadata, assets, isReferralCode, createdAt, updatedAt, holderId, referrerId, _object, validationRulesAssignments, publish, redemption, asyncActionId);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CampaignsVouchersCreateCombinedResponseBody {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
+    sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
+    sb.append("    loyaltyCard: ").append(toIndentedString(loyaltyCard)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    validityTimeframe: ").append(toIndentedString(validityTimeframe)).append("\n");
+    sb.append("    validityDayOfWeek: ").append(toIndentedString(validityDayOfWeek)).append("\n");
+    sb.append("    validityHours: ").append(toIndentedString(validityHours)).append("\n");
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
+    sb.append("    isReferralCode: ").append(toIndentedString(isReferralCode)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    holderId: ").append(toIndentedString(holderId)).append("\n");
+    sb.append("    referrerId: ").append(toIndentedString(referrerId)).append("\n");
+    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    validationRulesAssignments: ").append(toIndentedString(validationRulesAssignments)).append("\n");
+    sb.append("    publish: ").append(toIndentedString(publish)).append("\n");
+    sb.append("    redemption: ").append(toIndentedString(redemption)).append("\n");
+    sb.append("    asyncActionId: ").append(toIndentedString(asyncActionId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("code");
+    openapiFields.add("campaign");
+    openapiFields.add("campaign_id");
+    openapiFields.add("category");
+    openapiFields.add("category_id");
+    openapiFields.add("categories");
+    openapiFields.add("type");
+    openapiFields.add("discount");
+    openapiFields.add("gift");
+    openapiFields.add("loyalty_card");
+    openapiFields.add("start_date");
+    openapiFields.add("expiration_date");
+    openapiFields.add("validity_timeframe");
+    openapiFields.add("validity_day_of_week");
+    openapiFields.add("validity_hours");
+    openapiFields.add("active");
+    openapiFields.add("additional_info");
+    openapiFields.add("metadata");
+    openapiFields.add("assets");
+    openapiFields.add("is_referral_code");
+    openapiFields.add("created_at");
+    openapiFields.add("updated_at");
+    openapiFields.add("holder_id");
+    openapiFields.add("referrer_id");
+    openapiFields.add("object");
+    openapiFields.add("validation_rules_assignments");
+    openapiFields.add("publish");
+    openapiFields.add("redemption");
+    openapiFields.add("async_action_id");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -246,27 +1097,151 @@ public class CampaignsVouchersCreateCombinedResponseBody extends AbstractOpenApi
   * @throws IOException if the JSON Element is invalid with respect to CampaignsVouchersCreateCombinedResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with CampaignsVouchersCreateResponseBody
-    try {
-      CampaignsVouchersCreateResponseBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsVouchersCreateResponseBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CampaignsVouchersCreateInBulkResponseBody
-    try {
-      CampaignsVouchersCreateInBulkResponseBody.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CampaignsVouchersCreateInBulkResponseBody failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for CampaignsVouchersCreateCombinedResponseBody with oneOf schemas: CampaignsVouchersCreateInBulkResponseBody, CampaignsVouchersCreateResponseBody. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!CampaignsVouchersCreateCombinedResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsVouchersCreateCombinedResponseBody is not found in the empty JSON string", CampaignsVouchersCreateCombinedResponseBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!CampaignsVouchersCreateCombinedResponseBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignsVouchersCreateCombinedResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign").toString()));
+      }
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+      }
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+      }
+      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+      }
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
+        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
+        if (jsonArraycategories != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+          }
+
+          // validate the optional field `categories` (array)
+          for (int i = 0; i < jsonArraycategories.size(); i++) {
+            Category.validateJsonElement(jsonArraycategories.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
+      // validate the optional field `discount`
+      if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
+        Discount.validateJsonElement(jsonObj.get("discount"));
+      }
+      // validate the optional field `gift`
+      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
+        CampaignsVouchersCreateCombinedResponseBodyGift.validateJsonElement(jsonObj.get("gift"));
+      }
+      // validate the optional field `loyalty_card`
+      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
+        CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      }
+      // validate the optional field `validity_timeframe`
+      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
+        CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
+      }
+      // validate the optional field `validity_hours`
+      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
+        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
+      }
+      if ((jsonObj.get("additional_info") != null && !jsonObj.get("additional_info").isJsonNull()) && !jsonObj.get("additional_info").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additional_info` to be a primitive type in the JSON string but got `%s`", jsonObj.get("additional_info").toString()));
+      }
+      // validate the optional field `assets`
+      if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
+        VoucherAssets.validateJsonElement(jsonObj.get("assets"));
+      }
+      if ((jsonObj.get("holder_id") != null && !jsonObj.get("holder_id").isJsonNull()) && !jsonObj.get("holder_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holder_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holder_id").toString()));
+      }
+      if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `referrer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referrer_id").toString()));
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      }
+      // validate the optional field `validation_rules_assignments`
+      if (jsonObj.get("validation_rules_assignments") != null && !jsonObj.get("validation_rules_assignments").isJsonNull()) {
+        ValidationRulesAssignmentsList.validateJsonElement(jsonObj.get("validation_rules_assignments"));
+      }
+      // validate the optional field `publish`
+      if (jsonObj.get("publish") != null && !jsonObj.get("publish").isJsonNull()) {
+        CampaignsVouchersCreateCombinedResponseBodyPublish.validateJsonElement(jsonObj.get("publish"));
+      }
+      // validate the optional field `redemption`
+      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
+        CampaignsVouchersCreateCombinedResponseBodyRedemption.validateJsonElement(jsonObj.get("redemption"));
+      }
+      if ((jsonObj.get("async_action_id") != null && !jsonObj.get("async_action_id").isJsonNull()) && !jsonObj.get("async_action_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `async_action_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("async_action_id").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CampaignsVouchersCreateCombinedResponseBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CampaignsVouchersCreateCombinedResponseBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CampaignsVouchersCreateCombinedResponseBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CampaignsVouchersCreateCombinedResponseBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CampaignsVouchersCreateCombinedResponseBody>() {
+           @Override
+           public void write(JsonWriter out, CampaignsVouchersCreateCombinedResponseBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CampaignsVouchersCreateCombinedResponseBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 
