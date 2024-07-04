@@ -17,11 +17,11 @@ Response body schema for **GET** `/vouchers/{code}`.
 |**categories** | [**List&lt;Category&gt;**](Category.md) | Contains details about the category. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Defines the type of the voucher.  |  [optional] |
 |**discount** | [**Discount**](Discount.md) |  |  [optional] |
-|**gift** | [**VoucherGift**](VoucherGift.md) |  |  [optional] |
-|**loyaltyCard** | [**VoucherLoyaltyCard**](VoucherLoyaltyCard.md) |  |  [optional] |
+|**gift** | [**CampaignsVouchersCreateCombinedResponseBodyGift**](CampaignsVouchersCreateCombinedResponseBodyGift.md) |  |  [optional] |
+|**loyaltyCard** | [**CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard**](CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard.md) |  |  [optional] |
 |**startDate** | **OffsetDateTime** | Activation timestamp defines when the code starts to be active in ISO 8601 format. Voucher is *inactive before* this date.  |  [optional] |
 |**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the code expires in ISO 8601 format.  Voucher is *inactive after* this date. |  [optional] |
-|**validityTimeframe** | [**VoucherValidityTimeframe**](VoucherValidityTimeframe.md) |  |  [optional] |
+|**validityTimeframe** | [**CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe**](CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe.md) |  |  [optional] |
 |**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |  [optional] |
 |**validityHours** | [**ValidityHours**](ValidityHours.md) |  |  [optional] |
 |**active** | **Boolean** | A flag to toggle the voucher on or off. You can disable a voucher even though it&#39;s within the active period defined by the &#x60;start_date&#x60; and &#x60;expiration_date&#x60;.    - &#x60;true&#x60; indicates an *active* voucher - &#x60;false&#x60; indicates an *inactive* voucher |  [optional] |
@@ -35,8 +35,8 @@ Response body schema for **GET** `/vouchers/{code}`.
 |**referrerId** | **String** | Unique identifier of the referring person. |  [optional] |
 |**_object** | **String** | The type of the object represented by JSON. Default is &#x60;voucher&#x60;. |  [optional] |
 |**validationRulesAssignments** | [**ValidationRulesAssignmentsList**](ValidationRulesAssignmentsList.md) |  |  [optional] |
-|**publish** | [**VoucherPublish**](VoucherPublish.md) |  |  [optional] |
-|**redemption** | [**VoucherRedemption**](VoucherRedemption.md) |  |  [optional] |
+|**publish** | [**CampaignsVouchersCreateCombinedResponseBodyPublish**](CampaignsVouchersCreateCombinedResponseBodyPublish.md) |  |  [optional] |
+|**redemption** | [**CampaignsVouchersCreateCombinedResponseBodyRedemption**](CampaignsVouchersCreateCombinedResponseBodyRedemption.md) |  |  [optional] |
 
 
 

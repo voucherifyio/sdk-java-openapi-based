@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.ExportBaseResult;
-import voucherify.client.model.LoyaltiesMembersTransactionsExportCreateRequestBodyParameters;
+import voucherify.client.model.ExportParameters;
+import voucherify.client.model.ExportResult;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -174,17 +174,29 @@ public class ExportsGetResponseBody {
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
-  private ExportBaseResult result;
+  private ExportResult result;
 
   public static final String SERIALIZED_NAME_USER_ID = "user_id";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
   /**
-   * The type of object to be exported.
+   * Gets or Sets exportedObject
    */
   @JsonAdapter(ExportedObjectEnum.Adapter.class)
   public enum ExportedObjectEnum {
+    VOUCHER("voucher"),
+    
+    REDEMPTION("redemption"),
+    
+    CUSTOMER("customer"),
+    
+    PUBLICATION("publication"),
+    
+    ORDER("order"),
+    
+    POINTS_EXPIRATION("points_expiration"),
+    
     VOUCHER_TRANSACTIONS("voucher_transactions");
 
     private String value;
@@ -227,11 +239,11 @@ public class ExportsGetResponseBody {
 
   public static final String SERIALIZED_NAME_EXPORTED_OBJECT = "exported_object";
   @SerializedName(SERIALIZED_NAME_EXPORTED_OBJECT)
-  private ExportedObjectEnum exportedObject = ExportedObjectEnum.VOUCHER_TRANSACTIONS;
+  private ExportedObjectEnum exportedObject;
 
   public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
   @SerializedName(SERIALIZED_NAME_PARAMETERS)
-  private LoyaltiesMembersTransactionsExportCreateRequestBodyParameters parameters;
+  private ExportParameters parameters;
 
   public ExportsGetResponseBody() {
   }
@@ -246,7 +258,7 @@ public class ExportsGetResponseBody {
    * Unique export ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -267,7 +279,7 @@ public class ExportsGetResponseBody {
    * The type of object being represented. This object stores information about the export.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -288,7 +300,7 @@ public class ExportsGetResponseBody {
    * Timestamp representing the date and time when the export was scheduled in ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -309,7 +321,7 @@ public class ExportsGetResponseBody {
    * Status of the export. Informs you whether the export has already been completed, i.e. indicates whether the file containing the exported data has been generated.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -341,7 +353,7 @@ public class ExportsGetResponseBody {
   }
 
 
-  public ExportsGetResponseBody result(ExportBaseResult result) {
+  public ExportsGetResponseBody result(ExportResult result) {
     
     this.result = result;
     return this;
@@ -352,12 +364,12 @@ public class ExportsGetResponseBody {
    * @return result
   **/
   @javax.annotation.Nullable
-  public ExportBaseResult getResult() {
+  public ExportResult getResult() {
     return result;
   }
 
 
-  public void setResult(ExportBaseResult result) {
+  public void setResult(ExportResult result) {
     this.result = result;
   }
 
@@ -390,10 +402,10 @@ public class ExportsGetResponseBody {
   }
 
    /**
-   * The type of object to be exported.
+   * Get exportedObject
    * @return exportedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ExportedObjectEnum getExportedObject() {
     return exportedObject;
   }
@@ -404,7 +416,7 @@ public class ExportsGetResponseBody {
   }
 
 
-  public ExportsGetResponseBody parameters(LoyaltiesMembersTransactionsExportCreateRequestBodyParameters parameters) {
+  public ExportsGetResponseBody parameters(ExportParameters parameters) {
     
     this.parameters = parameters;
     return this;
@@ -415,12 +427,12 @@ public class ExportsGetResponseBody {
    * @return parameters
   **/
   @javax.annotation.Nullable
-  public LoyaltiesMembersTransactionsExportCreateRequestBodyParameters getParameters() {
+  public ExportParameters getParameters() {
     return parameters;
   }
 
 
-  public void setParameters(LoyaltiesMembersTransactionsExportCreateRequestBodyParameters parameters) {
+  public void setParameters(ExportParameters parameters) {
     this.parameters = parameters;
   }
 
@@ -509,11 +521,6 @@ public class ExportsGetResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("exported_object");
   }
 
  /**
@@ -536,18 +543,11 @@ public class ExportsGetResponseBody {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExportsGetResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExportsGetResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -563,7 +563,7 @@ public class ExportsGetResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -584,12 +584,12 @@ public class ExportsGetResponseBody {
       }
       // validate the optional field `result`
       if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
-        ExportBaseResult.validateJsonElement(jsonObj.get("result"));
+        ExportResult.validateJsonElement(jsonObj.get("result"));
       }
       if ((jsonObj.get("user_id") != null && !jsonObj.get("user_id").isJsonNull()) && !jsonObj.get("user_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
       }
-      if (!jsonObj.get("exported_object").isJsonPrimitive()) {
+      if ((jsonObj.get("exported_object") != null && !jsonObj.get("exported_object").isJsonNull()) && !jsonObj.get("exported_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exported_object").toString()));
       }
       try {
@@ -607,7 +607,7 @@ public class ExportsGetResponseBody {
       }
       // validate the optional field `parameters`
       if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
-        LoyaltiesMembersTransactionsExportCreateRequestBodyParameters.validateJsonElement(jsonObj.get("parameters"));
+        ExportParameters.validateJsonElement(jsonObj.get("parameters"));
       }
   }
 

@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import voucherify.client.model.Any;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,108 +55,108 @@ import voucherify.client.JSON;
 public class FiltersCondition {
   public static final String SERIALIZED_NAME_$_IN = "$in";
   @SerializedName(SERIALIZED_NAME_$_IN)
-  private Any $in;
+  private Object $in = null;
 
   public static final String SERIALIZED_NAME_$_NOT_IN = "$not_in";
   @SerializedName(SERIALIZED_NAME_$_NOT_IN)
-  private Any $notIn;
+  private Object $notIn = null;
 
   public static final String SERIALIZED_NAME_$_IS = "$is";
   @SerializedName(SERIALIZED_NAME_$_IS)
-  private Any $is;
+  private Object $is = null;
 
   public static final String SERIALIZED_NAME_$_IS_DAYS_AGO = "$is_days_ago";
   @SerializedName(SERIALIZED_NAME_$_IS_DAYS_AGO)
-  private Any $isDaysAgo;
+  private Object $isDaysAgo = null;
 
   public static final String SERIALIZED_NAME_$_IS_DAYS_IN_FUTURE = "$is_days_in_future";
   @SerializedName(SERIALIZED_NAME_$_IS_DAYS_IN_FUTURE)
-  private Any $isDaysInFuture;
+  private Object $isDaysInFuture = null;
 
   public static final String SERIALIZED_NAME_$_IS_NOT = "$is_not";
   @SerializedName(SERIALIZED_NAME_$_IS_NOT)
-  private Any $isNot;
+  private Object $isNot = null;
 
   public static final String SERIALIZED_NAME_$_HAS_VALUE = "$has_value";
   @SerializedName(SERIALIZED_NAME_$_HAS_VALUE)
-  private Any $hasValue;
+  private Object $hasValue = null;
 
   public static final String SERIALIZED_NAME_$_IS_UNKNOWN = "$is_unknown";
   @SerializedName(SERIALIZED_NAME_$_IS_UNKNOWN)
-  private Any $isUnknown;
+  private Object $isUnknown = null;
 
   public static final String SERIALIZED_NAME_$_CONTAINS = "$contains";
   @SerializedName(SERIALIZED_NAME_$_CONTAINS)
-  private Any $contains;
+  private Object $contains = null;
 
   public static final String SERIALIZED_NAME_$_NOT_CONTAIN = "$not_contain";
   @SerializedName(SERIALIZED_NAME_$_NOT_CONTAIN)
-  private Any $notContain;
+  private Object $notContain = null;
 
   public static final String SERIALIZED_NAME_$_STARTS_WITH = "$starts_with";
   @SerializedName(SERIALIZED_NAME_$_STARTS_WITH)
-  private Any $startsWith;
+  private Object $startsWith = null;
 
   public static final String SERIALIZED_NAME_$_ENDS_WITH = "$ends_with";
   @SerializedName(SERIALIZED_NAME_$_ENDS_WITH)
-  private Any $endsWith;
+  private Object $endsWith = null;
 
   public static final String SERIALIZED_NAME_$_MORE_THAN = "$more_than";
   @SerializedName(SERIALIZED_NAME_$_MORE_THAN)
-  private Any $moreThan;
+  private Object $moreThan = null;
 
   public static final String SERIALIZED_NAME_$_LESS_THAN = "$less_than";
   @SerializedName(SERIALIZED_NAME_$_LESS_THAN)
-  private Any $lessThan;
+  private Object $lessThan = null;
 
   public static final String SERIALIZED_NAME_$_MORE_THAN_AGO = "$more_than_ago";
   @SerializedName(SERIALIZED_NAME_$_MORE_THAN_AGO)
-  private Any $moreThanAgo;
+  private Object $moreThanAgo = null;
 
   public static final String SERIALIZED_NAME_$_LESS_THAN_AGO = "$less_than_ago";
   @SerializedName(SERIALIZED_NAME_$_LESS_THAN_AGO)
-  private Any $lessThanAgo;
+  private Object $lessThanAgo = null;
 
   public static final String SERIALIZED_NAME_$_MORE_THAN_FUTURE = "$more_than_future";
   @SerializedName(SERIALIZED_NAME_$_MORE_THAN_FUTURE)
-  private Any $moreThanFuture;
+  private Object $moreThanFuture = null;
 
   public static final String SERIALIZED_NAME_$_LESS_THAN_FUTURE = "$less_than_future";
   @SerializedName(SERIALIZED_NAME_$_LESS_THAN_FUTURE)
-  private Any $lessThanFuture;
+  private Object $lessThanFuture = null;
 
   public static final String SERIALIZED_NAME_$_MORE_THAN_EQUAL = "$more_than_equal";
   @SerializedName(SERIALIZED_NAME_$_MORE_THAN_EQUAL)
-  private Any $moreThanEqual;
+  private Object $moreThanEqual = null;
 
   public static final String SERIALIZED_NAME_$_LESS_THAN_EQUAL = "$less_than_equal";
   @SerializedName(SERIALIZED_NAME_$_LESS_THAN_EQUAL)
-  private Any $lessThanEqual;
+  private Object $lessThanEqual = null;
 
   public static final String SERIALIZED_NAME_$_AFTER = "$after";
   @SerializedName(SERIALIZED_NAME_$_AFTER)
-  private Any $after;
+  private Object $after = null;
 
   public static final String SERIALIZED_NAME_$_BEFORE = "$before";
   @SerializedName(SERIALIZED_NAME_$_BEFORE)
-  private Any $before;
+  private Object $before = null;
 
   public static final String SERIALIZED_NAME_$_COUNT = "$count";
   @SerializedName(SERIALIZED_NAME_$_COUNT)
-  private Any $count;
+  private Object $count = null;
 
   public static final String SERIALIZED_NAME_$_COUNT_LESS = "$count_less";
   @SerializedName(SERIALIZED_NAME_$_COUNT_LESS)
-  private Any $countLess;
+  private Object $countLess = null;
 
   public static final String SERIALIZED_NAME_$_COUNT_MORE = "$count_more";
   @SerializedName(SERIALIZED_NAME_$_COUNT_MORE)
-  private Any $countMore;
+  private Object $countMore = null;
 
   public FiltersCondition() {
   }
 
-  public FiltersCondition $in(Any $in) {
+  public FiltersCondition $in(Object $in) {
     
     this.$in = $in;
     return this;
@@ -167,17 +167,17 @@ public class FiltersCondition {
    * @return $in
   **/
   @javax.annotation.Nullable
-  public Any get$In() {
+  public Object get$In() {
     return $in;
   }
 
 
-  public void set$In(Any $in) {
+  public void set$In(Object $in) {
     this.$in = $in;
   }
 
 
-  public FiltersCondition $notIn(Any $notIn) {
+  public FiltersCondition $notIn(Object $notIn) {
     
     this.$notIn = $notIn;
     return this;
@@ -188,17 +188,17 @@ public class FiltersCondition {
    * @return $notIn
   **/
   @javax.annotation.Nullable
-  public Any get$NotIn() {
+  public Object get$NotIn() {
     return $notIn;
   }
 
 
-  public void set$NotIn(Any $notIn) {
+  public void set$NotIn(Object $notIn) {
     this.$notIn = $notIn;
   }
 
 
-  public FiltersCondition $is(Any $is) {
+  public FiltersCondition $is(Object $is) {
     
     this.$is = $is;
     return this;
@@ -209,17 +209,17 @@ public class FiltersCondition {
    * @return $is
   **/
   @javax.annotation.Nullable
-  public Any get$Is() {
+  public Object get$Is() {
     return $is;
   }
 
 
-  public void set$Is(Any $is) {
+  public void set$Is(Object $is) {
     this.$is = $is;
   }
 
 
-  public FiltersCondition $isDaysAgo(Any $isDaysAgo) {
+  public FiltersCondition $isDaysAgo(Object $isDaysAgo) {
     
     this.$isDaysAgo = $isDaysAgo;
     return this;
@@ -230,17 +230,17 @@ public class FiltersCondition {
    * @return $isDaysAgo
   **/
   @javax.annotation.Nullable
-  public Any get$IsDaysAgo() {
+  public Object get$IsDaysAgo() {
     return $isDaysAgo;
   }
 
 
-  public void set$IsDaysAgo(Any $isDaysAgo) {
+  public void set$IsDaysAgo(Object $isDaysAgo) {
     this.$isDaysAgo = $isDaysAgo;
   }
 
 
-  public FiltersCondition $isDaysInFuture(Any $isDaysInFuture) {
+  public FiltersCondition $isDaysInFuture(Object $isDaysInFuture) {
     
     this.$isDaysInFuture = $isDaysInFuture;
     return this;
@@ -251,17 +251,17 @@ public class FiltersCondition {
    * @return $isDaysInFuture
   **/
   @javax.annotation.Nullable
-  public Any get$IsDaysInFuture() {
+  public Object get$IsDaysInFuture() {
     return $isDaysInFuture;
   }
 
 
-  public void set$IsDaysInFuture(Any $isDaysInFuture) {
+  public void set$IsDaysInFuture(Object $isDaysInFuture) {
     this.$isDaysInFuture = $isDaysInFuture;
   }
 
 
-  public FiltersCondition $isNot(Any $isNot) {
+  public FiltersCondition $isNot(Object $isNot) {
     
     this.$isNot = $isNot;
     return this;
@@ -272,17 +272,17 @@ public class FiltersCondition {
    * @return $isNot
   **/
   @javax.annotation.Nullable
-  public Any get$IsNot() {
+  public Object get$IsNot() {
     return $isNot;
   }
 
 
-  public void set$IsNot(Any $isNot) {
+  public void set$IsNot(Object $isNot) {
     this.$isNot = $isNot;
   }
 
 
-  public FiltersCondition $hasValue(Any $hasValue) {
+  public FiltersCondition $hasValue(Object $hasValue) {
     
     this.$hasValue = $hasValue;
     return this;
@@ -293,17 +293,17 @@ public class FiltersCondition {
    * @return $hasValue
   **/
   @javax.annotation.Nullable
-  public Any get$HasValue() {
+  public Object get$HasValue() {
     return $hasValue;
   }
 
 
-  public void set$HasValue(Any $hasValue) {
+  public void set$HasValue(Object $hasValue) {
     this.$hasValue = $hasValue;
   }
 
 
-  public FiltersCondition $isUnknown(Any $isUnknown) {
+  public FiltersCondition $isUnknown(Object $isUnknown) {
     
     this.$isUnknown = $isUnknown;
     return this;
@@ -314,17 +314,17 @@ public class FiltersCondition {
    * @return $isUnknown
   **/
   @javax.annotation.Nullable
-  public Any get$IsUnknown() {
+  public Object get$IsUnknown() {
     return $isUnknown;
   }
 
 
-  public void set$IsUnknown(Any $isUnknown) {
+  public void set$IsUnknown(Object $isUnknown) {
     this.$isUnknown = $isUnknown;
   }
 
 
-  public FiltersCondition $contains(Any $contains) {
+  public FiltersCondition $contains(Object $contains) {
     
     this.$contains = $contains;
     return this;
@@ -335,17 +335,17 @@ public class FiltersCondition {
    * @return $contains
   **/
   @javax.annotation.Nullable
-  public Any get$Contains() {
+  public Object get$Contains() {
     return $contains;
   }
 
 
-  public void set$Contains(Any $contains) {
+  public void set$Contains(Object $contains) {
     this.$contains = $contains;
   }
 
 
-  public FiltersCondition $notContain(Any $notContain) {
+  public FiltersCondition $notContain(Object $notContain) {
     
     this.$notContain = $notContain;
     return this;
@@ -356,17 +356,17 @@ public class FiltersCondition {
    * @return $notContain
   **/
   @javax.annotation.Nullable
-  public Any get$NotContain() {
+  public Object get$NotContain() {
     return $notContain;
   }
 
 
-  public void set$NotContain(Any $notContain) {
+  public void set$NotContain(Object $notContain) {
     this.$notContain = $notContain;
   }
 
 
-  public FiltersCondition $startsWith(Any $startsWith) {
+  public FiltersCondition $startsWith(Object $startsWith) {
     
     this.$startsWith = $startsWith;
     return this;
@@ -377,17 +377,17 @@ public class FiltersCondition {
    * @return $startsWith
   **/
   @javax.annotation.Nullable
-  public Any get$StartsWith() {
+  public Object get$StartsWith() {
     return $startsWith;
   }
 
 
-  public void set$StartsWith(Any $startsWith) {
+  public void set$StartsWith(Object $startsWith) {
     this.$startsWith = $startsWith;
   }
 
 
-  public FiltersCondition $endsWith(Any $endsWith) {
+  public FiltersCondition $endsWith(Object $endsWith) {
     
     this.$endsWith = $endsWith;
     return this;
@@ -398,17 +398,17 @@ public class FiltersCondition {
    * @return $endsWith
   **/
   @javax.annotation.Nullable
-  public Any get$EndsWith() {
+  public Object get$EndsWith() {
     return $endsWith;
   }
 
 
-  public void set$EndsWith(Any $endsWith) {
+  public void set$EndsWith(Object $endsWith) {
     this.$endsWith = $endsWith;
   }
 
 
-  public FiltersCondition $moreThan(Any $moreThan) {
+  public FiltersCondition $moreThan(Object $moreThan) {
     
     this.$moreThan = $moreThan;
     return this;
@@ -419,17 +419,17 @@ public class FiltersCondition {
    * @return $moreThan
   **/
   @javax.annotation.Nullable
-  public Any get$MoreThan() {
+  public Object get$MoreThan() {
     return $moreThan;
   }
 
 
-  public void set$MoreThan(Any $moreThan) {
+  public void set$MoreThan(Object $moreThan) {
     this.$moreThan = $moreThan;
   }
 
 
-  public FiltersCondition $lessThan(Any $lessThan) {
+  public FiltersCondition $lessThan(Object $lessThan) {
     
     this.$lessThan = $lessThan;
     return this;
@@ -440,17 +440,17 @@ public class FiltersCondition {
    * @return $lessThan
   **/
   @javax.annotation.Nullable
-  public Any get$LessThan() {
+  public Object get$LessThan() {
     return $lessThan;
   }
 
 
-  public void set$LessThan(Any $lessThan) {
+  public void set$LessThan(Object $lessThan) {
     this.$lessThan = $lessThan;
   }
 
 
-  public FiltersCondition $moreThanAgo(Any $moreThanAgo) {
+  public FiltersCondition $moreThanAgo(Object $moreThanAgo) {
     
     this.$moreThanAgo = $moreThanAgo;
     return this;
@@ -461,17 +461,17 @@ public class FiltersCondition {
    * @return $moreThanAgo
   **/
   @javax.annotation.Nullable
-  public Any get$MoreThanAgo() {
+  public Object get$MoreThanAgo() {
     return $moreThanAgo;
   }
 
 
-  public void set$MoreThanAgo(Any $moreThanAgo) {
+  public void set$MoreThanAgo(Object $moreThanAgo) {
     this.$moreThanAgo = $moreThanAgo;
   }
 
 
-  public FiltersCondition $lessThanAgo(Any $lessThanAgo) {
+  public FiltersCondition $lessThanAgo(Object $lessThanAgo) {
     
     this.$lessThanAgo = $lessThanAgo;
     return this;
@@ -482,17 +482,17 @@ public class FiltersCondition {
    * @return $lessThanAgo
   **/
   @javax.annotation.Nullable
-  public Any get$LessThanAgo() {
+  public Object get$LessThanAgo() {
     return $lessThanAgo;
   }
 
 
-  public void set$LessThanAgo(Any $lessThanAgo) {
+  public void set$LessThanAgo(Object $lessThanAgo) {
     this.$lessThanAgo = $lessThanAgo;
   }
 
 
-  public FiltersCondition $moreThanFuture(Any $moreThanFuture) {
+  public FiltersCondition $moreThanFuture(Object $moreThanFuture) {
     
     this.$moreThanFuture = $moreThanFuture;
     return this;
@@ -503,17 +503,17 @@ public class FiltersCondition {
    * @return $moreThanFuture
   **/
   @javax.annotation.Nullable
-  public Any get$MoreThanFuture() {
+  public Object get$MoreThanFuture() {
     return $moreThanFuture;
   }
 
 
-  public void set$MoreThanFuture(Any $moreThanFuture) {
+  public void set$MoreThanFuture(Object $moreThanFuture) {
     this.$moreThanFuture = $moreThanFuture;
   }
 
 
-  public FiltersCondition $lessThanFuture(Any $lessThanFuture) {
+  public FiltersCondition $lessThanFuture(Object $lessThanFuture) {
     
     this.$lessThanFuture = $lessThanFuture;
     return this;
@@ -524,17 +524,17 @@ public class FiltersCondition {
    * @return $lessThanFuture
   **/
   @javax.annotation.Nullable
-  public Any get$LessThanFuture() {
+  public Object get$LessThanFuture() {
     return $lessThanFuture;
   }
 
 
-  public void set$LessThanFuture(Any $lessThanFuture) {
+  public void set$LessThanFuture(Object $lessThanFuture) {
     this.$lessThanFuture = $lessThanFuture;
   }
 
 
-  public FiltersCondition $moreThanEqual(Any $moreThanEqual) {
+  public FiltersCondition $moreThanEqual(Object $moreThanEqual) {
     
     this.$moreThanEqual = $moreThanEqual;
     return this;
@@ -545,17 +545,17 @@ public class FiltersCondition {
    * @return $moreThanEqual
   **/
   @javax.annotation.Nullable
-  public Any get$MoreThanEqual() {
+  public Object get$MoreThanEqual() {
     return $moreThanEqual;
   }
 
 
-  public void set$MoreThanEqual(Any $moreThanEqual) {
+  public void set$MoreThanEqual(Object $moreThanEqual) {
     this.$moreThanEqual = $moreThanEqual;
   }
 
 
-  public FiltersCondition $lessThanEqual(Any $lessThanEqual) {
+  public FiltersCondition $lessThanEqual(Object $lessThanEqual) {
     
     this.$lessThanEqual = $lessThanEqual;
     return this;
@@ -566,17 +566,17 @@ public class FiltersCondition {
    * @return $lessThanEqual
   **/
   @javax.annotation.Nullable
-  public Any get$LessThanEqual() {
+  public Object get$LessThanEqual() {
     return $lessThanEqual;
   }
 
 
-  public void set$LessThanEqual(Any $lessThanEqual) {
+  public void set$LessThanEqual(Object $lessThanEqual) {
     this.$lessThanEqual = $lessThanEqual;
   }
 
 
-  public FiltersCondition $after(Any $after) {
+  public FiltersCondition $after(Object $after) {
     
     this.$after = $after;
     return this;
@@ -587,17 +587,17 @@ public class FiltersCondition {
    * @return $after
   **/
   @javax.annotation.Nullable
-  public Any get$After() {
+  public Object get$After() {
     return $after;
   }
 
 
-  public void set$After(Any $after) {
+  public void set$After(Object $after) {
     this.$after = $after;
   }
 
 
-  public FiltersCondition $before(Any $before) {
+  public FiltersCondition $before(Object $before) {
     
     this.$before = $before;
     return this;
@@ -608,17 +608,17 @@ public class FiltersCondition {
    * @return $before
   **/
   @javax.annotation.Nullable
-  public Any get$Before() {
+  public Object get$Before() {
     return $before;
   }
 
 
-  public void set$Before(Any $before) {
+  public void set$Before(Object $before) {
     this.$before = $before;
   }
 
 
-  public FiltersCondition $count(Any $count) {
+  public FiltersCondition $count(Object $count) {
     
     this.$count = $count;
     return this;
@@ -629,17 +629,17 @@ public class FiltersCondition {
    * @return $count
   **/
   @javax.annotation.Nullable
-  public Any get$Count() {
+  public Object get$Count() {
     return $count;
   }
 
 
-  public void set$Count(Any $count) {
+  public void set$Count(Object $count) {
     this.$count = $count;
   }
 
 
-  public FiltersCondition $countLess(Any $countLess) {
+  public FiltersCondition $countLess(Object $countLess) {
     
     this.$countLess = $countLess;
     return this;
@@ -650,17 +650,17 @@ public class FiltersCondition {
    * @return $countLess
   **/
   @javax.annotation.Nullable
-  public Any get$CountLess() {
+  public Object get$CountLess() {
     return $countLess;
   }
 
 
-  public void set$CountLess(Any $countLess) {
+  public void set$CountLess(Object $countLess) {
     this.$countLess = $countLess;
   }
 
 
-  public FiltersCondition $countMore(Any $countMore) {
+  public FiltersCondition $countMore(Object $countMore) {
     
     this.$countMore = $countMore;
     return this;
@@ -671,12 +671,12 @@ public class FiltersCondition {
    * @return $countMore
   **/
   @javax.annotation.Nullable
-  public Any get$CountMore() {
+  public Object get$CountMore() {
     return $countMore;
   }
 
 
-  public void set$CountMore(Any $countMore) {
+  public void set$CountMore(Object $countMore) {
     this.$countMore = $countMore;
   }
 
@@ -718,9 +718,20 @@ public class FiltersCondition {
         Objects.equals(this.$countMore, filtersCondition.$countMore);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash($in, $notIn, $is, $isDaysAgo, $isDaysInFuture, $isNot, $hasValue, $isUnknown, $contains, $notContain, $startsWith, $endsWith, $moreThan, $lessThan, $moreThanAgo, $lessThanAgo, $moreThanFuture, $lessThanFuture, $moreThanEqual, $lessThanEqual, $after, $before, $count, $countLess, $countMore);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -825,106 +836,6 @@ public class FiltersCondition {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `$in`
-      if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$in"));
-      }
-      // validate the optional field `$not_in`
-      if (jsonObj.get("$not_in") != null && !jsonObj.get("$not_in").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$not_in"));
-      }
-      // validate the optional field `$is`
-      if (jsonObj.get("$is") != null && !jsonObj.get("$is").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is"));
-      }
-      // validate the optional field `$is_days_ago`
-      if (jsonObj.get("$is_days_ago") != null && !jsonObj.get("$is_days_ago").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is_days_ago"));
-      }
-      // validate the optional field `$is_days_in_future`
-      if (jsonObj.get("$is_days_in_future") != null && !jsonObj.get("$is_days_in_future").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is_days_in_future"));
-      }
-      // validate the optional field `$is_not`
-      if (jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is_not"));
-      }
-      // validate the optional field `$has_value`
-      if (jsonObj.get("$has_value") != null && !jsonObj.get("$has_value").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$has_value"));
-      }
-      // validate the optional field `$is_unknown`
-      if (jsonObj.get("$is_unknown") != null && !jsonObj.get("$is_unknown").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$is_unknown"));
-      }
-      // validate the optional field `$contains`
-      if (jsonObj.get("$contains") != null && !jsonObj.get("$contains").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$contains"));
-      }
-      // validate the optional field `$not_contain`
-      if (jsonObj.get("$not_contain") != null && !jsonObj.get("$not_contain").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$not_contain"));
-      }
-      // validate the optional field `$starts_with`
-      if (jsonObj.get("$starts_with") != null && !jsonObj.get("$starts_with").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$starts_with"));
-      }
-      // validate the optional field `$ends_with`
-      if (jsonObj.get("$ends_with") != null && !jsonObj.get("$ends_with").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$ends_with"));
-      }
-      // validate the optional field `$more_than`
-      if (jsonObj.get("$more_than") != null && !jsonObj.get("$more_than").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$more_than"));
-      }
-      // validate the optional field `$less_than`
-      if (jsonObj.get("$less_than") != null && !jsonObj.get("$less_than").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$less_than"));
-      }
-      // validate the optional field `$more_than_ago`
-      if (jsonObj.get("$more_than_ago") != null && !jsonObj.get("$more_than_ago").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$more_than_ago"));
-      }
-      // validate the optional field `$less_than_ago`
-      if (jsonObj.get("$less_than_ago") != null && !jsonObj.get("$less_than_ago").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$less_than_ago"));
-      }
-      // validate the optional field `$more_than_future`
-      if (jsonObj.get("$more_than_future") != null && !jsonObj.get("$more_than_future").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$more_than_future"));
-      }
-      // validate the optional field `$less_than_future`
-      if (jsonObj.get("$less_than_future") != null && !jsonObj.get("$less_than_future").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$less_than_future"));
-      }
-      // validate the optional field `$more_than_equal`
-      if (jsonObj.get("$more_than_equal") != null && !jsonObj.get("$more_than_equal").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$more_than_equal"));
-      }
-      // validate the optional field `$less_than_equal`
-      if (jsonObj.get("$less_than_equal") != null && !jsonObj.get("$less_than_equal").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$less_than_equal"));
-      }
-      // validate the optional field `$after`
-      if (jsonObj.get("$after") != null && !jsonObj.get("$after").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$after"));
-      }
-      // validate the optional field `$before`
-      if (jsonObj.get("$before") != null && !jsonObj.get("$before").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$before"));
-      }
-      // validate the optional field `$count`
-      if (jsonObj.get("$count") != null && !jsonObj.get("$count").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$count"));
-      }
-      // validate the optional field `$count_less`
-      if (jsonObj.get("$count_less") != null && !jsonObj.get("$count_less").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$count_less"));
-      }
-      // validate the optional field `$count_more`
-      if (jsonObj.get("$count_more") != null && !jsonObj.get("$count_more").isJsonNull()) {
-        Any.validateJsonElement(jsonObj.get("$count_more"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

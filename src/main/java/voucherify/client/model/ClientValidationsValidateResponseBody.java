@@ -28,7 +28,7 @@ import voucherify.client.model.Session;
 import voucherify.client.model.StackingRules;
 import voucherify.client.model.ValidationsRedeemableInapplicable;
 import voucherify.client.model.ValidationsRedeemableSkipped;
-import voucherify.client.model.ValidationsValidateAllResponseBodyRedeemablesItem;
+import voucherify.client.model.ValidationsValidateResponseBodyRedeemablesItem;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,7 +66,7 @@ public class ClientValidationsValidateResponseBody {
 
   public static final String SERIALIZED_NAME_REDEEMABLES = "redeemables";
   @SerializedName(SERIALIZED_NAME_REDEEMABLES)
-  private List<ValidationsValidateAllResponseBodyRedeemablesItem> redeemables = new ArrayList<>();
+  private List<ValidationsValidateResponseBodyRedeemablesItem> redeemables = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SKIPPED_REDEEMABLES = "skipped_redeemables";
   @SerializedName(SERIALIZED_NAME_SKIPPED_REDEEMABLES)
@@ -116,13 +116,13 @@ public class ClientValidationsValidateResponseBody {
   }
 
 
-  public ClientValidationsValidateResponseBody redeemables(List<ValidationsValidateAllResponseBodyRedeemablesItem> redeemables) {
+  public ClientValidationsValidateResponseBody redeemables(List<ValidationsValidateResponseBodyRedeemablesItem> redeemables) {
     
     this.redeemables = redeemables;
     return this;
   }
 
-  public ClientValidationsValidateResponseBody addRedeemablesItem(ValidationsValidateAllResponseBodyRedeemablesItem redeemablesItem) {
+  public ClientValidationsValidateResponseBody addRedeemablesItem(ValidationsValidateResponseBodyRedeemablesItem redeemablesItem) {
     if (this.redeemables == null) {
       this.redeemables = new ArrayList<>();
     }
@@ -131,16 +131,16 @@ public class ClientValidationsValidateResponseBody {
   }
 
    /**
-   * Lists validation results of each redeemable. If redeemables_application_mode&#x3D;\&quot;PARTIAL\&quot; all redeemables here will be \&quot;APPLICABLE\&quot;
+   * Get redeemables
    * @return redeemables
   **/
   @javax.annotation.Nonnull
-  public List<ValidationsValidateAllResponseBodyRedeemablesItem> getRedeemables() {
+  public List<ValidationsValidateResponseBodyRedeemablesItem> getRedeemables() {
     return redeemables;
   }
 
 
-  public void setRedeemables(List<ValidationsValidateAllResponseBodyRedeemablesItem> redeemables) {
+  public void setRedeemables(List<ValidationsValidateResponseBodyRedeemablesItem> redeemables) {
     this.redeemables = redeemables;
   }
 
@@ -398,7 +398,7 @@ public class ClientValidationsValidateResponseBody {
       JsonArray jsonArrayredeemables = jsonObj.getAsJsonArray("redeemables");
       // validate the required field `redeemables` (array)
       for (int i = 0; i < jsonArrayredeemables.size(); i++) {
-        ValidationsValidateAllResponseBodyRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
+        ValidationsValidateResponseBodyRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
       };
       if (jsonObj.get("skipped_redeemables") != null && !jsonObj.get("skipped_redeemables").isJsonNull()) {
         JsonArray jsonArrayskippedRedeemables = jsonObj.getAsJsonArray("skipped_redeemables");

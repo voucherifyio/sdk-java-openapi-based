@@ -14,7 +14,7 @@ Response body schema for **GET** `/vouchers/{code}/redemption`.
 |**url** | **String** | URL |  |
 |**dataRef** | **String** | Identifies the name of the attribute that contains the array of &#x60;redemption_entries&#x60;. |  |
 |**total** | **Integer** | Total number of redemption objects. |  |
-|**redemptionEntries** | [**List&lt;VouchersRedemptionGetResponseBodyRedemptionEntriesItem&gt;**](VouchersRedemptionGetResponseBodyRedemptionEntriesItem.md) | Contains the array of successful and failed redemption objects. |  |
+|**redemptionEntries** | [**List&lt;VouchersRedemptionGetResponseBodyRedemptionEntriesItem&gt;**](VouchersRedemptionGetResponseBodyRedemptionEntriesItem.md) |  |  |
 
 
 

@@ -25,17 +25,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyGift;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyPublish;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyRedemption;
+import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe;
 import voucherify.client.model.Category;
 import voucherify.client.model.Discount;
 import voucherify.client.model.SimpleCustomer;
 import voucherify.client.model.ValidationRulesAssignmentsList;
 import voucherify.client.model.ValidityHours;
 import voucherify.client.model.VoucherAssets;
-import voucherify.client.model.VoucherGift;
-import voucherify.client.model.VoucherLoyaltyCard;
-import voucherify.client.model.VoucherPublish;
-import voucherify.client.model.VoucherRedemption;
-import voucherify.client.model.VoucherValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -154,11 +154,11 @@ public class RedemptionVoucher {
 
   public static final String SERIALIZED_NAME_GIFT = "gift";
   @SerializedName(SERIALIZED_NAME_GIFT)
-  private VoucherGift gift;
+  private CampaignsVouchersCreateCombinedResponseBodyGift gift;
 
   public static final String SERIALIZED_NAME_LOYALTY_CARD = "loyalty_card";
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARD)
-  private VoucherLoyaltyCard loyaltyCard;
+  private CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard loyaltyCard;
 
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -170,7 +170,7 @@ public class RedemptionVoucher {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private VoucherValidityTimeframe validityTimeframe;
+  private CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -283,11 +283,11 @@ public class RedemptionVoucher {
 
   public static final String SERIALIZED_NAME_PUBLISH = "publish";
   @SerializedName(SERIALIZED_NAME_PUBLISH)
-  private VoucherPublish publish;
+  private CampaignsVouchersCreateCombinedResponseBodyPublish publish;
 
   public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
   @SerializedName(SERIALIZED_NAME_REDEMPTION)
-  private VoucherRedemption redemption;
+  private CampaignsVouchersCreateCombinedResponseBodyRedemption redemption;
 
   public static final String SERIALIZED_NAME_HOLDER = "holder";
   @SerializedName(SERIALIZED_NAME_HOLDER)
@@ -493,7 +493,7 @@ public class RedemptionVoucher {
   }
 
 
-  public RedemptionVoucher gift(VoucherGift gift) {
+  public RedemptionVoucher gift(CampaignsVouchersCreateCombinedResponseBodyGift gift) {
     
     this.gift = gift;
     return this;
@@ -504,17 +504,17 @@ public class RedemptionVoucher {
    * @return gift
   **/
   @javax.annotation.Nullable
-  public VoucherGift getGift() {
+  public CampaignsVouchersCreateCombinedResponseBodyGift getGift() {
     return gift;
   }
 
 
-  public void setGift(VoucherGift gift) {
+  public void setGift(CampaignsVouchersCreateCombinedResponseBodyGift gift) {
     this.gift = gift;
   }
 
 
-  public RedemptionVoucher loyaltyCard(VoucherLoyaltyCard loyaltyCard) {
+  public RedemptionVoucher loyaltyCard(CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard loyaltyCard) {
     
     this.loyaltyCard = loyaltyCard;
     return this;
@@ -525,12 +525,12 @@ public class RedemptionVoucher {
    * @return loyaltyCard
   **/
   @javax.annotation.Nullable
-  public VoucherLoyaltyCard getLoyaltyCard() {
+  public CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
 
 
-  public void setLoyaltyCard(VoucherLoyaltyCard loyaltyCard) {
+  public void setLoyaltyCard(CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard loyaltyCard) {
     this.loyaltyCard = loyaltyCard;
   }
 
@@ -577,7 +577,7 @@ public class RedemptionVoucher {
   }
 
 
-  public RedemptionVoucher validityTimeframe(VoucherValidityTimeframe validityTimeframe) {
+  public RedemptionVoucher validityTimeframe(CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -588,12 +588,12 @@ public class RedemptionVoucher {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public VoucherValidityTimeframe getValidityTimeframe() {
+  public CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(VoucherValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -879,7 +879,7 @@ public class RedemptionVoucher {
   }
 
 
-  public RedemptionVoucher publish(VoucherPublish publish) {
+  public RedemptionVoucher publish(CampaignsVouchersCreateCombinedResponseBodyPublish publish) {
     
     this.publish = publish;
     return this;
@@ -890,17 +890,17 @@ public class RedemptionVoucher {
    * @return publish
   **/
   @javax.annotation.Nullable
-  public VoucherPublish getPublish() {
+  public CampaignsVouchersCreateCombinedResponseBodyPublish getPublish() {
     return publish;
   }
 
 
-  public void setPublish(VoucherPublish publish) {
+  public void setPublish(CampaignsVouchersCreateCombinedResponseBodyPublish publish) {
     this.publish = publish;
   }
 
 
-  public RedemptionVoucher redemption(VoucherRedemption redemption) {
+  public RedemptionVoucher redemption(CampaignsVouchersCreateCombinedResponseBodyRedemption redemption) {
     
     this.redemption = redemption;
     return this;
@@ -911,12 +911,12 @@ public class RedemptionVoucher {
    * @return redemption
   **/
   @javax.annotation.Nullable
-  public VoucherRedemption getRedemption() {
+  public CampaignsVouchersCreateCombinedResponseBodyRedemption getRedemption() {
     return redemption;
   }
 
 
-  public void setRedemption(VoucherRedemption redemption) {
+  public void setRedemption(CampaignsVouchersCreateCombinedResponseBodyRedemption redemption) {
     this.redemption = redemption;
   }
 
@@ -1166,15 +1166,15 @@ public class RedemptionVoucher {
       }
       // validate the optional field `gift`
       if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        VoucherGift.validateJsonElement(jsonObj.get("gift"));
+        CampaignsVouchersCreateCombinedResponseBodyGift.validateJsonElement(jsonObj.get("gift"));
       }
       // validate the optional field `loyalty_card`
       if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        VoucherLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+        CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        VoucherValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
@@ -1206,11 +1206,11 @@ public class RedemptionVoucher {
       }
       // validate the optional field `publish`
       if (jsonObj.get("publish") != null && !jsonObj.get("publish").isJsonNull()) {
-        VoucherPublish.validateJsonElement(jsonObj.get("publish"));
+        CampaignsVouchersCreateCombinedResponseBodyPublish.validateJsonElement(jsonObj.get("publish"));
       }
       // validate the optional field `redemption`
       if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
-        VoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
+        CampaignsVouchersCreateCombinedResponseBodyRedemption.validateJsonElement(jsonObj.get("redemption"));
       }
       // validate the optional field `holder`
       if (jsonObj.get("holder") != null && !jsonObj.get("holder").isJsonNull()) {

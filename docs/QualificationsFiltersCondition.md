@@ -9,8 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**$is** | **List&lt;String&gt;** |  |  [optional] |
 |**$isNot** | **List&lt;String&gt;** |  |  [optional] |
-|**$hasValue** | [**Any**](Any.md) |  |  [optional] |
-|**$isUnknown** | [**Any**](Any.md) |  |  [optional] |
+|**$hasValue** | **Object** |  |  [optional] |
+|**$isUnknown** | **Object** |  |  [optional] |
 |**$in** | **List&lt;String&gt;** |  |  [optional] |
 |**$notIn** | **List&lt;String&gt;** |  |  [optional] |
 

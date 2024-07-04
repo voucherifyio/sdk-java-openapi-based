@@ -22,210 +22,228 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.CreatePublicationCampaign;
-import voucherify.client.model.CreatePublicationWithCampaign;
-import voucherify.client.model.CreatePublicationWithSpecificVoucher;
-import voucherify.client.model.Customer;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import voucherify.client.model.PublicationsCreateRequestBodyCustomer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * PublicationsCreateRequestBody
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class PublicationsCreateRequestBody extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(PublicationsCreateRequestBody.class.getName());
+public class PublicationsCreateRequestBody {
+  public static final String SERIALIZED_NAME_VOUCHER = "voucher";
+  @SerializedName(SERIALIZED_NAME_VOUCHER)
+  private String voucher;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!PublicationsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'PublicationsCreateRequestBody' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CreatePublicationWithSpecificVoucher> adapterCreatePublicationWithSpecificVoucher = gson.getDelegateAdapter(this, TypeToken.get(CreatePublicationWithSpecificVoucher.class));
-            final TypeAdapter<CreatePublicationWithCampaign> adapterCreatePublicationWithCampaign = gson.getDelegateAdapter(this, TypeToken.get(CreatePublicationWithCampaign.class));
+  public static final String SERIALIZED_NAME_SOURCE_ID = "source_id";
+  @SerializedName(SERIALIZED_NAME_SOURCE_ID)
+  private String sourceId;
 
-            return (TypeAdapter<T>) new TypeAdapter<PublicationsCreateRequestBody>() {
-                @Override
-                public void write(JsonWriter out, PublicationsCreateRequestBody value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public static final String SERIALIZED_NAME_CUSTOMER = "customer";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER)
+  private PublicationsCreateRequestBodyCustomer customer;
 
-                    // check if the actual instance is of the type `CreatePublicationWithSpecificVoucher`
-                    if (value.getActualInstance() instanceof CreatePublicationWithSpecificVoucher) {
-                      JsonElement element = adapterCreatePublicationWithSpecificVoucher.toJsonTree((CreatePublicationWithSpecificVoucher)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `CreatePublicationWithCampaign`
-                    if (value.getActualInstance() instanceof CreatePublicationWithCampaign) {
-                      JsonElement element = adapterCreatePublicationWithCampaign.toJsonTree((CreatePublicationWithCampaign)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CreatePublicationWithCampaign, CreatePublicationWithSpecificVoucher");
-                }
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
 
-                @Override
-                public PublicationsCreateRequestBody read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN)
+  private CreatePublicationCampaign campaign;
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
+  public PublicationsCreateRequestBody() {
+  }
 
-                    // deserialize CreatePublicationWithSpecificVoucher
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CreatePublicationWithSpecificVoucher.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCreatePublicationWithSpecificVoucher;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CreatePublicationWithSpecificVoucher'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CreatePublicationWithSpecificVoucher failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CreatePublicationWithSpecificVoucher'", e);
-                    }
-                    // deserialize CreatePublicationWithCampaign
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      CreatePublicationWithCampaign.validateJsonElement(jsonElement);
-                      actualAdapter = adapterCreatePublicationWithCampaign;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'CreatePublicationWithCampaign'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for CreatePublicationWithCampaign failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'CreatePublicationWithCampaign'", e);
-                    }
+  public PublicationsCreateRequestBody voucher(String voucher) {
+    
+    this.voucher = voucher;
+    return this;
+  }
 
-                    if (match == 1) {
-                        PublicationsCreateRequestBody ret = new PublicationsCreateRequestBody();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+   /**
+   * Code of voucher being published.
+   * @return voucher
+  **/
+  @javax.annotation.Nullable
+  public String getVoucher() {
+    return voucher;
+  }
 
-                    throw new IOException(String.format("Failed deserialization for PublicationsCreateRequestBody: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+
+  public void setVoucher(String voucher) {
+    this.voucher = voucher;
+  }
+
+
+  public PublicationsCreateRequestBody sourceId(String sourceId) {
+    
+    this.sourceId = sourceId;
+    return this;
+  }
+
+   /**
+   * The merchant’s publication ID if it is different from the Voucherify publication ID. It&#39;s an optional tracking identifier of a publication. It is really useful in case of an integration between multiple systems. It can be a publication ID from a CRM system, database or 3rd-party service. If &#x60;source_id&#x60; is provided only 1 voucher can be published per request.
+   * @return sourceId
+  **/
+  @javax.annotation.Nullable
+  public String getSourceId() {
+    return sourceId;
+  }
+
+
+  public void setSourceId(String sourceId) {
+    this.sourceId = sourceId;
+  }
+
+
+  public PublicationsCreateRequestBody customer(PublicationsCreateRequestBodyCustomer customer) {
+    
+    this.customer = customer;
+    return this;
+  }
+
+   /**
+   * Get customer
+   * @return customer
+  **/
+  @javax.annotation.Nullable
+  public PublicationsCreateRequestBodyCustomer getCustomer() {
+    return customer;
+  }
+
+
+  public void setCustomer(PublicationsCreateRequestBodyCustomer customer) {
+    this.customer = customer;
+  }
+
+
+  public PublicationsCreateRequestBody metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public PublicationsCreateRequestBody campaign(CreatePublicationCampaign campaign) {
+    
+    this.campaign = campaign;
+    return this;
+  }
+
+   /**
+   * Get campaign
+   * @return campaign
+  **/
+  @javax.annotation.Nullable
+  public CreatePublicationCampaign getCampaign() {
+    return campaign;
+  }
+
+
+  public void setCampaign(CreatePublicationCampaign campaign) {
+    this.campaign = campaign;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public PublicationsCreateRequestBody() {
-        super("oneOf", Boolean.FALSE);
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    PublicationsCreateRequestBody publicationsCreateRequestBody = (PublicationsCreateRequestBody) o;
+    return Objects.equals(this.voucher, publicationsCreateRequestBody.voucher) &&
+        Objects.equals(this.sourceId, publicationsCreateRequestBody.sourceId) &&
+        Objects.equals(this.customer, publicationsCreateRequestBody.customer) &&
+        Objects.equals(this.metadata, publicationsCreateRequestBody.metadata) &&
+        Objects.equals(this.campaign, publicationsCreateRequestBody.campaign);
+  }
 
-    public PublicationsCreateRequestBody(CreatePublicationWithCampaign o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
+  @Override
+  public int hashCode() {
+    return Objects.hash(voucher, sourceId, customer, metadata, campaign);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PublicationsCreateRequestBody {\n");
+    sb.append("    voucher: ").append(toIndentedString(voucher)).append("\n");
+    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 
-    public PublicationsCreateRequestBody(CreatePublicationWithSpecificVoucher o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
 
-    static {
-        schemas.put("CreatePublicationWithSpecificVoucher", CreatePublicationWithSpecificVoucher.class);
-        schemas.put("CreatePublicationWithCampaign", CreatePublicationWithCampaign.class);
-    }
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
 
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return PublicationsCreateRequestBody.schemas;
-    }
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("voucher");
+    openapiFields.add("source_id");
+    openapiFields.add("customer");
+    openapiFields.add("metadata");
+    openapiFields.add("campaign");
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * CreatePublicationWithCampaign, CreatePublicationWithSpecificVoucher
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof CreatePublicationWithSpecificVoucher) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CreatePublicationWithCampaign) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CreatePublicationWithCampaign, CreatePublicationWithSpecificVoucher");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * CreatePublicationWithCampaign, CreatePublicationWithSpecificVoucher
-     *
-     * @return The actual instance (CreatePublicationWithCampaign, CreatePublicationWithSpecificVoucher)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `CreatePublicationWithSpecificVoucher`. If the actual instance is not `CreatePublicationWithSpecificVoucher`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CreatePublicationWithSpecificVoucher`
-     * @throws ClassCastException if the instance is not `CreatePublicationWithSpecificVoucher`
-     */
-    public CreatePublicationWithSpecificVoucher getCreatePublicationWithSpecificVoucher() throws ClassCastException {
-        return (CreatePublicationWithSpecificVoucher)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `CreatePublicationWithCampaign`. If the actual instance is not `CreatePublicationWithCampaign`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CreatePublicationWithCampaign`
-     * @throws ClassCastException if the instance is not `CreatePublicationWithCampaign`
-     */
-    public CreatePublicationWithCampaign getCreatePublicationWithCampaign() throws ClassCastException {
-        return (CreatePublicationWithCampaign)super.getActualInstance();
-    }
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -234,27 +252,62 @@ public class PublicationsCreateRequestBody extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to PublicationsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with CreatePublicationWithSpecificVoucher
-    try {
-      CreatePublicationWithSpecificVoucher.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CreatePublicationWithSpecificVoucher failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with CreatePublicationWithCampaign
-    try {
-      CreatePublicationWithCampaign.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for CreatePublicationWithCampaign failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for PublicationsCreateRequestBody with oneOf schemas: CreatePublicationWithCampaign, CreatePublicationWithSpecificVoucher. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!PublicationsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PublicationsCreateRequestBody is not found in the empty JSON string", PublicationsCreateRequestBody.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!PublicationsCreateRequestBody.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PublicationsCreateRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) && !jsonObj.get("voucher").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `voucher` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voucher").toString()));
+      }
+      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
+      }
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        PublicationsCreateRequestBodyCustomer.validateJsonElement(jsonObj.get("customer"));
+      }
+      // validate the optional field `campaign`
+      if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
+        CreatePublicationCampaign.validateJsonElement(jsonObj.get("campaign"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!PublicationsCreateRequestBody.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PublicationsCreateRequestBody' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<PublicationsCreateRequestBody> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PublicationsCreateRequestBody.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<PublicationsCreateRequestBody>() {
+           @Override
+           public void write(JsonWriter out, PublicationsCreateRequestBody value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public PublicationsCreateRequestBody read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

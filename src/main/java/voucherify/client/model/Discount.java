@@ -24,336 +24,685 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.DiscountAmount;
-import voucherify.client.model.DiscountFixed;
-import voucherify.client.model.DiscountFixedVouchersEffectTypes;
-import voucherify.client.model.DiscountPercent;
-import voucherify.client.model.DiscountUnit;
-import voucherify.client.model.DiscountUnitMultiple;
 import voucherify.client.model.DiscountUnitMultipleOneUnit;
 import voucherify.client.model.SimpleProductDiscountUnit;
 import voucherify.client.model.SimpleSkuDiscountUnit;
 
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import voucherify.client.JSON;
 
+/**
+ * Discount
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class Discount extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(Discount.class.getName());
+public class Discount {
+  /**
+   * Gets or Sets type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    AMOUNT("AMOUNT"),
+    
+    UNIT("UNIT"),
+    
+    PERCENT("PERCENT"),
+    
+    FIXED("FIXED");
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!Discount.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'Discount' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<DiscountAmount> adapterDiscountAmount = gson.getDelegateAdapter(this, TypeToken.get(DiscountAmount.class));
-            final TypeAdapter<DiscountUnit> adapterDiscountUnit = gson.getDelegateAdapter(this, TypeToken.get(DiscountUnit.class));
-            final TypeAdapter<DiscountUnitMultiple> adapterDiscountUnitMultiple = gson.getDelegateAdapter(this, TypeToken.get(DiscountUnitMultiple.class));
-            final TypeAdapter<DiscountPercent> adapterDiscountPercent = gson.getDelegateAdapter(this, TypeToken.get(DiscountPercent.class));
-            final TypeAdapter<DiscountFixed> adapterDiscountFixed = gson.getDelegateAdapter(this, TypeToken.get(DiscountFixed.class));
+    private String value;
 
-            return (TypeAdapter<T>) new TypeAdapter<Discount>() {
-                @Override
-                public void write(JsonWriter out, Discount value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `DiscountAmount`
-                    if (value.getActualInstance() instanceof DiscountAmount) {
-                      JsonElement element = adapterDiscountAmount.toJsonTree((DiscountAmount)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `DiscountUnit`
-                    if (value.getActualInstance() instanceof DiscountUnit) {
-                      JsonElement element = adapterDiscountUnit.toJsonTree((DiscountUnit)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `DiscountUnitMultiple`
-                    if (value.getActualInstance() instanceof DiscountUnitMultiple) {
-                      JsonElement element = adapterDiscountUnitMultiple.toJsonTree((DiscountUnitMultiple)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `DiscountPercent`
-                    if (value.getActualInstance() instanceof DiscountPercent) {
-                      JsonElement element = adapterDiscountPercent.toJsonTree((DiscountPercent)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    // check if the actual instance is of the type `DiscountFixed`
-                    if (value.getActualInstance() instanceof DiscountFixed) {
-                      JsonElement element = adapterDiscountFixed.toJsonTree((DiscountFixed)value.getActualInstance());
-                      elementAdapter.write(out, element);
-                      return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: DiscountAmount, DiscountFixed, DiscountPercent, DiscountUnit, DiscountUnitMultiple");
-                }
-
-                @Override
-                public Discount read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize DiscountAmount
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      DiscountAmount.validateJsonElement(jsonElement);
-                      actualAdapter = adapterDiscountAmount;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'DiscountAmount'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for DiscountAmount failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'DiscountAmount'", e);
-                    }
-                    // deserialize DiscountUnit
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      DiscountUnit.validateJsonElement(jsonElement);
-                      actualAdapter = adapterDiscountUnit;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'DiscountUnit'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for DiscountUnit failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'DiscountUnit'", e);
-                    }
-                    // deserialize DiscountUnitMultiple
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      DiscountUnitMultiple.validateJsonElement(jsonElement);
-                      actualAdapter = adapterDiscountUnitMultiple;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'DiscountUnitMultiple'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for DiscountUnitMultiple failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'DiscountUnitMultiple'", e);
-                    }
-                    // deserialize DiscountPercent
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      DiscountPercent.validateJsonElement(jsonElement);
-                      actualAdapter = adapterDiscountPercent;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'DiscountPercent'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for DiscountPercent failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'DiscountPercent'", e);
-                    }
-                    // deserialize DiscountFixed
-                    try {
-                      // validate the JSON object to see if any exception is thrown
-                      DiscountFixed.validateJsonElement(jsonElement);
-                      actualAdapter = adapterDiscountFixed;
-                      match++;
-                      log.log(Level.FINER, "Input data matches schema 'DiscountFixed'");
-                    } catch (Exception e) {
-                      // deserialization failed, continue
-                      errorMessages.add(String.format("Deserialization for DiscountFixed failed with `%s`.", e.getMessage()));
-                      log.log(Level.FINER, "Input data does not match schema 'DiscountFixed'", e);
-                    }
-
-                    if (match == 1) {
-                        Discount ret = new Discount();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for Discount: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    TypeEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public Discount() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public Discount(DiscountAmount o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public Discount(DiscountFixed o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public Discount(DiscountPercent o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public Discount(DiscountUnit o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public Discount(DiscountUnitMultiple o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("DiscountAmount", DiscountAmount.class);
-        schemas.put("DiscountUnit", DiscountUnit.class);
-        schemas.put("DiscountUnitMultiple", DiscountUnitMultiple.class);
-        schemas.put("DiscountPercent", DiscountPercent.class);
-        schemas.put("DiscountFixed", DiscountFixed.class);
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return Discount.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * DiscountAmount, DiscountFixed, DiscountPercent, DiscountUnit, DiscountUnitMultiple
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_AMOUNT_OFF = "amount_off";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_OFF)
+  private BigDecimal amountOff;
+
+  public static final String SERIALIZED_NAME_AMOUNT_OFF_FORMULA = "amount_off_formula";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_OFF_FORMULA)
+  private String amountOffFormula;
+
+  public static final String SERIALIZED_NAME_AGGREGATED_AMOUNT_LIMIT = "aggregated_amount_limit";
+  @SerializedName(SERIALIZED_NAME_AGGREGATED_AMOUNT_LIMIT)
+  private Integer aggregatedAmountLimit;
+
+  /**
+   * Gets or Sets effect
+   */
+  @JsonAdapter(EffectEnum.Adapter.class)
+  public enum EffectEnum {
+    APPLY_TO_ORDER("APPLY_TO_ORDER"),
+    
+    APPLY_TO_ITEMS("APPLY_TO_ITEMS"),
+    
+    APPLY_TO_ITEMS_PROPORTIONALLY("APPLY_TO_ITEMS_PROPORTIONALLY"),
+    
+    APPLY_TO_ITEMS_PROPORTIONALLY_BY_QUANTITY("APPLY_TO_ITEMS_PROPORTIONALLY_BY_QUANTITY"),
+    
+    APPLY_TO_ITEMS_BY_QUANTITY("APPLY_TO_ITEMS_BY_QUANTITY"),
+    
+    ADD_MISSING_ITEMS("ADD_MISSING_ITEMS"),
+    
+    ADD_NEW_ITEMS("ADD_NEW_ITEMS"),
+    
+    ADD_MANY_ITEMS("ADD_MANY_ITEMS");
+
+    private String value;
+
+    EffectEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof DiscountAmount) {
-            super.setActualInstance(instance);
-            return;
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EffectEnum fromValue(String value) {
+      for (EffectEnum b : EffectEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-
-        if (instance instanceof DiscountUnit) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof DiscountUnitMultiple) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof DiscountPercent) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof DiscountFixed) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be DiscountAmount, DiscountFixed, DiscountPercent, DiscountUnit, DiscountUnitMultiple");
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * DiscountAmount, DiscountFixed, DiscountPercent, DiscountUnit, DiscountUnitMultiple
-     *
-     * @return The actual instance (DiscountAmount, DiscountFixed, DiscountPercent, DiscountUnit, DiscountUnitMultiple)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
+    public static class Adapter extends TypeAdapter<EffectEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EffectEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
 
-    /**
-     * Get the actual instance of `DiscountAmount`. If the actual instance is not `DiscountAmount`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DiscountAmount`
-     * @throws ClassCastException if the instance is not `DiscountAmount`
-     */
-    public DiscountAmount getDiscountAmount() throws ClassCastException {
-        return (DiscountAmount)super.getActualInstance();
+      @Override
+      public EffectEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EffectEnum.fromValue(value);
+      }
     }
-    /**
-     * Get the actual instance of `DiscountUnit`. If the actual instance is not `DiscountUnit`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DiscountUnit`
-     * @throws ClassCastException if the instance is not `DiscountUnit`
-     */
-    public DiscountUnit getDiscountUnit() throws ClassCastException {
-        return (DiscountUnit)super.getActualInstance();
+  }
+
+  public static final String SERIALIZED_NAME_EFFECT = "effect";
+  @SerializedName(SERIALIZED_NAME_EFFECT)
+  private EffectEnum effect;
+
+  public static final String SERIALIZED_NAME_IS_DYNAMIC = "is_dynamic";
+  @SerializedName(SERIALIZED_NAME_IS_DYNAMIC)
+  private Boolean isDynamic;
+
+  public static final String SERIALIZED_NAME_UNIT_OFF = "unit_off";
+  @SerializedName(SERIALIZED_NAME_UNIT_OFF)
+  private Integer unitOff;
+
+  public static final String SERIALIZED_NAME_UNIT_OFF_FORMULA = "unit_off_formula";
+  @SerializedName(SERIALIZED_NAME_UNIT_OFF_FORMULA)
+  private String unitOffFormula;
+
+  public static final String SERIALIZED_NAME_UNIT_TYPE = "unit_type";
+  @SerializedName(SERIALIZED_NAME_UNIT_TYPE)
+  private String unitType;
+
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private SimpleProductDiscountUnit product;
+
+  public static final String SERIALIZED_NAME_SKU = "sku";
+  @SerializedName(SERIALIZED_NAME_SKU)
+  private SimpleSkuDiscountUnit sku;
+
+  public static final String SERIALIZED_NAME_UNITS = "units";
+  @SerializedName(SERIALIZED_NAME_UNITS)
+  private List<DiscountUnitMultipleOneUnit> units;
+
+  public static final String SERIALIZED_NAME_PERCENT_OFF = "percent_off";
+  @SerializedName(SERIALIZED_NAME_PERCENT_OFF)
+  private BigDecimal percentOff;
+
+  public static final String SERIALIZED_NAME_PERCENT_OFF_FORMULA = "percent_off_formula";
+  @SerializedName(SERIALIZED_NAME_PERCENT_OFF_FORMULA)
+  private String percentOffFormula;
+
+  public static final String SERIALIZED_NAME_AMOUNT_LIMIT = "amount_limit";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_LIMIT)
+  private BigDecimal amountLimit;
+
+  public static final String SERIALIZED_NAME_FIXED_AMOUNT = "fixed_amount";
+  @SerializedName(SERIALIZED_NAME_FIXED_AMOUNT)
+  private BigDecimal fixedAmount;
+
+  public static final String SERIALIZED_NAME_FIXED_AMOUNT_FORMULA = "fixed_amount_formula";
+  @SerializedName(SERIALIZED_NAME_FIXED_AMOUNT_FORMULA)
+  private String fixedAmountFormula;
+
+  public Discount() {
+  }
+
+  public Discount type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public Discount amountOff(BigDecimal amountOff) {
+    
+    this.amountOff = amountOff;
+    return this;
+  }
+
+   /**
+   * Amount taken off the subtotal of a price. Value is multiplied by 100 to precisely represent 2 decimal places. For example, a $10 discount is written as 1000.
+   * @return amountOff
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getAmountOff() {
+    return amountOff;
+  }
+
+
+  public void setAmountOff(BigDecimal amountOff) {
+    this.amountOff = amountOff;
+  }
+
+
+  public Discount amountOffFormula(String amountOffFormula) {
+    
+    this.amountOffFormula = amountOffFormula;
+    return this;
+  }
+
+   /**
+   * Get amountOffFormula
+   * @return amountOffFormula
+  **/
+  @javax.annotation.Nullable
+  public String getAmountOffFormula() {
+    return amountOffFormula;
+  }
+
+
+  public void setAmountOffFormula(String amountOffFormula) {
+    this.amountOffFormula = amountOffFormula;
+  }
+
+
+  public Discount aggregatedAmountLimit(Integer aggregatedAmountLimit) {
+    
+    this.aggregatedAmountLimit = aggregatedAmountLimit;
+    return this;
+  }
+
+   /**
+   * Maximum discount amount per order.
+   * @return aggregatedAmountLimit
+  **/
+  @javax.annotation.Nullable
+  public Integer getAggregatedAmountLimit() {
+    return aggregatedAmountLimit;
+  }
+
+
+  public void setAggregatedAmountLimit(Integer aggregatedAmountLimit) {
+    this.aggregatedAmountLimit = aggregatedAmountLimit;
+  }
+
+
+  public Discount effect(EffectEnum effect) {
+    
+    this.effect = effect;
+    return this;
+  }
+
+   /**
+   * Get effect
+   * @return effect
+  **/
+  @javax.annotation.Nullable
+  public EffectEnum getEffect() {
+    return effect;
+  }
+
+
+  public void setEffect(EffectEnum effect) {
+    this.effect = effect;
+  }
+
+
+  public Discount isDynamic(Boolean isDynamic) {
+    
+    this.isDynamic = isDynamic;
+    return this;
+  }
+
+   /**
+   * Flag indicating whether the discount was calculated using a formula.
+   * @return isDynamic
+  **/
+  @javax.annotation.Nullable
+  public Boolean getIsDynamic() {
+    return isDynamic;
+  }
+
+
+  public void setIsDynamic(Boolean isDynamic) {
+    this.isDynamic = isDynamic;
+  }
+
+
+  public Discount unitOff(Integer unitOff) {
+    
+    this.unitOff = unitOff;
+    return this;
+  }
+
+   /**
+   * Number of units to be granted a full value discount.
+   * @return unitOff
+  **/
+  @javax.annotation.Nullable
+  public Integer getUnitOff() {
+    return unitOff;
+  }
+
+
+  public void setUnitOff(Integer unitOff) {
+    this.unitOff = unitOff;
+  }
+
+
+  public Discount unitOffFormula(String unitOffFormula) {
+    
+    this.unitOffFormula = unitOffFormula;
+    return this;
+  }
+
+   /**
+   * Get unitOffFormula
+   * @return unitOffFormula
+  **/
+  @javax.annotation.Nullable
+  public String getUnitOffFormula() {
+    return unitOffFormula;
+  }
+
+
+  public void setUnitOffFormula(String unitOffFormula) {
+    this.unitOffFormula = unitOffFormula;
+  }
+
+
+  public Discount unitType(String unitType) {
+    
+    this.unitType = unitType;
+    return this;
+  }
+
+   /**
+   * The product deemed as free, chosen from product inventory (e.g. time, items).
+   * @return unitType
+  **/
+  @javax.annotation.Nullable
+  public String getUnitType() {
+    return unitType;
+  }
+
+
+  public void setUnitType(String unitType) {
+    this.unitType = unitType;
+  }
+
+
+  public Discount product(SimpleProductDiscountUnit product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  public SimpleProductDiscountUnit getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(SimpleProductDiscountUnit product) {
+    this.product = product;
+  }
+
+
+  public Discount sku(SimpleSkuDiscountUnit sku) {
+    
+    this.sku = sku;
+    return this;
+  }
+
+   /**
+   * Get sku
+   * @return sku
+  **/
+  @javax.annotation.Nullable
+  public SimpleSkuDiscountUnit getSku() {
+    return sku;
+  }
+
+
+  public void setSku(SimpleSkuDiscountUnit sku) {
+    this.sku = sku;
+  }
+
+
+  public Discount units(List<DiscountUnitMultipleOneUnit> units) {
+    
+    this.units = units;
+    return this;
+  }
+
+  public Discount addUnitsItem(DiscountUnitMultipleOneUnit unitsItem) {
+    if (this.units == null) {
+      this.units = new ArrayList<>();
     }
-    /**
-     * Get the actual instance of `DiscountUnitMultiple`. If the actual instance is not `DiscountUnitMultiple`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DiscountUnitMultiple`
-     * @throws ClassCastException if the instance is not `DiscountUnitMultiple`
-     */
-    public DiscountUnitMultiple getDiscountUnitMultiple() throws ClassCastException {
-        return (DiscountUnitMultiple)super.getActualInstance();
+    this.units.add(unitsItem);
+    return this;
+  }
+
+   /**
+   * Get units
+   * @return units
+  **/
+  @javax.annotation.Nullable
+  public List<DiscountUnitMultipleOneUnit> getUnits() {
+    return units;
+  }
+
+
+  public void setUnits(List<DiscountUnitMultipleOneUnit> units) {
+    this.units = units;
+  }
+
+
+  public Discount percentOff(BigDecimal percentOff) {
+    
+    this.percentOff = percentOff;
+    return this;
+  }
+
+   /**
+   * The percent discount that the customer will receive.
+   * @return percentOff
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getPercentOff() {
+    return percentOff;
+  }
+
+
+  public void setPercentOff(BigDecimal percentOff) {
+    this.percentOff = percentOff;
+  }
+
+
+  public Discount percentOffFormula(String percentOffFormula) {
+    
+    this.percentOffFormula = percentOffFormula;
+    return this;
+  }
+
+   /**
+   * Get percentOffFormula
+   * @return percentOffFormula
+  **/
+  @javax.annotation.Nullable
+  public String getPercentOffFormula() {
+    return percentOffFormula;
+  }
+
+
+  public void setPercentOffFormula(String percentOffFormula) {
+    this.percentOffFormula = percentOffFormula;
+  }
+
+
+  public Discount amountLimit(BigDecimal amountLimit) {
+    
+    this.amountLimit = amountLimit;
+    return this;
+  }
+
+   /**
+   * Upper limit allowed to be applied as a discount. Value is multiplied by 100 to precisely represent 2 decimal places. For example, a $6 maximum discount is written as 600.
+   * @return amountLimit
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getAmountLimit() {
+    return amountLimit;
+  }
+
+
+  public void setAmountLimit(BigDecimal amountLimit) {
+    this.amountLimit = amountLimit;
+  }
+
+
+  public Discount fixedAmount(BigDecimal fixedAmount) {
+    
+    this.fixedAmount = fixedAmount;
+    return this;
+  }
+
+   /**
+   * Sets a fixed value for an order total or the item price. The value is multiplied by 100 to precisely represent 2 decimal places. For example, a $10 discount is written as 1000. If the fixed amount is calculated by the formula, i.e. the &#x60;fixed_amount_formula&#x60; parameter is present in the fixed amount definition, this value becomes the **fallback value**. As a result, if the formula cannot be calculated due to missing metadata, for example, this value will be used as the fixed value.
+   * @return fixedAmount
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getFixedAmount() {
+    return fixedAmount;
+  }
+
+
+  public void setFixedAmount(BigDecimal fixedAmount) {
+    this.fixedAmount = fixedAmount;
+  }
+
+
+  public Discount fixedAmountFormula(String fixedAmountFormula) {
+    
+    this.fixedAmountFormula = fixedAmountFormula;
+    return this;
+  }
+
+   /**
+   * Get fixedAmountFormula
+   * @return fixedAmountFormula
+  **/
+  @javax.annotation.Nullable
+  public String getFixedAmountFormula() {
+    return fixedAmountFormula;
+  }
+
+
+  public void setFixedAmountFormula(String fixedAmountFormula) {
+    this.fixedAmountFormula = fixedAmountFormula;
+  }
+
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `DiscountPercent`. If the actual instance is not `DiscountPercent`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DiscountPercent`
-     * @throws ClassCastException if the instance is not `DiscountPercent`
-     */
-    public DiscountPercent getDiscountPercent() throws ClassCastException {
-        return (DiscountPercent)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    /**
-     * Get the actual instance of `DiscountFixed`. If the actual instance is not `DiscountFixed`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DiscountFixed`
-     * @throws ClassCastException if the instance is not `DiscountFixed`
-     */
-    public DiscountFixed getDiscountFixed() throws ClassCastException {
-        return (DiscountFixed)super.getActualInstance();
+    Discount discount = (Discount) o;
+    return Objects.equals(this.type, discount.type) &&
+        Objects.equals(this.amountOff, discount.amountOff) &&
+        Objects.equals(this.amountOffFormula, discount.amountOffFormula) &&
+        Objects.equals(this.aggregatedAmountLimit, discount.aggregatedAmountLimit) &&
+        Objects.equals(this.effect, discount.effect) &&
+        Objects.equals(this.isDynamic, discount.isDynamic) &&
+        Objects.equals(this.unitOff, discount.unitOff) &&
+        Objects.equals(this.unitOffFormula, discount.unitOffFormula) &&
+        Objects.equals(this.unitType, discount.unitType) &&
+        Objects.equals(this.product, discount.product) &&
+        Objects.equals(this.sku, discount.sku) &&
+        Objects.equals(this.units, discount.units) &&
+        Objects.equals(this.percentOff, discount.percentOff) &&
+        Objects.equals(this.percentOffFormula, discount.percentOffFormula) &&
+        Objects.equals(this.amountLimit, discount.amountLimit) &&
+        Objects.equals(this.fixedAmount, discount.fixedAmount) &&
+        Objects.equals(this.fixedAmountFormula, discount.fixedAmountFormula);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type, amountOff, amountOffFormula, aggregatedAmountLimit, effect, isDynamic, unitOff, unitOffFormula, unitType, product, sku, units, percentOff, percentOffFormula, amountLimit, fixedAmount, fixedAmountFormula);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Discount {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    amountOff: ").append(toIndentedString(amountOff)).append("\n");
+    sb.append("    amountOffFormula: ").append(toIndentedString(amountOffFormula)).append("\n");
+    sb.append("    aggregatedAmountLimit: ").append(toIndentedString(aggregatedAmountLimit)).append("\n");
+    sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
+    sb.append("    isDynamic: ").append(toIndentedString(isDynamic)).append("\n");
+    sb.append("    unitOff: ").append(toIndentedString(unitOff)).append("\n");
+    sb.append("    unitOffFormula: ").append(toIndentedString(unitOffFormula)).append("\n");
+    sb.append("    unitType: ").append(toIndentedString(unitType)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
+    sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
+    sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    percentOff: ").append(toIndentedString(percentOff)).append("\n");
+    sb.append("    percentOffFormula: ").append(toIndentedString(percentOffFormula)).append("\n");
+    sb.append("    amountLimit: ").append(toIndentedString(amountLimit)).append("\n");
+    sb.append("    fixedAmount: ").append(toIndentedString(fixedAmount)).append("\n");
+    sb.append("    fixedAmountFormula: ").append(toIndentedString(fixedAmountFormula)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("type");
+    openapiFields.add("amount_off");
+    openapiFields.add("amount_off_formula");
+    openapiFields.add("aggregated_amount_limit");
+    openapiFields.add("effect");
+    openapiFields.add("is_dynamic");
+    openapiFields.add("unit_off");
+    openapiFields.add("unit_off_formula");
+    openapiFields.add("unit_type");
+    openapiFields.add("product");
+    openapiFields.add("sku");
+    openapiFields.add("units");
+    openapiFields.add("percent_off");
+    openapiFields.add("percent_off_formula");
+    openapiFields.add("amount_limit");
+    openapiFields.add("fixed_amount");
+    openapiFields.add("fixed_amount_formula");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
+  }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -362,51 +711,124 @@ public class Discount extends AbstractOpenApiSchema {
   * @throws IOException if the JSON Element is invalid with respect to Discount
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    // validate oneOf schemas one by one
-    int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with DiscountAmount
-    try {
-      DiscountAmount.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for DiscountAmount failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with DiscountUnit
-    try {
-      DiscountUnit.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for DiscountUnit failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with DiscountUnitMultiple
-    try {
-      DiscountUnitMultiple.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for DiscountUnitMultiple failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with DiscountPercent
-    try {
-      DiscountPercent.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for DiscountPercent failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    // validate the json string with DiscountFixed
-    try {
-      DiscountFixed.validateJsonElement(jsonElement);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for DiscountFixed failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for Discount with oneOf schemas: DiscountAmount, DiscountFixed, DiscountPercent, DiscountUnit, DiscountUnitMultiple. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      if (jsonElement == null) {
+        if (!Discount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Discount is not found in the empty JSON string", Discount.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Discount.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Discount` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Discount.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("type");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          TypeEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `type` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("type") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
+        }
+      }
+      if ((jsonObj.get("amount_off_formula") != null && !jsonObj.get("amount_off_formula").isJsonNull()) && !jsonObj.get("amount_off_formula").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `amount_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount_off_formula").toString()));
+      }
+      if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
+      }
+      try {
+        JsonElement objectElement = jsonObj.get("effect");
+
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          EffectEnum.fromValue(objectElement.getAsString());
+        } else {
+          throw new IllegalArgumentException("Expected the field `effect` to be not null");
+        }
+      } catch (IllegalArgumentException e) {
+        if(jsonObj.get("effect") != null) {
+          throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
+        }
+      }
+      if ((jsonObj.get("unit_off_formula") != null && !jsonObj.get("unit_off_formula").isJsonNull()) && !jsonObj.get("unit_off_formula").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `unit_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_off_formula").toString()));
+      }
+      if ((jsonObj.get("unit_type") != null && !jsonObj.get("unit_type").isJsonNull()) && !jsonObj.get("unit_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `unit_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_type").toString()));
+      }
+      // validate the optional field `product`
+      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
+        SimpleProductDiscountUnit.validateJsonElement(jsonObj.get("product"));
+      }
+      // validate the optional field `sku`
+      if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
+        SimpleSkuDiscountUnit.validateJsonElement(jsonObj.get("sku"));
+      }
+      if (jsonObj.get("units") != null && !jsonObj.get("units").isJsonNull()) {
+        JsonArray jsonArrayunits = jsonObj.getAsJsonArray("units");
+        if (jsonArrayunits != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("units").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `units` to be an array in the JSON string but got `%s`", jsonObj.get("units").toString()));
+          }
+
+          // validate the optional field `units` (array)
+          for (int i = 0; i < jsonArrayunits.size(); i++) {
+            DiscountUnitMultipleOneUnit.validateJsonElement(jsonArrayunits.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("percent_off_formula") != null && !jsonObj.get("percent_off_formula").isJsonNull()) && !jsonObj.get("percent_off_formula").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `percent_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("percent_off_formula").toString()));
+      }
+      if ((jsonObj.get("fixed_amount_formula") != null && !jsonObj.get("fixed_amount_formula").isJsonNull()) && !jsonObj.get("fixed_amount_formula").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fixed_amount_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fixed_amount_formula").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Discount.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Discount' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Discount> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Discount.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Discount>() {
+           @Override
+           public void write(JsonWriter out, Discount value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Discount read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
     }
   }
 

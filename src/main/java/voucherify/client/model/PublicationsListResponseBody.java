@@ -131,7 +131,7 @@ public class PublicationsListResponseBody {
   }
 
    /**
-   * Contains array of publication objects, voucher object will be simplified.
+   * Response schema model for publishing vouchers to a specific customer.
    * @return publications
   **/
   @javax.annotation.Nonnull

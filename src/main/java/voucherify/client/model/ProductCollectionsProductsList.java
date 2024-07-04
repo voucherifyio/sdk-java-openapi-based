@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import voucherify.client.model.ProductCollectionsProductsListProductsItem;
+import voucherify.client.model.ProductCollectionsProductsListDataItem;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,7 +65,7 @@ public class ProductCollectionsProductsList {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ProductCollectionsProductsListProductsItem> data = new ArrayList<>();
+  private List<ProductCollectionsProductsListDataItem> data = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -116,13 +116,13 @@ public class ProductCollectionsProductsList {
   }
 
 
-  public ProductCollectionsProductsList data(List<ProductCollectionsProductsListProductsItem> data) {
+  public ProductCollectionsProductsList data(List<ProductCollectionsProductsListDataItem> data) {
     
     this.data = data;
     return this;
   }
 
-  public ProductCollectionsProductsList addDataItem(ProductCollectionsProductsListProductsItem dataItem) {
+  public ProductCollectionsProductsList addDataItem(ProductCollectionsProductsListDataItem dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -131,16 +131,16 @@ public class ProductCollectionsProductsList {
   }
 
    /**
-   * A dictionary that contains an array of products and SKUs.
+   * Get data
    * @return data
   **/
   @javax.annotation.Nonnull
-  public List<ProductCollectionsProductsListProductsItem> getData() {
+  public List<ProductCollectionsProductsListDataItem> getData() {
     return data;
   }
 
 
-  public void setData(List<ProductCollectionsProductsListProductsItem> data) {
+  public void setData(List<ProductCollectionsProductsListDataItem> data) {
     this.data = data;
   }
 
@@ -272,7 +272,7 @@ public class ProductCollectionsProductsList {
       JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
       // validate the required field `data` (array)
       for (int i = 0; i < jsonArraydata.size(); i++) {
-        ProductCollectionsProductsListProductsItem.validateJsonElement(jsonArraydata.get(i));
+        ProductCollectionsProductsListDataItem.validateJsonElement(jsonArraydata.get(i));
       };
   }
 

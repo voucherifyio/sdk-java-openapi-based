@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | Type of calculation. |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
 |**multiplier** | **BigDecimal** | Multiplication factor used to multiply the points to obtain the mapped points. |  [optional] |
 |**points** | **Integer** | Fixed number of points to be applied. |  [optional] |
 
