@@ -22,6 +22,7 @@ Stores a summary of redemptions that have been applied to the voucher.
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

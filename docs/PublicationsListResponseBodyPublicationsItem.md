@@ -30,6 +30,7 @@
 | Name | Value |
 |---- | -----|
 | PUBLICATION | &quot;publication&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -39,6 +40,7 @@
 |---- | -----|
 | SUCCESS | &quot;SUCCESS&quot; |
 | FAILURE | &quot;FAILURE&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

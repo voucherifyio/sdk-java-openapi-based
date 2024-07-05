@@ -22,6 +22,7 @@ Defines the referee reward.
 | LOYALTY_CARD | &quot;LOYALTY_CARD&quot; |
 | GIFT_VOUCHER | &quot;GIFT_VOUCHER&quot; |
 | LUCKY_DRAW_CODE | &quot;LUCKY_DRAW_CODE&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

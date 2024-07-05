@@ -18,6 +18,7 @@ Defines the resource that is being modified with the values that are returned in
 | Name | Value |
 |---- | -----|
 | VOUCHER | &quot;voucher&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -24,6 +24,7 @@ Defines the rounding mechanism for tier expiration.
 | HALF_YEAR | &quot;HALF_YEAR&quot; |
 | YEAR | &quot;YEAR&quot; |
 | CUSTOM | &quot;CUSTOM&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -33,6 +34,7 @@ Defines the rounding mechanism for tier expiration.
 |---- | -----|
 | START | &quot;START&quot; |
 | END | &quot;END&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -41,6 +43,7 @@ Defines the rounding mechanism for tier expiration.
 | Name | Value |
 |---- | -----|
 | MONTH | &quot;MONTH&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

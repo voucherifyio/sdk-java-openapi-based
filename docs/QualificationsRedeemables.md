@@ -22,6 +22,7 @@ List of redeemables for examine qualification.
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -30,6 +31,7 @@ List of redeemables for examine qualification.
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

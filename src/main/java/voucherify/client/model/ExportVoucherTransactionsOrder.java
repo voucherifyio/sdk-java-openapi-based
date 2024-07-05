@@ -30,7 +30,9 @@ public enum ExportVoucherTransactionsOrder {
   
   _CREATED_AT("-created_at"),
   
-  CREATED_AT("created_at");
+  CREATED_AT("created_at"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ExportVoucherTransactionsOrder {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ExportVoucherTransactionsOrder> {

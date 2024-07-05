@@ -19,6 +19,7 @@
 |---- | -----|
 | SKU | &quot;sku&quot; |
 | PRODUCT | &quot;product&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

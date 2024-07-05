@@ -50,7 +50,9 @@ public enum ParameterOrder {
   
   CATEGORY("category"),
   
-  _CATEGORY("-category");
+  _CATEGORY("-category"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -73,7 +75,7 @@ public enum ParameterOrder {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrder> {

@@ -24,6 +24,7 @@
 | Name | Value |
 |---- | -----|
 | PROMOTION_STACK | &quot;promotion_stack&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -43,6 +43,7 @@
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 
@@ -52,6 +53,7 @@
 |---- | -----|
 | AUTO_UPDATE | &quot;AUTO_UPDATE&quot; |
 | STATIC | &quot;STATIC&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

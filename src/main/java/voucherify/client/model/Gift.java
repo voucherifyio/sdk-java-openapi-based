@@ -68,7 +68,9 @@ public class Gift {
   public enum EffectEnum {
     ORDER("APPLY_TO_ORDER"),
     
-    ITEMS("APPLY_TO_ITEMS");
+    ITEMS("APPLY_TO_ITEMS"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -91,7 +93,7 @@ public class Gift {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<EffectEnum> {

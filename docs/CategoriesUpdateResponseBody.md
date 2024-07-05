@@ -22,6 +22,7 @@ Response body schema for **PUT** `/categories/{categoryId}`.
 | Name | Value |
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

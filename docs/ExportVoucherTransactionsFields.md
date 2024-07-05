@@ -29,5 +29,7 @@
 
 * `DETAILS` (value: `"details"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

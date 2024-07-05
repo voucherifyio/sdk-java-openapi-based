@@ -34,7 +34,9 @@ public enum ParameterOrderListCampaigns {
   
   UPDATED_AT("updated_at"),
   
-  _UPDATED_AT("-updated_at");
+  _UPDATED_AT("-updated_at"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum ParameterOrderListCampaigns {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListCampaigns> {

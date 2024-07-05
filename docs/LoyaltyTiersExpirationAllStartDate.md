@@ -18,6 +18,7 @@ Defines the conditions for the start date of the tier.
 |---- | -----|
 | IMMEDIATE | &quot;IMMEDIATE&quot; |
 | NEXT_PERIOD | &quot;NEXT_PERIOD&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

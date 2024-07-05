@@ -19,6 +19,7 @@ This is an object representing a loyalty tier reward.
 | Name | Value |
 |---- | -----|
 | LOYALTY_TIER_REWARD | &quot;loyalty_tier_reward&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

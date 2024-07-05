@@ -50,6 +50,7 @@ This is an object representing a campaign.
 | PROMOTION | &quot;PROMOTION&quot; |
 | REFERRAL_PROGRAM | &quot;REFERRAL_PROGRAM&quot; |
 | LUCKY_DRAW | &quot;LUCKY_DRAW&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -59,6 +60,7 @@ This is an object representing a campaign.
 |---- | -----|
 | AUTO_UPDATE | &quot;AUTO_UPDATE&quot; |
 | STATIC | &quot;STATIC&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -73,6 +75,7 @@ This is an object representing a campaign.
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 
@@ -85,6 +88,7 @@ This is an object representing a campaign.
 | FAILED | &quot;FAILED&quot; |
 | DRAFT | &quot;DRAFT&quot; |
 | MODIFYING | &quot;MODIFYING&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -97,6 +101,7 @@ This is an object representing a campaign.
 | FAILED | &quot;FAILED&quot; |
 | DRAFT | &quot;DRAFT&quot; |
 | MODIFYING | &quot;MODIFYING&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

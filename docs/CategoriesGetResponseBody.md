@@ -23,6 +23,7 @@ Response body schema for **GET** `/categories/{categoryId}`.
 | Name | Value |
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@ Response body schema for **GET** `/categories/{categoryId}`.
 |---- | -----|
 | JOINT | &quot;JOINT&quot; |
 | EXCLUSIVE | &quot;EXCLUSIVE&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

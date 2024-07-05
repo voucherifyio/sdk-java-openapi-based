@@ -19,6 +19,7 @@
 | Name | Value |
 |---- | -----|
 | LOCK | &quot;LOCK&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -27,6 +28,7 @@
 | Name | Value |
 |---- | -----|
 | LOCK | &quot;LOCK&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -41,6 +43,7 @@
 | MINUTES | &quot;MINUTES&quot; |
 | NANOSECONDS | &quot;NANOSECONDS&quot; |
 | SECONDS | &quot;SECONDS&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

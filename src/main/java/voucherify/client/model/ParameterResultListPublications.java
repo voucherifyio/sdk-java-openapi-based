@@ -30,7 +30,9 @@ public enum ParameterResultListPublications {
   
   SUCCESS("SUCCESS"),
   
-  FAILURE("FAILURE");
+  FAILURE("FAILURE"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum ParameterResultListPublications {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterResultListPublications> {

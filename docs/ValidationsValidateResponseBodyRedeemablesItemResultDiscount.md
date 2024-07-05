@@ -35,6 +35,7 @@
 | UNIT | &quot;UNIT&quot; |
 | PERCENT | &quot;PERCENT&quot; |
 | FIXED | &quot;FIXED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -50,6 +51,7 @@
 | ADD_MISSING_ITEMS | &quot;ADD_MISSING_ITEMS&quot; |
 | ADD_NEW_ITEMS | &quot;ADD_NEW_ITEMS&quot; |
 | ADD_MANY_ITEMS | &quot;ADD_MANY_ITEMS&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

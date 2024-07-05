@@ -31,5 +31,7 @@
 
 * `METADATA` (value: `"metadata"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

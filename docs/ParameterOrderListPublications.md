@@ -29,5 +29,7 @@
 
 * `_CHANNEL` (value: `"-channel"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

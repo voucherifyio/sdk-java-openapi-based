@@ -23,6 +23,7 @@ Request body schema for **POST** `/validation-rules/{validationRuleId}/assignmen
 | EARNING_RULE | &quot;earning_rule&quot; |
 | DISTRIBUTION | &quot;distribution&quot; |
 | REWARD_ASSIGNMENT | &quot;reward_assignment&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -19,6 +19,7 @@ List of available fields and filters that can be exported with a gift card or lo
 |---- | -----|
 | _CREATED_AT | &quot;-created_at&quot; |
 | CREATED_AT | &quot;created_at&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -38,6 +39,7 @@ List of available fields and filters that can be exported with a gift card or lo
 | SOURCE | &quot;source&quot; |
 | DETAILS | &quot;details&quot; |
 | RELATED_TRANSACTION_ID | &quot;related_transaction_id&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

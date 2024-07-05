@@ -23,6 +23,7 @@ Objects stores information about the campaign related to the reward.
 | GIFT_VOUCHERS | &quot;GIFT_VOUCHERS&quot; |
 | REFERRAL_PROGRAM | &quot;REFERRAL_PROGRAM&quot; |
 | LOYALTY_PROGRAM | &quot;LOYALTY_PROGRAM&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

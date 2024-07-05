@@ -40,6 +40,7 @@
 | PAID | &quot;PAID&quot; |
 | CANCELED | &quot;CANCELED&quot; |
 | FULFILLED | &quot;FULFILLED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -48,6 +49,7 @@
 | Name | Value |
 |---- | -----|
 | ORDER | &quot;order&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

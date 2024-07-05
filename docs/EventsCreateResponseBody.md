@@ -21,6 +21,7 @@ Response body schema for **POST** `/events`.
 | Name | Value |
 |---- | -----|
 | EVENT | &quot;event&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

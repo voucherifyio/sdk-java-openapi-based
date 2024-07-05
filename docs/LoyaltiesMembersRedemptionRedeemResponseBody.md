@@ -14,7 +14,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 |**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |  [optional] |
-|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. |  [optional] |
+|**amount** | **Integer** | For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits. For loyalty cards, this is the number of loyalty points used in the transaction. |  [optional] |
 |**redemption** | **String** | Unique redemption ID of the parent redemption. |  [optional] |
 |**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Redemption status. |  |
@@ -39,6 +39,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 | Name | Value |
 |---- | -----|
 | REDEMPTION | &quot;redemption&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -48,6 +49,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 |---- | -----|
 | SUCCESS | &quot;SUCCESS&quot; |
 | FAILURE | &quot;FAILURE&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -58,6 +60,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 | SUCCEEDED | &quot;SUCCEEDED&quot; |
 | FAILED | &quot;FAILED&quot; |
 | ROLLED_BACK | &quot;ROLLED_BACK&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -68,6 +71,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/re
 | VOUCHER | &quot;voucher&quot; |
 | PROMOTION_TIER | &quot;promotion_tier&quot; |
 | REDEMPTION | &quot;redemption&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

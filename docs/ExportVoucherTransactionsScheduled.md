@@ -24,6 +24,7 @@
 | Name | Value |
 |---- | -----|
 | EXPORT | &quot;export&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@
 | Name | Value |
 |---- | -----|
 | SCHEDULED | &quot;SCHEDULED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -40,6 +42,7 @@
 | Name | Value |
 |---- | -----|
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

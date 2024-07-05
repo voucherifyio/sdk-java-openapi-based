@@ -50,7 +50,9 @@ public enum ParameterOrderListPublications {
   
   CHANNEL("channel"),
   
-  _CHANNEL("-channel");
+  _CHANNEL("-channel"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -73,7 +75,7 @@ public enum ParameterOrderListPublications {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListPublications> {

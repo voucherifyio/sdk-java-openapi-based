@@ -28,6 +28,7 @@ This is an object representing a product SKU.
 | Name | Value |
 |---- | -----|
 | SKU | &quot;sku&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

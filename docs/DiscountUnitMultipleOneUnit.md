@@ -22,6 +22,7 @@
 |---- | -----|
 | NEW_ITEMS | &quot;ADD_NEW_ITEMS&quot; |
 | MISSING_ITEMS | &quot;ADD_MISSING_ITEMS&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

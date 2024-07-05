@@ -17,5 +17,7 @@
 
 * `_NAME` (value: `"-name"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

@@ -41,6 +41,7 @@ Response body schema for **PUT** `/orders/{orderId}`.
 | PAID | &quot;PAID&quot; |
 | CANCELED | &quot;CANCELED&quot; |
 | FULFILLED | &quot;FULFILLED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -49,6 +50,7 @@ Response body schema for **PUT** `/orders/{orderId}`.
 | Name | Value |
 |---- | -----|
 | ORDER | &quot;order&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

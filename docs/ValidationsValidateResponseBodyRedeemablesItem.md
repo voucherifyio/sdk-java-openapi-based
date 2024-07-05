@@ -26,6 +26,7 @@
 | APPLICABLE | &quot;APPLICABLE&quot; |
 | INAPPLICABLE | &quot;INAPPLICABLE&quot; |
 | SKIPPED | &quot;SKIPPED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -35,6 +36,7 @@
 |---- | -----|
 | VOUCHER | &quot;voucher&quot; |
 | PROMOTION_TIER | &quot;promotion_tier&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

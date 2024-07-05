@@ -23,6 +23,7 @@ This is an object representing a category.
 | Name | Value |
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@ This is an object representing a category.
 |---- | -----|
 | JOINT | &quot;JOINT&quot; |
 | EXCLUSIVE | &quot;EXCLUSIVE&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

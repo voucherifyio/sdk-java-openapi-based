@@ -27,6 +27,7 @@
 | Name | Value |
 |---- | -----|
 | LOYALTY_TIER | &quot;loyalty_tier&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

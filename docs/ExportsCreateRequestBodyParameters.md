@@ -31,6 +31,7 @@
 | TRACKING_ID | &quot;tracking_id&quot; |
 | _CUSTOMER_ID | &quot;-customer_id&quot; |
 | CUSTOMER_ID | &quot;customer_id&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -127,6 +128,7 @@
 | BALANCE | &quot;balance&quot; |
 | RELATED_TRANSACTION_ID | &quot;related_transaction_id&quot; |
 | DETAILS | &quot;details&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

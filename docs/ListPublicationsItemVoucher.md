@@ -22,6 +22,7 @@
 | Name | Value |
 |---- | -----|
 | VOUCHER | &quot;voucher&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

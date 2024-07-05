@@ -24,6 +24,7 @@
 | DISCOUNT_VOUCHER | &quot;DISCOUNT_VOUCHER&quot; |
 | GIFT_VOUCHER | &quot;GIFT_VOUCHER&quot; |
 | LOYALTY_CARD | &quot;LOYALTY_CARD&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

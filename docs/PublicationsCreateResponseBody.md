@@ -28,6 +28,7 @@
 | Name | Value |
 |---- | -----|
 | PUBLICATION | &quot;publication&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -36,6 +37,7 @@
 | Name | Value |
 |---- | -----|
 | API | &quot;API&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -44,6 +46,7 @@
 | Name | Value |
 |---- | -----|
 | SUCCESS | &quot;SUCCESS&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

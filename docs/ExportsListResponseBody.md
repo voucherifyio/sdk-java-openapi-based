@@ -20,6 +20,7 @@ Response body schema for **GET** `/exports`.
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -28,6 +29,7 @@ Response body schema for **GET** `/exports`.
 | Name | Value |
 |---- | -----|
 | EXPORTS | &quot;exports&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

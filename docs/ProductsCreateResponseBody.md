@@ -27,6 +27,7 @@ Response body schema for **POST** `/products`.
 | Name | Value |
 |---- | -----|
 | PRODUCT | &quot;product&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

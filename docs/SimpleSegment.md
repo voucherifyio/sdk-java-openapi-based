@@ -18,6 +18,7 @@
 | Name | Value |
 |---- | -----|
 | SEGMENT | &quot;segment&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

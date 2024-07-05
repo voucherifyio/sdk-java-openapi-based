@@ -38,7 +38,9 @@ public enum ParameterOrderListAllPromotionStacks {
   
   NAME("name"),
   
-  _NAME("-name");
+  _NAME("-name"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -61,7 +63,7 @@ public enum ParameterOrderListAllPromotionStacks {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListAllPromotionStacks> {

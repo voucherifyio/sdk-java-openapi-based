@@ -24,6 +24,7 @@ Response body schema for **GET** `/product-collections/{productCollectionId}`.
 |---- | -----|
 | STATIC | &quot;STATIC&quot; |
 | AUTO_UPDATE | &quot;AUTO_UPDATE&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@ Response body schema for **GET** `/product-collections/{productCollectionId}`.
 | Name | Value |
 |---- | -----|
 | PRODUCTS_COLLECTION | &quot;products_collection&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

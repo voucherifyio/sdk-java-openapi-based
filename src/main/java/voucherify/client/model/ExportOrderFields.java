@@ -52,7 +52,9 @@ public enum ExportOrderFields {
   
   REFERRER_ID("referrer_id"),
   
-  METADATA("metadata");
+  METADATA("metadata"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -75,7 +77,7 @@ public enum ExportOrderFields {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ExportOrderFields> {

@@ -23,6 +23,7 @@
 |---- | -----|
 | PROPORTIONAL | &quot;PROPORTIONAL&quot; |
 | FIXED | &quot;FIXED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -38,6 +39,7 @@
 | ORDER_ITEMS_SUBTOTAL_AMOUNT | &quot;ORDER_ITEMS_SUBTOTAL_AMOUNT&quot; |
 | CUSTOMER_METADATA | &quot;CUSTOMER_METADATA&quot; |
 | CUSTOM_EVENT_METADATA | &quot;CUSTOM_EVENT_METADATA&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

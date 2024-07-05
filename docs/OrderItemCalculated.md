@@ -34,6 +34,7 @@
 |---- | -----|
 | PRODUCT | &quot;product&quot; |
 | SKU | &quot;sku&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -42,6 +43,7 @@
 | Name | Value |
 |---- | -----|
 | ORDER_ITEM | &quot;order_item&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

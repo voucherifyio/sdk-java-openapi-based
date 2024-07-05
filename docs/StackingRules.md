@@ -26,6 +26,7 @@ Defines stacking rules for redeemables. Read more in the [Help Center](https://s
 |---- | -----|
 | ALL | &quot;ALL&quot; |
 | PARTIAL | &quot;PARTIAL&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -35,6 +36,7 @@ Defines stacking rules for redeemables. Read more in the [Help Center](https://s
 |---- | -----|
 | CATEGORY_HIERARCHY | &quot;CATEGORY_HIERARCHY&quot; |
 | REQUESTED_ORDER | &quot;REQUESTED_ORDER&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

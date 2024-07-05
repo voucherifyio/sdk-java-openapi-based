@@ -21,5 +21,7 @@
 
 * `CUSTOMER_LOYALTY_TIER_LEFT` (value: `"customer.loyalty.tier.left"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

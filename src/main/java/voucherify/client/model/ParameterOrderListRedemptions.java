@@ -46,7 +46,9 @@ public enum ParameterOrderListRedemptions {
   
   CUSTOMER_ID("customer_id"),
   
-  _CUSTOMER_ID("-customer_id");
+  _CUSTOMER_ID("-customer_id"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -69,7 +71,7 @@ public enum ParameterOrderListRedemptions {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListRedemptions> {

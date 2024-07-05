@@ -11,5 +11,7 @@
 
 * `MOST_EXPENSIVE` (value: `"APPLY_TO_MOST_EXPENSIVE"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

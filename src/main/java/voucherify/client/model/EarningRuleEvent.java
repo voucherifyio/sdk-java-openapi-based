@@ -42,7 +42,9 @@ public enum EarningRuleEvent {
   
   CUSTOMER_LOYALTY_TIER_JOINED("customer.loyalty.tier.joined"),
   
-  CUSTOMER_LOYALTY_TIER_LEFT("customer.loyalty.tier.left");
+  CUSTOMER_LOYALTY_TIER_LEFT("customer.loyalty.tier.left"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -65,7 +67,7 @@ public enum EarningRuleEvent {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<EarningRuleEvent> {

@@ -27,6 +27,7 @@ This is an object representing a product.    This entity should be used to map p
 | Name | Value |
 |---- | -----|
 | PRODUCT | &quot;product&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

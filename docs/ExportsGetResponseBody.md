@@ -25,6 +25,7 @@ Response body schema for **GET** `/exports/{exportId}`.
 | Name | Value |
 |---- | -----|
 | EXPORT | &quot;export&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -36,6 +37,7 @@ Response body schema for **GET** `/exports/{exportId}`.
 | IN_PROGRESS | &quot;IN_PROGRESS&quot; |
 | DONE | &quot;DONE&quot; |
 | ERROR | &quot;ERROR&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -50,6 +52,7 @@ Response body schema for **GET** `/exports/{exportId}`.
 | ORDER | &quot;order&quot; |
 | POINTS_EXPIRATION | &quot;points_expiration&quot; |
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

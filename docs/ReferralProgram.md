@@ -20,6 +20,7 @@ Defines the referee reward and the way a referral is triggered. Context: `REFERR
 |---- | -----|
 | REDEMPTION | &quot;redemption&quot; |
 | CUSTOM_EVENT | &quot;custom_event&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

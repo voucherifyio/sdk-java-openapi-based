@@ -34,6 +34,7 @@
 | PROMOTION_TIER | &quot;promotion_tier&quot; |
 | PROMOTION_STACK | &quot;promotion_stack&quot; |
 | VOUCHER | &quot;voucher&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

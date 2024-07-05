@@ -30,6 +30,7 @@
 | Name | Value |
 |---- | -----|
 | EARNING_RULE | &quot;earning_rule&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -44,6 +45,7 @@
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 

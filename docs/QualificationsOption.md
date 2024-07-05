@@ -23,6 +23,7 @@ Configure parameters returned in the response.
 | REDEEMABLE | &quot;redeemable&quot; |
 | CATEGORY | &quot;category&quot; |
 | VALIDATION_RULES | &quot;validation_rules&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -33,6 +34,7 @@ Configure parameters returned in the response.
 | BEST_DEAL | &quot;BEST_DEAL&quot; |
 | LEAST_DEAL | &quot;LEAST_DEAL&quot; |
 | DEFAULT | &quot;DEFAULT&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

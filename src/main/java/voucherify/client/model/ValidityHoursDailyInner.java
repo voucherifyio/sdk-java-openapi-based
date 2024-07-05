@@ -75,7 +75,9 @@ public class ValidityHoursDailyInner {
     
     NUMBER_5(5),
     
-    NUMBER_6(6);
+    NUMBER_6(6),
+    
+    NUMBER_unknown_enum(11184809);
 
     private Integer value;
 
@@ -98,7 +100,7 @@ public class ValidityHoursDailyInner {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return NUMBER_unknown_enum;
     }
 
     public static class Adapter extends TypeAdapter<DaysOfWeekEnum> {
@@ -196,6 +198,50 @@ public class ValidityHoursDailyInner {
     this.expirationTime = expirationTime;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ValidityHoursDailyInner instance itself
+   */
+  public ValidityHoursDailyInner putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -209,12 +255,13 @@ public class ValidityHoursDailyInner {
     ValidityHoursDailyInner validityHoursDailyInner = (ValidityHoursDailyInner) o;
     return Objects.equals(this.startTime, validityHoursDailyInner.startTime) &&
         Objects.equals(this.daysOfWeek, validityHoursDailyInner.daysOfWeek) &&
-        Objects.equals(this.expirationTime, validityHoursDailyInner.expirationTime);
+        Objects.equals(this.expirationTime, validityHoursDailyInner.expirationTime)&&
+        Objects.equals(this.additionalProperties, validityHoursDailyInner.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, daysOfWeek, expirationTime);
+    return Objects.hash(startTime, daysOfWeek, expirationTime, additionalProperties);
   }
 
   @Override
@@ -224,6 +271,7 @@ public class ValidityHoursDailyInner {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    daysOfWeek: ").append(toIndentedString(daysOfWeek)).append("\n");
     sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -266,14 +314,6 @@ public class ValidityHoursDailyInner {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValidityHoursDailyInner is not found in the empty JSON string", ValidityHoursDailyInner.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ValidityHoursDailyInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidityHoursDailyInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("start_time") != null && !jsonObj.get("start_time").isJsonNull()) && !jsonObj.get("start_time").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `start_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_time").toString()));
@@ -302,6 +342,23 @@ public class ValidityHoursDailyInner {
            @Override
            public void write(JsonWriter out, ValidityHoursDailyInner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -309,7 +366,28 @@ public class ValidityHoursDailyInner {
            public ValidityHoursDailyInner read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             ValidityHoursDailyInner instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

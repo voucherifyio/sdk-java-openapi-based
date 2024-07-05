@@ -21,6 +21,7 @@ Response body schema for **POST** `/categories`.
 | Name | Value |
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -30,6 +30,7 @@
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 

@@ -30,7 +30,9 @@ public enum Junction {
   
   AND("and"),
   
-  OR("or");
+  OR("or"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -53,7 +55,7 @@ public enum Junction {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<Junction> {

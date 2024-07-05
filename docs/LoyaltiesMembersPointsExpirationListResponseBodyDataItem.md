@@ -24,6 +24,7 @@
 | Name | Value |
 |---- | -----|
 | LOYALTY_POINTS_BUCKET | &quot;loyalty_points_bucket&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

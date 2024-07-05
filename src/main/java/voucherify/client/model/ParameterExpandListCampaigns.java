@@ -28,7 +28,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ParameterExpandListCampaigns.Adapter.class)
 public enum ParameterExpandListCampaigns {
   
-  CATEGORY("category");
+  CATEGORY("category"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -51,7 +53,7 @@ public enum ParameterExpandListCampaigns {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterExpandListCampaigns> {

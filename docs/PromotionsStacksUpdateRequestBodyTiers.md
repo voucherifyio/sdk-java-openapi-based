@@ -18,6 +18,7 @@ Contains the tier configuration.
 | Name | Value |
 |---- | -----|
 | MANUAL | &quot;MANUAL&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

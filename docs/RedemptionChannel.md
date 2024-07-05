@@ -19,6 +19,7 @@ Defines the details of the channel through which the redemption was issued.
 |---- | -----|
 | USER | &quot;USER&quot; |
 | API | &quot;API&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

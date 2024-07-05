@@ -24,6 +24,7 @@ Response body schema for **GET** `/rewards/{rewardId}/assignments/{assignmentId}
 | Name | Value |
 |---- | -----|
 | REWARD_ASSIGNMENT | &quot;reward_assignment&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@ Response body schema for **GET** `/rewards/{rewardId}/assignments/{assignmentId}
 | Name | Value |
 |---- | -----|
 | CAMPAIGN | &quot;campaign&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

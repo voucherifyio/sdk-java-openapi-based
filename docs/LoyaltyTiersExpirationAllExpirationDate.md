@@ -22,6 +22,7 @@ Defines the conditions for the expiration date of a tier.
 | END_OF_NEXT_PERIOD | &quot;END_OF_NEXT_PERIOD&quot; |
 | BALANCE_DROP | &quot;BALANCE_DROP&quot; |
 | CUSTOM | &quot;CUSTOM&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

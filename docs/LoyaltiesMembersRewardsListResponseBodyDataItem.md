@@ -18,6 +18,7 @@
 | Name | Value |
 |---- | -----|
 | LOYALTY_REWARD | &quot;loyalty_reward&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

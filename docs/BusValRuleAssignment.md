@@ -25,6 +25,7 @@ Assignments of business validation rule
 | Name | Value |
 |---- | -----|
 | VALIDATION_RULES_ASSIGNMENT | &quot;validation_rules_assignment&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -35,6 +36,7 @@ Assignments of business validation rule
 | VALID | &quot;VALID&quot; |
 | PARTIALLY_VALID | &quot;PARTIALLY_VALID&quot; |
 | INVALID | &quot;INVALID&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

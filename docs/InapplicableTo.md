@@ -31,6 +31,7 @@
 | PRODUCT | &quot;product&quot; |
 | SKU | &quot;sku&quot; |
 | PRODUCTS_COLLECTION | &quot;products_collection&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

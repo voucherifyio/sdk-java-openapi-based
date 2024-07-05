@@ -20,6 +20,7 @@ Schema representing list of product collections
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -28,6 +29,7 @@ Schema representing list of product collections
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

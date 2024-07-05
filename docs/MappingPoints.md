@@ -19,6 +19,7 @@
 |---- | -----|
 | MULTIPLY | &quot;MULTIPLY&quot; |
 | CUSTOM | &quot;CUSTOM&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

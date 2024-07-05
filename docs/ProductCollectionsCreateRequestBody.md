@@ -19,6 +19,7 @@
 | Name | Value |
 |---- | -----|
 | STATIC | &quot;STATIC&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

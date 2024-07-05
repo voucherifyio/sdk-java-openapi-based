@@ -61,7 +61,9 @@ public class LoyaltyTiersExpirationAll {
   public enum QualificationTypeEnum {
     BALANCE("BALANCE"),
     
-    POINTS_IN_PERIOD("POINTS_IN_PERIOD");
+    POINTS_IN_PERIOD("POINTS_IN_PERIOD"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -84,7 +86,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<QualificationTypeEnum> {
@@ -116,7 +118,9 @@ public class LoyaltyTiersExpirationAll {
     
     HALF_YEAR("HALF_YEAR"),
     
-    YEAR("YEAR");
+    YEAR("YEAR"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -139,7 +143,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<QualificationPeriodEnum> {
@@ -254,6 +258,50 @@ public class LoyaltyTiersExpirationAll {
     this.expirationDate = expirationDate;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the LoyaltyTiersExpirationAll instance itself
+   */
+  public LoyaltyTiersExpirationAll putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -268,12 +316,13 @@ public class LoyaltyTiersExpirationAll {
     return Objects.equals(this.qualificationType, loyaltyTiersExpirationAll.qualificationType) &&
         Objects.equals(this.qualificationPeriod, loyaltyTiersExpirationAll.qualificationPeriod) &&
         Objects.equals(this.startDate, loyaltyTiersExpirationAll.startDate) &&
-        Objects.equals(this.expirationDate, loyaltyTiersExpirationAll.expirationDate);
+        Objects.equals(this.expirationDate, loyaltyTiersExpirationAll.expirationDate)&&
+        Objects.equals(this.additionalProperties, loyaltyTiersExpirationAll.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(qualificationType, qualificationPeriod, startDate, expirationDate);
+    return Objects.hash(qualificationType, qualificationPeriod, startDate, expirationDate, additionalProperties);
   }
 
   @Override
@@ -284,6 +333,7 @@ public class LoyaltyTiersExpirationAll {
     sb.append("    qualificationPeriod: ").append(toIndentedString(qualificationPeriod)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -328,14 +378,6 @@ public class LoyaltyTiersExpirationAll {
       if (jsonElement == null) {
         if (!LoyaltyTiersExpirationAll.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTiersExpirationAll is not found in the empty JSON string", LoyaltyTiersExpirationAll.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LoyaltyTiersExpirationAll.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoyaltyTiersExpirationAll` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
@@ -399,6 +441,23 @@ public class LoyaltyTiersExpirationAll {
            @Override
            public void write(JsonWriter out, LoyaltyTiersExpirationAll value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -406,7 +465,28 @@ public class LoyaltyTiersExpirationAll {
            public LoyaltyTiersExpirationAll read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             LoyaltyTiersExpirationAll instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

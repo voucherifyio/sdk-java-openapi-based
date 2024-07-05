@@ -87,7 +87,9 @@ public class OrderCalculatedBase {
     
     CANCELED("CANCELED"),
     
-    FULFILLED("FULFILLED");
+    FULFILLED("FULFILLED"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -110,7 +112,7 @@ public class OrderCalculatedBase {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -188,7 +190,9 @@ public class OrderCalculatedBase {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    ORDER("order");
+    ORDER("order"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -211,7 +215,7 @@ public class OrderCalculatedBase {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

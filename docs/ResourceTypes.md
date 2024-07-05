@@ -11,5 +11,7 @@
 
 * `PROMOTION_TIER` (value: `"promotion_tier"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

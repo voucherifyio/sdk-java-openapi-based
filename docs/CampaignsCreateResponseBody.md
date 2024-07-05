@@ -52,6 +52,7 @@ Response body schema for **POST** `/campaigns/{campaignId}`.
 | PROMOTION | &quot;PROMOTION&quot; |
 | REFERRAL_PROGRAM | &quot;REFERRAL_PROGRAM&quot; |
 | LUCKY_DRAW | &quot;LUCKY_DRAW&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -61,6 +62,7 @@ Response body schema for **POST** `/campaigns/{campaignId}`.
 |---- | -----|
 | AUTO_UPDATE | &quot;AUTO_UPDATE&quot; |
 | STATIC | &quot;STATIC&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -75,6 +77,7 @@ Response body schema for **POST** `/campaigns/{campaignId}`.
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 
@@ -87,6 +90,7 @@ Response body schema for **POST** `/campaigns/{campaignId}`.
 | FAILED | &quot;FAILED&quot; |
 | DRAFT | &quot;DRAFT&quot; |
 | MODIFYING | &quot;MODIFYING&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -99,6 +103,7 @@ Response body schema for **POST** `/campaigns/{campaignId}`.
 | FAILED | &quot;FAILED&quot; |
 | DRAFT | &quot;DRAFT&quot; |
 | MODIFYING | &quot;MODIFYING&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

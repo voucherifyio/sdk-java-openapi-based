@@ -25,5 +25,7 @@
 
 * `_CUSTOMER_ID` (value: `"-customer_id"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

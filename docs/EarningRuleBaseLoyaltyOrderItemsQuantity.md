@@ -22,6 +22,7 @@ Defines the ratio based on the property defined in the calculation_type paramete
 | PRODUCTS_COLLECTION | &quot;products_collection&quot; |
 | PRODUCT | &quot;product&quot; |
 | SKU | &quot;sku&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

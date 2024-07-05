@@ -34,6 +34,7 @@ Response body schema for **GET** `/customers/{customerId}`.
 | Name | Value |
 |---- | -----|
 | CUSTOMER | &quot;customer&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

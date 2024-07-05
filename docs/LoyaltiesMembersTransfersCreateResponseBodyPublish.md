@@ -20,6 +20,7 @@ This object stores a summary of publish events: an events counter and an endpoin
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

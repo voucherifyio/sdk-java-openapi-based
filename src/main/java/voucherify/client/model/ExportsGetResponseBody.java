@@ -65,7 +65,9 @@ public class ExportsGetResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    EXPORT("export");
+    EXPORT("export"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -88,7 +90,7 @@ public class ExportsGetResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -124,7 +126,9 @@ public class ExportsGetResponseBody {
     
     DONE("DONE"),
     
-    ERROR("ERROR");
+    ERROR("ERROR"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -147,7 +151,7 @@ public class ExportsGetResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -197,7 +201,9 @@ public class ExportsGetResponseBody {
     
     POINTS_EXPIRATION("points_expiration"),
     
-    VOUCHER_TRANSACTIONS("voucher_transactions");
+    VOUCHER_TRANSACTIONS("voucher_transactions"),
+    
+    UNKNOWN_ENUM("unknown_enum");
 
     private String value;
 
@@ -220,7 +226,7 @@ public class ExportsGetResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return UNKNOWN_ENUM;
     }
 
     public static class Adapter extends TypeAdapter<ExportedObjectEnum> {
@@ -436,6 +442,50 @@ public class ExportsGetResponseBody {
     this.parameters = parameters;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ExportsGetResponseBody instance itself
+   */
+  public ExportsGetResponseBody putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -455,7 +505,8 @@ public class ExportsGetResponseBody {
         Objects.equals(this.result, exportsGetResponseBody.result) &&
         Objects.equals(this.userId, exportsGetResponseBody.userId) &&
         Objects.equals(this.exportedObject, exportsGetResponseBody.exportedObject) &&
-        Objects.equals(this.parameters, exportsGetResponseBody.parameters);
+        Objects.equals(this.parameters, exportsGetResponseBody.parameters)&&
+        Objects.equals(this.additionalProperties, exportsGetResponseBody.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -464,7 +515,7 @@ public class ExportsGetResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, _object, createdAt, status, channel, result, userId, exportedObject, parameters);
+    return Objects.hash(id, _object, createdAt, status, channel, result, userId, exportedObject, parameters, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -487,6 +538,7 @@ public class ExportsGetResponseBody {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    exportedObject: ").append(toIndentedString(exportedObject)).append("\n");
     sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -533,14 +585,6 @@ public class ExportsGetResponseBody {
       if (jsonElement == null) {
         if (!ExportsGetResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExportsGetResponseBody is not found in the empty JSON string", ExportsGetResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ExportsGetResponseBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExportsGetResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -626,6 +670,23 @@ public class ExportsGetResponseBody {
            @Override
            public void write(JsonWriter out, ExportsGetResponseBody value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -633,7 +694,28 @@ public class ExportsGetResponseBody {
            public ExportsGetResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             ExportsGetResponseBody instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

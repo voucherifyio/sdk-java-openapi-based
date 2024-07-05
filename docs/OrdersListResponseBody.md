@@ -20,6 +20,7 @@ Response body schema representing **GET** `/orders`.
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -28,6 +29,7 @@ Response body schema representing **GET** `/orders`.
 | Name | Value |
 |---- | -----|
 | ORDERS | &quot;orders&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

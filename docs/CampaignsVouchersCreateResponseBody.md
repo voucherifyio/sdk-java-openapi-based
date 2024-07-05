@@ -47,6 +47,7 @@ Response body schema for **POST** `/campaigns/{campaignId}/vouchers/{code}` and 
 | GIFT_VOUCHER | &quot;GIFT_VOUCHER&quot; |
 | DISCOUNT_VOUCHER | &quot;DISCOUNT_VOUCHER&quot; |
 | LOYALTY_CARD | &quot;LOYALTY_CARD&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -61,6 +62,7 @@ Response body schema for **POST** `/campaigns/{campaignId}/vouchers/{code}` and 
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 

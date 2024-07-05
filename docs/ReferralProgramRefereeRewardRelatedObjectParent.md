@@ -19,6 +19,7 @@ Details of the resource from which the reward originates.
 | Name | Value |
 |---- | -----|
 | CAMPAIGN | &quot;CAMPAIGN&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

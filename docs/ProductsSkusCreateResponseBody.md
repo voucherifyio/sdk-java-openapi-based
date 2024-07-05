@@ -28,6 +28,7 @@ Response body schema for **PUT** `/products/{productId}/skus`.
 | Name | Value |
 |---- | -----|
 | SKU | &quot;sku&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

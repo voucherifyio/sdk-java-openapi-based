@@ -20,6 +20,7 @@ List of Validation Rules Assignments
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -28,6 +29,7 @@ List of Validation Rules Assignments
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

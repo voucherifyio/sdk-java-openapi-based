@@ -27,6 +27,7 @@ This is an object representing a validation rule assignment.
 | REWARD_ASSIGNMENT | &quot;reward_assignment&quot; |
 | PROMOTION_TIER | &quot;promotion_tier&quot; |
 | DISTRIBUTION | &quot;distribution&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -35,6 +36,7 @@ This is an object representing a validation rule assignment.
 | Name | Value |
 |---- | -----|
 | VALIDATION_RULES_ASSIGNMENT | &quot;validation_rules_assignment&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

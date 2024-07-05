@@ -17,6 +17,7 @@
 | Name | Value |
 |---- | -----|
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

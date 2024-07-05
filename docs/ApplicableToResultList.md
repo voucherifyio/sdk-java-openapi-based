@@ -19,6 +19,7 @@
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -27,6 +28,7 @@
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

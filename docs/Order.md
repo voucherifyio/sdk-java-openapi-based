@@ -30,6 +30,7 @@
 | PAID | &quot;PAID&quot; |
 | CANCELED | &quot;CANCELED&quot; |
 | FULFILLED | &quot;FULFILLED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -28,6 +28,7 @@
 | CAMPAIGN | &quot;CAMPAIGN&quot; |
 | COIN | &quot;COIN&quot; |
 | MATERIAL | &quot;MATERIAL&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -36,6 +37,7 @@
 | Name | Value |
 |---- | -----|
 | REWARD | &quot;reward&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

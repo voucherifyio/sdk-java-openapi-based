@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import voucherify.client.model.Error;
+import voucherify.client.model.ValidationsValidateResponseBodyRedeemablesItemResultDetails;
 import voucherify.client.model.ValidationsValidateResponseBodyRedeemablesItemResultDiscount;
 import voucherify.client.model.ValidationsValidateResponseBodyRedeemablesItemResultGift;
 import voucherify.client.model.ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard;
@@ -56,124 +57,6 @@ import voucherify.client.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
 public class ValidationsValidateResponseBodyRedeemablesItemResult {
-  /**
-   * Gets or Sets key
-   */
-  @JsonAdapter(KeyEnum.Adapter.class)
-  public enum KeyEnum {
-    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("applicable_redeemables_limit_exceeded"),
-    
-    APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_redeemables_per_category_limit_exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("applicable_exclusive_redeemables_limit_exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_exclusive_redeemables_per_category_limit_exceeded"),
-    
-    EXCLUSION_RULES_NOT_MET("exclusion_rules_not_met"),
-    
-    PRECEDING_VALIDATION_FAILED("preceding_validation_failed");
-
-    private String value;
-
-    KeyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static KeyEnum fromValue(String value) {
-      for (KeyEnum b : KeyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<KeyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final KeyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public KeyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return KeyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private KeyEnum key;
-
-  /**
-   * Gets or Sets message
-   */
-  @JsonAdapter(MessageEnum.Adapter.class)
-  public enum MessageEnum {
-    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("Applicable redeemables limit exceeded"),
-    
-    APPLICABLE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable redeemables limit per category exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("Applicable exclusive redeemables limit exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable exclusive redeemables limit per category exceeded"),
-    
-    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_EXCLUSION_RULES("Redeemable cannot be applied due to exclusion rules"),
-    
-    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_PRECEDING_VALIDATION_FAILURE("Redeemable cannot be applied due to preceding validation failure");
-
-    private String value;
-
-    MessageEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MessageEnum fromValue(String value) {
-      for (MessageEnum b : MessageEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MessageEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MessageEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MessageEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MessageEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private MessageEnum message;
-
   public static final String SERIALIZED_NAME_DISCOUNT = "discount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT)
   private ValidationsValidateResponseBodyRedeemablesItemResultDiscount discount;
@@ -192,52 +75,10 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
 
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
-  private Object details;
+  private ValidationsValidateResponseBodyRedeemablesItemResultDetails details;
 
   public ValidationsValidateResponseBodyRedeemablesItemResult() {
   }
-
-  public ValidationsValidateResponseBodyRedeemablesItemResult key(KeyEnum key) {
-    
-    this.key = key;
-    return this;
-  }
-
-   /**
-   * Get key
-   * @return key
-  **/
-  @javax.annotation.Nullable
-  public KeyEnum getKey() {
-    return key;
-  }
-
-
-  public void setKey(KeyEnum key) {
-    this.key = key;
-  }
-
-
-  public ValidationsValidateResponseBodyRedeemablesItemResult message(MessageEnum message) {
-    
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Get message
-   * @return message
-  **/
-  @javax.annotation.Nullable
-  public MessageEnum getMessage() {
-    return message;
-  }
-
-
-  public void setMessage(MessageEnum message) {
-    this.message = message;
-  }
-
 
   public ValidationsValidateResponseBodyRedeemablesItemResult discount(ValidationsValidateResponseBodyRedeemablesItemResultDiscount discount) {
     
@@ -323,7 +164,7 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
   }
 
 
-  public ValidationsValidateResponseBodyRedeemablesItemResult details(Object details) {
+  public ValidationsValidateResponseBodyRedeemablesItemResult details(ValidationsValidateResponseBodyRedeemablesItemResultDetails details) {
     
     this.details = details;
     return this;
@@ -334,15 +175,59 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
    * @return details
   **/
   @javax.annotation.Nullable
-  public Object getDetails() {
+  public ValidationsValidateResponseBodyRedeemablesItemResultDetails getDetails() {
     return details;
   }
 
 
-  public void setDetails(Object details) {
+  public void setDetails(ValidationsValidateResponseBodyRedeemablesItemResultDetails details) {
     this.details = details;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ValidationsValidateResponseBodyRedeemablesItemResult instance itself
+   */
+  public ValidationsValidateResponseBodyRedeemablesItemResult putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -354,31 +239,29 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
       return false;
     }
     ValidationsValidateResponseBodyRedeemablesItemResult validationsValidateResponseBodyRedeemablesItemResult = (ValidationsValidateResponseBodyRedeemablesItemResult) o;
-    return Objects.equals(this.key, validationsValidateResponseBodyRedeemablesItemResult.key) &&
-        Objects.equals(this.message, validationsValidateResponseBodyRedeemablesItemResult.message) &&
-        Objects.equals(this.discount, validationsValidateResponseBodyRedeemablesItemResult.discount) &&
+    return Objects.equals(this.discount, validationsValidateResponseBodyRedeemablesItemResult.discount) &&
         Objects.equals(this.gift, validationsValidateResponseBodyRedeemablesItemResult.gift) &&
         Objects.equals(this.loyaltyCard, validationsValidateResponseBodyRedeemablesItemResult.loyaltyCard) &&
         Objects.equals(this.error, validationsValidateResponseBodyRedeemablesItemResult.error) &&
-        Objects.equals(this.details, validationsValidateResponseBodyRedeemablesItemResult.details);
+        Objects.equals(this.details, validationsValidateResponseBodyRedeemablesItemResult.details)&&
+        Objects.equals(this.additionalProperties, validationsValidateResponseBodyRedeemablesItemResult.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, message, discount, gift, loyaltyCard, error, details);
+    return Objects.hash(discount, gift, loyaltyCard, error, details, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValidationsValidateResponseBodyRedeemablesItemResult {\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
     sb.append("    loyaltyCard: ").append(toIndentedString(loyaltyCard)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -401,8 +284,6 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("key");
-    openapiFields.add("message");
     openapiFields.add("discount");
     openapiFields.add("gift");
     openapiFields.add("loyalty_card");
@@ -425,47 +306,7 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationsValidateResponseBodyRedeemablesItemResult is not found in the empty JSON string", ValidationsValidateResponseBodyRedeemablesItemResult.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ValidationsValidateResponseBodyRedeemablesItemResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidationsValidateResponseBodyRedeemablesItemResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("key");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          KeyEnum.fromValue(objectElement.getAsString());
-        } else {
-          throw new IllegalArgumentException("Expected the field `key` to be not null");
-        }
-      } catch (IllegalArgumentException e) {
-        if(jsonObj.get("key") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `key` to be a valid element of KeyEnum enum got `%s` instead", jsonObj.get("key").toString()));
-        }
-      }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("message");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          MessageEnum.fromValue(objectElement.getAsString());
-        } else {
-          throw new IllegalArgumentException("Expected the field `message` to be not null");
-        }
-      } catch (IllegalArgumentException e) {
-        if(jsonObj.get("message") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `message` to be a valid element of MessageEnum enum got `%s` instead", jsonObj.get("message").toString()));
-        }
-      }
       // validate the optional field `discount`
       if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
         ValidationsValidateResponseBodyRedeemablesItemResultDiscount.validateJsonElement(jsonObj.get("discount"));
@@ -481,6 +322,10 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
       // validate the optional field `error`
       if (jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) {
         Error.validateJsonElement(jsonObj.get("error"));
+      }
+      // validate the optional field `details`
+      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
+        ValidationsValidateResponseBodyRedeemablesItemResultDetails.validateJsonElement(jsonObj.get("details"));
       }
   }
 
@@ -499,6 +344,23 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
            @Override
            public void write(JsonWriter out, ValidationsValidateResponseBodyRedeemablesItemResult value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -506,7 +368,28 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
            public ValidationsValidateResponseBodyRedeemablesItemResult read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             ValidationsValidateResponseBodyRedeemablesItemResult instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

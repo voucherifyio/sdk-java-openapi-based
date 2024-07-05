@@ -48,6 +48,7 @@ Defines the details of the voucher being redeemed.
 | GIFT_VOUCHER | &quot;GIFT_VOUCHER&quot; |
 | DISCOUNT_VOUCHER | &quot;DISCOUNT_VOUCHER&quot; |
 | LOYALTY_CARD | &quot;LOYALTY_CARD&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -62,6 +63,7 @@ Defines the details of the voucher being redeemed.
 | NUMBER_4 | 4 |
 | NUMBER_5 | 5 |
 | NUMBER_6 | 6 |
+| NUMBER_unknown_enum | 11184809 |
 
 
 

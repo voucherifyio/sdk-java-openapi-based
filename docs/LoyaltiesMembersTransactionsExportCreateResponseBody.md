@@ -25,6 +25,7 @@ Response body schema for **POST** `/loyalties/members/{memberId}/transactions/ex
 | Name | Value |
 |---- | -----|
 | EXPORT | &quot;export&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -33,6 +34,7 @@ Response body schema for **POST** `/loyalties/members/{memberId}/transactions/ex
 | Name | Value |
 |---- | -----|
 | SCHEDULED | &quot;SCHEDULED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -41,6 +43,7 @@ Response body schema for **POST** `/loyalties/members/{memberId}/transactions/ex
 | Name | Value |
 |---- | -----|
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

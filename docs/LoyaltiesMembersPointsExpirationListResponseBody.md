@@ -20,6 +20,7 @@ Response body schema for **GET** `/loyalties/{campaignId}/members/{memberId}/poi
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -28,6 +29,7 @@ Response body schema for **GET** `/loyalties/{campaignId}/members/{memberId}/poi
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -21,6 +21,7 @@ Defines the Loyalty Tiers Expiration.
 |---- | -----|
 | BALANCE | &quot;BALANCE&quot; |
 | POINTS_IN_PERIOD | &quot;POINTS_IN_PERIOD&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@ Defines the Loyalty Tiers Expiration.
 | QUARTER | &quot;QUARTER&quot; |
 | HALF_YEAR | &quot;HALF_YEAR&quot; |
 | YEAR | &quot;YEAR&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

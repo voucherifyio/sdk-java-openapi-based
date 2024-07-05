@@ -25,6 +25,7 @@ This is an object representing a request validation rule.
 | BASIC | &quot;basic&quot; |
 | ADVANCED | &quot;advanced&quot; |
 | COMPLEX | &quot;complex&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -89,6 +90,7 @@ This is an object representing a request validation rule.
 | DISTRIBUTION_ORDER_UPDATED | &quot;distribution.order.updated&quot; |
 | REWARD_ASSIGNMENT_PAY_WITH_POINTS | &quot;reward_assignment.pay_with_points&quot; |
 | GLOBAL | &quot;global&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -30,6 +30,7 @@
 |---- | -----|
 | PRODUCT | &quot;product&quot; |
 | SKU | &quot;sku&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

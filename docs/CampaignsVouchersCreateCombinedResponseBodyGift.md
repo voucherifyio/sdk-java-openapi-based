@@ -20,6 +20,7 @@ Object representing gift parameters. Child attributes are present only if `type`
 |---- | -----|
 | ORDER | &quot;APPLY_TO_ORDER&quot; |
 | ITEMS | &quot;APPLY_TO_ITEMS&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

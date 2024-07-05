@@ -34,7 +34,9 @@ public enum ParameterOrderListExports {
   
   STATUS("status"),
   
-  _STATUS("-status");
+  _STATUS("-status"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -57,7 +59,7 @@ public enum ParameterOrderListExports {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListExports> {

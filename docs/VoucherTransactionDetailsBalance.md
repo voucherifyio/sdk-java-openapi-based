@@ -22,6 +22,7 @@ Contains information on how the balance was affected by the transaction.
 | Name | Value |
 |---- | -----|
 | LOYALTY_CARD | &quot;loyalty_card&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -30,6 +31,7 @@ Contains information on how the balance was affected by the transaction.
 | Name | Value |
 |---- | -----|
 | BALANCE | &quot;balance&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

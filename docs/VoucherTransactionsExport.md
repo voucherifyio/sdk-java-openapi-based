@@ -25,6 +25,7 @@ This is an object representing an export.    Using this endpoint, you can export
 | Name | Value |
 |---- | -----|
 | EXPORT | &quot;export&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -33,6 +34,7 @@ This is an object representing an export.    Using this endpoint, you can export
 | Name | Value |
 |---- | -----|
 | SCHEDULED | &quot;SCHEDULED&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -41,6 +43,7 @@ This is an object representing an export.    Using this endpoint, you can export
 | Name | Value |
 |---- | -----|
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -29,6 +29,7 @@ Request body schema for **POST** `/qualifications`.
 | PROMOTION_STACKS | &quot;PROMOTION_STACKS&quot; |
 | PRODUCTS_BY_CUSTOMER | &quot;PRODUCTS_BY_CUSTOMER&quot; |
 | PRODUCTS_DISCOUNT_BY_CUSTOMER | &quot;PRODUCTS_DISCOUNT_BY_CUSTOMER&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

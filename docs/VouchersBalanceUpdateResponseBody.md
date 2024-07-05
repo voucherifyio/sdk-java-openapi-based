@@ -24,6 +24,7 @@ Response body schema for `vouchers/{code}/balance.`
 |---- | -----|
 | GIFT_VOUCHER | &quot;gift_voucher&quot; |
 | LOYALTY_CARD | &quot;loyalty_card&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -32,6 +33,7 @@ Response body schema for `vouchers/{code}/balance.`
 | Name | Value |
 |---- | -----|
 | MANUAL | &quot;MANUAL&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -40,6 +42,7 @@ Response body schema for `vouchers/{code}/balance.`
 | Name | Value |
 |---- | -----|
 | BALANCE | &quot;balance&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

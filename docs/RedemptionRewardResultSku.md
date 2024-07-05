@@ -28,6 +28,7 @@ Defines of the sku.
 | Name | Value |
 |---- | -----|
 | SKU | &quot;sku&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

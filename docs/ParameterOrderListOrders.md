@@ -13,5 +13,7 @@
 
 * `_UPDATED_AT` (value: `"-updated_at"`)
 
+* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
+
 
 

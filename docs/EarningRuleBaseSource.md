@@ -19,6 +19,7 @@ Contains the custom earning rule name and parent campaign.
 | Name | Value |
 |---- | -----|
 | CAMPAIGN | &quot;campaign&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

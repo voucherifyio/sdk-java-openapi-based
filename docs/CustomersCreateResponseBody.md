@@ -34,6 +34,7 @@ Response body for **POST** `/customers`.
 | Name | Value |
 |---- | -----|
 | CUSTOMER | &quot;customer&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

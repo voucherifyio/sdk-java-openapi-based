@@ -32,7 +32,9 @@ public enum ResourceTypes {
   
   VOUCHER("voucher"),
   
-  PROMOTION_TIER("promotion_tier");
+  PROMOTION_TIER("promotion_tier"),
+  
+  UNKNOWN_ENUM("unknown_enum");
 
   private String value;
 
@@ -55,7 +57,7 @@ public enum ResourceTypes {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return UNKNOWN_ENUM;
   }
 
   public static class Adapter extends TypeAdapter<ResourceTypes> {

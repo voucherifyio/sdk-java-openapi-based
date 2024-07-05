@@ -24,6 +24,7 @@
 | Name | Value |
 |---- | -----|
 | EXPORT | &quot;export&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -35,6 +36,7 @@
 | IN_PROGRESS | &quot;IN_PROGRESS&quot; |
 | DONE | &quot;DONE&quot; |
 | ERROR | &quot;ERROR&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -49,6 +51,7 @@
 | ORDER | &quot;order&quot; |
 | POINTS_EXPIRATION | &quot;points_expiration&quot; |
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

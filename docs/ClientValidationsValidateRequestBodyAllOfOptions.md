@@ -20,6 +20,7 @@ Configure parameters returned in the response.
 | REDEMPTION | &quot;redemption&quot; |
 | REDEEMABLE | &quot;redeemable&quot; |
 | CATEGORY | &quot;category&quot; |
+| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
