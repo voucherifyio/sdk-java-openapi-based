@@ -35,17 +35,23 @@ public class CampaignsTest {
         CampaignLoyaltyCard campaignLoyaltyCard = new CampaignLoyaltyCard();
         campaignLoyaltyCard.setPoints(500);
 
-        CampaignLoyaltyVoucher campaignLoyaltyVoucher = new CampaignLoyaltyVoucher();
-        campaignLoyaltyVoucher.loyaltyCard(campaignLoyaltyCard);
+        CampaignsCreateRequestBodyVoucher voucher = new CampaignsCreateRequestBodyVoucher();
+        voucher.setLoyaltyCard(campaignLoyaltyCard);
+        voucher.setType(CampaignsCreateRequestBodyVoucher.TypeEnum.LOYALTY_CARD);
 
-        CampaignsCreateLoyaltyCampaign campaign = new CampaignsCreateLoyaltyCampaign();
-        campaign.setCampaignType(CampaignsCreateLoyaltyCampaign.CampaignTypeEnum.LOYALTY_PROGRAM);
-        campaign.setType(CampaignsCreateLoyaltyCampaign.TypeEnum.AUTO_UPDATE);
-        campaign.setName(Utils.getAlphaNumericString(20));
-
-        CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody(); // CampaignsCreateRequestBody | Specify the details of the campaign that you would like to create.
-        campaignsCreateRequestBody.setActualInstance(campaign);
-        campaign.setVoucher(campaignLoyaltyVoucher);
+        CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody();
+        // Voucher
+        // Vouchers
+        // CampaignsCreateRequestBody
+        // | Specify the
+        // details of the
+        // campaign that you
+        // would like to
+        // create.
+        campaignsCreateRequestBody.setCampaignType(CampaignsCreateRequestBody.CampaignTypeEnum.LOYALTY_PROGRAM);
+        campaignsCreateRequestBody.setType(CampaignsCreateRequestBody.TypeEnum.AUTO_UPDATE);
+        campaignsCreateRequestBody.setName(Utils.getAlphaNumericString(20));
+        campaignsCreateRequestBody.setVoucher(voucher);
 
         try {
             CampaignsCreateResponseBody result = campaigns.createCampaign(campaignsCreateRequestBody);
@@ -68,30 +74,21 @@ public class CampaignsTest {
     @Test
     @Order(2)
     public void createDiscountCampaign() {
-        DiscountAmount discountAmount = new DiscountAmount();
-        discountAmount.setType(DiscountAmount.TypeEnum.AMOUNT);
-        discountAmount.setAmountOff(BigDecimal.valueOf(1));
-
         Discount discount = new Discount();
-        discount.setActualInstance(discountAmount);
+        discount.setType(Discount.TypeEnum.AMOUNT);
+        discount.setAmountOff(BigDecimal.valueOf(1));
 
-        DiscountCouponsCampaignVoucher discountCouponsCampaignVoucher = new DiscountCouponsCampaignVoucher();
-        discountCouponsCampaignVoucher.setDiscount(discount);
+        CampaignsCreateRequestBodyVoucher voucher = new CampaignsCreateRequestBodyVoucher();
+        voucher.setDiscount(discount);
+        voucher.setType(CampaignsCreateRequestBodyVoucher.TypeEnum.DISCOUNT_VOUCHER);
 
-        CampaignsCreateDiscountCouponsCampaign campaign = new CampaignsCreateDiscountCouponsCampaign();
-        campaign.setCampaignType(CampaignsCreateDiscountCouponsCampaign.CampaignTypeEnum.DISCOUNT_COUPONS);
-        campaign.setType(CampaignsCreateDiscountCouponsCampaign.TypeEnum.AUTO_UPDATE);
+        CampaignsCreateRequestBody campaign = new CampaignsCreateRequestBody();
+        campaign.setCampaignType(CampaignsCreateRequestBody.CampaignTypeEnum.DISCOUNT_COUPONS);
+        campaign.setType(CampaignsCreateRequestBody.TypeEnum.AUTO_UPDATE);
         campaign.setName(Utils.getAlphaNumericString(20));
-        campaign.setValidationRules(
-            Voucherify.getInstance().getCouponCampaign().getValidationRuleIds()
-        );
-
-        CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody(); // CampaignsCreateRequestBody | Specify the details of the campaign that you would like to create.
-        campaignsCreateRequestBody.setActualInstance(campaign);
-        campaign.setVoucher(discountCouponsCampaignVoucher);
-
+        campaign.setVoucher(voucher);
         try {
-            CampaignsCreateResponseBody result = campaigns.createCampaign(campaignsCreateRequestBody);
+            CampaignsCreateResponseBody result = campaigns.createCampaign(campaign);
 
             String discountCampaignId = result.getId();
             String campaignName = result.getName();
@@ -123,13 +120,16 @@ public class CampaignsTest {
     public void addVoucherToCampaign() {
         try {
             Integer vouchersCount = 1; // Integer | Number of vouchers that should be added.
-            CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody(); // CampaignsVouchersCreateInBulkRequestBody | Specify the voucher parameters that you would like to overwrite.
+            CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody();
+            // CampaignsVouchersCreateInBulkRequestBody | Specify the voucher parameters
+            // that you would like to overwrite.
 
-            CampaignsVouchersCreateCombinedResponseBody result = campaigns.addVouchersToCampaign(loyaltyProgramId, vouchersCount, campaignsVouchersCreateInBulkRequestBody);
+            CampaignsVouchersCreateCombinedResponseBody result = campaigns.addVouchersToCampaign(loyaltyProgramId,
+                    vouchersCount, campaignsVouchersCreateInBulkRequestBody);
 
             assertNotNull(result);
             Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
-                ((CampaignsVouchersCreateResponseBody) result.getActualInstance()).getId()
+                result.getId()
             );
 
             //NEED TWO VOUCHERS FOR PUBLICATION
@@ -137,7 +137,7 @@ public class CampaignsTest {
 
             assertNotNull(result2);
             Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
-                ((CampaignsVouchersCreateResponseBody) result2.getActualInstance()).getId()
+                result2.getId()
             );
 
         } catch (ApiException | JsonSyntaxException e) {
@@ -150,8 +150,20 @@ public class CampaignsTest {
     public void addVouchersToCampaign() {
         try {
             Integer vouchersCount = 2; // Integer | Number of vouchers that should be added.
-            CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody(); // CampaignsVouchersCreateInBulkRequestBody | Specify the voucher parameters that you would like to overwrite.
-            CampaignsVouchersCreateCombinedResponseBody responseBody = campaigns.addVouchersToCampaign(loyaltyProgramId, vouchersCount, campaignsVouchersCreateInBulkRequestBody);
+            CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody(); // CampaignsVouchersCreateInBulkRequestBody
+                                                                                                                                                // |
+                                                                                                                                                // Specify
+                                                                                                                                                // the
+                                                                                                                                                // voucher
+                                                                                                                                                // parameters
+                                                                                                                                                // that
+                                                                                                                                                // you
+                                                                                                                                                // would
+                                                                                                                                                // like
+                                                                                                                                                // to
+                                                                                                                                                // overwrite.
+            CampaignsVouchersCreateCombinedResponseBody responseBody = campaigns.addVouchersToCampaign(loyaltyProgramId,
+                    vouchersCount, campaignsVouchersCreateInBulkRequestBody);
 
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
