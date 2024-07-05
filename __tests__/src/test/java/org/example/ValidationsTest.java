@@ -31,7 +31,8 @@ public class ValidationsTest {
         ValidationsValidateRequestBody validationsValidateRequestBody = getValidationsValidateRequestBody();
 
         try {
-            ValidationsValidateResponseBody responseBody = validationsApi.validateStackedDiscounts(validationsValidateRequestBody);
+            ValidationsValidateResponseBody responseBody = validationsApi
+                    .validateStackedDiscounts(validationsValidateRequestBody);
 
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
@@ -43,17 +44,15 @@ public class ValidationsTest {
     private static ValidationsValidateRequestBody getValidationsValidateRequestBody() {
         Order order = getOrder();
 
-        StackableValidateRedeemBaseRedeemablesItem redeemable = new StackableValidateRedeemBaseRedeemablesItem();
+        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = new StackableValidateRedeemBaseRedeemablesItem();
 
-        RedeemVoucher redeemVoucher = new RedeemVoucher();
-        redeemVoucher.setId("test");
-
-        redeemable.setActualInstance(redeemVoucher);
+        redeemablesItem._object(StackableValidateRedeemBaseRedeemablesItem.ObjectEnum.VOUCHER);
+        redeemablesItem.setId(Utils.getAlphaNumericString(20));
 
         ValidationsValidateRequestBody validationsValidateRequestBody = new ValidationsValidateRequestBody();
 
         validationsValidateRequestBody.setOrder(order);
-        validationsValidateRequestBody.addRedeemablesItem(redeemable);
+        validationsValidateRequestBody.addRedeemablesItem(redeemablesItem);
 
         return validationsValidateRequestBody;
     }

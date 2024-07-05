@@ -29,18 +29,17 @@ public class PublicationsTest {
     public void listPublicationsTest() {
         try {
             PublicationsListResponseBody responseBody = publications.listPublications(
-                10,
-                1,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-            );
+                    10,
+                    1,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null);
 
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
@@ -52,16 +51,12 @@ public class PublicationsTest {
     @Order(2)
     public void CreatePublicationWithSpecificVoucherTest() {
         try {
-            CreatePublicationWithSpecificVoucher createPublicationWithSpecificVoucher = new CreatePublicationWithSpecificVoucher();
-
-            Customer customer = new Customer();
-            customer.setId(Voucherify.getInstance().getCustomer().getId());
-
-            createPublicationWithSpecificVoucher.setCustomer(customer);
-            createPublicationWithSpecificVoucher.setVoucher(Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0));
-
             PublicationsCreateRequestBody publicationsCreateRequestBody = new PublicationsCreateRequestBody();
-            publicationsCreateRequestBody.setActualInstance(createPublicationWithSpecificVoucher);
+            PublicationsCreateRequestBodyCustomer customer = new PublicationsCreateRequestBodyCustomer();
+
+            customer.setId(Voucherify.getInstance().getCustomer().getId());
+            publicationsCreateRequestBody.setCustomer(customer);
+            publicationsCreateRequestBody.setVoucher(Voucherify.getInstance().getLoyaltyCampaign().getVoucherIds().get(0));
 
             PublicationsCreateResponseBody responseBody = publications.createPublication(false, publicationsCreateRequestBody);
 
@@ -75,22 +70,19 @@ public class PublicationsTest {
     @Order(3)
     public void CreatePublicationWithCampaignTest() {
         try {
-            CreatePublicationWithCampaign createPublicationWithCampaign = new CreatePublicationWithCampaign();
-
             CreatePublicationCampaign createPublicationCampaign = new CreatePublicationCampaign();
+            PublicationsCreateRequestBodyCustomer customer = new PublicationsCreateRequestBodyCustomer();
             createPublicationCampaign.setName(Voucherify.getInstance().getLoyaltyCampaign().getName());
             createPublicationCampaign.setCount(2);
 
-            Customer customer = new Customer();
             customer.setId(Voucherify.getInstance().getCustomer().getId());
 
-            createPublicationWithCampaign.setCampaign(createPublicationCampaign);
-            createPublicationWithCampaign.setCustomer(customer);
-
             PublicationsCreateRequestBody publicationsCreateRequestBody = new PublicationsCreateRequestBody();
-            publicationsCreateRequestBody.setActualInstance(createPublicationWithCampaign);
+            publicationsCreateRequestBody.setCampaign(createPublicationCampaign);
+            publicationsCreateRequestBody.setCustomer(customer);
 
-            PublicationsCreateResponseBody responseBody = publications.createPublication(false, publicationsCreateRequestBody);
+            PublicationsCreateResponseBody responseBody = publications.createPublication(false,
+                    publicationsCreateRequestBody);
 
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
