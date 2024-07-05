@@ -22394,7 +22394,7 @@ components:
           object: voucher
         channel:
           channel_type: USER
-          channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+          channel_id: channel_id
         related_object_id: related_object_id
         promotion_tier:
           summary:
@@ -22532,15 +22532,15 @@ components:
         related_redemptions:
           rollbacks:
           - date: 2021-12-22T10:13:06.487Z
-            id: rr_0bc92f81a6801f9bca
+            id: id
           - date: 2021-12-22T10:13:06.487Z
-            id: rr_0bc92f81a6801f9bca
+            id: id
           redemptions:
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
-        id: r_0bc92f81a6801f9bca
+        id: id
         customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
         loyalty_card:
           points: 9
@@ -22639,8 +22639,6 @@ components:
           object: customer
       properties:
         id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
           type: string
         object:
           enum:
@@ -22666,11 +22664,10 @@ components:
           title: RedemptionsGetResponseBodyMetadata
           type: object
         amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the amount of redeemed credits on a gift
-            card. and A positive integer in the smallest currency unit (e.g. 100 cents
-            for $1.00) representing the total amount of the order. This is the sum
-            of the order items' amounts.
+          description: |-
+            For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits.
+            For loyalty cards, this is the number of loyalty points used in the transaction. and For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card.
+            For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
           type: integer
         redemption:
           description: Unique redemption ID of the parent redemption.
@@ -22714,8 +22711,6 @@ components:
           - redemption
           type: string
         related_object_id:
-          description: "Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno\
-            \ for a voucher."
           type: string
         voucher:
           $ref: '#/components/schemas/RedemptionsGetResponseBodyVoucher'
@@ -22920,7 +22915,7 @@ components:
             object: voucher
           channel:
             channel_type: USER
-            channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+            channel_id: channel_id
           related_object_id: related_object_id
           promotion_tier:
             summary:
@@ -23058,15 +23053,15 @@ components:
           related_redemptions:
             rollbacks:
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             redemptions:
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: id
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 3
@@ -23336,7 +23331,7 @@ components:
             object: voucher
           channel:
             channel_type: USER
-            channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+            channel_id: channel_id
           related_object_id: related_object_id
           promotion_tier:
             summary:
@@ -23474,15 +23469,15 @@ components:
           related_redemptions:
             rollbacks:
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             redemptions:
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: id
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 3
@@ -24019,7 +24014,7 @@ components:
             amount: 0
           reason: reason
           metadata: "{}"
-          amount: 10000
+          amount: -10000
           failure_code: customer_rules_violated
           related_object_type: voucher
           voucher: ""
@@ -24042,7 +24037,7 @@ components:
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: rr_0efeb3dab05e62e599
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 6
@@ -24081,7 +24076,7 @@ components:
             amount: 0
           reason: reason
           metadata: "{}"
-          amount: 10000
+          amount: -10000
           failure_code: customer_rules_violated
           related_object_type: voucher
           voucher: ""
@@ -24104,7 +24099,7 @@ components:
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: rr_0efeb3dab05e62e599
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 6
@@ -24142,7 +24137,7 @@ components:
             amount: 0
           reason: reason
           metadata: "{}"
-          amount: 10000
+          amount: -10000
           failure_code: customer_rules_violated
           related_object_type: voucher
           voucher: ""
@@ -24165,7 +24160,7 @@ components:
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: rr_0efeb3dab05e62e599
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 6
@@ -25002,7 +24997,7 @@ components:
             object: voucher
           channel:
             channel_type: USER
-            channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+            channel_id: channel_id
           related_object_id: related_object_id
           promotion_tier:
             summary:
@@ -25140,15 +25135,15 @@ components:
           related_redemptions:
             rollbacks:
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             redemptions:
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: id
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 8
@@ -25418,7 +25413,7 @@ components:
             object: voucher
           channel:
             channel_type: USER
-            channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+            channel_id: channel_id
           related_object_id: related_object_id
           promotion_tier:
             summary:
@@ -25556,15 +25551,15 @@ components:
           related_redemptions:
             rollbacks:
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             - date: 2021-12-22T10:13:06.487Z
-              id: rr_0bc92f81a6801f9bca
+              id: id
             redemptions:
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
             - date: 2021-12-22T10:13:06.487Z
               id: r_0bc92f81a6801f9bca
-          id: r_0bc92f81a6801f9bca
+          id: id
           customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
           loyalty_card:
             points: 8
@@ -28476,9 +28471,9 @@ components:
           nullable: true
           type: object
         amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the amount of redeemed credits on a gift
-            card.
+          description: |-
+            For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits.
+            For loyalty cards, this is the number of loyalty points used in the transaction.
           example: 10000
           type: integer
         redemption:
@@ -28669,7 +28664,7 @@ components:
           amount: 0
         reason: reason
         metadata: "{}"
-        amount: 10000
+        amount: -10000
         failure_code: customer_rules_violated
         related_object_type: voucher
         voucher: ""
@@ -28692,7 +28687,7 @@ components:
             id: r_0bc92f81a6801f9bca
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
-        id: r_0bc92f81a6801f9bca
+        id: rr_0efeb3dab05e62e599
         customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
         loyalty_card:
           points: 6
@@ -28703,8 +28698,8 @@ components:
         customer: ""
       properties:
         id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
+          description: Unique identifier of the redemption rollback.
+          example: rr_0efeb3dab05e62e599
           type: string
         object:
           default: redemption_rollback
@@ -28733,10 +28728,10 @@ components:
           nullable: true
           type: object
         amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the total amount of the order. This is the
-            sum of the order items' amounts.
-          example: 10000
+          description: |-
+            For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card.
+            For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
+          example: -10000
           type: integer
         redemption:
           description: Unique redemption ID of the parent redemption.
@@ -28775,7 +28770,7 @@ components:
           - $ref: '#/components/schemas/OrderCalculatedNoCustomerData'
           nullable: true
         channel:
-          $ref: '#/components/schemas/Redemption_channel'
+          $ref: '#/components/schemas/RedemptionRollback_channel'
         customer:
           allOf:
           - $ref: '#/components/schemas/SimpleCustomer'
@@ -28788,13 +28783,13 @@ components:
           - redemption
           type: string
         related_object_id:
-          description: "Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno\
-            \ for a voucher."
+          description: "Unique identifier of the related object. It is assigned by\
+            \ Voucherify, i.e. `v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno` for a voucher."
           type: string
         voucher:
           allOf:
           - $ref: '#/components/schemas/Voucher'
-          description: Defines the details of the voucher being redeemed.
+          description: Defines the details of the voucher being originally redeemed.
         promotion_tier:
           allOf:
           - $ref: '#/components/schemas/PromotionTier'
@@ -28802,9 +28797,9 @@ components:
         reward:
           $ref: '#/components/schemas/RedemptionRewardResult'
         gift:
-          $ref: '#/components/schemas/Redemption_gift'
+          $ref: '#/components/schemas/RedemptionRollback_gift'
         loyalty_card:
-          $ref: '#/components/schemas/Redemption_loyalty_card'
+          $ref: '#/components/schemas/RedemptionRollback_loyalty_card'
       required:
       - channel
       - date
@@ -33281,11 +33276,9 @@ components:
     RedemptionsGetResponseBodyRelatedRedemptionsRollbacksItem:
       example:
         date: 2021-12-22T10:13:06.487Z
-        id: rr_0bc92f81a6801f9bca
+        id: id
       properties:
         id:
-          description: Unique rollback redemption ID.
-          example: rr_0bc92f81a6801f9bca
           type: string
         date:
           description: Timestamp representing the date and time when the object was
@@ -33316,9 +33309,9 @@ components:
       example:
         rollbacks:
         - date: 2021-12-22T10:13:06.487Z
-          id: rr_0bc92f81a6801f9bca
+          id: id
         - date: 2021-12-22T10:13:06.487Z
-          id: rr_0bc92f81a6801f9bca
+          id: id
         redemptions:
         - date: 2021-12-22T10:13:06.487Z
           id: r_0bc92f81a6801f9bca
@@ -33522,13 +33515,9 @@ components:
     RedemptionsGetResponseBodyChannel:
       example:
         channel_type: USER
-        channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+        channel_id: channel_id
       properties:
         channel_id:
-          description: Unique channel ID of the user performing the redemption. This
-            is either a user ID from a user using the Voucherify Dashboard or an X-APP-Id
-            of a user using the API.
-          example: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
           type: string
         channel_type:
           description: The source of the channel for the redemption. A `USER` corresponds
@@ -34410,8 +34399,11 @@ components:
         amount: 5
       properties:
         amount:
-          description: The amount subtracted from the gift card expressed as the smallest
-            currency unit (e.g. 100 cents for $1.00).
+          description: Amount subtracted from the gift card as a result of the redemption.
+            The amount is expressed as the smallest currency unit (e.g. 100 cents
+            for $1.00). and Amount returned to the gift card as a result of the redemption
+            rollback and expressed as a negative integer. The amount is expressed
+            as the smallest currency unit (e.g. -100 cents for $1.00 returned).
           type: integer
       title: RedemptionsGetResponseBodyGift
       type: object
@@ -34420,19 +34412,19 @@ components:
         points: 9
       properties:
         points:
-          description: Number of points being added back to the loyalty card for the
-            reward redemption rollback.
+          description: Number of points subtracted from the loyalty card as a result
+            of the redemption. and Number of points being returned to the loyalty
+            card for the reward redemption rollback. It is expressed as a negative
+            integer.
           type: integer
       title: RedemptionsGetResponseBodyLoyaltyCard
       type: object
     Redemptions_List_Response_Body_Redemptions_ItemRelatedRedemptionsRollbacksItem:
       example:
         date: 2021-12-22T10:13:06.487Z
-        id: rr_0bc92f81a6801f9bca
+        id: id
       properties:
         id:
-          description: Unique rollback redemption ID.
-          example: rr_0bc92f81a6801f9bca
           type: string
         date:
           description: Timestamp representing the date and time when the object was
@@ -34463,9 +34455,9 @@ components:
       example:
         rollbacks:
         - date: 2021-12-22T10:13:06.487Z
-          id: rr_0bc92f81a6801f9bca
+          id: id
         - date: 2021-12-22T10:13:06.487Z
-          id: rr_0bc92f81a6801f9bca
+          id: id
         redemptions:
         - date: 2021-12-22T10:13:06.487Z
           id: r_0bc92f81a6801f9bca
@@ -34669,13 +34661,9 @@ components:
     Redemptions_List_Response_Body_Redemptions_ItemChannel:
       example:
         channel_type: USER
-        channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+        channel_id: channel_id
       properties:
         channel_id:
-          description: Unique channel ID of the user performing the redemption. This
-            is either a user ID from a user using the Voucherify Dashboard or an X-APP-Id
-            of a user using the API.
-          example: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
           type: string
         channel_type:
           description: The source of the channel for the redemption. A `USER` corresponds
@@ -35557,8 +35545,11 @@ components:
         amount: 7
       properties:
         amount:
-          description: The amount subtracted from the gift card expressed as the smallest
-            currency unit (e.g. 100 cents for $1.00).
+          description: Amount subtracted from the gift card as a result of the redemption.
+            The amount is expressed as the smallest currency unit (e.g. 100 cents
+            for $1.00). and Amount returned to the gift card as a result of the redemption
+            rollback and expressed as a negative integer. The amount is expressed
+            as the smallest currency unit (e.g. -100 cents for $1.00 returned).
           type: integer
       title: Redemptions List Response Body Redemptions ItemGift
       type: object
@@ -35567,8 +35558,10 @@ components:
         points: 3
       properties:
         points:
-          description: Number of points being added back to the loyalty card for the
-            reward redemption rollback.
+          description: Number of points subtracted from the loyalty card as a result
+            of the redemption. and Number of points being returned to the loyalty
+            card for the reward redemption rollback. It is expressed as a negative
+            integer.
           type: integer
       title: Redemptions List Response Body Redemptions ItemLoyaltyCard
       type: object
@@ -35747,7 +35740,7 @@ components:
           object: voucher
         channel:
           channel_type: USER
-          channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+          channel_id: channel_id
         related_object_id: related_object_id
         promotion_tier:
           summary:
@@ -35885,15 +35878,15 @@ components:
         related_redemptions:
           rollbacks:
           - date: 2021-12-22T10:13:06.487Z
-            id: rr_0bc92f81a6801f9bca
+            id: id
           - date: 2021-12-22T10:13:06.487Z
-            id: rr_0bc92f81a6801f9bca
+            id: id
           redemptions:
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
-        id: r_0bc92f81a6801f9bca
+        id: id
         customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
         loyalty_card:
           points: 3
@@ -35992,8 +35985,6 @@ components:
           object: customer
       properties:
         id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
           type: string
         object:
           enum:
@@ -36019,11 +36010,10 @@ components:
           title: Redemptions List Response Body Redemptions ItemMetadata
           type: object
         amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the amount of redeemed credits on a gift
-            card. and A positive integer in the smallest currency unit (e.g. 100 cents
-            for $1.00) representing the total amount of the order. This is the sum
-            of the order items' amounts.
+          description: |-
+            For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits.
+            For loyalty cards, this is the number of loyalty points used in the transaction. and For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card.
+            For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
           type: integer
         redemption:
           description: Unique redemption ID of the parent redemption.
@@ -36067,8 +36057,6 @@ components:
           - redemption
           type: string
         related_object_id:
-          description: "Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno\
-            \ for a voucher."
           type: string
         voucher:
           $ref: '#/components/schemas/Redemptions_List_Response_Body_Redemptions_ItemVoucher'
@@ -36550,11 +36538,9 @@ components:
     Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemRelatedRedemptionsRollbacksItem:
       example:
         date: 2021-12-22T10:13:06.487Z
-        id: rr_0bc92f81a6801f9bca
+        id: id
       properties:
         id:
-          description: Unique rollback redemption ID.
-          example: rr_0bc92f81a6801f9bca
           type: string
         date:
           description: Timestamp representing the date and time when the object was
@@ -36585,9 +36571,9 @@ components:
       example:
         rollbacks:
         - date: 2021-12-22T10:13:06.487Z
-          id: rr_0bc92f81a6801f9bca
+          id: id
         - date: 2021-12-22T10:13:06.487Z
-          id: rr_0bc92f81a6801f9bca
+          id: id
         redemptions:
         - date: 2021-12-22T10:13:06.487Z
           id: r_0bc92f81a6801f9bca
@@ -36791,13 +36777,9 @@ components:
     Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemChannel:
       example:
         channel_type: USER
-        channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+        channel_id: channel_id
       properties:
         channel_id:
-          description: Unique channel ID of the user performing the redemption. This
-            is either a user ID from a user using the Voucherify Dashboard or an X-APP-Id
-            of a user using the API.
-          example: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
           type: string
         channel_type:
           description: The source of the channel for the redemption. A `USER` corresponds
@@ -37679,8 +37661,11 @@ components:
         amount: 6
       properties:
         amount:
-          description: The amount subtracted from the gift card expressed as the smallest
-            currency unit (e.g. 100 cents for $1.00).
+          description: Amount subtracted from the gift card as a result of the redemption.
+            The amount is expressed as the smallest currency unit (e.g. 100 cents
+            for $1.00). and Amount returned to the gift card as a result of the redemption
+            rollback and expressed as a negative integer. The amount is expressed
+            as the smallest currency unit (e.g. -100 cents for $1.00 returned).
           type: integer
       title: Vouchers Redemption Get Response Body Redemption Entries ItemGift
       type: object
@@ -37689,8 +37674,10 @@ components:
         points: 8
       properties:
         points:
-          description: Number of points being added back to the loyalty card for the
-            reward redemption rollback.
+          description: Number of points subtracted from the loyalty card as a result
+            of the redemption. and Number of points being returned to the loyalty
+            card for the reward redemption rollback. It is expressed as a negative
+            integer.
           type: integer
       title: Vouchers Redemption Get Response Body Redemption Entries ItemLoyaltyCard
       type: object
@@ -37869,7 +37856,7 @@ components:
           object: voucher
         channel:
           channel_type: USER
-          channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+          channel_id: channel_id
         related_object_id: related_object_id
         promotion_tier:
           summary:
@@ -38007,15 +37994,15 @@ components:
         related_redemptions:
           rollbacks:
           - date: 2021-12-22T10:13:06.487Z
-            id: rr_0bc92f81a6801f9bca
+            id: id
           - date: 2021-12-22T10:13:06.487Z
-            id: rr_0bc92f81a6801f9bca
+            id: id
           redemptions:
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
           - date: 2021-12-22T10:13:06.487Z
             id: r_0bc92f81a6801f9bca
-        id: r_0bc92f81a6801f9bca
+        id: id
         customer_id: cust_i8t5Tt6eiKG5K79KQlJ0Vs64
         loyalty_card:
           points: 8
@@ -38114,8 +38101,6 @@ components:
           object: customer
       properties:
         id:
-          description: Unique redemption ID.
-          example: r_0bc92f81a6801f9bca
           type: string
         object:
           enum:
@@ -38141,11 +38126,10 @@ components:
           title: Vouchers Redemption Get Response Body Redemption Entries ItemMetadata
           type: object
         amount:
-          description: A positive integer in the smallest currency unit (e.g. 100
-            cents for $1.00) representing the amount of redeemed credits on a gift
-            card. and A positive integer in the smallest currency unit (e.g. 100 cents
-            for $1.00) representing the total amount of the order. This is the sum
-            of the order items' amounts.
+          description: |-
+            For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits.
+            For loyalty cards, this is the number of loyalty points used in the transaction. and For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card.
+            For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
           type: integer
         redemption:
           description: Unique redemption ID of the parent redemption.
@@ -38189,8 +38173,6 @@ components:
           - redemption
           type: string
         related_object_id:
-          description: "Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno\
-            \ for a voucher."
           type: string
         voucher:
           $ref: '#/components/schemas/Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemVoucher'
@@ -39340,25 +39322,25 @@ components:
       - $ref: '#/components/schemas/VoucherHolder'
       description: Defines the details of the voucher being redeemed.
     Redemption_gift:
-      description: Contains the amount being subtracted from the gift card for the
-        redemption.
+      description: Contains the amount subtracted from the gift card for the redemption.
       example:
         amount: 0
       properties:
         amount:
-          description: The amount subtracted from the gift card expressed as the smallest
-            currency unit (e.g. 100 cents for $1.00).
+          description: Amount subtracted from the gift card as a result of the redemption.
+            The amount is expressed as the smallest currency unit (e.g. 100 cents
+            for $1.00).
           type: integer
       type: object
     Redemption_loyalty_card:
-      description: Stores the number of points being added back to the loyalty card
-        for the reward redemption rollback.
+      description: Contains the number of points subtracted from the loyalty card
+        for the redemption.
       example:
         points: 6
       properties:
         points:
-          description: Number of points being added back to the loyalty card for the
-            reward redemption rollback.
+          description: Number of points subtracted from the loyalty card as a result
+            of the redemption.
           type: integer
       type: object
     RedemptionRewardResult_voucher:
@@ -39452,7 +39434,7 @@ components:
         id: rr_0bc92f81a6801f9bca
       properties:
         id:
-          description: Unique rollback redemption ID.
+          description: Unique identifier of the redemption rollback.
           example: rr_0bc92f81a6801f9bca
           type: string
         date:
@@ -39501,6 +39483,51 @@ components:
           items:
             $ref: '#/components/schemas/Redemption_Rollback_Related_Redemptions_Item'
           type: array
+      type: object
+    RedemptionRollback_channel:
+      description: Defines the details of the channel through which the redemption
+        was issued.
+      example:
+        channel_type: USER
+        channel_id: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+      properties:
+        channel_id:
+          description: Unique identifier of the channel which was used by the user
+            performing the redemption rollback. This is either a user ID from the
+            user using the Voucherify Dashboard or an X-APP-Id of a user using the
+            API.
+          example: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
+          type: string
+        channel_type:
+          description: The source of the channel for the redemption. A `USER` corresponds
+            to the Voucherify Dashboard and an `API` corresponds to the API.
+          enum:
+          - USER
+          - API
+          type: string
+      type: object
+    RedemptionRollback_gift:
+      description: Contains the amount returned to the gift card in the redemption
+        rollback. It is expressed as a negative integer.
+      example:
+        amount: 0
+      properties:
+        amount:
+          description: Amount returned to the gift card as a result of the redemption
+            rollback and expressed as a negative integer. The amount is expressed
+            as the smallest currency unit (e.g. -100 cents for $1.00 returned).
+          type: integer
+      type: object
+    RedemptionRollback_loyalty_card:
+      description: Contains the number of points returned to the loyalty card in the
+        reward redemption rollback. It is expressed as a negative integer.
+      example:
+        points: 6
+      properties:
+        points:
+          description: Number of points being returned to the loyalty card for the
+            reward redemption rollback. It is expressed as a negative integer.
+          type: integer
       type: object
     ReferralProgram_custom_event:
       description: Contains details about the custom event.

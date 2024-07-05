@@ -71,7 +71,7 @@ public class RedemptionRollbackRelatedRedemptionsRollbacksItem {
   }
 
    /**
-   * Unique rollback redemption ID.
+   * Unique identifier of the redemption rollback.
    * @return id
   **/
   @javax.annotation.Nullable

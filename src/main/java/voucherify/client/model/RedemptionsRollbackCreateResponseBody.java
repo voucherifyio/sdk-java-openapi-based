@@ -25,10 +25,10 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculatedNoCustomerData;
 import voucherify.client.model.PromotionTier;
-import voucherify.client.model.RedemptionChannel;
-import voucherify.client.model.RedemptionGift;
-import voucherify.client.model.RedemptionLoyaltyCard;
 import voucherify.client.model.RedemptionRewardResult;
+import voucherify.client.model.RedemptionRollbackChannel;
+import voucherify.client.model.RedemptionRollbackGift;
+import voucherify.client.model.RedemptionRollbackLoyaltyCard;
 import voucherify.client.model.RedemptionRollbackRelatedRedemptions;
 import voucherify.client.model.SimpleCustomer;
 import voucherify.client.model.Voucher;
@@ -264,7 +264,7 @@ public class RedemptionsRollbackCreateResponseBody {
 
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
-  private RedemptionChannel channel;
+  private RedemptionRollbackChannel channel;
 
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
@@ -341,11 +341,11 @@ public class RedemptionsRollbackCreateResponseBody {
 
   public static final String SERIALIZED_NAME_GIFT = "gift";
   @SerializedName(SERIALIZED_NAME_GIFT)
-  private RedemptionGift gift;
+  private RedemptionRollbackGift gift;
 
   public static final String SERIALIZED_NAME_LOYALTY_CARD = "loyalty_card";
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARD)
-  private RedemptionLoyaltyCard loyaltyCard;
+  private RedemptionRollbackLoyaltyCard loyaltyCard;
 
   public RedemptionsRollbackCreateResponseBody() {
   }
@@ -357,7 +357,7 @@ public class RedemptionsRollbackCreateResponseBody {
   }
 
    /**
-   * Unique redemption ID.
+   * Unique identifier of the redemption rollback.
    * @return id
   **/
   @javax.annotation.Nonnull
@@ -483,7 +483,7 @@ public class RedemptionsRollbackCreateResponseBody {
   }
 
    /**
-   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts.
+   * For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card. For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -665,7 +665,7 @@ public class RedemptionsRollbackCreateResponseBody {
   }
 
 
-  public RedemptionsRollbackCreateResponseBody channel(RedemptionChannel channel) {
+  public RedemptionsRollbackCreateResponseBody channel(RedemptionRollbackChannel channel) {
     
     this.channel = channel;
     return this;
@@ -676,12 +676,12 @@ public class RedemptionsRollbackCreateResponseBody {
    * @return channel
   **/
   @javax.annotation.Nonnull
-  public RedemptionChannel getChannel() {
+  public RedemptionRollbackChannel getChannel() {
     return channel;
   }
 
 
-  public void setChannel(RedemptionChannel channel) {
+  public void setChannel(RedemptionRollbackChannel channel) {
     this.channel = channel;
   }
 
@@ -735,7 +735,7 @@ public class RedemptionsRollbackCreateResponseBody {
   }
 
    /**
-   * Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher.
+   * Unique identifier of the related object. It is assigned by Voucherify, i.e. &#x60;v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno&#x60; for a voucher.
    * @return relatedObjectId
   **/
   @javax.annotation.Nonnull
@@ -812,7 +812,7 @@ public class RedemptionsRollbackCreateResponseBody {
   }
 
 
-  public RedemptionsRollbackCreateResponseBody gift(RedemptionGift gift) {
+  public RedemptionsRollbackCreateResponseBody gift(RedemptionRollbackGift gift) {
     
     this.gift = gift;
     return this;
@@ -823,17 +823,17 @@ public class RedemptionsRollbackCreateResponseBody {
    * @return gift
   **/
   @javax.annotation.Nullable
-  public RedemptionGift getGift() {
+  public RedemptionRollbackGift getGift() {
     return gift;
   }
 
 
-  public void setGift(RedemptionGift gift) {
+  public void setGift(RedemptionRollbackGift gift) {
     this.gift = gift;
   }
 
 
-  public RedemptionsRollbackCreateResponseBody loyaltyCard(RedemptionLoyaltyCard loyaltyCard) {
+  public RedemptionsRollbackCreateResponseBody loyaltyCard(RedemptionRollbackLoyaltyCard loyaltyCard) {
     
     this.loyaltyCard = loyaltyCard;
     return this;
@@ -844,12 +844,12 @@ public class RedemptionsRollbackCreateResponseBody {
    * @return loyaltyCard
   **/
   @javax.annotation.Nullable
-  public RedemptionLoyaltyCard getLoyaltyCard() {
+  public RedemptionRollbackLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
 
 
-  public void setLoyaltyCard(RedemptionLoyaltyCard loyaltyCard) {
+  public void setLoyaltyCard(RedemptionRollbackLoyaltyCard loyaltyCard) {
     this.loyaltyCard = loyaltyCard;
   }
 
@@ -1099,7 +1099,7 @@ public class RedemptionsRollbackCreateResponseBody {
         OrderCalculatedNoCustomerData.validateJsonElement(jsonObj.get("order"));
       }
       // validate the required field `channel`
-      RedemptionChannel.validateJsonElement(jsonObj.get("channel"));
+      RedemptionRollbackChannel.validateJsonElement(jsonObj.get("channel"));
       // validate the optional field `customer`
       if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
         SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
@@ -1137,11 +1137,11 @@ public class RedemptionsRollbackCreateResponseBody {
       }
       // validate the optional field `gift`
       if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        RedemptionGift.validateJsonElement(jsonObj.get("gift"));
+        RedemptionRollbackGift.validateJsonElement(jsonObj.get("gift"));
       }
       // validate the optional field `loyalty_card`
       if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        RedemptionLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+        RedemptionRollbackLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
   }
 

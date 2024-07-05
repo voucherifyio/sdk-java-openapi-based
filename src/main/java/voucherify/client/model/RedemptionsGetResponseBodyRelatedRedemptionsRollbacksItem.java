@@ -71,7 +71,7 @@ public class RedemptionsGetResponseBodyRelatedRedemptionsRollbacksItem {
   }
 
    /**
-   * Unique rollback redemption ID.
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable

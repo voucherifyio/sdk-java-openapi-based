@@ -47,7 +47,7 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Stores the number of points being added back to the loyalty card for the reward redemption rollback.
+ * Contains the number of points subtracted from the loyalty card for the redemption.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
@@ -66,7 +66,7 @@ public class RedemptionLoyaltyCard {
   }
 
    /**
-   * Number of points being added back to the loyalty card for the reward redemption rollback.
+   * Number of points subtracted from the loyalty card as a result of the redemption.
    * @return points
   **/
   @javax.annotation.Nullable

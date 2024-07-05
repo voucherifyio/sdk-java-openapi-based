@@ -409,6 +409,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRewardResultSku.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRewardResultVoucher.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollback.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollbackChannel.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollbackGift.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollbackLoyaltyCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollbackRelatedRedemptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollbackRelatedRedemptionsItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.RedemptionRollbackRelatedRedemptionsRollbacksItem.CustomTypeAdapterFactory());

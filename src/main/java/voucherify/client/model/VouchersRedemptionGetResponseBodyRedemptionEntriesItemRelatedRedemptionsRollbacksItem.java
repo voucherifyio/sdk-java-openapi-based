@@ -71,7 +71,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemp
   }
 
    /**
-   * Unique rollback redemption ID.
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable

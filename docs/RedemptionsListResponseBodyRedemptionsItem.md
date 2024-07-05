@@ -7,13 +7,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Unique redemption ID. |  |
+|**id** | **String** |  |  |
 |**_object** | [**ObjectEnum**](#ObjectEnum) |  |  |
 |**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |  |
 |**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**metadata** | **Object** |  |  [optional] |
-|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. and A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts. |  [optional] |
+|**amount** | **Integer** | For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits. For loyalty cards, this is the number of loyalty points used in the transaction. and For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card. For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer. |  [optional] |
 |**redemption** | **String** | Unique redemption ID of the parent redemption. |  [optional] |
 |**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |  |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  |
@@ -24,7 +24,7 @@
 |**channel** | [**RedemptionsListResponseBodyRedemptionsItemChannel**](RedemptionsListResponseBodyRedemptionsItemChannel.md) |  |  |
 |**customer** | [**RedemptionsListResponseBodyRedemptionsItemCustomer**](RedemptionsListResponseBodyRedemptionsItemCustomer.md) |  |  [optional] |
 |**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object. |  |
-|**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher. |  |
+|**relatedObjectId** | **String** |  |  |
 |**voucher** | [**RedemptionsListResponseBodyRedemptionsItemVoucher**](RedemptionsListResponseBodyRedemptionsItemVoucher.md) |  |  [optional] |
 |**promotionTier** | [**RedemptionsListResponseBodyRedemptionsItemPromotionTier**](RedemptionsListResponseBodyRedemptionsItemPromotionTier.md) |  |  [optional] |
 |**reward** | [**RedemptionRewardResult**](RedemptionRewardResult.md) |  |  [optional] |

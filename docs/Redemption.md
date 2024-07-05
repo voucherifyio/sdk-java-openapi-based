@@ -14,7 +14,7 @@ This is an object representing a redemption.
 |**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
 |**trackingId** | **String** | Hashed customer source ID. |  [optional] |
 |**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |  [optional] |
-|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. |  [optional] |
+|**amount** | **Integer** | For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits. For loyalty cards, this is the number of loyalty points used in the transaction. |  [optional] |
 |**redemption** | **String** | Unique redemption ID of the parent redemption. |  [optional] |
 |**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Redemption status. |  |

@@ -481,7 +481,7 @@ public class LoyaltiesMembersRedemptionRedeemResponseBody {
   }
 
    /**
-   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card.
+   * For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits. For loyalty cards, this is the number of loyalty points used in the transaction.
    * @return amount
   **/
   @javax.annotation.Nullable

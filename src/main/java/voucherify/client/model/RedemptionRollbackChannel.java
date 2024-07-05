@@ -47,11 +47,11 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel
+ * Defines the details of the channel through which the redemption was issued.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
+public class RedemptionRollbackChannel {
   public static final String SERIALIZED_NAME_CHANNEL_ID = "channel_id";
   @SerializedName(SERIALIZED_NAME_CHANNEL_ID)
   private String channelId;
@@ -107,17 +107,17 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
   @SerializedName(SERIALIZED_NAME_CHANNEL_TYPE)
   private ChannelTypeEnum channelType;
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel() {
+  public RedemptionRollbackChannel() {
   }
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel channelId(String channelId) {
+  public RedemptionRollbackChannel channelId(String channelId) {
     
     this.channelId = channelId;
     return this;
   }
 
    /**
-   * Get channelId
+   * Unique identifier of the channel which was used by the user performing the redemption rollback. This is either a user ID from the user using the Voucherify Dashboard or an X-APP-Id of a user using the API.
    * @return channelId
   **/
   @javax.annotation.Nullable
@@ -131,7 +131,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
   }
 
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel channelType(ChannelTypeEnum channelType) {
+  public RedemptionRollbackChannel channelType(ChannelTypeEnum channelType) {
     
     this.channelType = channelType;
     return this;
@@ -161,9 +161,9 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel vouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel = (VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel) o;
-    return Objects.equals(this.channelId, vouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.channelId) &&
-        Objects.equals(this.channelType, vouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.channelType);
+    RedemptionRollbackChannel redemptionRollbackChannel = (RedemptionRollbackChannel) o;
+    return Objects.equals(this.channelId, redemptionRollbackChannel.channelId) &&
+        Objects.equals(this.channelType, redemptionRollbackChannel.channelType);
   }
 
   @Override
@@ -174,7 +174,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {\n");
+    sb.append("class RedemptionRollbackChannel {\n");
     sb.append("    channelId: ").append(toIndentedString(channelId)).append("\n");
     sb.append("    channelType: ").append(toIndentedString(channelType)).append("\n");
     sb.append("}");
@@ -210,20 +210,20 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel
+  * @throws IOException if the JSON Element is invalid with respect to RedemptionRollbackChannel
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel is not found in the empty JSON string", VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.openapiRequiredFields.toString()));
+        if (!RedemptionRollbackChannel.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionRollbackChannel is not found in the empty JSON string", RedemptionRollbackChannel.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!RedemptionRollbackChannel.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionRollbackChannel` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -252,22 +252,22 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel' and its subtypes
+       if (!RedemptionRollbackChannel.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionRollbackChannel' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.class));
+       final TypeAdapter<RedemptionRollbackChannel> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionRollbackChannel.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel>() {
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionRollbackChannel>() {
            @Override
-           public void write(JsonWriter out, VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel value) throws IOException {
+           public void write(JsonWriter out, RedemptionRollbackChannel value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel read(JsonReader in) throws IOException {
+           public RedemptionRollbackChannel read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -278,18 +278,18 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel {
   }
 
  /**
-  * Create an instance of VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel given an JSON string
+  * Create an instance of RedemptionRollbackChannel given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel
-  * @throws IOException if the JSON string is invalid with respect to VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel
+  * @return An instance of RedemptionRollbackChannel
+  * @throws IOException if the JSON string is invalid with respect to RedemptionRollbackChannel
   */
-  public static VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.class);
+  public static RedemptionRollbackChannel fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RedemptionRollbackChannel.class);
   }
 
  /**
-  * Convert an instance of VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel to an JSON string
+  * Convert an instance of RedemptionRollbackChannel to an JSON string
   *
   * @return JSON string
   */

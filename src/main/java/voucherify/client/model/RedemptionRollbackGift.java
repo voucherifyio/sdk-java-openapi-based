@@ -47,26 +47,26 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Contains the amount subtracted from the gift card for the redemption.
+ * Contains the amount returned to the gift card in the redemption rollback. It is expressed as a negative integer.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class RedemptionGift {
+public class RedemptionRollbackGift {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private Integer amount;
 
-  public RedemptionGift() {
+  public RedemptionRollbackGift() {
   }
 
-  public RedemptionGift amount(Integer amount) {
+  public RedemptionRollbackGift amount(Integer amount) {
     
     this.amount = amount;
     return this;
   }
 
    /**
-   * Amount subtracted from the gift card as a result of the redemption. The amount is expressed as the smallest currency unit (e.g. 100 cents for $1.00).
+   * Amount returned to the gift card as a result of the redemption rollback and expressed as a negative integer. The amount is expressed as the smallest currency unit (e.g. -100 cents for $1.00 returned).
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -89,8 +89,8 @@ public class RedemptionGift {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RedemptionGift redemptionGift = (RedemptionGift) o;
-    return Objects.equals(this.amount, redemptionGift.amount);
+    RedemptionRollbackGift redemptionRollbackGift = (RedemptionRollbackGift) o;
+    return Objects.equals(this.amount, redemptionRollbackGift.amount);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class RedemptionGift {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RedemptionGift {\n");
+    sb.append("class RedemptionRollbackGift {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -135,20 +135,20 @@ public class RedemptionGift {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionGift
+  * @throws IOException if the JSON Element is invalid with respect to RedemptionRollbackGift
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RedemptionGift.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionGift is not found in the empty JSON string", RedemptionGift.openapiRequiredFields.toString()));
+        if (!RedemptionRollbackGift.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionRollbackGift is not found in the empty JSON string", RedemptionRollbackGift.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RedemptionGift.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionGift` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!RedemptionRollbackGift.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionRollbackGift` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -158,22 +158,22 @@ public class RedemptionGift {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RedemptionGift.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RedemptionGift' and its subtypes
+       if (!RedemptionRollbackGift.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionRollbackGift' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RedemptionGift> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionGift.class));
+       final TypeAdapter<RedemptionRollbackGift> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionRollbackGift.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RedemptionGift>() {
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionRollbackGift>() {
            @Override
-           public void write(JsonWriter out, RedemptionGift value) throws IOException {
+           public void write(JsonWriter out, RedemptionRollbackGift value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RedemptionGift read(JsonReader in) throws IOException {
+           public RedemptionRollbackGift read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -184,18 +184,18 @@ public class RedemptionGift {
   }
 
  /**
-  * Create an instance of RedemptionGift given an JSON string
+  * Create an instance of RedemptionRollbackGift given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RedemptionGift
-  * @throws IOException if the JSON string is invalid with respect to RedemptionGift
+  * @return An instance of RedemptionRollbackGift
+  * @throws IOException if the JSON string is invalid with respect to RedemptionRollbackGift
   */
-  public static RedemptionGift fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RedemptionGift.class);
+  public static RedemptionRollbackGift fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RedemptionRollbackGift.class);
   }
 
  /**
-  * Convert an instance of RedemptionGift to an JSON string
+  * Convert an instance of RedemptionRollbackGift to an JSON string
   *
   * @return JSON string
   */

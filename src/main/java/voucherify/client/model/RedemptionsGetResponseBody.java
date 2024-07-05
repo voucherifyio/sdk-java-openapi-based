@@ -361,7 +361,7 @@ public class RedemptionsGetResponseBody {
   }
 
    /**
-   * Unique redemption ID.
+   * Get id
    * @return id
   **/
   @javax.annotation.Nonnull
@@ -487,7 +487,7 @@ public class RedemptionsGetResponseBody {
   }
 
    /**
-   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. and A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts.
+   * For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits. For loyalty cards, this is the number of loyalty points used in the transaction. and For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card. For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -718,7 +718,7 @@ public class RedemptionsGetResponseBody {
   }
 
    /**
-   * Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher.
+   * Get relatedObjectId
    * @return relatedObjectId
   **/
   @javax.annotation.Nonnull

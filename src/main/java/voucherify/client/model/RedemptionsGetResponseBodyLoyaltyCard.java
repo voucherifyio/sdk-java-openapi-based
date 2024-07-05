@@ -66,7 +66,7 @@ public class RedemptionsGetResponseBodyLoyaltyCard {
   }
 
    /**
-   * Number of points being added back to the loyalty card for the reward redemption rollback.
+   * Number of points subtracted from the loyalty card as a result of the redemption. and Number of points being returned to the loyalty card for the reward redemption rollback. It is expressed as a negative integer.
    * @return points
   **/
   @javax.annotation.Nullable

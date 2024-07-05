@@ -117,7 +117,7 @@ public class RedemptionsGetResponseBodyChannel {
   }
 
    /**
-   * Unique channel ID of the user performing the redemption. This is either a user ID from a user using the Voucherify Dashboard or an X-APP-Id of a user using the API.
+   * Get channelId
    * @return channelId
   **/
   @javax.annotation.Nullable
