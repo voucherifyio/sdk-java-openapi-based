@@ -128,16 +128,17 @@ public class CampaignsTest {
                     vouchersCount, campaignsVouchersCreateInBulkRequestBody);
 
             assertNotNull(result);
+            Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
+                result.getId()
+            );
 
-            // Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
-            // ((CampaignsVouchersCreateResponseBody) result.getActualInstance()).getId());
-            // NEED TWO VOUCHERS FOR PUBLICATION
-            CampaignsVouchersCreateCombinedResponseBody result2 = campaigns.addVouchersToCampaign(loyaltyProgramId,
-                    vouchersCount, campaignsVouchersCreateInBulkRequestBody);
+            //NEED TWO VOUCHERS FOR PUBLICATION
+            CampaignsVouchersCreateCombinedResponseBody result2 = campaigns.addVouchersToCampaign(loyaltyProgramId, vouchersCount, campaignsVouchersCreateInBulkRequestBody);
 
             assertNotNull(result2);
-            // Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
-            // ((CampaignsVouchersCreateResponseBody) result2.getActualInstance()).getId());
+            Voucherify.getInstance().getLoyaltyCampaign().addVoucherId(
+                result2.getId()
+            );
 
         } catch (ApiException | JsonSyntaxException e) {
             fail();
