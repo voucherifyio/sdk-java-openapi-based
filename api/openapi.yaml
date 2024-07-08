@@ -24565,7 +24565,7 @@ components:
               amount_off: 2.027123023002322
             details:
               message: message
-              key: applicable_redeemables_limit_exceeded
+              key: key
             loyalty_card:
               points: 1
             error:
@@ -24681,7 +24681,7 @@ components:
               amount_off: 2.027123023002322
             details:
               message: message
-              key: applicable_redeemables_limit_exceeded
+              key: key
             loyalty_card:
               points: 1
             error:
@@ -36963,16 +36963,9 @@ components:
     Validations_Validate_Response_Body_Redeemables_ItemResultDetails:
       example:
         message: message
-        key: applicable_redeemables_limit_exceeded
+        key: key
       properties:
         key:
-          enum:
-          - applicable_redeemables_limit_exceeded
-          - applicable_redeemables_per_category_limit_exceeded
-          - applicable_exclusive_redeemables_limit_exceeded
-          - applicable_exclusive_redeemables_per_category_limit_exceeded
-          - exclusion_rules_not_met
-          - preceding_validation_failed
           type: string
         message:
           type: string
@@ -37020,7 +37013,7 @@ components:
           amount_off: 2.027123023002322
         details:
           message: message
-          key: applicable_redeemables_limit_exceeded
+          key: key
         loyalty_card:
           points: 1
         error:
@@ -37087,7 +37080,7 @@ components:
             amount_off: 2.027123023002322
           details:
             message: message
-            key: applicable_redeemables_limit_exceeded
+            key: key
           loyalty_card:
             points: 1
           error:

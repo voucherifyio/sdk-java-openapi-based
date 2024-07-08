@@ -52,64 +52,9 @@ import voucherify.client.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
 public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
-  /**
-   * Gets or Sets key
-   */
-  @JsonAdapter(KeyEnum.Adapter.class)
-  public enum KeyEnum {
-    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("applicable_redeemables_limit_exceeded"),
-    
-    APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_redeemables_per_category_limit_exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("applicable_exclusive_redeemables_limit_exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_exclusive_redeemables_per_category_limit_exceeded"),
-    
-    EXCLUSION_RULES_NOT_MET("exclusion_rules_not_met"),
-    
-    PRECEDING_VALIDATION_FAILED("preceding_validation_failed");
-
-    private String value;
-
-    KeyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static KeyEnum fromValue(String value) {
-      for (KeyEnum b : KeyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-        return null;
-    }
-
-    public static class Adapter extends TypeAdapter<KeyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final KeyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public KeyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return KeyEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
-  private KeyEnum key;
+  private String key;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -118,7 +63,7 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
   public ValidationsValidateResponseBodyRedeemablesItemResultDetails() {
   }
 
-  public ValidationsValidateResponseBodyRedeemablesItemResultDetails key(KeyEnum key) {
+  public ValidationsValidateResponseBodyRedeemablesItemResultDetails key(String key) {
     
     this.key = key;
     return this;
@@ -129,12 +74,12 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
    * @return key
   **/
   @javax.annotation.Nullable
-  public KeyEnum getKey() {
+  public String getKey() {
     return key;
   }
 
 
-  public void setKey(KeyEnum key) {
+  public void setKey(String key) {
     this.key = key;
   }
 
@@ -270,17 +215,6 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("key");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          KeyEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         return;
