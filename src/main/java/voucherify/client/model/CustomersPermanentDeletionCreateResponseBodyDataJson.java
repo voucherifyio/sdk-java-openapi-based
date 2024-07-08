@@ -93,7 +93,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of events deleted.
    * @return events
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getEvents() {
     return events;
   }
@@ -114,7 +114,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of customer events deleted.
    * @return customerEvents
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getCustomerEvents() {
     return customerEvents;
   }
@@ -135,7 +135,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of daily events deleted.
    * @return dailyEvents
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getDailyEvents() {
     return dailyEvents;
   }
@@ -156,7 +156,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of segments deleted.
    * @return segments
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getSegments() {
     return segments;
   }
@@ -177,7 +177,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of orders deleted.
    * @return orders
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getOrders() {
     return orders;
   }
@@ -198,7 +198,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of order events deleted.
    * @return orderEvents
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getOrderEvents() {
     return orderEvents;
   }
@@ -219,7 +219,7 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
    * Number of customers deleted.
    * @return customer
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getCustomer() {
     return customer;
   }
@@ -343,13 +343,6 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("events");
-    openapiRequiredFields.add("customer_events");
-    openapiRequiredFields.add("daily_events");
-    openapiRequiredFields.add("segments");
-    openapiRequiredFields.add("orders");
-    openapiRequiredFields.add("order_events");
-    openapiRequiredFields.add("customer");
   }
 
  /**
@@ -362,13 +355,6 @@ public class CustomersPermanentDeletionCreateResponseBodyDataJson {
       if (jsonElement == null) {
         if (!CustomersPermanentDeletionCreateResponseBodyDataJson.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersPermanentDeletionCreateResponseBodyDataJson is not found in the empty JSON string", CustomersPermanentDeletionCreateResponseBodyDataJson.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersPermanentDeletionCreateResponseBodyDataJson.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

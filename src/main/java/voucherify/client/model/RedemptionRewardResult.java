@@ -96,9 +96,7 @@ public class RedemptionRewardResult {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    REWARD("reward"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REWARD("reward");
 
     private String value;
 
@@ -121,7 +119,7 @@ public class RedemptionRewardResult {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -163,9 +161,7 @@ public class RedemptionRewardResult {
     
     COIN("COIN"),
     
-    MATERIAL("MATERIAL"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MATERIAL("MATERIAL");
 
     private String value;
 
@@ -188,7 +184,7 @@ public class RedemptionRewardResult {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {

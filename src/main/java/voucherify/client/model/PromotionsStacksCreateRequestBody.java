@@ -78,7 +78,7 @@ public class PromotionsStacksCreateRequestBody {
    * Promotion stack name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -99,7 +99,7 @@ public class PromotionsStacksCreateRequestBody {
    * Get tiers
    * @return tiers
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public PromotionStackBaseTiers getTiers() {
     return tiers;
   }
@@ -232,8 +232,6 @@ public class PromotionsStacksCreateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("tiers");
   }
 
  /**
@@ -248,19 +246,14 @@ public class PromotionsStacksCreateRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PromotionsStacksCreateRequestBody is not found in the empty JSON string", PromotionsStacksCreateRequestBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PromotionsStacksCreateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the required field `tiers`
-      PromotionStackBaseTiers.validateJsonElement(jsonObj.get("tiers"));
+      // validate the optional field `tiers`
+      if (jsonObj.get("tiers") != null && !jsonObj.get("tiers").isJsonNull()) {
+        PromotionStackBaseTiers.validateJsonElement(jsonObj.get("tiers"));
+      }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
       }

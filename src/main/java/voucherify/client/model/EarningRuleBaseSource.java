@@ -65,9 +65,7 @@ public class EarningRuleBaseSource {
    */
   @JsonAdapter(ObjectTypeEnum.Adapter.class)
   public enum ObjectTypeEnum {
-    CAMPAIGN("campaign"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CAMPAIGN("campaign");
 
     private String value;
 
@@ -90,7 +88,7 @@ public class EarningRuleBaseSource {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectTypeEnum> {
@@ -145,7 +143,7 @@ public class EarningRuleBaseSource {
    * A unique campaign identifier assigned by the Voucherify API.
    * @return objectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObjectId() {
     return objectId;
   }
@@ -166,7 +164,7 @@ public class EarningRuleBaseSource {
    * Defines the object associated with the earning rule. Defaults to &#x60;campaign&#x60;.
    * @return objectType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectTypeEnum getObjectType() {
     return objectType;
   }
@@ -278,8 +276,6 @@ public class EarningRuleBaseSource {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object_id");
-    openapiRequiredFields.add("object_type");
   }
 
  /**
@@ -294,21 +290,14 @@ public class EarningRuleBaseSource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseSource is not found in the empty JSON string", EarningRuleBaseSource.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseSource.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("banner") != null && !jsonObj.get("banner").isJsonNull()) && !jsonObj.get("banner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `banner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("banner").toString()));
       }
-      if (!jsonObj.get("object_id").isJsonPrimitive()) {
+      if ((jsonObj.get("object_id") != null && !jsonObj.get("object_id").isJsonNull()) && !jsonObj.get("object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_id").toString()));
       }
-      if (!jsonObj.get("object_type").isJsonPrimitive()) {
+      if ((jsonObj.get("object_type") != null && !jsonObj.get("object_type").isJsonNull()) && !jsonObj.get("object_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object_type").toString()));
       }
       try {

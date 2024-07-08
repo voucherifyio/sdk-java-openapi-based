@@ -65,7 +65,7 @@ public class CustomersListResponseBody {
 
   public static final String SERIALIZED_NAME_CUSTOMERS = "customers";
   @SerializedName(SERIALIZED_NAME_CUSTOMERS)
-  private List<CustomerWithSummaryLoyaltyReferrals> customers = new ArrayList<>();
+  private List<CustomerWithSummaryLoyaltyReferrals> customers;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -88,7 +88,7 @@ public class CustomersListResponseBody {
    * The type of the object represented by JSON. This object stores information about customers in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -109,7 +109,7 @@ public class CustomersListResponseBody {
    * Identifies the name of the attribute that contains the array of customer objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -138,7 +138,7 @@ public class CustomersListResponseBody {
    * Contains array of customer objects.
    * @return customers
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<CustomerWithSummaryLoyaltyReferrals> getCustomers() {
     return customers;
   }
@@ -159,7 +159,7 @@ public class CustomersListResponseBody {
    * Total number of customers.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -298,10 +298,6 @@ public class CustomersListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("customers");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -316,30 +312,27 @@ public class CustomersListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersListResponseBody is not found in the empty JSON string", CustomersListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("customers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customers` to be an array in the JSON string but got `%s`", jsonObj.get("customers").toString()));
-      }
+      if (jsonObj.get("customers") != null && !jsonObj.get("customers").isJsonNull()) {
+        JsonArray jsonArraycustomers = jsonObj.getAsJsonArray("customers");
+        if (jsonArraycustomers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("customers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `customers` to be an array in the JSON string but got `%s`", jsonObj.get("customers").toString()));
+          }
 
-      JsonArray jsonArraycustomers = jsonObj.getAsJsonArray("customers");
-      // validate the required field `customers` (array)
-      for (int i = 0; i < jsonArraycustomers.size(); i++) {
-        CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonArraycustomers.get(i));
-      };
+          // validate the optional field `customers` (array)
+          for (int i = 0; i < jsonArraycustomers.size(); i++) {
+            CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonArraycustomers.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -67,9 +67,7 @@ public class RedemptionsListResponseBodyRedemptionsItemVoucherGift {
   public enum EffectEnum {
     ORDER("APPLY_TO_ORDER"),
     
-    ITEMS("APPLY_TO_ITEMS"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ITEMS("APPLY_TO_ITEMS");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class RedemptionsListResponseBodyRedemptionsItemVoucherGift {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<EffectEnum> {

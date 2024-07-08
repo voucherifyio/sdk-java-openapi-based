@@ -5,18 +5,18 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**voucherCode** | [**ParameterFiltersListRedemptionsVoucherCode**](ParameterFiltersListRedemptionsVoucherCode.md) |  |  [optional] |
-|**relatedObjectId** | [**ParameterFiltersListRedemptionsRelatedObjectId**](ParameterFiltersListRedemptionsRelatedObjectId.md) |  |  [optional] |
-|**relatedObjectParentId** | [**ParameterFiltersListRedemptionsRelatedObjectParentId**](ParameterFiltersListRedemptionsRelatedObjectParentId.md) |  |  [optional] |
-|**parentRedemptionId** | [**ParameterFiltersListRedemptionsParentRedemptionId**](ParameterFiltersListRedemptionsParentRedemptionId.md) |  |  [optional] |
-|**failureCode** | [**ParameterFiltersListRedemptionsFailureCode**](ParameterFiltersListRedemptionsFailureCode.md) |  |  [optional] |
-|**result** | [**ParameterFiltersListRedemptionsResult**](ParameterFiltersListRedemptionsResult.md) |  |  [optional] |
-|**_object** | [**ParameterFiltersListRedemptionsObject**](ParameterFiltersListRedemptionsObject.md) |  |  [optional] |
-|**customerId** | [**ParameterFiltersListRedemptionsCustomerId**](ParameterFiltersListRedemptionsCustomerId.md) |  |  [optional] |
-|**campaignName** | [**ParameterFiltersListRedemptionsCampaignName**](ParameterFiltersListRedemptionsCampaignName.md) |  |  [optional] |
-|**userLogin** | [**ParameterFiltersListRedemptionsUserLogin**](ParameterFiltersListRedemptionsUserLogin.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**voucherCode** | [**ParameterFiltersListRedemptionsVoucherCode**](ParameterFiltersListRedemptionsVoucherCode.md) |  |
+|**relatedObjectId** | [**ParameterFiltersListRedemptionsRelatedObjectId**](ParameterFiltersListRedemptionsRelatedObjectId.md) |  |
+|**relatedObjectParentId** | [**ParameterFiltersListRedemptionsRelatedObjectParentId**](ParameterFiltersListRedemptionsRelatedObjectParentId.md) |  |
+|**parentRedemptionId** | [**ParameterFiltersListRedemptionsParentRedemptionId**](ParameterFiltersListRedemptionsParentRedemptionId.md) |  |
+|**failureCode** | [**ParameterFiltersListRedemptionsFailureCode**](ParameterFiltersListRedemptionsFailureCode.md) |  |
+|**result** | [**ParameterFiltersListRedemptionsResult**](ParameterFiltersListRedemptionsResult.md) |  |
+|**_object** | [**ParameterFiltersListRedemptionsObject**](ParameterFiltersListRedemptionsObject.md) |  |
+|**customerId** | [**ParameterFiltersListRedemptionsCustomerId**](ParameterFiltersListRedemptionsCustomerId.md) |  |
+|**campaignName** | [**ParameterFiltersListRedemptionsCampaignName**](ParameterFiltersListRedemptionsCampaignName.md) |  |
+|**userLogin** | [**ParameterFiltersListRedemptionsUserLogin**](ParameterFiltersListRedemptionsUserLogin.md) |  |
 
 
 

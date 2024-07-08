@@ -6,12 +6,12 @@ Response body schema for **GET** `/loyalties/members/{memberId}/rewards`
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of loyalty reward objects. |  |
-|**data** | [**List&lt;LoyaltiesMembersRewardsListResponseBodyDataItem&gt;**](LoyaltiesMembersRewardsListResponseBodyDataItem.md) | Contains array of loyalty reward objects. |  |
-|**total** | **Integer** | Total number of loyalty reward objects. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of loyalty reward objects. |
+|**data** | [**List&lt;LoyaltiesMembersRewardsListResponseBodyDataItem&gt;**](LoyaltiesMembersRewardsListResponseBodyDataItem.md) | Contains array of loyalty reward objects. |
+|**total** | **Integer** | Total number of loyalty reward objects. |
 
 
 
@@ -20,7 +20,6 @@ Response body schema for **GET** `/loyalties/members/{memberId}/rewards`
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -29,7 +28,6 @@ Response body schema for **GET** `/loyalties/members/{memberId}/rewards`
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

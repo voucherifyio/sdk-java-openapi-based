@@ -38,9 +38,7 @@ public enum ParameterCampaignType {
   
   LOYALTY_PROGRAM("LOYALTY_PROGRAM"),
   
-  LUCKY_DRAW("LUCKY_DRAW"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  LUCKY_DRAW("LUCKY_DRAW");
 
   private String value;
 
@@ -63,7 +61,7 @@ public enum ParameterCampaignType {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<ParameterCampaignType> {

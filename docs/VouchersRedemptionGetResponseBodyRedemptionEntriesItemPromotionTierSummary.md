@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**redemptions** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryRedemptions**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryRedemptions.md) |  |  [optional] |
-|**orders** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryOrders**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryOrders.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**redemptions** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryRedemptions**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryRedemptions.md) |  |
+|**orders** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryOrders**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryOrders.md) |  |
 
 
 

@@ -70,9 +70,7 @@ public class DiscountUnitMultipleOneUnit {
   public enum EffectEnum {
     NEW_ITEMS("ADD_NEW_ITEMS"),
     
-    MISSING_ITEMS("ADD_MISSING_ITEMS"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MISSING_ITEMS("ADD_MISSING_ITEMS");
 
     private String value;
 
@@ -95,7 +93,7 @@ public class DiscountUnitMultipleOneUnit {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<EffectEnum> {
@@ -183,7 +181,7 @@ public class DiscountUnitMultipleOneUnit {
    * Defines how the unit is added to the customer&#39;s order.  
    * @return effect
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public EffectEnum getEffect() {
     return effect;
   }
@@ -204,7 +202,7 @@ public class DiscountUnitMultipleOneUnit {
    * The product deemed as free, chosen from product inventory (e.g. time, items).
    * @return unitType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getUnitType() {
     return unitType;
   }
@@ -367,8 +365,6 @@ public class DiscountUnitMultipleOneUnit {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effect");
-    openapiRequiredFields.add("unit_type");
   }
 
  /**
@@ -383,18 +379,11 @@ public class DiscountUnitMultipleOneUnit {
           throw new IllegalArgumentException(String.format("The required field(s) %s in DiscountUnitMultipleOneUnit is not found in the empty JSON string", DiscountUnitMultipleOneUnit.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DiscountUnitMultipleOneUnit.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("unit_off_formula") != null && !jsonObj.get("unit_off_formula").isJsonNull()) && !jsonObj.get("unit_off_formula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `unit_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_off_formula").toString()));
       }
-      if (!jsonObj.get("effect").isJsonPrimitive()) {
+      if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
       }
       try {
@@ -410,7 +399,7 @@ public class DiscountUnitMultipleOneUnit {
           throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
         }
       }
-      if (!jsonObj.get("unit_type").isJsonPrimitive()) {
+      if ((jsonObj.get("unit_type") != null && !jsonObj.get("unit_type").isJsonNull()) && !jsonObj.get("unit_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `unit_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_type").toString()));
       }
       // validate the optional field `product`

@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) | The type of object to be exported. |  |
-|**parameters** | [**LoyaltiesMembersTransactionsExportCreateRequestBodyParameters**](LoyaltiesMembersTransactionsExportCreateRequestBodyParameters.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) | The type of object to be exported. |
+|**parameters** | [**LoyaltiesMembersTransactionsExportCreateRequestBodyParameters**](LoyaltiesMembersTransactionsExportCreateRequestBodyParameters.md) |  |
 
 
 
@@ -17,7 +17,6 @@
 | Name | Value |
 |---- | -----|
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

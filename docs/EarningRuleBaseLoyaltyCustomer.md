@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**metadata** | [**EarningRuleBaseLoyaltyCustomerMetadata**](EarningRuleBaseLoyaltyCustomerMetadata.md) |  |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**metadata** | [**EarningRuleBaseLoyaltyCustomerMetadata**](EarningRuleBaseLoyaltyCustomerMetadata.md) |  |
 
 
 

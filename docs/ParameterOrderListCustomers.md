@@ -17,7 +17,5 @@
 
 * `_SOURCE_ID` (value: `"-source_id"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

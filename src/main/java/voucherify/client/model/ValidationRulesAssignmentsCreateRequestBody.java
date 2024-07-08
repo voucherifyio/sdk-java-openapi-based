@@ -67,9 +67,7 @@ public class ValidationRulesAssignmentsCreateRequestBody {
     
     DISTRIBUTION("distribution"),
     
-    REWARD_ASSIGNMENT("reward_assignment"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REWARD_ASSIGNMENT("reward_assignment");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class ValidationRulesAssignmentsCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {

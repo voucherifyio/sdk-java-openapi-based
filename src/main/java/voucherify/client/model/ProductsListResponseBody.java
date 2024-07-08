@@ -65,7 +65,7 @@ public class ProductsListResponseBody {
 
   public static final String SERIALIZED_NAME_PRODUCTS = "products";
   @SerializedName(SERIALIZED_NAME_PRODUCTS)
-  private List<Product> products = new ArrayList<>();
+  private List<Product> products;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -84,7 +84,7 @@ public class ProductsListResponseBody {
    * The type of the object represented by JSON. This object stores information about products in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -105,7 +105,7 @@ public class ProductsListResponseBody {
    * Identifies the name of the attribute that contains the array of product objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -134,7 +134,7 @@ public class ProductsListResponseBody {
    * Contains array of product objects.
    * @return products
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<Product> getProducts() {
     return products;
   }
@@ -155,7 +155,7 @@ public class ProductsListResponseBody {
    * Total number of product objects.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -270,10 +270,6 @@ public class ProductsListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("products");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -288,30 +284,27 @@ public class ProductsListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProductsListResponseBody is not found in the empty JSON string", ProductsListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProductsListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("products").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `products` to be an array in the JSON string but got `%s`", jsonObj.get("products").toString()));
-      }
+      if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
+        JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
+        if (jsonArrayproducts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("products").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `products` to be an array in the JSON string but got `%s`", jsonObj.get("products").toString()));
+          }
 
-      JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
-      // validate the required field `products` (array)
-      for (int i = 0; i < jsonArrayproducts.size(); i++) {
-        Product.validateJsonElement(jsonArrayproducts.get(i));
-      };
+          // validate the optional field `products` (array)
+          for (int i = 0; i < jsonArrayproducts.size(); i++) {
+            Product.validateJsonElement(jsonArrayproducts.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

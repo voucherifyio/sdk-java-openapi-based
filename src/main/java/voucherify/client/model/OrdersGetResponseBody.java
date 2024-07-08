@@ -89,9 +89,7 @@ public class OrdersGetResponseBody {
     
     CANCELED("CANCELED"),
     
-    FULFILLED("FULFILLED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FULFILLED("FULFILLED");
 
     private String value;
 
@@ -114,7 +112,7 @@ public class OrdersGetResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -192,9 +190,7 @@ public class OrdersGetResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    ORDER("order"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ORDER("order");
 
     private String value;
 
@@ -217,7 +213,7 @@ public class OrdersGetResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -649,7 +645,7 @@ public class OrdersGetResponseBody {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -900,7 +896,6 @@ public class OrdersGetResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -913,13 +908,6 @@ public class OrdersGetResponseBody {
       if (jsonElement == null) {
         if (!OrdersGetResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrdersGetResponseBody is not found in the empty JSON string", OrdersGetResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : OrdersGetResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -965,7 +953,7 @@ public class OrdersGetResponseBody {
       if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `referrer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referrer_id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

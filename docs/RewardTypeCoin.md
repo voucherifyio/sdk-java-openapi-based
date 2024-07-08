@@ -6,10 +6,10 @@ Defines the ratio by mapping the number of loyalty points in points_ratio to a p
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**exchangeRatio** | **BigDecimal** | The cash equivalent of the points defined in the points_ratio property. |  |
-|**pointsRatio** | **Integer** | The number of loyalty points that will map to the predefined cash amount defined by the exchange_ratio property. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**exchangeRatio** | **BigDecimal** | The cash equivalent of the points defined in the points_ratio property. |
+|**pointsRatio** | **Integer** | The number of loyalty points that will map to the predefined cash amount defined by the exchange_ratio property. |
 
 
 

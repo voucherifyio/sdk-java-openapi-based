@@ -73,7 +73,7 @@ public class ClientEventsCreateRequestBodyReferral {
    * A code through which a new visitor has been referred to a service.
    * @return code
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -203,7 +203,6 @@ public class ClientEventsCreateRequestBodyReferral {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
   }
 
  /**
@@ -218,15 +217,8 @@ public class ClientEventsCreateRequestBodyReferral {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ClientEventsCreateRequestBodyReferral is not found in the empty JSON string", ClientEventsCreateRequestBodyReferral.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ClientEventsCreateRequestBodyReferral.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("code").isJsonPrimitive()) {
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {

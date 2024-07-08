@@ -76,9 +76,7 @@ public class OrdersCreateRequestBody {
     
     CANCELED("CANCELED"),
     
-    FULFILLED("FULFILLED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FULFILLED("FULFILLED");
 
     private String value;
 
@@ -101,7 +99,7 @@ public class OrdersCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {

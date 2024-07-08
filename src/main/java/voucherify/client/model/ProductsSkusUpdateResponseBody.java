@@ -103,9 +103,7 @@ public class ProductsSkusUpdateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    SKU("sku"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SKU("sku");
 
     private String value;
 
@@ -128,7 +126,7 @@ public class ProductsSkusUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -162,7 +160,7 @@ public class ProductsSkusUpdateResponseBody {
    * A unique identifier that represents the SKU and is assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -204,7 +202,7 @@ public class ProductsSkusUpdateResponseBody {
    * The parent product&#39;s unique ID.
    * @return productId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getProductId() {
     return productId;
   }
@@ -288,7 +286,7 @@ public class ProductsSkusUpdateResponseBody {
    * The attributes object stores values for all custom attributes inherited by the SKU from the parent product. A set of key/value pairs that are attached to a SKU object and are unique to each SKU within a product family.
    * @return attributes
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getAttributes() {
     return attributes;
   }
@@ -330,7 +328,7 @@ public class ProductsSkusUpdateResponseBody {
    * The metadata object stores all custom attributes assigned to the SKU. A set of key/value pairs that you can attach to a SKU object. It can be useful for storing additional information about the SKU in a structured format.
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getMetadata() {
     return metadata;
   }
@@ -351,7 +349,7 @@ public class ProductsSkusUpdateResponseBody {
    * Timestamp representing the date and time when the SKU was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -393,7 +391,7 @@ public class ProductsSkusUpdateResponseBody {
    * The type of the object represented by JSON. This object stores information about the &#x60;SKU&#x60;.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -543,12 +541,6 @@ public class ProductsSkusUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("product_id");
-    openapiRequiredFields.add("attributes");
-    openapiRequiredFields.add("metadata");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -563,21 +555,14 @@ public class ProductsSkusUpdateResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProductsSkusUpdateResponseBody is not found in the empty JSON string", ProductsSkusUpdateResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProductsSkusUpdateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
       }
-      if (!jsonObj.get("product_id").isJsonPrimitive()) {
+      if ((jsonObj.get("product_id") != null && !jsonObj.get("product_id").isJsonNull()) && !jsonObj.get("product_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `product_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_id").toString()));
       }
       if ((jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) && !jsonObj.get("sku").isJsonPrimitive()) {
@@ -589,7 +574,7 @@ public class ProductsSkusUpdateResponseBody {
       if ((jsonObj.get("image_url") != null && !jsonObj.get("image_url").isJsonNull()) && !jsonObj.get("image_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_url").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

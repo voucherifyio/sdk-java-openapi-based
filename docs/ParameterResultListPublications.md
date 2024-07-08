@@ -9,7 +9,5 @@
 
 * `FAILURE` (value: `"FAILURE"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

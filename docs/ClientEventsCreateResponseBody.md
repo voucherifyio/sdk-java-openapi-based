@@ -6,13 +6,13 @@ Response body schema for **POST** `/events`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The object represented is an &#x60;event&#x60;. |  |
-|**type** | **String** | The event name. |  |
-|**customer** | [**SimpleCustomerRequiredObjectType**](SimpleCustomerRequiredObjectType.md) |  |  |
-|**referral** | **Object** | A &#x60;null&#x60; referral object. |  |
-|**loyalty** | **Object** | A &#x60;null&#x60; loyalty object. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The object represented is an &#x60;event&#x60;. |
+|**type** | **String** | The event name. |
+|**customer** | [**SimpleCustomerRequiredObjectType**](SimpleCustomerRequiredObjectType.md) |  |
+|**referral** | **Object** | A &#x60;null&#x60; referral object. |
+|**loyalty** | **Object** | A &#x60;null&#x60; loyalty object. |
 
 
 
@@ -21,7 +21,6 @@ Response body schema for **POST** `/events`.
 | Name | Value |
 |---- | -----|
 | EVENT | &quot;event&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -61,9 +61,7 @@ public class VoucherTransactionsExportParameters {
   public enum OrderEnum {
     _CREATED_AT("-created_at"),
     
-    CREATED_AT("created_at"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CREATED_AT("created_at");
 
     private String value;
 
@@ -86,7 +84,7 @@ public class VoucherTransactionsExportParameters {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OrderEnum> {
@@ -134,9 +132,7 @@ public class VoucherTransactionsExportParameters {
     
     DETAILS("details"),
     
-    RELATED_TRANSACTION_ID("related_transaction_id"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    RELATED_TRANSACTION_ID("related_transaction_id");
 
     private String value;
 
@@ -159,7 +155,7 @@ public class VoucherTransactionsExportParameters {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FieldsEnum> {

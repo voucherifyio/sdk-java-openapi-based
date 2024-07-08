@@ -77,7 +77,7 @@ public class VouchersBalanceUpdateRequestBody {
    * The incremental amount to be added to or removed from the current balance on the gift card or loyalty card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000. To remove balance, simply add a minus sign before the value, i.e. to remove $20, use -2000.
    * @return amount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getAmount() {
     return amount;
   }
@@ -231,7 +231,6 @@ public class VouchersBalanceUpdateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("amount");
   }
 
  /**
@@ -244,13 +243,6 @@ public class VouchersBalanceUpdateRequestBody {
       if (jsonElement == null) {
         if (!VouchersBalanceUpdateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VouchersBalanceUpdateRequestBody is not found in the empty JSON string", VouchersBalanceUpdateRequestBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VouchersBalanceUpdateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

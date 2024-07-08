@@ -69,7 +69,7 @@ public class ExportResult {
    * URL of the CSV file location. It contains the token used for authorization in the Download export method.
    * @return url
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getUrl() {
     return url;
   }
@@ -175,7 +175,6 @@ public class ExportResult {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("url");
   }
 
  /**
@@ -190,15 +189,8 @@ public class ExportResult {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExportResult is not found in the empty JSON string", ExportResult.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExportResult.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("url").isJsonPrimitive()) {
+      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
   }

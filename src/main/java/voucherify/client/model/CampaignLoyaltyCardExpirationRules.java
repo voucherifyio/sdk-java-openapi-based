@@ -81,7 +81,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Type of period
    * @return periodType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getPeriodType() {
     return periodType;
   }
@@ -102,7 +102,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Value of the period
    * @return periodValue
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPeriodValue() {
     return periodValue;
   }
@@ -123,7 +123,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Type of rounding
    * @return roundingType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRoundingType() {
     return roundingType;
   }
@@ -144,7 +144,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Value of rounding
    * @return roundingValue
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getRoundingValue() {
     return roundingValue;
   }
@@ -259,10 +259,6 @@ public class CampaignLoyaltyCardExpirationRules {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("period_type");
-    openapiRequiredFields.add("period_value");
-    openapiRequiredFields.add("rounding_type");
-    openapiRequiredFields.add("rounding_value");
   }
 
  /**
@@ -277,18 +273,11 @@ public class CampaignLoyaltyCardExpirationRules {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignLoyaltyCardExpirationRules is not found in the empty JSON string", CampaignLoyaltyCardExpirationRules.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignLoyaltyCardExpirationRules.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("period_type").isJsonPrimitive()) {
+      if ((jsonObj.get("period_type") != null && !jsonObj.get("period_type").isJsonNull()) && !jsonObj.get("period_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `period_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("period_type").toString()));
       }
-      if (!jsonObj.get("rounding_type").isJsonPrimitive()) {
+      if ((jsonObj.get("rounding_type") != null && !jsonObj.get("rounding_type").isJsonNull()) && !jsonObj.get("rounding_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rounding_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rounding_type").toString()));
       }
   }

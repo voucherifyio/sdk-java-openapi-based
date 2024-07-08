@@ -89,9 +89,7 @@ public class StackingRules {
   public enum RedeemablesApplicationModeEnum {
     ALL("ALL"),
     
-    PARTIAL("PARTIAL"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PARTIAL("PARTIAL");
 
     private String value;
 
@@ -114,7 +112,7 @@ public class StackingRules {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RedeemablesApplicationModeEnum> {
@@ -142,9 +140,7 @@ public class StackingRules {
   public enum RedeemablesSortingRuleEnum {
     CATEGORY_HIERARCHY("CATEGORY_HIERARCHY"),
     
-    REQUESTED_ORDER("REQUESTED_ORDER"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REQUESTED_ORDER("REQUESTED_ORDER");
 
     private String value;
 
@@ -167,7 +163,7 @@ public class StackingRules {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RedeemablesSortingRuleEnum> {
@@ -203,7 +199,7 @@ public class StackingRules {
    * maximum: 30
    * @return redeemablesLimit
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getRedeemablesLimit() {
     return redeemablesLimit;
   }
@@ -226,7 +222,7 @@ public class StackingRules {
    * maximum: 30
    * @return applicableRedeemablesLimit
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getApplicableRedeemablesLimit() {
     return applicableRedeemablesLimit;
   }
@@ -272,7 +268,7 @@ public class StackingRules {
    * maximum: 5
    * @return applicableExclusiveRedeemablesLimit
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getApplicableExclusiveRedeemablesLimit() {
     return applicableExclusiveRedeemablesLimit;
   }
@@ -324,7 +320,7 @@ public class StackingRules {
    * Lists all exclusive categories. A redeemable from a campaign with an exclusive category is the only redeemable to be redeemed when applied with redeemables from other campaigns unless these campaigns are exclusive or joint.
    * @return exclusiveCategories
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getExclusiveCategories() {
     return exclusiveCategories;
   }
@@ -353,7 +349,7 @@ public class StackingRules {
    * Lists all joint categories. A campaign with a joint category is always applied regardless of the exclusivity of other campaigns.
    * @return jointCategories
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getJointCategories() {
     return jointCategories;
   }
@@ -374,7 +370,7 @@ public class StackingRules {
    * Defines redeemables application mode.
    * @return redeemablesApplicationMode
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RedeemablesApplicationModeEnum getRedeemablesApplicationMode() {
     return redeemablesApplicationMode;
   }
@@ -395,7 +391,7 @@ public class StackingRules {
    * Defines redeemables sorting rule.
    * @return redeemablesSortingRule
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RedeemablesSortingRuleEnum getRedeemablesSortingRule() {
     return redeemablesSortingRule;
   }
@@ -525,13 +521,6 @@ public class StackingRules {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("redeemables_limit");
-    openapiRequiredFields.add("applicable_redeemables_limit");
-    openapiRequiredFields.add("applicable_exclusive_redeemables_limit");
-    openapiRequiredFields.add("exclusive_categories");
-    openapiRequiredFields.add("joint_categories");
-    openapiRequiredFields.add("redeemables_application_mode");
-    openapiRequiredFields.add("redeemables_sorting_rule");
   }
 
  /**
@@ -546,27 +535,16 @@ public class StackingRules {
           throw new IllegalArgumentException(String.format("The required field(s) %s in StackingRules is not found in the empty JSON string", StackingRules.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : StackingRules.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("exclusive_categories") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("exclusive_categories").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("exclusive_categories") != null && !jsonObj.get("exclusive_categories").isJsonNull() && !jsonObj.get("exclusive_categories").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `exclusive_categories` to be an array in the JSON string but got `%s`", jsonObj.get("exclusive_categories").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("joint_categories") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("joint_categories").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("joint_categories") != null && !jsonObj.get("joint_categories").isJsonNull() && !jsonObj.get("joint_categories").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `joint_categories` to be an array in the JSON string but got `%s`", jsonObj.get("joint_categories").toString()));
       }
-      if (!jsonObj.get("redeemables_application_mode").isJsonPrimitive()) {
+      if ((jsonObj.get("redeemables_application_mode") != null && !jsonObj.get("redeemables_application_mode").isJsonNull()) && !jsonObj.get("redeemables_application_mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redeemables_application_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redeemables_application_mode").toString()));
       }
       try {
@@ -582,7 +560,7 @@ public class StackingRules {
           throw new IllegalArgumentException(String.format("Expected the field `redeemables_application_mode` to be a valid element of RedeemablesApplicationModeEnum enum got `%s` instead", jsonObj.get("redeemables_application_mode").toString()));
         }
       }
-      if (!jsonObj.get("redeemables_sorting_rule").isJsonPrimitive()) {
+      if ((jsonObj.get("redeemables_sorting_rule") != null && !jsonObj.get("redeemables_sorting_rule").isJsonNull()) && !jsonObj.get("redeemables_sorting_rule").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redeemables_sorting_rule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redeemables_sorting_rule").toString()));
       }
       try {

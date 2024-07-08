@@ -94,7 +94,7 @@ public class LoyaltyTierExpiration {
    * Unique customer ID of the customer making the purchase.
    * @return customerId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCustomerId() {
     return customerId;
   }
@@ -115,7 +115,7 @@ public class LoyaltyTierExpiration {
    * Unique campaign ID, assigned by Voucherify.
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
@@ -136,7 +136,7 @@ public class LoyaltyTierExpiration {
    * Unique tier ID, assigned by Voucherify.
    * @return tierId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getTierId() {
     return tierId;
   }
@@ -199,7 +199,7 @@ public class LoyaltyTierExpiration {
    * Timestamp representing the date and time when the loyalty tier was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -344,10 +344,6 @@ public class LoyaltyTierExpiration {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("customer_id");
-    openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("tier_id");
-    openapiRequiredFields.add("created_at");
   }
 
  /**
@@ -362,21 +358,14 @@ public class LoyaltyTierExpiration {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTierExpiration is not found in the empty JSON string", LoyaltyTierExpiration.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTierExpiration.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("customer_id").isJsonPrimitive()) {
+      if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
       }
-      if (!jsonObj.get("campaign_id").isJsonPrimitive()) {
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
       }
-      if (!jsonObj.get("tier_id").isJsonPrimitive()) {
+      if ((jsonObj.get("tier_id") != null && !jsonObj.get("tier_id").isJsonNull()) && !jsonObj.get("tier_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tier_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tier_id").toString()));
       }
       if ((jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) && !jsonObj.get("start_date").isJsonPrimitive()) {

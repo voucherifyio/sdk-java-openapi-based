@@ -109,9 +109,7 @@ public class LoyaltiesTiersGetResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LOYALTY_TIER("loyalty_tier"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_TIER("loyalty_tier");
 
     private String value;
 
@@ -134,7 +132,7 @@ public class LoyaltiesTiersGetResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -168,7 +166,7 @@ public class LoyaltiesTiersGetResponseBody {
    * Loyalty Tier name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -247,7 +245,7 @@ public class LoyaltiesTiersGetResponseBody {
    * Get points
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTierBasePoints getPoints() {
     return points;
   }
@@ -268,7 +266,7 @@ public class LoyaltiesTiersGetResponseBody {
    * Unique loyalty tier ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -289,7 +287,7 @@ public class LoyaltiesTiersGetResponseBody {
    * Unique parent campaign ID.
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
@@ -331,7 +329,7 @@ public class LoyaltiesTiersGetResponseBody {
    * Timestamp representing the date and time when the loyalty tier was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -373,7 +371,7 @@ public class LoyaltiesTiersGetResponseBody {
    * Get config
    * @return config
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTierAllOfConfig getConfig() {
     return config;
   }
@@ -415,7 +413,7 @@ public class LoyaltiesTiersGetResponseBody {
    * The type of the object represented by JSON. This object stores information about the loyalty.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -565,13 +563,6 @@ public class LoyaltiesTiersGetResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("config");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -586,32 +577,29 @@ public class LoyaltiesTiersGetResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesTiersGetResponseBody is not found in the empty JSON string", LoyaltiesTiersGetResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesTiersGetResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the required field `points`
-      LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      // validate the optional field `points`
+      if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
+        LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("campaign_id").isJsonPrimitive()) {
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
       }
-      // validate the required field `config`
-      LoyaltyTierAllOfConfig.validateJsonElement(jsonObj.get("config"));
+      // validate the optional field `config`
+      if (jsonObj.get("config") != null && !jsonObj.get("config").isJsonNull()) {
+        LoyaltyTierAllOfConfig.validateJsonElement(jsonObj.get("config"));
+      }
       // validate the optional field `expiration`
       if (jsonObj.get("expiration") != null && !jsonObj.get("expiration").isJsonNull()) {
         LoyaltyTierExpiration.validateJsonElement(jsonObj.get("expiration"));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

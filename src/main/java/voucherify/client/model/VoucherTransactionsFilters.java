@@ -62,9 +62,7 @@ public class VoucherTransactionsFilters {
   public enum OrderEnum {
     _CREATED_AT("-created_at"),
     
-    CREATED_AT("created_at"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CREATED_AT("created_at");
 
     private String value;
 
@@ -87,7 +85,7 @@ public class VoucherTransactionsFilters {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OrderEnum> {
@@ -135,9 +133,7 @@ public class VoucherTransactionsFilters {
     
     DETAILS("details"),
     
-    RELATED_TRANSACTION_ID("related_transaction_id"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    RELATED_TRANSACTION_ID("related_transaction_id");
 
     private String value;
 
@@ -160,7 +156,7 @@ public class VoucherTransactionsFilters {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FieldsEnum> {
@@ -248,7 +244,7 @@ public class VoucherTransactionsFilters {
    * Get filters
    * @return filters
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VoucherTransactionsExportFilterConditions getFilters() {
     return filters;
   }
@@ -360,7 +356,6 @@ public class VoucherTransactionsFilters {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("filters");
   }
 
  /**
@@ -373,13 +368,6 @@ public class VoucherTransactionsFilters {
       if (jsonElement == null) {
         if (!VoucherTransactionsFilters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsFilters is not found in the empty JSON string", VoucherTransactionsFilters.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsFilters.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -403,8 +391,10 @@ public class VoucherTransactionsFilters {
       if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
       }
-      // validate the required field `filters`
-      VoucherTransactionsExportFilterConditions.validateJsonElement(jsonObj.get("filters"));
+      // validate the optional field `filters`
+      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
+        VoucherTransactionsExportFilterConditions.validateJsonElement(jsonObj.get("filters"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

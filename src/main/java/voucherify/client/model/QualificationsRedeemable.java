@@ -77,9 +77,7 @@ public class QualificationsRedeemable {
     
     PROMOTION_STACK("promotion_stack"),
     
-    VOUCHER("voucher"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER("voucher");
 
     private String value;
 
@@ -102,7 +100,7 @@ public class QualificationsRedeemable {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

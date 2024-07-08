@@ -11,7 +11,5 @@
 
 * `LUCKY_DRAW` (value: `"lucky_draw"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

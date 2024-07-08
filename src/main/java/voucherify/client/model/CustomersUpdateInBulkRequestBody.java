@@ -272,7 +272,7 @@ public class CustomersUpdateInBulkRequestBody {
    * Unique customer source ID.
    * @return sourceId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getSourceId() {
     return sourceId;
   }
@@ -413,7 +413,6 @@ public class CustomersUpdateInBulkRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("source_id");
   }
 
  /**
@@ -426,13 +425,6 @@ public class CustomersUpdateInBulkRequestBody {
       if (jsonElement == null) {
         if (!CustomersUpdateInBulkRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersUpdateInBulkRequestBody is not found in the empty JSON string", CustomersUpdateInBulkRequestBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersUpdateInBulkRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -452,7 +444,7 @@ public class CustomersUpdateInBulkRequestBody {
       if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
         CustomerBaseAddress.validateJsonElement(jsonObj.get("address"));
       }
-      if (!jsonObj.get("source_id").isJsonPrimitive()) {
+      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
       }
   }

@@ -91,9 +91,7 @@ public class CampaignsUpdateRequestBody {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -116,7 +114,7 @@ public class CampaignsUpdateRequestBody {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -180,9 +178,7 @@ public class CampaignsUpdateRequestBody {
   public enum TypeEnum {
     AUTO_UPDATE("AUTO_UPDATE"),
     
-    STATIC("STATIC"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    STATIC("STATIC");
 
     private String value;
 
@@ -205,7 +201,7 @@ public class CampaignsUpdateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {

@@ -65,9 +65,7 @@ public class VoucherTransactionsExport {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    EXPORT("export"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    EXPORT("export");
 
     private String value;
 
@@ -90,7 +88,7 @@ public class VoucherTransactionsExport {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -120,9 +118,7 @@ public class VoucherTransactionsExport {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    SCHEDULED("SCHEDULED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SCHEDULED("SCHEDULED");
 
     private String value;
 
@@ -145,7 +141,7 @@ public class VoucherTransactionsExport {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -175,9 +171,7 @@ public class VoucherTransactionsExport {
    */
   @JsonAdapter(ExportedObjectEnum.Adapter.class)
   public enum ExportedObjectEnum {
-    VOUCHER_TRANSACTIONS("voucher_transactions"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER_TRANSACTIONS("voucher_transactions");
 
     private String value;
 
@@ -200,7 +194,7 @@ public class VoucherTransactionsExport {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ExportedObjectEnum> {
@@ -246,7 +240,7 @@ public class VoucherTransactionsExport {
    * Unique export ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -267,7 +261,7 @@ public class VoucherTransactionsExport {
    * The type of object being represented. This object stores information about the &#x60;export&#x60;.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -288,7 +282,7 @@ public class VoucherTransactionsExport {
    * Timestamp representing the date and time when the export was scheduled in ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -309,7 +303,7 @@ public class VoucherTransactionsExport {
    * Status of the export. Informs you whether the export has already been completed, i.e. indicates whether the file containing the exported data has been generated.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -330,7 +324,7 @@ public class VoucherTransactionsExport {
    * The channel through which the export was triggered.
    * @return channel
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getChannel() {
     return channel;
   }
@@ -351,7 +345,7 @@ public class VoucherTransactionsExport {
    * The type of exported object.
    * @return exportedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ExportedObjectEnum getExportedObject() {
     return exportedObject;
   }
@@ -372,7 +366,7 @@ public class VoucherTransactionsExport {
    * Get parameters
    * @return parameters
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VoucherTransactionsFilters getParameters() {
     return parameters;
   }
@@ -555,13 +549,6 @@ public class VoucherTransactionsExport {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("exported_object");
-    openapiRequiredFields.add("parameters");
   }
 
  /**
@@ -576,18 +563,11 @@ public class VoucherTransactionsExport {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsExport is not found in the empty JSON string", VoucherTransactionsExport.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsExport.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -603,7 +583,7 @@ public class VoucherTransactionsExport {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -619,10 +599,10 @@ public class VoucherTransactionsExport {
           throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
         }
       }
-      if (!jsonObj.get("channel").isJsonPrimitive()) {
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
-      if (!jsonObj.get("exported_object").isJsonPrimitive()) {
+      if ((jsonObj.get("exported_object") != null && !jsonObj.get("exported_object").isJsonNull()) && !jsonObj.get("exported_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exported_object").toString()));
       }
       try {
@@ -638,8 +618,10 @@ public class VoucherTransactionsExport {
           throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a valid element of ExportedObjectEnum enum got `%s` instead", jsonObj.get("exported_object").toString()));
         }
       }
-      // validate the required field `parameters`
-      VoucherTransactionsFilters.validateJsonElement(jsonObj.get("parameters"));
+      // validate the optional field `parameters`
+      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
+        VoucherTransactionsFilters.validateJsonElement(jsonObj.get("parameters"));
+      }
       // validate the optional field `result`
       if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
         VoucherTransactionsExportResult.validateJsonElement(jsonObj.get("result"));

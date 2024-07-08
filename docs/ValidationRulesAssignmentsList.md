@@ -6,12 +6,12 @@ List of Validation Rules Assignments
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about validation rules assignments. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of validation rules assignments. |  |
-|**data** | [**List&lt;BusValRuleAssignment&gt;**](BusValRuleAssignment.md) | Contains array of validation rules assignments. |  |
-|**total** | **Integer** | Total number of validation rules assignments. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about validation rules assignments. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of validation rules assignments. |
+|**data** | [**List&lt;BusValRuleAssignment&gt;**](BusValRuleAssignment.md) | Contains array of validation rules assignments. |
+|**total** | **Integer** | Total number of validation rules assignments. |
 
 
 
@@ -20,7 +20,6 @@ List of Validation Rules Assignments
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -29,7 +28,6 @@ List of Validation Rules Assignments
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

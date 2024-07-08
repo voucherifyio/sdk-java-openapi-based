@@ -59,9 +59,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -84,7 +82,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -130,7 +128,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
    * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -316,7 +314,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -331,15 +328,8 @@ public class LoyaltiesMembersTransfersCreateResponseBodyPublish {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesMembersTransfersCreateResponseBodyPublish is not found in the empty JSON string", LoyaltiesMembersTransfersCreateResponseBodyPublish.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesMembersTransfersCreateResponseBodyPublish.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

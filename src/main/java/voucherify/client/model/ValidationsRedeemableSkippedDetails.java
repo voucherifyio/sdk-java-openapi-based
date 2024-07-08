@@ -67,9 +67,7 @@ public class ValidationsRedeemableSkippedDetails {
     
     EXCLUSION_RULES_NOT_MET("exclusion_rules_not_met"),
     
-    PRECEDING_VALIDATION_FAILED("preceding_validation_failed"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PRECEDING_VALIDATION_FAILED("preceding_validation_failed");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class ValidationsRedeemableSkippedDetails {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<KeyEnum> {
@@ -113,66 +111,9 @@ public class ValidationsRedeemableSkippedDetails {
   @SerializedName(SERIALIZED_NAME_KEY)
   private KeyEnum key;
 
-  /**
-   * Gets or Sets message
-   */
-  @JsonAdapter(MessageEnum.Adapter.class)
-  public enum MessageEnum {
-    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("Applicable redeemables limit exceeded"),
-    
-    APPLICABLE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable redeemables limit per category exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("Applicable exclusive redeemables limit exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable exclusive redeemables limit per category exceeded"),
-    
-    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_EXCLUSION_RULES("Redeemable cannot be applied due to exclusion rules"),
-    
-    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_PRECEDING_VALIDATION_FAILURE("Redeemable cannot be applied due to preceding validation failure"),
-    
-    UNKNOWN_ENUM("unknown_enum");
-
-    private String value;
-
-    MessageEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MessageEnum fromValue(String value) {
-      for (MessageEnum b : MessageEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return UNKNOWN_ENUM;
-    }
-
-    public static class Adapter extends TypeAdapter<MessageEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MessageEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MessageEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MessageEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private MessageEnum message;
+  private String message;
 
   public ValidationsRedeemableSkippedDetails() {
   }
@@ -198,7 +139,7 @@ public class ValidationsRedeemableSkippedDetails {
   }
 
 
-  public ValidationsRedeemableSkippedDetails message(MessageEnum message) {
+  public ValidationsRedeemableSkippedDetails message(String message) {
     
     this.message = message;
     return this;
@@ -209,12 +150,12 @@ public class ValidationsRedeemableSkippedDetails {
    * @return message
   **/
   @javax.annotation.Nullable
-  public MessageEnum getMessage() {
+  public String getMessage() {
     return message;
   }
 
 
-  public void setMessage(MessageEnum message) {
+  public void setMessage(String message) {
     this.message = message;
   }
 
@@ -350,19 +291,6 @@ public class ValidationsRedeemableSkippedDetails {
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("message");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          MessageEnum.fromValue(objectElement.getAsString());
-        } else {
-          throw new IllegalArgumentException("Expected the field `message` to be not null");
-        }
-      } catch (IllegalArgumentException e) {
-        if(jsonObj.get("message") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `message` to be a valid element of MessageEnum enum got `%s` instead", jsonObj.get("message").toString()));
-        }
       }
   }
 

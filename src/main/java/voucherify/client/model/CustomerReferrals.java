@@ -61,7 +61,7 @@ public class CustomerReferrals {
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
-  private List<CustomerReferralsCampaignsItem> campaigns = new ArrayList<>();
+  private List<CustomerReferralsCampaignsItem> campaigns;
 
   public CustomerReferrals() {
   }
@@ -76,7 +76,7 @@ public class CustomerReferrals {
    * Total number of times this customer received a referral, i.e. was referred by another customer.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -105,7 +105,7 @@ public class CustomerReferrals {
    * Contains an array of campaigns that served as the source of a referral for the customer.
    * @return campaigns
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<CustomerReferralsCampaignsItem> getCampaigns() {
     return campaigns;
   }
@@ -214,8 +214,6 @@ public class CustomerReferrals {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("total");
-    openapiRequiredFields.add("campaigns");
   }
 
  /**
@@ -230,24 +228,21 @@ public class CustomerReferrals {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerReferrals is not found in the empty JSON string", CustomerReferrals.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("campaigns") != null && !jsonObj.get("campaigns").isJsonNull()) {
+        JsonArray jsonArraycampaigns = jsonObj.getAsJsonArray("campaigns");
+        if (jsonArraycampaigns != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("campaigns").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `campaigns` to be an array in the JSON string but got `%s`", jsonObj.get("campaigns").toString()));
+          }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerReferrals.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          // validate the optional field `campaigns` (array)
+          for (int i = 0; i < jsonArraycampaigns.size(); i++) {
+            CustomerReferralsCampaignsItem.validateJsonElement(jsonArraycampaigns.get(i));
+          };
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("campaigns").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaigns` to be an array in the JSON string but got `%s`", jsonObj.get("campaigns").toString()));
-      }
-
-      JsonArray jsonArraycampaigns = jsonObj.getAsJsonArray("campaigns");
-      // validate the required field `campaigns` (array)
-      for (int i = 0; i < jsonArraycampaigns.size(); i++) {
-        CustomerReferralsCampaignsItem.validateJsonElement(jsonArraycampaigns.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

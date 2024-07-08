@@ -68,9 +68,7 @@ public class ReferralProgramRefereeReward {
     
     GIFT_VOUCHER("GIFT_VOUCHER"),
     
-    LUCKY_DRAW_CODE("LUCKY_DRAW_CODE"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LUCKY_DRAW_CODE("LUCKY_DRAW_CODE");
 
     private String value;
 
@@ -93,7 +91,7 @@ public class ReferralProgramRefereeReward {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {

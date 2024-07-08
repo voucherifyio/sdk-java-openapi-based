@@ -80,7 +80,7 @@ public class CustomerLoyalty {
    * Customer&#39;s loyalty points.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -101,7 +101,7 @@ public class CustomerLoyalty {
    * Total number of customers referred by the customer.
    * @return referredCustomers
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getReferredCustomers() {
     return referredCustomers;
   }
@@ -130,7 +130,7 @@ public class CustomerLoyalty {
    * Contains campaigns with details about point balances and how many customers were referred by the customer.
    * @return campaigns
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Map<String, CustomerLoyaltyCampaignsValue> getCampaigns() {
     return campaigns;
   }
@@ -242,9 +242,6 @@ public class CustomerLoyalty {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("referred_customers");
-    openapiRequiredFields.add("campaigns");
   }
 
  /**
@@ -257,13 +254,6 @@ public class CustomerLoyalty {
       if (jsonElement == null) {
         if (!CustomerLoyalty.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerLoyalty is not found in the empty JSON string", CustomerLoyalty.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerLoyalty.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

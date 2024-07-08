@@ -61,9 +61,7 @@ public class LoyaltyTiersExpirationAll {
   public enum QualificationTypeEnum {
     BALANCE("BALANCE"),
     
-    POINTS_IN_PERIOD("POINTS_IN_PERIOD"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    POINTS_IN_PERIOD("POINTS_IN_PERIOD");
 
     private String value;
 
@@ -86,7 +84,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<QualificationTypeEnum> {
@@ -118,9 +116,7 @@ public class LoyaltyTiersExpirationAll {
     
     HALF_YEAR("HALF_YEAR"),
     
-    YEAR("YEAR"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    YEAR("YEAR");
 
     private String value;
 
@@ -143,7 +139,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<QualificationPeriodEnum> {
@@ -185,7 +181,7 @@ public class LoyaltyTiersExpirationAll {
    * Tier qualification.     &#x60;BALANCE&#x60;: Points balance is based on the customer&#39;s current points balance. Customers qualify for the tier if their points balance is in the points range of the tier.   &#x60;POINTS_IN_PERIOD&#x60;: A customer qualifies for the tier only if the sum of the accumulated points in a **defined time interval** reaches the tier threshold.
    * @return qualificationType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public QualificationTypeEnum getQualificationType() {
     return qualificationType;
   }
@@ -227,7 +223,7 @@ public class LoyaltyTiersExpirationAll {
    * Get startDate
    * @return startDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTiersExpirationAllStartDate getStartDate() {
     return startDate;
   }
@@ -248,7 +244,7 @@ public class LoyaltyTiersExpirationAll {
    * Get expirationDate
    * @return expirationDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTiersExpirationAllExpirationDate getExpirationDate() {
     return expirationDate;
   }
@@ -363,9 +359,6 @@ public class LoyaltyTiersExpirationAll {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("qualification_type");
-    openapiRequiredFields.add("start_date");
-    openapiRequiredFields.add("expiration_date");
   }
 
  /**
@@ -380,15 +373,8 @@ public class LoyaltyTiersExpirationAll {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTiersExpirationAll is not found in the empty JSON string", LoyaltyTiersExpirationAll.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTiersExpirationAll.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("qualification_type").isJsonPrimitive()) {
+      if ((jsonObj.get("qualification_type") != null && !jsonObj.get("qualification_type").isJsonNull()) && !jsonObj.get("qualification_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qualification_type").toString()));
       }
       try {
@@ -420,10 +406,14 @@ public class LoyaltyTiersExpirationAll {
           throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a valid element of QualificationPeriodEnum enum got `%s` instead", jsonObj.get("qualification_period").toString()));
         }
       }
-      // validate the required field `start_date`
-      LoyaltyTiersExpirationAllStartDate.validateJsonElement(jsonObj.get("start_date"));
-      // validate the required field `expiration_date`
-      LoyaltyTiersExpirationAllExpirationDate.validateJsonElement(jsonObj.get("expiration_date"));
+      // validate the optional field `start_date`
+      if (jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) {
+        LoyaltyTiersExpirationAllStartDate.validateJsonElement(jsonObj.get("start_date"));
+      }
+      // validate the optional field `expiration_date`
+      if (jsonObj.get("expiration_date") != null && !jsonObj.get("expiration_date").isJsonNull()) {
+        LoyaltyTiersExpirationAllExpirationDate.validateJsonElement(jsonObj.get("expiration_date"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -74,7 +74,7 @@ public class VoucherTransactionDetailsEarningRule {
    * Unique earning rule ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -95,7 +95,7 @@ public class VoucherTransactionDetailsEarningRule {
    * Get source
    * @return source
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VoucherTransactionDetailsEarningRuleSource getSource() {
     return source;
   }
@@ -204,8 +204,6 @@ public class VoucherTransactionDetailsEarningRule {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("source");
   }
 
  /**
@@ -220,19 +218,14 @@ public class VoucherTransactionDetailsEarningRule {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionDetailsEarningRule is not found in the empty JSON string", VoucherTransactionDetailsEarningRule.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionDetailsEarningRule.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // validate the required field `source`
-      VoucherTransactionDetailsEarningRuleSource.validateJsonElement(jsonObj.get("source"));
+      // validate the optional field `source`
+      if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
+        VoucherTransactionDetailsEarningRuleSource.validateJsonElement(jsonObj.get("source"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

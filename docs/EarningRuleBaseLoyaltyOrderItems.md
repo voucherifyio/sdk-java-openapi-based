@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**quantity** | [**EarningRuleBaseLoyaltyOrderItemsQuantity**](EarningRuleBaseLoyaltyOrderItemsQuantity.md) |  |  [optional] |
-|**amount** | [**EarningRuleBaseLoyaltyOrderItemsQuantity**](EarningRuleBaseLoyaltyOrderItemsQuantity.md) |  |  [optional] |
-|**subtotalAmount** | [**EarningRuleBaseLoyaltyOrderItemsQuantity**](EarningRuleBaseLoyaltyOrderItemsQuantity.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**quantity** | [**EarningRuleBaseLoyaltyOrderItemsQuantity**](EarningRuleBaseLoyaltyOrderItemsQuantity.md) |  |
+|**amount** | [**EarningRuleBaseLoyaltyOrderItemsQuantity**](EarningRuleBaseLoyaltyOrderItemsQuantity.md) |  |
+|**subtotalAmount** | [**EarningRuleBaseLoyaltyOrderItemsQuantity**](EarningRuleBaseLoyaltyOrderItemsQuantity.md) |  |
 
 
 

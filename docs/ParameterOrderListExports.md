@@ -13,7 +13,5 @@
 
 * `_STATUS` (value: `"-status"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

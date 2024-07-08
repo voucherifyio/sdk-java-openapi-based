@@ -61,7 +61,7 @@ import voucherify.client.JSON;
 public class RedemptionsRedeemRequestBody {
   public static final String SERIALIZED_NAME_REDEEMABLES = "redeemables";
   @SerializedName(SERIALIZED_NAME_REDEEMABLES)
-  private List<StackableValidateRedeemBaseRedeemablesItem> redeemables = new ArrayList<>();
+  private List<StackableValidateRedeemBaseRedeemablesItem> redeemables;
 
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
@@ -108,7 +108,7 @@ public class RedemptionsRedeemRequestBody {
    * Get redeemables
    * @return redeemables
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<StackableValidateRedeemBaseRedeemablesItem> getRedeemables() {
     return redeemables;
   }
@@ -358,7 +358,6 @@ public class RedemptionsRedeemRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("redeemables");
   }
 
  /**
@@ -373,24 +372,21 @@ public class RedemptionsRedeemRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsRedeemRequestBody is not found in the empty JSON string", RedemptionsRedeemRequestBody.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("redeemables") != null && !jsonObj.get("redeemables").isJsonNull()) {
+        JsonArray jsonArrayredeemables = jsonObj.getAsJsonArray("redeemables");
+        if (jsonArrayredeemables != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("redeemables").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("redeemables").toString()));
+          }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RedemptionsRedeemRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          // validate the optional field `redeemables` (array)
+          for (int i = 0; i < jsonArrayredeemables.size(); i++) {
+            StackableValidateRedeemBaseRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
+          };
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("redeemables").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("redeemables").toString()));
-      }
-
-      JsonArray jsonArrayredeemables = jsonObj.getAsJsonArray("redeemables");
-      // validate the required field `redeemables` (array)
-      for (int i = 0; i < jsonArrayredeemables.size(); i++) {
-        StackableValidateRedeemBaseRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
-      };
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         Order.validateJsonElement(jsonObj.get("order"));

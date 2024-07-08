@@ -6,11 +6,11 @@ These are parameters representing a material reward.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**campaign** | [**RedemptionRewardResultParametersCampaign**](RedemptionRewardResultParametersCampaign.md) |  |  [optional] |
-|**product** | [**RedemptionRewardResultParametersProduct**](RedemptionRewardResultParametersProduct.md) |  |  [optional] |
-|**coin** | [**RedemptionRewardResultParametersCoin**](RedemptionRewardResultParametersCoin.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**campaign** | [**RedemptionRewardResultParametersCampaign**](RedemptionRewardResultParametersCampaign.md) |  |
+|**product** | [**RedemptionRewardResultParametersProduct**](RedemptionRewardResultParametersProduct.md) |  |
+|**coin** | [**RedemptionRewardResultParametersCoin**](RedemptionRewardResultParametersCoin.md) |  |
 
 
 

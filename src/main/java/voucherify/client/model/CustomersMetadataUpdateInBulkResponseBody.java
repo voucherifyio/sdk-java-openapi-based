@@ -69,7 +69,7 @@ public class CustomersMetadataUpdateInBulkResponseBody {
    * The ID of the scheduled asynchronous action.
    * @return asyncActionId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAsyncActionId() {
     return asyncActionId;
   }
@@ -175,7 +175,6 @@ public class CustomersMetadataUpdateInBulkResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("async_action_id");
   }
 
  /**
@@ -190,15 +189,8 @@ public class CustomersMetadataUpdateInBulkResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersMetadataUpdateInBulkResponseBody is not found in the empty JSON string", CustomersMetadataUpdateInBulkResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersMetadataUpdateInBulkResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("async_action_id").isJsonPrimitive()) {
+      if ((jsonObj.get("async_action_id") != null && !jsonObj.get("async_action_id").isJsonNull()) && !jsonObj.get("async_action_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `async_action_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("async_action_id").toString()));
       }
   }

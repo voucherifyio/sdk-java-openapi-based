@@ -6,15 +6,15 @@ Response body schema for **GET** `/categories/{categoryId}`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Unique category ID assigned by Voucherify. |  |
-|**name** | **String** | Category name. |  |
-|**hierarchy** | **Integer** | Category hierarchy. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON. This object stores information about the category. |  |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the category was created. The value is shown in the ISO 8601 format. |  |
-|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the category was updated. The value is shown in the ISO 8601 format. |  [optional] |
-|**stackingRulesType** | [**StackingRulesTypeEnum**](#StackingRulesTypeEnum) | The type of the stacking rule eligibility. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** | Unique category ID assigned by Voucherify. |
+|**name** | **String** | Category name. |
+|**hierarchy** | **Integer** | Category hierarchy. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON. This object stores information about the category. |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the category was created. The value is shown in the ISO 8601 format. |
+|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the category was updated. The value is shown in the ISO 8601 format. |
+|**stackingRulesType** | [**StackingRulesTypeEnum**](#StackingRulesTypeEnum) | The type of the stacking rule eligibility. |
 
 
 
@@ -23,7 +23,6 @@ Response body schema for **GET** `/categories/{categoryId}`.
 | Name | Value |
 |---- | -----|
 | CATEGORY | &quot;category&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -33,7 +32,6 @@ Response body schema for **GET** `/categories/{categoryId}`.
 |---- | -----|
 | JOINT | &quot;JOINT&quot; |
 | EXCLUSIVE | &quot;EXCLUSIVE&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

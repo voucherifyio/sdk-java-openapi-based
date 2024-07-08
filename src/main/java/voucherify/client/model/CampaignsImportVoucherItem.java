@@ -70,9 +70,7 @@ public class CampaignsImportVoucherItem {
     
     LOYALTY_CARD("LOYALTY_CARD"),
     
-    LUCKY_DRAW_CODE("LUCKY_DRAW_CODE"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LUCKY_DRAW_CODE("LUCKY_DRAW_CODE");
 
     private String value;
 
@@ -95,7 +93,7 @@ public class CampaignsImportVoucherItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -157,7 +155,7 @@ public class CampaignsImportVoucherItem {
    * Unique custom voucher code.
    * @return code
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -455,7 +453,6 @@ public class CampaignsImportVoucherItem {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
   }
 
  /**
@@ -470,15 +467,8 @@ public class CampaignsImportVoucherItem {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsImportVoucherItem is not found in the empty JSON string", CampaignsImportVoucherItem.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignsImportVoucherItem.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("code").isJsonPrimitive()) {
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {

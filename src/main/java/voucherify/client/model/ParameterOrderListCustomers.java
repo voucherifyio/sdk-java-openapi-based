@@ -38,9 +38,7 @@ public enum ParameterOrderListCustomers {
   
   SOURCE_ID("source_id"),
   
-  _SOURCE_ID("-source_id"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  _SOURCE_ID("-source_id");
 
   private String value;
 
@@ -63,7 +61,7 @@ public enum ParameterOrderListCustomers {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListCustomers> {

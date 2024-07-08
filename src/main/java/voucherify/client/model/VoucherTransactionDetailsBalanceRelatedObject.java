@@ -61,9 +61,7 @@ public class VoucherTransactionDetailsBalanceRelatedObject {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    VOUCHER("voucher"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER("voucher");
 
     private String value;
 
@@ -86,7 +84,7 @@ public class VoucherTransactionDetailsBalanceRelatedObject {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -120,7 +118,7 @@ public class VoucherTransactionDetailsBalanceRelatedObject {
    * Identifies the voucher that is being modified, this is the ID that was assigned by the Voucherify API.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -141,7 +139,7 @@ public class VoucherTransactionDetailsBalanceRelatedObject {
    * The object being modified, i.e. voucher.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -250,8 +248,6 @@ public class VoucherTransactionDetailsBalanceRelatedObject {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -266,18 +262,11 @@ public class VoucherTransactionDetailsBalanceRelatedObject {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionDetailsBalanceRelatedObject is not found in the empty JSON string", VoucherTransactionDetailsBalanceRelatedObject.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionDetailsBalanceRelatedObject.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {

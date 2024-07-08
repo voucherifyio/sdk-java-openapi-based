@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**order** | [**OrderEnum**](#OrderEnum) |  |  [optional] |
-|**fields** | [**List&lt;FieldsEnum&gt;**](#List&lt;FieldsEnum&gt;) | Array of strings containing the data in the export. These fields define the headers in the CSV file. |  [optional] |
-|**filters** | [**ExportsCreateResponseBodyParametersFilters**](ExportsCreateResponseBodyParametersFilters.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**order** | [**OrderEnum**](#OrderEnum) |  |
+|**fields** | [**List&lt;FieldsEnum&gt;**](#List&lt;FieldsEnum&gt;) | Array of strings containing the data in the export. These fields define the headers in the CSV file. |
+|**filters** | [**ExportsCreateResponseBodyParametersFilters**](ExportsCreateResponseBodyParametersFilters.md) |  |
 
 
 
@@ -31,7 +31,6 @@
 | TRACKING_ID | &quot;tracking_id&quot; |
 | _CUSTOMER_ID | &quot;-customer_id&quot; |
 | CUSTOMER_ID | &quot;customer_id&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -128,7 +127,6 @@
 | BALANCE | &quot;balance&quot; |
 | RELATED_TRANSACTION_ID | &quot;related_transaction_id&quot; |
 | DETAILS | &quot;details&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

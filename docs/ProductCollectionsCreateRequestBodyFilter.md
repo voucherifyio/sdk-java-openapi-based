@@ -6,21 +6,21 @@ Defines a set of criteria and boundary conditions for an `AUTO_UPDATE` product c
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**junction** | **Junction** |  |  |
-|**id** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**productId** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**sourceId** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**name** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**price** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**_object** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**attributes** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**metadata** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**imageUrl** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**skus** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**createdAt** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**updatedAt** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**junction** | **Junction** |  |
+|**id** | [**FieldConditions**](FieldConditions.md) |  |
+|**productId** | [**FieldConditions**](FieldConditions.md) |  |
+|**sourceId** | [**FieldConditions**](FieldConditions.md) |  |
+|**name** | [**FieldConditions**](FieldConditions.md) |  |
+|**price** | [**FieldConditions**](FieldConditions.md) |  |
+|**_object** | [**FieldConditions**](FieldConditions.md) |  |
+|**attributes** | [**FieldConditions**](FieldConditions.md) |  |
+|**metadata** | [**FieldConditions**](FieldConditions.md) |  |
+|**imageUrl** | [**FieldConditions**](FieldConditions.md) |  |
+|**skus** | [**FieldConditions**](FieldConditions.md) |  |
+|**createdAt** | [**FieldConditions**](FieldConditions.md) |  |
+|**updatedAt** | [**FieldConditions**](FieldConditions.md) |  |
 
 
 

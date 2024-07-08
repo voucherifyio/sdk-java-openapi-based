@@ -68,9 +68,7 @@ public class Gift {
   public enum EffectEnum {
     ORDER("APPLY_TO_ORDER"),
     
-    ITEMS("APPLY_TO_ITEMS"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ITEMS("APPLY_TO_ITEMS");
 
     private String value;
 
@@ -93,7 +91,7 @@ public class Gift {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<EffectEnum> {
@@ -127,7 +125,7 @@ public class Gift {
    * Total gift card income over the lifetime of the card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
    * @return amount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getAmount() {
     return amount;
   }
@@ -148,7 +146,7 @@ public class Gift {
    * Available funds. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
    * @return balance
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getBalance() {
     return balance;
   }
@@ -235,8 +233,6 @@ public class Gift {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("amount");
-    openapiRequiredFields.add("balance");
   }
 
  /**
@@ -257,13 +253,6 @@ public class Gift {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!Gift.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Gift` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Gift.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

@@ -81,9 +81,7 @@ public class ValidationRulesCreateRequestBody {
     
     ADVANCED("advanced"),
     
-    COMPLEX("complex"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    COMPLEX("complex");
 
     private String value;
 
@@ -106,7 +104,7 @@ public class ValidationRulesCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -244,9 +242,7 @@ public class ValidationRulesCreateRequestBody {
     
     REWARD_ASSIGNMENT_PAY_WITH_POINTS("reward_assignment.pay_with_points"),
     
-    GLOBAL("global"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    GLOBAL("global");
 
     private String value;
 
@@ -269,7 +265,7 @@ public class ValidationRulesCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ContextTypeEnum> {

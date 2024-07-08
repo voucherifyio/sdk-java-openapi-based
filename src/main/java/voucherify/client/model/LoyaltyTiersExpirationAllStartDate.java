@@ -59,9 +59,7 @@ public class LoyaltyTiersExpirationAllStartDate {
   public enum TypeEnum {
     IMMEDIATE("IMMEDIATE"),
     
-    NEXT_PERIOD("NEXT_PERIOD"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    NEXT_PERIOD("NEXT_PERIOD");
 
     private String value;
 
@@ -84,7 +82,7 @@ public class LoyaltyTiersExpirationAllStartDate {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -118,7 +116,7 @@ public class LoyaltyTiersExpirationAllStartDate {
    * What triggers the tier to be valid for a customer.     &#x60;IMMEDIATE&#x60;: After reaching the minimum required points.  &#x60;NEXT_PERIOD&#x60;: When the next qualification period starts.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -224,7 +222,6 @@ public class LoyaltyTiersExpirationAllStartDate {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -239,15 +236,8 @@ public class LoyaltyTiersExpirationAllStartDate {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTiersExpirationAllStartDate is not found in the empty JSON string", LoyaltyTiersExpirationAllStartDate.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTiersExpirationAllStartDate.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {

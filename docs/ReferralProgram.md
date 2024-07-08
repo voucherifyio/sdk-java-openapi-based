@@ -6,11 +6,11 @@ Defines the referee reward and the way a referral is triggered. Context: `REFERR
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**conversionEventType** | [**ConversionEventTypeEnum**](#ConversionEventTypeEnum) | Define how a referral is triggered. |  [optional] |
-|**customEvent** | [**ReferralProgramCustomEvent**](ReferralProgramCustomEvent.md) |  |  [optional] |
-|**refereeReward** | [**ReferralProgramRefereeReward**](ReferralProgramRefereeReward.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**conversionEventType** | [**ConversionEventTypeEnum**](#ConversionEventTypeEnum) | Define how a referral is triggered. |
+|**customEvent** | [**ReferralProgramCustomEvent**](ReferralProgramCustomEvent.md) |  |
+|**refereeReward** | [**ReferralProgramRefereeReward**](ReferralProgramRefereeReward.md) |  |
 
 
 
@@ -20,7 +20,6 @@ Defines the referee reward and the way a referral is triggered. Context: `REFERR
 |---- | -----|
 | REDEMPTION | &quot;redemption&quot; |
 | CUSTOM_EVENT | &quot;custom_event&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -60,9 +60,7 @@ public class OrdersListResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -85,7 +83,7 @@ public class OrdersListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -111,9 +109,7 @@ public class OrdersListResponseBody {
    */
   @JsonAdapter(DataRefEnum.Adapter.class)
   public enum DataRefEnum {
-    ORDERS("orders"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ORDERS("orders");
 
     private String value;
 
@@ -136,7 +132,7 @@ public class OrdersListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DataRefEnum> {
@@ -159,7 +155,7 @@ public class OrdersListResponseBody {
 
   public static final String SERIALIZED_NAME_ORDERS = "orders";
   @SerializedName(SERIALIZED_NAME_ORDERS)
-  private List<OrderCalculatedNoCustomerData> orders = new ArrayList<>();
+  private List<OrderCalculatedNoCustomerData> orders;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -178,7 +174,7 @@ public class OrdersListResponseBody {
    * The type of the object represented by JSON. This object stores information about orders in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -199,7 +195,7 @@ public class OrdersListResponseBody {
    * Identifies the name of the attribute that contains the array of order objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public DataRefEnum getDataRef() {
     return dataRef;
   }
@@ -228,7 +224,7 @@ public class OrdersListResponseBody {
    * Contains array of order objects.
    * @return orders
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<OrderCalculatedNoCustomerData> getOrders() {
     return orders;
   }
@@ -249,7 +245,7 @@ public class OrdersListResponseBody {
    * Total number of orders.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -364,10 +360,6 @@ public class OrdersListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("orders");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -382,15 +374,8 @@ public class OrdersListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrdersListResponseBody is not found in the empty JSON string", OrdersListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : OrdersListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -406,7 +391,7 @@ public class OrdersListResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
       try {
@@ -422,16 +407,20 @@ public class OrdersListResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("orders").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `orders` to be an array in the JSON string but got `%s`", jsonObj.get("orders").toString()));
-      }
+      if (jsonObj.get("orders") != null && !jsonObj.get("orders").isJsonNull()) {
+        JsonArray jsonArrayorders = jsonObj.getAsJsonArray("orders");
+        if (jsonArrayorders != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("orders").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `orders` to be an array in the JSON string but got `%s`", jsonObj.get("orders").toString()));
+          }
 
-      JsonArray jsonArrayorders = jsonObj.getAsJsonArray("orders");
-      // validate the required field `orders` (array)
-      for (int i = 0; i < jsonArrayorders.size(); i++) {
-        OrderCalculatedNoCustomerData.validateJsonElement(jsonArrayorders.get(i));
-      };
+          // validate the optional field `orders` (array)
+          for (int i = 0; i < jsonArrayorders.size(); i++) {
+            OrderCalculatedNoCustomerData.validateJsonElement(jsonArrayorders.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

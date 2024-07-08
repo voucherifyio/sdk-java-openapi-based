@@ -77,7 +77,7 @@ public class EarningRuleBaseLoyaltyCustomEventMetadata {
    * For how many increments of the customer metadata property to grant points for.
    * @return every
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getEvery() {
     return every;
   }
@@ -98,7 +98,7 @@ public class EarningRuleBaseLoyaltyCustomEventMetadata {
    * Number of points to be awarded, i.e. how many points to be added to the loyalty card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -119,7 +119,7 @@ public class EarningRuleBaseLoyaltyCustomEventMetadata {
    *  Custom event metadata property.
    * @return property
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getProperty() {
     return property;
   }
@@ -231,9 +231,6 @@ public class EarningRuleBaseLoyaltyCustomEventMetadata {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("every");
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("property");
   }
 
  /**
@@ -248,15 +245,8 @@ public class EarningRuleBaseLoyaltyCustomEventMetadata {
           throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyCustomEventMetadata is not found in the empty JSON string", EarningRuleBaseLoyaltyCustomEventMetadata.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseLoyaltyCustomEventMetadata.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("property").isJsonPrimitive()) {
+      if ((jsonObj.get("property") != null && !jsonObj.get("property").isJsonNull()) && !jsonObj.get("property").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `property` to be a primitive type in the JSON string but got `%s`", jsonObj.get("property").toString()));
       }
   }

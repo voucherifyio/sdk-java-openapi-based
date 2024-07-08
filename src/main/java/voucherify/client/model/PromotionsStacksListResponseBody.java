@@ -60,9 +60,7 @@ public class PromotionsStacksListResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -85,7 +83,7 @@ public class PromotionsStacksListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -111,9 +109,7 @@ public class PromotionsStacksListResponseBody {
    */
   @JsonAdapter(DataRefEnum.Adapter.class)
   public enum DataRefEnum {
-    DATA("data"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    DATA("data");
 
     private String value;
 
@@ -136,7 +132,7 @@ public class PromotionsStacksListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DataRefEnum> {
@@ -159,7 +155,7 @@ public class PromotionsStacksListResponseBody {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<PromotionStack> data = new ArrayList<>();
+  private List<PromotionStack> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -178,7 +174,7 @@ public class PromotionsStacksListResponseBody {
    * The type of the object represented by JSON. This object stores information about promotion stacks in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -199,7 +195,7 @@ public class PromotionsStacksListResponseBody {
    * Identifies the name of the attribute that contains the array of promotion stack objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public DataRefEnum getDataRef() {
     return dataRef;
   }
@@ -228,7 +224,7 @@ public class PromotionsStacksListResponseBody {
    * Contains array of promotion stack objects.
    * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<PromotionStack> getData() {
     return data;
   }
@@ -250,7 +246,7 @@ public class PromotionsStacksListResponseBody {
    * minimum: 0
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -365,10 +361,6 @@ public class PromotionsStacksListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("data");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -383,15 +375,8 @@ public class PromotionsStacksListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PromotionsStacksListResponseBody is not found in the empty JSON string", PromotionsStacksListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PromotionsStacksListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -407,7 +392,7 @@ public class PromotionsStacksListResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
       try {
@@ -423,16 +408,20 @@ public class PromotionsStacksListResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
 
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        PromotionStack.validateJsonElement(jsonArraydata.get(i));
-      };
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            PromotionStack.validateJsonElement(jsonArraydata.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

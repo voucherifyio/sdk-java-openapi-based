@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**redemptions** | [**CustomerSummaryRedemptions**](CustomerSummaryRedemptions.md) |  |  |
-|**orders** | [**CustomerSummaryOrders**](CustomerSummaryOrders.md) |  |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**redemptions** | [**CustomerSummaryRedemptions**](CustomerSummaryRedemptions.md) |  |
+|**orders** | [**CustomerSummaryOrders**](CustomerSummaryOrders.md) |  |
 
 
 

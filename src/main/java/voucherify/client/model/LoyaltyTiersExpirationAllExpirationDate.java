@@ -64,9 +64,7 @@ public class LoyaltyTiersExpirationAllExpirationDate {
     
     BALANCE_DROP("BALANCE_DROP"),
     
-    CUSTOM("CUSTOM"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOM("CUSTOM");
 
     private String value;
 
@@ -89,7 +87,7 @@ public class LoyaltyTiersExpirationAllExpirationDate {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -131,7 +129,7 @@ public class LoyaltyTiersExpirationAllExpirationDate {
    * What triggers the tier to expire for a customer.     &#x60;END_OF_PERIOD&#x60;: Expire tier at the end of the period.     &#x60;END_OF_NEXT_PERIOD&#x60;:  Expire tier at the end of the next period.   &#x60;BALANCE_DROP&#x60;: Tier expires when the points balance drops below the required range of the tier.   &#x60;CUSTOM&#x60;: Tier expires after a certain time period passes following the instance the points balance drops below the required range of the tier.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -152,7 +150,7 @@ public class LoyaltyTiersExpirationAllExpirationDate {
    * Extend the expiration by adding extra months or days in ISO 8601 format. The tier will remain active even though it reaches its expiration time period. For example, a tier with a duration of &#x60;P3M&#x60; will be valid for an additional duration of 3 months and a tier with a duration of &#x60;P1D&#x60; will be valid for an additional duration of 1 day.
    * @return extend
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getExtend() {
     return extend;
   }
@@ -285,8 +283,6 @@ public class LoyaltyTiersExpirationAllExpirationDate {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("extend");
   }
 
  /**
@@ -301,15 +297,8 @@ public class LoyaltyTiersExpirationAllExpirationDate {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTiersExpirationAllExpirationDate is not found in the empty JSON string", LoyaltyTiersExpirationAllExpirationDate.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTiersExpirationAllExpirationDate.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {
@@ -325,7 +314,7 @@ public class LoyaltyTiersExpirationAllExpirationDate {
           throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
         }
       }
-      if (!jsonObj.get("extend").isJsonPrimitive()) {
+      if ((jsonObj.get("extend") != null && !jsonObj.get("extend").isJsonNull()) && !jsonObj.get("extend").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `extend` to be a primitive type in the JSON string but got `%s`", jsonObj.get("extend").toString()));
       }
       // validate the optional field `rounding`

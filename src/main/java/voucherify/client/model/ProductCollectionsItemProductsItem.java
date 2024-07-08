@@ -67,9 +67,7 @@ public class ProductCollectionsItemProductsItem {
   public enum ObjectEnum {
     SKU("sku"),
     
-    PRODUCT("product"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PRODUCT("product");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class ProductCollectionsItemProductsItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

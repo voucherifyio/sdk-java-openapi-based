@@ -65,7 +65,7 @@ public class SkusList {
 
   public static final String SERIALIZED_NAME_SKUS = "skus";
   @SerializedName(SERIALIZED_NAME_SKUS)
-  private List<Sku> skus = new ArrayList<>();
+  private List<Sku> skus;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -84,7 +84,7 @@ public class SkusList {
    * The type of the object represented by JSON. This object stores information about SKUs.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -105,7 +105,7 @@ public class SkusList {
    * Identifies the name of the JSON property that contains the array of SKUs.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -134,7 +134,7 @@ public class SkusList {
    * A dictionary that contains an array of SKUs.
    * @return skus
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<Sku> getSkus() {
     return skus;
   }
@@ -155,7 +155,7 @@ public class SkusList {
    * Total number of SKUs in the product.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -270,10 +270,6 @@ public class SkusList {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("skus");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -288,30 +284,27 @@ public class SkusList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SkusList is not found in the empty JSON string", SkusList.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SkusList.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("skus").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skus` to be an array in the JSON string but got `%s`", jsonObj.get("skus").toString()));
-      }
+      if (jsonObj.get("skus") != null && !jsonObj.get("skus").isJsonNull()) {
+        JsonArray jsonArrayskus = jsonObj.getAsJsonArray("skus");
+        if (jsonArrayskus != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("skus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `skus` to be an array in the JSON string but got `%s`", jsonObj.get("skus").toString()));
+          }
 
-      JsonArray jsonArrayskus = jsonObj.getAsJsonArray("skus");
-      // validate the required field `skus` (array)
-      for (int i = 0; i < jsonArrayskus.size(); i++) {
-        Sku.validateJsonElement(jsonArrayskus.get(i));
-      };
+          // validate the optional field `skus` (array)
+          for (int i = 0; i < jsonArrayskus.size(); i++) {
+            Sku.validateJsonElement(jsonArrayskus.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

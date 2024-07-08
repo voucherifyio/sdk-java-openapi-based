@@ -32,9 +32,7 @@ public enum PointsExpirationTypes {
   
   CUSTOM_DATE("CUSTOM_DATE"),
   
-  NON_EXPIRING("NON_EXPIRING"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  NON_EXPIRING("NON_EXPIRING");
 
   private String value;
 
@@ -57,7 +55,7 @@ public enum PointsExpirationTypes {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<PointsExpirationTypes> {

@@ -104,9 +104,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
     
     DISCOUNT_VOUCHER("DISCOUNT_VOUCHER"),
     
-    LOYALTY_CARD("LOYALTY_CARD"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_CARD("LOYALTY_CARD");
 
     private String value;
 
@@ -129,7 +127,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -191,9 +189,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -216,7 +212,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {

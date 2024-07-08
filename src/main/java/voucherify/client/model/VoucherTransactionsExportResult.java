@@ -69,7 +69,7 @@ public class VoucherTransactionsExportResult {
    * URL of the CSV file location. It contains the &#x60;token&#x60; used for authorization in the &lt;!-- [Download export](OpenAPI.json/paths/~1exports~1{export_Id}/get) --&gt;[Download export](ref:download-export) method.
    * @return url
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getUrl() {
     return url;
   }
@@ -175,7 +175,6 @@ public class VoucherTransactionsExportResult {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("url");
   }
 
  /**
@@ -190,15 +189,8 @@ public class VoucherTransactionsExportResult {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsExportResult is not found in the empty JSON string", VoucherTransactionsExportResult.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsExportResult.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("url").isJsonPrimitive()) {
+      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
   }

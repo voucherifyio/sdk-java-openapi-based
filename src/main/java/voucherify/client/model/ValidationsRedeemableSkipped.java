@@ -61,9 +61,7 @@ public class ValidationsRedeemableSkipped {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    SKIPPED("SKIPPED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SKIPPED("SKIPPED");
 
     private String value;
 
@@ -86,7 +84,7 @@ public class ValidationsRedeemableSkipped {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -118,9 +116,7 @@ public class ValidationsRedeemableSkipped {
   public enum ObjectEnum {
     VOUCHER("voucher"),
     
-    PROMOTION_TIER("promotion_tier"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PROMOTION_TIER("promotion_tier");
 
     private String value;
 
@@ -143,7 +139,7 @@ public class ValidationsRedeemableSkipped {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -189,7 +185,7 @@ public class ValidationsRedeemableSkipped {
    * Indicates whether the redeemable can be applied or not applied based on the validation rules.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -210,7 +206,7 @@ public class ValidationsRedeemableSkipped {
    * Redeemable ID, i.e. the voucher code.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -231,7 +227,7 @@ public class ValidationsRedeemableSkipped {
    * Redeemable&#39;s object type.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -252,7 +248,7 @@ public class ValidationsRedeemableSkipped {
    * Get result
    * @return result
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ValidationsRedeemableSkippedResult getResult() {
     return result;
   }
@@ -423,10 +419,6 @@ public class ValidationsRedeemableSkipped {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("result");
   }
 
  /**
@@ -441,15 +433,8 @@ public class ValidationsRedeemableSkipped {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationsRedeemableSkipped is not found in the empty JSON string", ValidationsRedeemableSkipped.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationsRedeemableSkipped.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -465,10 +450,10 @@ public class ValidationsRedeemableSkipped {
           throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
         }
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -484,8 +469,10 @@ public class ValidationsRedeemableSkipped {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      // validate the required field `result`
-      ValidationsRedeemableSkippedResult.validateJsonElement(jsonObj.get("result"));
+      // validate the optional field `result`
+      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
+        ValidationsRedeemableSkippedResult.validateJsonElement(jsonObj.get("result"));
+      }
       if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
         JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
         if (jsonArraycategories != null) {

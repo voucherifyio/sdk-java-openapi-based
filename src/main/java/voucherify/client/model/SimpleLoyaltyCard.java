@@ -81,7 +81,7 @@ public class SimpleLoyaltyCard {
    * Total points incurred over lifespan of loyalty card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -102,7 +102,7 @@ public class SimpleLoyaltyCard {
    * Points available for reward redemption.
    * @return balance
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getBalance() {
     return balance;
   }
@@ -259,8 +259,6 @@ public class SimpleLoyaltyCard {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("balance");
   }
 
  /**
@@ -273,13 +271,6 @@ public class SimpleLoyaltyCard {
       if (jsonElement == null) {
         if (!SimpleLoyaltyCard.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SimpleLoyaltyCard is not found in the empty JSON string", SimpleLoyaltyCard.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SimpleLoyaltyCard.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

@@ -73,7 +73,7 @@ public class CustomerSummaryRedemptionsGift {
    * Total amount of gift card credits redeemed by customer. Value is multiplied by 100 to precisely represent 2 decimal places. For example &#x60;10000 cents&#x60; for &#x60;$100.00&#x60;.
    * @return redeemedAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getRedeemedAmount() {
     return redeemedAmount;
   }
@@ -94,7 +94,7 @@ public class CustomerSummaryRedemptionsGift {
    * Remaining gift card balance across all gift cards. Value is multiplied by 100 to precisely represent 2 decimal places. For example &#x60;10000 cents&#x60; for &#x60;$100.00&#x60;.
    * @return amountToGo
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getAmountToGo() {
     return amountToGo;
   }
@@ -203,8 +203,6 @@ public class CustomerSummaryRedemptionsGift {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("redeemed_amount");
-    openapiRequiredFields.add("amount_to_go");
   }
 
  /**
@@ -217,13 +215,6 @@ public class CustomerSummaryRedemptionsGift {
       if (jsonElement == null) {
         if (!CustomerSummaryRedemptionsGift.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerSummaryRedemptionsGift is not found in the empty JSON string", CustomerSummaryRedemptionsGift.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerSummaryRedemptionsGift.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

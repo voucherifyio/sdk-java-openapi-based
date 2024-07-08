@@ -96,9 +96,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    EARNING_RULE("earning_rule"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    EARNING_RULE("earning_rule");
 
     private String value;
 
@@ -121,7 +119,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -175,9 +173,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -200,7 +196,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -254,7 +250,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * Assigned by the Voucherify API, identifies the earning rule object.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -275,7 +271,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * Timestamp representing the date and time when the earning rule was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -296,7 +292,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * Get loyalty
    * @return loyalty
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public EarningRuleBaseLoyalty getLoyalty() {
     return loyalty;
   }
@@ -380,7 +376,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * Get source
    * @return source
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public EarningRuleBaseSource getSource() {
     return source;
   }
@@ -401,7 +397,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * The type of the object represented by JSON. Default is earning_rule.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -422,7 +418,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * For internal use by Voucherify.
    * @return automationId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAutomationId() {
     return automationId;
   }
@@ -556,7 +552,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * The metadata object stores all custom attributes assigned to the earning rule. A set of key/value pairs that you can attach to an earning rule object. It can be useful for storing additional information about the earning rule in a structured format.
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getMetadata() {
     return metadata;
   }
@@ -619,7 +615,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
    * A flag to toggle the earning rule on or off. You can disable an earning rule even though it&#39;s within the active period defined by the start_date and expiration_date of the campaign or the earning rule&#39;s own start_date and expiration_date.  - &#x60;true&#x60; indicates an active earning rule - &#x60;false&#x60; indicates an inactive earning rule
    * @return active
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getActive() {
     return active;
   }
@@ -787,14 +783,6 @@ public class LoyaltiesEarningRulesGetResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("loyalty");
-    openapiRequiredFields.add("source");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("automation_id");
-    openapiRequiredFields.add("metadata");
-    openapiRequiredFields.add("active");
   }
 
  /**
@@ -809,19 +797,14 @@ public class LoyaltiesEarningRulesGetResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesEarningRulesGetResponseBody is not found in the empty JSON string", LoyaltiesEarningRulesGetResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesEarningRulesGetResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // validate the required field `loyalty`
-      EarningRuleBaseLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      // validate the optional field `loyalty`
+      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
+        EarningRuleBaseLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      }
       // validate the optional field `custom_event`
       if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
         EarningRuleBaseCustomEvent.validateJsonElement(jsonObj.get("custom_event"));
@@ -830,9 +813,11 @@ public class LoyaltiesEarningRulesGetResponseBody {
       if (jsonObj.get("segment") != null && !jsonObj.get("segment").isJsonNull()) {
         EarningRuleBaseSegment.validateJsonElement(jsonObj.get("segment"));
       }
-      // validate the required field `source`
-      EarningRuleBaseSource.validateJsonElement(jsonObj.get("source"));
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      // validate the optional field `source`
+      if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
+        EarningRuleBaseSource.validateJsonElement(jsonObj.get("source"));
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -848,7 +833,7 @@ public class LoyaltiesEarningRulesGetResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("automation_id").isJsonPrimitive()) {
+      if ((jsonObj.get("automation_id") != null && !jsonObj.get("automation_id").isJsonNull()) && !jsonObj.get("automation_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `automation_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("automation_id").toString()));
       }
       if ((jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) && !jsonObj.get("start_date").isJsonPrimitive()) {

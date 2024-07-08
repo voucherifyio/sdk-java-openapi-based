@@ -70,9 +70,7 @@ public class ExportsCreateRequestBody {
     
     POINTS_EXPIRATION("points_expiration"),
     
-    VOUCHER_TRANSACTIONS("voucher_transactions"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER_TRANSACTIONS("voucher_transactions");
 
     private String value;
 
@@ -95,7 +93,7 @@ public class ExportsCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ExportedObjectEnum> {
@@ -133,7 +131,7 @@ public class ExportsCreateRequestBody {
    * Get exportedObject
    * @return exportedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ExportedObjectEnum getExportedObject() {
     return exportedObject;
   }
@@ -263,7 +261,6 @@ public class ExportsCreateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exported_object");
   }
 
  /**
@@ -278,15 +275,8 @@ public class ExportsCreateRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExportsCreateRequestBody is not found in the empty JSON string", ExportsCreateRequestBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExportsCreateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("exported_object").isJsonPrimitive()) {
+      if ((jsonObj.get("exported_object") != null && !jsonObj.get("exported_object").isJsonNull()) && !jsonObj.get("exported_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exported_object").toString()));
       }
       try {

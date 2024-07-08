@@ -63,9 +63,7 @@ public class PromotionsStacksUpdateRequestBodyTiers {
    */
   @JsonAdapter(HierarchyModeEnum.Adapter.class)
   public enum HierarchyModeEnum {
-    MANUAL("MANUAL"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MANUAL("MANUAL");
 
     private String value;
 
@@ -88,7 +86,7 @@ public class PromotionsStacksUpdateRequestBodyTiers {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<HierarchyModeEnum> {

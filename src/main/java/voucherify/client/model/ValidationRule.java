@@ -82,9 +82,7 @@ public class ValidationRule {
     
     ADVANCED("advanced"),
     
-    COMPLEX("complex"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    COMPLEX("complex");
 
     private String value;
 
@@ -107,7 +105,7 @@ public class ValidationRule {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -245,9 +243,7 @@ public class ValidationRule {
     
     REWARD_ASSIGNMENT_PAY_WITH_POINTS("reward_assignment.pay_with_points"),
     
-    GLOBAL("global"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    GLOBAL("global");
 
     private String value;
 
@@ -270,7 +266,7 @@ public class ValidationRule {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ContextTypeEnum> {
@@ -324,7 +320,7 @@ public class ValidationRule {
    * Custom, unique name for set of validation rules.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -345,7 +341,7 @@ public class ValidationRule {
    * Contains all the rule definitions for the validation rule. It is a set of key value pairs representing the rules and logic between the rules. The keys are numbered consecutively beginning from &#x60;1&#x60;. The values are objects containing the rule conditions.
    * @return rules
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getRules() {
     return rules;
   }
@@ -387,7 +383,7 @@ public class ValidationRule {
    * Get applicableTo
    * @return applicableTo
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ValidationRuleBaseApplicableTo getApplicableTo() {
     return applicableTo;
   }
@@ -408,7 +404,7 @@ public class ValidationRule {
    * Type of validation rule.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -429,7 +425,7 @@ public class ValidationRule {
    * Validation rule context type.    | **Context Type** | **Definition** | |:---|:---| | earning_rule.order.paid |  | | earning_rule.custom_event |  | | earning_rule.customer.segment.entered |  | | campaign.discount_coupons |  | | campaign.discount_coupons.discount.apply_to_order |  | | campaign.discount_coupons.discount.apply_to_items |  | | campaign.discount_coupons.discount.apply_to_items_proportionally |  | | campaign.discount_coupons.discount.apply_to_items_proportionally_by_quantity |  | | campaign.discount_coupons.discount.fixed.apply_to_items |  | | campaign.gift_vouchers |  | | campaign.gift_vouchers.gift.apply_to_order |  | | campaign.gift_vouchers.gift.apply_to_items |  | | campaign.referral_program |  | | campaign.referral_program.discount.apply_to_order |  | | campaign.referral_program.discount.apply_to_items |  | | campaign.referral_program.discount.apply_to_items_proportionally |  | | campaign.referral_program.discount.apply_to_items_proportionally_by_quantity |  | | campaign.referral_program.discount.fixed.apply_to_items |  | | campaign.promotion |  | | campaign.promotion.discount.apply_to_order |  | | campaign.promotion.discount.apply_to_items |  | | campaign.promotion.discount.apply_to_items_proportionally |  | | campaign.promotion.discount.apply_to_items_proportionally_by_quantity |  | | campaign.promotion.discount.fixed.apply_to_items |  | | campaign.loyalty_program |  | | campaign.lucky_draw |  | | voucher.discount_voucher |  | | voucher.discount_voucher.discount.apply_to_order |  | | voucher.discount_voucher.discount.apply_to_items |  | | voucher.discount_voucher.discount.apply_to_items_proportionally |  | | voucher.discount_voucher.discount.apply_to_items_proportionally_by_quantity |  | | voucher.discount_voucher.discount.fixed.apply_to_items |  | | voucher.gift_voucher |  | | voucher.gift_voucher.gift.apply_to_order |  | | voucher.gift_voucher.gift.apply_to_items |  | | voucher.loyalty_card |  | | voucher.lucky_draw_code |  | | distribution.custom_event |  | | reward_assignment.pay_with_points |  | | global |  |
    * @return contextType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ContextTypeEnum getContextType() {
     return contextType;
   }
@@ -450,7 +446,7 @@ public class ValidationRule {
    * Unique validation rule ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -471,7 +467,7 @@ public class ValidationRule {
    * Timestamp representing the date and time when the validation rule was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -534,7 +530,7 @@ public class ValidationRule {
    * The type of the object represented by JSON. This object stores information about the validation rule.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -670,14 +666,6 @@ public class ValidationRule {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("rules");
-    openapiRequiredFields.add("applicable_to");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("context_type");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -692,24 +680,19 @@ public class ValidationRule {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationRule is not found in the empty JSON string", ValidationRule.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationRule.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `error`
       if (jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) {
         ValidationRuleBaseError.validateJsonElement(jsonObj.get("error"));
       }
-      // validate the required field `applicable_to`
-      ValidationRuleBaseApplicableTo.validateJsonElement(jsonObj.get("applicable_to"));
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      // validate the optional field `applicable_to`
+      if (jsonObj.get("applicable_to") != null && !jsonObj.get("applicable_to").isJsonNull()) {
+        ValidationRuleBaseApplicableTo.validateJsonElement(jsonObj.get("applicable_to"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {
@@ -725,7 +708,7 @@ public class ValidationRule {
           throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
         }
       }
-      if (!jsonObj.get("context_type").isJsonPrimitive()) {
+      if ((jsonObj.get("context_type") != null && !jsonObj.get("context_type").isJsonNull()) && !jsonObj.get("context_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("context_type").toString()));
       }
       try {
@@ -741,10 +724,10 @@ public class ValidationRule {
           throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
         }
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
   }

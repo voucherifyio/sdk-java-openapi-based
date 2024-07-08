@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 public class CustomersMetadataUpdateInBulkRequestBody {
   public static final String SERIALIZED_NAME_SOURCE_IDS = "source_ids";
   @SerializedName(SERIALIZED_NAME_SOURCE_IDS)
-  private List<String> sourceIds = new ArrayList<>();
+  private List<String> sourceIds;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -83,7 +83,7 @@ public class CustomersMetadataUpdateInBulkRequestBody {
    * An array of customer &#x60;source_id&#x60;&#39;s.
    * @return sourceIds
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getSourceIds() {
     return sourceIds;
   }
@@ -104,7 +104,7 @@ public class CustomersMetadataUpdateInBulkRequestBody {
    * Metadata key value pairs to be updated. A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the customer. It can be useful for storing additional information about the customer in a structured format. This metadata can be used for validating whether the customer qualifies for a discount or it can be used in building customer segments.
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getMetadata() {
     return metadata;
   }
@@ -213,8 +213,6 @@ public class CustomersMetadataUpdateInBulkRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("source_ids");
-    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -229,18 +227,9 @@ public class CustomersMetadataUpdateInBulkRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersMetadataUpdateInBulkRequestBody is not found in the empty JSON string", CustomersMetadataUpdateInBulkRequestBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersMetadataUpdateInBulkRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("source_ids") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("source_ids").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("source_ids") != null && !jsonObj.get("source_ids").isJsonNull() && !jsonObj.get("source_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_ids` to be an array in the JSON string but got `%s`", jsonObj.get("source_ids").toString()));
       }
   }

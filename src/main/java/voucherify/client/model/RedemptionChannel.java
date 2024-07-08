@@ -63,9 +63,7 @@ public class RedemptionChannel {
   public enum ChannelTypeEnum {
     USER("USER"),
     
-    API("API"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    API("API");
 
     private String value;
 
@@ -88,7 +86,7 @@ public class RedemptionChannel {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ChannelTypeEnum> {

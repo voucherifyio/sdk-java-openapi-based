@@ -89,7 +89,7 @@ public class LoyaltiesTiersCreateInBulkRequestBodyItem {
    * Loyalty Tier name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -168,7 +168,7 @@ public class LoyaltiesTiersCreateInBulkRequestBodyItem {
    * Get points
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTierBasePoints getPoints() {
     return points;
   }
@@ -307,8 +307,6 @@ public class LoyaltiesTiersCreateInBulkRequestBodyItem {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("points");
   }
 
  /**
@@ -323,19 +321,14 @@ public class LoyaltiesTiersCreateInBulkRequestBodyItem {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesTiersCreateInBulkRequestBodyItem is not found in the empty JSON string", LoyaltiesTiersCreateInBulkRequestBodyItem.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesTiersCreateInBulkRequestBodyItem.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the required field `points`
-      LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
+      // validate the optional field `points`
+      if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
+        LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

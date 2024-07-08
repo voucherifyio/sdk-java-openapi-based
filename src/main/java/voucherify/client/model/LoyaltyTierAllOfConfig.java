@@ -70,7 +70,7 @@ public class LoyaltyTierAllOfConfig {
    * Get points
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTierAllOfConfigPoints getPoints() {
     return points;
   }
@@ -176,7 +176,6 @@ public class LoyaltyTierAllOfConfig {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
   }
 
  /**
@@ -191,16 +190,11 @@ public class LoyaltyTierAllOfConfig {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTierAllOfConfig is not found in the empty JSON string", LoyaltyTierAllOfConfig.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTierAllOfConfig.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `points`
-      LoyaltyTierAllOfConfigPoints.validateJsonElement(jsonObj.get("points"));
+      // validate the optional field `points`
+      if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
+        LoyaltyTierAllOfConfigPoints.validateJsonElement(jsonObj.get("points"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

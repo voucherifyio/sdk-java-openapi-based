@@ -89,9 +89,7 @@ public class CampaignBase {
     
     REFERRAL_PROGRAM("REFERRAL_PROGRAM"),
     
-    LUCKY_DRAW("LUCKY_DRAW"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LUCKY_DRAW("LUCKY_DRAW");
 
     private String value;
 
@@ -114,7 +112,7 @@ public class CampaignBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -142,9 +140,7 @@ public class CampaignBase {
   public enum TypeEnum {
     AUTO_UPDATE("AUTO_UPDATE"),
     
-    STATIC("STATIC"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    STATIC("STATIC");
 
     private String value;
 
@@ -167,7 +163,7 @@ public class CampaignBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -225,9 +221,7 @@ public class CampaignBase {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -250,7 +244,7 @@ public class CampaignBase {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -324,9 +318,7 @@ public class CampaignBase {
     
     DRAFT("DRAFT"),
     
-    MODIFYING("MODIFYING"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MODIFYING("MODIFYING");
 
     private String value;
 
@@ -349,7 +341,7 @@ public class CampaignBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CreationStatusEnum> {
@@ -383,9 +375,7 @@ public class CampaignBase {
     
     DRAFT("DRAFT"),
     
-    MODIFYING("MODIFYING"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MODIFYING("MODIFYING");
 
     private String value;
 
@@ -408,7 +398,7 @@ public class CampaignBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<VouchersGenerationStatusEnum> {
@@ -439,7 +429,7 @@ public class CampaignBase {
 
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<Category> categories = new ArrayList<>();
+  private List<Category> categories;
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
@@ -466,7 +456,7 @@ public class CampaignBase {
    * Unique campaign ID, assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -487,7 +477,7 @@ public class CampaignBase {
    * Campaign name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -529,7 +519,7 @@ public class CampaignBase {
    * Type of campaign.
    * @return campaignType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CampaignTypeEnum getCampaignType() {
     return campaignType;
   }
@@ -550,7 +540,7 @@ public class CampaignBase {
    * Defines whether the campaign can be updated with new vouchers after campaign creation.      - &#x60;AUTO_UPDATE&#x60;: the campaign is dynamic, i.e. vouchers will generate based on set criteria     -  &#x60;STATIC&#x60;: vouchers need to be manually published
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -592,7 +582,7 @@ public class CampaignBase {
    * Indicates whether customers will be able to auto-join a loyalty campaign if any earning rule is fulfilled.
    * @return autoJoin
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getAutoJoin() {
     return autoJoin;
   }
@@ -613,7 +603,7 @@ public class CampaignBase {
    * If this value is set to &#x60;true&#x60;, customers will be able to join the campaign only once.
    * @return joinOnce
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getJoinOnce() {
     return joinOnce;
   }
@@ -634,7 +624,7 @@ public class CampaignBase {
    * Flag indicating whether the campaign is to use the voucher&#39;s metadata schema instead of the campaign metadata schema.
    * @return useVoucherMetadataSchema
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getUseVoucherMetadataSchema() {
     return useVoucherMetadataSchema;
   }
@@ -852,7 +842,7 @@ public class CampaignBase {
    * Timestamp representing the date and time when the campaign was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -915,7 +905,7 @@ public class CampaignBase {
    * Indicates the status of the campaign creation.
    * @return creationStatus
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CreationStatusEnum getCreationStatus() {
     return creationStatus;
   }
@@ -936,7 +926,7 @@ public class CampaignBase {
    * Indicates the status of the campaign&#39;s voucher generation.
    * @return vouchersGenerationStatus
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VouchersGenerationStatusEnum getVouchersGenerationStatus() {
     return vouchersGenerationStatus;
   }
@@ -957,7 +947,7 @@ public class CampaignBase {
    * Indicates whether the resource can be deleted.
    * @return _protected
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getProtected() {
     return _protected;
   }
@@ -1007,7 +997,7 @@ public class CampaignBase {
    * Contains details about the category.
    * @return categories
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<Category> getCategories() {
     return categories;
   }
@@ -1028,7 +1018,7 @@ public class CampaignBase {
    * The type of the object represented by JSON. This object stores information about the campaign.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -1271,19 +1261,6 @@ public class CampaignBase {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("campaign_type");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("auto_join");
-    openapiRequiredFields.add("join_once");
-    openapiRequiredFields.add("use_voucher_metadata_schema");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("creation_status");
-    openapiRequiredFields.add("vouchers_generation_status");
-    openapiRequiredFields.add("protected");
-    openapiRequiredFields.add("categories");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -1298,24 +1275,17 @@ public class CampaignBase {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignBase is not found in the empty JSON string", CampaignBase.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignBase.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (!jsonObj.get("campaign_type").isJsonPrimitive()) {
+      if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_type").toString()));
       }
       try {
@@ -1331,7 +1301,7 @@ public class CampaignBase {
           throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a valid element of CampaignTypeEnum enum got `%s` instead", jsonObj.get("campaign_type").toString()));
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {
@@ -1369,7 +1339,7 @@ public class CampaignBase {
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
-      if (!jsonObj.get("creation_status").isJsonPrimitive()) {
+      if ((jsonObj.get("creation_status") != null && !jsonObj.get("creation_status").isJsonNull()) && !jsonObj.get("creation_status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_status").toString()));
       }
       try {
@@ -1385,7 +1355,7 @@ public class CampaignBase {
           throw new IllegalArgumentException(String.format("Expected the field `creation_status` to be a valid element of CreationStatusEnum enum got `%s` instead", jsonObj.get("creation_status").toString()));
         }
       }
-      if (!jsonObj.get("vouchers_generation_status").isJsonPrimitive()) {
+      if ((jsonObj.get("vouchers_generation_status") != null && !jsonObj.get("vouchers_generation_status").isJsonNull()) && !jsonObj.get("vouchers_generation_status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vouchers_generation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vouchers_generation_status").toString()));
       }
       try {
@@ -1404,17 +1374,21 @@ public class CampaignBase {
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("categories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
-      }
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
+        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
+        if (jsonArraycategories != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+          }
 
-      JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
-      // validate the required field `categories` (array)
-      for (int i = 0; i < jsonArraycategories.size(); i++) {
-        Category.validateJsonElement(jsonArraycategories.get(i));
-      };
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+          // validate the optional field `categories` (array)
+          for (int i = 0; i < jsonArraycategories.size(); i++) {
+            Category.validateJsonElement(jsonArraycategories.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       // validate the optional field `referral_program`

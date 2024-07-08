@@ -67,9 +67,7 @@ public class LoyaltiesMembersRewardsListResponseBodyDataItem {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LOYALTY_REWARD("loyalty_reward"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_REWARD("loyalty_reward");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class LoyaltiesMembersRewardsListResponseBodyDataItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

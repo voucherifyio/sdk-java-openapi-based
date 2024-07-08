@@ -86,9 +86,7 @@ public class QualificationsCheckEligibilityRequestBody {
     
     PRODUCTS_BY_CUSTOMER("PRODUCTS_BY_CUSTOMER"),
     
-    PRODUCTS_DISCOUNT_BY_CUSTOMER("PRODUCTS_DISCOUNT_BY_CUSTOMER"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PRODUCTS_DISCOUNT_BY_CUSTOMER("PRODUCTS_DISCOUNT_BY_CUSTOMER");
 
     private String value;
 
@@ -111,7 +109,7 @@ public class QualificationsCheckEligibilityRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ScenarioEnum> {

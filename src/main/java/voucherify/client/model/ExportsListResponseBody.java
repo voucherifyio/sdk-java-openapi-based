@@ -60,9 +60,7 @@ public class ExportsListResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -85,7 +83,7 @@ public class ExportsListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -111,9 +109,7 @@ public class ExportsListResponseBody {
    */
   @JsonAdapter(DataRefEnum.Adapter.class)
   public enum DataRefEnum {
-    EXPORTS("exports"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    EXPORTS("exports");
 
     private String value;
 
@@ -136,7 +132,7 @@ public class ExportsListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DataRefEnum> {
@@ -159,7 +155,7 @@ public class ExportsListResponseBody {
 
   public static final String SERIALIZED_NAME_EXPORTS = "exports";
   @SerializedName(SERIALIZED_NAME_EXPORTS)
-  private List<Export> exports = new ArrayList<>();
+  private List<Export> exports;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -178,7 +174,7 @@ public class ExportsListResponseBody {
    * The type of the object represented by JSON. This object stores information about exports.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -199,7 +195,7 @@ public class ExportsListResponseBody {
    * Identifies the name of the attribute that contains the array of exports.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public DataRefEnum getDataRef() {
     return dataRef;
   }
@@ -228,7 +224,7 @@ public class ExportsListResponseBody {
    * An array of export objects.
    * @return exports
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<Export> getExports() {
     return exports;
   }
@@ -249,7 +245,7 @@ public class ExportsListResponseBody {
    * Total number of exports.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -364,10 +360,6 @@ public class ExportsListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("exports");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -382,15 +374,8 @@ public class ExportsListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExportsListResponseBody is not found in the empty JSON string", ExportsListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExportsListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -406,7 +391,7 @@ public class ExportsListResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
       try {
@@ -422,16 +407,20 @@ public class ExportsListResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("exports").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `exports` to be an array in the JSON string but got `%s`", jsonObj.get("exports").toString()));
-      }
+      if (jsonObj.get("exports") != null && !jsonObj.get("exports").isJsonNull()) {
+        JsonArray jsonArrayexports = jsonObj.getAsJsonArray("exports");
+        if (jsonArrayexports != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("exports").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `exports` to be an array in the JSON string but got `%s`", jsonObj.get("exports").toString()));
+          }
 
-      JsonArray jsonArrayexports = jsonObj.getAsJsonArray("exports");
-      // validate the required field `exports` (array)
-      for (int i = 0; i < jsonArrayexports.size(); i++) {
-        Export.validateJsonElement(jsonArrayexports.get(i));
-      };
+          // validate the optional field `exports` (array)
+          for (int i = 0; i < jsonArrayexports.size(); i++) {
+            Export.validateJsonElement(jsonArrayexports.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -63,9 +63,7 @@ public class EarningRuleBaseLoyalty {
   public enum TypeEnum {
     PROPORTIONAL("PROPORTIONAL"),
     
-    FIXED("FIXED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FIXED("FIXED");
 
     private String value;
 
@@ -88,7 +86,7 @@ public class EarningRuleBaseLoyalty {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -128,9 +126,7 @@ public class EarningRuleBaseLoyalty {
     
     CUSTOMER_METADATA("CUSTOMER_METADATA"),
     
-    CUSTOM_EVENT_METADATA("CUSTOM_EVENT_METADATA"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOM_EVENT_METADATA("CUSTOM_EVENT_METADATA");
 
     private String value;
 
@@ -153,7 +149,7 @@ public class EarningRuleBaseLoyalty {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CalculationTypeEnum> {

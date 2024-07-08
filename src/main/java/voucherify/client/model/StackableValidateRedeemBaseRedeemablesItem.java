@@ -63,9 +63,7 @@ public class StackableValidateRedeemBaseRedeemablesItem {
     
     PROMOTION_TIER("promotion_tier"),
     
-    PROMOTION_STACK("promotion_stack"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PROMOTION_STACK("promotion_stack");
 
     private String value;
 
@@ -88,7 +86,7 @@ public class StackableValidateRedeemBaseRedeemablesItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

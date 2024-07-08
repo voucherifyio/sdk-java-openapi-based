@@ -6,12 +6,12 @@ Response body schema for **GET** `/categories`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about categories in a dictionary. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of category objects. |  |
-|**data** | [**List&lt;Category&gt;**](Category.md) |  |  |
-|**total** | **Integer** | Total number of categories. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about categories in a dictionary. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of category objects. |
+|**data** | [**List&lt;Category&gt;**](Category.md) |  |
+|**total** | **Integer** | Total number of categories. |
 
 
 
@@ -20,7 +20,6 @@ Response body schema for **GET** `/categories`.
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -29,7 +28,6 @@ Response body schema for **GET** `/categories`.
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

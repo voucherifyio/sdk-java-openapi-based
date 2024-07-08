@@ -86,9 +86,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
     
     CANCELED("CANCELED"),
     
-    FULFILLED("FULFILLED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FULFILLED("FULFILLED");
 
     private String value;
 
@@ -111,7 +109,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -189,9 +187,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    ORDER("order"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ORDER("order");
 
     private String value;
 
@@ -214,7 +210,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

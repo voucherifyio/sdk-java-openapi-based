@@ -60,9 +60,7 @@ public class MappingPoints {
   public enum TypeEnum {
     MULTIPLY("MULTIPLY"),
     
-    CUSTOM("CUSTOM"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOM("CUSTOM");
 
     private String value;
 
@@ -85,7 +83,7 @@ public class MappingPoints {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {

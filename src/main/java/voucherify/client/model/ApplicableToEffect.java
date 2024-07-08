@@ -32,9 +32,7 @@ public enum ApplicableToEffect {
   
   CHEAPEST("APPLY_TO_CHEAPEST"),
   
-  MOST_EXPENSIVE("APPLY_TO_MOST_EXPENSIVE"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  MOST_EXPENSIVE("APPLY_TO_MOST_EXPENSIVE");
 
   private String value;
 
@@ -57,7 +55,7 @@ public enum ApplicableToEffect {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<ApplicableToEffect> {

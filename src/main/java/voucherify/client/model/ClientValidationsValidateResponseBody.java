@@ -66,7 +66,7 @@ public class ClientValidationsValidateResponseBody {
 
   public static final String SERIALIZED_NAME_REDEEMABLES = "redeemables";
   @SerializedName(SERIALIZED_NAME_REDEEMABLES)
-  private List<ValidationsValidateResponseBodyRedeemablesItem> redeemables = new ArrayList<>();
+  private List<ValidationsValidateResponseBodyRedeemablesItem> redeemables;
 
   public static final String SERIALIZED_NAME_SKIPPED_REDEEMABLES = "skipped_redeemables";
   @SerializedName(SERIALIZED_NAME_SKIPPED_REDEEMABLES)
@@ -105,7 +105,7 @@ public class ClientValidationsValidateResponseBody {
    * The result of the validation. It takes all of the redeemables into account and returns a &#x60;false&#x60; if at least one redeemable is inapplicable. Returns &#x60;true&#x60; if all redeemables are applicable.
    * @return valid
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getValid() {
     return valid;
   }
@@ -134,7 +134,7 @@ public class ClientValidationsValidateResponseBody {
    * Get redeemables
    * @return redeemables
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<ValidationsValidateResponseBodyRedeemablesItem> getRedeemables() {
     return redeemables;
   }
@@ -276,7 +276,7 @@ public class ClientValidationsValidateResponseBody {
    * Get stackingRules
    * @return stackingRules
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StackingRules getStackingRules() {
     return stackingRules;
   }
@@ -403,9 +403,6 @@ public class ClientValidationsValidateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("valid");
-    openapiRequiredFields.add("redeemables");
-    openapiRequiredFields.add("stacking_rules");
   }
 
  /**
@@ -420,24 +417,21 @@ public class ClientValidationsValidateResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ClientValidationsValidateResponseBody is not found in the empty JSON string", ClientValidationsValidateResponseBody.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("redeemables") != null && !jsonObj.get("redeemables").isJsonNull()) {
+        JsonArray jsonArrayredeemables = jsonObj.getAsJsonArray("redeemables");
+        if (jsonArrayredeemables != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("redeemables").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("redeemables").toString()));
+          }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ClientValidationsValidateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          // validate the optional field `redeemables` (array)
+          for (int i = 0; i < jsonArrayredeemables.size(); i++) {
+            ValidationsValidateResponseBodyRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
+          };
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("redeemables").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("redeemables").toString()));
-      }
-
-      JsonArray jsonArrayredeemables = jsonObj.getAsJsonArray("redeemables");
-      // validate the required field `redeemables` (array)
-      for (int i = 0; i < jsonArrayredeemables.size(); i++) {
-        ValidationsValidateResponseBodyRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
-      };
       if (jsonObj.get("skipped_redeemables") != null && !jsonObj.get("skipped_redeemables").isJsonNull()) {
         JsonArray jsonArrayskippedRedeemables = jsonObj.getAsJsonArray("skipped_redeemables");
         if (jsonArrayskippedRedeemables != null) {
@@ -477,8 +471,10 @@ public class ClientValidationsValidateResponseBody {
       if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
         Session.validateJsonElement(jsonObj.get("session"));
       }
-      // validate the required field `stacking_rules`
-      StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
+      // validate the optional field `stacking_rules`
+      if (jsonObj.get("stacking_rules") != null && !jsonObj.get("stacking_rules").isJsonNull()) {
+        StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

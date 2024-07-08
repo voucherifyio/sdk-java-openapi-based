@@ -69,7 +69,7 @@ public class VoucherTransactionDetailsEarningRuleSource {
    * Name of the earning rule. This is displayed as a header for the earning rule in the Dashboard.
    * @return banner
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getBanner() {
     return banner;
   }
@@ -175,7 +175,6 @@ public class VoucherTransactionDetailsEarningRuleSource {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("banner");
   }
 
  /**
@@ -190,15 +189,8 @@ public class VoucherTransactionDetailsEarningRuleSource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionDetailsEarningRuleSource is not found in the empty JSON string", VoucherTransactionDetailsEarningRuleSource.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionDetailsEarningRuleSource.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("banner").isJsonPrimitive()) {
+      if ((jsonObj.get("banner") != null && !jsonObj.get("banner").isJsonNull()) && !jsonObj.get("banner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `banner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("banner").toString()));
       }
   }

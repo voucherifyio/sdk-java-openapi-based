@@ -80,7 +80,7 @@ public class RewardsAssignmentsCreateRequestBody {
    * The campaign ID of the campaign to which the reward is to be assigned.
    * @return campaign
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaign() {
     return campaign;
   }
@@ -242,7 +242,6 @@ public class RewardsAssignmentsCreateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("campaign");
   }
 
  /**
@@ -257,15 +256,8 @@ public class RewardsAssignmentsCreateRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RewardsAssignmentsCreateRequestBody is not found in the empty JSON string", RewardsAssignmentsCreateRequestBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RewardsAssignmentsCreateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("campaign").isJsonPrimitive()) {
+      if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign").toString()));
       }
       // validate the optional field `parameters`

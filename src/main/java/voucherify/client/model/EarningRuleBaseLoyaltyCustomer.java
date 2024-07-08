@@ -70,7 +70,7 @@ public class EarningRuleBaseLoyaltyCustomer {
    * Get metadata
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public EarningRuleBaseLoyaltyCustomerMetadata getMetadata() {
     return metadata;
   }
@@ -176,7 +176,6 @@ public class EarningRuleBaseLoyaltyCustomer {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -191,16 +190,11 @@ public class EarningRuleBaseLoyaltyCustomer {
           throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyCustomer is not found in the empty JSON string", EarningRuleBaseLoyaltyCustomer.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseLoyaltyCustomer.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `metadata`
-      EarningRuleBaseLoyaltyCustomerMetadata.validateJsonElement(jsonObj.get("metadata"));
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        EarningRuleBaseLoyaltyCustomerMetadata.validateJsonElement(jsonObj.get("metadata"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

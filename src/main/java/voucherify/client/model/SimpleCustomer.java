@@ -77,9 +77,7 @@ public class SimpleCustomer {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    CUSTOMER("customer"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOMER("customer");
 
     private String value;
 
@@ -102,7 +100,7 @@ public class SimpleCustomer {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

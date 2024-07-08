@@ -86,9 +86,7 @@ public class ExportsCreateRequestBodyParameters {
     
     _CUSTOMER_ID("-customer_id"),
     
-    CUSTOMER_ID("customer_id"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOMER_ID("customer_id");
 
     private String value;
 
@@ -111,7 +109,7 @@ public class ExportsCreateRequestBodyParameters {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OrderEnum> {
@@ -313,9 +311,7 @@ public class ExportsCreateRequestBodyParameters {
     
     RELATED_TRANSACTION_ID("related_transaction_id"),
     
-    DETAILS("details"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    DETAILS("details");
 
     private String value;
 
@@ -338,7 +334,7 @@ public class ExportsCreateRequestBodyParameters {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FieldsEnum> {

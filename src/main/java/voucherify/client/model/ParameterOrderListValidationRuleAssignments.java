@@ -30,9 +30,7 @@ public enum ParameterOrderListValidationRuleAssignments {
   
   CREATED_AT("created_at"),
   
-  _CREATED_AT("-created_at"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  _CREATED_AT("-created_at");
 
   private String value;
 
@@ -55,7 +53,7 @@ public enum ParameterOrderListValidationRuleAssignments {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListValidationRuleAssignments> {

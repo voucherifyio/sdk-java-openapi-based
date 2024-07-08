@@ -61,9 +61,7 @@ public class QualificationsRedeemables {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -86,7 +84,7 @@ public class QualificationsRedeemables {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -112,9 +110,7 @@ public class QualificationsRedeemables {
    */
   @JsonAdapter(DataRefEnum.Adapter.class)
   public enum DataRefEnum {
-    DATA("data"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    DATA("data");
 
     private String value;
 
@@ -137,7 +133,7 @@ public class QualificationsRedeemables {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DataRefEnum> {
@@ -160,7 +156,7 @@ public class QualificationsRedeemables {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<QualificationsRedeemable> data = new ArrayList<>();
+  private List<QualificationsRedeemable> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -187,7 +183,7 @@ public class QualificationsRedeemables {
    * The type of the object represented by JSON. Default is &#x60;list&#x60;.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -208,7 +204,7 @@ public class QualificationsRedeemables {
    * Identifies the name of the attribute that contains the array of qualified redeemables.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public DataRefEnum getDataRef() {
     return dataRef;
   }
@@ -237,7 +233,7 @@ public class QualificationsRedeemables {
    * Array of qualified redeemables.
    * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<QualificationsRedeemable> getData() {
     return data;
   }
@@ -258,7 +254,7 @@ public class QualificationsRedeemables {
    * The number of redeemables returned in the API request.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -279,7 +275,7 @@ public class QualificationsRedeemables {
    * As results are always limited, the &#x60;has_more&#x60; flag indicates if there are more records for given parameters. This lets you know if you can run another request (with different options) to get more records returned in the results.
    * @return hasMore
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getHasMore() {
     return hasMore;
   }
@@ -421,11 +417,6 @@ public class QualificationsRedeemables {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("data");
-    openapiRequiredFields.add("total");
-    openapiRequiredFields.add("has_more");
   }
 
  /**
@@ -440,15 +431,8 @@ public class QualificationsRedeemables {
           throw new IllegalArgumentException(String.format("The required field(s) %s in QualificationsRedeemables is not found in the empty JSON string", QualificationsRedeemables.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : QualificationsRedeemables.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -464,7 +448,7 @@ public class QualificationsRedeemables {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
       try {
@@ -480,16 +464,20 @@ public class QualificationsRedeemables {
           throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
 
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        QualificationsRedeemable.validateJsonElement(jsonArraydata.get(i));
-      };
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            QualificationsRedeemable.validateJsonElement(jsonArraydata.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

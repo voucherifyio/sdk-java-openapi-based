@@ -76,9 +76,7 @@ public class LoyaltiesRewardsGetResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    REWARD_ASSIGNMENT("reward_assignment"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REWARD_ASSIGNMENT("reward_assignment");
 
     private String value;
 
@@ -101,7 +99,7 @@ public class LoyaltiesRewardsGetResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -131,9 +129,7 @@ public class LoyaltiesRewardsGetResponseBody {
    */
   @JsonAdapter(RelatedObjectTypeEnum.Adapter.class)
   public enum RelatedObjectTypeEnum {
-    CAMPAIGN("campaign"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CAMPAIGN("campaign");
 
     private String value;
 
@@ -156,7 +152,7 @@ public class LoyaltiesRewardsGetResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {
@@ -194,7 +190,7 @@ public class LoyaltiesRewardsGetResponseBody {
    * Unique reward assignment ID, assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -215,7 +211,7 @@ public class LoyaltiesRewardsGetResponseBody {
    * Associated reward ID.
    * @return rewardId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRewardId() {
     return rewardId;
   }
@@ -236,7 +232,7 @@ public class LoyaltiesRewardsGetResponseBody {
    * Timestamp representing the date and time when the reward assignment was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -278,7 +274,7 @@ public class LoyaltiesRewardsGetResponseBody {
    * The type of the object represented by the JSON. This object stores information about the reward assignment.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -299,7 +295,7 @@ public class LoyaltiesRewardsGetResponseBody {
    * Related object ID to which the reward was assigned.
    * @return relatedObjectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObjectId() {
     return relatedObjectId;
   }
@@ -320,7 +316,7 @@ public class LoyaltiesRewardsGetResponseBody {
    * Related object type to which the reward was assigned.
    * @return relatedObjectType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RelatedObjectTypeEnum getRelatedObjectType() {
     return relatedObjectType;
   }
@@ -479,12 +475,6 @@ public class LoyaltiesRewardsGetResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("reward_id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("related_object_id");
-    openapiRequiredFields.add("related_object_type");
   }
 
  /**
@@ -499,21 +489,14 @@ public class LoyaltiesRewardsGetResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesRewardsGetResponseBody is not found in the empty JSON string", LoyaltiesRewardsGetResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesRewardsGetResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("reward_id").isJsonPrimitive()) {
+      if ((jsonObj.get("reward_id") != null && !jsonObj.get("reward_id").isJsonNull()) && !jsonObj.get("reward_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reward_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reward_id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -529,10 +512,10 @@ public class LoyaltiesRewardsGetResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
       }
-      if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
       }
       try {

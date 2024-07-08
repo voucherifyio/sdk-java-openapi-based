@@ -70,9 +70,7 @@ public class CategoriesUpdateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    CATEGORY("category"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CATEGORY("category");
 
     private String value;
 
@@ -95,7 +93,7 @@ public class CategoriesUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -137,7 +135,7 @@ public class CategoriesUpdateResponseBody {
    * Unique category ID assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -158,7 +156,7 @@ public class CategoriesUpdateResponseBody {
    * Category name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -179,7 +177,7 @@ public class CategoriesUpdateResponseBody {
    * Category hierarchy.
    * @return hierarchy
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getHierarchy() {
     return hierarchy;
   }
@@ -200,7 +198,7 @@ public class CategoriesUpdateResponseBody {
    * Get _object
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -221,7 +219,7 @@ public class CategoriesUpdateResponseBody {
    * Timestamp representing the date and time when the category was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -242,7 +240,7 @@ public class CategoriesUpdateResponseBody {
    * Timestamp representing the date and time when the category was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -363,12 +361,6 @@ public class CategoriesUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("hierarchy");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("updated_at");
   }
 
  /**
@@ -383,21 +375,14 @@ public class CategoriesUpdateResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CategoriesUpdateResponseBody is not found in the empty JSON string", CategoriesUpdateResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CategoriesUpdateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

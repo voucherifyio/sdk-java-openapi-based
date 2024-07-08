@@ -67,9 +67,7 @@ public class LoyaltiesLoyaltyTierReward {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LOYALTY_TIER_REWARD("loyalty_tier_reward"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_TIER_REWARD("loyalty_tier_reward");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class LoyaltiesLoyaltyTierReward {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -126,7 +124,7 @@ public class LoyaltiesLoyaltyTierReward {
    * Get reward
    * @return reward
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Reward getReward() {
     return reward;
   }
@@ -147,7 +145,7 @@ public class LoyaltiesLoyaltyTierReward {
    * Get assignment
    * @return assignment
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RewardAssignment getAssignment() {
     return assignment;
   }
@@ -168,7 +166,7 @@ public class LoyaltiesLoyaltyTierReward {
    * The type of the object represented by JSON. This object stores information about the loyalty tier reward.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -280,9 +278,6 @@ public class LoyaltiesLoyaltyTierReward {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("reward");
-    openapiRequiredFields.add("assignment");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -297,19 +292,16 @@ public class LoyaltiesLoyaltyTierReward {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesLoyaltyTierReward is not found in the empty JSON string", LoyaltiesLoyaltyTierReward.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesLoyaltyTierReward.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `reward`
-      Reward.validateJsonElement(jsonObj.get("reward"));
-      // validate the required field `assignment`
-      RewardAssignment.validateJsonElement(jsonObj.get("assignment"));
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      // validate the optional field `reward`
+      if (jsonObj.get("reward") != null && !jsonObj.get("reward").isJsonNull()) {
+        Reward.validateJsonElement(jsonObj.get("reward"));
+      }
+      // validate the optional field `assignment`
+      if (jsonObj.get("assignment") != null && !jsonObj.get("assignment").isJsonNull()) {
+        RewardAssignment.validateJsonElement(jsonObj.get("assignment"));
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

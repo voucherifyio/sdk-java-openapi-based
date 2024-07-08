@@ -6,10 +6,10 @@ Summary of customer's referrals, in this case, the customer being the referee, i
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**total** | **Integer** | Total number of times this customer received a referral, i.e. was referred by another customer. |  |
-|**campaigns** | [**List&lt;CustomerReferralsCampaignsItem&gt;**](CustomerReferralsCampaignsItem.md) | Contains an array of campaigns that served as the source of a referral for the customer. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**total** | **Integer** | Total number of times this customer received a referral, i.e. was referred by another customer. |
+|**campaigns** | [**List&lt;CustomerReferralsCampaignsItem&gt;**](CustomerReferralsCampaignsItem.md) | Contains an array of campaigns that served as the source of a referral for the customer. |
 
 
 

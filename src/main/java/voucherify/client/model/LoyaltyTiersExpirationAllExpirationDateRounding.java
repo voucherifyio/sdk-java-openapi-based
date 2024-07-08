@@ -65,9 +65,7 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
     
     YEAR("YEAR"),
     
-    CUSTOM("CUSTOM"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOM("CUSTOM");
 
     private String value;
 
@@ -90,7 +88,7 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -118,9 +116,7 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
   public enum StrategyEnum {
     START("START"),
     
-    END("END"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    END("END");
 
     private String value;
 
@@ -143,7 +139,7 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StrategyEnum> {
@@ -169,9 +165,7 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
    */
   @JsonAdapter(UnitEnum.Adapter.class)
   public enum UnitEnum {
-    MONTH("MONTH"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MONTH("MONTH");
 
     private String value;
 
@@ -194,7 +188,7 @@ public class LoyaltyTiersExpirationAllExpirationDateRounding {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<UnitEnum> {

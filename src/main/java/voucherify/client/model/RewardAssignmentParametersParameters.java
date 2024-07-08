@@ -70,7 +70,7 @@ public class RewardAssignmentParametersParameters {
    * Get loyalty
    * @return loyalty
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RewardAssignmentParametersParametersLoyalty getLoyalty() {
     return loyalty;
   }
@@ -176,7 +176,6 @@ public class RewardAssignmentParametersParameters {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("loyalty");
   }
 
  /**
@@ -191,16 +190,11 @@ public class RewardAssignmentParametersParameters {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RewardAssignmentParametersParameters is not found in the empty JSON string", RewardAssignmentParametersParameters.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RewardAssignmentParametersParameters.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `loyalty`
-      RewardAssignmentParametersParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      // validate the optional field `loyalty`
+      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
+        RewardAssignmentParametersParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -6,12 +6,12 @@ Response body schema for **GET** `/exports`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about exports. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of exports. |  |
-|**exports** | [**List&lt;Export&gt;**](Export.md) | An array of export objects. |  |
-|**total** | **Integer** | Total number of exports. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about exports. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of exports. |
+|**exports** | [**List&lt;Export&gt;**](Export.md) | An array of export objects. |
+|**total** | **Integer** | Total number of exports. |
 
 
 
@@ -20,7 +20,6 @@ Response body schema for **GET** `/exports`.
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -29,7 +28,6 @@ Response body schema for **GET** `/exports`.
 | Name | Value |
 |---- | -----|
 | EXPORTS | &quot;exports&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

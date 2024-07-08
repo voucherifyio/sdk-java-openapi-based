@@ -74,7 +74,7 @@ public class RewardTypeCoin {
    * The cash equivalent of the points defined in the points_ratio property.
    * @return exchangeRatio
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getExchangeRatio() {
     return exchangeRatio;
   }
@@ -204,7 +204,6 @@ public class RewardTypeCoin {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exchange_ratio");
   }
 
  /**
@@ -217,13 +216,6 @@ public class RewardTypeCoin {
       if (jsonElement == null) {
         if (!RewardTypeCoin.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in RewardTypeCoin is not found in the empty JSON string", RewardTypeCoin.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RewardTypeCoin.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

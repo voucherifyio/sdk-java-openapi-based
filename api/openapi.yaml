@@ -18849,9 +18849,6 @@ components:
         hierarchy:
           description: Category hierarchy.
           type: integer
-      required:
-      - hierarchy
-      - name
       title: Categories Create Request Body
       type: object
     CategoriesCreateResponseBody:
@@ -18883,12 +18880,6 @@ components:
           example: 2022-07-14T10:45:13.156Z
           format: date-time
           type: string
-      required:
-      - created_at
-      - hierarchy
-      - id
-      - name
-      - object
       title: Categories Create Response Body
       type: object
     CategoriesGetResponseBody:
@@ -18940,11 +18931,6 @@ components:
         total:
           description: Total number of categories.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Categories List Response Body
       type: object
     CategoriesUpdateRequestBody:
@@ -18959,9 +18945,6 @@ components:
         hierarchy:
           description: Category hierarchy.
           type: integer
-      required:
-      - hierarchy
-      - name
       title: Categories Update Request Body
       type: object
     CategoriesUpdateResponseBody:
@@ -19000,13 +18983,6 @@ components:
           example: 2022-08-16T10:52:08.094Z
           format: date-time
           type: string
-      required:
-      - created_at
-      - hierarchy
-      - id
-      - name
-      - object
-      - updated_at
       title: Categories Update Response Body
       type: object
     ClientCustomersConsentsUpdateRequestBody:
@@ -19047,9 +19023,6 @@ components:
             > **Project Settings** > **Event Schema** > **Edit particular event**
             > **Metadata property definition**.
           type: object
-      required:
-      - customer
-      - event
       title: Client Events Create Request Body
       type: object
     ClientEventsCreateResponseBody:
@@ -19082,12 +19055,6 @@ components:
           description: A `null` loyalty object.
           nullable: true
           type: object
-      required:
-      - customer
-      - loyalty
-      - object
-      - referral
-      - type
       title: Client Events Create Response Body
       type: object
     ClientQualificationsCheckEligibilityRequestBody:
@@ -19451,7 +19418,7 @@ components:
         skipped_redeemables:
         - result:
             details:
-              message: Applicable redeemables limit exceeded
+              message: message
               key: applicable_redeemables_limit_exceeded
           metadata: "{}"
           id: id
@@ -19474,7 +19441,7 @@ components:
           object: voucher
         - result:
             details:
-              message: Applicable redeemables limit exceeded
+              message: message
               key: applicable_redeemables_limit_exceeded
           metadata: "{}"
           id: id
@@ -19600,11 +19567,6 @@ components:
             \ parameters. This lets you know if you can run another request (with\
             \ a different end date filter) to get more records returned in the results."
           type: boolean
-      required:
-      - customers
-      - data_ref
-      - object
-      - total
       title: Customers List Response Body
     CustomersMetadataUpdateInBulkRequestBody:
       description: Request body schema for **POST** `/customers/metadata/async`.
@@ -19627,9 +19589,6 @@ components:
             metadata can be used for validating whether the customer qualifies for
             a discount or it can be used in building customer segments.
           type: object
-      required:
-      - metadata
-      - source_ids
       title: Customers Metadata Update In Bulk Request Body
       type: object
     CustomersMetadataUpdateInBulkResponseBody:
@@ -19684,14 +19643,6 @@ components:
           default: pernament_deletion
           description: The type of the object represented by JSON.
           type: string
-      required:
-      - created_at
-      - data_json
-      - id
-      - object
-      - related_object
-      - related_object_id
-      - status
       title: Customers Permanent Deletion Create Response Body
       type: object
     CustomersSegmentsListResponseBody:
@@ -19706,8 +19657,6 @@ components:
           source_id:
             description: Unique customer source ID.
             type: string
-        required:
-        - source_id
         title: CustomerSourceId
         type: object
       - $ref: '#/components/schemas/CustomerBase'
@@ -19763,9 +19712,6 @@ components:
             > **Project Settings** > **Event Schema** > **Edit particular event**
             > **Metadata property definition**.
           type: object
-      required:
-      - customer
-      - event
       title: Events Create Request Body
       type: object
     EventsCreateResponseBody:
@@ -19798,12 +19744,6 @@ components:
           description: A `null` loyalty object.
           nullable: true
           type: object
-      required:
-      - customer
-      - loyalty
-      - object
-      - referral
-      - type
       title: Events Create Response Body
       type: object
     ExportsCreateRequestBody:
@@ -19835,8 +19775,6 @@ components:
           type: string
         parameters:
           $ref: '#/components/schemas/ExportsCreateRequestBodyParameters'
-      required:
-      - exported_object
       title: ExportsCreateRequestBody
       type: object
     ExportsCreateResponseBody:
@@ -19991,11 +19929,6 @@ components:
         total:
           description: Total number of exports.
           type: integer
-      required:
-      - data_ref
-      - exports
-      - object
-      - total
       title: Exports List Response Body
       type: object
     LoyaltiesDeleteResponseBody:
@@ -20021,8 +19954,6 @@ components:
               the start_date and expiration_date of the campaign or the earning rule's
               own start_date and expiration_date.
             type: boolean
-        required:
-        - active
         type: object
       description: "Response body schema for **POST** `/loyalties/{campaignId}/earning-rules/{earningRuleId}/disable`"
       title: Loyalties Earning Rules Disable Response Body
@@ -20043,8 +19974,6 @@ components:
               the start_date and expiration_date of the campaign or the earning rule's
               own start_date and expiration_date.
             type: boolean
-        required:
-        - active
         type: object
       description: "Response body schema for **POST** `/loyalties/{campaignId}/earning-rules/{earningRuleId}/enable`"
       title: Loyalties Earning Rules Enable Response Body
@@ -20094,8 +20023,6 @@ components:
             \ between multiple systems. It can be a transaction ID from a CRM system,\
             \ database or 3rd-party service."
           type: string
-      required:
-      - points
       title: Loyalties Members Balance Update Request Body
       type: object
     LoyaltiesMembersBalanceUpdateResponseBody:
@@ -20144,13 +20071,6 @@ components:
           - MANUAL
           - AUTOMATIC
           type: string
-      required:
-      - balance
-      - object
-      - points
-      - related_object
-      - total
-      - type
       title: Loyalties Members Balance Update Response Body
       type: object
     LoyaltiesMembersPointsExpirationListResponseBody:
@@ -20205,11 +20125,6 @@ components:
         total:
           description: Total number of point expiration buckets.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Loyalties Members Points Expiration List Response Body
       type: object
     LoyaltiesMembersRedemptionRedeemRequestBody:
@@ -20287,11 +20202,6 @@ components:
           description: Total number of loyalty reward objects.
           minimum: 0
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Loyalties Members Rewards List Response Body
       type: object
     LoyaltiesMembersTiersListResponseBody:
@@ -20325,11 +20235,6 @@ components:
         total:
           description: Total number of loyalty tier objects.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Loyalties Members Tiers List Response Body
       type: object
     LoyaltiesMembersTransactionsExportCreateRequestBody:
@@ -20392,11 +20297,6 @@ components:
             \ a different page or a different start date filter) to get more records\
             \ returned in the results."
           type: boolean
-      required:
-      - data
-      - data_ref
-      - has_more
-      - object
       title: Loyalties Members Transactions List Response Body
       type: object
     LoyaltiesMembersTransfersCreateRequestBody:
@@ -20599,15 +20499,6 @@ components:
         created_at:
           format: date-time
           type: string
-      required:
-      - active
-      - code
-      - created_at
-      - id
-      - is_referral_code
-      - loyalty_card
-      - metadata
-      - type
       title: Loyalties Members Transfers Create Response Body
       type: object
     LoyaltiesRewardAssignmentsGetResponseBody:
@@ -20672,11 +20563,6 @@ components:
         total:
           description: Total number of earning rule objects.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Loyalties Tiers Earning Rules List Response Body
       type: object
     LoyaltiesTiersGetResponseBody:
@@ -20719,11 +20605,6 @@ components:
         total:
           description: Total number of loyalty tier objects.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Loyalties Tiers List Response Body
       type: object
     LoyaltiesTiersRewardsListResponseBody:
@@ -20784,11 +20665,6 @@ components:
         total:
           description: Total number of loyalty tier reward objects.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Loyalties Tiers Rewards List Response Body
       type: object
     OrdersCreateRequestBody:
@@ -20872,11 +20748,6 @@ components:
         total:
           description: Total number of orders.
           type: integer
-      required:
-      - data_ref
-      - object
-      - orders
-      - total
       title: Orders List Response Body
       type: object
     OrdersUpdateRequestBody:
@@ -21146,9 +21017,6 @@ components:
           type: array
         filter:
           $ref: '#/components/schemas/ProductCollectionsCreateRequestBody_filter'
-      required:
-      - name
-      - type
       title: ProductCollectionsCreateRequestBody
       type: object
     ProductCollectionsCreateResponseBody:
@@ -21278,11 +21146,6 @@ components:
         total:
           description: Total number of product objects.
           type: integer
-      required:
-      - data_ref
-      - object
-      - products
-      - total
       title: Products List Response Body
       type: object
     ProductsMetadataUpdateInBulkRequestBody:
@@ -21304,9 +21167,6 @@ components:
             object. It can be useful for storing additional information about the
             product in a structured format.
           type: object
-      required:
-      - metadata
-      - source_ids
       title: Products Metadata Update In Bulk Request Body
       type: object
     ProductsMetadataUpdateInBulkResponseBody:
@@ -21465,8 +21325,6 @@ components:
             object. It can be useful for storing additional information about the
             product in a structured format.
           type: object
-      required:
-      - source_id
       title: Products Update In Bulk Request Body
       type: object
     ProductsUpdateInBulkResponseBody:
@@ -21561,12 +21419,6 @@ components:
             items:
               $ref: '#/components/schemas/PromotionStackBase'
             type: array
-        required:
-        - campaign_id
-        - categories
-        - created_at
-        - id
-        - object
         type: object
       description: "Response body schema for **POST** `/promotions/{campaignId}/stacks`."
       title: Promotions Stacks Create Response Body
@@ -21610,11 +21462,6 @@ components:
           description: Total number of promotion stacks.
           minimum: 0
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Promotions Stacks List Response Body
       type: object
     PromotionsStacksUpdateRequestBody:
@@ -21673,13 +21520,6 @@ components:
             items:
               $ref: '#/components/schemas/PromotionStackBase'
             type: array
-        required:
-        - campaign_id
-        - categories
-        - created_at
-        - id
-        - object
-        - updated_at
         type: object
       description: "Response body schema for **PUT** `/promotions/{campaignId}/stacks/{stackId}`."
       title: Promotions Stacks Update Response Body
@@ -22118,11 +21958,6 @@ components:
         total:
           description: Total number of publications.
           type: integer
-      required:
-      - data_ref
-      - object
-      - publications
-      - total
       title: Publications List Response Body
       type: object
     QualificationsCheckEligibilityRequestBody:
@@ -22732,15 +22567,6 @@ components:
           description: System generated cause for the redemption being invalid in
             the context of the provided parameters.
           type: string
-      required:
-      - channel
-      - date
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - result
-      - status
       title: RedemptionsGetResponseBody
       type: object
     RedemptionsListResponseBody:
@@ -23601,11 +23427,6 @@ components:
         total:
           description: Total number of redemptions.
           type: integer
-      required:
-      - data_ref
-      - object
-      - redemptions
-      - total
       title: Redemptions List Response Body
       type: object
     RedemptionsRedeemRequestBody:
@@ -23869,7 +23690,7 @@ components:
         skipped_redeemables:
         - result:
             details:
-              message: Applicable redeemables limit exceeded
+              message: message
               key: applicable_redeemables_limit_exceeded
           metadata: "{}"
           id: id
@@ -23892,7 +23713,7 @@ components:
           object: voucher
         - result:
             details:
-              message: Applicable redeemables limit exceeded
+              message: message
               key: applicable_redeemables_limit_exceeded
           metadata: "{}"
           id: id
@@ -24215,8 +24036,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - campaign
       title: RewardsAssignmentsCreateRequestBody
       type: object
     RewardsAssignmentsCreateResponseBody:
@@ -24258,11 +24077,6 @@ components:
         total:
           description: Total number of reward assignments.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Rewards Assignments List Response Body
       type: object
     RewardsAssignmentsUpdateRequestBody:
@@ -24385,11 +24199,6 @@ components:
         total:
           description: Total number of validation rules in the project.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Validation Rules List Response Body
       type: object
     ValidationRulesUpdateRequestBody:
@@ -24457,7 +24266,7 @@ components:
                 source_id: source_id
               amount_off: 2.027123023002322
             details:
-              message: Applicable redeemables limit exceeded
+              message: message
               key: applicable_redeemables_limit_exceeded
             loyalty_card:
               points: 1
@@ -24573,7 +24382,7 @@ components:
                 source_id: source_id
               amount_off: 2.027123023002322
             details:
-              message: Applicable redeemables limit exceeded
+              message: message
               key: applicable_redeemables_limit_exceeded
             loyalty_card:
               points: 1
@@ -24709,10 +24518,6 @@ components:
           $ref: '#/components/schemas/Session'
         stacking_rules:
           $ref: '#/components/schemas/StackingRules'
-      required:
-      - redeemables
-      - stacking_rules
-      - valid
       title: Validations Validate Response Body
       type: object
     VouchersBalanceUpdateRequestBody:
@@ -24738,8 +24543,6 @@ components:
         reason:
           description: Reason why the transaction occurred.
           type: string
-      required:
-      - amount
       title: Vouchers Balance Update Request Body
       type: object
     VouchersBalanceUpdateResponseBody:
@@ -24789,14 +24592,6 @@ components:
           type: string
         related_object:
           $ref: '#/components/schemas/VouchersBalanceUpdateResponseBody_related_object'
-      required:
-      - amount
-      - balance
-      - object
-      - operation_type
-      - related_object
-      - total
-      - type
       title: Vouchers Balance Update Response Body
       type: object
     VouchersDisableResponseBody:
@@ -25701,13 +25496,6 @@ components:
             $ref: '#/components/schemas/Vouchers_Redemption_Get_Response_Body_Redemption_Entries_Item'
           title: Vouchers Redemption Get Response Body Redemption Entries Item
           type: array
-      required:
-      - data_ref
-      - object
-      - redeemed_quantity
-      - redemption_entries
-      - total
-      - url
       title: Vouchers Redemption Get Response Body
       type: object
     VouchersTransactionsExportCreateRequestBody:
@@ -25857,11 +25645,6 @@ components:
             \ a different page or a different start date filter) to get more records\
             \ returned in the results."
           type: boolean
-      required:
-      - data
-      - data_ref
-      - has_more
-      - object
       title: Vouchers Transactions List Response Body
       type: object
     ParameterCreatedBeforeAfter:
@@ -25982,11 +25765,6 @@ components:
           enum:
           - data
           type: string
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Applicable To Result List
       type: object
     AsyncActions:
@@ -25997,8 +25775,6 @@ components:
           description: The ID of the scheduled asynchronous action.
           example: aa_0a875d56c805df6601
           type: string
-      required:
-      - async_action_id
       title: Asynchronous Actions
       type: object
     Campaign:
@@ -26282,20 +26058,6 @@ components:
           $ref: '#/components/schemas/ReferralProgram'
         loyalty_tiers_expiration:
           $ref: '#/components/schemas/LoyaltyTiersExpirationAll'
-      required:
-      - auto_join
-      - campaign_type
-      - categories
-      - created_at
-      - creation_status
-      - id
-      - join_once
-      - name
-      - object
-      - protected
-      - type
-      - use_voucher_metadata_schema
-      - vouchers_generation_status
       title: Campaign Base
       type: object
     CampaignLoyaltyCard:
@@ -26315,8 +26077,6 @@ components:
           type: integer
         expiration_rules:
           $ref: '#/components/schemas/CampaignLoyaltyCard_expiration_rules'
-      required:
-      - points
       title: Campaign Loyalty Card
       type: object
     CampaignsImportVoucherItem:
@@ -26374,8 +26134,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/CampaignsImportVoucherLoyaltyCard'
           description: Defines the voucher loyalty card details.
-      required:
-      - code
       title: Import Vouchers to Campaign
       type: object
     CampaignsVouchersCreateBaseRequestBody:
@@ -26455,12 +26213,6 @@ components:
           - JOINT
           - EXCLUSIVE
           type: string
-      required:
-      - created_at
-      - hierarchy
-      - id
-      - name
-      - object
       title: Category
       type: object
     CodeConfig:
@@ -26517,8 +26269,6 @@ components:
           maximum: 20
           minimum: 1
           type: integer
-      required:
-      - name
       title: Create Publication Campaign
       type: object
     Customer:
@@ -26586,9 +26336,6 @@ components:
           enum:
           - customer
           type: string
-      required:
-      - id
-      - object
       title: Customer Id
       type: object
     CustomerSegmentsList:
@@ -26612,11 +26359,6 @@ components:
         total:
           description: Total number of segments the customer belongs to.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Customer Segments List
       type: object
     CustomerWithSummaryLoyaltyReferrals:
@@ -26667,8 +26409,6 @@ components:
             enum:
             - customer
             type: string
-        required:
-        - object
         title: Customer Response Data
         type: object
       - $ref: '#/components/schemas/CustomerBase'
@@ -26780,8 +26520,6 @@ components:
           type: number
         fixed_amount_formula:
           type: string
-      required:
-      - type
       title: Discount
       type: object
     DiscountUnitMultipleOneUnit:
@@ -26818,9 +26556,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/SimpleSkuDiscountUnit'
           description: Contains information about the sku.
-      required:
-      - effect
-      - unit_type
       title: One Unit
       type: object
     EarningRule:
@@ -26846,8 +26581,6 @@ components:
               - `true` indicates an active earning rule
               - `false` indicates an inactive earning rule
             type: boolean
-        required:
-        - active
         type: object
       title: Earning Rule
     EarningRuleBase:
@@ -26927,14 +26660,6 @@ components:
             rule object. It can be useful for storing additional information about
             the earning rule in a structured format.
           type: object
-      required:
-      - automation_id
-      - created_at
-      - id
-      - loyalty
-      - metadata
-      - object
-      - source
       title: EarningRuleBase
       type: object
     EmptyJson:
@@ -26979,10 +26704,6 @@ components:
           description: The resource type.
           example: voucher
           type: string
-      required:
-      - code
-      - details
-      - message
       title: Error Object
       type: object
     Export:
@@ -27069,8 +26790,6 @@ components:
           type: string
         parameters:
           $ref: '#/components/schemas/OrdersExportCreateRequestBody_parameters'
-      required:
-      - exported_object
       title: Export Orders
       type: object
     ExportOrderFields:
@@ -27140,13 +26859,6 @@ components:
           description: Identifies the specific user who initiated the export through
             the Voucherify Dashboard; returned when the channel value is WEBSITE.
           type: string
-      required:
-      - created_at
-      - id
-      - object
-      - result
-      - status
-      - user_id
       title: Export Scheduled Base
       type: object
     ExportVoucherTransactionsFields:
@@ -27260,9 +26972,6 @@ components:
           - APPLY_TO_ORDER
           - APPLY_TO_ITEMS
           type: string
-      required:
-      - amount
-      - balance
       title: Gift
       type: object
     ImportCSVRequestBody:
@@ -27273,8 +26982,6 @@ components:
           description: File path.
           format: binary
           type: string
-      required:
-      - file
       title: Import CSV file
       type: object
     InapplicableToResultList:
@@ -27308,11 +27015,6 @@ components:
           enum:
           - data
           type: string
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Inapplicable To Result List
       type: object
     Junction:
@@ -27394,10 +27096,6 @@ components:
           description: Flag indicating whether this voucher is a referral code; `true`
             for campaign type `REFERRAL_PROGRAM`.
           type: boolean
-      required:
-      - campaign
-      - code
-      - object
       title: List Publications Item Voucher
       type: object
     LoyaltiesLoyaltyTierReward:
@@ -27431,10 +27129,6 @@ components:
           enum:
           - loyalty_tier_reward
           type: string
-      required:
-      - assignment
-      - object
-      - reward
       title: Loyalty Tier Reward Object
       type: object
     LoyaltiesTransferPoints:
@@ -27462,10 +27156,6 @@ components:
             \ between multiple systems. It can be a transaction ID from a CRM system,\
             \ database or 3rd-party service."
           type: string
-      required:
-      - code
-      - points
-      - source_id
       title: Loyalties Transfer Points
       type: object
     LoyaltyCardTransaction:
@@ -27511,12 +27201,6 @@ components:
             enum:
             - loyalty_tier
             type: string
-        required:
-        - campaign_id
-        - config
-        - created_at
-        - id
-        - object
         type: object
       title: Loyalty Tier
     LoyaltyTierBase:
@@ -27538,9 +27222,6 @@ components:
           type: object
         points:
           $ref: '#/components/schemas/LoyaltyTierBase_points'
-      required:
-      - name
-      - points
       title: Loyalty Tier Base
       type: object
     LoyaltyTiersExpirationAll:
@@ -27592,10 +27273,6 @@ components:
           $ref: '#/components/schemas/LoyaltyTiersExpirationAll_start_date'
         expiration_date:
           $ref: '#/components/schemas/LoyaltyTiersExpirationAll_expiration_date'
-      required:
-      - expiration_date
-      - qualification_type
-      - start_date
       title: Loyalty Tiers Expiration
       type: object
     LuckyDraw:
@@ -27815,8 +27492,6 @@ components:
             It can be useful for storing additional information about the SKU in a
             structured format.
           type: object
-      required:
-      - object
       title: Order Item Calculated
       type: object
     PointsExpirationTypes:
@@ -27877,12 +27552,6 @@ components:
           enum:
           - products_collection
           type: string
-      required:
-      - created_at
-      - id
-      - name
-      - object
-      - type
       title: Product Collection Base
       type: object
     ProductCollectionsList:
@@ -27913,11 +27582,6 @@ components:
         total:
           description: Total number of product collections.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: List Product Collections
       type: object
     ProductCollectionsProductsList:
@@ -27941,11 +27605,6 @@ components:
         total:
           description: Total number of products & SKUs in the product collection.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: List Products in Collection Response Body
       type: object
     PromotionStack:
@@ -27983,12 +27642,6 @@ components:
             items:
               $ref: '#/components/schemas/Category'
             type: array
-        required:
-        - campaign_id
-        - categories
-        - created_at
-        - id
-        - object
         type: object
       title: Promotion Stack
     PromotionStackBase:
@@ -27998,9 +27651,6 @@ components:
           type: string
         tiers:
           $ref: '#/components/schemas/PromotionStackBase_tiers'
-      required:
-      - name
-      - tiers
       title: Promotion Stack Base
       type: object
     PromotionTier:
@@ -28256,8 +27906,6 @@ components:
             \ i.e. `cat_0c9da30e7116ba6bba`."
           example: cat_0c9da30e7116ba6bba
           type: string
-      required:
-      - name
       title: Promotion Tier Create Params
       type: object
     PromotionTiersList:
@@ -28380,12 +28028,6 @@ components:
           example: 2023-10-31T12:13:16.374Z
           format: date-time
           type: string
-      required:
-      - data
-      - data_ref
-      - has_more
-      - object
-      - total
       title: Redeemables
       type: object
     Redemption:
@@ -28550,15 +28192,6 @@ components:
           $ref: '#/components/schemas/Redemption_gift'
         loyalty_card:
           $ref: '#/components/schemas/Redemption_loyalty_card'
-      required:
-      - channel
-      - date
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - result
-      - status
       title: Redemption
       type: object
     RedemptionRewardResult:
@@ -28640,8 +28273,6 @@ components:
           - COIN
           - MATERIAL
           type: string
-      required:
-      - reward
       title: Redemption Reward Result
       type: object
     RedemptionRollback:
@@ -28812,15 +28443,6 @@ components:
           $ref: '#/components/schemas/RedemptionRollback_gift'
         loyalty_card:
           $ref: '#/components/schemas/RedemptionRollback_loyalty_card'
-      required:
-      - channel
-      - date
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - result
-      - status
       title: Redemption Rollback
       type: object
     ReferralProgram:
@@ -28927,13 +28549,6 @@ components:
           enum:
           - reward
           type: string
-      required:
-      - created_at
-      - id
-      - metadata
-      - name
-      - object
-      - type
       title: Reward
       type: object
     RewardAssignment:
@@ -29055,8 +28670,6 @@ components:
           description: The type of the object represented by the JSON. This object
             stores information about the customer.
           type: string
-      required:
-      - object
       title: Customer Object Required Object Type
       type: object
     SimpleSkuDiscountUnit:
@@ -29074,9 +28687,6 @@ components:
         name:
           description: Sku name
           type: string
-      required:
-      - id
-      - name
       title: Simple Sku Discount Unit
       type: object
     Sku:
@@ -29149,13 +28759,6 @@ components:
           enum:
           - sku
           type: string
-      required:
-      - attributes
-      - created_at
-      - id
-      - metadata
-      - object
-      - product_id
       title: SKU Object
       type: object
     SkusList:
@@ -29179,11 +28782,6 @@ components:
         total:
           description: Total number of SKUs in the product.
           type: integer
-      required:
-      - data_ref
-      - object
-      - skus
-      - total
       title: SKUs List
       type: object
     StackableValidateRedeemBase:
@@ -29217,8 +28815,6 @@ components:
             object. It can be useful for storing additional information about the
             redemption in a structured format.
           type: object
-      required:
-      - redeemables
       title: Stackable Validate Redeem Base
       type: object
     StackingRules:
@@ -29304,14 +28900,6 @@ components:
           - CATEGORY_HIERARCHY
           - REQUESTED_ORDER
           type: string
-      required:
-      - applicable_exclusive_redeemables_limit
-      - applicable_redeemables_limit
-      - exclusive_categories
-      - joint_categories
-      - redeemables_application_mode
-      - redeemables_limit
-      - redeemables_sorting_rule
       title: Stacking Rules
       type: object
     ValidationRule:
@@ -29344,15 +28932,6 @@ components:
             description: The type of the object represented by JSON. This object stores
               information about the validation rule.
             type: string
-        required:
-        - applicable_to
-        - context_type
-        - created_at
-        - id
-        - name
-        - object
-        - rules
-        - type
         title: Validation Rule
         type: object
       title: Validation Rule
@@ -29400,13 +28979,6 @@ components:
           enum:
           - validation_rules_assignment
           type: string
-      required:
-      - created_at
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - rule_id
       title: Validation Rule Assignment
       type: object
     ValidationRuleAssignmentsList:
@@ -29447,11 +29019,6 @@ components:
         total:
           description: Total number of validation rule assignments.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Validation Rule Assignments List
       type: object
     ValidationRuleBase:
@@ -29617,11 +29184,6 @@ components:
           description: Total number of validation rules assignments.
           minimum: 0
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Validation Rules Assignments List
       type: object
     ValidationsRedeemableInapplicable:
@@ -29684,18 +29246,13 @@ components:
           items:
             $ref: '#/components/schemas/Category'
           type: array
-      required:
-      - id
-      - object
-      - result
-      - status
       title: Inapplicable Redeemable
       type: object
     ValidationsRedeemableSkipped:
       example:
         result:
           details:
-            message: Applicable redeemables limit exceeded
+            message: message
             key: applicable_redeemables_limit_exceeded
         metadata: "{}"
         id: id
@@ -29743,11 +29300,6 @@ components:
           items:
             $ref: '#/components/schemas/Category'
           type: array
-      required:
-      - id
-      - object
-      - result
-      - status
       title: Skipped Redeemable
       type: object
     ValidityHours:
@@ -30161,13 +29713,6 @@ components:
             was created. The value is shown in the ISO 8601 format.
           format: date-time
           type: string
-      required:
-      - campaign_id
-      - created_at
-      - details
-      - id
-      - type
-      - voucher_id
       title: Voucher Transaction
       type: object
     VoucherTransactionsExport:
@@ -30227,14 +29772,6 @@ components:
           example: user_g24UoRO3Caxu7FCT4n5tpYEa3zUG0FrH
           nullable: true
           type: string
-      required:
-      - channel
-      - created_at
-      - exported_object
-      - id
-      - object
-      - parameters
-      - status
       title: Voucher Transactions Export
       type: object
     VoucherTransactionsExportParameters:
@@ -30364,11 +29901,6 @@ components:
           items:
             type: integer
           type: array
-      required:
-      - effect
-      - id
-      - object
-      - strict
       title: Applicable To
       type: object
     BusValRuleAssignment:
@@ -30425,12 +29957,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - rule_id
       title: Business Validation Rule Assignment
     CampaignVoucher:
       description: Schema model for a campaign voucher.
@@ -30526,11 +30052,6 @@ components:
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
-      required:
-      - code_config
-      - is_referral_code
-      - redemption
-      - type
       title: Campaign Voucher
       type: object
     CampaignsImportVoucherLoyaltyCard:
@@ -30541,8 +30062,6 @@ components:
             This is the current loyalty card score i.e. the number of loyalty points
             on the card.
           type: integer
-      required:
-      - points
       title: Campaigns Import Voucher Loyalty Card
       type: object
     CustomerLoyalty:
@@ -30559,10 +30078,6 @@ components:
           description: Contains campaigns with details about point balances and how
             many customers were referred by the customer.
           type: object
-      required:
-      - campaigns
-      - points
-      - referred_customers
       title: Customer Loyalty
       type: object
     CustomerReferrals:
@@ -30580,9 +30095,6 @@ components:
           items:
             $ref: '#/components/schemas/Customer_Referrals_Campaigns_Item'
           type: array
-      required:
-      - campaigns
-      - total
       title: Customer Referrals
       type: object
     CustomerSummary:
@@ -30591,9 +30103,6 @@ components:
           $ref: '#/components/schemas/CustomerSummaryRedemptions'
         orders:
           $ref: '#/components/schemas/CustomerSummaryOrders'
-      required:
-      - orders
-      - redemptions
       title: Customer Summary
       type: object
     EarningRuleEvent:
@@ -30618,8 +30127,6 @@ components:
           type: string
         parameters:
           $ref: '#/components/schemas/LoyaltiesMembersTransactionsExportCreateRequestBody_parameters'
-      required:
-      - exported_object
       title: Export Vouchers Transactions
       type: object
     FiltersCondition:
@@ -30728,11 +30235,6 @@ components:
           example: 2021-12-22T10:13:06.487Z
           format: date-time
           type: string
-      required:
-      - campaign_id
-      - created_at
-      - customer_id
-      - tier_id
       title: Loyalty Tier Expiration
       type: object
     MappingPoints:
@@ -30851,8 +30353,6 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/OrderRedemptions'
           type: object
-      required:
-      - object
       title: Order Response Base
       type: object
     OrderItem:
@@ -30975,11 +30475,6 @@ components:
           enum:
           - product
           type: string
-      required:
-      - attributes
-      - id
-      - metadata
-      - object
       title: Product without Skus Object
     QualificationsFieldConditions:
       properties:
@@ -31053,13 +30548,6 @@ components:
           enum:
           - campaign
           type: string
-      required:
-      - created_at
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - reward_id
       title: Reward Assignment Base
       type: object
     RewardAssignmentParameters:
@@ -31089,9 +30577,6 @@ components:
         name:
           description: Product name.
           type: string
-      required:
-      - id
-      - name
       title: Simple Product Discount Unit
       type: object
     SimpleSegment:
@@ -31109,10 +30594,6 @@ components:
           enum:
           - segment
           type: string
-      required:
-      - id
-      - name
-      - object
       title: Simple Segment
       type: object
     SimpleVoucher:
@@ -31212,12 +30693,6 @@ components:
           enum:
           - voucher
           type: string
-      required:
-      - code
-      - created_at
-      - inapplicable_to
-      - object
-      - type
       title: Simple Voucher
       type: object
     SkusListForProduct:
@@ -31241,11 +30716,6 @@ components:
         total:
           description: Total number of SKUs in the product.
           type: integer
-      required:
-      - data
-      - data_ref
-      - object
-      - total
       title: Skus List For Product
       type: object
     ValidationRuleRules:
@@ -31310,8 +30780,6 @@ components:
           type: array
         filters:
           $ref: '#/components/schemas/VoucherTransactionsExportFilterConditions'
-      required:
-      - filters
       title: Voucher Transactions
       type: object
     Any:
@@ -31356,11 +30824,6 @@ components:
           example: 2022-08-30T11:51:08.029Z
           format: date-time
           type: string
-      required:
-      - average_amount
-      - last_order_amount
-      - total_amount
-      - total_count
       title: Customer Summary Orders
       type: object
     CustomerSummaryRedemptions:
@@ -31387,15 +30850,6 @@ components:
           $ref: '#/components/schemas/CustomerSummaryRedemptions_gift'
         loyalty_card:
           $ref: '#/components/schemas/CustomerSummaryRedemptions_loyalty_card'
-      required:
-      - gift
-      - loyalty_card
-      - total_failed
-      - total_redeemed
-      - total_rollback_failed
-      - total_rollback_succeeded
-      - total_rolled_back
-      - total_succeeded
       title: Customer Summary Redemptions
       type: object
     OrderRedemptions:
@@ -31557,9 +31011,6 @@ components:
         next_expiration_points:
           description: The amount of points that are set to expire next.
           type: integer
-      required:
-      - balance
-      - points
       title: Simple Loyalty Card
       type: object
     VoucherTransactionsExportFilterConditions:
@@ -31567,8 +31018,6 @@ components:
       properties:
         voucher_id:
           $ref: '#/components/schemas/VoucherTransactionsExportFilterConditions_voucher_id'
-      required:
-      - voucher_id
       title: Filter by voucher ID
       type: object
     RedeemableResult:
@@ -31737,8 +31186,6 @@ components:
           $ref: '#/components/schemas/Gift'
         loyalty_card:
           $ref: '#/components/schemas/CampaignLoyaltyCard'
-      required:
-      - type
       title: CampaignsCreateRequestBodyVoucher
       type: object
     CampaignsCreateRequestBody_promotion:
@@ -32059,8 +31506,6 @@ components:
             required if the referral **code** is provided.
           example: cust_Vzck5i8U3OhcEUFY6MKhN9Rv
           type: string
-      required:
-      - code
       type: object
     ClientEventsCreateRequestBody_loyalty:
       description: If an earning rule in a loyalty program is based on a custom event.
@@ -32076,8 +31521,6 @@ components:
             the request payload gets sent along with this loyalty card code.
           example: L-CARD-BUHuH6g
           type: string
-      required:
-      - code
       type: object
     ClientRedemptionsRedeemRequestBody_allOf_options:
       description: Configure parameters returned in the response.
@@ -32167,14 +31610,6 @@ components:
           default: 1
           description: Number of customers deleted.
           type: integer
-      required:
-      - customer
-      - customer_events
-      - daily_events
-      - events
-      - order_events
-      - orders
-      - segments
       type: object
     ExportsCreateRequestBodyParametersFilters:
       example:
@@ -32497,9 +31932,6 @@ components:
           description: "Identifies the loyalty card that is being modified, this is\
             \ the ID that was assigned by the Voucherify API."
           type: string
-      required:
-      - id
-      - type
       type: object
     Loyalties_Members_Points_Expiration_List_Response_Body_Data_Item_bucket:
       description: Defines the number of points stored in the given loyalty points
@@ -32665,9 +32097,6 @@ components:
         next_expiration_points:
           description: The amount of points that are set to expire next.
           type: integer
-      required:
-      - balance
-      - points
       type: object
     LoyaltiesMembersTransfersCreateResponseBody_validity_timeframe:
       description: "Set recurrent time periods when the voucher is valid. For example,\
@@ -32724,8 +32153,6 @@ components:
           description: "The endpoint where this list of publications can be accessed\
             \ using a GET method. /v1/vouchers/{voucher_code}/publications"
           type: string
-      required:
-      - object
       type: object
     LoyaltiesMembersTransfersCreateResponseBody_redemption:
       description: Stores a summary of redemptions that have been applied to the voucher.
@@ -33030,8 +32457,6 @@ components:
           $ref: '#/components/schemas/FieldConditions'
         updated_at:
           $ref: '#/components/schemas/FieldConditions'
-      required:
-      - junction
       type: object
     PromotionsStacksUpdateRequestBody_tiers:
       description: Contains the tier configuration.
@@ -36087,15 +35512,6 @@ components:
           description: System generated cause for the redemption being invalid in
             the context of the provided parameters.
           type: string
-      required:
-      - channel
-      - date
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - result
-      - status
       title: Redemptions List Response Body Redemptions Item
       type: object
     RewardsAssignmentsCreateRequestBody_parameters_loyalty:
@@ -36116,8 +35532,6 @@ components:
       properties:
         loyalty:
           $ref: '#/components/schemas/RewardsAssignmentsCreateRequestBody_parameters_loyalty'
-      required:
-      - loyalty
       type: object
     RewardsAssignmentsUpdateRequestBody_parameters_loyalty:
       description: Stores the points parameter.
@@ -36152,9 +35566,6 @@ components:
         name:
           description: Product name.
           type: string
-      required:
-      - id
-      - name
       title: Validations Validate Response Body Redeemables ItemResultDiscountProduct
       type: object
     Validations_Validate_Response_Body_Redeemables_ItemResultDiscount:
@@ -36265,8 +35676,6 @@ components:
           type: number
         fixed_amount_formula:
           type: string
-      required:
-      - type
       title: Validations Validate Response Body Redeemables ItemResultDiscount
       type: object
     Validations_Validate_Response_Body_Redeemables_ItemResult_gift:
@@ -36290,7 +35699,7 @@ components:
       type: object
     Validations_Validate_Response_Body_Redeemables_ItemResultDetails:
       example:
-        message: Applicable redeemables limit exceeded
+        message: message
         key: applicable_redeemables_limit_exceeded
       properties:
         key:
@@ -36303,13 +35712,6 @@ components:
           - preceding_validation_failed
           type: string
         message:
-          enum:
-          - Applicable redeemables limit exceeded
-          - Applicable redeemables limit per category exceeded
-          - Applicable exclusive redeemables limit exceeded
-          - Applicable exclusive redeemables limit per category exceeded
-          - Redeemable cannot be applied due to exclusion rules
-          - Redeemable cannot be applied due to preceding validation failure
           type: string
       title: Validations Validate Response Body Redeemables ItemResultDetails
       type: object
@@ -36354,7 +35756,7 @@ components:
             source_id: source_id
           amount_off: 2.027123023002322
         details:
-          message: Applicable redeemables limit exceeded
+          message: message
           key: applicable_redeemables_limit_exceeded
         loyalty_card:
           points: 1
@@ -36421,7 +35823,7 @@ components:
               source_id: source_id
             amount_off: 2.027123023002322
           details:
-            message: Applicable redeemables limit exceeded
+            message: message
             key: applicable_redeemables_limit_exceeded
           loyalty_card:
             points: 1
@@ -36528,11 +35930,6 @@ components:
           items:
             $ref: '#/components/schemas/Category'
           type: array
-      required:
-      - id
-      - object
-      - result
-      - status
       title: Validations Validate Response Body Redeemables Item
       type: object
     VouchersBalanceUpdateResponseBody_related_object:
@@ -36553,9 +35950,6 @@ components:
             \ ID that was assigned by the Voucherify API."
           example: v_4Bd3aX7eXjHbe7Ef7on8YsLWBynsT4jq
           type: string
-      required:
-      - id
-      - type
       type: object
     Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemRelatedRedemptionsRollbacksItem:
       example:
@@ -38210,15 +37604,6 @@ components:
           description: System generated cause for the redemption being invalid in
             the context of the provided parameters.
           type: string
-      required:
-      - channel
-      - date
-      - id
-      - object
-      - related_object_id
-      - related_object_type
-      - result
-      - status
       title: Vouchers Redemption Get Response Body Redemption Entries Item
       type: object
     CampaignBase_validity_timeframe:
@@ -38259,11 +37644,6 @@ components:
         rounding_value:
           description: Value of rounding
           type: integer
-      required:
-      - period_type
-      - period_value
-      - rounding_type
-      - rounding_value
       type: object
     CampaignsImportVoucherItem_redemption:
       description: Stores the quantity of redemptions that can be applied to the voucher.
@@ -38321,9 +37701,6 @@ components:
           description: "Number of points to be awarded, i.e. how many points to be\
             \ added to the loyalty card."
           type: integer
-      required:
-      - every
-      - points
       type: object
     Earning_Rule_Base_LoyaltyOrder_metadata:
       description: "Defines the ratio based on the property defined in the calculation_type\
@@ -38343,10 +37720,6 @@ components:
         property:
           description: Order metadata property.
           type: string
-      required:
-      - every
-      - points
-      - property
       type: object
     Earning_Rule_Base_LoyaltyOrder:
       properties:
@@ -38384,11 +37757,6 @@ components:
           description: "Unique ID of the resource, i.e. pc_75U0dHlr7u75BJodrW1AE3t6,\
             \ prod_0bae32322150fd0546, or sku_0b7d7dfb090be5c619."
           type: string
-      required:
-      - every
-      - id
-      - object
-      - points
       type: object
     Earning_Rule_Base_LoyaltyOrderItems:
       properties:
@@ -38418,17 +37786,11 @@ components:
         property:
           description: Customer metadata property.
           type: string
-      required:
-      - every
-      - points
-      - property
       type: object
     Earning_Rule_Base_Loyalty_customer:
       properties:
         metadata:
           $ref: '#/components/schemas/Earning_Rule_Base_Loyalty_customer_metadata'
-      required:
-      - metadata
       type: object
     Earning_Rule_Base_Loyalty_custom_event_metadata:
       description: "Defines the ratio based on the property defined in the calculation_type\
@@ -38450,17 +37812,11 @@ components:
 
             Custom event metadata property.
           type: string
-      required:
-      - every
-      - points
-      - property
       type: object
     Earning_Rule_Base_Loyalty_custom_event:
       properties:
         metadata:
           $ref: '#/components/schemas/Earning_Rule_Base_Loyalty_custom_event_metadata'
-      required:
-      - metadata
       type: object
     Earning_Rule_Base_Loyalty:
       properties:
@@ -38498,8 +37854,6 @@ components:
       properties:
         schema_id:
           type: string
-      required:
-      - schema_id
       type: object
     EarningRuleBase_segment:
       description: Contains the ID of a customer segment. Required for the customer.segment.entered
@@ -38509,8 +37863,6 @@ components:
           description: Contains a unique identifier of a customer segment. Assigned
             by the Voucherify API.
           type: string
-      required:
-      - id
       type: object
     EarningRuleBase_source:
       description: Contains the custom earning rule name and parent campaign.
@@ -38529,9 +37881,6 @@ components:
           enum:
           - campaign
           type: string
-      required:
-      - object_id
-      - object_type
       type: object
     EarningRuleBase_validity_timeframe:
       description: "Set recurrent time periods when the earning rule is valid. For\
@@ -38548,9 +37897,6 @@ components:
             \ 8601 format, expressed as a duration. For example, an earning rule with\
             \ an interval of P2D will be valid every other day."
           type: string
-      required:
-      - duration
-      - interval
       type: object
     ExportResult:
       example:
@@ -38560,8 +37906,6 @@ components:
           description: URL of the CSV file location. It contains the token used for
             authorization in the Download export method.
           type: string
-      required:
-      - url
       title: ExportResult
       type: object
     ExportParametersFilters:
@@ -38732,8 +38076,6 @@ components:
       properties:
         points:
           $ref: '#/components/schemas/LoyaltyTier_allOf_config_points'
-      required:
-      - points
       type: object
       example: null
     LoyaltyTierBase_points:
@@ -38759,8 +38101,6 @@ components:
           - IMMEDIATE
           - NEXT_PERIOD
           type: string
-      required:
-      - type
       type: object
     LoyaltyTiersExpirationAll_expiration_date_rounding:
       description: Defines the rounding mechanism for tier expiration.
@@ -38835,9 +38175,6 @@ components:
           type: string
         rounding:
           $ref: '#/components/schemas/LoyaltyTiersExpirationAll_expiration_date_rounding'
-      required:
-      - extend
-      - type
       type: object
     Customer_Id:
       properties:
@@ -38850,9 +38187,6 @@ components:
           enum:
           - customer
           type: string
-      required:
-      - id
-      - object
       title: Customer Id
       type: object
       example: null
@@ -39020,8 +38354,6 @@ components:
           enum:
           - MANUAL
           type: string
-      required:
-      - ids
       type: object
     PromotionTier_action:
       description: Contains details about the discount applied by the promotion tier.
@@ -39731,7 +39063,7 @@ components:
       type: object
     Validations_Redeemable_Skipped_Details:
       example:
-        message: Applicable redeemables limit exceeded
+        message: message
         key: applicable_redeemables_limit_exceeded
       properties:
         key:
@@ -39744,13 +39076,6 @@ components:
           - preceding_validation_failed
           type: string
         message:
-          enum:
-          - Applicable redeemables limit exceeded
-          - Applicable redeemables limit per category exceeded
-          - Applicable exclusive redeemables limit exceeded
-          - Applicable exclusive redeemables limit per category exceeded
-          - Redeemable cannot be applied due to exclusion rules
-          - Redeemable cannot be applied due to preceding validation failure
           type: string
       title: Validations Redeemable Skipped Details
       type: object
@@ -39758,7 +39083,7 @@ components:
       description: Provides details about the reason why the redeemable is skipped.
       example:
         details:
-          message: Applicable redeemables limit exceeded
+          message: message
           key: applicable_redeemables_limit_exceeded
       properties:
         details:
@@ -39826,9 +39151,6 @@ components:
           - voucher
           pattern: voucher
           type: string
-      required:
-      - id
-      - type
       type: object
     VoucherTransaction_details_balance:
       description: Contains information on how the balance was affected by the transaction.
@@ -39870,13 +39192,6 @@ components:
           type: integer
         related_object:
           $ref: '#/components/schemas/VoucherTransaction_details_balance_related_object'
-      required:
-      - balance
-      - object
-      - points
-      - related_object
-      - total
-      - type
       type: object
     VoucherTransaction_details_order:
       description: Contains information about the original order.
@@ -39892,9 +39207,6 @@ components:
             \ order ID. It is really useful in case of integration between multiple\
             \ systems. It can be an order ID from CRM, database or 3rd party service."
           type: string
-      required:
-      - id
-      - source_id
       type: object
     VoucherTransaction_details_event:
       description: Contains information about the event that triggers the point accrual.
@@ -39908,9 +39220,6 @@ components:
         type:
           description: Type of event.
           type: string
-      required:
-      - id
-      - type
       type: object
     VoucherTransaction_details_earning_rule_source:
       description: Contains the custom earning rule name.
@@ -39921,8 +39230,6 @@ components:
           description: Name of the earning rule. This is displayed as a header for
             the earning rule in the Dashboard.
           type: string
-      required:
-      - banner
       type: object
     VoucherTransaction_details_earning_rule:
       description: Contains information about the earning rule.
@@ -39936,9 +39243,6 @@ components:
           type: string
         source:
           $ref: '#/components/schemas/VoucherTransaction_details_earning_rule_source'
-      required:
-      - id
-      - source
       type: object
     VoucherTransaction_details_segment:
       description: Contains information about the segment.
@@ -39950,9 +39254,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - id
-      - name
       type: object
     VoucherTransaction_details_loyalty_tier:
       description: Contains information about the loyalty tier.
@@ -39964,9 +39265,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - id
-      - name
       type: object
     VoucherTransaction_details_redemption:
       description: Contains information about the original redemption.
@@ -39976,8 +39274,6 @@ components:
         id:
           description: Unique redemption ID.
           type: string
-      required:
-      - id
       type: object
     VoucherTransaction_details_rollback:
       description: Contains information about the redemption rollback.
@@ -39987,8 +39283,6 @@ components:
         id:
           description: Unique redemption rollback ID.
           type: string
-      required:
-      - id
       type: object
     VoucherTransaction_details_custom_event:
       description: Contains information about the custom event that triggers the point
@@ -40003,9 +39297,6 @@ components:
         type:
           description: Type of custom event.
           type: string
-      required:
-      - id
-      - type
       type: object
     VoucherTransaction_details_event_schema:
       description: Contains information about the custom event metadata schema.
@@ -40019,9 +39310,6 @@ components:
         name:
           description: Type of custom event.
           type: string
-      required:
-      - id
-      - name
       type: object
     VoucherTransaction_details_reward:
       description: Contains information about the pay with points reward.
@@ -40035,9 +39323,6 @@ components:
         name:
           description: Reward name.
           type: string
-      required:
-      - id
-      - name
       type: object
     VoucherTransaction_details:
       description: Contains the detailed information about the transaction.
@@ -40125,8 +39410,6 @@ components:
             \ for authorization in the <!-- [Download export](OpenAPI.json/paths/~1exports~1{export_Id}/get)\
             \ -->[Download export](ref:download-export) method."
           type: string
-      required:
-      - url
       type: object
     CampaignVoucher_redemption:
       description: Defines the redemption limits on vouchers.
@@ -40199,8 +39482,6 @@ components:
       properties:
         loyalty:
           $ref: '#/components/schemas/RewardAssignmentParameters_parameters_loyalty'
-      required:
-      - loyalty
       type: object
     RewardType_campaign:
       description: Objects stores information about the campaign related to the reward.
@@ -40222,9 +39503,6 @@ components:
           - REFERRAL_PROGRAM
           - LOYALTY_PROGRAM
           type: string
-      required:
-      - id
-      - type
       type: object
     RewardType_coin:
       description: Defines the ratio by mapping the number of loyalty points in points_ratio
@@ -40238,8 +39516,6 @@ components:
           description: The number of loyalty points that will map to the predefined
             cash amount defined by the exchange_ratio property.
           type: integer
-      required:
-      - exchange_ratio
       type: object
     RewardType_product:
       description: Contains information about the product given as a reward.
@@ -40254,8 +39530,6 @@ components:
           example: sku_0b7d7dfb090be5c619
           nullable: true
           type: string
-      required:
-      - id
       type: object
     SimpleVoucher_redemption:
       description: Defines the redemption limits on vouchers.
@@ -40269,8 +39543,6 @@ components:
           description: How many times a voucher has already been redeemed.
           example: 1
           type: integer
-      required:
-      - redeemed_quantity
       type: object
     CustomerSummaryRedemptions_gift:
       description: Summary of gift card credits.
@@ -40287,9 +39559,6 @@ components:
             multiplied by 100 to precisely represent 2 decimal places. For example
             `10000 cents` for `$100.00`.
           type: integer
-      required:
-      - amount_to_go
-      - redeemed_amount
       type: object
     CustomerSummaryRedemptions_loyalty_card:
       description: Summary of loyalty points.
@@ -40301,9 +39570,6 @@ components:
           description: Sum of remaining available point balance across all loyalty
             cards.
           type: integer
-      required:
-      - points_to_go
-      - redeemed_points
       type: object
     VoucherTransactionsExportFilterConditions_voucher_id_conditions:
       description: Data filters used to narrow the data records to be returned in
@@ -40317,8 +39583,6 @@ components:
           maxItems: 1
           minItems: 1
           type: array
-      required:
-      - $in
       type: object
     VoucherTransactionsExportFilterConditions_voucher_id:
       description: Data filters used to narrow the data records to be returned in
@@ -40326,8 +39590,6 @@ components:
       properties:
         conditions:
           $ref: '#/components/schemas/VoucherTransactionsExportFilterConditions_voucher_id_conditions'
-      required:
-      - conditions
       type: object
   securitySchemes:
     X-App-Id:

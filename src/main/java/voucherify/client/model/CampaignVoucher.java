@@ -119,9 +119,7 @@ public class CampaignVoucher {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -144,7 +142,7 @@ public class CampaignVoucher {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -182,7 +180,7 @@ public class CampaignVoucher {
    * Type of voucher.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getType() {
     return type;
   }
@@ -266,7 +264,7 @@ public class CampaignVoucher {
    * Get redemption
    * @return redemption
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CampaignVoucherRedemption getRedemption() {
     return redemption;
   }
@@ -287,7 +285,7 @@ public class CampaignVoucher {
    * Get codeConfig
    * @return codeConfig
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CodeConfigRequiredLengthCharsetPattern getCodeConfig() {
     return codeConfig;
   }
@@ -308,7 +306,7 @@ public class CampaignVoucher {
    * Flag indicating whether this voucher is a referral code; &#x60;true&#x60; for campaign type &#x60;REFERRAL_PROGRAM&#x60;.
    * @return isReferralCode
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getIsReferralCode() {
     return isReferralCode;
   }
@@ -560,10 +558,6 @@ public class CampaignVoucher {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("redemption");
-    openapiRequiredFields.add("code_config");
-    openapiRequiredFields.add("is_referral_code");
   }
 
  /**
@@ -578,15 +572,8 @@ public class CampaignVoucher {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignVoucher is not found in the empty JSON string", CampaignVoucher.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignVoucher.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `discount`
@@ -601,10 +588,14 @@ public class CampaignVoucher {
       if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
         CampaignLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
-      // validate the required field `redemption`
-      CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
-      // validate the required field `code_config`
-      CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
+      // validate the optional field `redemption`
+      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
+        CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
+      }
+      // validate the optional field `code_config`
+      if (jsonObj.get("code_config") != null && !jsonObj.get("code_config").isJsonNull()) {
+        CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
+      }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));

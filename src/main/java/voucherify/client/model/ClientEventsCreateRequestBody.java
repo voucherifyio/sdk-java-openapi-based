@@ -88,7 +88,7 @@ public class ClientEventsCreateRequestBody {
    * Event name. This is the same name that you used to define a custom event in the **Dashboard** &gt; **Project Settings** &gt; **Event Schema**.
    * @return event
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getEvent() {
     return event;
   }
@@ -109,7 +109,7 @@ public class ClientEventsCreateRequestBody {
    * Get customer
    * @return customer
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Customer getCustomer() {
     return customer;
   }
@@ -290,8 +290,6 @@ public class ClientEventsCreateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("event");
-    openapiRequiredFields.add("customer");
   }
 
  /**
@@ -306,19 +304,14 @@ public class ClientEventsCreateRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ClientEventsCreateRequestBody is not found in the empty JSON string", ClientEventsCreateRequestBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ClientEventsCreateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("event").isJsonPrimitive()) {
+      if ((jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) && !jsonObj.get("event").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event").toString()));
       }
-      // validate the required field `customer`
-      Customer.validateJsonElement(jsonObj.get("customer"));
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        Customer.validateJsonElement(jsonObj.get("customer"));
+      }
       // validate the optional field `referral`
       if (jsonObj.get("referral") != null && !jsonObj.get("referral").isJsonNull()) {
         ClientEventsCreateRequestBodyReferral.validateJsonElement(jsonObj.get("referral"));

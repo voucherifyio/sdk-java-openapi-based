@@ -91,7 +91,7 @@ public class ProductsUpdateInBulkRequestBody {
    * Unique product source ID from your inventory system.
    * @return sourceId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getSourceId() {
     return sourceId;
   }
@@ -325,7 +325,6 @@ public class ProductsUpdateInBulkRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("source_id");
   }
 
  /**
@@ -340,15 +339,8 @@ public class ProductsUpdateInBulkRequestBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProductsUpdateInBulkRequestBody is not found in the empty JSON string", ProductsUpdateInBulkRequestBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProductsUpdateInBulkRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("source_id").isJsonPrimitive()) {
+      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {

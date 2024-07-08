@@ -38,9 +38,7 @@ public enum ExportOrderOrder {
   
   _STATUS("-status"),
   
-  STATUS("status"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  STATUS("status");
 
   private String value;
 
@@ -63,7 +61,7 @@ public enum ExportOrderOrder {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<ExportOrderOrder> {

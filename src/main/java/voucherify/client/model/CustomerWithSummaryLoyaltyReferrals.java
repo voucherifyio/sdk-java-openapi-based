@@ -133,9 +133,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    CUSTOMER("customer"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOMER("customer");
 
     private String value;
 
@@ -158,7 +156,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -549,7 +547,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -717,7 +715,6 @@ public class CustomerWithSummaryLoyaltyReferrals {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -730,13 +727,6 @@ public class CustomerWithSummaryLoyaltyReferrals {
       if (jsonElement == null) {
         if (!CustomerWithSummaryLoyaltyReferrals.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerWithSummaryLoyaltyReferrals is not found in the empty JSON string", CustomerWithSummaryLoyaltyReferrals.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerWithSummaryLoyaltyReferrals.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -778,7 +768,7 @@ public class CustomerWithSummaryLoyaltyReferrals {
       if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
         CustomerResponseDataAssets.validateJsonElement(jsonObj.get("assets"));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

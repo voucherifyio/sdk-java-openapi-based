@@ -90,9 +90,7 @@ public class SimpleVoucher {
     
     LOYALTY_CARD("LOYALTY_CARD"),
     
-    GIFT_VOUCHER("GIFT_VOUCHER"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    GIFT_VOUCHER("GIFT_VOUCHER");
 
     private String value;
 
@@ -115,7 +113,7 @@ public class SimpleVoucher {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -197,9 +195,7 @@ public class SimpleVoucher {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    VOUCHER("voucher"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER("voucher");
 
     private String value;
 
@@ -222,7 +218,7 @@ public class SimpleVoucher {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -277,7 +273,7 @@ public class SimpleVoucher {
    * Voucher code.
    * @return code
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -361,7 +357,7 @@ public class SimpleVoucher {
    * Type of the voucher.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -558,7 +554,7 @@ public class SimpleVoucher {
    * Timestamp representing the date and time when the order was created. Timestamp is presented in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -684,7 +680,7 @@ public class SimpleVoucher {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -861,10 +857,6 @@ public class SimpleVoucher {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -879,18 +871,11 @@ public class SimpleVoucher {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SimpleVoucher is not found in the empty JSON string", SimpleVoucher.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SimpleVoucher.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("code").isJsonPrimitive()) {
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       // validate the optional field `gift`
@@ -905,7 +890,7 @@ public class SimpleVoucher {
       if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
         SimpleLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {
@@ -954,7 +939,7 @@ public class SimpleVoucher {
       if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
         SimpleVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

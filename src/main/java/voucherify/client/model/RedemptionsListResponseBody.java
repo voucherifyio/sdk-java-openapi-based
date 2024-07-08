@@ -65,7 +65,7 @@ public class RedemptionsListResponseBody {
 
   public static final String SERIALIZED_NAME_REDEMPTIONS = "redemptions";
   @SerializedName(SERIALIZED_NAME_REDEMPTIONS)
-  private List<RedemptionsListResponseBodyRedemptionsItem> redemptions = new ArrayList<>();
+  private List<RedemptionsListResponseBodyRedemptionsItem> redemptions;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -84,7 +84,7 @@ public class RedemptionsListResponseBody {
    * The type of the object represented by JSON. This object stores information about redemptions in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -105,7 +105,7 @@ public class RedemptionsListResponseBody {
    * Identifies the name of the attribute that contains the array of redemption objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -134,7 +134,7 @@ public class RedemptionsListResponseBody {
    * Get redemptions
    * @return redemptions
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<RedemptionsListResponseBodyRedemptionsItem> getRedemptions() {
     return redemptions;
   }
@@ -155,7 +155,7 @@ public class RedemptionsListResponseBody {
    * Total number of redemptions.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -270,10 +270,6 @@ public class RedemptionsListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("redemptions");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -288,30 +284,27 @@ public class RedemptionsListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsListResponseBody is not found in the empty JSON string", RedemptionsListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RedemptionsListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("redemptions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redemptions` to be an array in the JSON string but got `%s`", jsonObj.get("redemptions").toString()));
-      }
+      if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
+        JsonArray jsonArrayredemptions = jsonObj.getAsJsonArray("redemptions");
+        if (jsonArrayredemptions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("redemptions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `redemptions` to be an array in the JSON string but got `%s`", jsonObj.get("redemptions").toString()));
+          }
 
-      JsonArray jsonArrayredemptions = jsonObj.getAsJsonArray("redemptions");
-      // validate the required field `redemptions` (array)
-      for (int i = 0; i < jsonArrayredemptions.size(); i++) {
-        RedemptionsListResponseBodyRedemptionsItem.validateJsonElement(jsonArrayredemptions.get(i));
-      };
+          // validate the optional field `redemptions` (array)
+          for (int i = 0; i < jsonArrayredemptions.size(); i++) {
+            RedemptionsListResponseBodyRedemptionsItem.validateJsonElement(jsonArrayredemptions.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

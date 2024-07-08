@@ -78,9 +78,7 @@ public class QualificationsOption {
     
     CATEGORY("category"),
     
-    VALIDATION_RULES("validation_rules"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VALIDATION_RULES("validation_rules");
 
     private String value;
 
@@ -103,7 +101,7 @@ public class QualificationsOption {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ExpandEnum> {
@@ -133,9 +131,7 @@ public class QualificationsOption {
     
     LEAST_DEAL("LEAST_DEAL"),
     
-    DEFAULT("DEFAULT"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    DEFAULT("DEFAULT");
 
     private String value;
 
@@ -158,7 +154,7 @@ public class QualificationsOption {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SortingRuleEnum> {

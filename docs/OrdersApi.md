@@ -65,9 +65,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **ordersCreateRequestBody** | [**OrdersCreateRequestBody**](OrdersCreateRequestBody.md)| Specify the order parameters. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **ordersCreateRequestBody** | [**OrdersCreateRequestBody**](OrdersCreateRequestBody.md)| Specify the order parameters. |
 
 ### Return type
 
@@ -140,9 +140,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **ordersExportCreateRequestBody** | [**OrdersExportCreateRequestBody**](OrdersExportCreateRequestBody.md)| Specify which order parameters you would like to export. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **ordersExportCreateRequestBody** | [**OrdersExportCreateRequestBody**](OrdersExportCreateRequestBody.md)| Specify which order parameters you would like to export. |
 
 ### Return type
 
@@ -215,9 +215,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **orderId** | **String**| Unique Voucherify order ID or order source ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **orderId** | **String**| Unique Voucherify order ID or order source ID. |
 
 ### Return type
 
@@ -290,9 +290,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **ordersImportCreateRequestBodyItem** | [**List&lt;OrdersImportCreateRequestBodyItem&gt;**](OrdersImportCreateRequestBodyItem.md)| The request body is sent in the form of an array of order objects. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **ordersImportCreateRequestBodyItem** | [**List&lt;OrdersImportCreateRequestBodyItem&gt;**](OrdersImportCreateRequestBodyItem.md)| The request body is sent in the form of an array of order objects. |
 
 ### Return type
 
@@ -367,11 +367,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrderListOrders**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrderListOrders**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
 
 ### Return type
 
@@ -445,10 +445,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **orderId** | **String**| Unique Voucherify order ID or order source ID. | |
-| **ordersUpdateRequestBody** | [**OrdersUpdateRequestBody**](OrdersUpdateRequestBody.md)| Specify the parameters of the order that are to be updated. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **orderId** | **String**| Unique Voucherify order ID or order source ID. |
+| **ordersUpdateRequestBody** | [**OrdersUpdateRequestBody**](OrdersUpdateRequestBody.md)| Specify the parameters of the order that are to be updated. |
 
 ### Return type
 

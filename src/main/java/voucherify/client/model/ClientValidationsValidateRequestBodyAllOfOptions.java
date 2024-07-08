@@ -65,9 +65,7 @@ public class ClientValidationsValidateRequestBodyAllOfOptions {
     
     REDEEMABLE("redeemable"),
     
-    CATEGORY("category"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CATEGORY("category");
 
     private String value;
 
@@ -90,7 +88,7 @@ public class ClientValidationsValidateRequestBodyAllOfOptions {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ExpandEnum> {

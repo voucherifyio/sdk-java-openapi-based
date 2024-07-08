@@ -99,7 +99,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions made by the customer.
    * @return totalRedeemed
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRedeemed() {
     return totalRedeemed;
   }
@@ -120,7 +120,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions that failed.
    * @return totalFailed
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalFailed() {
     return totalFailed;
   }
@@ -141,7 +141,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions that succeeded.
    * @return totalSucceeded
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalSucceeded() {
     return totalSucceeded;
   }
@@ -162,7 +162,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions that were rolled back for the customer.
    * @return totalRolledBack
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRolledBack() {
     return totalRolledBack;
   }
@@ -183,7 +183,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemption rollbacks that failed.
    * @return totalRollbackFailed
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRollbackFailed() {
     return totalRollbackFailed;
   }
@@ -204,7 +204,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemption rollbacks that succeeded.
    * @return totalRollbackSucceeded
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRollbackSucceeded() {
     return totalRollbackSucceeded;
   }
@@ -225,7 +225,7 @@ public class CustomerSummaryRedemptions {
    * Get gift
    * @return gift
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CustomerSummaryRedemptionsGift getGift() {
     return gift;
   }
@@ -246,7 +246,7 @@ public class CustomerSummaryRedemptions {
    * Get loyaltyCard
    * @return loyaltyCard
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CustomerSummaryRedemptionsLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
@@ -373,14 +373,6 @@ public class CustomerSummaryRedemptions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("total_redeemed");
-    openapiRequiredFields.add("total_failed");
-    openapiRequiredFields.add("total_succeeded");
-    openapiRequiredFields.add("total_rolled_back");
-    openapiRequiredFields.add("total_rollback_failed");
-    openapiRequiredFields.add("total_rollback_succeeded");
-    openapiRequiredFields.add("gift");
-    openapiRequiredFields.add("loyalty_card");
   }
 
  /**
@@ -395,18 +387,15 @@ public class CustomerSummaryRedemptions {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerSummaryRedemptions is not found in the empty JSON string", CustomerSummaryRedemptions.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerSummaryRedemptions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `gift`
-      CustomerSummaryRedemptionsGift.validateJsonElement(jsonObj.get("gift"));
-      // validate the required field `loyalty_card`
-      CustomerSummaryRedemptionsLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      // validate the optional field `gift`
+      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
+        CustomerSummaryRedemptionsGift.validateJsonElement(jsonObj.get("gift"));
+      }
+      // validate the optional field `loyalty_card`
+      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
+        CustomerSummaryRedemptionsLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

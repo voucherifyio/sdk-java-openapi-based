@@ -64,9 +64,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **categoriesCreateRequestBody** | [**CategoriesCreateRequestBody**](CategoriesCreateRequestBody.md)| Specify the details of the category that you would like to create. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **categoriesCreateRequestBody** | [**CategoriesCreateRequestBody**](CategoriesCreateRequestBody.md)| Specify the details of the category that you would like to create. |
 
 ### Return type
 
@@ -138,9 +138,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| Unique category ID assigned by Voucherify. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **categoryId** | **String**| Unique category ID assigned by Voucherify. |
 
 ### Return type
 
@@ -213,9 +213,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| Unique category ID assigned by Voucherify. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **categoryId** | **String**| Unique category ID assigned by Voucherify. |
 
 ### Return type
 
@@ -360,10 +360,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| Unique category ID assigned by Voucherify. | |
-| **categoriesUpdateRequestBody** | [**CategoriesUpdateRequestBody**](CategoriesUpdateRequestBody.md)| Specify the details of the category that you would like to update. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **categoryId** | **String**| Unique category ID assigned by Voucherify. |
+| **categoriesUpdateRequestBody** | [**CategoriesUpdateRequestBody**](CategoriesUpdateRequestBody.md)| Specify the details of the category that you would like to update. |
 
 ### Return type
 

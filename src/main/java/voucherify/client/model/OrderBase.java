@@ -68,9 +68,7 @@ public class OrderBase {
     
     CANCELED("CANCELED"),
     
-    FULFILLED("FULFILLED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FULFILLED("FULFILLED");
 
     private String value;
 
@@ -93,7 +91,7 @@ public class OrderBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {

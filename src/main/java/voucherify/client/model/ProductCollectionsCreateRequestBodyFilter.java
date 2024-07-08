@@ -119,7 +119,7 @@ public class ProductCollectionsCreateRequestBodyFilter {
    * Get junction
    * @return junction
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Junction getJunction() {
     return junction;
   }
@@ -467,7 +467,6 @@ public class ProductCollectionsCreateRequestBodyFilter {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("junction");
   }
 
  /**
@@ -488,13 +487,6 @@ public class ProductCollectionsCreateRequestBodyFilter {
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ProductCollectionsCreateRequestBodyFilter.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProductCollectionsCreateRequestBodyFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProductCollectionsCreateRequestBodyFilter.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

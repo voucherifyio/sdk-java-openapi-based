@@ -90,9 +90,7 @@ public class RedemptionsGetResponseBodyPromotionTierCampaign {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -115,7 +113,7 @@ public class RedemptionsGetResponseBodyPromotionTierCampaign {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {

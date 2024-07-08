@@ -11,7 +11,5 @@
 
 * `NON_EXPIRING` (value: `"NON_EXPIRING"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

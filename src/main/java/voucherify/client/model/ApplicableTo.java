@@ -65,9 +65,7 @@ public class ApplicableTo {
     
     SKU("sku"),
     
-    PRODUCTS_COLLECTION("products_collection"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PRODUCTS_COLLECTION("products_collection");
 
     private String value;
 
@@ -90,7 +88,7 @@ public class ApplicableTo {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -176,7 +174,7 @@ public class ApplicableTo {
    * This object stores information about the product collection.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -197,7 +195,7 @@ public class ApplicableTo {
    * Unique product collection ID assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -281,7 +279,7 @@ public class ApplicableTo {
    * Get strict
    * @return strict
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getStrict() {
     return strict;
   }
@@ -344,7 +342,7 @@ public class ApplicableTo {
    * Get effect
    * @return effect
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ApplicableToEffect getEffect() {
     return effect;
   }
@@ -602,10 +600,6 @@ public class ApplicableTo {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("strict");
-    openapiRequiredFields.add("effect");
   }
 
  /**
@@ -620,15 +614,8 @@ public class ApplicableTo {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ApplicableTo is not found in the empty JSON string", ApplicableTo.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ApplicableTo.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -644,7 +631,7 @@ public class ApplicableTo {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {

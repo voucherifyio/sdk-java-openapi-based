@@ -9,7 +9,5 @@
 
 * `OR` (value: `"or"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

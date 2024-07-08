@@ -6,8 +6,8 @@ Response body schema for **POST** `/campaigns/{campaignId}/disable`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
 
 
 

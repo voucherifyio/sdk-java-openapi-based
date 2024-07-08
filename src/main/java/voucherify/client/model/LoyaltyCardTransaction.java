@@ -109,7 +109,7 @@ public class LoyaltyCardTransaction {
    * Unique transaction ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -151,7 +151,7 @@ public class LoyaltyCardTransaction {
    * Unique voucher ID.
    * @return voucherId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getVoucherId() {
     return voucherId;
   }
@@ -172,7 +172,7 @@ public class LoyaltyCardTransaction {
    * Unqiue campaign ID of the voucher&#39;s parent campaign if it is part of campaign that generates bulk codes.
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
@@ -235,7 +235,7 @@ public class LoyaltyCardTransaction {
    * Get type
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyCardTransactionsType getType() {
     return type;
   }
@@ -256,7 +256,7 @@ public class LoyaltyCardTransaction {
    * Get details
    * @return details
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VoucherTransactionDetails getDetails() {
     return details;
   }
@@ -298,7 +298,7 @@ public class LoyaltyCardTransaction {
    * Timestamp representing the date and time when the transaction was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -442,12 +442,6 @@ public class LoyaltyCardTransaction {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("voucher_id");
-    openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("details");
-    openapiRequiredFields.add("created_at");
   }
 
  /**
@@ -462,24 +456,17 @@ public class LoyaltyCardTransaction {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyCardTransaction is not found in the empty JSON string", LoyaltyCardTransaction.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyCardTransaction.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
       }
-      if (!jsonObj.get("voucher_id").isJsonPrimitive()) {
+      if ((jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) && !jsonObj.get("voucher_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `voucher_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voucher_id").toString()));
       }
-      if (!jsonObj.get("campaign_id").isJsonPrimitive()) {
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
@@ -488,8 +475,10 @@ public class LoyaltyCardTransaction {
       if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
       }
-      // validate the required field `details`
-      VoucherTransactionDetails.validateJsonElement(jsonObj.get("details"));
+      // validate the optional field `details`
+      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
+        VoucherTransactionDetails.validateJsonElement(jsonObj.get("details"));
+      }
       if ((jsonObj.get("related_transaction_id") != null && !jsonObj.get("related_transaction_id").isJsonNull()) && !jsonObj.get("related_transaction_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_transaction_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_transaction_id").toString()));
       }

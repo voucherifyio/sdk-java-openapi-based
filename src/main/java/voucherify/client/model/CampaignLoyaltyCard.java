@@ -74,7 +74,7 @@ public class CampaignLoyaltyCard {
    * The initial number of points to assign to the loyalty card. This is the current loyalty card score i.e. the number of loyalty points on the card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -204,7 +204,6 @@ public class CampaignLoyaltyCard {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
   }
 
  /**
@@ -217,13 +216,6 @@ public class CampaignLoyaltyCard {
       if (jsonElement == null) {
         if (!CampaignLoyaltyCard.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignLoyaltyCard is not found in the empty JSON string", CampaignLoyaltyCard.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignLoyaltyCard.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

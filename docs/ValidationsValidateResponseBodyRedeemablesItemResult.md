@@ -5,13 +5,13 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**discount** | [**ValidationsValidateResponseBodyRedeemablesItemResultDiscount**](ValidationsValidateResponseBodyRedeemablesItemResultDiscount.md) |  |  [optional] |
-|**gift** | [**ValidationsValidateResponseBodyRedeemablesItemResultGift**](ValidationsValidateResponseBodyRedeemablesItemResultGift.md) |  |  [optional] |
-|**loyaltyCard** | [**ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard**](ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard.md) |  |  [optional] |
-|**error** | [**Error**](Error.md) |  |  [optional] |
-|**details** | [**ValidationsValidateResponseBodyRedeemablesItemResultDetails**](ValidationsValidateResponseBodyRedeemablesItemResultDetails.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**discount** | [**ValidationsValidateResponseBodyRedeemablesItemResultDiscount**](ValidationsValidateResponseBodyRedeemablesItemResultDiscount.md) |  |
+|**gift** | [**ValidationsValidateResponseBodyRedeemablesItemResultGift**](ValidationsValidateResponseBodyRedeemablesItemResultGift.md) |  |
+|**loyaltyCard** | [**ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard**](ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard.md) |  |
+|**error** | [**Error**](Error.md) |  |
+|**details** | [**ValidationsValidateResponseBodyRedeemablesItemResultDetails**](ValidationsValidateResponseBodyRedeemablesItemResultDetails.md) |  |
 
 
 

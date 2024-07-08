@@ -5,12 +5,12 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**data** | [**List&lt;InapplicableTo&gt;**](InapplicableTo.md) | Contains array of items to which the discount cannot apply. |  |
-|**total** | **Integer** | Total number of objects defining included products, SKUs, or product collections. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | The type of the object represented by JSON. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**data** | [**List&lt;InapplicableTo&gt;**](InapplicableTo.md) | Contains array of items to which the discount cannot apply. |
+|**total** | **Integer** | Total number of objects defining included products, SKUs, or product collections. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | The type of the object represented by JSON. |
 
 
 
@@ -19,7 +19,6 @@
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -28,7 +27,6 @@
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

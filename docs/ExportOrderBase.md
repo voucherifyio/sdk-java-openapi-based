@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) | The type of object to be exported. |  |
-|**parameters** | [**OrdersExportCreateRequestBodyParameters**](OrdersExportCreateRequestBodyParameters.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) | The type of object to be exported. |
+|**parameters** | [**OrdersExportCreateRequestBodyParameters**](OrdersExportCreateRequestBodyParameters.md) |  |
 
 
 
@@ -17,7 +17,6 @@
 | Name | Value |
 |---- | -----|
 | ORDER | &quot;order&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

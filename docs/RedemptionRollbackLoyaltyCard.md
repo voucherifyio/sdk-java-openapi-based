@@ -6,9 +6,9 @@ Contains the number of points returned to the loyalty card in the reward redempt
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**points** | **Integer** | Number of points being returned to the loyalty card for the reward redemption rollback. It is expressed as a negative integer. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**points** | **Integer** | Number of points being returned to the loyalty card for the reward redemption rollback. It is expressed as a negative integer. |
 
 
 

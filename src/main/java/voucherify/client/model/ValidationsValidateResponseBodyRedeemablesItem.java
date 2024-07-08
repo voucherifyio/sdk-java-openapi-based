@@ -68,9 +68,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
     
     INAPPLICABLE("INAPPLICABLE"),
     
-    SKIPPED("SKIPPED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SKIPPED("SKIPPED");
 
     private String value;
 
@@ -93,7 +91,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -125,9 +123,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
   public enum ObjectEnum {
     VOUCHER("voucher"),
     
-    PROMOTION_TIER("promotion_tier"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PROMOTION_TIER("promotion_tier");
 
     private String value;
 
@@ -150,7 +146,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -208,7 +204,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
    * Get status
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -229,7 +225,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
    * Redeemable ID, i.e. the voucher code.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -250,7 +246,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
    * Redeemable&#39;s object type.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -334,7 +330,7 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
    * Get result
    * @return result
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ValidationsValidateResponseBodyRedeemablesItemResult getResult() {
     return result;
   }
@@ -514,10 +510,6 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("result");
   }
 
  /**
@@ -532,15 +524,8 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationsValidateResponseBodyRedeemablesItem is not found in the empty JSON string", ValidationsValidateResponseBodyRedeemablesItem.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationsValidateResponseBodyRedeemablesItem.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -556,10 +541,10 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
           throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
         }
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -587,8 +572,10 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
       if (jsonObj.get("inapplicable_to") != null && !jsonObj.get("inapplicable_to").isJsonNull()) {
         InapplicableToResultList.validateJsonElement(jsonObj.get("inapplicable_to"));
       }
-      // validate the required field `result`
-      ValidationsValidateResponseBodyRedeemablesItemResult.validateJsonElement(jsonObj.get("result"));
+      // validate the optional field `result`
+      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
+        ValidationsValidateResponseBodyRedeemablesItemResult.validateJsonElement(jsonObj.get("result"));
+      }
       if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
         JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
         if (jsonArraycategories != null) {

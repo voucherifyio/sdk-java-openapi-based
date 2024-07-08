@@ -87,7 +87,7 @@ public class LoyaltiesMembersBalanceUpdateRequestBody {
    * Incremental balance to be added to/subtracted from the loyalty card.  - To add points: 100 - To subtract points, add a minus: -100
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -289,7 +289,6 @@ public class LoyaltiesMembersBalanceUpdateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
   }
 
  /**
@@ -302,13 +301,6 @@ public class LoyaltiesMembersBalanceUpdateRequestBody {
       if (jsonElement == null) {
         if (!LoyaltiesMembersBalanceUpdateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesMembersBalanceUpdateRequestBody is not found in the empty JSON string", LoyaltiesMembersBalanceUpdateRequestBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesMembersBalanceUpdateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

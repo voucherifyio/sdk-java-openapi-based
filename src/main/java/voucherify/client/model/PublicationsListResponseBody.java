@@ -65,7 +65,7 @@ public class PublicationsListResponseBody {
 
   public static final String SERIALIZED_NAME_PUBLICATIONS = "publications";
   @SerializedName(SERIALIZED_NAME_PUBLICATIONS)
-  private List<PublicationsListResponseBodyPublicationsItem> publications = new ArrayList<>();
+  private List<PublicationsListResponseBodyPublicationsItem> publications;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -84,7 +84,7 @@ public class PublicationsListResponseBody {
    * The type of the object represented by JSON. This object stores information about publications in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -105,7 +105,7 @@ public class PublicationsListResponseBody {
    * Identifies the name of the attribute that contains the array of publications.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -134,7 +134,7 @@ public class PublicationsListResponseBody {
    * Response schema model for publishing vouchers to a specific customer.
    * @return publications
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<PublicationsListResponseBodyPublicationsItem> getPublications() {
     return publications;
   }
@@ -155,7 +155,7 @@ public class PublicationsListResponseBody {
    * Total number of publications.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -270,10 +270,6 @@ public class PublicationsListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("publications");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -288,30 +284,27 @@ public class PublicationsListResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PublicationsListResponseBody is not found in the empty JSON string", PublicationsListResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PublicationsListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("publications").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `publications` to be an array in the JSON string but got `%s`", jsonObj.get("publications").toString()));
-      }
+      if (jsonObj.get("publications") != null && !jsonObj.get("publications").isJsonNull()) {
+        JsonArray jsonArraypublications = jsonObj.getAsJsonArray("publications");
+        if (jsonArraypublications != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("publications").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `publications` to be an array in the JSON string but got `%s`", jsonObj.get("publications").toString()));
+          }
 
-      JsonArray jsonArraypublications = jsonObj.getAsJsonArray("publications");
-      // validate the required field `publications` (array)
-      for (int i = 0; i < jsonArraypublications.size(); i++) {
-        PublicationsListResponseBodyPublicationsItem.validateJsonElement(jsonArraypublications.get(i));
-      };
+          // validate the optional field `publications` (array)
+          for (int i = 0; i < jsonArraypublications.size(); i++) {
+            PublicationsListResponseBodyPublicationsItem.validateJsonElement(jsonArraypublications.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

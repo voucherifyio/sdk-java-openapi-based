@@ -95,7 +95,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * Unique permanent deletion object ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -116,7 +116,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * Timestamp representing the date and time when the customer was requested to be deleted in ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -137,7 +137,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * Unique customer ID that is being deleted.
    * @return relatedObjectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObjectId() {
     return relatedObjectId;
   }
@@ -158,7 +158,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * Object being deleted.
    * @return relatedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObject() {
     return relatedObject;
   }
@@ -179,7 +179,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * Deletion status.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getStatus() {
     return status;
   }
@@ -200,7 +200,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * Get dataJson
    * @return dataJson
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CustomersPermanentDeletionCreateResponseBodyDataJson getDataJson() {
     return dataJson;
   }
@@ -221,7 +221,7 @@ public class CustomersPermanentDeletionCreateResponseBody {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -345,13 +345,6 @@ public class CustomersPermanentDeletionCreateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("related_object_id");
-    openapiRequiredFields.add("related_object");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("data_json");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -366,29 +359,24 @@ public class CustomersPermanentDeletionCreateResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersPermanentDeletionCreateResponseBody is not found in the empty JSON string", CustomersPermanentDeletionCreateResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersPermanentDeletionCreateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
       }
-      if (!jsonObj.get("related_object").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object") != null && !jsonObj.get("related_object").isJsonNull()) && !jsonObj.get("related_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object").toString()));
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      // validate the required field `data_json`
-      CustomersPermanentDeletionCreateResponseBodyDataJson.validateJsonElement(jsonObj.get("data_json"));
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      // validate the optional field `data_json`
+      if (jsonObj.get("data_json") != null && !jsonObj.get("data_json").isJsonNull()) {
+        CustomersPermanentDeletionCreateResponseBodyDataJson.validateJsonElement(jsonObj.get("data_json"));
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
   }

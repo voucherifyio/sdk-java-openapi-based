@@ -61,9 +61,7 @@ public class ReferralProgram {
   public enum ConversionEventTypeEnum {
     REDEMPTION("redemption"),
     
-    CUSTOM_EVENT("custom_event"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOM_EVENT("custom_event");
 
     private String value;
 
@@ -86,7 +84,7 @@ public class ReferralProgram {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ConversionEventTypeEnum> {

@@ -73,7 +73,7 @@ public class EarningRuleBaseLoyaltyOrderAmount {
    * Value is multiplied by 100 to precisely represent 2 decimal places. For example, a $10 order amount is written as 1000.
    * @return every
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getEvery() {
     return every;
   }
@@ -94,7 +94,7 @@ public class EarningRuleBaseLoyaltyOrderAmount {
    * Number of points to be awarded, i.e. how many points to be added to the loyalty card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -203,8 +203,6 @@ public class EarningRuleBaseLoyaltyOrderAmount {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("every");
-    openapiRequiredFields.add("points");
   }
 
  /**
@@ -217,13 +215,6 @@ public class EarningRuleBaseLoyaltyOrderAmount {
       if (jsonElement == null) {
         if (!EarningRuleBaseLoyaltyOrderAmount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyOrderAmount is not found in the empty JSON string", EarningRuleBaseLoyaltyOrderAmount.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseLoyaltyOrderAmount.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

@@ -77,9 +77,7 @@ public class RedemptionsListResponseBodyRedemptionsItemCustomer {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    CUSTOMER("customer"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOMER("customer");
 
     private String value;
 
@@ -102,7 +100,7 @@ public class RedemptionsListResponseBodyRedemptionsItemCustomer {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

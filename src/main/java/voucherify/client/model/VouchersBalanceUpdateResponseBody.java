@@ -72,9 +72,7 @@ public class VouchersBalanceUpdateResponseBody {
   public enum TypeEnum {
     GIFT_VOUCHER("gift_voucher"),
     
-    LOYALTY_CARD("loyalty_card"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_CARD("loyalty_card");
 
     private String value;
 
@@ -97,7 +95,7 @@ public class VouchersBalanceUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -123,9 +121,7 @@ public class VouchersBalanceUpdateResponseBody {
    */
   @JsonAdapter(OperationTypeEnum.Adapter.class)
   public enum OperationTypeEnum {
-    MANUAL("MANUAL"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MANUAL("MANUAL");
 
     private String value;
 
@@ -148,7 +144,7 @@ public class VouchersBalanceUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OperationTypeEnum> {
@@ -174,9 +170,7 @@ public class VouchersBalanceUpdateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    BALANCE("balance"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    BALANCE("balance");
 
     private String value;
 
@@ -199,7 +193,7 @@ public class VouchersBalanceUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -237,7 +231,7 @@ public class VouchersBalanceUpdateResponseBody {
    * The incremental amount added (positive integer) or subtracted (negative integer) to the current balance on the gift card or loyalty card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
    * @return amount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getAmount() {
     return amount;
   }
@@ -258,7 +252,7 @@ public class VouchersBalanceUpdateResponseBody {
    * Total income incurred over the lifespan of the gift card or loyalty card.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -279,7 +273,7 @@ public class VouchersBalanceUpdateResponseBody {
    * The balance after adding or subtracting a specified amount. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
    * @return balance
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getBalance() {
     return balance;
   }
@@ -300,7 +294,7 @@ public class VouchersBalanceUpdateResponseBody {
    * The type of voucher being modified.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -321,7 +315,7 @@ public class VouchersBalanceUpdateResponseBody {
    * Get operationType
    * @return operationType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OperationTypeEnum getOperationType() {
     return operationType;
   }
@@ -342,7 +336,7 @@ public class VouchersBalanceUpdateResponseBody {
    * The type of the object represented by JSON. Default is &#x60;balance&#x60;.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -363,7 +357,7 @@ public class VouchersBalanceUpdateResponseBody {
    * Get relatedObject
    * @return relatedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VouchersBalanceUpdateResponseBodyRelatedObject getRelatedObject() {
     return relatedObject;
   }
@@ -487,13 +481,6 @@ public class VouchersBalanceUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("amount");
-    openapiRequiredFields.add("total");
-    openapiRequiredFields.add("balance");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("operation_type");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("related_object");
   }
 
  /**
@@ -508,15 +495,8 @@ public class VouchersBalanceUpdateResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VouchersBalanceUpdateResponseBody is not found in the empty JSON string", VouchersBalanceUpdateResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VouchersBalanceUpdateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       try {
@@ -532,7 +512,7 @@ public class VouchersBalanceUpdateResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
         }
       }
-      if (!jsonObj.get("operation_type").isJsonPrimitive()) {
+      if ((jsonObj.get("operation_type") != null && !jsonObj.get("operation_type").isJsonNull()) && !jsonObj.get("operation_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `operation_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation_type").toString()));
       }
       try {
@@ -548,7 +528,7 @@ public class VouchersBalanceUpdateResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `operation_type` to be a valid element of OperationTypeEnum enum got `%s` instead", jsonObj.get("operation_type").toString()));
         }
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -564,8 +544,10 @@ public class VouchersBalanceUpdateResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      // validate the required field `related_object`
-      VouchersBalanceUpdateResponseBodyRelatedObject.validateJsonElement(jsonObj.get("related_object"));
+      // validate the optional field `related_object`
+      if (jsonObj.get("related_object") != null && !jsonObj.get("related_object").isJsonNull()) {
+        VouchersBalanceUpdateResponseBodyRelatedObject.validateJsonElement(jsonObj.get("related_object"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

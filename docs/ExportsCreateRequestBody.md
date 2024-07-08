@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) |  |  |
-|**parameters** | [**ExportsCreateRequestBodyParameters**](ExportsCreateRequestBodyParameters.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) |  |
+|**parameters** | [**ExportsCreateRequestBodyParameters**](ExportsCreateRequestBodyParameters.md) |  |
 
 
 
@@ -23,7 +23,6 @@
 | ORDER | &quot;order&quot; |
 | POINTS_EXPIRATION | &quot;points_expiration&quot; |
 | VOUCHER_TRANSACTIONS | &quot;voucher_transactions&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

@@ -80,9 +80,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
     
     PROMOTION_TIER("promotion_tier"),
     
-    DISTRIBUTION("distribution"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    DISTRIBUTION("distribution");
 
     private String value;
 
@@ -105,7 +103,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {
@@ -135,9 +133,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    VALIDATION_RULES_ASSIGNMENT("validation_rules_assignment"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VALIDATION_RULES_ASSIGNMENT("validation_rules_assignment");
 
     private String value;
 
@@ -160,7 +156,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -194,7 +190,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    * Validation rule assignment ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -215,7 +211,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    * Validation rule ID.
    * @return ruleId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRuleId() {
     return ruleId;
   }
@@ -236,7 +232,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    * The resource ID to which the validation rule was assigned.
    * @return relatedObjectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObjectId() {
     return relatedObjectId;
   }
@@ -257,7 +253,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    * The type of resource to which the validation rule was assigned.
    * @return relatedObjectType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RelatedObjectTypeEnum getRelatedObjectType() {
     return relatedObjectType;
   }
@@ -278,7 +274,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    * Timestamp representing the date and time when the validation rule assignment was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -299,7 +295,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
    * The type of the object represented by the ID.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -420,12 +416,6 @@ public class ValidationRulesAssignmentsCreateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("rule_id");
-    openapiRequiredFields.add("related_object_id");
-    openapiRequiredFields.add("related_object_type");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -440,24 +430,17 @@ public class ValidationRulesAssignmentsCreateResponseBody {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationRulesAssignmentsCreateResponseBody is not found in the empty JSON string", ValidationRulesAssignmentsCreateResponseBody.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationRulesAssignmentsCreateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("rule_id").isJsonPrimitive()) {
+      if ((jsonObj.get("rule_id") != null && !jsonObj.get("rule_id").isJsonNull()) && !jsonObj.get("rule_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rule_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rule_id").toString()));
       }
-      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
       }
-      if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
       }
       try {
@@ -473,7 +456,7 @@ public class ValidationRulesAssignmentsCreateResponseBody {
           throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
         }
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

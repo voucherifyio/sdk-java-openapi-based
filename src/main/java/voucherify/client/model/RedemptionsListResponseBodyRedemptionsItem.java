@@ -74,9 +74,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
   public enum ObjectEnum {
     REDEMPTION("redemption"),
     
-    REDEMPTION_ROLLBACK("redemption_rollback"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REDEMPTION_ROLLBACK("redemption_rollback");
 
     private String value;
 
@@ -99,7 +97,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -151,9 +149,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
   public enum ResultEnum {
     SUCCESS("SUCCESS"),
     
-    FAILURE("FAILURE"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FAILURE("FAILURE");
 
     private String value;
 
@@ -176,7 +172,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ResultEnum> {
@@ -206,9 +202,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
     
     FAILED("FAILED"),
     
-    ROLLED_BACK("ROLLED_BACK"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ROLLED_BACK("ROLLED_BACK");
 
     private String value;
 
@@ -231,7 +225,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -285,9 +279,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
     
     PROMOTION_TIER("promotion_tier"),
     
-    REDEMPTION("redemption"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REDEMPTION("redemption");
 
     private String value;
 
@@ -310,7 +302,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {
@@ -372,7 +364,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Get id
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -393,7 +385,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Get _object
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -414,7 +406,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format.
    * @return date
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getDate() {
     return date;
   }
@@ -540,7 +532,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Redemption result.
    * @return result
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ResultEnum getResult() {
     return result;
   }
@@ -561,7 +553,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Get status
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -666,7 +658,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Get channel
    * @return channel
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RedemptionsListResponseBodyRedemptionsItemChannel getChannel() {
     return channel;
   }
@@ -708,7 +700,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Defines the related object.
    * @return relatedObjectType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RelatedObjectTypeEnum getRelatedObjectType() {
     return relatedObjectType;
   }
@@ -729,7 +721,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
    * Get relatedObjectId
    * @return relatedObjectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObjectId() {
     return relatedObjectId;
   }
@@ -1041,14 +1033,6 @@ public class RedemptionsListResponseBodyRedemptionsItem {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("date");
-    openapiRequiredFields.add("result");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("related_object_type");
-    openapiRequiredFields.add("related_object_id");
   }
 
  /**
@@ -1063,18 +1047,11 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsListResponseBodyRedemptionsItem is not found in the empty JSON string", RedemptionsListResponseBodyRedemptionsItem.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RedemptionsListResponseBodyRedemptionsItem.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -1099,7 +1076,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
       if ((jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) && !jsonObj.get("redemption").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redemption` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redemption").toString()));
       }
-      if (!jsonObj.get("result").isJsonPrimitive()) {
+      if ((jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) && !jsonObj.get("result").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `result` to be a primitive type in the JSON string but got `%s`", jsonObj.get("result").toString()));
       }
       try {
@@ -1115,7 +1092,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
         }
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       try {
@@ -1145,13 +1122,15 @@ public class RedemptionsListResponseBodyRedemptionsItem {
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         RedemptionsListResponseBodyRedemptionsItemOrder.validateJsonElement(jsonObj.get("order"));
       }
-      // validate the required field `channel`
-      RedemptionsListResponseBodyRedemptionsItemChannel.validateJsonElement(jsonObj.get("channel"));
+      // validate the optional field `channel`
+      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
+        RedemptionsListResponseBodyRedemptionsItemChannel.validateJsonElement(jsonObj.get("channel"));
+      }
       // validate the optional field `customer`
       if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
         RedemptionsListResponseBodyRedemptionsItemCustomer.validateJsonElement(jsonObj.get("customer"));
       }
-      if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
       }
       try {
@@ -1167,7 +1146,7 @@ public class RedemptionsListResponseBodyRedemptionsItem {
           throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
         }
       }
-      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
+      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
       }
       // validate the optional field `voucher`

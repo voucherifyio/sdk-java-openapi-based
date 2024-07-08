@@ -95,7 +95,7 @@ public class SimpleVoucherRedemption {
    * How many times a voucher has already been redeemed.
    * @return redeemedQuantity
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getRedeemedQuantity() {
     return redeemedQuantity;
   }
@@ -215,7 +215,6 @@ public class SimpleVoucherRedemption {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("redeemed_quantity");
   }
 
  /**
@@ -228,13 +227,6 @@ public class SimpleVoucherRedemption {
       if (jsonElement == null) {
         if (!SimpleVoucherRedemption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SimpleVoucherRedemption is not found in the empty JSON string", SimpleVoucherRedemption.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SimpleVoucherRedemption.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

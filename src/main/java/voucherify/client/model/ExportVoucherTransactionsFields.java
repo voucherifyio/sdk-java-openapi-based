@@ -50,9 +50,7 @@ public enum ExportVoucherTransactionsFields {
   
   CREATED_AT("created_at"),
   
-  DETAILS("details"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  DETAILS("details");
 
   private String value;
 
@@ -75,7 +73,7 @@ public enum ExportVoucherTransactionsFields {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<ExportVoucherTransactionsFields> {

@@ -64,9 +64,7 @@ public class ExportsCreateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    EXPORT("export"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    EXPORT("export");
 
     private String value;
 
@@ -89,7 +87,7 @@ public class ExportsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -119,9 +117,7 @@ public class ExportsCreateResponseBody {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    SCHEDULED("SCHEDULED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SCHEDULED("SCHEDULED");
 
     private String value;
 
@@ -144,7 +140,7 @@ public class ExportsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -194,9 +190,7 @@ public class ExportsCreateResponseBody {
     
     POINTS_EXPIRATION("points_expiration"),
     
-    VOUCHER_TRANSACTIONS("voucher_transactions"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER_TRANSACTIONS("voucher_transactions");
 
     private String value;
 
@@ -219,7 +213,7 @@ public class ExportsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ExportedObjectEnum> {

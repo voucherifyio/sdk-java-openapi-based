@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**campaign** | [**RewardTypeCampaign**](RewardTypeCampaign.md) |  |  [optional] |
-|**coin** | [**RewardTypeCoin**](RewardTypeCoin.md) |  |  [optional] |
-|**product** | [**RewardTypeProduct**](RewardTypeProduct.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**campaign** | [**RewardTypeCampaign**](RewardTypeCampaign.md) |  |
+|**coin** | [**RewardTypeCoin**](RewardTypeCoin.md) |  |
+|**product** | [**RewardTypeProduct**](RewardTypeProduct.md) |  |
 
 
 

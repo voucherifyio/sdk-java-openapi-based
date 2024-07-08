@@ -58,9 +58,7 @@ public class Session {
    */
   @JsonAdapter(KeyEnum.Adapter.class)
   public enum KeyEnum {
-    LOCK("LOCK"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOCK("LOCK");
 
     private String value;
 
@@ -83,7 +81,7 @@ public class Session {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<KeyEnum> {
@@ -109,9 +107,7 @@ public class Session {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    LOCK("LOCK"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOCK("LOCK");
 
     private String value;
 
@@ -134,7 +130,7 @@ public class Session {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -176,9 +172,7 @@ public class Session {
     
     NANOSECONDS("NANOSECONDS"),
     
-    SECONDS("SECONDS"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SECONDS("SECONDS");
 
     private String value;
 
@@ -201,7 +195,7 @@ public class Session {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TtlUnitEnum> {

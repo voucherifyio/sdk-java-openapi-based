@@ -65,9 +65,7 @@ public class ReferralProgramRefereeRewardRelatedObjectParent {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    CAMPAIGN("CAMPAIGN"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CAMPAIGN("CAMPAIGN");
 
     private String value;
 
@@ -90,7 +88,7 @@ public class ReferralProgramRefereeRewardRelatedObjectParent {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {

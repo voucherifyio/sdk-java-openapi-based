@@ -69,9 +69,7 @@ public class OrderItemCalculated {
   public enum RelatedObjectEnum {
     PRODUCT("product"),
     
-    SKU("sku"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SKU("sku");
 
     private String value;
 
@@ -94,7 +92,7 @@ public class OrderItemCalculated {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectEnum> {
@@ -172,9 +170,7 @@ public class OrderItemCalculated {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    ORDER_ITEM("order_item"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ORDER_ITEM("order_item");
 
     private String value;
 
@@ -197,7 +193,7 @@ public class OrderItemCalculated {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -571,7 +567,7 @@ public class OrderItemCalculated {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -749,7 +745,6 @@ public class OrderItemCalculated {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -762,13 +757,6 @@ public class OrderItemCalculated {
       if (jsonElement == null) {
         if (!OrderItemCalculated.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrderItemCalculated is not found in the empty JSON string", OrderItemCalculated.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : OrderItemCalculated.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -805,7 +793,7 @@ public class OrderItemCalculated {
       if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
         OrderItemCalculatedSku.validateJsonElement(jsonObj.get("sku"));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {

@@ -56,16 +56,14 @@ import voucherify.client.JSON;
 public class PromotionStackBaseTiers {
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
-  private List<String> ids = new ArrayList<>();
+  private List<String> ids;
 
   /**
    * Gets or Sets hierarchyMode
    */
   @JsonAdapter(HierarchyModeEnum.Adapter.class)
   public enum HierarchyModeEnum {
-    MANUAL("MANUAL"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MANUAL("MANUAL");
 
     private String value;
 
@@ -88,7 +86,7 @@ public class PromotionStackBaseTiers {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<HierarchyModeEnum> {
@@ -130,7 +128,7 @@ public class PromotionStackBaseTiers {
    * Contains the list of tiers in a pre-defined sequence.
    * @return ids
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getIds() {
     return ids;
   }
@@ -260,7 +258,6 @@ public class PromotionStackBaseTiers {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ids");
   }
 
  /**
@@ -275,18 +272,9 @@ public class PromotionStackBaseTiers {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PromotionStackBaseTiers is not found in the empty JSON string", PromotionStackBaseTiers.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PromotionStackBaseTiers.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("ids") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("ids").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonNull() && !jsonObj.get("ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
       }
       if ((jsonObj.get("hierarchy_mode") != null && !jsonObj.get("hierarchy_mode").isJsonNull()) && !jsonObj.get("hierarchy_mode").isJsonPrimitive()) {

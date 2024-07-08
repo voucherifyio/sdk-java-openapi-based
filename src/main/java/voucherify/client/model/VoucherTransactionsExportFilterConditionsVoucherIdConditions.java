@@ -56,7 +56,7 @@ import voucherify.client.JSON;
 public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
   public static final String SERIALIZED_NAME_$_IN = "$in";
   @SerializedName(SERIALIZED_NAME_$_IN)
-  private List<String> $in = new ArrayList<>();
+  private List<String> $in;
 
   public VoucherTransactionsExportFilterConditionsVoucherIdConditions() {
   }
@@ -79,7 +79,7 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
    * Get $in
    * @return $in
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> get$In() {
     return $in;
   }
@@ -185,7 +185,6 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("$in");
   }
 
  /**
@@ -200,18 +199,9 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsExportFilterConditionsVoucherIdConditions is not found in the empty JSON string", VoucherTransactionsExportFilterConditionsVoucherIdConditions.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsExportFilterConditionsVoucherIdConditions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("$in") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("$in").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull() && !jsonObj.get("$in").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `$in` to be an array in the JSON string but got `%s`", jsonObj.get("$in").toString()));
       }
   }

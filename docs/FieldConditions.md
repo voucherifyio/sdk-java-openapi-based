@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**conditions** | [**FiltersCondition**](FiltersCondition.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**conditions** | [**FiltersCondition**](FiltersCondition.md) |  |
 
 
 

@@ -63,9 +63,7 @@ public class ListPublicationsItemVoucher {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    VOUCHER("voucher"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    VOUCHER("voucher");
 
     private String value;
 
@@ -88,7 +86,7 @@ public class ListPublicationsItemVoucher {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -142,7 +140,7 @@ public class ListPublicationsItemVoucher {
    * Voucher code.
    * @return code
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -163,7 +161,7 @@ public class ListPublicationsItemVoucher {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -184,7 +182,7 @@ public class ListPublicationsItemVoucher {
    * Campaign name
    * @return campaign
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaign() {
     return campaign;
   }
@@ -392,9 +390,6 @@ public class ListPublicationsItemVoucher {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("campaign");
   }
 
  /**
@@ -409,18 +404,11 @@ public class ListPublicationsItemVoucher {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ListPublicationsItemVoucher is not found in the empty JSON string", ListPublicationsItemVoucher.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ListPublicationsItemVoucher.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("code").isJsonPrimitive()) {
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       try {
@@ -436,7 +424,7 @@ public class ListPublicationsItemVoucher {
           throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
         }
       }
-      if (!jsonObj.get("campaign").isJsonPrimitive()) {
+      if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign").toString()));
       }
       // validate the optional field `gift`

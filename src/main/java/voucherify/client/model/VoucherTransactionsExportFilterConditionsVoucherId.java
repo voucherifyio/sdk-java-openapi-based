@@ -70,7 +70,7 @@ public class VoucherTransactionsExportFilterConditionsVoucherId {
    * Get conditions
    * @return conditions
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VoucherTransactionsExportFilterConditionsVoucherIdConditions getConditions() {
     return conditions;
   }
@@ -176,7 +176,6 @@ public class VoucherTransactionsExportFilterConditionsVoucherId {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("conditions");
   }
 
  /**
@@ -191,16 +190,11 @@ public class VoucherTransactionsExportFilterConditionsVoucherId {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsExportFilterConditionsVoucherId is not found in the empty JSON string", VoucherTransactionsExportFilterConditionsVoucherId.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsExportFilterConditionsVoucherId.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `conditions`
-      VoucherTransactionsExportFilterConditionsVoucherIdConditions.validateJsonElement(jsonObj.get("conditions"));
+      // validate the optional field `conditions`
+      if (jsonObj.get("conditions") != null && !jsonObj.get("conditions").isJsonNull()) {
+        VoucherTransactionsExportFilterConditionsVoucherIdConditions.validateJsonElement(jsonObj.get("conditions"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

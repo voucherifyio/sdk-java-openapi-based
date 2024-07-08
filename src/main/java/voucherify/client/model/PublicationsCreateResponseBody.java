@@ -67,9 +67,7 @@ public class PublicationsCreateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    PUBLICATION("publication"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PUBLICATION("publication");
 
     private String value;
 
@@ -92,7 +90,7 @@ public class PublicationsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -134,9 +132,7 @@ public class PublicationsCreateResponseBody {
    */
   @JsonAdapter(ChannelEnum.Adapter.class)
   public enum ChannelEnum {
-    API("API"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    API("API");
 
     private String value;
 
@@ -159,7 +155,7 @@ public class PublicationsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ChannelEnum> {
@@ -189,9 +185,7 @@ public class PublicationsCreateResponseBody {
    */
   @JsonAdapter(ResultEnum.Adapter.class)
   public enum ResultEnum {
-    SUCCESS("SUCCESS"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SUCCESS("SUCCESS");
 
     private String value;
 
@@ -214,7 +208,7 @@ public class PublicationsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ResultEnum> {
