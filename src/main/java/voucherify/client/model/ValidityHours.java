@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.ValidityHoursDailyInner;
 
 import com.google.gson.Gson;
@@ -149,9 +150,20 @@ public class ValidityHours {
         Objects.equals(this.additionalProperties, validityHours.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(daily, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -195,26 +207,7 @@ public class ValidityHours {
   * @throws IOException if the JSON Element is invalid with respect to ValidityHours
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidityHours.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidityHours is not found in the empty JSON string", ValidityHours.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("daily") != null && !jsonObj.get("daily").isJsonNull()) {
-        JsonArray jsonArraydaily = jsonObj.getAsJsonArray("daily");
-        if (jsonArraydaily != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("daily").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `daily` to be an array in the JSON string but got `%s`", jsonObj.get("daily").toString()));
-          }
-
-          // validate the optional field `daily` (array)
-          for (int i = 0; i < jsonArraydaily.size(); i++) {
-            ValidityHoursDailyInner.validateJsonElement(jsonArraydaily.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -269,7 +262,7 @@ public class ValidityHours {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

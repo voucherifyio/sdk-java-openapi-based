@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.ValidationRuleBaseApplicableTo;
 import voucherify.client.model.ValidationRuleBaseError;
 
@@ -105,7 +106,7 @@ public class ValidationRulesUpdateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -266,7 +267,7 @@ public class ValidationRulesUpdateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ContextTypeEnum> {
@@ -341,7 +342,7 @@ public class ValidationRulesUpdateResponseBody {
    * Contains all the rule definitions for the validation rule. It is a set of key value pairs representing the rules and logic between the rules. The keys are numbered consecutively beginning from &#x60;1&#x60;. The values are objects containing the rule conditions.
    * @return rules
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Object getRules() {
     return rules;
   }
@@ -609,9 +610,20 @@ public class ValidationRulesUpdateResponseBody {
         Objects.equals(this.additionalProperties, validationRulesUpdateResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(name, rules, error, applicableTo, type, contextType, id, createdAt, updatedAt, assignmentsCount, _object, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -666,6 +678,11 @@ public class ValidationRulesUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("rules");
+    openapiRequiredFields.add("applicable_to");
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("context_type");
   }
 
  /**
@@ -675,25 +692,18 @@ public class ValidationRulesUpdateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to ValidationRulesUpdateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidationRulesUpdateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationRulesUpdateResponseBody is not found in the empty JSON string", ValidationRulesUpdateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        return;
       }
       // validate the optional field `error`
       if (jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) {
         ValidationRuleBaseError.validateJsonElement(jsonObj.get("error"));
       }
-      // validate the optional field `applicable_to`
-      if (jsonObj.get("applicable_to") != null && !jsonObj.get("applicable_to").isJsonNull()) {
-        ValidationRuleBaseApplicableTo.validateJsonElement(jsonObj.get("applicable_to"));
-      }
+      // validate the required field `applicable_to`
+      ValidationRuleBaseApplicableTo.validateJsonElement(jsonObj.get("applicable_to"));
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("type");
@@ -701,15 +711,13 @@ public class ValidationRulesUpdateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           TypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("context_type") != null && !jsonObj.get("context_type").isJsonNull()) && !jsonObj.get("context_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("context_type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("context_type");
@@ -717,18 +725,16 @@ public class ValidationRulesUpdateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ContextTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `context_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("context_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `context_type` to be a valid element of ContextTypeEnum enum got `%s` instead", jsonObj.get("context_type").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        return;
       }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+        return;
       }
   }
 
@@ -784,7 +790,7 @@ public class ValidationRulesUpdateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

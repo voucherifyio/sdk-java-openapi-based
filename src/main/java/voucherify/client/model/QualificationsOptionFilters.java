@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.Junction;
 import voucherify.client.model.QualificationsCampaignTypeConditions;
 import voucherify.client.model.QualificationsFieldConditions;
@@ -279,9 +280,20 @@ public class QualificationsOptionFilters {
         Objects.equals(this.code, qualificationsOptionFilters.code);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(junction, categoryId, campaignId, campaignType, resourceId, resourceType, voucherType, code);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -338,11 +350,6 @@ public class QualificationsOptionFilters {
   * @throws IOException if the JSON Element is invalid with respect to QualificationsOptionFilters
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!QualificationsOptionFilters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in QualificationsOptionFilters is not found in the empty JSON string", QualificationsOptionFilters.openapiRequiredFields.toString()));
-        }
-      }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields

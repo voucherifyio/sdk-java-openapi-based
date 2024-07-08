@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -268,9 +269,20 @@ public class PublicationsCreateRequestBodyCustomerAddress {
         Objects.equals(this.additionalProperties, publicationsCreateRequestBodyCustomerAddress.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(city, state, line1, line2, country, postalCode, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -324,29 +336,24 @@ public class PublicationsCreateRequestBodyCustomerAddress {
   * @throws IOException if the JSON Element is invalid with respect to PublicationsCreateRequestBodyCustomerAddress
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PublicationsCreateRequestBodyCustomerAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PublicationsCreateRequestBodyCustomerAddress is not found in the empty JSON string", PublicationsCreateRequestBodyCustomerAddress.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `city` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city").toString()));
+        return;
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
+        return;
       }
       if ((jsonObj.get("line_1") != null && !jsonObj.get("line_1").isJsonNull()) && !jsonObj.get("line_1").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `line_1` to be a primitive type in the JSON string but got `%s`", jsonObj.get("line_1").toString()));
+        return;
       }
       if ((jsonObj.get("line_2") != null && !jsonObj.get("line_2").isJsonNull()) && !jsonObj.get("line_2").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `line_2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("line_2").toString()));
+        return;
       }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+        return;
       }
       if ((jsonObj.get("postal_code") != null && !jsonObj.get("postal_code").isJsonNull()) && !jsonObj.get("postal_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `postal_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postal_code").toString()));
+        return;
       }
   }
 
@@ -402,7 +409,7 @@ public class PublicationsCreateRequestBodyCustomerAddress {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

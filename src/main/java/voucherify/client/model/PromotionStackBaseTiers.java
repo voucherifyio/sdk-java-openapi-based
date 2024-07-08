@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -86,7 +87,7 @@ public class PromotionStackBaseTiers {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<HierarchyModeEnum> {
@@ -219,9 +220,20 @@ public class PromotionStackBaseTiers {
         Objects.equals(this.additionalProperties, promotionStackBaseTiers.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(ids, hierarchyMode, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -267,18 +279,9 @@ public class PromotionStackBaseTiers {
   * @throws IOException if the JSON Element is invalid with respect to PromotionStackBaseTiers
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PromotionStackBaseTiers.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PromotionStackBaseTiers is not found in the empty JSON string", PromotionStackBaseTiers.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonNull() && !jsonObj.get("ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
-      }
       if ((jsonObj.get("hierarchy_mode") != null && !jsonObj.get("hierarchy_mode").isJsonNull()) && !jsonObj.get("hierarchy_mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hierarchy_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hierarchy_mode").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("hierarchy_mode");
@@ -286,12 +289,10 @@ public class PromotionStackBaseTiers {
         if (objectElement != null && !objectElement.isJsonNull()) {
           HierarchyModeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `hierarchy_mode` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("hierarchy_mode") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `hierarchy_mode` to be a valid element of HierarchyModeEnum enum got `%s` instead", jsonObj.get("hierarchy_mode").toString()));
-        }
+          return;
       }
   }
 
@@ -347,7 +348,7 @@ public class PromotionStackBaseTiers {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -12,7 +12,7 @@ Simplified voucher data.
 |**code** | **String** | Voucher code. |
 |**gift** | [**Gift**](Gift.md) |  |
 |**discount** | [**Discount**](Discount.md) |  |
-|**loyaltyCard** | [**SimpleLoyaltyCard**](SimpleLoyaltyCard.md) |  |
+|**loyaltyCard** | [**SimpleVoucherLoyaltyCard**](SimpleVoucherLoyaltyCard.md) |  |
 |**type** | [**TypeEnum**](#TypeEnum) | Type of the voucher. |
 |**campaign** | **String** | Campaign name. |
 |**campaignId** | **String** | Campaign unique ID. |

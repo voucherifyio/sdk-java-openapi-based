@@ -75,7 +75,7 @@ public class CustomerSummary {
    * Get redemptions
    * @return redemptions
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public CustomerSummaryRedemptions getRedemptions() {
     return redemptions;
   }
@@ -96,7 +96,7 @@ public class CustomerSummary {
    * Get orders
    * @return orders
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public CustomerSummaryOrders getOrders() {
     return orders;
   }
@@ -205,6 +205,8 @@ public class CustomerSummary {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("redemptions");
+    openapiRequiredFields.add("orders");
   }
 
  /**
@@ -214,20 +216,11 @@ public class CustomerSummary {
   * @throws IOException if the JSON Element is invalid with respect to CustomerSummary
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CustomerSummary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerSummary is not found in the empty JSON string", CustomerSummary.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `redemptions`
-      if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
-        CustomerSummaryRedemptions.validateJsonElement(jsonObj.get("redemptions"));
-      }
-      // validate the optional field `orders`
-      if (jsonObj.get("orders") != null && !jsonObj.get("orders").isJsonNull()) {
-        CustomerSummaryOrders.validateJsonElement(jsonObj.get("orders"));
-      }
+      // validate the required field `redemptions`
+      CustomerSummaryRedemptions.validateJsonElement(jsonObj.get("redemptions"));
+      // validate the required field `orders`
+      CustomerSummaryOrders.validateJsonElement(jsonObj.get("orders"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -282,7 +275,7 @@ public class CustomerSummary {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

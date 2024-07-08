@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CampaignBaseValidityTimeframe;
 import voucherify.client.model.CampaignLoyaltyCard;
 import voucherify.client.model.CampaignVoucherRedemption;
@@ -142,7 +143,7 @@ public class CampaignVoucher {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -285,7 +286,7 @@ public class CampaignVoucher {
    * Get codeConfig
    * @return codeConfig
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public CodeConfigRequiredLengthCharsetPattern getCodeConfig() {
     return codeConfig;
   }
@@ -499,9 +500,20 @@ public class CampaignVoucher {
         Objects.equals(this.additionalProperties, campaignVoucher.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(type, discount, gift, loyaltyCard, redemption, codeConfig, isReferralCode, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -558,6 +570,7 @@ public class CampaignVoucher {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("code_config");
   }
 
  /**
@@ -567,14 +580,9 @@ public class CampaignVoucher {
   * @throws IOException if the JSON Element is invalid with respect to CampaignVoucher
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CampaignVoucher.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignVoucher is not found in the empty JSON string", CampaignVoucher.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        return;
       }
       // validate the optional field `discount`
       if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
@@ -592,17 +600,11 @@ public class CampaignVoucher {
       if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
         CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
       }
-      // validate the optional field `code_config`
-      if (jsonObj.get("code_config") != null && !jsonObj.get("code_config").isJsonNull()) {
-        CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
-      }
+      // validate the required field `code_config`
+      CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
@@ -662,7 +664,7 @@ public class CampaignVoucher {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

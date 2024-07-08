@@ -98,7 +98,7 @@ public class ValidityHoursDailyInner {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<DaysOfWeekEnum> {
@@ -307,21 +307,12 @@ public class ValidityHoursDailyInner {
   * @throws IOException if the JSON Element is invalid with respect to ValidityHoursDailyInner
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidityHoursDailyInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidityHoursDailyInner is not found in the empty JSON string", ValidityHoursDailyInner.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("start_time") != null && !jsonObj.get("start_time").isJsonNull()) && !jsonObj.get("start_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `start_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_time").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("days_of_week") != null && !jsonObj.get("days_of_week").isJsonNull() && !jsonObj.get("days_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `days_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("days_of_week").toString()));
+        return;
       }
       if ((jsonObj.get("expiration_time") != null && !jsonObj.get("expiration_time").isJsonNull()) && !jsonObj.get("expiration_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expiration_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expiration_time").toString()));
+        return;
       }
   }
 
@@ -377,7 +368,7 @@ public class ValidityHoursDailyInner {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

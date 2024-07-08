@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.LoyaltyTiersExpirationAllExpirationDate;
 import voucherify.client.model.LoyaltyTiersExpirationAllStartDate;
 
@@ -84,7 +85,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<QualificationTypeEnum> {
@@ -139,7 +140,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<QualificationPeriodEnum> {
@@ -316,9 +317,20 @@ public class LoyaltyTiersExpirationAll {
         Objects.equals(this.additionalProperties, loyaltyTiersExpirationAll.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(qualificationType, qualificationPeriod, startDate, expirationDate, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -368,14 +380,9 @@ public class LoyaltyTiersExpirationAll {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltyTiersExpirationAll
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltyTiersExpirationAll.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTiersExpirationAll is not found in the empty JSON string", LoyaltyTiersExpirationAll.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("qualification_type") != null && !jsonObj.get("qualification_type").isJsonNull()) && !jsonObj.get("qualification_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qualification_type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("qualification_type");
@@ -383,15 +390,13 @@ public class LoyaltyTiersExpirationAll {
         if (objectElement != null && !objectElement.isJsonNull()) {
           QualificationTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `qualification_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("qualification_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a valid element of QualificationTypeEnum enum got `%s` instead", jsonObj.get("qualification_type").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("qualification_period") != null && !jsonObj.get("qualification_period").isJsonNull()) && !jsonObj.get("qualification_period").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qualification_period").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("qualification_period");
@@ -399,12 +404,10 @@ public class LoyaltyTiersExpirationAll {
         if (objectElement != null && !objectElement.isJsonNull()) {
           QualificationPeriodEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `qualification_period` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("qualification_period") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a valid element of QualificationPeriodEnum enum got `%s` instead", jsonObj.get("qualification_period").toString()));
-        }
+          return;
       }
       // validate the optional field `start_date`
       if (jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) {
@@ -468,7 +471,7 @@ public class LoyaltyTiersExpirationAll {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

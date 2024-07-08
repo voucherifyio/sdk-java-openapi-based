@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -90,7 +91,7 @@ public class CodeConfigRequiredLengthCharsetPattern {
    * Number of characters in a generated code (excluding prefix and postfix).
    * @return length
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getLength() {
     return length;
   }
@@ -111,7 +112,7 @@ public class CodeConfigRequiredLengthCharsetPattern {
    * Characters that can appear in the code.    Examples:  - Alphanumeric: &#x60;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x60;  - Alphabetic: &#x60;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x60;  - Alphabetic Lowercase: &#x60;abcdefghijklmnopqrstuvwxyz&#x60;  - Alphabetic Uppercase: &#x60;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#x60;  - Numbers: &#x60;0123456789&#x60;   - Custom: a custom character set
    * @return charset
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCharset() {
     return charset;
   }
@@ -174,7 +175,7 @@ public class CodeConfigRequiredLengthCharsetPattern {
    * A pattern for codes where hashes (#) will be replaced with random characters. Overrides &#x60;length&#x60;.
    * @return pattern
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getPattern() {
     return pattern;
   }
@@ -269,9 +270,20 @@ public class CodeConfigRequiredLengthCharsetPattern {
         Objects.equals(this.additionalProperties, codeConfigRequiredLengthCharsetPattern.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(length, charset, prefix, postfix, pattern, initialCount, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -328,30 +340,18 @@ public class CodeConfigRequiredLengthCharsetPattern {
   * @throws IOException if the JSON Element is invalid with respect to CodeConfigRequiredLengthCharsetPattern
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CodeConfigRequiredLengthCharsetPattern.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CodeConfigRequiredLengthCharsetPattern is not found in the empty JSON string", CodeConfigRequiredLengthCharsetPattern.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CodeConfigRequiredLengthCharsetPattern.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("charset").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `charset` to be a primitive type in the JSON string but got `%s`", jsonObj.get("charset").toString()));
+      if ((jsonObj.get("charset") != null && !jsonObj.get("charset").isJsonNull()) && !jsonObj.get("charset").isJsonPrimitive()) {
+        return;
       }
       if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));
+        return;
       }
       if ((jsonObj.get("postfix") != null && !jsonObj.get("postfix").isJsonNull()) && !jsonObj.get("postfix").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `postfix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postfix").toString()));
+        return;
       }
-      if (!jsonObj.get("pattern").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pattern` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pattern").toString()));
+      if ((jsonObj.get("pattern") != null && !jsonObj.get("pattern").isJsonNull()) && !jsonObj.get("pattern").isJsonPrimitive()) {
+        return;
       }
   }
 
@@ -407,7 +407,7 @@ public class CodeConfigRequiredLengthCharsetPattern {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

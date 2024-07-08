@@ -232,40 +232,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemp
   * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions is not found in the empty JSON string", VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("rollbacks") != null && !jsonObj.get("rollbacks").isJsonNull()) {
-        JsonArray jsonArrayrollbacks = jsonObj.getAsJsonArray("rollbacks");
-        if (jsonArrayrollbacks != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("rollbacks").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `rollbacks` to be an array in the JSON string but got `%s`", jsonObj.get("rollbacks").toString()));
-          }
-
-          // validate the optional field `rollbacks` (array)
-          for (int i = 0; i < jsonArrayrollbacks.size(); i++) {
-            VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptionsRollbacksItem.validateJsonElement(jsonArrayrollbacks.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
-        JsonArray jsonArrayredemptions = jsonObj.getAsJsonArray("redemptions");
-        if (jsonArrayredemptions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("redemptions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `redemptions` to be an array in the JSON string but got `%s`", jsonObj.get("redemptions").toString()));
-          }
-
-          // validate the optional field `redemptions` (array)
-          for (int i = 0; i < jsonArrayredemptions.size(); i++) {
-            VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptionsRedemptionsItem.validateJsonElement(jsonArrayredemptions.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -320,7 +287,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemp
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

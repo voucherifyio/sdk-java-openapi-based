@@ -61,7 +61,7 @@ public enum ParameterOrderListValidationRules {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListValidationRules> {

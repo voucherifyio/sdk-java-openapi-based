@@ -101,7 +101,7 @@ public class QualificationsOption {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ExpandEnum> {
@@ -154,7 +154,7 @@ public class QualificationsOption {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<SortingRuleEnum> {
@@ -419,22 +419,13 @@ public class QualificationsOption {
   * @throws IOException if the JSON Element is invalid with respect to QualificationsOption
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!QualificationsOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in QualificationsOption is not found in the empty JSON string", QualificationsOption.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `filters`
       if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
         QualificationsOptionFilters.validateJsonElement(jsonObj.get("filters"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("expand") != null && !jsonObj.get("expand").isJsonNull() && !jsonObj.get("expand").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expand` to be an array in the JSON string but got `%s`", jsonObj.get("expand").toString()));
-      }
       if ((jsonObj.get("sorting_rule") != null && !jsonObj.get("sorting_rule").isJsonNull()) && !jsonObj.get("sorting_rule").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sorting_rule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sorting_rule").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("sorting_rule");
@@ -442,12 +433,10 @@ public class QualificationsOption {
         if (objectElement != null && !objectElement.isJsonNull()) {
           SortingRuleEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `sorting_rule` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("sorting_rule") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `sorting_rule` to be a valid element of SortingRuleEnum enum got `%s` instead", jsonObj.get("sorting_rule").toString()));
-        }
+          return;
       }
   }
 
@@ -503,7 +492,7 @@ public class QualificationsOption {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

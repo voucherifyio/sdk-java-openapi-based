@@ -90,7 +90,7 @@ public class LoyaltiesLoyaltyTierReward {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -124,7 +124,7 @@ public class LoyaltiesLoyaltyTierReward {
    * Get reward
    * @return reward
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Reward getReward() {
     return reward;
   }
@@ -145,7 +145,7 @@ public class LoyaltiesLoyaltyTierReward {
    * Get assignment
    * @return assignment
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public RewardAssignment getAssignment() {
     return assignment;
   }
@@ -166,7 +166,7 @@ public class LoyaltiesLoyaltyTierReward {
    * The type of the object represented by JSON. This object stores information about the loyalty tier reward.
    * @return _object
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public ObjectEnum getObject() {
     return _object;
   }
@@ -278,6 +278,9 @@ public class LoyaltiesLoyaltyTierReward {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("reward");
+    openapiRequiredFields.add("assignment");
+    openapiRequiredFields.add("object");
   }
 
  /**
@@ -287,22 +290,13 @@ public class LoyaltiesLoyaltyTierReward {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltiesLoyaltyTierReward
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltiesLoyaltyTierReward.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesLoyaltyTierReward is not found in the empty JSON string", LoyaltiesLoyaltyTierReward.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `reward`
-      if (jsonObj.get("reward") != null && !jsonObj.get("reward").isJsonNull()) {
-        Reward.validateJsonElement(jsonObj.get("reward"));
-      }
-      // validate the optional field `assignment`
-      if (jsonObj.get("assignment") != null && !jsonObj.get("assignment").isJsonNull()) {
-        RewardAssignment.validateJsonElement(jsonObj.get("assignment"));
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      // validate the required field `reward`
+      Reward.validateJsonElement(jsonObj.get("reward"));
+      // validate the required field `assignment`
+      RewardAssignment.validateJsonElement(jsonObj.get("assignment"));
+      if (!jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -310,12 +304,10 @@ public class LoyaltiesLoyaltyTierReward {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
   }
 
@@ -371,7 +363,7 @@ public class LoyaltiesLoyaltyTierReward {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItem;
 
 import com.google.gson.Gson;
@@ -227,9 +228,20 @@ public class RedemptionsListResponseBody {
         Objects.equals(this.additionalProperties, redemptionsListResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(_object, dataRef, redemptions, total, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -279,31 +291,12 @@ public class RedemptionsListResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to RedemptionsListResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedemptionsListResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsListResponseBody is not found in the empty JSON string", RedemptionsListResponseBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+        return;
       }
       if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
-      }
-      if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
-        JsonArray jsonArrayredemptions = jsonObj.getAsJsonArray("redemptions");
-        if (jsonArrayredemptions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("redemptions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `redemptions` to be an array in the JSON string but got `%s`", jsonObj.get("redemptions").toString()));
-          }
-
-          // validate the optional field `redemptions` (array)
-          for (int i = 0; i < jsonArrayredemptions.size(); i++) {
-            RedemptionsListResponseBodyRedemptionsItem.validateJsonElement(jsonArrayredemptions.get(i));
-          };
-        }
+        return;
       }
   }
 
@@ -359,7 +352,7 @@ public class RedemptionsListResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -112,7 +113,7 @@ public class StackingRules {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<RedeemablesApplicationModeEnum> {
@@ -163,7 +164,7 @@ public class StackingRules {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<RedeemablesSortingRuleEnum> {
@@ -468,9 +469,20 @@ public class StackingRules {
         Objects.equals(this.additionalProperties, stackingRules.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(redeemablesLimit, applicableRedeemablesLimit, applicableRedeemablesPerCategoryLimit, applicableExclusiveRedeemablesLimit, applicableExclusiveRedeemablesPerCategoryLimit, exclusiveCategories, jointCategories, redeemablesApplicationMode, redeemablesSortingRule, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -530,22 +542,9 @@ public class StackingRules {
   * @throws IOException if the JSON Element is invalid with respect to StackingRules
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!StackingRules.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in StackingRules is not found in the empty JSON string", StackingRules.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("exclusive_categories") != null && !jsonObj.get("exclusive_categories").isJsonNull() && !jsonObj.get("exclusive_categories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `exclusive_categories` to be an array in the JSON string but got `%s`", jsonObj.get("exclusive_categories").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("joint_categories") != null && !jsonObj.get("joint_categories").isJsonNull() && !jsonObj.get("joint_categories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `joint_categories` to be an array in the JSON string but got `%s`", jsonObj.get("joint_categories").toString()));
-      }
       if ((jsonObj.get("redeemables_application_mode") != null && !jsonObj.get("redeemables_application_mode").isJsonNull()) && !jsonObj.get("redeemables_application_mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redeemables_application_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redeemables_application_mode").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("redeemables_application_mode");
@@ -553,15 +552,13 @@ public class StackingRules {
         if (objectElement != null && !objectElement.isJsonNull()) {
           RedeemablesApplicationModeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `redeemables_application_mode` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("redeemables_application_mode") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `redeemables_application_mode` to be a valid element of RedeemablesApplicationModeEnum enum got `%s` instead", jsonObj.get("redeemables_application_mode").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("redeemables_sorting_rule") != null && !jsonObj.get("redeemables_sorting_rule").isJsonNull()) && !jsonObj.get("redeemables_sorting_rule").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redeemables_sorting_rule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redeemables_sorting_rule").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("redeemables_sorting_rule");
@@ -569,12 +566,10 @@ public class StackingRules {
         if (objectElement != null && !objectElement.isJsonNull()) {
           RedeemablesSortingRuleEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `redeemables_sorting_rule` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("redeemables_sorting_rule") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `redeemables_sorting_rule` to be a valid element of RedeemablesSortingRuleEnum enum got `%s` instead", jsonObj.get("redeemables_sorting_rule").toString()));
-        }
+          return;
       }
   }
 
@@ -630,7 +625,7 @@ public class StackingRules {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

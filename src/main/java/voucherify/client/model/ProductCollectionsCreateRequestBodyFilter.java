@@ -119,7 +119,7 @@ public class ProductCollectionsCreateRequestBodyFilter {
    * Get junction
    * @return junction
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Junction getJunction() {
     return junction;
   }
@@ -467,6 +467,7 @@ public class ProductCollectionsCreateRequestBodyFilter {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("junction");
   }
 
  /**
@@ -476,11 +477,6 @@ public class ProductCollectionsCreateRequestBodyFilter {
   * @throws IOException if the JSON Element is invalid with respect to ProductCollectionsCreateRequestBodyFilter
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ProductCollectionsCreateRequestBodyFilter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductCollectionsCreateRequestBodyFilter is not found in the empty JSON string", ProductCollectionsCreateRequestBodyFilter.openapiRequiredFields.toString()));
-        }
-      }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields

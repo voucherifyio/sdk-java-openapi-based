@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.EarningRuleBaseLoyaltyOrderItemsQuantity;
 
 import com.google.gson.Gson;
@@ -191,9 +192,20 @@ public class EarningRuleBaseLoyaltyOrderItems {
         Objects.equals(this.additionalProperties, earningRuleBaseLoyaltyOrderItems.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(quantity, amount, subtotalAmount, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -241,11 +253,6 @@ public class EarningRuleBaseLoyaltyOrderItems {
   * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyaltyOrderItems
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!EarningRuleBaseLoyaltyOrderItems.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyOrderItems is not found in the empty JSON string", EarningRuleBaseLoyaltyOrderItems.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `quantity`
       if (jsonObj.get("quantity") != null && !jsonObj.get("quantity").isJsonNull()) {
@@ -313,7 +320,7 @@ public class EarningRuleBaseLoyaltyOrderItems {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

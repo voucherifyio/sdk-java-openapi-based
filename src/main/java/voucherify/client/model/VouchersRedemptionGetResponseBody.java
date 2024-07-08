@@ -375,34 +375,15 @@ public class VouchersRedemptionGetResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!VouchersRedemptionGetResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VouchersRedemptionGetResponseBody is not found in the empty JSON string", VouchersRedemptionGetResponseBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+        return;
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+        return;
       }
       if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
-      }
-      if (jsonObj.get("redemption_entries") != null && !jsonObj.get("redemption_entries").isJsonNull()) {
-        JsonArray jsonArrayredemptionEntries = jsonObj.getAsJsonArray("redemption_entries");
-        if (jsonArrayredemptionEntries != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("redemption_entries").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `redemption_entries` to be an array in the JSON string but got `%s`", jsonObj.get("redemption_entries").toString()));
-          }
-
-          // validate the optional field `redemption_entries` (array)
-          for (int i = 0; i < jsonArrayredemptionEntries.size(); i++) {
-            VouchersRedemptionGetResponseBodyRedemptionEntriesItem.validateJsonElement(jsonArrayredemptionEntries.get(i));
-          };
-        }
+        return;
       }
   }
 
@@ -458,7 +439,7 @@ public class VouchersRedemptionGetResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
