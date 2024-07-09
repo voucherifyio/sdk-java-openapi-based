@@ -6,12 +6,12 @@ Response body schema representing **GET** `/orders`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about orders in a dictionary. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of order objects. |  |
-|**orders** | [**List&lt;OrderCalculatedNoCustomerData&gt;**](OrderCalculatedNoCustomerData.md) | Contains array of order objects. |  |
-|**total** | **Integer** | Total number of orders. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about orders in a dictionary. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of order objects. |
+|**orders** | [**List&lt;OrderCalculatedNoCustomerData&gt;**](OrderCalculatedNoCustomerData.md) | Contains array of order objects. |
+|**total** | **Integer** | Total number of orders. |
 
 
 

@@ -6,17 +6,17 @@ Request body schema for **POST** `/customers/bulk/async`.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Customer&#39;s first and last name. |  [optional] |
-|**description** | **String** | An arbitrary string that you can attach to a customer object. |  [optional] |
-|**email** | **String** | Customer&#39;s email address. |  [optional] |
-|**phone** | **String** | Customer&#39;s phone number. This parameter is mandatory when you try to send out codes to customers via an SMS channel. |  [optional] |
-|**birthday** | **LocalDate** | &#x60;Deprecated&#x60;. ~~Customer&#39;s birthdate; format YYYY-MM-DD~~. |  [optional] |
-|**birthdate** | **LocalDate** | Customer&#39;s birthdate; format YYYY-MM-DD. |  [optional] |
-|**address** | [**CustomerBaseAddress**](CustomerBaseAddress.md) |  |  [optional] |
-|**metadata** | **Object** | A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the customer. It can be useful for storing additional information about the customer in a structured format. This metadata can be used for validating whether the customer qualifies for a discount or it can be used in building customer segments. |  [optional] |
-|**sourceId** | **String** | Unique customer source ID. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**name** | **String** | Customer&#39;s first and last name. |
+|**description** | **String** | An arbitrary string that you can attach to a customer object. |
+|**email** | **String** | Customer&#39;s email address. |
+|**phone** | **String** | Customer&#39;s phone number. This parameter is mandatory when you try to send out codes to customers via an SMS channel. |
+|**birthday** | **LocalDate** | &#x60;Deprecated&#x60;. ~~Customer&#39;s birthdate; format YYYY-MM-DD~~. |
+|**birthdate** | **LocalDate** | Customer&#39;s birthdate; format YYYY-MM-DD. |
+|**address** | [**CustomerBaseAddress**](CustomerBaseAddress.md) |  |
+|**metadata** | **Object** | A set of custom key/value pairs that you can attach to a customer. The metadata object stores all custom attributes assigned to the customer. It can be useful for storing additional information about the customer in a structured format. This metadata can be used for validating whether the customer qualifies for a discount or it can be used in building customer segments. |
+|**sourceId** | **String** | Unique customer source ID. |
 
 
 

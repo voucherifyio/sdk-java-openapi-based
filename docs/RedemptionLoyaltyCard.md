@@ -2,13 +2,13 @@
 
 # RedemptionLoyaltyCard
 
-Stores the number of points being added back to the loyalty card for the reward redemption rollback.
+Contains the number of points subtracted from the loyalty card for the redemption.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**points** | **Integer** | Number of points being added back to the loyalty card for the reward redemption rollback. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**points** | **Integer** | Number of points subtracted from the loyalty card as a result of the redemption. |
 
 
 

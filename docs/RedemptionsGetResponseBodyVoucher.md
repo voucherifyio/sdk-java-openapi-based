@@ -5,38 +5,38 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Assigned by the Voucherify API, identifies the voucher. |  [optional] |
-|**code** | **String** | A code that identifies a voucher. Pattern can use all letters of the English alphabet, Arabic numerals, and special characters. |  [optional] |
-|**campaign** | **String** | A unique campaign name, identifies the voucher&#39;s parent campaign. |  [optional] |
-|**campaignId** | **String** | Assigned by the Voucherify API, identifies the voucher&#39;s parent campaign. |  [optional] |
-|**category** | **String** | Tag defining the category that this voucher belongs to. Useful when listing vouchers using the List Vouchers endpoint. |  [optional] |
-|**categoryId** | **String** | Unique category ID assigned by Voucherify. |  [optional] |
-|**categories** | [**List&lt;Category&gt;**](Category.md) | Contains details about the category. |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) | Defines the type of the voucher.  |  [optional] |
-|**discount** | [**Discount**](Discount.md) |  |  [optional] |
-|**gift** | [**RedemptionsGetResponseBodyVoucherGift**](RedemptionsGetResponseBodyVoucherGift.md) |  |  [optional] |
-|**loyaltyCard** | [**RedemptionsGetResponseBodyVoucherLoyaltyCard**](RedemptionsGetResponseBodyVoucherLoyaltyCard.md) |  |  [optional] |
-|**startDate** | **OffsetDateTime** | Activation timestamp defines when the code starts to be active in ISO 8601 format. Voucher is *inactive before* this date.  |  [optional] |
-|**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the code expires in ISO 8601 format.  Voucher is *inactive after* this date. |  [optional] |
-|**validityTimeframe** | [**RedemptionsGetResponseBodyVoucherValidityTimeframe**](RedemptionsGetResponseBodyVoucherValidityTimeframe.md) |  |  [optional] |
-|**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |  [optional] |
-|**validityHours** | [**ValidityHours**](ValidityHours.md) |  |  [optional] |
-|**active** | **Boolean** | A flag to toggle the voucher on or off. You can disable a voucher even though it&#39;s within the active period defined by the &#x60;start_date&#x60; and &#x60;expiration_date&#x60;.    - &#x60;true&#x60; indicates an *active* voucher - &#x60;false&#x60; indicates an *inactive* voucher |  [optional] |
-|**additionalInfo** | **String** | An optional field to keep any extra textual information about the code such as a code description and details. |  [optional] |
-|**metadata** | **Object** |  |  [optional] |
-|**assets** | [**VoucherAssets**](VoucherAssets.md) |  |  [optional] |
-|**isReferralCode** | **Boolean** | Flag indicating whether this voucher is a referral code; &#x60;true&#x60; for campaign type &#x60;REFERRAL_PROGRAM&#x60;. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the voucher was created. The value is shown in the ISO 8601 format. |  [optional] |
-|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the voucher was last updated in ISO 8601 format. |  [optional] |
-|**holderId** | **String** | Unique identifier of the customer who owns the voucher. |  [optional] |
-|**referrerId** | **String** | Unique identifier of the referring person. |  [optional] |
-|**_object** | **String** | The type of the object represented by JSON. Default is &#x60;voucher&#x60;. |  [optional] |
-|**validationRulesAssignments** | [**ValidationRulesAssignmentsList**](ValidationRulesAssignmentsList.md) |  |  [optional] |
-|**publish** | [**RedemptionsGetResponseBodyVoucherPublish**](RedemptionsGetResponseBodyVoucherPublish.md) |  |  [optional] |
-|**redemption** | [**RedemptionsGetResponseBodyVoucherRedemption**](RedemptionsGetResponseBodyVoucherRedemption.md) |  |  [optional] |
-|**holder** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** | Assigned by the Voucherify API, identifies the voucher. |
+|**code** | **String** | A code that identifies a voucher. Pattern can use all letters of the English alphabet, Arabic numerals, and special characters. |
+|**campaign** | **String** | A unique campaign name, identifies the voucher&#39;s parent campaign. |
+|**campaignId** | **String** | Assigned by the Voucherify API, identifies the voucher&#39;s parent campaign. |
+|**category** | **String** | Tag defining the category that this voucher belongs to. Useful when listing vouchers using the List Vouchers endpoint. |
+|**categoryId** | **String** | Unique category ID assigned by Voucherify. |
+|**categories** | [**List&lt;Category&gt;**](Category.md) | Contains details about the category. |
+|**type** | [**TypeEnum**](#TypeEnum) | Defines the type of the voucher.  |
+|**discount** | [**Discount**](Discount.md) |  |
+|**gift** | [**RedemptionsGetResponseBodyVoucherGift**](RedemptionsGetResponseBodyVoucherGift.md) |  |
+|**loyaltyCard** | [**RedemptionsGetResponseBodyVoucherLoyaltyCard**](RedemptionsGetResponseBodyVoucherLoyaltyCard.md) |  |
+|**startDate** | **OffsetDateTime** | Activation timestamp defines when the code starts to be active in ISO 8601 format. Voucher is *inactive before* this date.  |
+|**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the code expires in ISO 8601 format.  Voucher is *inactive after* this date. |
+|**validityTimeframe** | [**RedemptionsGetResponseBodyVoucherValidityTimeframe**](RedemptionsGetResponseBodyVoucherValidityTimeframe.md) |  |
+|**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |
+|**validityHours** | [**ValidityHours**](ValidityHours.md) |  |
+|**active** | **Boolean** | A flag to toggle the voucher on or off. You can disable a voucher even though it&#39;s within the active period defined by the &#x60;start_date&#x60; and &#x60;expiration_date&#x60;.    - &#x60;true&#x60; indicates an *active* voucher - &#x60;false&#x60; indicates an *inactive* voucher |
+|**additionalInfo** | **String** | An optional field to keep any extra textual information about the code such as a code description and details. |
+|**metadata** | **Object** |  |
+|**assets** | [**VoucherAssets**](VoucherAssets.md) |  |
+|**isReferralCode** | **Boolean** | Flag indicating whether this voucher is a referral code; &#x60;true&#x60; for campaign type &#x60;REFERRAL_PROGRAM&#x60;. |
+|**createdAt** | **OffsetDateTime** | Timestamp representing the date and time when the voucher was created. The value is shown in the ISO 8601 format. |
+|**updatedAt** | **OffsetDateTime** | Timestamp representing the date and time when the voucher was last updated in ISO 8601 format. |
+|**holderId** | **String** | Unique identifier of the customer who owns the voucher. |
+|**referrerId** | **String** | Unique identifier of the referring person. |
+|**_object** | **String** | The type of the object represented by JSON. Default is &#x60;voucher&#x60;. |
+|**validationRulesAssignments** | [**ValidationRulesAssignmentsList**](ValidationRulesAssignmentsList.md) |  |
+|**publish** | [**RedemptionsGetResponseBodyVoucherPublish**](RedemptionsGetResponseBodyVoucherPublish.md) |  |
+|**redemption** | [**RedemptionsGetResponseBodyVoucherRedemption**](RedemptionsGetResponseBodyVoucherRedemption.md) |  |
+|**holder** | [**SimpleCustomer**](SimpleCustomer.md) |  |
 
 
 

@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**metadata** | [**EarningRuleBaseLoyaltyCustomEventMetadata**](EarningRuleBaseLoyaltyCustomEventMetadata.md) |  |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**metadata** | [**EarningRuleBaseLoyaltyCustomEventMetadata**](EarningRuleBaseLoyaltyCustomEventMetadata.md) |  |
 
 
 

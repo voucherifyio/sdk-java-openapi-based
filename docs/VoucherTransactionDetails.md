@@ -6,21 +6,21 @@ Contains the detailed information about the transaction.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**balance** | [**VoucherTransactionDetailsBalance**](VoucherTransactionDetailsBalance.md) |  |  [optional] |
-|**order** | [**VoucherTransactionDetailsOrder**](VoucherTransactionDetailsOrder.md) |  |  [optional] |
-|**event** | [**VoucherTransactionDetailsEvent**](VoucherTransactionDetailsEvent.md) |  |  [optional] |
-|**earningRule** | [**VoucherTransactionDetailsEarningRule**](VoucherTransactionDetailsEarningRule.md) |  |  [optional] |
-|**segment** | [**VoucherTransactionDetailsSegment**](VoucherTransactionDetailsSegment.md) |  |  [optional] |
-|**loyaltyTier** | [**VoucherTransactionDetailsLoyaltyTier**](VoucherTransactionDetailsLoyaltyTier.md) |  |  [optional] |
-|**redemption** | [**VoucherTransactionDetailsRedemption**](VoucherTransactionDetailsRedemption.md) |  |  [optional] |
-|**rollback** | [**VoucherTransactionDetailsRollback**](VoucherTransactionDetailsRollback.md) |  |  [optional] |
-|**customEvent** | [**VoucherTransactionDetailsCustomEvent**](VoucherTransactionDetailsCustomEvent.md) |  |  [optional] |
-|**eventSchema** | [**VoucherTransactionDetailsEventSchema**](VoucherTransactionDetailsEventSchema.md) |  |  [optional] |
-|**reward** | [**VoucherTransactionDetailsReward**](VoucherTransactionDetailsReward.md) |  |  [optional] |
-|**sourceVoucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |  [optional] |
-|**destinationVoucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**balance** | [**VoucherTransactionDetailsBalance**](VoucherTransactionDetailsBalance.md) |  |
+|**order** | [**VoucherTransactionDetailsOrder**](VoucherTransactionDetailsOrder.md) |  |
+|**event** | [**VoucherTransactionDetailsEvent**](VoucherTransactionDetailsEvent.md) |  |
+|**earningRule** | [**VoucherTransactionDetailsEarningRule**](VoucherTransactionDetailsEarningRule.md) |  |
+|**segment** | [**VoucherTransactionDetailsSegment**](VoucherTransactionDetailsSegment.md) |  |
+|**loyaltyTier** | [**VoucherTransactionDetailsLoyaltyTier**](VoucherTransactionDetailsLoyaltyTier.md) |  |
+|**redemption** | [**VoucherTransactionDetailsRedemption**](VoucherTransactionDetailsRedemption.md) |  |
+|**rollback** | [**VoucherTransactionDetailsRollback**](VoucherTransactionDetailsRollback.md) |  |
+|**customEvent** | [**VoucherTransactionDetailsCustomEvent**](VoucherTransactionDetailsCustomEvent.md) |  |
+|**eventSchema** | [**VoucherTransactionDetailsEventSchema**](VoucherTransactionDetailsEventSchema.md) |  |
+|**reward** | [**VoucherTransactionDetailsReward**](VoucherTransactionDetailsReward.md) |  |
+|**sourceVoucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |
+|**destinationVoucher** | [**SimpleVoucher**](SimpleVoucher.md) |  |
 
 
 

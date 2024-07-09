@@ -5,32 +5,32 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Unique redemption ID. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) |  |  |
-|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |  |
-|**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
-|**trackingId** | **String** | Hashed customer source ID. |  [optional] |
-|**metadata** | **Object** |  |  [optional] |
-|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the amount of redeemed credits on a gift card. and A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts. |  [optional] |
-|**redemption** | **String** | Unique redemption ID of the parent redemption. |  [optional] |
-|**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |  |
-|**status** | [**StatusEnum**](#StatusEnum) |  |  |
-|**relatedRedemptions** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions.md) |  |  [optional] |
-|**failureCode** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a generic reason as to why the redemption failed. |  [optional] |
-|**failureMessage** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a more expanded reason as to why the redemption failed. |  [optional] |
-|**order** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder.md) |  |  [optional] |
-|**channel** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.md) |  |  |
-|**customer** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemCustomer**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemCustomer.md) |  |  [optional] |
-|**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object. |  |
-|**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher. |  |
-|**voucher** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher.md) |  |  [optional] |
-|**promotionTier** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier.md) |  |  [optional] |
-|**reward** | [**RedemptionRewardResult**](RedemptionRewardResult.md) |  |  [optional] |
-|**gift** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift.md) |  |  [optional] |
-|**loyaltyCard** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard.md) |  |  [optional] |
-|**reason** | **String** | System generated cause for the redemption being invalid in the context of the provided parameters. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** |  |
+|**_object** | [**ObjectEnum**](#ObjectEnum) |  |
+|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |
+|**customerId** | **String** | Unique customer ID of the redeeming customer. |
+|**trackingId** | **String** | Hashed customer source ID. |
+|**metadata** | **Object** |  |
+|**amount** | **Integer** | For gift cards, this is a positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the number of redeemed credits. For loyalty cards, this is the number of loyalty points used in the transaction. and For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card. For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer. |
+|**redemption** | **String** | Unique redemption ID of the parent redemption. |
+|**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |
+|**status** | [**StatusEnum**](#StatusEnum) |  |
+|**relatedRedemptions** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions.md) |  |
+|**failureCode** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a generic reason as to why the redemption failed. |
+|**failureMessage** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a more expanded reason as to why the redemption failed. |
+|**order** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder.md) |  |
+|**channel** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.md) |  |
+|**customer** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemCustomer**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemCustomer.md) |  |
+|**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object. |
+|**relatedObjectId** | **String** |  |
+|**voucher** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher.md) |  |
+|**promotionTier** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier.md) |  |
+|**reward** | [**RedemptionRewardResult**](RedemptionRewardResult.md) |  |
+|**gift** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift.md) |  |
+|**loyaltyCard** | [**VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard**](VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard.md) |  |
+|**reason** | **String** | System generated cause for the redemption being invalid in the context of the provided parameters. |
 
 
 

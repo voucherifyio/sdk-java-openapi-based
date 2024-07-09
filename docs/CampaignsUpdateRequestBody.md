@@ -5,30 +5,30 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**startDate** | **OffsetDateTime** | Activation timestamp defines when the campaign starts to be active in ISO 8601 format. Campaign is *inactive before* this date.  |  [optional] |
-|**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the campaign expires in ISO 8601 format.  Campaign is *inactive after* this date. |  [optional] |
-|**validityTimeframe** | [**CampaignsUpdateRequestBodyValidityTimeframe**](CampaignsUpdateRequestBodyValidityTimeframe.md) |  |  [optional] |
-|**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |  [optional] |
-|**validityHours** | [**ValidityHours**](ValidityHours.md) |  |  [optional] |
-|**description** | **String** | An optional field to keep any extra textual information about the campaign such as a campaign description and details. |  [optional] |
-|**category** | **String** | The category assigned to the campaign. Either pass this parameter OR the &#x60;category_id&#x60;. |  [optional] |
-|**metadata** | **Object** |  |  [optional] |
-|**unsetMetadataFields** | **List&lt;String&gt;** | Determine which metadata should be removed from campaign. |  [optional] |
-|**categoryId** | **String** | Unique category ID that this campaign belongs to. Either pass this parameter OR the &#x60;category&#x60;. |  [optional] |
-|**activityDurationAfterPublishing** | **String** | Defines the amount of time the campaign will be active in ISO 8601 format after publishing. For example, a campaign with a &#x60;duration&#x60; of &#x60;P24D&#x60; will be valid for a duration of 24 days. |  [optional] |
-|**joinOnce** | **Boolean** | If this value is set to &#x60;true&#x60;, customers will be able to join the campaign only once. |  [optional] |
-|**autoJoin** | **Boolean** | Indicates whether customers will be able to auto-join a loyalty campaign if any earning rule is fulfilled. |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) | Defines whether the campaign can be updated with new vouchers after campaign creation.      - &#x60;AUTO_UPDATE&#x60;: By choosing the auto update option you will create a campaign that can be enhanced by new vouchers after the time of creation (e.g. by publish vouchers method).     -  &#x60;STATIC&#x60;: vouchers need to be manually published. |  [optional] |
-|**discount** | **Object** |  |  [optional] |
-|**referralProgram** | [**ReferralProgram**](ReferralProgram.md) |  |  [optional] |
-|**gift** | [**Gift**](Gift.md) |  |  [optional] |
-|**loyaltyTiersExpiration** | [**LoyaltyTiersExpirationAll**](LoyaltyTiersExpirationAll.md) |  |  [optional] |
-|**options** | [**CampaignsUpdateRequestBodyOptions**](CampaignsUpdateRequestBodyOptions.md) |  |  [optional] |
-|**winnersCount** | **String** | It represents the total number of winners in a lucky draw. |  [optional] |
-|**uniqueWinnersPerDraw** | **String** | It indicates whether each winner in a draw is unique or not. |  [optional] |
-|**uniqueWinners** | **String** | Specifies whether each participant can win only once across multiple draws. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**startDate** | **OffsetDateTime** | Activation timestamp defines when the campaign starts to be active in ISO 8601 format. Campaign is *inactive before* this date.  |
+|**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the campaign expires in ISO 8601 format.  Campaign is *inactive after* this date. |
+|**validityTimeframe** | [**CampaignsUpdateRequestBodyValidityTimeframe**](CampaignsUpdateRequestBodyValidityTimeframe.md) |  |
+|**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |
+|**validityHours** | [**ValidityHours**](ValidityHours.md) |  |
+|**description** | **String** | An optional field to keep any extra textual information about the campaign such as a campaign description and details. |
+|**category** | **String** | The category assigned to the campaign. Either pass this parameter OR the &#x60;category_id&#x60;. |
+|**metadata** | **Object** |  |
+|**unsetMetadataFields** | **List&lt;String&gt;** | Determine which metadata should be removed from campaign. |
+|**categoryId** | **String** | Unique category ID that this campaign belongs to. Either pass this parameter OR the &#x60;category&#x60;. |
+|**activityDurationAfterPublishing** | **String** | Defines the amount of time the campaign will be active in ISO 8601 format after publishing. For example, a campaign with a &#x60;duration&#x60; of &#x60;P24D&#x60; will be valid for a duration of 24 days. |
+|**joinOnce** | **Boolean** | If this value is set to &#x60;true&#x60;, customers will be able to join the campaign only once. |
+|**autoJoin** | **Boolean** | Indicates whether customers will be able to auto-join a loyalty campaign if any earning rule is fulfilled. |
+|**type** | [**TypeEnum**](#TypeEnum) | Defines whether the campaign can be updated with new vouchers after campaign creation.      - &#x60;AUTO_UPDATE&#x60;: By choosing the auto update option you will create a campaign that can be enhanced by new vouchers after the time of creation (e.g. by publish vouchers method).     -  &#x60;STATIC&#x60;: vouchers need to be manually published. |
+|**discount** | **Object** |  |
+|**referralProgram** | [**ReferralProgram**](ReferralProgram.md) |  |
+|**gift** | [**Gift**](Gift.md) |  |
+|**loyaltyTiersExpiration** | [**LoyaltyTiersExpirationAll**](LoyaltyTiersExpirationAll.md) |  |
+|**options** | [**CampaignsUpdateRequestBodyOptions**](CampaignsUpdateRequestBodyOptions.md) |  |
+|**winnersCount** | **String** | It represents the total number of winners in a lucky draw. |
+|**uniqueWinnersPerDraw** | **String** | It indicates whether each winner in a draw is unique or not. |
+|**uniqueWinners** | **String** | Specifies whether each participant can win only once across multiple draws. |
 
 
 

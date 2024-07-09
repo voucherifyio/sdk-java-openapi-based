@@ -6,10 +6,10 @@ Defines the resource that is being modified with the values that are returned in
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Identifies the voucher that is being modified, this is the ID that was assigned by the Voucherify API. |  |
-|**type** | [**TypeEnum**](#TypeEnum) | The object being modified, i.e. voucher. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** | Identifies the voucher that is being modified, this is the ID that was assigned by the Voucherify API. |
+|**type** | [**TypeEnum**](#TypeEnum) | The object being modified, i.e. voucher. |
 
 
 

@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) |  |  |
-|**parameters** | [**ExportsCreateRequestBodyParameters**](ExportsCreateRequestBodyParameters.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**exportedObject** | [**ExportedObjectEnum**](#ExportedObjectEnum) |  |
+|**parameters** | [**ExportsCreateRequestBodyParameters**](ExportsCreateRequestBodyParameters.md) |  |
 
 
 

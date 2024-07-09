@@ -5,14 +5,14 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**status** | [**StatusEnum**](#StatusEnum) | Indicates whether the redeemable can be applied or not applied based on the validation rules. |  |
-|**id** | **String** | Redeemable ID, i.e. the voucher code. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | Redeemable&#39;s object type. |  |
-|**result** | [**ValidationsRedeemableSkippedResult**](ValidationsRedeemableSkippedResult.md) |  |  |
-|**metadata** | **Object** | The metadata object stores all custom attributes in the form of key/value pairs assigned to the redeemable. |  [optional] |
-|**categories** | [**List&lt;Category&gt;**](Category.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**status** | [**StatusEnum**](#StatusEnum) | Indicates whether the redeemable can be applied or not applied based on the validation rules. |
+|**id** | **String** | Redeemable ID, i.e. the voucher code. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | Redeemable&#39;s object type. |
+|**result** | [**ValidationsRedeemableSkippedResult**](ValidationsRedeemableSkippedResult.md) |  |
+|**metadata** | **Object** | The metadata object stores all custom attributes in the form of key/value pairs assigned to the redeemable. |
+|**categories** | [**List&lt;Category&gt;**](Category.md) |  |
 
 
 

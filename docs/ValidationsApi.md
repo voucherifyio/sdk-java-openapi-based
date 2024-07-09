@@ -60,9 +60,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationsValidateRequestBody** | [**ValidationsValidateRequestBody**](ValidationsValidateRequestBody.md)|  | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationsValidateRequestBody** | [**ValidationsValidateRequestBody**](ValidationsValidateRequestBody.md)|  |
 
 ### Return type
 

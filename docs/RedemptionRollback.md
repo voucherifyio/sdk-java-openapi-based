@@ -6,32 +6,32 @@ This is an object representing a redemption rollback.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Unique redemption ID. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON |  |
-|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |  |
-|**customerId** | **String** | Unique customer ID of the redeeming customer. |  [optional] |
-|**trackingId** | **String** | Hashed customer source ID. |  [optional] |
-|**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |  [optional] |
-|**amount** | **Integer** | A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts. |  [optional] |
-|**redemption** | **String** | Unique redemption ID of the parent redemption. |  [optional] |
-|**reason** | **String** | System generated cause for the redemption being invalid in the context of the provided parameters. |  [optional] |
-|**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Redemption status. |  |
-|**relatedRedemptions** | [**RedemptionRollbackRelatedRedemptions**](RedemptionRollbackRelatedRedemptions.md) |  |  [optional] |
-|**failureCode** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a generic reason as to why the redemption failed. |  [optional] |
-|**failureMessage** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a more expanded reason as to why the redemption failed. |  [optional] |
-|**order** | [**OrderCalculatedNoCustomerData**](OrderCalculatedNoCustomerData.md) |  |  [optional] |
-|**channel** | [**RedemptionChannel**](RedemptionChannel.md) |  |  |
-|**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |  [optional] |
-|**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object. |  |
-|**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher. |  |
-|**voucher** | [**Voucher**](Voucher.md) |  |  [optional] |
-|**promotionTier** | [**PromotionTier**](PromotionTier.md) |  |  [optional] |
-|**reward** | [**RedemptionRewardResult**](RedemptionRewardResult.md) |  |  [optional] |
-|**gift** | [**RedemptionGift**](RedemptionGift.md) |  |  [optional] |
-|**loyaltyCard** | [**RedemptionLoyaltyCard**](RedemptionLoyaltyCard.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** | Unique identifier of the redemption rollback. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by the JSON |
+|**date** | **OffsetDateTime** | Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format. |
+|**customerId** | **String** | Unique customer ID of the redeeming customer. |
+|**trackingId** | **String** | Hashed customer source ID. |
+|**metadata** | **Object** | The metadata object stores all custom attributes assigned to the redemption. |
+|**amount** | **Integer** | For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card. For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer. |
+|**redemption** | **String** | Unique redemption ID of the parent redemption. |
+|**reason** | **String** | System generated cause for the redemption being invalid in the context of the provided parameters. |
+|**result** | [**ResultEnum**](#ResultEnum) | Redemption result. |
+|**status** | [**StatusEnum**](#StatusEnum) | Redemption status. |
+|**relatedRedemptions** | [**RedemptionRollbackRelatedRedemptions**](RedemptionRollbackRelatedRedemptions.md) |  |
+|**failureCode** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a generic reason as to why the redemption failed. |
+|**failureMessage** | **String** | If the result is &#x60;FAILURE&#x60;, this parameter will provide a more expanded reason as to why the redemption failed. |
+|**order** | [**OrderCalculatedNoCustomerData**](OrderCalculatedNoCustomerData.md) |  |
+|**channel** | [**RedemptionRollbackChannel**](RedemptionRollbackChannel.md) |  |
+|**customer** | [**SimpleCustomer**](SimpleCustomer.md) |  |
+|**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object. |
+|**relatedObjectId** | **String** | Unique identifier of the related object. It is assigned by Voucherify, i.e. &#x60;v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno&#x60; for a voucher. |
+|**voucher** | [**Voucher**](Voucher.md) |  |
+|**promotionTier** | [**PromotionTier**](PromotionTier.md) |  |
+|**reward** | [**RedemptionRewardResult**](RedemptionRewardResult.md) |  |
+|**gift** | [**RedemptionRollbackGift**](RedemptionRollbackGift.md) |  |
+|**loyaltyCard** | [**RedemptionRollbackLoyaltyCard**](RedemptionRollbackLoyaltyCard.md) |  |
 
 
 

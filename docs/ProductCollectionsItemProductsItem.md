@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | The product ID. |  |
-|**productId** | **String** | Product ID for SKUs. |  [optional] |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | Denotes the type of object represented by the ID. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** | The product ID. |
+|**productId** | **String** | Product ID for SKUs. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | Denotes the type of object represented by the ID. |
 
 
 

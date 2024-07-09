@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**order** | [**OrderEnum**](#OrderEnum) |  |  [optional] |
-|**fields** | [**List&lt;FieldsEnum&gt;**](#List&lt;FieldsEnum&gt;) | Array of strings containing the data in the export. These fields define the headers in the CSV file. |  [optional] |
-|**filters** | [**ExportsCreateResponseBodyParametersFilters**](ExportsCreateResponseBodyParametersFilters.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**order** | [**OrderEnum**](#OrderEnum) |  |
+|**fields** | [**List&lt;FieldsEnum&gt;**](#List&lt;FieldsEnum&gt;) | Array of strings containing the data in the export. These fields define the headers in the CSV file. |
+|**filters** | [**ExportsCreateResponseBodyParametersFilters**](ExportsCreateResponseBodyParametersFilters.md) |  |
 
 
 

@@ -70,9 +70,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customersCreateRequestBody** | [**CustomersCreateRequestBody**](CustomersCreateRequestBody.md)| Create a customer with specified parameters. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customersCreateRequestBody** | [**CustomersCreateRequestBody**](CustomersCreateRequestBody.md)| Create a customer with specified parameters. |
 
 ### Return type
 
@@ -145,9 +145,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. |
 
 ### Return type
 
@@ -219,9 +219,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. |
 
 ### Return type
 
@@ -294,9 +294,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. |
 
 ### Return type
 
@@ -369,9 +369,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **_file** | **File**| File path. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **_file** | **File**| File path. |
 
 ### Return type
 
@@ -444,9 +444,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| Unique identifier of a customer represented by an internal customer ID or customer source ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customerId** | **String**| Unique identifier of a customer represented by an internal customer ID or customer source ID. |
 
 ### Return type
 
@@ -530,20 +530,20 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **email** | **String**| Limit the customers to the ones that have this specific email address. | [optional] |
-| **city** | **String**| Limit the customers to the ones that are located in the specified city. | [optional] |
-| **name** | **String**| Filter customers by the name property. | [optional] |
-| **segmentId** | **String**| Filter customers by the segment id. | [optional] |
-| **createdAtBefore** | **OffsetDateTime**| Filter customers by date customer was created. | [optional] |
-| **createdAtAfter** | **OffsetDateTime**| Filter customers by date customer was created. | [optional] |
-| **updatedAtBefore** | **OffsetDateTime**| Filter customers by date customer was updated last time. | [optional] |
-| **updatedAtAfter** | **OffsetDateTime**| Filter customers by date customer was updated last time. | [optional] |
-| **order** | [**ParameterOrderListCustomers**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at, source_id, -source_id] |
-| **startingAfter** | **OffsetDateTime**| A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **email** | **String**| Limit the customers to the ones that have this specific email address. |
+| **city** | **String**| Limit the customers to the ones that are located in the specified city. |
+| **name** | **String**| Filter customers by the name property. |
+| **segmentId** | **String**| Filter customers by the segment id. |
+| **createdAtBefore** | **OffsetDateTime**| Filter customers by date customer was created. |
+| **createdAtAfter** | **OffsetDateTime**| Filter customers by date customer was created. |
+| **updatedAtBefore** | **OffsetDateTime**| Filter customers by date customer was updated last time. |
+| **updatedAtAfter** | **OffsetDateTime**| Filter customers by date customer was updated last time. |
+| **order** | [**ParameterOrderListCustomers**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
+| **startingAfter** | **OffsetDateTime**| A cursor for pagination. This is a date-time value that defines your place in the list based on &#x60;created_at&#x60; property from the customer object. For instance, if you make a list request and receive 100 objects, ending with an object created at &#x60;2020-05-24T13:43:09.024Z&#x60;, your subsequent call can include &#x60;starting_after&#x3D;2020-05-24T13:43:09.024Z&#x60; in order to fetch the next page of the list.  &lt;!-- title: Options --&gt; | **Option** | **Format** | **Sorting** | |:---|:---|:---| | Return customers **before** a specific creation date  | - set &#x60;starting_after&#x60; parameter to the breakpoint date | Sorting order is **descending**; the most recent dates first and least recent dates last. | | Return customers **after** a specific create or update date | - include the &#x60;order&#x60; parameter set to &#x60;created_at&#x60; or &#x60;updated_at&#x60;&lt;br&gt;- set &#x60;starting_after&#x60; to the breakpoint date | Sorting order is **ascending**; the least recent dates first and the most recent dates last. |  |
 
 ### Return type
 
@@ -617,10 +617,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. | |
-| **customersUpdateRequestBody** | [**CustomersUpdateRequestBody**](CustomersUpdateRequestBody.md)| Specify the parameters to be updated. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customerId** | **String**| A Voucherify customer&#39;s &#x60;id&#x60; or &#x60;source_id&#x60;. |
+| **customersUpdateRequestBody** | [**CustomersUpdateRequestBody**](CustomersUpdateRequestBody.md)| Specify the parameters to be updated. |
 
 ### Return type
 
@@ -693,10 +693,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A Voucherify unique customer identifier or source ID. | |
-| **body** | **Object**| Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customerId** | **String**| A Voucherify unique customer identifier or source ID. |
+| **body** | **Object**| Key-value pairs where the key is the consent identifier and value is a boolean that identifies if a customer has given the consent or not. To deny all consents use \&quot;unsubscribed\&quot; as a consent identifier and \&quot;true\&quot; as its value.    #### Examples  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;cnst_aIdUulAh0SCsOCaS3005y7yS\&quot;: true,     \&quot;cnst_aIdUulAhwewqaS31213fdsfds\&quot;: false } &#x60;&#x60;&#x60;  Opt-out from all communication:  &lt;!-- title: \&quot;Request Body\&quot; lineNumbers: true --&gt; &#x60;&#x60;&#x60;json {     \&quot;unsubscribed\&quot;: true } &#x60;&#x60;&#x60; |
 
 ### Return type
 
@@ -769,9 +769,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customersUpdateInBulkRequestBody** | [**List&lt;CustomersUpdateInBulkRequestBody&gt;**](CustomersUpdateInBulkRequestBody.md)| Specify the customer fields that you would like to update in each customer object. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customersUpdateInBulkRequestBody** | [**List&lt;CustomersUpdateInBulkRequestBody&gt;**](CustomersUpdateInBulkRequestBody.md)| Specify the customer fields that you would like to update in each customer object. |
 
 ### Return type
 
@@ -844,9 +844,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customersMetadataUpdateInBulkRequestBody** | [**CustomersMetadataUpdateInBulkRequestBody**](CustomersMetadataUpdateInBulkRequestBody.md)| List the &#x60;source_ids&#x60; of the customer&#39;s you would like to update along with the metadata key value pairs. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **customersMetadataUpdateInBulkRequestBody** | [**CustomersMetadataUpdateInBulkRequestBody**](CustomersMetadataUpdateInBulkRequestBody.md)| List the &#x60;source_ids&#x60; of the customer&#39;s you would like to update along with the metadata key value pairs. |
 
 ### Return type
 

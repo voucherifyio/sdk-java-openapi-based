@@ -114,7 +114,7 @@ public class CampaignsCreateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -165,7 +165,7 @@ public class CampaignsCreateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -246,7 +246,7 @@ public class CampaignsCreateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -343,7 +343,7 @@ public class CampaignsCreateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<CreationStatusEnum> {
@@ -400,7 +400,7 @@ public class CampaignsCreateResponseBody {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<VouchersGenerationStatusEnum> {
@@ -431,7 +431,7 @@ public class CampaignsCreateResponseBody {
 
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<Category> categories = new ArrayList<>();
+  private List<Category> categories;
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
@@ -466,7 +466,7 @@ public class CampaignsCreateResponseBody {
    * Unique campaign ID, assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -487,7 +487,7 @@ public class CampaignsCreateResponseBody {
    * Campaign name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -529,7 +529,7 @@ public class CampaignsCreateResponseBody {
    * Type of campaign.
    * @return campaignType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CampaignTypeEnum getCampaignType() {
     return campaignType;
   }
@@ -550,7 +550,7 @@ public class CampaignsCreateResponseBody {
    * Defines whether the campaign can be updated with new vouchers after campaign creation.      - &#x60;AUTO_UPDATE&#x60;: the campaign is dynamic, i.e. vouchers will generate based on set criteria     -  &#x60;STATIC&#x60;: vouchers need to be manually published
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -592,7 +592,7 @@ public class CampaignsCreateResponseBody {
    * Indicates whether customers will be able to auto-join a loyalty campaign if any earning rule is fulfilled.
    * @return autoJoin
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getAutoJoin() {
     return autoJoin;
   }
@@ -613,7 +613,7 @@ public class CampaignsCreateResponseBody {
    * If this value is set to &#x60;true&#x60;, customers will be able to join the campaign only once.
    * @return joinOnce
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getJoinOnce() {
     return joinOnce;
   }
@@ -634,7 +634,7 @@ public class CampaignsCreateResponseBody {
    * Flag indicating whether the campaign is to use the voucher&#39;s metadata schema instead of the campaign metadata schema.
    * @return useVoucherMetadataSchema
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getUseVoucherMetadataSchema() {
     return useVoucherMetadataSchema;
   }
@@ -852,7 +852,7 @@ public class CampaignsCreateResponseBody {
    * Timestamp representing the date and time when the campaign was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -915,7 +915,7 @@ public class CampaignsCreateResponseBody {
    * Indicates the status of the campaign creation.
    * @return creationStatus
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CreationStatusEnum getCreationStatus() {
     return creationStatus;
   }
@@ -936,7 +936,7 @@ public class CampaignsCreateResponseBody {
    * Indicates the status of the campaign&#39;s voucher generation.
    * @return vouchersGenerationStatus
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VouchersGenerationStatusEnum getVouchersGenerationStatus() {
     return vouchersGenerationStatus;
   }
@@ -957,7 +957,7 @@ public class CampaignsCreateResponseBody {
    * Indicates whether the resource can be deleted.
    * @return _protected
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getProtected() {
     return _protected;
   }
@@ -1007,7 +1007,7 @@ public class CampaignsCreateResponseBody {
    * Contains details about the category.
    * @return categories
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<Category> getCategories() {
     return categories;
   }
@@ -1028,7 +1028,7 @@ public class CampaignsCreateResponseBody {
    * The type of the object represented by JSON. This object stores information about the campaign.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -1122,6 +1122,50 @@ public class CampaignsCreateResponseBody {
     this.validationRulesAssignments = validationRulesAssignments;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the CampaignsCreateResponseBody instance itself
+   */
+  public CampaignsCreateResponseBody putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -1163,7 +1207,8 @@ public class CampaignsCreateResponseBody {
         Objects.equals(this.referralProgram, campaignsCreateResponseBody.referralProgram) &&
         Objects.equals(this.loyaltyTiersExpiration, campaignsCreateResponseBody.loyaltyTiersExpiration) &&
         Objects.equals(this.promotion, campaignsCreateResponseBody.promotion) &&
-        Objects.equals(this.validationRulesAssignments, campaignsCreateResponseBody.validationRulesAssignments);
+        Objects.equals(this.validationRulesAssignments, campaignsCreateResponseBody.validationRulesAssignments)&&
+        Objects.equals(this.additionalProperties, campaignsCreateResponseBody.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1172,7 +1217,7 @@ public class CampaignsCreateResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, campaignType, type, voucher, autoJoin, joinOnce, useVoucherMetadataSchema, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, vouchersCount, startDate, expirationDate, active, metadata, createdAt, updatedAt, category, creationStatus, vouchersGenerationStatus, _protected, categoryId, categories, _object, referralProgram, loyaltyTiersExpiration, promotion, validationRulesAssignments);
+    return Objects.hash(id, name, description, campaignType, type, voucher, autoJoin, joinOnce, useVoucherMetadataSchema, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, vouchersCount, startDate, expirationDate, active, metadata, createdAt, updatedAt, category, creationStatus, vouchersGenerationStatus, _protected, categoryId, categories, _object, referralProgram, loyaltyTiersExpiration, promotion, validationRulesAssignments, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1217,6 +1262,7 @@ public class CampaignsCreateResponseBody {
     sb.append("    loyaltyTiersExpiration: ").append(toIndentedString(loyaltyTiersExpiration)).append("\n");
     sb.append("    promotion: ").append(toIndentedString(promotion)).append("\n");
     sb.append("    validationRulesAssignments: ").append(toIndentedString(validationRulesAssignments)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1273,19 +1319,6 @@ public class CampaignsCreateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("campaign_type");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("auto_join");
-    openapiRequiredFields.add("join_once");
-    openapiRequiredFields.add("use_voucher_metadata_schema");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("creation_status");
-    openapiRequiredFields.add("vouchers_generation_status");
-    openapiRequiredFields.add("protected");
-    openapiRequiredFields.add("categories");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -1295,38 +1328,18 @@ public class CampaignsCreateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to CampaignsCreateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CampaignsCreateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsCreateResponseBody is not found in the empty JSON string", CampaignsCreateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CampaignsCreateResponseBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignsCreateResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignsCreateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        return;
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        return;
       }
-      if (!jsonObj.get("campaign_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_type").toString()));
+      if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("campaign_type");
@@ -1334,15 +1347,13 @@ public class CampaignsCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           CampaignTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `campaign_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("campaign_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a valid element of CampaignTypeEnum enum got `%s` instead", jsonObj.get("campaign_type").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("type");
@@ -1350,12 +1361,10 @@ public class CampaignsCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           TypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
-        }
+          return;
       }
       // validate the optional field `voucher`
       if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
@@ -1365,22 +1374,18 @@ public class CampaignsCreateResponseBody {
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
-      }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
         ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
       if ((jsonObj.get("activity_duration_after_publishing") != null && !jsonObj.get("activity_duration_after_publishing").isJsonNull()) && !jsonObj.get("activity_duration_after_publishing").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `activity_duration_after_publishing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("activity_duration_after_publishing").toString()));
+        return;
       }
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+        return;
       }
-      if (!jsonObj.get("creation_status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_status").toString()));
+      if ((jsonObj.get("creation_status") != null && !jsonObj.get("creation_status").isJsonNull()) && !jsonObj.get("creation_status").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("creation_status");
@@ -1388,15 +1393,13 @@ public class CampaignsCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           CreationStatusEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `creation_status` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("creation_status") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `creation_status` to be a valid element of CreationStatusEnum enum got `%s` instead", jsonObj.get("creation_status").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("vouchers_generation_status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vouchers_generation_status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vouchers_generation_status").toString()));
+      if ((jsonObj.get("vouchers_generation_status") != null && !jsonObj.get("vouchers_generation_status").isJsonNull()) && !jsonObj.get("vouchers_generation_status").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("vouchers_generation_status");
@@ -1404,28 +1407,16 @@ public class CampaignsCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           VouchersGenerationStatusEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `vouchers_generation_status` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("vouchers_generation_status") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `vouchers_generation_status` to be a valid element of VouchersGenerationStatusEnum enum got `%s` instead", jsonObj.get("vouchers_generation_status").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+        return;
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("categories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
-      }
-
-      JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
-      // validate the required field `categories` (array)
-      for (int i = 0; i < jsonArraycategories.size(); i++) {
-        Category.validateJsonElement(jsonArraycategories.get(i));
-      };
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       // validate the optional field `referral_program`
       if (jsonObj.get("referral_program") != null && !jsonObj.get("referral_program").isJsonNull()) {
@@ -1460,6 +1451,23 @@ public class CampaignsCreateResponseBody {
            @Override
            public void write(JsonWriter out, CampaignsCreateResponseBody value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -1467,7 +1475,28 @@ public class CampaignsCreateResponseBody {
            public CampaignsCreateResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             CampaignsCreateResponseBody instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

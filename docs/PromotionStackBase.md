@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Promotion stack name. |  |
-|**tiers** | [**PromotionStackBaseTiers**](PromotionStackBaseTiers.md) |  |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**name** | **String** | Promotion stack name. |
+|**tiers** | [**PromotionStackBaseTiers**](PromotionStackBaseTiers.md) |  |
 
 
 

@@ -70,11 +70,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRuleId** | **String**| Unique validation rule ID. | |
-| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. | [optional] |
-| **validationRulesAssignmentsCreateRequestBody** | [**ValidationRulesAssignmentsCreateRequestBody**](ValidationRulesAssignmentsCreateRequestBody.md)| Specify the resource that you would like to assign the validation rule to. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRuleId** | **String**| Unique validation rule ID. |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the previous assignment with the same data will be deleted and a new one will be added. |
+| **validationRulesAssignmentsCreateRequestBody** | [**ValidationRulesAssignmentsCreateRequestBody**](ValidationRulesAssignmentsCreateRequestBody.md)| Specify the resource that you would like to assign the validation rule to. |
 
 ### Return type
 
@@ -147,9 +147,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRulesCreateRequestBody** | [**ValidationRulesCreateRequestBody**](ValidationRulesCreateRequestBody.md)| Specify the validation rules parameters. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRulesCreateRequestBody** | [**ValidationRulesCreateRequestBody**](ValidationRulesCreateRequestBody.md)| Specify the validation rules parameters. |
 
 ### Return type
 
@@ -222,10 +222,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRuleId** | **String**| A unique validation rule ID. | |
-| **assignmentId** | **String**| A unique validation rule assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRuleId** | **String**| A unique validation rule ID. |
+| **assignmentId** | **String**| A unique validation rule assignment ID. |
 
 ### Return type
 
@@ -297,9 +297,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRuleId** | **String**| A unique validation rule ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRuleId** | **String**| A unique validation rule ID. |
 
 ### Return type
 
@@ -372,9 +372,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRuleId** | **String**| A unique validation rule ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRuleId** | **String**| A unique validation rule ID. |
 
 ### Return type
 
@@ -450,12 +450,12 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRuleId** | **String**| Unique validation rule ID. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrderListValidationRuleAssignments**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRuleId** | **String**| Unique validation rule ID. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrderListValidationRuleAssignments**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
 
 ### Return type
 
@@ -532,13 +532,13 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrderListValidationRules**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at, name, -name] |
-| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. | [optional] |
-| **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrderListValidationRules**](.md)| This is a property that controls the sorting direction of the results. Sort the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
+| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must start on. Represented in ISO 8601 format. |
+| **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. |
 
 ### Return type
 
@@ -615,13 +615,13 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **relatedObjectId** | **String**| The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. | [optional] |
-| **rule** | **String**| Validation rule ID. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **order** | **String**| Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **relatedObjectId** | **String**| The resource ID to which the validation rule was assigned; this could be, for example, a resource ID of a voucher, campaign, earning rule, reward assignment, promotion tier, or distribution. |
+| **rule** | **String**| Validation rule ID. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **order** | **String**| Sorts the results using one of the filtering options: &#x60;-created_at&#x60;, &#x60;created_at&#x60;, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
 
 ### Return type
 
@@ -695,10 +695,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **validationRuleId** | **String**| A unique validation rule ID. | |
-| **validationRulesUpdateRequestBody** | [**ValidationRulesUpdateRequestBody**](ValidationRulesUpdateRequestBody.md)| Specify the parameters to be updated. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **validationRuleId** | **String**| A unique validation rule ID. |
+| **validationRulesUpdateRequestBody** | [**ValidationRulesUpdateRequestBody**](ValidationRulesUpdateRequestBody.md)| Specify the parameters to be updated. |
 
 ### Return type
 

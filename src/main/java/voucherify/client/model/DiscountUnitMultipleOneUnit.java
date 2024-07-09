@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.SimpleProductDiscountUnit;
 import voucherify.client.model.SimpleSkuDiscountUnit;
 
@@ -93,7 +94,7 @@ public class DiscountUnitMultipleOneUnit {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<EffectEnum> {
@@ -181,7 +182,7 @@ public class DiscountUnitMultipleOneUnit {
    * Defines how the unit is added to the customer&#39;s order.  
    * @return effect
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public EffectEnum getEffect() {
     return effect;
   }
@@ -202,7 +203,7 @@ public class DiscountUnitMultipleOneUnit {
    * The product deemed as free, chosen from product inventory (e.g. time, items).
    * @return unitType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getUnitType() {
     return unitType;
   }
@@ -254,6 +255,50 @@ public class DiscountUnitMultipleOneUnit {
     this.sku = sku;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DiscountUnitMultipleOneUnit instance itself
+   */
+  public DiscountUnitMultipleOneUnit putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -270,12 +315,24 @@ public class DiscountUnitMultipleOneUnit {
         Objects.equals(this.effect, discountUnitMultipleOneUnit.effect) &&
         Objects.equals(this.unitType, discountUnitMultipleOneUnit.unitType) &&
         Objects.equals(this.product, discountUnitMultipleOneUnit.product) &&
-        Objects.equals(this.sku, discountUnitMultipleOneUnit.sku);
+        Objects.equals(this.sku, discountUnitMultipleOneUnit.sku)&&
+        Objects.equals(this.additionalProperties, discountUnitMultipleOneUnit.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unitOff, unitOffFormula, effect, unitType, product, sku);
+    return Objects.hash(unitOff, unitOffFormula, effect, unitType, product, sku, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -288,6 +345,7 @@ public class DiscountUnitMultipleOneUnit {
     sb.append("    unitType: ").append(toIndentedString(unitType)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -319,8 +377,6 @@ public class DiscountUnitMultipleOneUnit {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effect");
-    openapiRequiredFields.add("unit_type");
   }
 
  /**
@@ -330,32 +386,12 @@ public class DiscountUnitMultipleOneUnit {
   * @throws IOException if the JSON Element is invalid with respect to DiscountUnitMultipleOneUnit
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!DiscountUnitMultipleOneUnit.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DiscountUnitMultipleOneUnit is not found in the empty JSON string", DiscountUnitMultipleOneUnit.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!DiscountUnitMultipleOneUnit.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DiscountUnitMultipleOneUnit` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DiscountUnitMultipleOneUnit.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("unit_off_formula") != null && !jsonObj.get("unit_off_formula").isJsonNull()) && !jsonObj.get("unit_off_formula").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `unit_off_formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_off_formula").toString()));
+        return;
       }
-      if (!jsonObj.get("effect").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
+      if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("effect");
@@ -363,15 +399,13 @@ public class DiscountUnitMultipleOneUnit {
         if (objectElement != null && !objectElement.isJsonNull()) {
           EffectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `effect` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("effect") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("unit_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `unit_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit_type").toString()));
+      if ((jsonObj.get("unit_type") != null && !jsonObj.get("unit_type").isJsonNull()) && !jsonObj.get("unit_type").isJsonPrimitive()) {
+        return;
       }
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
@@ -398,6 +432,23 @@ public class DiscountUnitMultipleOneUnit {
            @Override
            public void write(JsonWriter out, DiscountUnitMultipleOneUnit value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -405,7 +456,28 @@ public class DiscountUnitMultipleOneUnit {
            public DiscountUnitMultipleOneUnit read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             DiscountUnitMultipleOneUnit instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

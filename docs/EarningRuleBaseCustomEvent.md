@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**schemaId** | **String** |  |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**schemaId** | **String** |  |
 
 
 

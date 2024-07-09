@@ -5,15 +5,15 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
-|**calculationType** | [**CalculationTypeEnum**](#CalculationTypeEnum) |  |  [optional] |
-|**order** | [**EarningRuleBaseLoyaltyOrder**](EarningRuleBaseLoyaltyOrder.md) |  |  [optional] |
-|**orderItems** | [**EarningRuleBaseLoyaltyOrderItems**](EarningRuleBaseLoyaltyOrderItems.md) |  |  [optional] |
-|**customer** | [**EarningRuleBaseLoyaltyCustomer**](EarningRuleBaseLoyaltyCustomer.md) |  |  [optional] |
-|**customEvent** | [**EarningRuleBaseLoyaltyCustomEvent**](EarningRuleBaseLoyaltyCustomEvent.md) |  |  [optional] |
-|**points** | **Integer** | Defines how the points will be added to the loyalty card. FIXED adds a fixed number of points. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**type** | [**TypeEnum**](#TypeEnum) |  |
+|**calculationType** | [**CalculationTypeEnum**](#CalculationTypeEnum) |  |
+|**order** | [**EarningRuleBaseLoyaltyOrder**](EarningRuleBaseLoyaltyOrder.md) |  |
+|**orderItems** | [**EarningRuleBaseLoyaltyOrderItems**](EarningRuleBaseLoyaltyOrderItems.md) |  |
+|**customer** | [**EarningRuleBaseLoyaltyCustomer**](EarningRuleBaseLoyaltyCustomer.md) |  |
+|**customEvent** | [**EarningRuleBaseLoyaltyCustomEvent**](EarningRuleBaseLoyaltyCustomEvent.md) |  |
+|**points** | **Integer** | Defines how the points will be added to the loyalty card. FIXED adds a fixed number of points. |
 
 
 

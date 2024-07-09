@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.Redemption;
 import voucherify.client.model.ValidationsRedeemableInapplicable;
@@ -209,6 +210,50 @@ public class RedemptionsRedeemResponseBody {
     this.skippedRedeemables = skippedRedeemables;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the RedemptionsRedeemResponseBody instance itself
+   */
+  public RedemptionsRedeemResponseBody putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -224,12 +269,24 @@ public class RedemptionsRedeemResponseBody {
         Objects.equals(this.parentRedemption, redemptionsRedeemResponseBody.parentRedemption) &&
         Objects.equals(this.order, redemptionsRedeemResponseBody.order) &&
         Objects.equals(this.inapplicableRedeemables, redemptionsRedeemResponseBody.inapplicableRedeemables) &&
-        Objects.equals(this.skippedRedeemables, redemptionsRedeemResponseBody.skippedRedeemables);
+        Objects.equals(this.skippedRedeemables, redemptionsRedeemResponseBody.skippedRedeemables)&&
+        Objects.equals(this.additionalProperties, redemptionsRedeemResponseBody.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(redemptions, parentRedemption, order, inapplicableRedeemables, skippedRedeemables);
+    return Objects.hash(redemptions, parentRedemption, order, inapplicableRedeemables, skippedRedeemables, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -241,6 +298,7 @@ public class RedemptionsRedeemResponseBody {
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("    inapplicableRedeemables: ").append(toIndentedString(inapplicableRedeemables)).append("\n");
     sb.append("    skippedRedeemables: ").append(toIndentedString(skippedRedeemables)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,34 +338,7 @@ public class RedemptionsRedeemResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to RedemptionsRedeemResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedemptionsRedeemResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsRedeemResponseBody is not found in the empty JSON string", RedemptionsRedeemResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RedemptionsRedeemResponseBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionsRedeemResponseBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
-        JsonArray jsonArrayredemptions = jsonObj.getAsJsonArray("redemptions");
-        if (jsonArrayredemptions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("redemptions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `redemptions` to be an array in the JSON string but got `%s`", jsonObj.get("redemptions").toString()));
-          }
-
-          // validate the optional field `redemptions` (array)
-          for (int i = 0; i < jsonArrayredemptions.size(); i++) {
-            Redemption.validateJsonElement(jsonArrayredemptions.get(i));
-          };
-        }
-      }
       // validate the optional field `parent_redemption`
       if (jsonObj.get("parent_redemption") != null && !jsonObj.get("parent_redemption").isJsonNull()) {
         Redemption.validateJsonElement(jsonObj.get("parent_redemption"));
@@ -315,34 +346,6 @@ public class RedemptionsRedeemResponseBody {
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         OrderCalculated.validateJsonElement(jsonObj.get("order"));
-      }
-      if (jsonObj.get("inapplicable_redeemables") != null && !jsonObj.get("inapplicable_redeemables").isJsonNull()) {
-        JsonArray jsonArrayinapplicableRedeemables = jsonObj.getAsJsonArray("inapplicable_redeemables");
-        if (jsonArrayinapplicableRedeemables != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("inapplicable_redeemables").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `inapplicable_redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("inapplicable_redeemables").toString()));
-          }
-
-          // validate the optional field `inapplicable_redeemables` (array)
-          for (int i = 0; i < jsonArrayinapplicableRedeemables.size(); i++) {
-            ValidationsRedeemableInapplicable.validateJsonElement(jsonArrayinapplicableRedeemables.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("skipped_redeemables") != null && !jsonObj.get("skipped_redeemables").isJsonNull()) {
-        JsonArray jsonArrayskippedRedeemables = jsonObj.getAsJsonArray("skipped_redeemables");
-        if (jsonArrayskippedRedeemables != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("skipped_redeemables").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `skipped_redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("skipped_redeemables").toString()));
-          }
-
-          // validate the optional field `skipped_redeemables` (array)
-          for (int i = 0; i < jsonArrayskippedRedeemables.size(); i++) {
-            ValidationsRedeemableSkipped.validateJsonElement(jsonArrayskippedRedeemables.get(i));
-          };
-        }
       }
   }
 
@@ -361,6 +364,23 @@ public class RedemptionsRedeemResponseBody {
            @Override
            public void write(JsonWriter out, RedemptionsRedeemResponseBody value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -368,7 +388,28 @@ public class RedemptionsRedeemResponseBody {
            public RedemptionsRedeemResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             RedemptionsRedeemResponseBody instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

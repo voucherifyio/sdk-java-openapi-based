@@ -55,7 +55,7 @@ public enum PointsExpirationTypes {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<PointsExpirationTypes> {

@@ -65,10 +65,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **rewardId** | **String**| A unique reward ID. | |
-| **rewardsAssignmentsCreateRequestBody** | [**RewardsAssignmentsCreateRequestBody**](RewardsAssignmentsCreateRequestBody.md)| Provide the campaign ID of the campaign to which the reward is to be assigned and define the cost of the reward in terms of loyalty points. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **rewardId** | **String**| A unique reward ID. |
+| **rewardsAssignmentsCreateRequestBody** | [**RewardsAssignmentsCreateRequestBody**](RewardsAssignmentsCreateRequestBody.md)| Provide the campaign ID of the campaign to which the reward is to be assigned and define the cost of the reward in terms of loyalty points. |
 
 ### Return type
 
@@ -141,10 +141,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **rewardId** | **String**| A unique reward ID. | |
-| **assignmentId** | **String**| A unique reward assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **rewardId** | **String**| A unique reward ID. |
+| **assignmentId** | **String**| A unique reward assignment ID. |
 
 ### Return type
 
@@ -218,10 +218,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **rewardId** | **String**| A unique reward ID. | |
-| **assignmentId** | **String**| A unique reward assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **rewardId** | **String**| A unique reward ID. |
+| **assignmentId** | **String**| A unique reward assignment ID. |
 
 ### Return type
 
@@ -296,11 +296,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **rewardId** | **String**| A unique reward ID. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **rewardId** | **String**| A unique reward ID. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
 
 ### Return type
 
@@ -375,11 +375,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **rewardId** | **String**| A unique reward ID. | |
-| **assignmentId** | **String**| A unique reward assignment ID. | |
-| **rewardsAssignmentsUpdateRequestBody** | [**RewardsAssignmentsUpdateRequestBody**](RewardsAssignmentsUpdateRequestBody.md)| Define the number of points required to exchange for the reward. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **rewardId** | **String**| A unique reward ID. |
+| **assignmentId** | **String**| A unique reward assignment ID. |
+| **rewardsAssignmentsUpdateRequestBody** | [**RewardsAssignmentsUpdateRequestBody**](RewardsAssignmentsUpdateRequestBody.md)| Define the number of points required to exchange for the reward. |
 
 ### Return type
 

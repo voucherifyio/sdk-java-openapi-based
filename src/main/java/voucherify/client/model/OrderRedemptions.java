@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -273,6 +274,50 @@ public class OrderRedemptions {
     this.rollbackStacked = rollbackStacked;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the OrderRedemptions instance itself
+   */
+  public OrderRedemptions putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -291,12 +336,24 @@ public class OrderRedemptions {
         Objects.equals(this.relatedObjectId, orderRedemptions.relatedObjectId) &&
         Objects.equals(this.relatedObjectParentId, orderRedemptions.relatedObjectParentId) &&
         Objects.equals(this.stacked, orderRedemptions.stacked) &&
-        Objects.equals(this.rollbackStacked, orderRedemptions.rollbackStacked);
+        Objects.equals(this.rollbackStacked, orderRedemptions.rollbackStacked)&&
+        Objects.equals(this.additionalProperties, orderRedemptions.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, rollbackId, rollbackDate, relatedObjectType, relatedObjectId, relatedObjectParentId, stacked, rollbackStacked);
+    return Objects.hash(date, rollbackId, rollbackDate, relatedObjectType, relatedObjectId, relatedObjectParentId, stacked, rollbackStacked, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -311,6 +368,7 @@ public class OrderRedemptions {
     sb.append("    relatedObjectParentId: ").append(toIndentedString(relatedObjectParentId)).append("\n");
     sb.append("    stacked: ").append(toIndentedString(stacked)).append("\n");
     sb.append("    rollbackStacked: ").append(toIndentedString(rollbackStacked)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,39 +411,18 @@ public class OrderRedemptions {
   * @throws IOException if the JSON Element is invalid with respect to OrderRedemptions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!OrderRedemptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OrderRedemptions is not found in the empty JSON string", OrderRedemptions.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!OrderRedemptions.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderRedemptions` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("rollback_id") != null && !jsonObj.get("rollback_id").isJsonNull()) && !jsonObj.get("rollback_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rollback_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rollback_id").toString()));
+        return;
       }
       if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
+        return;
       }
       if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
+        return;
       }
       if ((jsonObj.get("related_object_parent_id") != null && !jsonObj.get("related_object_parent_id").isJsonNull()) && !jsonObj.get("related_object_parent_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_parent_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_parent_id").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("stacked") != null && !jsonObj.get("stacked").isJsonNull() && !jsonObj.get("stacked").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `stacked` to be an array in the JSON string but got `%s`", jsonObj.get("stacked").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("rollback_stacked") != null && !jsonObj.get("rollback_stacked").isJsonNull() && !jsonObj.get("rollback_stacked").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rollback_stacked` to be an array in the JSON string but got `%s`", jsonObj.get("rollback_stacked").toString()));
+        return;
       }
   }
 
@@ -404,6 +441,23 @@ public class OrderRedemptions {
            @Override
            public void write(JsonWriter out, OrderRedemptions value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -411,7 +465,28 @@ public class OrderRedemptions {
            public OrderRedemptions read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             OrderRedemptions instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

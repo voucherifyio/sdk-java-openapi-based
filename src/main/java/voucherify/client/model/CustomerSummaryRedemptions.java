@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerSummaryRedemptionsGift;
 import voucherify.client.model.CustomerSummaryRedemptionsLoyaltyCard;
 
@@ -99,7 +100,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions made by the customer.
    * @return totalRedeemed
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRedeemed() {
     return totalRedeemed;
   }
@@ -120,7 +121,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions that failed.
    * @return totalFailed
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalFailed() {
     return totalFailed;
   }
@@ -141,7 +142,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions that succeeded.
    * @return totalSucceeded
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalSucceeded() {
     return totalSucceeded;
   }
@@ -162,7 +163,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemptions that were rolled back for the customer.
    * @return totalRolledBack
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRolledBack() {
     return totalRolledBack;
   }
@@ -183,7 +184,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemption rollbacks that failed.
    * @return totalRollbackFailed
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRollbackFailed() {
     return totalRollbackFailed;
   }
@@ -204,7 +205,7 @@ public class CustomerSummaryRedemptions {
    * Total number of redemption rollbacks that succeeded.
    * @return totalRollbackSucceeded
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotalRollbackSucceeded() {
     return totalRollbackSucceeded;
   }
@@ -225,7 +226,7 @@ public class CustomerSummaryRedemptions {
    * Get gift
    * @return gift
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CustomerSummaryRedemptionsGift getGift() {
     return gift;
   }
@@ -246,7 +247,7 @@ public class CustomerSummaryRedemptions {
    * Get loyaltyCard
    * @return loyaltyCard
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CustomerSummaryRedemptionsLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
@@ -256,6 +257,50 @@ public class CustomerSummaryRedemptions {
     this.loyaltyCard = loyaltyCard;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the CustomerSummaryRedemptions instance itself
+   */
+  public CustomerSummaryRedemptions putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -274,12 +319,24 @@ public class CustomerSummaryRedemptions {
         Objects.equals(this.totalRollbackFailed, customerSummaryRedemptions.totalRollbackFailed) &&
         Objects.equals(this.totalRollbackSucceeded, customerSummaryRedemptions.totalRollbackSucceeded) &&
         Objects.equals(this.gift, customerSummaryRedemptions.gift) &&
-        Objects.equals(this.loyaltyCard, customerSummaryRedemptions.loyaltyCard);
+        Objects.equals(this.loyaltyCard, customerSummaryRedemptions.loyaltyCard)&&
+        Objects.equals(this.additionalProperties, customerSummaryRedemptions.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalRedeemed, totalFailed, totalSucceeded, totalRolledBack, totalRollbackFailed, totalRollbackSucceeded, gift, loyaltyCard);
+    return Objects.hash(totalRedeemed, totalFailed, totalSucceeded, totalRolledBack, totalRollbackFailed, totalRollbackSucceeded, gift, loyaltyCard, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -294,6 +351,7 @@ public class CustomerSummaryRedemptions {
     sb.append("    totalRollbackSucceeded: ").append(toIndentedString(totalRollbackSucceeded)).append("\n");
     sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
     sb.append("    loyaltyCard: ").append(toIndentedString(loyaltyCard)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -327,14 +385,6 @@ public class CustomerSummaryRedemptions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("total_redeemed");
-    openapiRequiredFields.add("total_failed");
-    openapiRequiredFields.add("total_succeeded");
-    openapiRequiredFields.add("total_rolled_back");
-    openapiRequiredFields.add("total_rollback_failed");
-    openapiRequiredFields.add("total_rollback_succeeded");
-    openapiRequiredFields.add("gift");
-    openapiRequiredFields.add("loyalty_card");
   }
 
  /**
@@ -344,31 +394,15 @@ public class CustomerSummaryRedemptions {
   * @throws IOException if the JSON Element is invalid with respect to CustomerSummaryRedemptions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CustomerSummaryRedemptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerSummaryRedemptions is not found in the empty JSON string", CustomerSummaryRedemptions.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CustomerSummaryRedemptions.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CustomerSummaryRedemptions` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerSummaryRedemptions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `gift`
-      CustomerSummaryRedemptionsGift.validateJsonElement(jsonObj.get("gift"));
-      // validate the required field `loyalty_card`
-      CustomerSummaryRedemptionsLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      // validate the optional field `gift`
+      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
+        CustomerSummaryRedemptionsGift.validateJsonElement(jsonObj.get("gift"));
+      }
+      // validate the optional field `loyalty_card`
+      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
+        CustomerSummaryRedemptionsLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -386,6 +420,23 @@ public class CustomerSummaryRedemptions {
            @Override
            public void write(JsonWriter out, CustomerSummaryRedemptions value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -393,7 +444,28 @@ public class CustomerSummaryRedemptions {
            public CustomerSummaryRedemptions read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             CustomerSummaryRedemptions instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

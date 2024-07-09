@@ -5,33 +5,33 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**$in** | **Object** |  |  [optional] |
-|**$notIn** | **Object** |  |  [optional] |
-|**$is** | **Object** |  |  [optional] |
-|**$isDaysAgo** | **Object** |  |  [optional] |
-|**$isDaysInFuture** | **Object** |  |  [optional] |
-|**$isNot** | **Object** |  |  [optional] |
-|**$hasValue** | **Object** |  |  [optional] |
-|**$isUnknown** | **Object** |  |  [optional] |
-|**$contains** | **Object** |  |  [optional] |
-|**$notContain** | **Object** |  |  [optional] |
-|**$startsWith** | **Object** |  |  [optional] |
-|**$endsWith** | **Object** |  |  [optional] |
-|**$moreThan** | **Object** |  |  [optional] |
-|**$lessThan** | **Object** |  |  [optional] |
-|**$moreThanAgo** | **Object** |  |  [optional] |
-|**$lessThanAgo** | **Object** |  |  [optional] |
-|**$moreThanFuture** | **Object** |  |  [optional] |
-|**$lessThanFuture** | **Object** |  |  [optional] |
-|**$moreThanEqual** | **Object** |  |  [optional] |
-|**$lessThanEqual** | **Object** |  |  [optional] |
-|**$after** | **Object** |  |  [optional] |
-|**$before** | **Object** |  |  [optional] |
-|**$count** | **Object** |  |  [optional] |
-|**$countLess** | **Object** |  |  [optional] |
-|**$countMore** | **Object** |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**$in** | **Object** |  |
+|**$notIn** | **Object** |  |
+|**$is** | **Object** |  |
+|**$isDaysAgo** | **Object** |  |
+|**$isDaysInFuture** | **Object** |  |
+|**$isNot** | **Object** |  |
+|**$hasValue** | **Object** |  |
+|**$isUnknown** | **Object** |  |
+|**$contains** | **Object** |  |
+|**$notContain** | **Object** |  |
+|**$startsWith** | **Object** |  |
+|**$endsWith** | **Object** |  |
+|**$moreThan** | **Object** |  |
+|**$lessThan** | **Object** |  |
+|**$moreThanAgo** | **Object** |  |
+|**$lessThanAgo** | **Object** |  |
+|**$moreThanFuture** | **Object** |  |
+|**$lessThanFuture** | **Object** |  |
+|**$moreThanEqual** | **Object** |  |
+|**$lessThanEqual** | **Object** |  |
+|**$after** | **Object** |  |
+|**$before** | **Object** |  |
+|**$count** | **Object** |  |
+|**$countLess** | **Object** |  |
+|**$countMore** | **Object** |  |
 
 
 

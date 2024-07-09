@@ -6,10 +6,10 @@ Request body schema for **POST** `/validation-rules/{validationRuleId}/assignmen
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object, e.g. &#x60;voucher&#x60;. |  [optional] |
-|**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, e.g. &#x60;v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno&#x60; for a voucher. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**relatedObjectType** | [**RelatedObjectTypeEnum**](#RelatedObjectTypeEnum) | Defines the related object, e.g. &#x60;voucher&#x60;. |
+|**relatedObjectId** | **String** | Unique related object ID assigned by Voucherify, e.g. &#x60;v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno&#x60; for a voucher. |
 
 
 

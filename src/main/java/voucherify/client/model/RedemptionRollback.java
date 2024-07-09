@@ -25,10 +25,10 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculatedNoCustomerData;
 import voucherify.client.model.PromotionTier;
-import voucherify.client.model.RedemptionChannel;
-import voucherify.client.model.RedemptionGift;
-import voucherify.client.model.RedemptionLoyaltyCard;
 import voucherify.client.model.RedemptionRewardResult;
+import voucherify.client.model.RedemptionRollbackChannel;
+import voucherify.client.model.RedemptionRollbackGift;
+import voucherify.client.model.RedemptionRollbackLoyaltyCard;
 import voucherify.client.model.RedemptionRollbackRelatedRedemptions;
 import voucherify.client.model.SimpleCustomer;
 import voucherify.client.model.Voucher;
@@ -95,7 +95,7 @@ public class RedemptionRollback {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -174,7 +174,7 @@ public class RedemptionRollback {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ResultEnum> {
@@ -225,7 +225,7 @@ public class RedemptionRollback {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -264,7 +264,7 @@ public class RedemptionRollback {
 
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
-  private RedemptionChannel channel;
+  private RedemptionRollbackChannel channel;
 
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
@@ -302,7 +302,7 @@ public class RedemptionRollback {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {
@@ -341,11 +341,11 @@ public class RedemptionRollback {
 
   public static final String SERIALIZED_NAME_GIFT = "gift";
   @SerializedName(SERIALIZED_NAME_GIFT)
-  private RedemptionGift gift;
+  private RedemptionRollbackGift gift;
 
   public static final String SERIALIZED_NAME_LOYALTY_CARD = "loyalty_card";
   @SerializedName(SERIALIZED_NAME_LOYALTY_CARD)
-  private RedemptionLoyaltyCard loyaltyCard;
+  private RedemptionRollbackLoyaltyCard loyaltyCard;
 
   public RedemptionRollback() {
   }
@@ -357,10 +357,10 @@ public class RedemptionRollback {
   }
 
    /**
-   * Unique redemption ID.
+   * Unique identifier of the redemption rollback.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -381,7 +381,7 @@ public class RedemptionRollback {
    * The type of the object represented by the JSON
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -402,7 +402,7 @@ public class RedemptionRollback {
    * Timestamp representing the date and time when the object was created. The value is shown in the ISO 8601 format.
    * @return date
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getDate() {
     return date;
   }
@@ -483,7 +483,7 @@ public class RedemptionRollback {
   }
 
    /**
-   * A positive integer in the smallest currency unit (e.g. 100 cents for $1.00) representing the total amount of the order. This is the sum of the order items&#39; amounts.
+   * For gift cards, this represents the number of the credits restored to the card in the rolledback redemption. The number is a negative integer in the smallest currency unit, e.g. -100 cents for $1.00 added back to the card. For loyalty cards, this represents the number of loyalty points restored to the card in the rolledback redemption. The number is a negative integer.
    * @return amount
   **/
   @javax.annotation.Nullable
@@ -549,7 +549,7 @@ public class RedemptionRollback {
    * Redemption result.
    * @return result
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ResultEnum getResult() {
     return result;
   }
@@ -570,7 +570,7 @@ public class RedemptionRollback {
    * Redemption status.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -665,7 +665,7 @@ public class RedemptionRollback {
   }
 
 
-  public RedemptionRollback channel(RedemptionChannel channel) {
+  public RedemptionRollback channel(RedemptionRollbackChannel channel) {
     
     this.channel = channel;
     return this;
@@ -675,13 +675,13 @@ public class RedemptionRollback {
    * Get channel
    * @return channel
   **/
-  @javax.annotation.Nonnull
-  public RedemptionChannel getChannel() {
+  @javax.annotation.Nullable
+  public RedemptionRollbackChannel getChannel() {
     return channel;
   }
 
 
-  public void setChannel(RedemptionChannel channel) {
+  public void setChannel(RedemptionRollbackChannel channel) {
     this.channel = channel;
   }
 
@@ -717,7 +717,7 @@ public class RedemptionRollback {
    * Defines the related object.
    * @return relatedObjectType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RelatedObjectTypeEnum getRelatedObjectType() {
     return relatedObjectType;
   }
@@ -735,10 +735,10 @@ public class RedemptionRollback {
   }
 
    /**
-   * Unique related object ID assigned by Voucherify, i.e. v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno for a voucher.
+   * Unique identifier of the related object. It is assigned by Voucherify, i.e. &#x60;v_lfZi4rcEGe0sN9gmnj40bzwK2FH6QUno&#x60; for a voucher.
    * @return relatedObjectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObjectId() {
     return relatedObjectId;
   }
@@ -812,7 +812,7 @@ public class RedemptionRollback {
   }
 
 
-  public RedemptionRollback gift(RedemptionGift gift) {
+  public RedemptionRollback gift(RedemptionRollbackGift gift) {
     
     this.gift = gift;
     return this;
@@ -823,17 +823,17 @@ public class RedemptionRollback {
    * @return gift
   **/
   @javax.annotation.Nullable
-  public RedemptionGift getGift() {
+  public RedemptionRollbackGift getGift() {
     return gift;
   }
 
 
-  public void setGift(RedemptionGift gift) {
+  public void setGift(RedemptionRollbackGift gift) {
     this.gift = gift;
   }
 
 
-  public RedemptionRollback loyaltyCard(RedemptionLoyaltyCard loyaltyCard) {
+  public RedemptionRollback loyaltyCard(RedemptionRollbackLoyaltyCard loyaltyCard) {
     
     this.loyaltyCard = loyaltyCard;
     return this;
@@ -844,15 +844,59 @@ public class RedemptionRollback {
    * @return loyaltyCard
   **/
   @javax.annotation.Nullable
-  public RedemptionLoyaltyCard getLoyaltyCard() {
+  public RedemptionRollbackLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
 
 
-  public void setLoyaltyCard(RedemptionLoyaltyCard loyaltyCard) {
+  public void setLoyaltyCard(RedemptionRollbackLoyaltyCard loyaltyCard) {
     this.loyaltyCard = loyaltyCard;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the RedemptionRollback instance itself
+   */
+  public RedemptionRollback putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -887,7 +931,8 @@ public class RedemptionRollback {
         Objects.equals(this.promotionTier, redemptionRollback.promotionTier) &&
         Objects.equals(this.reward, redemptionRollback.reward) &&
         Objects.equals(this.gift, redemptionRollback.gift) &&
-        Objects.equals(this.loyaltyCard, redemptionRollback.loyaltyCard);
+        Objects.equals(this.loyaltyCard, redemptionRollback.loyaltyCard)&&
+        Objects.equals(this.additionalProperties, redemptionRollback.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -896,7 +941,7 @@ public class RedemptionRollback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, _object, date, customerId, trackingId, metadata, amount, redemption, reason, result, status, relatedRedemptions, failureCode, failureMessage, order, channel, customer, relatedObjectType, relatedObjectId, voucher, promotionTier, reward, gift, loyaltyCard);
+    return Objects.hash(id, _object, date, customerId, trackingId, metadata, amount, redemption, reason, result, status, relatedRedemptions, failureCode, failureMessage, order, channel, customer, relatedObjectType, relatedObjectId, voucher, promotionTier, reward, gift, loyaltyCard, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -934,6 +979,7 @@ public class RedemptionRollback {
     sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
     sb.append("    gift: ").append(toIndentedString(gift)).append("\n");
     sb.append("    loyaltyCard: ").append(toIndentedString(loyaltyCard)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -983,14 +1029,6 @@ public class RedemptionRollback {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("date");
-    openapiRequiredFields.add("result");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("channel");
-    openapiRequiredFields.add("related_object_type");
-    openapiRequiredFields.add("related_object_id");
   }
 
  /**
@@ -1000,32 +1038,12 @@ public class RedemptionRollback {
   * @throws IOException if the JSON Element is invalid with respect to RedemptionRollback
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedemptionRollback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionRollback is not found in the empty JSON string", RedemptionRollback.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RedemptionRollback.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RedemptionRollback` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RedemptionRollback.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -1033,27 +1051,25 @@ public class RedemptionRollback {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
+        return;
       }
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
+        return;
       }
       if ((jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) && !jsonObj.get("redemption").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redemption` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redemption").toString()));
+        return;
       }
       if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+        return;
       }
-      if (!jsonObj.get("result").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `result` to be a primitive type in the JSON string but got `%s`", jsonObj.get("result").toString()));
+      if ((jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) && !jsonObj.get("result").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("result");
@@ -1061,15 +1077,13 @@ public class RedemptionRollback {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ResultEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `result` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("result") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `result` to be a valid element of ResultEnum enum got `%s` instead", jsonObj.get("result").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("status");
@@ -1077,35 +1091,35 @@ public class RedemptionRollback {
         if (objectElement != null && !objectElement.isJsonNull()) {
           StatusEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `status` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("status") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
-        }
+          return;
       }
       // validate the optional field `related_redemptions`
       if (jsonObj.get("related_redemptions") != null && !jsonObj.get("related_redemptions").isJsonNull()) {
         RedemptionRollbackRelatedRedemptions.validateJsonElement(jsonObj.get("related_redemptions"));
       }
       if ((jsonObj.get("failure_code") != null && !jsonObj.get("failure_code").isJsonNull()) && !jsonObj.get("failure_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `failure_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failure_code").toString()));
+        return;
       }
       if ((jsonObj.get("failure_message") != null && !jsonObj.get("failure_message").isJsonNull()) && !jsonObj.get("failure_message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `failure_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failure_message").toString()));
+        return;
       }
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         OrderCalculatedNoCustomerData.validateJsonElement(jsonObj.get("order"));
       }
-      // validate the required field `channel`
-      RedemptionChannel.validateJsonElement(jsonObj.get("channel"));
+      // validate the optional field `channel`
+      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
+        RedemptionRollbackChannel.validateJsonElement(jsonObj.get("channel"));
+      }
       // validate the optional field `customer`
       if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
         SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
       }
-      if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
+      if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("related_object_type");
@@ -1113,15 +1127,13 @@ public class RedemptionRollback {
         if (objectElement != null && !objectElement.isJsonNull()) {
           RelatedObjectTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `related_object_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("related_object_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
+      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
+        return;
       }
       // validate the optional field `voucher`
       if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
@@ -1137,11 +1149,11 @@ public class RedemptionRollback {
       }
       // validate the optional field `gift`
       if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        RedemptionGift.validateJsonElement(jsonObj.get("gift"));
+        RedemptionRollbackGift.validateJsonElement(jsonObj.get("gift"));
       }
       // validate the optional field `loyalty_card`
       if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        RedemptionLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+        RedemptionRollbackLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
   }
 
@@ -1160,6 +1172,23 @@ public class RedemptionRollback {
            @Override
            public void write(JsonWriter out, RedemptionRollback value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -1167,7 +1196,28 @@ public class RedemptionRollback {
            public RedemptionRollback read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             RedemptionRollback instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

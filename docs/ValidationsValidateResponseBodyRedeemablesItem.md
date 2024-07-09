@@ -5,17 +5,17 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**status** | [**StatusEnum**](#StatusEnum) |  |  |
-|**id** | **String** | Redeemable ID, i.e. the voucher code. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | Redeemable&#39;s object type. |  |
-|**order** | [**OrderCalculated**](OrderCalculated.md) |  |  [optional] |
-|**applicableTo** | [**ApplicableToResultList**](ApplicableToResultList.md) |  |  [optional] |
-|**inapplicableTo** | [**InapplicableToResultList**](InapplicableToResultList.md) |  |  [optional] |
-|**result** | [**ValidationsValidateResponseBodyRedeemablesItemResult**](ValidationsValidateResponseBodyRedeemablesItemResult.md) |  |  |
-|**metadata** | **Object** |  |  [optional] |
-|**categories** | [**List&lt;Category&gt;**](Category.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**status** | [**StatusEnum**](#StatusEnum) |  |
+|**id** | **String** | Redeemable ID, i.e. the voucher code. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | Redeemable&#39;s object type. |
+|**order** | [**OrderCalculated**](OrderCalculated.md) |  |
+|**applicableTo** | [**ApplicableToResultList**](ApplicableToResultList.md) |  |
+|**inapplicableTo** | [**InapplicableToResultList**](InapplicableToResultList.md) |  |
+|**result** | [**ValidationsValidateResponseBodyRedeemablesItemResult**](ValidationsValidateResponseBodyRedeemablesItemResult.md) |  |
+|**metadata** | **Object** |  |
+|**categories** | [**List&lt;Category&gt;**](Category.md) |  |
 
 
 

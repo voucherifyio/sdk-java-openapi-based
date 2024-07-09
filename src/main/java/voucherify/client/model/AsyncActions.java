@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -69,7 +70,7 @@ public class AsyncActions {
    * The ID of the scheduled asynchronous action.
    * @return asyncActionId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAsyncActionId() {
     return asyncActionId;
   }
@@ -93,9 +94,20 @@ public class AsyncActions {
     return Objects.equals(this.asyncActionId, asyncActions.asyncActionId);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(asyncActionId);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -129,7 +141,6 @@ public class AsyncActions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("async_action_id");
   }
 
  /**
@@ -139,11 +150,6 @@ public class AsyncActions {
   * @throws IOException if the JSON Element is invalid with respect to AsyncActions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!AsyncActions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncActions is not found in the empty JSON string", AsyncActions.openapiRequiredFields.toString()));
-        }
-      }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
@@ -152,16 +158,9 @@ public class AsyncActions {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AsyncActions` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AsyncActions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("async_action_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `async_action_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("async_action_id").toString()));
+      if ((jsonObj.get("async_action_id") != null && !jsonObj.get("async_action_id").isJsonNull()) && !jsonObj.get("async_action_id").isJsonPrimitive()) {
+        return;
       }
   }
 

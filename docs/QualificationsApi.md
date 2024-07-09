@@ -60,9 +60,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **qualificationsCheckEligibilityRequestBody** | [**QualificationsCheckEligibilityRequestBody**](QualificationsCheckEligibilityRequestBody.md)| Define order and customer context. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **qualificationsCheckEligibilityRequestBody** | [**QualificationsCheckEligibilityRequestBody**](QualificationsCheckEligibilityRequestBody.md)| Define order and customer context. |
 
 ### Return type
 

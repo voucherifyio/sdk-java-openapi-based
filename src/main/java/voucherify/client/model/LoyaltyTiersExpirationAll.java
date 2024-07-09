@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.LoyaltyTiersExpirationAllExpirationDate;
 import voucherify.client.model.LoyaltyTiersExpirationAllStartDate;
 
@@ -84,7 +85,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<QualificationTypeEnum> {
@@ -139,7 +140,7 @@ public class LoyaltyTiersExpirationAll {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<QualificationPeriodEnum> {
@@ -181,7 +182,7 @@ public class LoyaltyTiersExpirationAll {
    * Tier qualification.     &#x60;BALANCE&#x60;: Points balance is based on the customer&#39;s current points balance. Customers qualify for the tier if their points balance is in the points range of the tier.   &#x60;POINTS_IN_PERIOD&#x60;: A customer qualifies for the tier only if the sum of the accumulated points in a **defined time interval** reaches the tier threshold.
    * @return qualificationType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public QualificationTypeEnum getQualificationType() {
     return qualificationType;
   }
@@ -223,7 +224,7 @@ public class LoyaltyTiersExpirationAll {
    * Get startDate
    * @return startDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTiersExpirationAllStartDate getStartDate() {
     return startDate;
   }
@@ -244,7 +245,7 @@ public class LoyaltyTiersExpirationAll {
    * Get expirationDate
    * @return expirationDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTiersExpirationAllExpirationDate getExpirationDate() {
     return expirationDate;
   }
@@ -254,6 +255,50 @@ public class LoyaltyTiersExpirationAll {
     this.expirationDate = expirationDate;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the LoyaltyTiersExpirationAll instance itself
+   */
+  public LoyaltyTiersExpirationAll putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -268,12 +313,24 @@ public class LoyaltyTiersExpirationAll {
     return Objects.equals(this.qualificationType, loyaltyTiersExpirationAll.qualificationType) &&
         Objects.equals(this.qualificationPeriod, loyaltyTiersExpirationAll.qualificationPeriod) &&
         Objects.equals(this.startDate, loyaltyTiersExpirationAll.startDate) &&
-        Objects.equals(this.expirationDate, loyaltyTiersExpirationAll.expirationDate);
+        Objects.equals(this.expirationDate, loyaltyTiersExpirationAll.expirationDate)&&
+        Objects.equals(this.additionalProperties, loyaltyTiersExpirationAll.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(qualificationType, qualificationPeriod, startDate, expirationDate);
+    return Objects.hash(qualificationType, qualificationPeriod, startDate, expirationDate, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -284,6 +341,7 @@ public class LoyaltyTiersExpirationAll {
     sb.append("    qualificationPeriod: ").append(toIndentedString(qualificationPeriod)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,9 +371,6 @@ public class LoyaltyTiersExpirationAll {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("qualification_type");
-    openapiRequiredFields.add("start_date");
-    openapiRequiredFields.add("expiration_date");
   }
 
  /**
@@ -325,29 +380,9 @@ public class LoyaltyTiersExpirationAll {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltyTiersExpirationAll
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltyTiersExpirationAll.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTiersExpirationAll is not found in the empty JSON string", LoyaltyTiersExpirationAll.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LoyaltyTiersExpirationAll.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoyaltyTiersExpirationAll` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTiersExpirationAll.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("qualification_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qualification_type").toString()));
+      if ((jsonObj.get("qualification_type") != null && !jsonObj.get("qualification_type").isJsonNull()) && !jsonObj.get("qualification_type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("qualification_type");
@@ -355,15 +390,13 @@ public class LoyaltyTiersExpirationAll {
         if (objectElement != null && !objectElement.isJsonNull()) {
           QualificationTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `qualification_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("qualification_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `qualification_type` to be a valid element of QualificationTypeEnum enum got `%s` instead", jsonObj.get("qualification_type").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("qualification_period") != null && !jsonObj.get("qualification_period").isJsonNull()) && !jsonObj.get("qualification_period").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qualification_period").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("qualification_period");
@@ -371,17 +404,19 @@ public class LoyaltyTiersExpirationAll {
         if (objectElement != null && !objectElement.isJsonNull()) {
           QualificationPeriodEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `qualification_period` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("qualification_period") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `qualification_period` to be a valid element of QualificationPeriodEnum enum got `%s` instead", jsonObj.get("qualification_period").toString()));
-        }
+          return;
       }
-      // validate the required field `start_date`
-      LoyaltyTiersExpirationAllStartDate.validateJsonElement(jsonObj.get("start_date"));
-      // validate the required field `expiration_date`
-      LoyaltyTiersExpirationAllExpirationDate.validateJsonElement(jsonObj.get("expiration_date"));
+      // validate the optional field `start_date`
+      if (jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) {
+        LoyaltyTiersExpirationAllStartDate.validateJsonElement(jsonObj.get("start_date"));
+      }
+      // validate the optional field `expiration_date`
+      if (jsonObj.get("expiration_date") != null && !jsonObj.get("expiration_date").isJsonNull()) {
+        LoyaltyTiersExpirationAllExpirationDate.validateJsonElement(jsonObj.get("expiration_date"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -399,6 +434,23 @@ public class LoyaltyTiersExpirationAll {
            @Override
            public void write(JsonWriter out, LoyaltyTiersExpirationAll value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -406,7 +458,28 @@ public class LoyaltyTiersExpirationAll {
            public LoyaltyTiersExpirationAll read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             LoyaltyTiersExpirationAll instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     return null;
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

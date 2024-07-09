@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**redemptions** | [**RedemptionsGetResponseBodyPromotionTierSummaryRedemptions**](RedemptionsGetResponseBodyPromotionTierSummaryRedemptions.md) |  |  [optional] |
-|**orders** | [**RedemptionsGetResponseBodyPromotionTierSummaryOrders**](RedemptionsGetResponseBodyPromotionTierSummaryOrders.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**redemptions** | [**RedemptionsGetResponseBodyPromotionTierSummaryRedemptions**](RedemptionsGetResponseBodyPromotionTierSummaryRedemptions.md) |  |
+|**orders** | [**RedemptionsGetResponseBodyPromotionTierSummaryOrders**](RedemptionsGetResponseBodyPromotionTierSummaryOrders.md) |  |
 
 
 
