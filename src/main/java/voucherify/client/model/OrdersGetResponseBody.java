@@ -946,6 +946,14 @@ public class OrdersGetResponseBody {
       } catch (IllegalArgumentException e) {
           return;
       }
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        CustomerId.validateJsonElement(jsonObj.get("customer"));
+      }
+      // validate the optional field `referrer`
+      if (jsonObj.get("referrer") != null && !jsonObj.get("referrer").isJsonNull()) {
+        ReferrerId.validateJsonElement(jsonObj.get("referrer"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

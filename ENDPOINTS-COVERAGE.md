@@ -240,7 +240,7 @@
 #### Update Voucher (put)
  **Not supported ❌** 
 #### Delete Voucher (delete)
- **Not supported ❌** 
+ **Supported ✅** 
 #### Create Voucher (post)
  **Not supported ❌** 
 ### /v1/vouchers/{code}/enable

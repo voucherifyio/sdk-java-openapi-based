@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.CustomerId;
 import voucherify.client.model.OrderItemCalculated;
-import voucherify.client.model.ReferrerId;
+import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer;
+import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -237,11 +237,11 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
 
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
-  private CustomerId customer;
+  private VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer customer;
 
   public static final String SERIALIZED_NAME_REFERRER = "referrer";
   @SerializedName(SERIALIZED_NAME_REFERRER)
-  private ReferrerId referrer;
+  private VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer referrer;
 
   public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder() {
   }
@@ -674,7 +674,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
   }
 
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder customer(CustomerId customer) {
+  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder customer(VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer customer) {
     
     this.customer = customer;
     return this;
@@ -685,17 +685,17 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
    * @return customer
   **/
   @javax.annotation.Nullable
-  public CustomerId getCustomer() {
+  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer getCustomer() {
     return customer;
   }
 
 
-  public void setCustomer(CustomerId customer) {
+  public void setCustomer(VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer customer) {
     this.customer = customer;
   }
 
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder referrer(ReferrerId referrer) {
+  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder referrer(VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer referrer) {
     
     this.referrer = referrer;
     return this;
@@ -706,12 +706,12 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
    * @return referrer
   **/
   @javax.annotation.Nullable
-  public ReferrerId getReferrer() {
+  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer getReferrer() {
     return referrer;
   }
 
 
-  public void setReferrer(ReferrerId referrer) {
+  public void setReferrer(VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer referrer) {
     this.referrer = referrer;
   }
 
@@ -934,6 +934,14 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder {
         }
       } catch (IllegalArgumentException e) {
           return;
+      }
+      // validate the optional field `customer`
+      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
+        VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer.validateJsonElement(jsonObj.get("customer"));
+      }
+      // validate the optional field `referrer`
+      if (jsonObj.get("referrer") != null && !jsonObj.get("referrer").isJsonNull()) {
+        VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer.validateJsonElement(jsonObj.get("referrer"));
       }
   }
 

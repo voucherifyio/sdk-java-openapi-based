@@ -4,14 +4,92 @@ All URIs are relative to *https://api.voucherify.io*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteVoucher**](VouchersApi.md#deleteVoucher) | **DELETE** /v1/vouchers/{code} | Delete Voucher |
 | [**disableVoucher**](VouchersApi.md#disableVoucher) | **POST** /v1/vouchers/{code}/disable | Disable Voucher |
 | [**enableVoucher**](VouchersApi.md#enableVoucher) | **POST** /v1/vouchers/{code}/enable | Enable Voucher |
 | [**exportVoucherTransactions**](VouchersApi.md#exportVoucherTransactions) | **POST** /v1/vouchers/{code}/transactions/export | Export Voucher Transactions |
 | [**getVoucher**](VouchersApi.md#getVoucher) | **GET** /v1/vouchers/{code} | Get Voucher |
 | [**importVouchersUsingCsv**](VouchersApi.md#importVouchersUsingCsv) | **POST** /v1/vouchers/importCSV | Import Vouchers using CSV |
 | [**listVoucherTransactions**](VouchersApi.md#listVoucherTransactions) | **GET** /v1/vouchers/{code}/transactions | List Voucher Transactions |
+| [**releaseValidationSession**](VouchersApi.md#releaseValidationSession) | **DELETE** /v1/vouchers/{code}/sessions/{sessionKey} | Release Validation Session |
 | [**updateVoucherBalance**](VouchersApi.md#updateVoucherBalance) | **POST** /v1/vouchers/{code}/balance | Add or Remove Voucher Balance |
 
+
+<a id="deleteVoucher"></a>
+# **deleteVoucher**
+> deleteVoucher(code, force)
+
+Delete Voucher
+
+Deletes a voucher. This operation cannot be undone. Additionally, this operation removes any redemptions on the voucher.  If the &#x60;force&#x60; parameter is set to &#x60;false&#x60; or not set at all, the voucher will be moved to [the bin](ref:list-bin-entries).
+
+### Example
+```java
+// Import classes:
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.VouchersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.voucherify.io");
+    
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Id.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Token.setApiKeyPrefix("Token");
+
+    VouchersApi apiInstance = new VouchersApi(defaultClient);
+    String code = "code_example"; // String | A unique **code** that identifies the voucher.
+    Boolean force = true; // Boolean | If this flag is set to `true`, the voucher will be removed permanently. If it is set to `false` or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code.
+    try {
+      apiInstance.deleteVoucher(code, force);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VouchersApi#deleteVoucher");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **code** | **String**| A unique **code** that identifies the voucher. |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the voucher will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the voucher will be moved to the bin. Going forward, the user will be able to create another voucher with exactly the same code. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Returns no content if deletion is successful. |  -  |
 
 <a id="disableVoucher"></a>
 # **disableVoucher**
@@ -468,6 +546,82 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Returns a dictionary of transaction objects |  -  |
+
+<a id="releaseValidationSession"></a>
+# **releaseValidationSession**
+> releaseValidationSession(code, sessionKey)
+
+Release Validation Session
+
+Manually release a validation session that has been set up for the voucher. This method undos the actions that are explained in our guide on how a validation session was established, you can read more [here](doc:locking-validation-session).   &gt; 📘 Release Session using Dashboard &gt; &gt; You can also use the Validations Manager in the Dashboard to unlock sessions. [Read more](https://support.voucherify.io/article/16-dashboard-sections#validations).
+
+### Example
+```java
+// Import classes:
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.VouchersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.voucherify.io");
+    
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Id.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Token.setApiKeyPrefix("Token");
+
+    VouchersApi apiInstance = new VouchersApi(defaultClient);
+    String code = "code_example"; // String | A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify.
+    String sessionKey = "ssn_yQGMTeKBSw8OOuFPwlBEjzGy8d8VA9Ts"; // String | A unique session identifier.
+    try {
+      apiInstance.releaseValidationSession(code, sessionKey);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VouchersApi#releaseValidationSession");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **code** | **String**| A **code** that identifies the voucher or a unique voucher ID assigned by Voucherify. |
+| **sessionKey** | **String**| A unique session identifier. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Returns no content if the validation session was released successfully. |  -  |
 
 <a id="updateVoucherBalance"></a>
 # **updateVoucherBalance**
