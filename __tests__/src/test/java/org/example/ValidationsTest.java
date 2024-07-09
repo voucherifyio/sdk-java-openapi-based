@@ -38,64 +38,28 @@ public class ValidationsTest {
     @Test
     @org.junit.jupiter.api.Order(1)
     public void validateStackedInapplicableDiscountsTest() {
-        ValidationsValidateRequestBody validationsValidateInapplicableRedeemableRequestBody = getValidationsValidateInapplicableRedeemableRequestBody();
-
-        try {
-            ValidationsValidateResponseBody responseBody = validationsApi
-                    .validateStackedDiscounts(validationsValidateInapplicableRedeemableRequestBody);
-
-            assertNotNull(responseBody);
-        } catch (ApiException | JsonSyntaxException e) {
-            System.out.println(e);
-            fail();
-        }
+        validateStackedDiscounts(getValidationsValidateInapplicableRedeemableRequestBody());
     }
 
     @Test
     @org.junit.jupiter.api.Order(2)
     public void validateStackedApplicableDiscountsTest() {
-        ValidationsValidateRequestBody validationsValidateApplicableRedeemableRequestBody = getValidationsValidateApplicableRedeemableRequestBody();
-
-        try {
-            ValidationsValidateResponseBody responseBody = validationsApi
-                    .validateStackedDiscounts(validationsValidateApplicableRedeemableRequestBody);
-
-            assertNotNull(responseBody);
-        } catch (ApiException | JsonSyntaxException e) {
-            fail();
-        }
-
+        validateStackedDiscounts(getValidationsValidateApplicableRedeemableRequestBody());
     }
 
     @Test
     @org.junit.jupiter.api.Order(3)
     public void validateStackedSkippedDiscountsTest() {
-        ValidationsValidateRequestBody validationsValidateApplicableRedeemableRequestBody = getValidationsValidateApplicableRedeemableRequestBody();
+        ValidationsValidateRequestBody requestBody = getValidationsValidateApplicableRedeemableRequestBody();
+        addRedeemablesItemToBeginning(requestBody);
+        validateStackedDiscounts(requestBody);
+    }
 
-        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = new StackableValidateRedeemBaseRedeemablesItem();
-
-        redeemablesItem.setObject(StackableValidateRedeemBaseRedeemablesItem.ObjectEnum.VOUCHER);
-        redeemablesItem.setId(Utils.getAlphaNumericString(20));
-
-        List<StackableValidateRedeemBaseRedeemablesItem> redeemables = validationsValidateApplicableRedeemableRequestBody
-                .getRedeemables();
-
-        // Utwórz nową listę, dodaj redeemablesItem na początek, a następnie dodaj
-        // wszystkie istniejące elementy
-        List<StackableValidateRedeemBaseRedeemablesItem> newRedeemables = new ArrayList<>();
-        newRedeemables.add(redeemablesItem); // dodaj na początek
-        newRedeemables.addAll(redeemables); // dodaj wszystkie istniejące elementy
-
-        // Ustaw nową listę jako redeemables
-        validationsValidateApplicableRedeemableRequestBody.setRedeemables(newRedeemables);
-
+    private void validateStackedDiscounts(ValidationsValidateRequestBody requestBody) {
         try {
-            ValidationsValidateResponseBody responseBody = validationsApi
-                    .validateStackedDiscounts(validationsValidateApplicableRedeemableRequestBody);
-            System.out.println(responseBody);
+            ValidationsValidateResponseBody responseBody = validationsApi.validateStackedDiscounts(requestBody);
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
-            System.out.println(e);
             fail();
         }
     }
@@ -103,36 +67,17 @@ public class ValidationsTest {
     @NotNull
     private static ValidationsValidateRequestBody getValidationsValidateInapplicableRedeemableRequestBody() {
         Order order = getOrder();
-
-        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = new StackableValidateRedeemBaseRedeemablesItem();
-
-        redeemablesItem.setObject(StackableValidateRedeemBaseRedeemablesItem.ObjectEnum.VOUCHER);
-        redeemablesItem.setId(Utils.getAlphaNumericString(20));
-
-        ValidationsValidateRequestBody validationsValidateRequestBody = new ValidationsValidateRequestBody();
-
-        validationsValidateRequestBody.setOrder(order);
-        validationsValidateRequestBody.addRedeemablesItem(redeemablesItem);
-
-        return validationsValidateRequestBody;
+        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = createRedeemablesItem(
+                Utils.getAlphaNumericString(20));
+        return createValidationsValidateRequestBody(order, redeemablesItem);
     }
 
     @NotNull
     private static ValidationsValidateRequestBody getValidationsValidateApplicableRedeemableRequestBody() {
         Order order = getOrder();
-
-        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = new StackableValidateRedeemBaseRedeemablesItem();
-
         CampaignsVouchersCreateCombinedResponseBody voucher = createCampaignVoucher();
-
-        redeemablesItem.setObject(StackableValidateRedeemBaseRedeemablesItem.ObjectEnum.VOUCHER);
-        redeemablesItem.setId(voucher.getCode());
-
-        ValidationsValidateRequestBody validationsValidateRequestBody = new ValidationsValidateRequestBody();
-        validationsValidateRequestBody.setOrder(order);
-        validationsValidateRequestBody.addRedeemablesItem(redeemablesItem);
-
-        return validationsValidateRequestBody;
+        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = createRedeemablesItem(voucher.getCode());
+        return createValidationsValidateRequestBody(order, redeemablesItem);
     }
 
     @NotNull
@@ -153,10 +98,7 @@ public class ValidationsTest {
 
         try {
             CampaignsCreateResponseBody result = campaigns.createCampaign(campaign);
-            CampaignsVouchersCreateCombinedResponseBody createdVoucher = campaigns.addVouchersToCampaign(result.getId(),
-                    1, null);
-
-            return createdVoucher;
+            return campaigns.addVouchersToCampaign(result.getId(), 1, null);
         } catch (ApiException | JsonSyntaxException e) {
             fail();
             return null;
@@ -166,19 +108,46 @@ public class ValidationsTest {
     @NotNull
     private static Order getOrder() {
         List<OrderItem> items = new ArrayList<>();
-        OrderItem item = new OrderItem();
-        item.setProductId("prod_001");
-        item.setQuantity(1);
-        items.add(item);
-
-        OrderItem item2 = new OrderItem();
-        item2.setProductId("prod_002");
-        item2.setQuantity(1);
-        items.add(item2);
+        items.add(createOrderItem("prod_001", 1));
+        items.add(createOrderItem("prod_002", 1));
 
         Order order = new Order();
         order.setAmount(10000);
         order.setItems(items);
         return order;
+    }
+
+    private static OrderItem createOrderItem(String productId, int quantity) {
+        OrderItem item = new OrderItem();
+        item.setProductId(productId);
+        item.setQuantity(quantity);
+        return item;
+    }
+
+    @NotNull
+    private static StackableValidateRedeemBaseRedeemablesItem createRedeemablesItem(String id) {
+        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = new StackableValidateRedeemBaseRedeemablesItem();
+        redeemablesItem.setObject(StackableValidateRedeemBaseRedeemablesItem.ObjectEnum.VOUCHER);
+        redeemablesItem.setId(id);
+        return redeemablesItem;
+    }
+
+    @NotNull
+    private static ValidationsValidateRequestBody createValidationsValidateRequestBody(Order order,
+            StackableValidateRedeemBaseRedeemablesItem redeemablesItem) {
+        ValidationsValidateRequestBody requestBody = new ValidationsValidateRequestBody();
+        requestBody.setOrder(order);
+        requestBody.addRedeemablesItem(redeemablesItem);
+        return requestBody;
+    }
+
+    private void addRedeemablesItemToBeginning(ValidationsValidateRequestBody requestBody) {
+        List<StackableValidateRedeemBaseRedeemablesItem> redeemables = requestBody.getRedeemables();
+        List<StackableValidateRedeemBaseRedeemablesItem> newRedeemables = new ArrayList<>();
+        StackableValidateRedeemBaseRedeemablesItem redeemablesItem = createRedeemablesItem(
+                Utils.getAlphaNumericString(20));
+        newRedeemables.add(redeemablesItem);
+        newRedeemables.addAll(redeemables);
+        requestBody.setRedeemables(newRedeemables);
     }
 }
