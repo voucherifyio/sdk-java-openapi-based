@@ -6,15 +6,15 @@ Response schema for **POST** `/loyalties/members/{memberId}/balance` and for **P
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**points** | **Integer** | The incremental points removed or added to the current balance on the loyalty card. |  |
-|**total** | **Integer** | The total of points accrued over the lifetime of the loyalty card. |  |
-|**balance** | **Integer** | The balance after adding/removing points. |  |
-|**type** | [**TypeEnum**](#TypeEnum) | The type of voucher being modified. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. Default is balance. |  |
-|**relatedObject** | [**LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject**](LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject.md) |  |  |
-|**operationType** | [**OperationTypeEnum**](#OperationTypeEnum) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**points** | **Integer** | The incremental points removed or added to the current balance on the loyalty card. |
+|**total** | **Integer** | The total of points accrued over the lifetime of the loyalty card. |
+|**balance** | **Integer** | The balance after adding/removing points. |
+|**type** | [**TypeEnum**](#TypeEnum) | The type of voucher being modified. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. Default is balance. |
+|**relatedObject** | [**LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject**](LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject.md) |  |
+|**operationType** | [**OperationTypeEnum**](#OperationTypeEnum) |  |
 
 
 
@@ -24,7 +24,6 @@ Response schema for **POST** `/loyalties/members/{memberId}/balance` and for **P
 |---- | -----|
 | LOYALTY_CARD | &quot;loyalty_card&quot; |
 | GIFT_VOUCHER | &quot;gift_voucher&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -33,7 +32,6 @@ Response schema for **POST** `/loyalties/members/{memberId}/balance` and for **P
 | Name | Value |
 |---- | -----|
 | BALANCE | &quot;balance&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -43,7 +41,6 @@ Response schema for **POST** `/loyalties/members/{memberId}/balance` and for **P
 |---- | -----|
 | MANUAL | &quot;MANUAL&quot; |
 | AUTOMATIC | &quot;AUTOMATIC&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

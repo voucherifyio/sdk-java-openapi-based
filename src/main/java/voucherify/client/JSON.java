@@ -504,6 +504,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SimpleSegment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SimpleSkuDiscountUnit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SimpleVoucher.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SimpleVoucherLoyaltyCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SimpleVoucherRedemption.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.Sku.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.SkusGetResponseBody.CustomTypeAdapterFactory());

@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,9 +63,7 @@ public class ExportScheduledBase {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    EXPORT("export"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    EXPORT("export");
 
     private String value;
 
@@ -87,7 +86,7 @@ public class ExportScheduledBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -117,9 +116,7 @@ public class ExportScheduledBase {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    SCHEDULED("SCHEDULED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SCHEDULED("SCHEDULED");
 
     private String value;
 
@@ -142,7 +139,7 @@ public class ExportScheduledBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -188,7 +185,7 @@ public class ExportScheduledBase {
    * Unique export ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -209,7 +206,7 @@ public class ExportScheduledBase {
    * The type of object being represented. This object stores information about the export.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -230,7 +227,7 @@ public class ExportScheduledBase {
    * Timestamp representing the date and time when the export was scheduled in ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -251,7 +248,7 @@ public class ExportScheduledBase {
    * Status of the export. Informs you whether the export has already been completed, i.e. indicates whether the file containing the exported data has been generated.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -314,7 +311,7 @@ public class ExportScheduledBase {
    * Identifies the specific user who initiated the export through the Voucherify Dashboard; returned when the channel value is WEBSITE.
    * @return userId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getUserId() {
     return userId;
   }
@@ -389,9 +386,20 @@ public class ExportScheduledBase {
         Objects.equals(this.additionalProperties, exportScheduledBase.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, _object, createdAt, status, channel, result, userId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -438,12 +446,6 @@ public class ExportScheduledBase {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("result");
-    openapiRequiredFields.add("user_id");
   }
 
  /**
@@ -453,24 +455,12 @@ public class ExportScheduledBase {
   * @throws IOException if the JSON Element is invalid with respect to ExportScheduledBase
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ExportScheduledBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExportScheduledBase is not found in the empty JSON string", ExportScheduledBase.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExportScheduledBase.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -478,15 +468,13 @@ public class ExportScheduledBase {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("status");
@@ -494,18 +482,16 @@ public class ExportScheduledBase {
         if (objectElement != null && !objectElement.isJsonNull()) {
           StatusEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `status` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("status") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+        return;
       }
-      if (!jsonObj.get("user_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
+      if ((jsonObj.get("user_id") != null && !jsonObj.get("user_id").isJsonNull()) && !jsonObj.get("user_id").isJsonPrimitive()) {
+        return;
       }
   }
 
@@ -561,7 +547,7 @@ public class ExportScheduledBase {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

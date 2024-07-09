@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.EarningRuleBaseLoyaltyCustomerMetadata;
 
 import com.google.gson.Gson;
@@ -70,7 +71,7 @@ public class EarningRuleBaseLoyaltyCustomer {
    * Get metadata
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public EarningRuleBaseLoyaltyCustomerMetadata getMetadata() {
     return metadata;
   }
@@ -139,9 +140,20 @@ public class EarningRuleBaseLoyaltyCustomer {
         Objects.equals(this.additionalProperties, earningRuleBaseLoyaltyCustomer.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(metadata, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -176,7 +188,6 @@ public class EarningRuleBaseLoyaltyCustomer {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -186,21 +197,11 @@ public class EarningRuleBaseLoyaltyCustomer {
   * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyaltyCustomer
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!EarningRuleBaseLoyaltyCustomer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyCustomer is not found in the empty JSON string", EarningRuleBaseLoyaltyCustomer.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseLoyaltyCustomer.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `metadata`
-      EarningRuleBaseLoyaltyCustomerMetadata.validateJsonElement(jsonObj.get("metadata"));
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        EarningRuleBaseLoyaltyCustomerMetadata.validateJsonElement(jsonObj.get("metadata"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -255,7 +256,7 @@ public class EarningRuleBaseLoyaltyCustomer {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

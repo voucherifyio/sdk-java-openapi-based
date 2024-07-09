@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.LoyaltiesMembersPointsExpirationListResponseBodyDataItem;
 
 import com.google.gson.Gson;
@@ -60,9 +61,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -85,7 +84,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -111,9 +110,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
    */
   @JsonAdapter(DataRefEnum.Adapter.class)
   public enum DataRefEnum {
-    DATA("data"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    DATA("data");
 
     private String value;
 
@@ -136,7 +133,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<DataRefEnum> {
@@ -159,7 +156,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LoyaltiesMembersPointsExpirationListResponseBodyDataItem> data = new ArrayList<>();
+  private List<LoyaltiesMembersPointsExpirationListResponseBodyDataItem> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -178,7 +175,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
    * The type of the object represented by JSON. This object stores information about loyalty points expiration buckets in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -199,7 +196,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
    * Identifies the name of the attribute that contains the array of loyalty points expiration bucket objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public DataRefEnum getDataRef() {
     return dataRef;
   }
@@ -228,7 +225,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
    * Contains array of loyalty points expiration buckets.
    * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<LoyaltiesMembersPointsExpirationListResponseBodyDataItem> getData() {
     return data;
   }
@@ -249,7 +246,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
    * Total number of point expiration buckets.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -321,9 +318,20 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
         Objects.equals(this.additionalProperties, loyaltiesMembersPointsExpirationListResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(_object, dataRef, data, total, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -364,10 +372,6 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("data");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -377,21 +381,9 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersPointsExpirationListResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltiesMembersPointsExpirationListResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesMembersPointsExpirationListResponseBody is not found in the empty JSON string", LoyaltiesMembersPointsExpirationListResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesMembersPointsExpirationListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -399,15 +391,13 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("data_ref");
@@ -415,23 +405,11 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           DataRefEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `data_ref` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("data_ref") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a valid element of DataRefEnum enum got `%s` instead", jsonObj.get("data_ref").toString()));
-        }
+          return;
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
-
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        LoyaltiesMembersPointsExpirationListResponseBodyDataItem.validateJsonElement(jsonArraydata.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -486,7 +464,7 @@ public class LoyaltiesMembersPointsExpirationListResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

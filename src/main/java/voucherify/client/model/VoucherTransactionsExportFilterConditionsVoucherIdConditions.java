@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +57,7 @@ import voucherify.client.JSON;
 public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
   public static final String SERIALIZED_NAME_$_IN = "$in";
   @SerializedName(SERIALIZED_NAME_$_IN)
-  private List<String> $in = new ArrayList<>();
+  private List<String> $in;
 
   public VoucherTransactionsExportFilterConditionsVoucherIdConditions() {
   }
@@ -79,7 +80,7 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
    * Get $in
    * @return $in
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> get$In() {
     return $in;
   }
@@ -148,9 +149,20 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
         Objects.equals(this.additionalProperties, voucherTransactionsExportFilterConditionsVoucherIdConditions.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash($in, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -185,7 +197,6 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("$in");
   }
 
  /**
@@ -195,25 +206,7 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
   * @throws IOException if the JSON Element is invalid with respect to VoucherTransactionsExportFilterConditionsVoucherIdConditions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!VoucherTransactionsExportFilterConditionsVoucherIdConditions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsExportFilterConditionsVoucherIdConditions is not found in the empty JSON string", VoucherTransactionsExportFilterConditionsVoucherIdConditions.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsExportFilterConditionsVoucherIdConditions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("$in") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("$in").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$in` to be an array in the JSON string but got `%s`", jsonObj.get("$in").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -268,7 +261,7 @@ public class VoucherTransactionsExportFilterConditionsVoucherIdConditions {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

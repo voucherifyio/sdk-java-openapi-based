@@ -6,9 +6,9 @@ Contains the error message returned from API when validation / redemption fails 
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**message** | **String** | The error message returned from API when validation / redemption fails to meet requirements of defined rules. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**message** | **String** | The error message returned from API when validation / redemption fails to meet requirements of defined rules. |
 
 
 

@@ -6,12 +6,12 @@ Response body schema for **GET** `/loyalties/{campaignId}/members/{memberId}/poi
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about loyalty points expiration buckets in a dictionary. |  |
-|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of loyalty points expiration bucket objects. |  |
-|**data** | [**List&lt;LoyaltiesMembersPointsExpirationListResponseBodyDataItem&gt;**](LoyaltiesMembersPointsExpirationListResponseBodyDataItem.md) | Contains array of loyalty points expiration buckets. |  |
-|**total** | **Integer** | Total number of point expiration buckets. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. This object stores information about loyalty points expiration buckets in a dictionary. |
+|**dataRef** | [**DataRefEnum**](#DataRefEnum) | Identifies the name of the attribute that contains the array of loyalty points expiration bucket objects. |
+|**data** | [**List&lt;LoyaltiesMembersPointsExpirationListResponseBodyDataItem&gt;**](LoyaltiesMembersPointsExpirationListResponseBodyDataItem.md) | Contains array of loyalty points expiration buckets. |
+|**total** | **Integer** | Total number of point expiration buckets. |
 
 
 
@@ -20,7 +20,6 @@ Response body schema for **GET** `/loyalties/{campaignId}/members/{memberId}/poi
 | Name | Value |
 |---- | -----|
 | LIST | &quot;list&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 
@@ -29,7 +28,6 @@ Response body schema for **GET** `/loyalties/{campaignId}/members/{memberId}/poi
 | Name | Value |
 |---- | -----|
 | DATA | &quot;data&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

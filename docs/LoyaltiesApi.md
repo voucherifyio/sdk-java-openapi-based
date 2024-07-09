@@ -85,10 +85,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique loyalty campaign ID or name. | |
-| **loyaltiesTiersCreateInBulkRequestBodyItem** | [**List&lt;LoyaltiesTiersCreateInBulkRequestBodyItem&gt;**](LoyaltiesTiersCreateInBulkRequestBodyItem.md)| Provide tier definitions you want to add to existing loyalty campaign. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique loyalty campaign ID or name. |
+| **loyaltiesTiersCreateInBulkRequestBodyItem** | [**List&lt;LoyaltiesTiersCreateInBulkRequestBodyItem&gt;**](LoyaltiesTiersCreateInBulkRequestBodyItem.md)| Provide tier definitions you want to add to existing loyalty campaign. |
 
 ### Return type
 
@@ -162,10 +162,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. |
 
 ### Return type
 
@@ -238,10 +238,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **assignmentId** | **String**| A unique reward assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **assignmentId** | **String**| A unique reward assignment ID. |
 
 ### Return type
 
@@ -315,10 +315,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique campaign ID or name. | |
-| **earningRuleId** | **String**| Unique earning rule ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique campaign ID or name. |
+| **earningRuleId** | **String**| Unique earning rule ID. |
 
 ### Return type
 
@@ -392,10 +392,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique campaign ID or name. | |
-| **earningRuleId** | **String**| Unique earning rule ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique campaign ID or name. |
+| **earningRuleId** | **String**| Unique earning rule ID. |
 
 ### Return type
 
@@ -469,10 +469,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to export transaction data for. | |
-| **loyaltiesMembersTransactionsExportCreateRequestBody** | [**LoyaltiesMembersTransactionsExportCreateRequestBody**](LoyaltiesMembersTransactionsExportCreateRequestBody.md)| Specify the parameters and filters for the transaction export. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to export transaction data for. |
+| **loyaltiesMembersTransactionsExportCreateRequestBody** | [**LoyaltiesMembersTransactionsExportCreateRequestBody**](LoyaltiesMembersTransactionsExportCreateRequestBody.md)| Specify the parameters and filters for the transaction export. |
 
 ### Return type
 
@@ -547,11 +547,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to export. | |
-| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to export transaction data for. | |
-| **loyaltiesMembersTransactionsExportCreateRequestBody** | [**LoyaltiesMembersTransactionsExportCreateRequestBody**](LoyaltiesMembersTransactionsExportCreateRequestBody.md)| Specify the parameters and filters for the transaction export. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to export. |
+| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to export transaction data for. |
+| **loyaltiesMembersTransactionsExportCreateRequestBody** | [**LoyaltiesMembersTransactionsExportCreateRequestBody**](LoyaltiesMembersTransactionsExportCreateRequestBody.md)| Specify the parameters and filters for the transaction export. |
 
 ### Return type
 
@@ -625,10 +625,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **earningRuleId** | **String**| A unique earning rule ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **earningRuleId** | **String**| A unique earning rule ID. |
 
 ### Return type
 
@@ -702,10 +702,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique loyalty campaign ID or name. | |
-| **loyaltyTierId** | **String**| Unique loyalty tier ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique loyalty campaign ID or name. |
+| **loyaltyTierId** | **String**| Unique loyalty tier ID. |
 
 ### Return type
 
@@ -779,10 +779,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **assignmentId** | **String**| Unique reward assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **assignmentId** | **String**| Unique reward assignment ID. |
 
 ### Return type
 
@@ -856,10 +856,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **assignmentId** | **String**| A unique reward assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **assignmentId** | **String**| A unique reward assignment ID. |
 
 ### Return type
 
@@ -933,10 +933,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **assignmentId** | **String**| Unique reward assignment ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **assignmentId** | **String**| Unique reward assignment ID. |
 
 ### Return type
 
@@ -1011,11 +1011,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to retrieve transaction data for. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to retrieve transaction data for. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
 
 ### Return type
 
@@ -1091,12 +1091,12 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to return. | |
-| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to retrieve transaction data for. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| A unique identifier of the loyalty campaign containing the voucher whose transactions you would like to return. |
+| **memberId** | **String**| A unique code identifying the loyalty card that you are looking to retrieve transaction data for. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
 
 ### Return type
 
@@ -1172,12 +1172,12 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique campaign ID or name. | |
-| **loyaltyTierId** | **String**| Unique loyalty tier ID. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique campaign ID or name. |
+| **loyaltyTierId** | **String**| Unique loyalty tier ID. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
 
 ### Return type
 
@@ -1251,10 +1251,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique campaign ID or name. | |
-| **loyaltyTierId** | **String**| Unique loyalty tier ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique campaign ID or name. |
+| **loyaltyTierId** | **String**| Unique loyalty tier ID. |
 
 ### Return type
 
@@ -1329,11 +1329,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique loyalty campaign ID or name. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **order** | [**ParameterOrderListLoyaltyTiers**](.md)| Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique loyalty campaign ID or name. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **order** | [**ParameterOrderListLoyaltyTiers**](.md)| Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. |
 
 ### Return type
 
@@ -1406,9 +1406,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **memberId** | **String**| Unique loyalty card assigned to a particular customer. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **memberId** | **String**| Unique loyalty card assigned to a particular customer. |
 
 ### Return type
 
@@ -1482,10 +1482,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **memberId** | **String**| Unique loyalty card assigned to a particular customer. | |
-| **affordableOnly** | **Boolean**| Limit the results to rewards that the customer can actually afford (only rewards whose price in points is not higher than the loyalty points balance on a loyalty card). Set this flag to &#x60;true&#x60; to return rewards which the customer can actually afford. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **memberId** | **String**| Unique loyalty card assigned to a particular customer. |
+| **affordableOnly** | **Boolean**| Limit the results to rewards that the customer can actually afford (only rewards whose price in points is not higher than the loyalty points balance on a loyalty card). Set this flag to &#x60;true&#x60; to return rewards which the customer can actually afford. |
 
 ### Return type
 
@@ -1561,12 +1561,12 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  | |
-| **memberId** | **String**| Loyalty card code. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  |
+| **memberId** | **String**| Loyalty card code. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
 
 ### Return type
 
@@ -1640,10 +1640,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **memberId** | **String**| Unique loyalty card assigned to a particular customer. | |
-| **loyaltiesMembersRedemptionRedeemRequestBody** | [**LoyaltiesMembersRedemptionRedeemRequestBody**](LoyaltiesMembersRedemptionRedeemRequestBody.md)| Specify the reward to be redeemed. In case of a pay with points reward, specify the order and the number of points to be applied to the order. Please note that if you do not specify the amount of points, the application will default to applying the number of points to pay for the remainder of the order. If the limit of available points on the card is reached, then only the available points on the card will be applied to the order. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **memberId** | **String**| Unique loyalty card assigned to a particular customer. |
+| **loyaltiesMembersRedemptionRedeemRequestBody** | [**LoyaltiesMembersRedemptionRedeemRequestBody**](LoyaltiesMembersRedemptionRedeemRequestBody.md)| Specify the reward to be redeemed. In case of a pay with points reward, specify the order and the number of points to be applied to the order. Please note that if you do not specify the amount of points, the application will default to applying the number of points to pay for the remainder of the order. If the limit of available points on the card is reached, then only the available points on the card will be applied to the order. |
 
 ### Return type
 
@@ -1718,11 +1718,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique campaign ID. | |
-| **memberId** | **String**| A code that identifies the loyalty card. | |
-| **loyaltiesMembersRedemptionRedeemRequestBody** | [**LoyaltiesMembersRedemptionRedeemRequestBody**](LoyaltiesMembersRedemptionRedeemRequestBody.md)| Specify the reward to be redeemed. In case of a pay with points reward, specify the order and the number of points to be applied to the order. Please note that if you do not specify the amount of points, the application will default to applying the number of points to pay for the remainder of the order. If the limit of available points on the card is reached, then only the available points on the card will be applied to the order. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique campaign ID. |
+| **memberId** | **String**| A code that identifies the loyalty card. |
+| **loyaltiesMembersRedemptionRedeemRequestBody** | [**LoyaltiesMembersRedemptionRedeemRequestBody**](LoyaltiesMembersRedemptionRedeemRequestBody.md)| Specify the reward to be redeemed. In case of a pay with points reward, specify the order and the number of points to be applied to the order. Please note that if you do not specify the amount of points, the application will default to applying the number of points to pay for the remainder of the order. If the limit of available points on the card is reached, then only the available points on the card will be applied to the order. |
 
 ### Return type
 
@@ -1797,11 +1797,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| A unique identifier of the loyalty campaign containing the voucher to which the loyalty points will be sent (destination). | |
-| **memberId** | **String**| A unique code identifying the loyalty card to which the user wants to transfer loyalty points (destination). | |
-| **loyaltiesTransferPoints** | [**List&lt;LoyaltiesTransferPoints&gt;**](LoyaltiesTransferPoints.md)| Provide the loyalty cards you want the points to be transferred from and the number of points to transfer from each card. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| A unique identifier of the loyalty campaign containing the voucher to which the loyalty points will be sent (destination). |
+| **memberId** | **String**| A unique code identifying the loyalty card to which the user wants to transfer loyalty points (destination). |
+| **loyaltiesTransferPoints** | [**List&lt;LoyaltiesTransferPoints&gt;**](LoyaltiesTransferPoints.md)| Provide the loyalty cards you want the points to be transferred from and the number of points to transfer from each card. |
 
 ### Return type
 
@@ -1875,10 +1875,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **memberId** | **String**| Unique loyalty card assigned to a particular customer. | |
-| **loyaltiesMembersBalanceUpdateRequestBody** | [**LoyaltiesMembersBalanceUpdateRequestBody**](LoyaltiesMembersBalanceUpdateRequestBody.md)| Specify the point adjustment along with the expiration mechanism. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **memberId** | **String**| Unique loyalty card assigned to a particular customer. |
+| **loyaltiesMembersBalanceUpdateRequestBody** | [**LoyaltiesMembersBalanceUpdateRequestBody**](LoyaltiesMembersBalanceUpdateRequestBody.md)| Specify the point adjustment along with the expiration mechanism. |
 
 ### Return type
 
@@ -1953,11 +1953,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Unique campaign ID. | |
-| **memberId** | **String**| A code that identifies the loyalty card. | |
-| **loyaltiesMembersBalanceUpdateRequestBody** | [**LoyaltiesMembersBalanceUpdateRequestBody**](LoyaltiesMembersBalanceUpdateRequestBody.md)| Specify the point adjustment along with the expiration mechanism. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **campaignId** | **String**| Unique campaign ID. |
+| **memberId** | **String**| A code that identifies the loyalty card. |
+| **loyaltiesMembersBalanceUpdateRequestBody** | [**LoyaltiesMembersBalanceUpdateRequestBody**](LoyaltiesMembersBalanceUpdateRequestBody.md)| Specify the point adjustment along with the expiration mechanism. |
 
 ### Return type
 

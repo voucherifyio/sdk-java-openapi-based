@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.ClientEventsCreateRequestBodyLoyalty;
 import voucherify.client.model.ClientEventsCreateRequestBodyReferral;
 import voucherify.client.model.Customer;
@@ -88,7 +89,7 @@ public class ClientEventsCreateRequestBody {
    * Event name. This is the same name that you used to define a custom event in the **Dashboard** &gt; **Project Settings** &gt; **Event Schema**.
    * @return event
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getEvent() {
     return event;
   }
@@ -245,9 +246,20 @@ public class ClientEventsCreateRequestBody {
         Objects.equals(this.additionalProperties, clientEventsCreateRequestBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(event, customer, referral, loyalty, metadata, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -290,7 +302,6 @@ public class ClientEventsCreateRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("event");
     openapiRequiredFields.add("customer");
   }
 
@@ -301,21 +312,9 @@ public class ClientEventsCreateRequestBody {
   * @throws IOException if the JSON Element is invalid with respect to ClientEventsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ClientEventsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ClientEventsCreateRequestBody is not found in the empty JSON string", ClientEventsCreateRequestBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ClientEventsCreateRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("event").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event").toString()));
+      if ((jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) && !jsonObj.get("event").isJsonPrimitive()) {
+        return;
       }
       // validate the required field `customer`
       Customer.validateJsonElement(jsonObj.get("customer"));
@@ -381,7 +380,7 @@ public class ClientEventsCreateRequestBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

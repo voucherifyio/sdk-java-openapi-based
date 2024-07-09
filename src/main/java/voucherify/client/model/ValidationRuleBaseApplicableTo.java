@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.ApplicableTo;
 
 import com.google.gson.Gson;
@@ -209,9 +210,20 @@ public class ValidationRuleBaseApplicableTo {
         Objects.equals(this.additionalProperties, validationRuleBaseApplicableTo.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(excluded, included, includedAll, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -259,40 +271,7 @@ public class ValidationRuleBaseApplicableTo {
   * @throws IOException if the JSON Element is invalid with respect to ValidationRuleBaseApplicableTo
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidationRuleBaseApplicableTo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationRuleBaseApplicableTo is not found in the empty JSON string", ValidationRuleBaseApplicableTo.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("excluded") != null && !jsonObj.get("excluded").isJsonNull()) {
-        JsonArray jsonArrayexcluded = jsonObj.getAsJsonArray("excluded");
-        if (jsonArrayexcluded != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("excluded").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `excluded` to be an array in the JSON string but got `%s`", jsonObj.get("excluded").toString()));
-          }
-
-          // validate the optional field `excluded` (array)
-          for (int i = 0; i < jsonArrayexcluded.size(); i++) {
-            ApplicableTo.validateJsonElement(jsonArrayexcluded.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("included") != null && !jsonObj.get("included").isJsonNull()) {
-        JsonArray jsonArrayincluded = jsonObj.getAsJsonArray("included");
-        if (jsonArrayincluded != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("included").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `included` to be an array in the JSON string but got `%s`", jsonObj.get("included").toString()));
-          }
-
-          // validate the optional field `included` (array)
-          for (int i = 0; i < jsonArrayincluded.size(); i++) {
-            ApplicableTo.validateJsonElement(jsonArrayincluded.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -347,7 +326,7 @@ public class ValidationRuleBaseApplicableTo {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

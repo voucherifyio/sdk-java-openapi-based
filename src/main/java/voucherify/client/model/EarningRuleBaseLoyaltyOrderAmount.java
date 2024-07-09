@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -73,7 +74,7 @@ public class EarningRuleBaseLoyaltyOrderAmount {
    * Value is multiplied by 100 to precisely represent 2 decimal places. For example, a $10 order amount is written as 1000.
    * @return every
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getEvery() {
     return every;
   }
@@ -94,7 +95,7 @@ public class EarningRuleBaseLoyaltyOrderAmount {
    * Number of points to be awarded, i.e. how many points to be added to the loyalty card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -164,9 +165,20 @@ public class EarningRuleBaseLoyaltyOrderAmount {
         Objects.equals(this.additionalProperties, earningRuleBaseLoyaltyOrderAmount.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(every, points, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -203,8 +215,6 @@ public class EarningRuleBaseLoyaltyOrderAmount {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("every");
-    openapiRequiredFields.add("points");
   }
 
  /**
@@ -214,18 +224,6 @@ public class EarningRuleBaseLoyaltyOrderAmount {
   * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyaltyOrderAmount
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!EarningRuleBaseLoyaltyOrderAmount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyOrderAmount is not found in the empty JSON string", EarningRuleBaseLoyaltyOrderAmount.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseLoyaltyOrderAmount.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
@@ -281,7 +279,7 @@ public class EarningRuleBaseLoyaltyOrderAmount {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

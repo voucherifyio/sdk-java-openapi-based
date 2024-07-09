@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -94,7 +95,7 @@ public class LoyaltyTierExpiration {
    * Unique customer ID of the customer making the purchase.
    * @return customerId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCustomerId() {
     return customerId;
   }
@@ -115,7 +116,7 @@ public class LoyaltyTierExpiration {
    * Unique campaign ID, assigned by Voucherify.
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
@@ -136,7 +137,7 @@ public class LoyaltyTierExpiration {
    * Unique tier ID, assigned by Voucherify.
    * @return tierId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getTierId() {
     return tierId;
   }
@@ -199,7 +200,7 @@ public class LoyaltyTierExpiration {
    * Timestamp representing the date and time when the loyalty tier was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -295,9 +296,20 @@ public class LoyaltyTierExpiration {
         Objects.equals(this.additionalProperties, loyaltyTierExpiration.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(customerId, campaignId, tierId, startDate, expirationDate, createdAt, updatedAt, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -344,10 +356,6 @@ public class LoyaltyTierExpiration {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("customer_id");
-    openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("tier_id");
-    openapiRequiredFields.add("created_at");
   }
 
  /**
@@ -357,33 +365,21 @@ public class LoyaltyTierExpiration {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltyTierExpiration
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltyTierExpiration.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTierExpiration is not found in the empty JSON string", LoyaltyTierExpiration.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTierExpiration.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("customer_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
+      if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("campaign_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("tier_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tier_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tier_id").toString()));
+      if ((jsonObj.get("tier_id") != null && !jsonObj.get("tier_id").isJsonNull()) && !jsonObj.get("tier_id").isJsonPrimitive()) {
+        return;
       }
       if ((jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) && !jsonObj.get("start_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
+        return;
       }
       if ((jsonObj.get("expiration_date") != null && !jsonObj.get("expiration_date").isJsonNull()) && !jsonObj.get("expiration_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expiration_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expiration_date").toString()));
+        return;
       }
   }
 
@@ -439,7 +435,7 @@ public class LoyaltyTierExpiration {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

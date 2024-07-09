@@ -6,10 +6,10 @@ Includes the error object with details about the reason why the redeemable is in
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**error** | [**Error**](Error.md) |  |  [optional] |
-|**details** | [**ValidationsRedeemableInapplicableResultDetails**](ValidationsRedeemableInapplicableResultDetails.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**error** | [**Error**](Error.md) |  |
+|**details** | [**ValidationsRedeemableInapplicableResultDetails**](ValidationsRedeemableInapplicableResultDetails.md) |  |
 
 
 

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.QualificationsRedeemables;
 import voucherify.client.model.StackingRules;
@@ -219,9 +220,20 @@ public class ClientQualificationsCheckEligibilityResponseBody {
         Objects.equals(this.additionalProperties, clientQualificationsCheckEligibilityResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(redeemables, trackingId, order, stackingRules, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -271,18 +283,13 @@ public class ClientQualificationsCheckEligibilityResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to ClientQualificationsCheckEligibilityResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ClientQualificationsCheckEligibilityResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ClientQualificationsCheckEligibilityResponseBody is not found in the empty JSON string", ClientQualificationsCheckEligibilityResponseBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `redeemables`
       if (jsonObj.get("redeemables") != null && !jsonObj.get("redeemables").isJsonNull()) {
         QualificationsRedeemables.validateJsonElement(jsonObj.get("redeemables"));
       }
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
+        return;
       }
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
@@ -346,7 +353,7 @@ public class ClientQualificationsCheckEligibilityResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

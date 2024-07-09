@@ -23,7 +23,5 @@
 
 * `TRANSFER_OUT` (value: `"POINTS_TRANSFER_OUT"`)
 
-* `UNKNOWN_ENUM` (value: `"unknown_enum"`)
-
 
 

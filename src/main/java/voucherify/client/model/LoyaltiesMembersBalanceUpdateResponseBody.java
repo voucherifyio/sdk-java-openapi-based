@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject;
 
 import com.google.gson.Gson;
@@ -72,9 +73,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
   public enum TypeEnum {
     LOYALTY_CARD("loyalty_card"),
     
-    GIFT_VOUCHER("gift_voucher"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    GIFT_VOUCHER("gift_voucher");
 
     private String value;
 
@@ -97,7 +96,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -123,9 +122,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    BALANCE("balance"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    BALANCE("balance");
 
     private String value;
 
@@ -148,7 +145,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -180,9 +177,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
   public enum OperationTypeEnum {
     MANUAL("MANUAL"),
     
-    AUTOMATIC("AUTOMATIC"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    AUTOMATIC("AUTOMATIC");
 
     private String value;
 
@@ -205,7 +200,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<OperationTypeEnum> {
@@ -239,7 +234,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    * The incremental points removed or added to the current balance on the loyalty card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -260,7 +255,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    * The total of points accrued over the lifetime of the loyalty card.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -282,7 +277,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    * minimum: 0
    * @return balance
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getBalance() {
     return balance;
   }
@@ -303,7 +298,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    * The type of voucher being modified.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -324,7 +319,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    * The type of the object represented by JSON. Default is balance.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -345,7 +340,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
    * Get relatedObject
    * @return relatedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject getRelatedObject() {
     return relatedObject;
   }
@@ -441,9 +436,20 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
         Objects.equals(this.additionalProperties, loyaltiesMembersBalanceUpdateResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(points, total, balance, type, _object, relatedObject, operationType, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -490,12 +496,6 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("total");
-    openapiRequiredFields.add("balance");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("related_object");
   }
 
  /**
@@ -505,21 +505,9 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersBalanceUpdateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltiesMembersBalanceUpdateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesMembersBalanceUpdateResponseBody is not found in the empty JSON string", LoyaltiesMembersBalanceUpdateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesMembersBalanceUpdateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("type");
@@ -527,15 +515,13 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           TypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -543,17 +529,17 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
-      // validate the required field `related_object`
-      LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject.validateJsonElement(jsonObj.get("related_object"));
+      // validate the optional field `related_object`
+      if (jsonObj.get("related_object") != null && !jsonObj.get("related_object").isJsonNull()) {
+        LoyaltiesMembersBalanceUpdateResponseBodyRelatedObject.validateJsonElement(jsonObj.get("related_object"));
+      }
       if ((jsonObj.get("operation_type") != null && !jsonObj.get("operation_type").isJsonNull()) && !jsonObj.get("operation_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operation_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation_type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("operation_type");
@@ -561,12 +547,10 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           OperationTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `operation_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("operation_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `operation_type` to be a valid element of OperationTypeEnum enum got `%s` instead", jsonObj.get("operation_type").toString()));
-        }
+          return;
       }
   }
 
@@ -622,7 +606,7 @@ public class LoyaltiesMembersBalanceUpdateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderItemCalculatedProduct;
 import voucherify.client.model.OrderItemCalculatedSku;
 
@@ -69,9 +70,7 @@ public class OrderItemCalculated {
   public enum RelatedObjectEnum {
     PRODUCT("product"),
     
-    SKU("sku"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SKU("sku");
 
     private String value;
 
@@ -94,7 +93,7 @@ public class OrderItemCalculated {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectEnum> {
@@ -172,9 +171,7 @@ public class OrderItemCalculated {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    ORDER_ITEM("order_item"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ORDER_ITEM("order_item");
 
     private String value;
 
@@ -197,7 +194,7 @@ public class OrderItemCalculated {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -571,7 +568,7 @@ public class OrderItemCalculated {
    * The type of the object represented by JSON.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -678,9 +675,20 @@ public class OrderItemCalculated {
         Objects.equals(this.additionalProperties, orderItemCalculated.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(skuId, productId, relatedObject, sourceId, quantity, discountQuantity, initialQuantity, amount, discountAmount, appliedDiscountAmount, initialAmount, totalAppliedDiscountAmount, price, subtotalAmount, product, sku, _object, metadata, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -749,7 +757,6 @@ public class OrderItemCalculated {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -759,27 +766,15 @@ public class OrderItemCalculated {
   * @throws IOException if the JSON Element is invalid with respect to OrderItemCalculated
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!OrderItemCalculated.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OrderItemCalculated is not found in the empty JSON string", OrderItemCalculated.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : OrderItemCalculated.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("sku_id") != null && !jsonObj.get("sku_id").isJsonNull()) && !jsonObj.get("sku_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sku_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sku_id").toString()));
+        return;
       }
       if ((jsonObj.get("product_id") != null && !jsonObj.get("product_id").isJsonNull()) && !jsonObj.get("product_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product_id").toString()));
+        return;
       }
       if ((jsonObj.get("related_object") != null && !jsonObj.get("related_object").isJsonNull()) && !jsonObj.get("related_object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("related_object");
@@ -787,15 +782,13 @@ public class OrderItemCalculated {
         if (objectElement != null && !objectElement.isJsonNull()) {
           RelatedObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `related_object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("related_object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `related_object` to be a valid element of RelatedObjectEnum enum got `%s` instead", jsonObj.get("related_object").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
+        return;
       }
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
@@ -805,8 +798,8 @@ public class OrderItemCalculated {
       if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
         OrderItemCalculatedSku.validateJsonElement(jsonObj.get("sku"));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -814,12 +807,10 @@ public class OrderItemCalculated {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
   }
 
@@ -875,7 +866,7 @@ public class OrderItemCalculated {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

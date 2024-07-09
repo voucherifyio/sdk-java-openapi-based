@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +57,7 @@ import voucherify.client.JSON;
 public class ProductsMetadataUpdateInBulkRequestBody {
   public static final String SERIALIZED_NAME_SOURCE_IDS = "source_ids";
   @SerializedName(SERIALIZED_NAME_SOURCE_IDS)
-  private List<String> sourceIds = new ArrayList<>();
+  private List<String> sourceIds;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -83,7 +84,7 @@ public class ProductsMetadataUpdateInBulkRequestBody {
    * Array of unique product source IDs.
    * @return sourceIds
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getSourceIds() {
     return sourceIds;
   }
@@ -104,7 +105,7 @@ public class ProductsMetadataUpdateInBulkRequestBody {
    * The metadata object stores all custom attributes assigned to the product. A set of key/value pairs that you can attach to a product object. It can be useful for storing additional information about the product in a structured format.
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getMetadata() {
     return metadata;
   }
@@ -174,9 +175,20 @@ public class ProductsMetadataUpdateInBulkRequestBody {
         Objects.equals(this.additionalProperties, productsMetadataUpdateInBulkRequestBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(sourceIds, metadata, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -213,8 +225,6 @@ public class ProductsMetadataUpdateInBulkRequestBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("source_ids");
-    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -224,25 +234,7 @@ public class ProductsMetadataUpdateInBulkRequestBody {
   * @throws IOException if the JSON Element is invalid with respect to ProductsMetadataUpdateInBulkRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ProductsMetadataUpdateInBulkRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductsMetadataUpdateInBulkRequestBody is not found in the empty JSON string", ProductsMetadataUpdateInBulkRequestBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProductsMetadataUpdateInBulkRequestBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("source_ids") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("source_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_ids` to be an array in the JSON string but got `%s`", jsonObj.get("source_ids").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -297,7 +289,7 @@ public class ProductsMetadataUpdateInBulkRequestBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

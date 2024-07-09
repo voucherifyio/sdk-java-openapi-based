@@ -96,9 +96,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    LOYALTY_CARD("LOYALTY_CARD"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_CARD("LOYALTY_CARD");
 
     private String value;
 
@@ -121,7 +119,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -175,9 +173,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -200,7 +196,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -278,7 +274,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Assigned by the Voucherify API, identifies the voucher.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -299,7 +295,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * A code that identifies a voucher. Pattern can use all letters of the English alphabet, Arabic numerals, and special characters.
    * @return code
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -433,7 +429,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Defines the type of the voucher.
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -454,7 +450,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Get loyaltyCard
    * @return loyaltyCard
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard getLoyaltyCard() {
     return loyaltyCard;
   }
@@ -630,7 +626,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * A flag to toggle the voucher on or off. You can disable a voucher even though it&#39;s within the active period defined by the start_date and expiration_date.  - &#x60;true&#x60; indicates an active voucher - &#x60;false&#x60; indicates an inactive voucher
    * @return active
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getActive() {
     return active;
   }
@@ -672,7 +668,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * The metadata object stores all custom attributes assigned to the code. A set of key/value pairs that you can attach to a voucher object. It can be useful for storing additional information about the voucher in a structured format.
    * @return metadata
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getMetadata() {
     return metadata;
   }
@@ -714,7 +710,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Flag indicating whether this voucher is a referral code; &#x60;true&#x60; for campaign type &#x60;REFERRAL_PROGRAM&#x60;.
    * @return isReferralCode
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getIsReferralCode() {
     return isReferralCode;
   }
@@ -777,7 +773,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Get createdAt
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -963,14 +959,6 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("code");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("loyalty_card");
-    openapiRequiredFields.add("active");
-    openapiRequiredFields.add("metadata");
-    openapiRequiredFields.add("is_referral_code");
-    openapiRequiredFields.add("created_at");
   }
 
  /**
@@ -980,53 +968,27 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersTransfersCreateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltiesMembersTransfersCreateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesMembersTransfersCreateResponseBody is not found in the empty JSON string", LoyaltiesMembersTransfersCreateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltiesMembersTransfersCreateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        return;
       }
       if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign").toString()));
+        return;
       }
       if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+        return;
       }
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+        return;
       }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+        return;
       }
-      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
-        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
-        if (jsonArraycategories != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("categories").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
-          }
-
-          // validate the optional field `categories` (array)
-          for (int i = 0; i < jsonArraycategories.size(); i++) {
-            Category.validateJsonElement(jsonArraycategories.get(i));
-          };
-        }
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("type");
@@ -1034,22 +996,18 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           TypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
-        }
+          return;
       }
-      // validate the required field `loyalty_card`
-      LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      // validate the optional field `loyalty_card`
+      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
+        LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
+      }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
@@ -1063,18 +1021,18 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
       if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
         LoyaltiesMembersTransfersCreateResponseBodyRedemption.validateJsonElement(jsonObj.get("redemption"));
       }
-      if (!jsonObj.get("active").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `active` to be a primitive type in the JSON string but got `%s`", jsonObj.get("active").toString()));
+      if ((jsonObj.get("active") != null && !jsonObj.get("active").isJsonNull()) && !jsonObj.get("active").isJsonPrimitive()) {
+        return;
       }
       if ((jsonObj.get("additional_info") != null && !jsonObj.get("additional_info").isJsonNull()) && !jsonObj.get("additional_info").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `additional_info` to be a primitive type in the JSON string but got `%s`", jsonObj.get("additional_info").toString()));
+        return;
       }
       // validate the optional field `assets`
       if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
         LoyaltiesMembersTransfersCreateResponseBodyAssets.validateJsonElement(jsonObj.get("assets"));
       }
       if ((jsonObj.get("holder_id") != null && !jsonObj.get("holder_id").isJsonNull()) && !jsonObj.get("holder_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `holder_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holder_id").toString()));
+        return;
       }
   }
 
@@ -1130,7 +1088,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -704,6 +704,7 @@ Class | Method | HTTP request | Description
  - [SimpleSegment](docs/SimpleSegment.md)
  - [SimpleSkuDiscountUnit](docs/SimpleSkuDiscountUnit.md)
  - [SimpleVoucher](docs/SimpleVoucher.md)
+ - [SimpleVoucherLoyaltyCard](docs/SimpleVoucherLoyaltyCard.md)
  - [SimpleVoucherRedemption](docs/SimpleVoucherRedemption.md)
  - [Sku](docs/Sku.md)
  - [SkusGetResponseBody](docs/SkusGetResponseBody.md)

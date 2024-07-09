@@ -6,9 +6,9 @@ Defines the conditions for the start date of the tier.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | What triggers the tier to be valid for a customer.     &#x60;IMMEDIATE&#x60;: After reaching the minimum required points.  &#x60;NEXT_PERIOD&#x60;: When the next qualification period starts. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**type** | [**TypeEnum**](#TypeEnum) | What triggers the tier to be valid for a customer.     &#x60;IMMEDIATE&#x60;: After reaching the minimum required points.  &#x60;NEXT_PERIOD&#x60;: When the next qualification period starts. |
 
 
 
@@ -18,7 +18,6 @@ Defines the conditions for the start date of the tier.
 |---- | -----|
 | IMMEDIATE | &quot;IMMEDIATE&quot; |
 | NEXT_PERIOD | &quot;NEXT_PERIOD&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

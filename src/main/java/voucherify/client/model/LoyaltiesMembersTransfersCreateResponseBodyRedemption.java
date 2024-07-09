@@ -76,9 +76,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LIST("list"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LIST("list");
 
     private String value;
 
@@ -101,7 +99,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -393,18 +391,9 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersTransfersCreateResponseBodyRedemption
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltiesMembersTransfersCreateResponseBodyRedemption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltiesMembersTransfersCreateResponseBodyRedemption is not found in the empty JSON string", LoyaltiesMembersTransfersCreateResponseBodyRedemption.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("redemption_entries") != null && !jsonObj.get("redemption_entries").isJsonNull() && !jsonObj.get("redemption_entries").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redemption_entries` to be an array in the JSON string but got `%s`", jsonObj.get("redemption_entries").toString()));
-      }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -412,15 +401,13 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+        return;
       }
   }
 
@@ -476,7 +463,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

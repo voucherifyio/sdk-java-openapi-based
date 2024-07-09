@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**amount** | **Integer** | Total gift card income over the lifetime of the card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000. |  [optional] |
-|**balance** | **Integer** | Available funds. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000. |  [optional] |
-|**effect** | [**EffectEnum**](#EffectEnum) | Defines how the credits are applied to the customer&#39;s order. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**amount** | **Integer** | Total gift card income over the lifetime of the card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000. |
+|**balance** | **Integer** | Available funds. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000. |
+|**effect** | [**EffectEnum**](#EffectEnum) | Defines how the credits are applied to the customer&#39;s order. |
 
 
 
@@ -19,7 +19,6 @@
 |---- | -----|
 | ORDER | &quot;APPLY_TO_ORDER&quot; |
 | ITEMS | &quot;APPLY_TO_ITEMS&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

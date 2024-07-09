@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrdersExportCreateRequestBodyParameters;
 
 import com.google.gson.Gson;
@@ -58,9 +59,7 @@ public class ExportOrderBase {
    */
   @JsonAdapter(ExportedObjectEnum.Adapter.class)
   public enum ExportedObjectEnum {
-    ORDER("order"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ORDER("order");
 
     private String value;
 
@@ -83,7 +82,7 @@ public class ExportOrderBase {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ExportedObjectEnum> {
@@ -121,7 +120,7 @@ public class ExportOrderBase {
    * The type of object to be exported.
    * @return exportedObject
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ExportedObjectEnum getExportedObject() {
     return exportedObject;
   }
@@ -212,9 +211,20 @@ public class ExportOrderBase {
         Objects.equals(this.additionalProperties, exportOrderBase.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(exportedObject, parameters, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -251,7 +261,6 @@ public class ExportOrderBase {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exported_object");
   }
 
  /**
@@ -261,21 +270,9 @@ public class ExportOrderBase {
   * @throws IOException if the JSON Element is invalid with respect to ExportOrderBase
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ExportOrderBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExportOrderBase is not found in the empty JSON string", ExportOrderBase.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExportOrderBase.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("exported_object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exported_object").toString()));
+      if ((jsonObj.get("exported_object") != null && !jsonObj.get("exported_object").isJsonNull()) && !jsonObj.get("exported_object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("exported_object");
@@ -283,12 +280,10 @@ public class ExportOrderBase {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ExportedObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `exported_object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("exported_object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `exported_object` to be a valid element of ExportedObjectEnum enum got `%s` instead", jsonObj.get("exported_object").toString()));
-        }
+          return;
       }
       // validate the optional field `parameters`
       if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
@@ -348,7 +343,7 @@ public class ExportOrderBase {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

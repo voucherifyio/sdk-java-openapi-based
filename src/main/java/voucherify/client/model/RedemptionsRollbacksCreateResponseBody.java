@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculatedNoCustomerData;
 import voucherify.client.model.RedemptionRollback;
 
@@ -202,9 +203,20 @@ public class RedemptionsRollbacksCreateResponseBody {
         Objects.equals(this.additionalProperties, redemptionsRollbacksCreateResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(rollbacks, parentRollback, order, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -252,26 +264,7 @@ public class RedemptionsRollbacksCreateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to RedemptionsRollbacksCreateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedemptionsRollbacksCreateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsRollbacksCreateResponseBody is not found in the empty JSON string", RedemptionsRollbacksCreateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("rollbacks") != null && !jsonObj.get("rollbacks").isJsonNull()) {
-        JsonArray jsonArrayrollbacks = jsonObj.getAsJsonArray("rollbacks");
-        if (jsonArrayrollbacks != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("rollbacks").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `rollbacks` to be an array in the JSON string but got `%s`", jsonObj.get("rollbacks").toString()));
-          }
-
-          // validate the optional field `rollbacks` (array)
-          for (int i = 0; i < jsonArrayrollbacks.size(); i++) {
-            RedemptionRollback.validateJsonElement(jsonArrayrollbacks.get(i));
-          };
-        }
-      }
       // validate the optional field `parent_rollback`
       if (jsonObj.get("parent_rollback") != null && !jsonObj.get("parent_rollback").isJsonNull()) {
         RedemptionRollback.validateJsonElement(jsonObj.get("parent_rollback"));
@@ -334,7 +327,7 @@ public class RedemptionsRollbacksCreateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

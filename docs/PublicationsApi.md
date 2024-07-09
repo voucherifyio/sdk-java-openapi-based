@@ -62,10 +62,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **joinOnce** | **Boolean**| Through this flag, you can control if a particular person gets only one and always the same code even if the app sends multiple publication requests. It means that if you have a referral program, a referrer is assigned only to one code if an integration sends publication requests more than once for the same customer. | [optional] |
-| **publicationsCreateRequestBody** | [**PublicationsCreateRequestBody**](PublicationsCreateRequestBody.md)| Specify the publication parameters. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **joinOnce** | **Boolean**| Through this flag, you can control if a particular person gets only one and always the same code even if the app sends multiple publication requests. It means that if you have a referral program, a referrer is assigned only to one code if an integration sends publication requests more than once for the same customer. |
+| **publicationsCreateRequestBody** | [**PublicationsCreateRequestBody**](PublicationsCreateRequestBody.md)| Specify the publication parameters. |
 
 ### Return type
 
@@ -148,19 +148,19 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrderListPublications**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: id, -id, voucher_code, -voucher_code, tracking_id, -tracking_id, customer_id, -customer_id, created_at, -created_at, channel, -channel] |
-| **campaign** | **String**| Filters by a given campaign name. | [optional] |
-| **customer** | **String**| Filters by a unique customer ID. | [optional] |
-| **voucher** | **String**| Filters by a given voucher code. | [optional] |
-| **result** | [**ParameterResultListPublications**](.md)| Filters by a publication result. | [optional] [enum: SUCCESS, FAILURE] |
-| **voucherType** | [**ParameterVoucherTypeListPublications**](.md)| Filters by a voucher type. | [optional] [enum: discount, loyalty, lucky_draw] |
-| **isReferralCode** | **Boolean**| This filter works only for the &#x60;true&#x60; option. If set to &#x60;true&#x60;, the query returns only publications of codes from referral campaigns.  | [optional] |
-| **filters** | **String**| Allows for combining the filters mentioned in the endpoint description. | [optional] |
-| **sourceId** | **String**| Using this endpoint with a particular publication &#x60;source_id&#x60;, which was sent with the original request to create a publication, returns in the response, exactly the same code published initially because the code was assigned to the given publication. As a result, you can use this endpoint as a reference and return a code that was assigned in a publication by using a particular &#x60;source_id&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrderListPublications**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
+| **campaign** | **String**| Filters by a given campaign name. |
+| **customer** | **String**| Filters by a unique customer ID. |
+| **voucher** | **String**| Filters by a given voucher code. |
+| **result** | [**ParameterResultListPublications**](.md)| Filters by a publication result. |
+| **voucherType** | [**ParameterVoucherTypeListPublications**](.md)| Filters by a voucher type. |
+| **isReferralCode** | **Boolean**| This filter works only for the &#x60;true&#x60; option. If set to &#x60;true&#x60;, the query returns only publications of codes from referral campaigns.  |
+| **filters** | **String**| Allows for combining the filters mentioned in the endpoint description. |
+| **sourceId** | **String**| Using this endpoint with a particular publication &#x60;source_id&#x60;, which was sent with the original request to create a publication, returns in the response, exactly the same code published initially because the code was assigned to the given publication. As a result, you can use this endpoint as a reference and return a code that was assigned in a publication by using a particular &#x60;source_id&#x60;. |
 
 ### Return type
 

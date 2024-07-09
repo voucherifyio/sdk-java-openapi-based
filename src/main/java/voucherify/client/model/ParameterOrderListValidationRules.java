@@ -38,9 +38,7 @@ public enum ParameterOrderListValidationRules {
   
   NAME("name"),
   
-  _NAME("-name"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  _NAME("-name");
 
   private String value;
 
@@ -63,7 +61,7 @@ public enum ParameterOrderListValidationRules {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListValidationRules> {

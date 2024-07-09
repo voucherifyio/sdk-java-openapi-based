@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.VoucherTransactionsExportFilterConditionsVoucherId;
 
 import com.google.gson.Gson;
@@ -70,7 +71,7 @@ public class VoucherTransactionsExportFilterConditions {
    * Get voucherId
    * @return voucherId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public VoucherTransactionsExportFilterConditionsVoucherId getVoucherId() {
     return voucherId;
   }
@@ -139,9 +140,20 @@ public class VoucherTransactionsExportFilterConditions {
         Objects.equals(this.additionalProperties, voucherTransactionsExportFilterConditions.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(voucherId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -176,7 +188,6 @@ public class VoucherTransactionsExportFilterConditions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("voucher_id");
   }
 
  /**
@@ -186,21 +197,11 @@ public class VoucherTransactionsExportFilterConditions {
   * @throws IOException if the JSON Element is invalid with respect to VoucherTransactionsExportFilterConditions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!VoucherTransactionsExportFilterConditions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VoucherTransactionsExportFilterConditions is not found in the empty JSON string", VoucherTransactionsExportFilterConditions.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VoucherTransactionsExportFilterConditions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `voucher_id`
-      VoucherTransactionsExportFilterConditionsVoucherId.validateJsonElement(jsonObj.get("voucher_id"));
+      // validate the optional field `voucher_id`
+      if (jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) {
+        VoucherTransactionsExportFilterConditionsVoucherId.validateJsonElement(jsonObj.get("voucher_id"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -255,7 +256,7 @@ public class VoucherTransactionsExportFilterConditions {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

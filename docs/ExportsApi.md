@@ -64,9 +64,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **exportsCreateRequestBody** | [**ExportsCreateRequestBody**](ExportsCreateRequestBody.md)| Specify the details of the export that you would like to create. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **exportsCreateRequestBody** | [**ExportsCreateRequestBody**](ExportsCreateRequestBody.md)| Specify the details of the export that you would like to create. |
 
 ### Return type
 
@@ -138,9 +138,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **exportId** | **String**| Unique export object ID of previously created export. This object can be a: &#x60;voucher&#x60;, &#x60;redemption&#x60;, &#x60;publication&#x60;, &#x60;customer&#x60;, &#x60;order&#x60;, &#x60;points_expiration&#x60;, or &#x60;voucher_transactions&#x60;. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **exportId** | **String**| Unique export object ID of previously created export. This object can be a: &#x60;voucher&#x60;, &#x60;redemption&#x60;, &#x60;publication&#x60;, &#x60;customer&#x60;, &#x60;order&#x60;, &#x60;points_expiration&#x60;, or &#x60;voucher_transactions&#x60;. |
 
 ### Return type
 
@@ -201,10 +201,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **exportId** | **String**| Unique export object ID. | |
-| **token** | **String**| Token that was issued to the export, to get this token, get the export first | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **exportId** | **String**| Unique export object ID. |
+| **token** | **String**| Token that was issued to the export, to get this token, get the export first |
 
 ### Return type
 
@@ -277,9 +277,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **exportId** | **String**| Unique export object ID of previously created export. This object can be a: &#x60;voucher&#x60;, &#x60;redemption&#x60;, &#x60;publication&#x60;, &#x60;customer&#x60;, &#x60;order&#x60;, &#x60;points_expiration&#x60;, or &#x60;voucher_transactions&#x60;. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **exportId** | **String**| Unique export object ID of previously created export. This object can be a: &#x60;voucher&#x60;, &#x60;redemption&#x60;, &#x60;publication&#x60;, &#x60;customer&#x60;, &#x60;order&#x60;, &#x60;points_expiration&#x60;, or &#x60;voucher_transactions&#x60;. |
 
 ### Return type
 
@@ -354,11 +354,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrderListExports**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, status, -status] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrderListExports**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
 
 ### Return type
 

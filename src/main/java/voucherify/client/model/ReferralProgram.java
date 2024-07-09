@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.ReferralProgramCustomEvent;
 import voucherify.client.model.ReferralProgramRefereeReward;
 
@@ -61,9 +62,7 @@ public class ReferralProgram {
   public enum ConversionEventTypeEnum {
     REDEMPTION("redemption"),
     
-    CUSTOM_EVENT("custom_event"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CUSTOM_EVENT("custom_event");
 
     private String value;
 
@@ -86,7 +85,7 @@ public class ReferralProgram {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ConversionEventTypeEnum> {
@@ -241,9 +240,20 @@ public class ReferralProgram {
         Objects.equals(this.additionalProperties, referralProgram.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(conversionEventType, customEvent, refereeReward, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -291,14 +301,9 @@ public class ReferralProgram {
   * @throws IOException if the JSON Element is invalid with respect to ReferralProgram
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ReferralProgram.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReferralProgram is not found in the empty JSON string", ReferralProgram.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("conversion_event_type") != null && !jsonObj.get("conversion_event_type").isJsonNull()) && !jsonObj.get("conversion_event_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conversion_event_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event_type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("conversion_event_type");
@@ -306,12 +311,10 @@ public class ReferralProgram {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ConversionEventTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `conversion_event_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("conversion_event_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `conversion_event_type` to be a valid element of ConversionEventTypeEnum enum got `%s` instead", jsonObj.get("conversion_event_type").toString()));
-        }
+          return;
       }
       // validate the optional field `custom_event`
       if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
@@ -375,7 +378,7 @@ public class ReferralProgram {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -6,10 +6,10 @@ Unique voucher code.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**conditions** | [**FilterConditionsString**](FilterConditionsString.md) |  |  [optional] |
-|**junction** | **Junction** |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**conditions** | [**FilterConditionsString**](FilterConditionsString.md) |  |
+|**junction** | **Junction** |  |
 
 
 

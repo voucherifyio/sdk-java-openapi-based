@@ -32,9 +32,7 @@ public enum ParameterVoucherTypeListPublications {
   
   LOYALTY("loyalty"),
   
-  LUCKY_DRAW("lucky_draw"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  LUCKY_DRAW("lucky_draw");
 
   private String value;
 
@@ -57,7 +55,7 @@ public enum ParameterVoucherTypeListPublications {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<ParameterVoucherTypeListPublications> {

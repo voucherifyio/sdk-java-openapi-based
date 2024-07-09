@@ -185,11 +185,6 @@ public class QualificationsFieldConditions {
   * @throws IOException if the JSON Element is invalid with respect to QualificationsFieldConditions
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!QualificationsFieldConditions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in QualificationsFieldConditions is not found in the empty JSON string", QualificationsFieldConditions.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `conditions`
       if (jsonObj.get("conditions") != null && !jsonObj.get("conditions").isJsonNull()) {
@@ -249,7 +244,7 @@ public class QualificationsFieldConditions {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

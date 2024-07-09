@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -81,7 +82,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Type of period
    * @return periodType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getPeriodType() {
     return periodType;
   }
@@ -102,7 +103,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Value of the period
    * @return periodValue
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPeriodValue() {
     return periodValue;
   }
@@ -123,7 +124,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Type of rounding
    * @return roundingType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRoundingType() {
     return roundingType;
   }
@@ -144,7 +145,7 @@ public class CampaignLoyaltyCardExpirationRules {
    * Value of rounding
    * @return roundingValue
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getRoundingValue() {
     return roundingValue;
   }
@@ -216,9 +217,20 @@ public class CampaignLoyaltyCardExpirationRules {
         Objects.equals(this.additionalProperties, campaignLoyaltyCardExpirationRules.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(periodType, periodValue, roundingType, roundingValue, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -259,10 +271,6 @@ public class CampaignLoyaltyCardExpirationRules {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("period_type");
-    openapiRequiredFields.add("period_value");
-    openapiRequiredFields.add("rounding_type");
-    openapiRequiredFields.add("rounding_value");
   }
 
  /**
@@ -272,24 +280,12 @@ public class CampaignLoyaltyCardExpirationRules {
   * @throws IOException if the JSON Element is invalid with respect to CampaignLoyaltyCardExpirationRules
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CampaignLoyaltyCardExpirationRules.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignLoyaltyCardExpirationRules is not found in the empty JSON string", CampaignLoyaltyCardExpirationRules.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CampaignLoyaltyCardExpirationRules.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("period_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `period_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("period_type").toString()));
+      if ((jsonObj.get("period_type") != null && !jsonObj.get("period_type").isJsonNull()) && !jsonObj.get("period_type").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("rounding_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rounding_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rounding_type").toString()));
+      if ((jsonObj.get("rounding_type") != null && !jsonObj.get("rounding_type").isJsonNull()) && !jsonObj.get("rounding_type").isJsonPrimitive()) {
+        return;
       }
   }
 
@@ -345,7 +341,7 @@ public class CampaignLoyaltyCardExpirationRules {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -338,9 +339,20 @@ public class FilterConditionsString {
         Objects.equals(this.additionalProperties, filterConditionsString.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash($in, $notIn, $is, $isNot, $hasValue, $isUnknown, $startsWith, $endsWith, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -398,37 +410,24 @@ public class FilterConditionsString {
   * @throws IOException if the JSON Element is invalid with respect to FilterConditionsString
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!FilterConditionsString.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FilterConditionsString is not found in the empty JSON string", FilterConditionsString.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("$in") != null && !jsonObj.get("$in").isJsonNull() && !jsonObj.get("$in").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$in` to be an array in the JSON string but got `%s`", jsonObj.get("$in").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("$not_in") != null && !jsonObj.get("$not_in").isJsonNull() && !jsonObj.get("$not_in").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$not_in` to be an array in the JSON string but got `%s`", jsonObj.get("$not_in").toString()));
-      }
       if ((jsonObj.get("$is") != null && !jsonObj.get("$is").isJsonNull()) && !jsonObj.get("$is").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$is` to be a primitive type in the JSON string but got `%s`", jsonObj.get("$is").toString()));
+        return;
       }
       if ((jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull()) && !jsonObj.get("$is_not").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$is_not` to be a primitive type in the JSON string but got `%s`", jsonObj.get("$is_not").toString()));
+        return;
       }
       if ((jsonObj.get("$has_value") != null && !jsonObj.get("$has_value").isJsonNull()) && !jsonObj.get("$has_value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$has_value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("$has_value").toString()));
+        return;
       }
       if ((jsonObj.get("$is_unknown") != null && !jsonObj.get("$is_unknown").isJsonNull()) && !jsonObj.get("$is_unknown").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$is_unknown` to be a primitive type in the JSON string but got `%s`", jsonObj.get("$is_unknown").toString()));
+        return;
       }
       if ((jsonObj.get("$starts_with") != null && !jsonObj.get("$starts_with").isJsonNull()) && !jsonObj.get("$starts_with").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$starts_with` to be a primitive type in the JSON string but got `%s`", jsonObj.get("$starts_with").toString()));
+        return;
       }
       if ((jsonObj.get("$ends_with") != null && !jsonObj.get("$ends_with").isJsonNull()) && !jsonObj.get("$ends_with").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `$ends_with` to be a primitive type in the JSON string but got `%s`", jsonObj.get("$ends_with").toString()));
+        return;
       }
   }
 
@@ -484,7 +483,7 @@ public class FilterConditionsString {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

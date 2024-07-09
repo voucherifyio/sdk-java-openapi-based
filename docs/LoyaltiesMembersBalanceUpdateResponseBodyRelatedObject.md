@@ -6,10 +6,10 @@ Defines the object that is being modified with the values that are returned in t
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | The object being modified. |  |
-|**id** | **String** | Identifies the loyalty card that is being modified, this is the ID that was assigned by the Voucherify API. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**type** | [**TypeEnum**](#TypeEnum) | The object being modified. |
+|**id** | **String** | Identifies the loyalty card that is being modified, this is the ID that was assigned by the Voucherify API. |
 
 
 
@@ -18,7 +18,6 @@ Defines the object that is being modified with the values that are returned in t
 | Name | Value |
 |---- | -----|
 | VOUCHER | &quot;voucher&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

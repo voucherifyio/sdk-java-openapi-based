@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerWithSummaryLoyaltyReferrals;
 
 import com.google.gson.Gson;
@@ -65,7 +66,7 @@ public class CustomersListResponseBody {
 
   public static final String SERIALIZED_NAME_CUSTOMERS = "customers";
   @SerializedName(SERIALIZED_NAME_CUSTOMERS)
-  private List<CustomerWithSummaryLoyaltyReferrals> customers = new ArrayList<>();
+  private List<CustomerWithSummaryLoyaltyReferrals> customers;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -88,7 +89,7 @@ public class CustomersListResponseBody {
    * The type of the object represented by JSON. This object stores information about customers in a dictionary.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -109,7 +110,7 @@ public class CustomersListResponseBody {
    * Identifies the name of the attribute that contains the array of customer objects.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -138,7 +139,7 @@ public class CustomersListResponseBody {
    * Contains array of customer objects.
    * @return customers
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<CustomerWithSummaryLoyaltyReferrals> getCustomers() {
     return customers;
   }
@@ -159,7 +160,7 @@ public class CustomersListResponseBody {
    * Total number of customers.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -253,9 +254,20 @@ public class CustomersListResponseBody {
         Objects.equals(this.additionalProperties, customersListResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(_object, dataRef, customers, total, hasMore, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -298,10 +310,6 @@ public class CustomersListResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("customers");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -311,35 +319,13 @@ public class CustomersListResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to CustomersListResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CustomersListResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomersListResponseBody is not found in the empty JSON string", CustomersListResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomersListResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
+        return;
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("customers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customers` to be an array in the JSON string but got `%s`", jsonObj.get("customers").toString()));
-      }
-
-      JsonArray jsonArraycustomers = jsonObj.getAsJsonArray("customers");
-      // validate the required field `customers` (array)
-      for (int i = 0; i < jsonArraycustomers.size(); i++) {
-        CustomerWithSummaryLoyaltyReferrals.validateJsonElement(jsonArraycustomers.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -394,7 +380,7 @@ public class CustomersListResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

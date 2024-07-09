@@ -6,12 +6,12 @@ Object representing loyalty card parameters. Child attributes are present only i
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**points** | **Integer** | Total points incurred over lifespan of loyalty card. |  [optional] |
-|**balance** | **Integer** | Points available for reward redemption. |  [optional] |
-|**nextExpirationDate** | **LocalDate** | The next closest date when the next set of points are due to expire. |  [optional] |
-|**nextExpirationPoints** | **Integer** | The amount of points that are set to expire next. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**points** | **Integer** | Total points incurred over lifespan of loyalty card. |
+|**balance** | **Integer** | Points available for reward redemption. |
+|**nextExpirationDate** | **LocalDate** | The next closest date when the next set of points are due to expire. |
+|**nextExpirationPoints** | **Integer** | The amount of points that are set to expire next. |
 
 
 

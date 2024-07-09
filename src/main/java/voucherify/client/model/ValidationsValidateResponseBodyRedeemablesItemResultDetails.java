@@ -52,132 +52,18 @@ import voucherify.client.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
 public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
-  /**
-   * Gets or Sets key
-   */
-  @JsonAdapter(KeyEnum.Adapter.class)
-  public enum KeyEnum {
-    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("applicable_redeemables_limit_exceeded"),
-    
-    APPLICABLE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_redeemables_per_category_limit_exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("applicable_exclusive_redeemables_limit_exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_PER_CATEGORY_LIMIT_EXCEEDED("applicable_exclusive_redeemables_per_category_limit_exceeded"),
-    
-    EXCLUSION_RULES_NOT_MET("exclusion_rules_not_met"),
-    
-    PRECEDING_VALIDATION_FAILED("preceding_validation_failed"),
-    
-    UNKNOWN_ENUM("unknown_enum");
-
-    private String value;
-
-    KeyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static KeyEnum fromValue(String value) {
-      for (KeyEnum b : KeyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return UNKNOWN_ENUM;
-    }
-
-    public static class Adapter extends TypeAdapter<KeyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final KeyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public KeyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return KeyEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
-  private KeyEnum key;
-
-  /**
-   * Gets or Sets message
-   */
-  @JsonAdapter(MessageEnum.Adapter.class)
-  public enum MessageEnum {
-    APPLICABLE_REDEEMABLES_LIMIT_EXCEEDED("Applicable redeemables limit exceeded"),
-    
-    APPLICABLE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable redeemables limit per category exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_EXCEEDED("Applicable exclusive redeemables limit exceeded"),
-    
-    APPLICABLE_EXCLUSIVE_REDEEMABLES_LIMIT_PER_CATEGORY_EXCEEDED("Applicable exclusive redeemables limit per category exceeded"),
-    
-    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_EXCLUSION_RULES("Redeemable cannot be applied due to exclusion rules"),
-    
-    REDEEMABLE_CANNOT_BE_APPLIED_DUE_TO_PRECEDING_VALIDATION_FAILURE("Redeemable cannot be applied due to preceding validation failure"),
-    
-    UNKNOWN_ENUM("unknown_enum");
-
-    private String value;
-
-    MessageEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MessageEnum fromValue(String value) {
-      for (MessageEnum b : MessageEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return UNKNOWN_ENUM;
-    }
-
-    public static class Adapter extends TypeAdapter<MessageEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MessageEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MessageEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MessageEnum.fromValue(value);
-      }
-    }
-  }
+  private String key;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private MessageEnum message;
+  private String message;
 
   public ValidationsValidateResponseBodyRedeemablesItemResultDetails() {
   }
 
-  public ValidationsValidateResponseBodyRedeemablesItemResultDetails key(KeyEnum key) {
+  public ValidationsValidateResponseBodyRedeemablesItemResultDetails key(String key) {
     
     this.key = key;
     return this;
@@ -188,17 +74,17 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
    * @return key
   **/
   @javax.annotation.Nullable
-  public KeyEnum getKey() {
+  public String getKey() {
     return key;
   }
 
 
-  public void setKey(KeyEnum key) {
+  public void setKey(String key) {
     this.key = key;
   }
 
 
-  public ValidationsValidateResponseBodyRedeemablesItemResultDetails message(MessageEnum message) {
+  public ValidationsValidateResponseBodyRedeemablesItemResultDetails message(String message) {
     
     this.message = message;
     return this;
@@ -209,12 +95,12 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
    * @return message
   **/
   @javax.annotation.Nullable
-  public MessageEnum getMessage() {
+  public String getMessage() {
     return message;
   }
 
 
-  public void setMessage(MessageEnum message) {
+  public void setMessage(String message) {
     this.message = message;
   }
 
@@ -326,43 +212,12 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
   * @throws IOException if the JSON Element is invalid with respect to ValidationsValidateResponseBodyRedeemablesItemResultDetails
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidationsValidateResponseBodyRedeemablesItemResultDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationsValidateResponseBodyRedeemablesItemResultDetails is not found in the empty JSON string", ValidationsValidateResponseBodyRedeemablesItemResultDetails.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("key");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          KeyEnum.fromValue(objectElement.getAsString());
-        } else {
-          throw new IllegalArgumentException("Expected the field `key` to be not null");
-        }
-      } catch (IllegalArgumentException e) {
-        if(jsonObj.get("key") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `key` to be a valid element of KeyEnum enum got `%s` instead", jsonObj.get("key").toString()));
-        }
+        return;
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("message");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          MessageEnum.fromValue(objectElement.getAsString());
-        } else {
-          throw new IllegalArgumentException("Expected the field `message` to be not null");
-        }
-      } catch (IllegalArgumentException e) {
-        if(jsonObj.get("message") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `message` to be a valid element of MessageEnum enum got `%s` instead", jsonObj.get("message").toString()));
-        }
+        return;
       }
   }
 
@@ -418,7 +273,7 @@ public class ValidationsValidateResponseBodyRedeemablesItemResultDetails {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

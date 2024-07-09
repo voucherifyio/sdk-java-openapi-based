@@ -34,9 +34,7 @@ public enum ParameterOrderListCampaigns {
   
   UPDATED_AT("updated_at"),
   
-  _UPDATED_AT("-updated_at"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  _UPDATED_AT("-updated_at");
 
   private String value;
 
@@ -59,7 +57,7 @@ public enum ParameterOrderListCampaigns {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListCampaigns> {

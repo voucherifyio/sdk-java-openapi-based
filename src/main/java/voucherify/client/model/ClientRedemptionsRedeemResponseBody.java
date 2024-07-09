@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.Redemption;
 import voucherify.client.model.ValidationsRedeemableInapplicable;
@@ -272,9 +273,20 @@ public class ClientRedemptionsRedeemResponseBody {
         Objects.equals(this.additionalProperties, clientRedemptionsRedeemResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(redemptions, parentRedemption, order, inapplicableRedeemables, skippedRedeemables, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -326,26 +338,7 @@ public class ClientRedemptionsRedeemResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to ClientRedemptionsRedeemResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ClientRedemptionsRedeemResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ClientRedemptionsRedeemResponseBody is not found in the empty JSON string", ClientRedemptionsRedeemResponseBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
-        JsonArray jsonArrayredemptions = jsonObj.getAsJsonArray("redemptions");
-        if (jsonArrayredemptions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("redemptions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `redemptions` to be an array in the JSON string but got `%s`", jsonObj.get("redemptions").toString()));
-          }
-
-          // validate the optional field `redemptions` (array)
-          for (int i = 0; i < jsonArrayredemptions.size(); i++) {
-            Redemption.validateJsonElement(jsonArrayredemptions.get(i));
-          };
-        }
-      }
       // validate the optional field `parent_redemption`
       if (jsonObj.get("parent_redemption") != null && !jsonObj.get("parent_redemption").isJsonNull()) {
         Redemption.validateJsonElement(jsonObj.get("parent_redemption"));
@@ -353,34 +346,6 @@ public class ClientRedemptionsRedeemResponseBody {
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         OrderCalculated.validateJsonElement(jsonObj.get("order"));
-      }
-      if (jsonObj.get("inapplicable_redeemables") != null && !jsonObj.get("inapplicable_redeemables").isJsonNull()) {
-        JsonArray jsonArrayinapplicableRedeemables = jsonObj.getAsJsonArray("inapplicable_redeemables");
-        if (jsonArrayinapplicableRedeemables != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("inapplicable_redeemables").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `inapplicable_redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("inapplicable_redeemables").toString()));
-          }
-
-          // validate the optional field `inapplicable_redeemables` (array)
-          for (int i = 0; i < jsonArrayinapplicableRedeemables.size(); i++) {
-            ValidationsRedeemableInapplicable.validateJsonElement(jsonArrayinapplicableRedeemables.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("skipped_redeemables") != null && !jsonObj.get("skipped_redeemables").isJsonNull()) {
-        JsonArray jsonArrayskippedRedeemables = jsonObj.getAsJsonArray("skipped_redeemables");
-        if (jsonArrayskippedRedeemables != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("skipped_redeemables").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `skipped_redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("skipped_redeemables").toString()));
-          }
-
-          // validate the optional field `skipped_redeemables` (array)
-          for (int i = 0; i < jsonArrayskippedRedeemables.size(); i++) {
-            ValidationsRedeemableSkipped.validateJsonElement(jsonArrayskippedRedeemables.get(i));
-          };
-        }
       }
   }
 
@@ -436,7 +401,7 @@ public class ClientRedemptionsRedeemResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

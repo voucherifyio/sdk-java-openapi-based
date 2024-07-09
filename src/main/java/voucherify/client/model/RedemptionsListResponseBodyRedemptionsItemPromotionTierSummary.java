@@ -214,11 +214,6 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary {
   * @throws IOException if the JSON Element is invalid with respect to RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary is not found in the empty JSON string", RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `redemptions`
       if (jsonObj.get("redemptions") != null && !jsonObj.get("redemptions").isJsonNull()) {
@@ -282,7 +277,7 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

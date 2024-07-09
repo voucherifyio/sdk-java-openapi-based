@@ -6,10 +6,10 @@ If a **conversion event** for a referral program is set to a custom event, then 
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**code** | **String** | A code through which a new visitor has been referred to a service. |  |
-|**referrerId** | **String** | Unique ID of the referring person - it is optional and not required if the referral **code** is provided. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**code** | **String** | A code through which a new visitor has been referred to a service. |
+|**referrerId** | **String** | Unique ID of the referring person - it is optional and not required if the referral **code** is provided. |
 
 
 

@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
-|**multiplier** | **BigDecimal** | Multiplication factor used to multiply the points to obtain the mapped points. |  [optional] |
-|**points** | **Integer** | Fixed number of points to be applied. |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**type** | [**TypeEnum**](#TypeEnum) |  |
+|**multiplier** | **BigDecimal** | Multiplication factor used to multiply the points to obtain the mapped points. |
+|**points** | **Integer** | Fixed number of points to be applied. |
 
 
 
@@ -19,7 +19,6 @@
 |---- | -----|
 | MULTIPLY | &quot;MULTIPLY&quot; |
 | CUSTOM | &quot;CUSTOM&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

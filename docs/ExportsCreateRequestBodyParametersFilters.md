@@ -5,12 +5,12 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**junction** | **Junction** |  |  [optional] |
-|**campaignId** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**voucherId** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
-|**createdAt** | [**FieldConditions**](FieldConditions.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**junction** | **Junction** |  |
+|**campaignId** | [**FieldConditions**](FieldConditions.md) |  |
+|**voucherId** | [**FieldConditions**](FieldConditions.md) |  |
+|**createdAt** | [**FieldConditions**](FieldConditions.md) |  |
 
 
 

@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.LoyaltiesTransferPoints;
 
 import com.google.gson.Gson;
@@ -254,9 +255,20 @@ public class RedeemableLoyaltyCard {
         Objects.equals(this.additionalProperties, redeemableLoyaltyCard.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(points, balance, exchangeRatio, pointsRatio, transfers, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -308,26 +320,7 @@ public class RedeemableLoyaltyCard {
   * @throws IOException if the JSON Element is invalid with respect to RedeemableLoyaltyCard
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedeemableLoyaltyCard.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedeemableLoyaltyCard is not found in the empty JSON string", RedeemableLoyaltyCard.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("transfers") != null && !jsonObj.get("transfers").isJsonNull()) {
-        JsonArray jsonArraytransfers = jsonObj.getAsJsonArray("transfers");
-        if (jsonArraytransfers != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("transfers").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `transfers` to be an array in the JSON string but got `%s`", jsonObj.get("transfers").toString()));
-          }
-
-          // validate the optional field `transfers` (array)
-          for (int i = 0; i < jsonArraytransfers.size(); i++) {
-            LoyaltiesTransferPoints.validateJsonElement(jsonArraytransfers.get(i));
-          };
-        }
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -382,7 +375,7 @@ public class RedeemableLoyaltyCard {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

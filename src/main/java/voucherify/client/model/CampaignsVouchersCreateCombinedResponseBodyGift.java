@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -67,9 +68,7 @@ public class CampaignsVouchersCreateCombinedResponseBodyGift {
   public enum EffectEnum {
     ORDER("APPLY_TO_ORDER"),
     
-    ITEMS("APPLY_TO_ITEMS"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    ITEMS("APPLY_TO_ITEMS");
 
     private String value;
 
@@ -92,7 +91,7 @@ public class CampaignsVouchersCreateCombinedResponseBodyGift {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<EffectEnum> {
@@ -239,9 +238,20 @@ public class CampaignsVouchersCreateCombinedResponseBodyGift {
         Objects.equals(this.additionalProperties, campaignsVouchersCreateCombinedResponseBodyGift.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(amount, balance, effect, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -289,14 +299,9 @@ public class CampaignsVouchersCreateCombinedResponseBodyGift {
   * @throws IOException if the JSON Element is invalid with respect to CampaignsVouchersCreateCombinedResponseBodyGift
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CampaignsVouchersCreateCombinedResponseBodyGift.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsVouchersCreateCombinedResponseBodyGift is not found in the empty JSON string", CampaignsVouchersCreateCombinedResponseBodyGift.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("effect");
@@ -304,12 +309,10 @@ public class CampaignsVouchersCreateCombinedResponseBodyGift {
         if (objectElement != null && !objectElement.isJsonNull()) {
           EffectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `effect` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("effect") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `effect` to be a valid element of EffectEnum enum got `%s` instead", jsonObj.get("effect").toString()));
-        }
+          return;
       }
   }
 
@@ -365,7 +368,7 @@ public class CampaignsVouchersCreateCombinedResponseBodyGift {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

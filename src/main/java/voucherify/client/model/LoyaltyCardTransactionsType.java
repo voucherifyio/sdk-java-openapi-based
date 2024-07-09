@@ -44,9 +44,7 @@ public enum LoyaltyCardTransactionsType {
   
   TRANSFER_IN("POINTS_TRANSFER_IN"),
   
-  TRANSFER_OUT("POINTS_TRANSFER_OUT"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  TRANSFER_OUT("POINTS_TRANSFER_OUT");
 
   private String value;
 
@@ -69,7 +67,7 @@ public enum LoyaltyCardTransactionsType {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<LoyaltyCardTransactionsType> {

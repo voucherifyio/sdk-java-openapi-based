@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.ValidationRuleAssignment;
 
 import com.google.gson.Gson;
@@ -65,7 +66,7 @@ public class ValidationRuleAssignmentsList {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ValidationRuleAssignment> data = new ArrayList<>();
+  private List<ValidationRuleAssignment> data;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -84,7 +85,7 @@ public class ValidationRuleAssignmentsList {
    * The type of the object represented by JSON. This object stores information about validation rule assignments.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getObject() {
     return _object;
   }
@@ -105,7 +106,7 @@ public class ValidationRuleAssignmentsList {
    * Identifies the name of the JSON property that contains the array of validation rule assignments.
    * @return dataRef
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDataRef() {
     return dataRef;
   }
@@ -134,7 +135,7 @@ public class ValidationRuleAssignmentsList {
    * A dictionary that contains an array of validation rule assignments.
    * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<ValidationRuleAssignment> getData() {
     return data;
   }
@@ -155,7 +156,7 @@ public class ValidationRuleAssignmentsList {
    * Total number of validation rule assignments.
    * @return total
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getTotal() {
     return total;
   }
@@ -227,9 +228,20 @@ public class ValidationRuleAssignmentsList {
         Objects.equals(this.additionalProperties, validationRuleAssignmentsList.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(_object, dataRef, data, total, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -270,10 +282,6 @@ public class ValidationRuleAssignmentsList {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("data_ref");
-    openapiRequiredFields.add("data");
-    openapiRequiredFields.add("total");
   }
 
  /**
@@ -283,35 +291,13 @@ public class ValidationRuleAssignmentsList {
   * @throws IOException if the JSON Element is invalid with respect to ValidationRuleAssignmentsList
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidationRuleAssignmentsList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationRuleAssignmentsList is not found in the empty JSON string", ValidationRuleAssignmentsList.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationRuleAssignmentsList.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("data_ref").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data_ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data_ref").toString()));
+      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
+        return;
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
-
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        ValidationRuleAssignment.validateJsonElement(jsonArraydata.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -366,7 +352,7 @@ public class ValidationRuleAssignmentsList {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | **String** | A unique identifier of an existing customer. |  |
-|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**id** | **String** | A unique identifier of an existing customer. |
+|**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |
 
 
 
@@ -17,7 +17,6 @@
 | Name | Value |
 |---- | -----|
 | CUSTOMER | &quot;customer&quot; |
-| UNKNOWN_ENUM | &quot;unknown_enum&quot; |
 
 
 

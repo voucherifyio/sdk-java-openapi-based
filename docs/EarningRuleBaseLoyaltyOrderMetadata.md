@@ -6,11 +6,11 @@ Defines the ratio based on the property defined in the calculation_type paramete
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**every** | **Integer** | For how many increments of the order metadata property to grant points for. |  |
-|**points** | **Integer** | Number of points to be awarded, i.e. how many points to be added to the loyalty card. |  |
-|**property** | **String** | Order metadata property. |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**every** | **Integer** | For how many increments of the order metadata property to grant points for. |
+|**points** | **Integer** | Number of points to be awarded, i.e. how many points to be added to the loyalty card. |
+|**property** | **String** | Order metadata property. |
 
 
 

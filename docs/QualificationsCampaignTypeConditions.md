@@ -6,9 +6,9 @@ Returns both campaigns and their vouchers or promotion tiers. Use other filters,
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**conditions** | [**QualificationsCampaignTypeConditionsConditions**](QualificationsCampaignTypeConditionsConditions.md) |  |  [optional] |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**conditions** | [**QualificationsCampaignTypeConditionsConditions**](QualificationsCampaignTypeConditionsConditions.md) |  |
 
 
 

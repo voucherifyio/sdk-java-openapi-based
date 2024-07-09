@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.Category;
 import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTierAction;
 import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign;
@@ -710,9 +711,20 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
         Objects.equals(this.additionalProperties, redemptionsListResponseBodyRedemptionsItemPromotionTier.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, createdAt, updatedAt, name, banner, action, metadata, hierarchy, promotionId, campaign, campaignId, active, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, summary, _object, validationRuleAssignments, categoryId, categories, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -798,42 +810,33 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
   * @throws IOException if the JSON Element is invalid with respect to RedemptionsListResponseBodyRedemptionsItemPromotionTier
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RedemptionsListResponseBodyRedemptionsItemPromotionTier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RedemptionsListResponseBodyRedemptionsItemPromotionTier is not found in the empty JSON string", RedemptionsListResponseBodyRedemptionsItemPromotionTier.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        return;
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        return;
       }
       if ((jsonObj.get("banner") != null && !jsonObj.get("banner").isJsonNull()) && !jsonObj.get("banner").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `banner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("banner").toString()));
+        return;
       }
       // validate the optional field `action`
       if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) {
         RedemptionsListResponseBodyRedemptionsItemPromotionTierAction.validateJsonElement(jsonObj.get("action"));
       }
       if ((jsonObj.get("promotion_id") != null && !jsonObj.get("promotion_id").isJsonNull()) && !jsonObj.get("promotion_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `promotion_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("promotion_id").toString()));
+        return;
       }
       // validate the optional field `campaign`
       if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
         RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign.validateJsonElement(jsonObj.get("campaign"));
       }
       if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+        return;
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
@@ -844,28 +847,14 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
         RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary.validateJsonElement(jsonObj.get("summary"));
       }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+        return;
       }
       // validate the optional field `validation_rule_assignments`
       if (jsonObj.get("validation_rule_assignments") != null && !jsonObj.get("validation_rule_assignments").isJsonNull()) {
         ValidationRuleAssignmentsList.validateJsonElement(jsonObj.get("validation_rule_assignments"));
       }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
-      }
-      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
-        JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
-        if (jsonArraycategories != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("categories").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
-          }
-
-          // validate the optional field `categories` (array)
-          for (int i = 0; i < jsonArraycategories.size(); i++) {
-            Category.validateJsonElement(jsonArraycategories.get(i));
-          };
-        }
+        return;
       }
   }
 
@@ -921,7 +910,7 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

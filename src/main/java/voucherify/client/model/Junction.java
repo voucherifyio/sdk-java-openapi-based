@@ -30,9 +30,7 @@ public enum Junction {
   
   AND("and"),
   
-  OR("or"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  OR("or");
 
   private String value;
 
@@ -55,7 +53,7 @@ public enum Junction {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<Junction> {

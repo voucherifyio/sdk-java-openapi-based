@@ -87,9 +87,7 @@ public class PromotionsStacksUpdateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    PROMOTION_STACK("promotion_stack"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    PROMOTION_STACK("promotion_stack");
 
     private String value;
 
@@ -112,7 +110,7 @@ public class PromotionsStacksUpdateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -139,7 +137,7 @@ public class PromotionsStacksUpdateResponseBody {
 
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<PromotionStackBase> categories = new ArrayList<>();
+  private List<PromotionStackBase> categories;
 
   public PromotionsStacksUpdateResponseBody() {
   }
@@ -154,7 +152,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Promotion stack name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -175,7 +173,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Get tiers
    * @return tiers
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public PromotionStackBaseTiers getTiers() {
     return tiers;
   }
@@ -196,7 +194,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Unique promotion stack ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -217,7 +215,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Timestamp representing the date and time when the promotion stack was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -238,7 +236,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Timestamp representing the date and time when the promotion stack was updated. The value is shown in the ISO 8601 format.
    * @return updatedAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -259,7 +257,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Promotion stack&#39;s parent campaign&#39;s unique ID.
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
@@ -280,7 +278,7 @@ public class PromotionsStacksUpdateResponseBody {
    * The type of the object represented by JSON. 
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -330,7 +328,7 @@ public class PromotionsStacksUpdateResponseBody {
    * Details about the category assigned to the promotion stack.
    * @return categories
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<PromotionStackBase> getCategories() {
     return categories;
   }
@@ -471,14 +469,6 @@ public class PromotionsStacksUpdateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("tiers");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("updated_at");
-    openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("categories");
   }
 
  /**
@@ -488,32 +478,22 @@ public class PromotionsStacksUpdateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to PromotionsStacksUpdateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PromotionsStacksUpdateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PromotionsStacksUpdateResponseBody is not found in the empty JSON string", PromotionsStacksUpdateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PromotionsStacksUpdateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        return;
       }
-      // validate the required field `tiers`
-      PromotionStackBaseTiers.validateJsonElement(jsonObj.get("tiers"));
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      // validate the optional field `tiers`
+      if (jsonObj.get("tiers") != null && !jsonObj.get("tiers").isJsonNull()) {
+        PromotionStackBaseTiers.validateJsonElement(jsonObj.get("tiers"));
       }
-      if (!jsonObj.get("campaign_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
+        return;
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -521,26 +501,14 @@ public class PromotionsStacksUpdateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+        return;
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("categories").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
-      }
-
-      JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
-      // validate the required field `categories` (array)
-      for (int i = 0; i < jsonArraycategories.size(); i++) {
-        PromotionStackBase.validateJsonElement(jsonArraycategories.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -595,7 +563,7 @@ public class PromotionsStacksUpdateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

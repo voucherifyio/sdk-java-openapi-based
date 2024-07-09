@@ -76,9 +76,7 @@ public class RewardsAssignmentsCreateResponseBody {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    REWARD_ASSIGNMENT("reward_assignment"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    REWARD_ASSIGNMENT("reward_assignment");
 
     private String value;
 
@@ -101,7 +99,7 @@ public class RewardsAssignmentsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -131,9 +129,7 @@ public class RewardsAssignmentsCreateResponseBody {
    */
   @JsonAdapter(RelatedObjectTypeEnum.Adapter.class)
   public enum RelatedObjectTypeEnum {
-    CAMPAIGN("campaign"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    CAMPAIGN("campaign");
 
     private String value;
 
@@ -156,7 +152,7 @@ public class RewardsAssignmentsCreateResponseBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<RelatedObjectTypeEnum> {
@@ -194,7 +190,7 @@ public class RewardsAssignmentsCreateResponseBody {
    * Unique reward assignment ID, assigned by Voucherify.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -215,7 +211,7 @@ public class RewardsAssignmentsCreateResponseBody {
    * Associated reward ID.
    * @return rewardId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRewardId() {
     return rewardId;
   }
@@ -236,7 +232,7 @@ public class RewardsAssignmentsCreateResponseBody {
    * Timestamp representing the date and time when the reward assignment was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -278,7 +274,7 @@ public class RewardsAssignmentsCreateResponseBody {
    * The type of the object represented by the JSON. This object stores information about the reward assignment.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -299,7 +295,7 @@ public class RewardsAssignmentsCreateResponseBody {
    * Related object ID to which the reward was assigned.
    * @return relatedObjectId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRelatedObjectId() {
     return relatedObjectId;
   }
@@ -320,7 +316,7 @@ public class RewardsAssignmentsCreateResponseBody {
    * Related object type to which the reward was assigned.
    * @return relatedObjectType
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public RelatedObjectTypeEnum getRelatedObjectType() {
     return relatedObjectType;
   }
@@ -479,12 +475,6 @@ public class RewardsAssignmentsCreateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("reward_id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("related_object_id");
-    openapiRequiredFields.add("related_object_type");
   }
 
  /**
@@ -494,27 +484,15 @@ public class RewardsAssignmentsCreateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to RewardsAssignmentsCreateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RewardsAssignmentsCreateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RewardsAssignmentsCreateResponseBody is not found in the empty JSON string", RewardsAssignmentsCreateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RewardsAssignmentsCreateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("reward_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reward_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reward_id").toString()));
+      if ((jsonObj.get("reward_id") != null && !jsonObj.get("reward_id").isJsonNull()) && !jsonObj.get("reward_id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -522,18 +500,16 @@ public class RewardsAssignmentsCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("related_object_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_id").toString()));
+      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
+        return;
       }
-      if (!jsonObj.get("related_object_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("related_object_type").toString()));
+      if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("related_object_type");
@@ -541,12 +517,10 @@ public class RewardsAssignmentsCreateResponseBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           RelatedObjectTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `related_object_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("related_object_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `related_object_type` to be a valid element of RelatedObjectTypeEnum enum got `%s` instead", jsonObj.get("related_object_type").toString()));
-        }
+          return;
       }
       // validate the optional field `parameters`
       if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
@@ -606,7 +580,7 @@ public class RewardsAssignmentsCreateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CustomerLoyaltyCampaignsValue;
 
 import com.google.gson.Gson;
@@ -65,7 +66,7 @@ public class CustomerLoyalty {
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
-  private Map<String, CustomerLoyaltyCampaignsValue> campaigns = new HashMap<>();
+  private Map<String, CustomerLoyaltyCampaignsValue> campaigns;
 
   public CustomerLoyalty() {
   }
@@ -80,7 +81,7 @@ public class CustomerLoyalty {
    * Customer&#39;s loyalty points.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -101,7 +102,7 @@ public class CustomerLoyalty {
    * Total number of customers referred by the customer.
    * @return referredCustomers
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getReferredCustomers() {
     return referredCustomers;
   }
@@ -130,7 +131,7 @@ public class CustomerLoyalty {
    * Contains campaigns with details about point balances and how many customers were referred by the customer.
    * @return campaigns
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Map<String, CustomerLoyaltyCampaignsValue> getCampaigns() {
     return campaigns;
   }
@@ -201,9 +202,20 @@ public class CustomerLoyalty {
         Objects.equals(this.additionalProperties, customerLoyalty.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(points, referredCustomers, campaigns, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -242,9 +254,6 @@ public class CustomerLoyalty {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("referred_customers");
-    openapiRequiredFields.add("campaigns");
   }
 
  /**
@@ -254,18 +263,6 @@ public class CustomerLoyalty {
   * @throws IOException if the JSON Element is invalid with respect to CustomerLoyalty
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CustomerLoyalty.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomerLoyalty is not found in the empty JSON string", CustomerLoyalty.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CustomerLoyalty.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
@@ -321,7 +318,7 @@ public class CustomerLoyalty {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

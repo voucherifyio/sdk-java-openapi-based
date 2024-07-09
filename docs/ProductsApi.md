@@ -73,9 +73,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productsCreateRequestBody** | [**ProductsCreateRequestBody**](ProductsCreateRequestBody.md)| Specify the product parameters. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productsCreateRequestBody** | [**ProductsCreateRequestBody**](ProductsCreateRequestBody.md)| Specify the product parameters. |
 
 ### Return type
 
@@ -149,10 +149,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. | |
-| **productsSkusCreateRequestBody** | [**ProductsSkusCreateRequestBody**](ProductsSkusCreateRequestBody.md)| Specify the SKU parameters to be created. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. |
+| **productsSkusCreateRequestBody** | [**ProductsSkusCreateRequestBody**](ProductsSkusCreateRequestBody.md)| Specify the SKU parameters to be created. |
 
 ### Return type
 
@@ -225,10 +225,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A Voucherify product ID or source ID. | |
-| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the product and all related SKUs will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the product and all related SKUs will be moved to the bin. Going forward, the user will be able to create another product with exactly the same &#x60;source_id&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A Voucherify product ID or source ID. |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the product and all related SKUs will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the product and all related SKUs will be moved to the bin. Going forward, the user will be able to create another product with exactly the same &#x60;source_id&#x60;. |
 
 ### Return type
 
@@ -302,11 +302,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A unique Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. | |
-| **skuId** | **String**| A Voucherify &lt;!-- [SKU](OpenAPI.json/components/schemas/Sku) --&gt;[SKU ID](ref:get-sku) or SKU source ID. | |
-| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the SKU will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the SKU will be moved to the bin. Going forward, the user will be able to create another SKU with exactly the same &#x60;source_id&#x60;. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A unique Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. |
+| **skuId** | **String**| A Voucherify &lt;!-- [SKU](OpenAPI.json/components/schemas/Sku) --&gt;[SKU ID](ref:get-sku) or SKU source ID. |
+| **force** | **Boolean**| If this flag is set to &#x60;true&#x60;, the SKU will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the SKU will be moved to the bin. Going forward, the user will be able to create another SKU with exactly the same &#x60;source_id&#x60;. |
 
 ### Return type
 
@@ -379,9 +379,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A Voucherify product ID or source ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A Voucherify product ID or source ID. |
 
 ### Return type
 
@@ -454,9 +454,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **skuId** | **String**| A Voucherify SKU identifier or SKU source ID. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **skuId** | **String**| A Voucherify SKU identifier or SKU source ID. |
 
 ### Return type
 
@@ -529,9 +529,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **_file** | **File**| File path. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **_file** | **File**| File path. |
 
 ### Return type
 
@@ -604,9 +604,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **_file** | **File**| File path. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **_file** | **File**| File path. |
 
 ### Return type
 
@@ -683,13 +683,13 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrder**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at, type, -type, code, -code, campaign, -campaign, category, -category] |
-| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
-| **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrder**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
+| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. |
+| **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. |
 
 ### Return type
 
@@ -767,14 +767,14 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. | |
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **order** | [**ParameterOrder**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, updated_at, -updated_at, type, -type, code, -code, campaign, -campaign, category, -category] |
-| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
-| **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **order** | [**ParameterOrder**](.md)| Sorts the results using one of the filtering options, where the dash &#x60;-&#x60; preceding a sorting option means sorting in a descending order. |
+| **startDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. |
+| **endDate** | **OffsetDateTime**| Timestamp representing the date and time which results must end on. Represented in ISO 8601 format. |
 
 ### Return type
 
@@ -848,10 +848,10 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A Voucherify product ID or source ID. | |
-| **productsUpdateRequestBody** | [**ProductsUpdateRequestBody**](ProductsUpdateRequestBody.md)| Specify the parameters of the product that are to be updated. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A Voucherify product ID or source ID. |
+| **productsUpdateRequestBody** | [**ProductsUpdateRequestBody**](ProductsUpdateRequestBody.md)| Specify the parameters of the product that are to be updated. |
 
 ### Return type
 
@@ -924,9 +924,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productsUpdateInBulkRequestBody** | [**List&lt;ProductsUpdateInBulkRequestBody&gt;**](ProductsUpdateInBulkRequestBody.md)| Create an array of product objects, each with the parameters which you want to update. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productsUpdateInBulkRequestBody** | [**List&lt;ProductsUpdateInBulkRequestBody&gt;**](ProductsUpdateInBulkRequestBody.md)| Create an array of product objects, each with the parameters which you want to update. |
 
 ### Return type
 
@@ -999,9 +999,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productsMetadataUpdateInBulkRequestBody** | [**ProductsMetadataUpdateInBulkRequestBody**](ProductsMetadataUpdateInBulkRequestBody.md)| Specify the list of product source IDs and the metadata key value pairs to be udpated for these products. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productsMetadataUpdateInBulkRequestBody** | [**ProductsMetadataUpdateInBulkRequestBody**](ProductsMetadataUpdateInBulkRequestBody.md)| Specify the list of product source IDs and the metadata key value pairs to be udpated for these products. |
 
 ### Return type
 
@@ -1076,11 +1076,11 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **productId** | **String**| A unique Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. | |
-| **skuId** | **String**| A Voucherify &lt;!-- [SKU](OpenAPI.json/components/schemas/Sku) --&gt;[SKU ID](ref:get-sku) or SKU source ID. | |
-| **productsSkusUpdateRequestBody** | [**ProductsSkusUpdateRequestBody**](ProductsSkusUpdateRequestBody.md)| Specify the parameters to be updated. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **productId** | **String**| A unique Voucherify &lt;!-- [product](OpenAPI.json/components/schemas/Product) --&gt;[product](ref:get-product) ID or product source ID. |
+| **skuId** | **String**| A Voucherify &lt;!-- [SKU](OpenAPI.json/components/schemas/Sku) --&gt;[SKU ID](ref:get-sku) or SKU source ID. |
+| **productsSkusUpdateRequestBody** | [**ProductsSkusUpdateRequestBody**](ProductsSkusUpdateRequestBody.md)| Specify the parameters to be updated. |
 
 ### Return type
 

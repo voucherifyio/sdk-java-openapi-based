@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.OrderCalculated;
 import voucherify.client.model.Session;
 import voucherify.client.model.StackingRules;
@@ -66,7 +67,7 @@ public class ValidationsValidateResponseBody {
 
   public static final String SERIALIZED_NAME_REDEEMABLES = "redeemables";
   @SerializedName(SERIALIZED_NAME_REDEEMABLES)
-  private List<ValidationsValidateResponseBodyRedeemablesItem> redeemables = new ArrayList<>();
+  private List<ValidationsValidateResponseBodyRedeemablesItem> redeemables;
 
   public static final String SERIALIZED_NAME_SKIPPED_REDEEMABLES = "skipped_redeemables";
   @SerializedName(SERIALIZED_NAME_SKIPPED_REDEEMABLES)
@@ -105,7 +106,7 @@ public class ValidationsValidateResponseBody {
    * The result of the validation. It takes all of the redeemables into account and returns a &#x60;false&#x60; if at least one redeemable is inapplicable. Returns &#x60;true&#x60; if all redeemables are applicable.
    * @return valid
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getValid() {
     return valid;
   }
@@ -134,7 +135,7 @@ public class ValidationsValidateResponseBody {
    * Get redeemables
    * @return redeemables
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<ValidationsValidateResponseBodyRedeemablesItem> getRedeemables() {
     return redeemables;
   }
@@ -352,9 +353,20 @@ public class ValidationsValidateResponseBody {
         Objects.equals(this.additionalProperties, validationsValidateResponseBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(valid, redeemables, skippedRedeemables, inapplicableRedeemables, order, trackingId, session, stackingRules, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -403,8 +415,6 @@ public class ValidationsValidateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("valid");
-    openapiRequiredFields.add("redeemables");
     openapiRequiredFields.add("stacking_rules");
   }
 
@@ -415,63 +425,13 @@ public class ValidationsValidateResponseBody {
   * @throws IOException if the JSON Element is invalid with respect to ValidationsValidateResponseBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ValidationsValidateResponseBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationsValidateResponseBody is not found in the empty JSON string", ValidationsValidateResponseBody.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationsValidateResponseBody.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("redeemables").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("redeemables").toString()));
-      }
-
-      JsonArray jsonArrayredeemables = jsonObj.getAsJsonArray("redeemables");
-      // validate the required field `redeemables` (array)
-      for (int i = 0; i < jsonArrayredeemables.size(); i++) {
-        ValidationsValidateResponseBodyRedeemablesItem.validateJsonElement(jsonArrayredeemables.get(i));
-      };
-      if (jsonObj.get("skipped_redeemables") != null && !jsonObj.get("skipped_redeemables").isJsonNull()) {
-        JsonArray jsonArrayskippedRedeemables = jsonObj.getAsJsonArray("skipped_redeemables");
-        if (jsonArrayskippedRedeemables != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("skipped_redeemables").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `skipped_redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("skipped_redeemables").toString()));
-          }
-
-          // validate the optional field `skipped_redeemables` (array)
-          for (int i = 0; i < jsonArrayskippedRedeemables.size(); i++) {
-            ValidationsRedeemableSkipped.validateJsonElement(jsonArrayskippedRedeemables.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("inapplicable_redeemables") != null && !jsonObj.get("inapplicable_redeemables").isJsonNull()) {
-        JsonArray jsonArrayinapplicableRedeemables = jsonObj.getAsJsonArray("inapplicable_redeemables");
-        if (jsonArrayinapplicableRedeemables != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("inapplicable_redeemables").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `inapplicable_redeemables` to be an array in the JSON string but got `%s`", jsonObj.get("inapplicable_redeemables").toString()));
-          }
-
-          // validate the optional field `inapplicable_redeemables` (array)
-          for (int i = 0; i < jsonArrayinapplicableRedeemables.size(); i++) {
-            ValidationsRedeemableInapplicable.validateJsonElement(jsonArrayinapplicableRedeemables.get(i));
-          };
-        }
-      }
       // validate the optional field `order`
       if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
         OrderCalculated.validateJsonElement(jsonObj.get("order"));
       }
       if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tracking_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_id").toString()));
+        return;
       }
       // validate the optional field `session`
       if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
@@ -533,7 +493,7 @@ public class ValidationsValidateResponseBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

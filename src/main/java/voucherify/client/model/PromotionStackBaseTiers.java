@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,16 +57,14 @@ import voucherify.client.JSON;
 public class PromotionStackBaseTiers {
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
-  private List<String> ids = new ArrayList<>();
+  private List<String> ids;
 
   /**
    * Gets or Sets hierarchyMode
    */
   @JsonAdapter(HierarchyModeEnum.Adapter.class)
   public enum HierarchyModeEnum {
-    MANUAL("MANUAL"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    MANUAL("MANUAL");
 
     private String value;
 
@@ -88,7 +87,7 @@ public class PromotionStackBaseTiers {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<HierarchyModeEnum> {
@@ -130,7 +129,7 @@ public class PromotionStackBaseTiers {
    * Contains the list of tiers in a pre-defined sequence.
    * @return ids
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getIds() {
     return ids;
   }
@@ -221,9 +220,20 @@ public class PromotionStackBaseTiers {
         Objects.equals(this.additionalProperties, promotionStackBaseTiers.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(ids, hierarchyMode, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -260,7 +270,6 @@ public class PromotionStackBaseTiers {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ids");
   }
 
  /**
@@ -270,27 +279,9 @@ public class PromotionStackBaseTiers {
   * @throws IOException if the JSON Element is invalid with respect to PromotionStackBaseTiers
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PromotionStackBaseTiers.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PromotionStackBaseTiers is not found in the empty JSON string", PromotionStackBaseTiers.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PromotionStackBaseTiers.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("ids") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
-      }
       if ((jsonObj.get("hierarchy_mode") != null && !jsonObj.get("hierarchy_mode").isJsonNull()) && !jsonObj.get("hierarchy_mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hierarchy_mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hierarchy_mode").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("hierarchy_mode");
@@ -298,12 +289,10 @@ public class PromotionStackBaseTiers {
         if (objectElement != null && !objectElement.isJsonNull()) {
           HierarchyModeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `hierarchy_mode` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("hierarchy_mode") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `hierarchy_mode` to be a valid element of HierarchyModeEnum enum got `%s` instead", jsonObj.get("hierarchy_mode").toString()));
-        }
+          return;
       }
   }
 
@@ -359,7 +348,7 @@ public class PromotionStackBaseTiers {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

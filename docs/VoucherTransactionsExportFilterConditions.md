@@ -6,9 +6,9 @@ Filter condition.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**voucherId** | [**VoucherTransactionsExportFilterConditionsVoucherId**](VoucherTransactionsExportFilterConditionsVoucherId.md) |  |  |
+| Name | Type | Description |
+|------------ | ------------- | ------------- |
+|**voucherId** | [**VoucherTransactionsExportFilterConditionsVoucherId**](VoucherTransactionsExportFilterConditionsVoucherId.md) |  |
 
 
 

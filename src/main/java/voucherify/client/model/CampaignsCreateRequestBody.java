@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CampaignsCreateRequestBodyPromotion;
 import voucherify.client.model.CampaignsCreateRequestBodyValidityTimeframe;
 import voucherify.client.model.CampaignsCreateRequestBodyVoucher;
@@ -76,9 +77,7 @@ public class CampaignsCreateRequestBody {
   public enum TypeEnum {
     AUTO_UPDATE("AUTO_UPDATE"),
     
-    STATIC("STATIC"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    STATIC("STATIC");
 
     private String value;
 
@@ -101,7 +100,7 @@ public class CampaignsCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -167,9 +166,7 @@ public class CampaignsCreateRequestBody {
     
     NUMBER_5(5),
     
-    NUMBER_6(6),
-    
-    NUMBER_unknown_enum(11184809);
+    NUMBER_6(6);
 
     private Integer value;
 
@@ -192,7 +189,7 @@ public class CampaignsCreateRequestBody {
           return b;
         }
       }
-      return NUMBER_unknown_enum;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
@@ -252,9 +249,7 @@ public class CampaignsCreateRequestBody {
     
     PROMOTION("PROMOTION"),
     
-    LUCKY_DRAW("LUCKY_DRAW"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LUCKY_DRAW("LUCKY_DRAW");
 
     private String value;
 
@@ -277,7 +272,7 @@ public class CampaignsCreateRequestBody {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -874,9 +869,20 @@ public class CampaignsCreateRequestBody {
         Objects.equals(this.additionalProperties, campaignsCreateRequestBody.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(name, description, type, joinOnce, autoJoin, useVoucherMetadataSchema, vouchersCount, startDate, expirationDate, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, validationRules, categoryId, category, metadata, campaignType, voucher, referralProgram, promotion, luckyDraw, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -962,20 +968,15 @@ public class CampaignsCreateRequestBody {
   * @throws IOException if the JSON Element is invalid with respect to CampaignsCreateRequestBody
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CampaignsCreateRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsCreateRequestBody is not found in the empty JSON string", CampaignsCreateRequestBody.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        return;
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        return;
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("type");
@@ -983,40 +984,30 @@ public class CampaignsCreateRequestBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           TypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `type` to be a valid element of TypeEnum enum got `%s` instead", jsonObj.get("type").toString()));
-        }
+          return;
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         CampaignsCreateRequestBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validity_day_of_week") != null && !jsonObj.get("validity_day_of_week").isJsonNull() && !jsonObj.get("validity_day_of_week").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validity_day_of_week` to be an array in the JSON string but got `%s`", jsonObj.get("validity_day_of_week").toString()));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
         ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
       }
       if ((jsonObj.get("activity_duration_after_publishing") != null && !jsonObj.get("activity_duration_after_publishing").isJsonNull()) && !jsonObj.get("activity_duration_after_publishing").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `activity_duration_after_publishing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("activity_duration_after_publishing").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("validation_rules") != null && !jsonObj.get("validation_rules").isJsonNull() && !jsonObj.get("validation_rules").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `validation_rules` to be an array in the JSON string but got `%s`", jsonObj.get("validation_rules").toString()));
+        return;
       }
       if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category_id").toString()));
+        return;
       }
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+        return;
       }
       if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_type").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("campaign_type");
@@ -1024,12 +1015,10 @@ public class CampaignsCreateRequestBody {
         if (objectElement != null && !objectElement.isJsonNull()) {
           CampaignTypeEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `campaign_type` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("campaign_type") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `campaign_type` to be a valid element of CampaignTypeEnum enum got `%s` instead", jsonObj.get("campaign_type").toString()));
-        }
+          return;
       }
       // validate the optional field `voucher`
       if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
@@ -1101,7 +1090,7 @@ public class CampaignsCreateRequestBody {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -36,6 +36,7 @@ public class ValidationsTest {
 
             assertNotNull(responseBody);
         } catch (ApiException | JsonSyntaxException e) {
+            System.out.println(e);
             fail();
         }
     }

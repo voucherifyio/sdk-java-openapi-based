@@ -66,11 +66,11 @@ public class LoyaltyTier {
 
   public static final String SERIALIZED_NAME_EARNING_RULES = "earning_rules";
   @SerializedName(SERIALIZED_NAME_EARNING_RULES)
-  private Map<String, MappingPoints> earningRules = new HashMap<>();
+  private Map<String, MappingPoints> earningRules;
 
   public static final String SERIALIZED_NAME_REWARDS = "rewards";
   @SerializedName(SERIALIZED_NAME_REWARDS)
-  private Map<String, MappingPoints> rewards = new HashMap<>();
+  private Map<String, MappingPoints> rewards;
 
   public static final String SERIALIZED_NAME_POINTS = "points";
   @SerializedName(SERIALIZED_NAME_POINTS)
@@ -109,9 +109,7 @@ public class LoyaltyTier {
    */
   @JsonAdapter(ObjectEnum.Adapter.class)
   public enum ObjectEnum {
-    LOYALTY_TIER("loyalty_tier"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    LOYALTY_TIER("loyalty_tier");
 
     private String value;
 
@@ -134,7 +132,7 @@ public class LoyaltyTier {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -168,7 +166,7 @@ public class LoyaltyTier {
    * Loyalty Tier name.
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -247,7 +245,7 @@ public class LoyaltyTier {
    * Get points
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTierBasePoints getPoints() {
     return points;
   }
@@ -268,7 +266,7 @@ public class LoyaltyTier {
    * Unique loyalty tier ID.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -289,7 +287,7 @@ public class LoyaltyTier {
    * Unique parent campaign ID.
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
@@ -331,7 +329,7 @@ public class LoyaltyTier {
    * Timestamp representing the date and time when the loyalty tier was created. The value is shown in the ISO 8601 format.
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -373,7 +371,7 @@ public class LoyaltyTier {
    * Get config
    * @return config
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public LoyaltyTierAllOfConfig getConfig() {
     return config;
   }
@@ -415,7 +413,7 @@ public class LoyaltyTier {
    * The type of the object represented by JSON. This object stores information about the loyalty.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -565,13 +563,6 @@ public class LoyaltyTier {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("campaign_id");
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("config");
-    openapiRequiredFields.add("object");
   }
 
  /**
@@ -581,38 +572,30 @@ public class LoyaltyTier {
   * @throws IOException if the JSON Element is invalid with respect to LoyaltyTier
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoyaltyTier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoyaltyTier is not found in the empty JSON string", LoyaltyTier.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoyaltyTier.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        return;
       }
-      // validate the required field `points`
-      LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      // validate the optional field `points`
+      if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
+        LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
       }
-      if (!jsonObj.get("campaign_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
-      // validate the required field `config`
-      LoyaltyTierAllOfConfig.validateJsonElement(jsonObj.get("config"));
+      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
+        return;
+      }
+      // validate the optional field `config`
+      if (jsonObj.get("config") != null && !jsonObj.get("config").isJsonNull()) {
+        LoyaltyTierAllOfConfig.validateJsonElement(jsonObj.get("config"));
+      }
       // validate the optional field `expiration`
       if (jsonObj.get("expiration") != null && !jsonObj.get("expiration").isJsonNull()) {
         LoyaltyTierExpiration.validateJsonElement(jsonObj.get("expiration"));
       }
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -620,12 +603,10 @@ public class LoyaltyTier {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
   }
 
@@ -681,7 +662,7 @@ public class LoyaltyTier {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

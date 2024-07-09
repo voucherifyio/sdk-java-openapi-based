@@ -34,9 +34,7 @@ public enum ParameterOrderListExports {
   
   STATUS("status"),
   
-  _STATUS("-status"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  _STATUS("-status");
 
   private String value;
 
@@ -59,7 +57,7 @@ public enum ParameterOrderListExports {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrderListExports> {

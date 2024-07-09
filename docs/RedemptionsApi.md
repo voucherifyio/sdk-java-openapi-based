@@ -65,9 +65,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **redemptionId** | **String**| ID of previously created redemption. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **redemptionId** | **String**| ID of previously created redemption. |
 
 ### Return type
 
@@ -140,9 +140,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **code** | **String**| A **code** that identifies the voucher. | |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **code** | **String**| A **code** that identifies the voucher. |
 
 ### Return type
 
@@ -222,16 +222,16 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. | [optional] |
-| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. | [optional] |
-| **result** | **String**| A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. | [optional] |
-| **campaign** | **String**| A filter by the campaign **name** that the redemption resources originate from. | [optional] |
-| **customer** | **String**| Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. | [optional] |
-| **order** | [**ParameterOrderListRedemptions**](.md)| Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. | [optional] [enum: created_at, -created_at, id, -id, voucher_code, -voucher_code, tracking_id, -tracking_id, customer_id, -customer_id] |
-| **createdAt** | [**ParameterCreatedBeforeAfter**](.md)| A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; | [optional] |
-| **filters** | [**ParameterFiltersListRedemptions**](.md)| Filters for listing responses. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **limit** | **Integer**| Limits the number of objects to be returned. The limit can range between 1 and 100 items. If no limit is set, it returns 10 items. |
+| **page** | **Integer**| Which page of results to return. The lowest value is &#x60;1&#x60;. |
+| **result** | **String**| A filter on the list based on the redemption result. Available options are: &#x60;SUCCESS&#x60;, &#x60;FAILURE&#x60;. You can provide multiple values by repeating the param. |
+| **campaign** | **String**| A filter by the campaign **name** that the redemption resources originate from. |
+| **customer** | **String**| Return redemptions performed by the customer with given &#x60;id&#x60; or &#x60;source_id&#x60;. |
+| **order** | [**ParameterOrderListRedemptions**](.md)| Sorts the results using one of the filtering options, where the dash - preceding a sorting option means sorting in a descending order. |
+| **createdAt** | [**ParameterCreatedBeforeAfter**](.md)| A filter on the list based on the object &#x60;created_at&#x60; field. The value is a dictionary with the following options: &#x60;before&#x60;, &#x60;after&#x60;. A date value must be presented in ISO 8601 format (&#x60;2016-11-16T14:14:31Z&#x60; or &#x60;2016-11-16&#x60;). An example: &#x60;[created_at][before]&#x3D;2017-09-08T13:52:18.227Z&#x60; |
+| **filters** | [**ParameterFiltersListRedemptions**](.md)| Filters for listing responses. |
 
 ### Return type
 
@@ -304,9 +304,9 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **redemptionsRedeemRequestBody** | [**RedemptionsRedeemRequestBody**](RedemptionsRedeemRequestBody.md)|  | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **redemptionsRedeemRequestBody** | [**RedemptionsRedeemRequestBody**](RedemptionsRedeemRequestBody.md)|  |
 
 ### Return type
 
@@ -382,12 +382,12 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **redemptionId** | **String**| The original redemption ID to be rolled back (undone). | |
-| **reason** | **String**| Reason for the rollback. | [optional] |
-| **trackingId** | **String**| Customer&#39;s &#x60;source_id&#x60;. | [optional] |
-| **redemptionsRollbackCreateRequestBody** | [**RedemptionsRollbackCreateRequestBody**](RedemptionsRollbackCreateRequestBody.md)| Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **redemptionId** | **String**| The original redemption ID to be rolled back (undone). |
+| **reason** | **String**| Reason for the rollback. |
+| **trackingId** | **String**| Customer&#39;s &#x60;source_id&#x60;. |
+| **redemptionsRollbackCreateRequestBody** | [**RedemptionsRollbackCreateRequestBody**](RedemptionsRollbackCreateRequestBody.md)| Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. |
 
 ### Return type
 
@@ -463,12 +463,12 @@ public class Example {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **parentRedemptionId** | **String**| Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. | |
-| **reason** | **String**| Reason for the rollback. | [optional] |
-| **trackingId** | **String**| Customer&#39;s &#x60;source_id&#x60;. | [optional] |
-| **redemptionsRollbacksCreateRequestBody** | [**RedemptionsRollbacksCreateRequestBody**](RedemptionsRollbacksCreateRequestBody.md)| Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. | [optional] |
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **parentRedemptionId** | **String**| Unique identifier of a parent redemption, e.g. &#x60;r_JQfm73zWSJFQxs3bGxweYjgm&#x60;. |
+| **reason** | **String**| Reason for the rollback. |
+| **trackingId** | **String**| Customer&#39;s &#x60;source_id&#x60;. |
+| **redemptionsRollbacksCreateRequestBody** | [**RedemptionsRollbacksCreateRequestBody**](RedemptionsRollbacksCreateRequestBody.md)| Add information about the original customer and order. Customer data and Redemption metadata can be updated in Voucherify when passing the customer data in the request body. |
 
 ### Return type
 

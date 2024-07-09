@@ -50,9 +50,7 @@ public enum ParameterOrder {
   
   CATEGORY("category"),
   
-  _CATEGORY("-category"),
-  
-  UNKNOWN_ENUM("unknown_enum");
+  _CATEGORY("-category");
 
   private String value;
 
@@ -75,7 +73,7 @@ public enum ParameterOrder {
         return b;
       }
     }
-    return UNKNOWN_ENUM;
+    return null;
   }
 
   public static class Adapter extends TypeAdapter<ParameterOrder> {

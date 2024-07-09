@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -69,9 +70,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
     
     PRODUCT("product"),
     
-    SKU("sku"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    SKU("sku");
 
     private String value;
 
@@ -94,7 +93,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<ObjectEnum> {
@@ -132,7 +131,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
    * Value is multiplied by 100 to precisely represent 2 decimal places. For example, a $10 order amount is written as 1000.
    * @return every
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getEvery() {
     return every;
   }
@@ -153,7 +152,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
    * Number of points to be awarded, i.e. how many points to be added to the loyalty card.
    * @return points
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getPoints() {
     return points;
   }
@@ -174,7 +173,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
    * Type of object taken under consideration.
    * @return _object
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ObjectEnum getObject() {
     return _object;
   }
@@ -195,7 +194,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
    * Unique ID of the resource, i.e. pc_75U0dHlr7u75BJodrW1AE3t6, prod_0bae32322150fd0546, or sku_0b7d7dfb090be5c619.
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -267,9 +266,20 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
         Objects.equals(this.additionalProperties, earningRuleBaseLoyaltyOrderItemsQuantity.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(every, points, _object, id, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -310,10 +320,6 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("every");
-    openapiRequiredFields.add("points");
-    openapiRequiredFields.add("object");
-    openapiRequiredFields.add("id");
   }
 
  /**
@@ -323,21 +329,9 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
   * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyaltyOrderItemsQuantity
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!EarningRuleBaseLoyaltyOrderItemsQuantity.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EarningRuleBaseLoyaltyOrderItemsQuantity is not found in the empty JSON string", EarningRuleBaseLoyaltyOrderItemsQuantity.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EarningRuleBaseLoyaltyOrderItemsQuantity.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("object").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("object");
@@ -345,15 +339,13 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
         if (objectElement != null && !objectElement.isJsonNull()) {
           ObjectEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `object` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("object") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `object` to be a valid element of ObjectEnum enum got `%s` instead", jsonObj.get("object").toString()));
-        }
+          return;
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
       }
   }
 
@@ -409,7 +401,7 @@ public class EarningRuleBaseLoyaltyOrderItemsQuantity {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

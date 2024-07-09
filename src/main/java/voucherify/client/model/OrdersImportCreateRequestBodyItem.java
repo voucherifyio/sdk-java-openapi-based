@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.Customer;
 import voucherify.client.model.OrderItem;
 import voucherify.client.model.Referrer;
@@ -68,9 +69,7 @@ public class OrdersImportCreateRequestBodyItem {
     
     CANCELED("CANCELED"),
     
-    FULFILLED("FULFILLED"),
-    
-    UNKNOWN_ENUM("unknown_enum");
+    FULFILLED("FULFILLED");
 
     private String value;
 
@@ -93,7 +92,7 @@ public class OrdersImportCreateRequestBodyItem {
           return b;
         }
       }
-      return UNKNOWN_ENUM;
+        return null;
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -464,9 +463,20 @@ public class OrdersImportCreateRequestBodyItem {
         Objects.equals(this.additionalProperties, ordersImportCreateRequestBodyItem.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(status, amount, discountAmount, initialAmount, items, customer, customerId, referrer, referrerId, metadata, sourceId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -530,14 +540,9 @@ public class OrdersImportCreateRequestBodyItem {
   * @throws IOException if the JSON Element is invalid with respect to OrdersImportCreateRequestBodyItem
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!OrdersImportCreateRequestBodyItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OrdersImportCreateRequestBodyItem is not found in the empty JSON string", OrdersImportCreateRequestBodyItem.openapiRequiredFields.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        return;
       }
       try {
         JsonElement objectElement = jsonObj.get("status");
@@ -545,43 +550,27 @@ public class OrdersImportCreateRequestBodyItem {
         if (objectElement != null && !objectElement.isJsonNull()) {
           StatusEnum.fromValue(objectElement.getAsString());
         } else {
-          throw new IllegalArgumentException("Expected the field `status` to be not null");
+          return;
         }
       } catch (IllegalArgumentException e) {
-        if(jsonObj.get("status") != null) {
-          throw new IllegalArgumentException(String.format("Expected the field `status` to be a valid element of StatusEnum enum got `%s` instead", jsonObj.get("status").toString()));
-        }
-      }
-      if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
-        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
-        if (jsonArrayitems != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("items").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
-          }
-
-          // validate the optional field `items` (array)
-          for (int i = 0; i < jsonArrayitems.size(); i++) {
-            OrderItem.validateJsonElement(jsonArrayitems.get(i));
-          };
-        }
+          return;
       }
       // validate the optional field `customer`
       if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
         Customer.validateJsonElement(jsonObj.get("customer"));
       }
       if ((jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) && !jsonObj.get("customer_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_id").toString()));
+        return;
       }
       // validate the optional field `referrer`
       if (jsonObj.get("referrer") != null && !jsonObj.get("referrer").isJsonNull()) {
         Referrer.validateJsonElement(jsonObj.get("referrer"));
       }
       if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `referrer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referrer_id").toString()));
+        return;
       }
       if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_id").toString()));
+        return;
       }
   }
 
@@ -637,7 +626,7 @@ public class OrdersImportCreateRequestBodyItem {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     return null;
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
