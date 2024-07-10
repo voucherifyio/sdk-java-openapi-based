@@ -38,6 +38,7 @@
 |**loyaltyTiersExpiration** | [**LoyaltyTiersExpirationAll**](LoyaltyTiersExpirationAll.md) |  |
 |**promotion** | [**PromotionTiersList**](PromotionTiersList.md) |  |
 |**validationRulesAssignments** | [**ValidationRulesAssignmentsList**](ValidationRulesAssignmentsList.md) |  |
+|**accessSettingsAssignments** | [**AccessSettingsCampaignAssignmentsList**](AccessSettingsCampaignAssignmentsList.md) |  |
 
 
 

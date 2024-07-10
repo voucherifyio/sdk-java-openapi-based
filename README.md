@@ -275,9 +275,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AccessSettingsCampaignAssignmentsList](docs/AccessSettingsCampaignAssignmentsList.md)
  - [ApplicableTo](docs/ApplicableTo.md)
  - [ApplicableToEffect](docs/ApplicableToEffect.md)
  - [ApplicableToResultList](docs/ApplicableToResultList.md)
+ - [AreaStoreCampaignAssignment](docs/AreaStoreCampaignAssignment.md)
  - [AsyncActions](docs/AsyncActions.md)
  - [BusValRuleAssignment](docs/BusValRuleAssignment.md)
  - [Campaign](docs/Campaign.md)

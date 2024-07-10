@@ -93,8 +93,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.AccessSettingsCampaignAssignmentsList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ApplicableTo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ApplicableToResultList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.AreaStoreCampaignAssignment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.AsyncActions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.BusValRuleAssignment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.Campaign.CustomTypeAdapterFactory());

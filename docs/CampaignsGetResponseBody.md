@@ -39,6 +39,7 @@ Response body schema for **GET** `/campaigns/{campaignId}`.
 |**loyaltyTiersExpiration** | [**LoyaltyTiersExpirationAll**](LoyaltyTiersExpirationAll.md) |  |
 |**promotion** | [**PromotionTiersList**](PromotionTiersList.md) |  |
 |**validationRulesAssignments** | [**ValidationRulesAssignmentsList**](ValidationRulesAssignmentsList.md) |  |
+|**accessSettingsAssignments** | [**AccessSettingsCampaignAssignmentsList**](AccessSettingsCampaignAssignmentsList.md) |  |
 
 
 
