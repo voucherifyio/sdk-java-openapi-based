@@ -30,8 +30,8 @@ import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyAssets
 import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard;
 import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyPublish;
 import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyRedemption;
-import voucherify.client.model.LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -154,7 +154,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -215,7 +215,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
 
   public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
-  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
   @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
@@ -503,7 +503,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
   }
 
 
-  public LoyaltiesMembersTransfersCreateResponseBody validityTimeframe(LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe validityTimeframe) {
+  public LoyaltiesMembersTransfersCreateResponseBody validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -513,13 +513,13 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Get validityTimeframe
    * @return validityTimeframe
   **/
-  @javax.annotation.Nullable
-  public LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe getValidityTimeframe() {
+  @javax.annotation.Nonnull
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -542,7 +542,7 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
    * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
     return validityDayOfWeek;
   }
@@ -959,6 +959,8 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("validity_timeframe");
+    openapiRequiredFields.add("validity_day_of_week");
   }
 
  /**
@@ -1005,10 +1007,8 @@ public class LoyaltiesMembersTransfersCreateResponseBody {
       if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
         LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
       }
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
+      // validate the required field `validity_timeframe`
+      ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
         ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));

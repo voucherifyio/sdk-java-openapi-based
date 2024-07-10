@@ -48,51 +48,30 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe
+ * Set recurrent time periods when the earning rule is valid. For example, valid for 1 hour every other day.&#x60;start_date&#x60; **required** when including the &#x60;validity_timeframe&#x60;.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe {
-  public static final String SERIALIZED_NAME_INTERVAL = "interval";
-  @SerializedName(SERIALIZED_NAME_INTERVAL)
-  private String interval;
-
+public class ValidityTimeframe {
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
   private String duration;
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe() {
+  public static final String SERIALIZED_NAME_INTERVAL = "interval";
+  @SerializedName(SERIALIZED_NAME_INTERVAL)
+  private String interval;
+
+  public ValidityTimeframe() {
   }
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe interval(String interval) {
-    
-    this.interval = interval;
-    return this;
-  }
-
-   /**
-   * Defines the intervening time between two time points in ISO 8601 format, expressed as a duration. For example, a promotion tier with an &#x60;interval&#x60; of &#x60;P2D&#x60; will be active every other day.
-   * @return interval
-  **/
-  @javax.annotation.Nullable
-  public String getInterval() {
-    return interval;
-  }
-
-
-  public void setInterval(String interval) {
-    this.interval = interval;
-  }
-
-
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe duration(String duration) {
+  public ValidityTimeframe duration(String duration) {
     
     this.duration = duration;
     return this;
   }
 
    /**
-   * Defines the amount of time the promotion tier will be active in ISO 8601 format. For example, a promotion tier with a &#x60;duration&#x60; of &#x60;P1D&#x60; will be valid for a duration of one day.
+   * Defines the amount of time an earning rule will be active in ISO 8601 format. For example, an earning rule with a &#x60;duration&#x60; of &#x60;PT1H&#x60; will be valid for a duration of one hour.
    * @return duration
   **/
   @javax.annotation.Nullable
@@ -103,6 +82,27 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
 
   public void setDuration(String duration) {
     this.duration = duration;
+  }
+
+
+  public ValidityTimeframe interval(String interval) {
+    
+    this.interval = interval;
+    return this;
+  }
+
+   /**
+   * Defines the intervening time between two time points in ISO 8601 format, expressed as a duration. For example, an earning rule with an &#x60;interval&#x60; of &#x60;P2D&#x60; will be valid every other day.
+   * @return interval
+  **/
+  @javax.annotation.Nullable
+  public String getInterval() {
+    return interval;
+  }
+
+
+  public void setInterval(String interval) {
+    this.interval = interval;
   }
 
   /**
@@ -118,9 +118,9 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe instance itself
+   * @return the ValidityTimeframe instance itself
    */
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe putAdditionalProperty(String key, Object value) {
+  public ValidityTimeframe putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -159,10 +159,10 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe vouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe = (VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe) o;
-    return Objects.equals(this.interval, vouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.interval) &&
-        Objects.equals(this.duration, vouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.duration)&&
-        Objects.equals(this.additionalProperties, vouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.additionalProperties);
+    ValidityTimeframe validityTimeframe = (ValidityTimeframe) o;
+    return Objects.equals(this.duration, validityTimeframe.duration) &&
+        Objects.equals(this.interval, validityTimeframe.interval)&&
+        Objects.equals(this.additionalProperties, validityTimeframe.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -171,7 +171,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, duration, additionalProperties);
+    return Objects.hash(duration, interval, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,9 +184,9 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe {\n");
-    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
+    sb.append("class ValidityTimeframe {\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -210,8 +210,8 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("interval");
     openapiFields.add("duration");
+    openapiFields.add("interval");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -221,14 +221,14 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe
+  * @throws IOException if the JSON Element is invalid with respect to ValidityTimeframe
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("interval") != null && !jsonObj.get("interval").isJsonNull()) && !jsonObj.get("interval").isJsonPrimitive()) {
+      if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         return;
       }
-      if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
+      if ((jsonObj.get("interval") != null && !jsonObj.get("interval").isJsonNull()) && !jsonObj.get("interval").isJsonPrimitive()) {
         return;
       }
   }
@@ -237,16 +237,16 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe' and its subtypes
+       if (!ValidityTimeframe.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValidityTimeframe' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.class));
+       final TypeAdapter<ValidityTimeframe> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValidityTimeframe.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValidityTimeframe>() {
            @Override
-           public void write(JsonWriter out, VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe value) throws IOException {
+           public void write(JsonWriter out, ValidityTimeframe value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -269,12 +269,12 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
            }
 
            @Override
-           public VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe read(JsonReader in) throws IOException {
+           public ValidityTimeframe read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe instance = thisAdapter.fromJsonTree(jsonObj);
+             ValidityTimeframe instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -301,18 +301,18 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier
   }
 
  /**
-  * Create an instance of VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe given an JSON string
+  * Create an instance of ValidityTimeframe given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe
-  * @throws IOException if the JSON string is invalid with respect to VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe
+  * @return An instance of ValidityTimeframe
+  * @throws IOException if the JSON string is invalid with respect to ValidityTimeframe
   */
-  public static VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.class);
+  public static ValidityTimeframe fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValidityTimeframe.class);
   }
 
  /**
-  * Convert an instance of VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe to an JSON string
+  * Convert an instance of ValidityTimeframe to an JSON string
   *
   * @return JSON string
   */

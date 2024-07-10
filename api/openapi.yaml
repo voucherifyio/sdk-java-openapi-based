@@ -18138,8 +18138,8 @@ components:
         join_once: true
         category: category
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-20T00:00:00Z
         promotion:
           tiers:
@@ -18204,8 +18204,8 @@ components:
                 amount_off: 6.027456183070403
             category: category
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-23T00:00:00Z
           - metadata: "{}"
             hierarchy: 4
@@ -18268,8 +18268,8 @@ components:
                 amount_off: 6.027456183070403
             category: category
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-23T00:00:00Z
       properties:
         name:
@@ -18326,10 +18326,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/CampaignsCreateRequestBodyValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -18348,7 +18348,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -18487,8 +18487,8 @@ components:
             expiration_date: 2022-09-30T00:00:00Z
             code_config: null
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-20T00:00:00Z
           campaign_type: LOYALTY_PROGRAM
           validity_hours:
@@ -18543,8 +18543,8 @@ components:
             stacking_rules_type: JOINT
             object: category
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-20T00:00:00Z
           active: true
           vouchers_count: 5
@@ -18596,8 +18596,8 @@ components:
             expiration_date: 2022-09-30T00:00:00Z
             code_config: null
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-20T00:00:00Z
           campaign_type: LOYALTY_PROGRAM
           validity_hours:
@@ -18652,8 +18652,8 @@ components:
             stacking_rules_type: JOINT
             object: category
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-20T00:00:00Z
           active: true
           vouchers_count: 5
@@ -18767,8 +18767,8 @@ components:
         category: category
         join_once: true
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-20T00:00:00Z
       properties:
         start_date:
@@ -18786,10 +18786,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/CampaignsUpdateRequestBodyValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -18808,7 +18808,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -19103,7 +19103,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/CampaignsVouchersCreateCombinedResponseBody_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -19125,7 +19125,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -20910,8 +20910,8 @@ components:
           points: 0
         campaign_id: campaign_id
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
@@ -20968,7 +20968,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/LoyaltiesMembersTransfersCreateResponseBody_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -20990,7 +20990,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -21039,6 +21039,9 @@ components:
           format: date-time
           nullable: true
           type: string
+      required:
+      - validity_day_of_week
+      - validity_timeframe
       title: Loyalties Members Transfers Create Response Body
       type: object
     LoyaltiesRewardAssignmentsGetResponseBody:
@@ -22981,8 +22984,8 @@ components:
             id: id
             expiration_date: 2022-09-30T00:00:00Z
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-22T00:00:00Z
             object: campaign
           id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -23003,8 +23006,8 @@ components:
             object: category
           campaign_id: campaign_id
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-23T00:00:00Z
           object: promotion_tier
         failure_message: failure_message
@@ -23507,8 +23510,8 @@ components:
               id: id
               expiration_date: 2022-09-30T00:00:00Z
               validity_timeframe:
-                duration: duration
-                interval: interval
+                duration: PT1H
+                interval: P2D
               start_date: 2022-09-22T00:00:00Z
               object: campaign
             id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -23529,8 +23532,8 @@ components:
               object: category
             campaign_id: campaign_id
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-23T00:00:00Z
             object: promotion_tier
           failure_message: failure_message
@@ -23925,8 +23928,8 @@ components:
               id: id
               expiration_date: 2022-09-30T00:00:00Z
               validity_timeframe:
-                duration: duration
-                interval: interval
+                duration: PT1H
+                interval: P2D
               start_date: 2022-09-22T00:00:00Z
               object: campaign
             id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -23947,8 +23950,8 @@ components:
               object: category
             campaign_id: campaign_id
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-23T00:00:00Z
             object: promotion_tier
           failure_message: failure_message
@@ -25610,8 +25613,8 @@ components:
               id: id
               expiration_date: 2022-09-30T00:00:00Z
               validity_timeframe:
-                duration: duration
-                interval: interval
+                duration: PT1H
+                interval: P2D
               start_date: 2022-09-22T00:00:00Z
               object: campaign
             id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -25632,8 +25635,8 @@ components:
               object: category
             campaign_id: campaign_id
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-23T00:00:00Z
             object: promotion_tier
           failure_message: failure_message
@@ -26028,8 +26031,8 @@ components:
               id: id
               expiration_date: 2022-09-30T00:00:00Z
               validity_timeframe:
-                duration: duration
-                interval: interval
+                duration: PT1H
+                interval: P2D
               start_date: 2022-09-22T00:00:00Z
               object: campaign
             id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -26050,8 +26053,8 @@ components:
               object: category
             campaign_id: campaign_id
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-23T00:00:00Z
             object: promotion_tier
           failure_message: failure_message
@@ -26543,8 +26546,8 @@ components:
           expiration_date: 2022-09-30T00:00:00Z
           code_config: null
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-20T00:00:00Z
         campaign_type: LOYALTY_PROGRAM
         validity_hours:
@@ -26599,8 +26602,8 @@ components:
           stacking_rules_type: JOINT
           object: category
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-20T00:00:00Z
         active: true
         vouchers_count: 5
@@ -26679,10 +26682,10 @@ components:
           nullable: true
           type: boolean
         validity_timeframe:
-          $ref: '#/components/schemas/CampaignBase_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -26701,7 +26704,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -27395,10 +27398,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/EarningRuleBase_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the earning rule is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -27417,7 +27420,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -28611,10 +28614,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/PromotionTier_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the promotion tier is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -28624,8 +28627,16 @@ components:
             - `5` Friday
             - `6` Saturday
           items:
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -28716,8 +28727,8 @@ components:
             amount_off: 6.027456183070403
         category: category
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-23T00:00:00Z
       properties:
         name:
@@ -28774,10 +28785,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/PromotionTier_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the promotion tier is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -28796,7 +28807,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -30333,6 +30344,29 @@ components:
           type: array
       title: Skipped Redeemable
       type: object
+    ValidityDayOfWeek:
+      description: |-
+        Integer array corresponding to the particular days of the week in which the voucher is valid.
+
+        - `0` Sunday
+        - `1` Monday
+        - `2` Tuesday
+        - `3` Wednesday
+        - `4` Thursday
+        - `5` Friday
+        - `6` Saturday
+      items:
+        enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        type: integer
+      title: Validity Day Of Week
+      type: array
     ValidityHours:
       description: "Determines the hours of validity, e.g. to create a happy hours\
         \ scenario."
@@ -30357,6 +30391,30 @@ components:
           nullable: true
           type: array
       title: Validity Hours
+      type: object
+    ValidityTimeframe:
+      description: "Set recurrent time periods when the earning rule is valid. For\
+        \ example, valid for 1 hour every other day.`start_date` **required** when\
+        \ including the `validity_timeframe`."
+      example:
+        duration: PT1H
+        interval: P2D
+      properties:
+        duration:
+          description: "Defines the amount of time an earning rule will be active\
+            \ in ISO 8601 format. For example, an earning rule with a `duration` of\
+            \ `PT1H` will be valid for a duration of one hour."
+          example: PT1H
+          nullable: true
+          type: string
+        interval:
+          description: "Defines the intervening time between two time points in ISO\
+            \ 8601 format, expressed as a duration. For example, an earning rule with\
+            \ an `interval` of `P2D` will be valid every other day."
+          example: P2D
+          nullable: true
+          type: string
+      title: Validity Timeframe
       type: object
     Voucher:
       description: This is an object representing a voucher.
@@ -30560,7 +30618,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/CampaignsVouchersCreateCombinedResponseBody_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -30582,7 +30640,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -31110,8 +31168,8 @@ components:
         expiration_date: 2022-09-30T00:00:00Z
         code_config: null
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-20T00:00:00Z
       properties:
         type:
@@ -31155,7 +31213,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/CampaignBase_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -31177,7 +31235,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -32399,26 +32457,6 @@ components:
           type: array
       title: Redeemable Loyalty Card
       type: object
-    CampaignsCreateRequestBodyValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: CampaignsCreateRequestBodyValidityTimeframe
-      type: object
     CampaignsCreateRequestBodyVoucherRedemption:
       example:
         quantity: 5
@@ -32578,8 +32616,8 @@ components:
               amount_off: 6.027456183070403
           category: category
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-23T00:00:00Z
         - metadata: "{}"
           hierarchy: 4
@@ -32642,8 +32680,8 @@ components:
               amount_off: 6.027456183070403
           category: category
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-23T00:00:00Z
       nullable: true
       properties:
@@ -32652,26 +32690,6 @@ components:
             $ref: '#/components/schemas/PromotionTierCreateParams'
           nullable: true
           type: array
-      type: object
-    CampaignsUpdateRequestBodyValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: CampaignsUpdateRequestBodyValidityTimeframe
       type: object
     CampaignsUpdateRequestBody_options:
       example:
@@ -32744,30 +32762,6 @@ components:
           description: The amount of points that are set to expire next.
           nullable: true
           type: integer
-      type: object
-    CampaignsVouchersCreateCombinedResponseBody_validity_timeframe:
-      description: "Set recurrent time periods when the voucher is valid. For example,\
-        \ valid for 1 hour every other day.`start_date` **required** when including\
-        \ the `validity_timeframe`."
-      example:
-        duration: PT1H
-        interval: P2D
-      nullable: true
-      properties:
-        duration:
-          description: "Defines the amount of time the voucher will be active in ISO\
-            \ 8601 format. For example, a voucher with a `duration` of `PT1H` will\
-            \ be valid for a duration of one hour."
-          example: PT1H
-          nullable: true
-          type: string
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a voucher with an\
-            \ `interval` of `P2D` will be active every other day."
-          example: P2D
-          nullable: true
-          type: string
       type: object
     CampaignsVouchersCreateCombinedResponseBody_publish:
       description: "This object stores a summary of publish events: an events counter\
@@ -33489,28 +33483,6 @@ components:
           description: The amount of points that are set to expire next.
           nullable: true
           type: integer
-      type: object
-    LoyaltiesMembersTransfersCreateResponseBody_validity_timeframe:
-      description: "Set recurrent time periods when the voucher is valid. For example,\
-        \ valid for 1 hour every other day.start_date required when including the\
-        \ validity_timeframe."
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the amount of time the voucher will be active in ISO\
-            \ 8601 format. For example, a voucher with a duration of PT1H will be\
-            \ valid for a duration of one hour."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a voucher with an\
-            \ interval of P2D will be active every other day."
-          nullable: true
-          type: string
       type: object
     LoyaltiesMembersTransfersCreateResponseBody_publish:
       description: "This object stores a summary of publish events: an events counter\
@@ -34593,28 +34565,6 @@ components:
           type: integer
       title: RedemptionsGetResponseBodyVoucherLoyaltyCard
       type: object
-    RedemptionsGetResponseBodyVoucherValidityTimeframe:
-      example:
-        duration: PT1H
-        interval: P2D
-      nullable: true
-      properties:
-        duration:
-          description: "Defines the amount of time the voucher will be active in ISO\
-            \ 8601 format. For example, a voucher with a `duration` of `PT1H` will\
-            \ be valid for a duration of one hour."
-          example: PT1H
-          nullable: true
-          type: string
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a voucher with an\
-            \ `interval` of `P2D` will be active every other day."
-          example: P2D
-          nullable: true
-          type: string
-      title: RedemptionsGetResponseBodyVoucherValidityTimeframe
-      type: object
     RedemptionsGetResponseBodyVoucherPublish:
       example:
         count: 0
@@ -34890,7 +34840,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/RedemptionsGetResponseBodyVoucherValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -34912,7 +34862,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -35019,26 +34969,6 @@ components:
           $ref: '#/components/schemas/Discount'
       title: RedemptionsGetResponseBodyPromotionTierAction
       type: object
-    RedemptionsGetResponseBodyPromotionTierCampaignValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: RedemptionsGetResponseBodyPromotionTierCampaignValidityTimeframe
-      type: object
     RedemptionsGetResponseBodyPromotionTierCampaign:
       example:
         validity_day_of_week:
@@ -35061,8 +34991,8 @@ components:
         id: id
         expiration_date: 2022-09-30T00:00:00Z
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-22T00:00:00Z
         object: campaign
       nullable: true
@@ -35086,10 +35016,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/RedemptionsGetResponseBodyPromotionTierCampaignValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -35108,7 +35038,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -35133,26 +35063,6 @@ components:
           nullable: true
           type: string
       title: RedemptionsGetResponseBodyPromotionTierCampaign
-      type: object
-    RedemptionsGetResponseBodyPromotionTierValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a promotion tier\
-            \ with an `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the promotion tier will be active\
-            \ in ISO 8601 format. For example, a promotion tier with a `duration`\
-            \ of `P1D` will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: RedemptionsGetResponseBodyPromotionTierValidityTimeframe
       type: object
     RedemptionsGetResponseBodyPromotionTierSummaryRedemptions:
       example:
@@ -35301,8 +35211,8 @@ components:
           id: id
           expiration_date: 2022-09-30T00:00:00Z
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-22T00:00:00Z
           object: campaign
         id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -35323,8 +35233,8 @@ components:
           object: category
         campaign_id: campaign_id
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-23T00:00:00Z
         object: promotion_tier
       nullable: true
@@ -35402,10 +35312,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/RedemptionsGetResponseBodyPromotionTierValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the promotion tier is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -35415,8 +35325,16 @@ components:
             - `5` Friday
             - `6` Saturday
           items:
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -35878,27 +35796,6 @@ components:
           type: integer
       title: Redemptions List Response Body Redemptions ItemVoucherLoyaltyCard
       type: object
-    Redemptions_List_Response_Body_Redemptions_ItemVoucherValidityTimeframe:
-      example:
-        duration: PT1H
-        interval: P2D
-      properties:
-        duration:
-          description: "Defines the amount of time the voucher will be active in ISO\
-            \ 8601 format. For example, a voucher with a `duration` of `PT1H` will\
-            \ be valid for a duration of one hour."
-          example: PT1H
-          nullable: true
-          type: string
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a voucher with an\
-            \ `interval` of `P2D` will be active every other day."
-          example: P2D
-          nullable: true
-          type: string
-      title: Redemptions List Response Body Redemptions ItemVoucherValidityTimeframe
-      type: object
     Redemptions_List_Response_Body_Redemptions_ItemVoucherPublish:
       example:
         count: 0
@@ -36171,7 +36068,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/Redemptions_List_Response_Body_Redemptions_ItemVoucherValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -36193,7 +36090,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -36298,25 +36195,6 @@ components:
           $ref: '#/components/schemas/Discount'
       title: Redemptions List Response Body Redemptions ItemPromotionTierAction
       type: object
-    Redemptions_List_Response_Body_Redemptions_ItemPromotionTierCampaignValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: Redemptions List Response Body Redemptions ItemPromotionTierCampaignValidityTimeframe
-      type: object
     Redemptions_List_Response_Body_Redemptions_ItemPromotionTierCampaign:
       example:
         validity_day_of_week:
@@ -36339,8 +36217,8 @@ components:
         id: id
         expiration_date: 2022-09-30T00:00:00Z
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-22T00:00:00Z
         object: campaign
       properties:
@@ -36363,10 +36241,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/Redemptions_List_Response_Body_Redemptions_ItemPromotionTierCampaignValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -36385,7 +36263,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -36410,25 +36288,6 @@ components:
           nullable: true
           type: string
       title: Redemptions List Response Body Redemptions ItemPromotionTierCampaign
-      type: object
-    Redemptions_List_Response_Body_Redemptions_ItemPromotionTierValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a promotion tier\
-            \ with an `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the promotion tier will be active\
-            \ in ISO 8601 format. For example, a promotion tier with a `duration`\
-            \ of `P1D` will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: Redemptions List Response Body Redemptions ItemPromotionTierValidityTimeframe
       type: object
     Redemptions_List_Response_Body_Redemptions_ItemPromotionTierSummaryRedemptions:
       example:
@@ -36574,8 +36433,8 @@ components:
           id: id
           expiration_date: 2022-09-30T00:00:00Z
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-22T00:00:00Z
           object: campaign
         id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -36596,8 +36455,8 @@ components:
           object: category
         campaign_id: campaign_id
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-23T00:00:00Z
         object: promotion_tier
       properties:
@@ -36673,10 +36532,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/Redemptions_List_Response_Body_Redemptions_ItemPromotionTierValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the promotion tier is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -36686,8 +36545,16 @@ components:
             - `5` Friday
             - `6` Saturday
           items:
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -37019,8 +36886,8 @@ components:
             id: id
             expiration_date: 2022-09-30T00:00:00Z
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-22T00:00:00Z
             object: campaign
           id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -37041,8 +36908,8 @@ components:
             object: category
           campaign_id: campaign_id
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-23T00:00:00Z
           object: promotion_tier
         failure_message: failure_message
@@ -38123,27 +37990,6 @@ components:
           type: integer
       title: Vouchers Redemption Get Response Body Redemption Entries ItemVoucherLoyaltyCard
       type: object
-    Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemVoucherValidityTimeframe:
-      example:
-        duration: PT1H
-        interval: P2D
-      properties:
-        duration:
-          description: "Defines the amount of time the voucher will be active in ISO\
-            \ 8601 format. For example, a voucher with a `duration` of `PT1H` will\
-            \ be valid for a duration of one hour."
-          example: PT1H
-          nullable: true
-          type: string
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a voucher with an\
-            \ `interval` of `P2D` will be active every other day."
-          example: P2D
-          nullable: true
-          type: string
-      title: Vouchers Redemption Get Response Body Redemption Entries ItemVoucherValidityTimeframe
-      type: object
     Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemVoucherPublish:
       example:
         count: 0
@@ -38416,7 +38262,7 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemVoucherValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
             Integer array corresponding to the particular days of the week in which the voucher is valid.
@@ -38438,7 +38284,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -38543,25 +38389,6 @@ components:
           $ref: '#/components/schemas/Discount'
       title: Vouchers Redemption Get Response Body Redemption Entries ItemPromotionTierAction
       type: object
-    Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemPromotionTierCampaignValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: Vouchers Redemption Get Response Body Redemption Entries ItemPromotionTierCampaignValidityTimeframe
-      type: object
     Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemPromotionTierCampaign:
       example:
         validity_day_of_week:
@@ -38584,8 +38411,8 @@ components:
         id: id
         expiration_date: 2022-09-30T00:00:00Z
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-22T00:00:00Z
         object: campaign
       properties:
@@ -38608,10 +38435,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemPromotionTierCampaignValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -38630,7 +38457,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -38655,25 +38482,6 @@ components:
           nullable: true
           type: string
       title: Vouchers Redemption Get Response Body Redemption Entries ItemPromotionTierCampaign
-      type: object
-    Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemPromotionTierValidityTimeframe:
-      example:
-        duration: duration
-        interval: interval
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a promotion tier\
-            \ with an `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the promotion tier will be active\
-            \ in ISO 8601 format. For example, a promotion tier with a `duration`\
-            \ of `P1D` will be valid for a duration of one day."
-          nullable: true
-          type: string
-      title: Vouchers Redemption Get Response Body Redemption Entries ItemPromotionTierValidityTimeframe
       type: object
     Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemPromotionTierSummaryRedemptions:
       example:
@@ -38819,8 +38627,8 @@ components:
           id: id
           expiration_date: 2022-09-30T00:00:00Z
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-22T00:00:00Z
           object: campaign
         id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -38841,8 +38649,8 @@ components:
           object: category
         campaign_id: campaign_id
         validity_timeframe:
-          duration: duration
-          interval: interval
+          duration: PT1H
+          interval: P2D
         start_date: 2022-09-23T00:00:00Z
         object: promotion_tier
       properties:
@@ -38918,10 +38726,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/Vouchers_Redemption_Get_Response_Body_Redemption_Entries_ItemPromotionTierValidityTimeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the promotion tier is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -38931,8 +38739,16 @@ components:
             - `5` Friday
             - `6` Saturday
           items:
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -39264,8 +39080,8 @@ components:
             id: id
             expiration_date: 2022-09-30T00:00:00Z
             validity_timeframe:
-              duration: duration
-              interval: interval
+              duration: PT1H
+              interval: P2D
             start_date: 2022-09-22T00:00:00Z
             object: campaign
           id: promo_63fYCt81Aw0h7lzyRkrGZh9p
@@ -39286,8 +39102,8 @@ components:
             object: category
           campaign_id: campaign_id
           validity_timeframe:
-            duration: duration
-            interval: interval
+            duration: PT1H
+            interval: P2D
           start_date: 2022-09-23T00:00:00Z
           object: promotion_tier
         failure_message: failure_message
@@ -39499,28 +39315,6 @@ components:
           nullable: true
           type: string
       title: Vouchers Redemption Get Response Body Redemption Entries Item
-      type: object
-    CampaignBase_validity_timeframe:
-      description: "Set recurrent time periods when the campaign is valid. For example,\
-        \ valid for 1 hour every other day.`start_date` **required** when including\
-        \ the `validity_timeframe`."
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
       type: object
     CampaignLoyaltyCard_expiration_rules:
       example:
@@ -39827,25 +39621,6 @@ components:
             to `campaign`.
           enum:
           - campaign
-          nullable: true
-          type: string
-      type: object
-    EarningRuleBase_validity_timeframe:
-      description: "Set recurrent time periods when the earning rule is valid. For\
-        \ example, valid for 1 hour every other day.start_date required when including\
-        \ the `validity_timeframe`."
-      nullable: true
-      properties:
-        duration:
-          description: "Defines the amount of time an earning rule will be active\
-            \ in ISO 8601 format. For example, an earning rule with a duration of\
-            \ PT1H will be valid for a duration of one hour."
-          nullable: true
-          type: string
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, an earning rule with\
-            \ an interval of P2D will be valid every other day."
           nullable: true
           type: string
       type: object
@@ -40390,24 +40165,6 @@ components:
         discount:
           $ref: '#/components/schemas/Discount'
       type: object
-    PromotionTier_campaign_validity_timeframe:
-      description: "Recurrent time periods when the campaign is valid. For example,\
-        \ valid for 1 hour every other day."
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a campaign with an\
-            \ `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the campaign will be active in\
-            \ ISO 8601 format. For example, a campaign with a `duration` of `P1D`\
-            \ will be valid for a duration of one day."
-          nullable: true
-          type: string
-      type: object
     PromotionTier_campaign:
       description: Contains details about promotion tier's parent campaign.
       nullable: true
@@ -40431,10 +40188,10 @@ components:
           nullable: true
           type: string
         validity_timeframe:
-          $ref: '#/components/schemas/PromotionTier_campaign_validity_timeframe'
+          $ref: '#/components/schemas/ValidityTimeframe'
         validity_day_of_week:
           description: |-
-            Integer array corresponding to the particular days of the week in which the campaign is valid.
+            Integer array corresponding to the particular days of the week in which the voucher is valid.
 
             - `0` Sunday
             - `1` Monday
@@ -40453,7 +40210,7 @@ components:
             - 5
             - 6
             type: integer
-          nullable: true
+          title: Validity Day Of Week
           type: array
         validity_hours:
           $ref: '#/components/schemas/ValidityHours'
@@ -40475,28 +40232,6 @@ components:
           default: campaign
           description: The type of the object represented by the campaign object.
             This object stores information about the campaign.
-          nullable: true
-          type: string
-      type: object
-    PromotionTier_validity_timeframe:
-      description: "Set recurrent time periods when the promotion tier is valid. For\
-        \ example, valid for 1 hour every other day.`start_date` **required** when\
-        \ including the `validity_timeframe`."
-      example:
-        duration: duration
-        interval: interval
-      nullable: true
-      properties:
-        interval:
-          description: "Defines the intervening time between two time points in ISO\
-            \ 8601 format, expressed as a duration. For example, a promotion tier\
-            \ with an `interval` of `P2D` will be active every other day."
-          nullable: true
-          type: string
-        duration:
-          description: "Defines the amount of time the promotion tier will be active\
-            \ in ISO 8601 format. For example, a promotion tier with a `duration`\
-            \ of `P1D` will be valid for a duration of one day."
           nullable: true
           type: string
       type: object

@@ -26,11 +26,11 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CampaignsUpdateRequestBodyOptions;
-import voucherify.client.model.CampaignsUpdateRequestBodyValidityTimeframe;
 import voucherify.client.model.Gift;
 import voucherify.client.model.LoyaltyTiersExpirationAll;
 import voucherify.client.model.ReferralProgram;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -72,7 +72,7 @@ public class CampaignsUpdateRequestBody {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private CampaignsUpdateRequestBodyValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -299,7 +299,7 @@ public class CampaignsUpdateRequestBody {
   }
 
 
-  public CampaignsUpdateRequestBody validityTimeframe(CampaignsUpdateRequestBodyValidityTimeframe validityTimeframe) {
+  public CampaignsUpdateRequestBody validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -310,12 +310,12 @@ public class CampaignsUpdateRequestBody {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public CampaignsUpdateRequestBodyValidityTimeframe getValidityTimeframe() {
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(CampaignsUpdateRequestBodyValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -335,7 +335,7 @@ public class CampaignsUpdateRequestBody {
   }
 
    /**
-   * Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
+   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
@@ -916,7 +916,7 @@ public class CampaignsUpdateRequestBody {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        CampaignsUpdateRequestBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {

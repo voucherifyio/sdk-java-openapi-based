@@ -30,12 +30,12 @@ import voucherify.client.model.Discount;
 import voucherify.client.model.SimpleCustomer;
 import voucherify.client.model.ValidationRulesAssignmentsList;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 import voucherify.client.model.VoucherAssets;
 import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherGift;
 import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherLoyaltyCard;
 import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherPublish;
 import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherRedemption;
-import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -170,7 +170,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -577,7 +577,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
   }
 
 
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher validityTimeframe(VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe validityTimeframe) {
+  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -588,12 +588,12 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe getValidityTimeframe() {
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -1191,7 +1191,7 @@ public class VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher {
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
