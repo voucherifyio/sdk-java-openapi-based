@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *ExportsApi* | [**getExport**](docs/ExportsApi.md#getExport) | **GET** /v1/exports/{exportId} | Get Export
 *ExportsApi* | [**listExports**](docs/ExportsApi.md#listExports) | **GET** /v1/exports | List Exports
 *LoyaltiesApi* | [**createInBulkLoyaltyTiers**](docs/LoyaltiesApi.md#createInBulkLoyaltyTiers) | **POST** /v1/loyalties/{campaignId}/tiers | Create loyalty tiers
+*LoyaltiesApi* | [**deleteEarningRule**](docs/LoyaltiesApi.md#deleteEarningRule) | **DELETE** /v1/loyalties/{campaignId}/earning-rules/{earningRuleId} | Delete Earning Rule
 *LoyaltiesApi* | [**deleteLoyaltyProgram**](docs/LoyaltiesApi.md#deleteLoyaltyProgram) | **DELETE** /v1/loyalties/{campaignId} | Delete Loyalty Campaign
 *LoyaltiesApi* | [**deleteRewardAssignment1**](docs/LoyaltiesApi.md#deleteRewardAssignment1) | **DELETE** /v1/loyalties/{campaignId}/rewards/{assignmentId} | Delete Reward Assignment
 *LoyaltiesApi* | [**disableEarningRule**](docs/LoyaltiesApi.md#disableEarningRule) | **POST** /v1/loyalties/{campaignId}/earning-rules/{earningRuleId}/disable | Disable Earning Rule
@@ -225,6 +226,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**updateSku**](docs/ProductsApi.md#updateSku) | **PUT** /v1/products/{productId}/skus/{skuId} | Update SKU
 *PromotionsApi* | [**createPromotionStack**](docs/PromotionsApi.md#createPromotionStack) | **POST** /v1/promotions/{campaignId}/stacks | Create Promotion Stack
 *PromotionsApi* | [**deletePromotionStack**](docs/PromotionsApi.md#deletePromotionStack) | **DELETE** /v1/promotions/{campaignId}/stacks/{stackId} | Delete Promotion Stack
+*PromotionsApi* | [**deletePromotionTier**](docs/PromotionsApi.md#deletePromotionTier) | **DELETE** /v1/promotions/tiers/{promotionTierId} | Delete Promotion Tier
 *PromotionsApi* | [**disablePromotionTier**](docs/PromotionsApi.md#disablePromotionTier) | **POST** /v1/promotions/tiers/{promotionTierId}/disable | Disable Promotion Tier
 *PromotionsApi* | [**enablePromotionTier**](docs/PromotionsApi.md#enablePromotionTier) | **POST** /v1/promotions/tiers/{promotionTierId}/enable | Enable Promotion Tier
 *PromotionsApi* | [**getPromotionStack**](docs/PromotionsApi.md#getPromotionStack) | **GET** /v1/promotions/{campaignId}/stacks/{stackId} | Get Promotion Stack
@@ -234,6 +236,7 @@ Class | Method | HTTP request | Description
 *PromotionsApi* | [**listPromotionTiersFromCampaign**](docs/PromotionsApi.md#listPromotionTiersFromCampaign) | **GET** /v1/promotions/{campaignId}/tiers | List Promotion Tiers from Campaign
 *PromotionsApi* | [**updatePromotionStack**](docs/PromotionsApi.md#updatePromotionStack) | **PUT** /v1/promotions/{campaignId}/stacks/{stackId} | Update Promotion Stack
 *PublicationsApi* | [**createPublication**](docs/PublicationsApi.md#createPublication) | **POST** /v1/publications | Create Publication
+*PublicationsApi* | [**createPublication1**](docs/PublicationsApi.md#createPublication1) | **GET** /v1/publications/create | Create Publication
 *PublicationsApi* | [**listPublications**](docs/PublicationsApi.md#listPublications) | **GET** /v1/publications | List Publications
 *QualificationsApi* | [**checkEligibility**](docs/QualificationsApi.md#checkEligibility) | **POST** /v1/qualifications | Check Eligibility
 *RedemptionsApi* | [**getRedemption**](docs/RedemptionsApi.md#getRedemption) | **GET** /v1/redemptions/{redemptionId} | Get Redemption
@@ -243,10 +246,12 @@ Class | Method | HTTP request | Description
 *RedemptionsApi* | [**rollbackRedemption**](docs/RedemptionsApi.md#rollbackRedemption) | **POST** /v1/redemptions/{redemptionId}/rollback | Rollback Redemption
 *RedemptionsApi* | [**rollbackStackedRedemptions**](docs/RedemptionsApi.md#rollbackStackedRedemptions) | **POST** /v1/redemptions/{parentRedemptionId}/rollbacks | Rollback Stackable Redemptions
 *RewardsApi* | [**createRewardAssignment**](docs/RewardsApi.md#createRewardAssignment) | **POST** /v1/rewards/{rewardId}/assignments | Create Reward Assignment
+*RewardsApi* | [**deleteReward**](docs/RewardsApi.md#deleteReward) | **DELETE** /v1/rewards/{rewardId} | Delete Reward
 *RewardsApi* | [**deleteRewardAssignment**](docs/RewardsApi.md#deleteRewardAssignment) | **DELETE** /v1/rewards/{rewardId}/assignments/{assignmentId} | Delete Reward Assignment
 *RewardsApi* | [**getRewardAssignment**](docs/RewardsApi.md#getRewardAssignment) | **GET** /v1/rewards/{rewardId}/assignments/{assignmentId} | Get Reward Assignment
 *RewardsApi* | [**listRewardAssignments**](docs/RewardsApi.md#listRewardAssignments) | **GET** /v1/rewards/{rewardId}/assignments | List Reward Assignments
 *RewardsApi* | [**updateRewardAssignment**](docs/RewardsApi.md#updateRewardAssignment) | **PUT** /v1/rewards/{rewardId}/assignments/{assignmentId} | Update Reward Assignment
+*SegmentsApi* | [**deleteSegment**](docs/SegmentsApi.md#deleteSegment) | **DELETE** /v1/segments/{segmentId} | Delete Segment
 *ValidationRulesApi* | [**createValidationRuleAssignment**](docs/ValidationRulesApi.md#createValidationRuleAssignment) | **POST** /v1/validation-rules/{validationRuleId}/assignments | Create Validation Rules Assignments
 *ValidationRulesApi* | [**createValidationRules**](docs/ValidationRulesApi.md#createValidationRules) | **POST** /v1/validation-rules | Create Validation Rules
 *ValidationRulesApi* | [**deleteValidationRuleAssignment**](docs/ValidationRulesApi.md#deleteValidationRuleAssignment) | **DELETE** /v1/validation-rules/{validationRuleId}/assignments/{assignmentId} | Delete Validation Rule Assignment
@@ -257,20 +262,24 @@ Class | Method | HTTP request | Description
 *ValidationRulesApi* | [**listValidationRulesAssignments**](docs/ValidationRulesApi.md#listValidationRulesAssignments) | **GET** /v1/validation-rules-assignments | List Validation Rules&#39; Assignment(s)
 *ValidationRulesApi* | [**updateValidationRule**](docs/ValidationRulesApi.md#updateValidationRule) | **PUT** /v1/validation-rules/{validationRuleId} | Update Validation Rule
 *ValidationsApi* | [**validateStackedDiscounts**](docs/ValidationsApi.md#validateStackedDiscounts) | **POST** /v1/validations | Validate Stackable Discounts
+*VouchersApi* | [**deleteVoucher**](docs/VouchersApi.md#deleteVoucher) | **DELETE** /v1/vouchers/{code} | Delete Voucher
 *VouchersApi* | [**disableVoucher**](docs/VouchersApi.md#disableVoucher) | **POST** /v1/vouchers/{code}/disable | Disable Voucher
 *VouchersApi* | [**enableVoucher**](docs/VouchersApi.md#enableVoucher) | **POST** /v1/vouchers/{code}/enable | Enable Voucher
 *VouchersApi* | [**exportVoucherTransactions**](docs/VouchersApi.md#exportVoucherTransactions) | **POST** /v1/vouchers/{code}/transactions/export | Export Voucher Transactions
 *VouchersApi* | [**getVoucher**](docs/VouchersApi.md#getVoucher) | **GET** /v1/vouchers/{code} | Get Voucher
 *VouchersApi* | [**importVouchersUsingCsv**](docs/VouchersApi.md#importVouchersUsingCsv) | **POST** /v1/vouchers/importCSV | Import Vouchers using CSV
 *VouchersApi* | [**listVoucherTransactions**](docs/VouchersApi.md#listVoucherTransactions) | **GET** /v1/vouchers/{code}/transactions | List Voucher Transactions
+*VouchersApi* | [**releaseValidationSession**](docs/VouchersApi.md#releaseValidationSession) | **DELETE** /v1/vouchers/{code}/sessions/{sessionKey} | Release Validation Session
 *VouchersApi* | [**updateVoucherBalance**](docs/VouchersApi.md#updateVoucherBalance) | **POST** /v1/vouchers/{code}/balance | Add or Remove Voucher Balance
 
 
 ## Documentation for Models
 
+ - [AccessSettingsCampaignAssignmentsList](docs/AccessSettingsCampaignAssignmentsList.md)
  - [ApplicableTo](docs/ApplicableTo.md)
  - [ApplicableToEffect](docs/ApplicableToEffect.md)
  - [ApplicableToResultList](docs/ApplicableToResultList.md)
+ - [AreaStoreCampaignAssignment](docs/AreaStoreCampaignAssignment.md)
  - [AsyncActions](docs/AsyncActions.md)
  - [BusValRuleAssignment](docs/BusValRuleAssignment.md)
  - [Campaign](docs/Campaign.md)
@@ -621,6 +630,8 @@ Class | Method | HTTP request | Description
  - [RedemptionsGetResponseBodyGift](docs/RedemptionsGetResponseBodyGift.md)
  - [RedemptionsGetResponseBodyLoyaltyCard](docs/RedemptionsGetResponseBodyLoyaltyCard.md)
  - [RedemptionsGetResponseBodyOrder](docs/RedemptionsGetResponseBodyOrder.md)
+ - [RedemptionsGetResponseBodyOrderCustomer](docs/RedemptionsGetResponseBodyOrderCustomer.md)
+ - [RedemptionsGetResponseBodyOrderReferrer](docs/RedemptionsGetResponseBodyOrderReferrer.md)
  - [RedemptionsGetResponseBodyPromotionTier](docs/RedemptionsGetResponseBodyPromotionTier.md)
  - [RedemptionsGetResponseBodyPromotionTierAction](docs/RedemptionsGetResponseBodyPromotionTierAction.md)
  - [RedemptionsGetResponseBodyPromotionTierCampaign](docs/RedemptionsGetResponseBodyPromotionTierCampaign.md)
@@ -645,6 +656,8 @@ Class | Method | HTTP request | Description
  - [RedemptionsListResponseBodyRedemptionsItemGift](docs/RedemptionsListResponseBodyRedemptionsItemGift.md)
  - [RedemptionsListResponseBodyRedemptionsItemLoyaltyCard](docs/RedemptionsListResponseBodyRedemptionsItemLoyaltyCard.md)
  - [RedemptionsListResponseBodyRedemptionsItemOrder](docs/RedemptionsListResponseBodyRedemptionsItemOrder.md)
+ - [RedemptionsListResponseBodyRedemptionsItemOrderCustomer](docs/RedemptionsListResponseBodyRedemptionsItemOrderCustomer.md)
+ - [RedemptionsListResponseBodyRedemptionsItemOrderReferrer](docs/RedemptionsListResponseBodyRedemptionsItemOrderReferrer.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTier](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTier.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierAction](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierAction.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign.md)
@@ -788,6 +801,8 @@ Class | Method | HTTP request | Description
  - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift.md)
  - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard.md)
  - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder.md)
+ - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderCustomer.md)
+ - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrderReferrer.md)
  - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier.md)
  - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierAction](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierAction.md)
  - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierCampaign](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierCampaign.md)

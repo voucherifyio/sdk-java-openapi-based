@@ -27,8 +27,8 @@
 |**referrerId** | **String** | Unique referrer ID. |
 |**_object** | [**ObjectEnum**](#ObjectEnum) | The type of the object represented by JSON. |
 |**redemptions** | [**Map&lt;String, OrderRedemptions&gt;**](OrderRedemptions.md) |  |
-|**customer** | **CustomerId** |  |
-|**referrer** | **ReferrerId** |  |
+|**customer** | [**CustomerId**](CustomerId.md) |  |
+|**referrer** | [**ReferrerId**](ReferrerId.md) |  |
 
 
 

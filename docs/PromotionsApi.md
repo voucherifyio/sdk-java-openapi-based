@@ -6,6 +6,7 @@ All URIs are relative to *https://api.voucherify.io*
 |------------- | ------------- | -------------|
 | [**createPromotionStack**](PromotionsApi.md#createPromotionStack) | **POST** /v1/promotions/{campaignId}/stacks | Create Promotion Stack |
 | [**deletePromotionStack**](PromotionsApi.md#deletePromotionStack) | **DELETE** /v1/promotions/{campaignId}/stacks/{stackId} | Delete Promotion Stack |
+| [**deletePromotionTier**](PromotionsApi.md#deletePromotionTier) | **DELETE** /v1/promotions/tiers/{promotionTierId} | Delete Promotion Tier |
 | [**disablePromotionTier**](PromotionsApi.md#disablePromotionTier) | **POST** /v1/promotions/tiers/{promotionTierId}/disable | Disable Promotion Tier |
 | [**enablePromotionTier**](PromotionsApi.md#enablePromotionTier) | **POST** /v1/promotions/tiers/{promotionTierId}/enable | Enable Promotion Tier |
 | [**getPromotionStack**](PromotionsApi.md#getPromotionStack) | **GET** /v1/promotions/{campaignId}/stacks/{stackId} | Get Promotion Stack |
@@ -150,6 +151,80 @@ public class Example {
 |------------- | ------------- | ------------- |
 | **campaignId** | **String**| ID of the promotion campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty Campaign&#x60;.  |
 | **stackId** | **String**| Promotion stack ID. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[X-App-Id](../README.md#X-App-Id), [X-App-Token](../README.md#X-App-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Returns no content if deletion is successful. |  -  |
+
+<a id="deletePromotionTier"></a>
+# **deletePromotionTier**
+> deletePromotionTier(promotionTierId)
+
+Delete Promotion Tier
+
+This method deletes a promotion tier.
+
+### Example
+```java
+// Import classes:
+import voucherify.client.ApiClient;
+import voucherify.client.ApiException;
+import voucherify.client.Configuration;
+import voucherify.client.auth.*;
+import voucherify.client.models.*;
+import voucherify.client.api.PromotionsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.voucherify.io");
+    
+    // Configure API key authorization: X-App-Id
+    ApiKeyAuth X-App-Id = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Id");
+    X-App-Id.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Id.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: X-App-Token
+    ApiKeyAuth X-App-Token = (ApiKeyAuth) defaultClient.getAuthentication("X-App-Token");
+    X-App-Token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //X-App-Token.setApiKeyPrefix("Token");
+
+    PromotionsApi apiInstance = new PromotionsApi(defaultClient);
+    String promotionTierId = "promotionTierId_example"; // String | Unique promotion tier ID.
+    try {
+      apiInstance.deletePromotionTier(promotionTierId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PromotionsApi#deletePromotionTier");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  |
+|------------- | ------------- | ------------- |
+| **promotionTierId** | **String**| Unique promotion tier ID. |
 
 ### Return type
 
