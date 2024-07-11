@@ -20,11 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.RedemptionEntry;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,194 +48,206 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Response body schema for **GET** &#x60;/vouchers/{code}/redemption&#x60;.
+ * RedemptionEntryCustomer
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class VouchersRedemptionGetResponseBody {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
+public class RedemptionEntryCustomer {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
-  public static final String SERIALIZED_NAME_REDEEMED_QUANTITY = "redeemed_quantity";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_QUANTITY)
-  private Integer redeemedQuantity;
+  public static final String SERIALIZED_NAME_SOURCE_ID = "source_id";
+  @SerializedName(SERIALIZED_NAME_SOURCE_ID)
+  private String sourceId;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  private String email;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Object metadata;
+
+  /**
+   * The type of the object represented by JSON.
+   */
+  @JsonAdapter(ObjectEnum.Adapter.class)
+  public enum ObjectEnum {
+    CUSTOMER("customer");
+
+    private String value;
+
+    ObjectEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ObjectEnum fromValue(String value) {
+      for (ObjectEnum b : ObjectEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ObjectEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ObjectEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ObjectEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
-  private String _object = "list";
+  private ObjectEnum _object = ObjectEnum.CUSTOMER;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
-  public static final String SERIALIZED_NAME_DATA_REF = "data_ref";
-  @SerializedName(SERIALIZED_NAME_DATA_REF)
-  private String dataRef = "redemption_entries";
-
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private Integer total;
-
-  public static final String SERIALIZED_NAME_REDEMPTION_ENTRIES = "redemption_entries";
-  @SerializedName(SERIALIZED_NAME_REDEMPTION_ENTRIES)
-  private List<RedemptionEntry> redemptionEntries = new ArrayList<>();
-
-  public VouchersRedemptionGetResponseBody() {
+  public RedemptionEntryCustomer() {
   }
 
-  public VouchersRedemptionGetResponseBody quantity(Integer quantity) {
+  public RedemptionEntryCustomer id(String id) {
     
-    this.quantity = quantity;
+    this.id = id;
     return this;
   }
 
    /**
-   * The maximum number of times a voucher can be redeemed.
-   * @return quantity
+   * The ID of an existing customer that will be linked to redemption in this request.
+   * @return id
   **/
   @javax.annotation.Nullable
-  public Integer getQuantity() {
-    return quantity;
+  public String getId() {
+    return id;
   }
 
 
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+  public void setId(String id) {
+    this.id = id;
   }
 
 
-  public VouchersRedemptionGetResponseBody redeemedQuantity(Integer redeemedQuantity) {
+  public RedemptionEntryCustomer sourceId(String sourceId) {
     
-    this.redeemedQuantity = redeemedQuantity;
+    this.sourceId = sourceId;
     return this;
   }
 
    /**
-   * The number of times the voucher was redeemed successfully.
-   * @return redeemedQuantity
+   * A unique identifier of the customer who validates a voucher. It can be a customer ID or email from a CRM system, database, or a third-party service. If you also pass a customer ID (unique ID assigned by Voucherify), the source ID will be ignored.
+   * @return sourceId
   **/
   @javax.annotation.Nullable
-  public Integer getRedeemedQuantity() {
-    return redeemedQuantity;
+  public String getSourceId() {
+    return sourceId;
   }
 
 
-  public void setRedeemedQuantity(Integer redeemedQuantity) {
-    this.redeemedQuantity = redeemedQuantity;
+  public void setSourceId(String sourceId) {
+    this.sourceId = sourceId;
   }
 
 
-  public VouchersRedemptionGetResponseBody _object(String _object) {
+  public RedemptionEntryCustomer name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Customer&#39;s first and last name.
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public RedemptionEntryCustomer email(String email) {
+    
+    this.email = email;
+    return this;
+  }
+
+   /**
+   * Customer&#39;s email address.
+   * @return email
+  **/
+  @javax.annotation.Nullable
+  public String getEmail() {
+    return email;
+  }
+
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+
+  public RedemptionEntryCustomer metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public RedemptionEntryCustomer _object(ObjectEnum _object) {
     
     this._object = _object;
     return this;
   }
 
    /**
-   * The type of the object represented by JSON. This object stores information about redemptions in a dictionary.
+   * The type of the object represented by JSON.
    * @return _object
   **/
   @javax.annotation.Nullable
-  public String getObject() {
+  public ObjectEnum getObject() {
     return _object;
   }
 
 
-  public void setObject(String _object) {
+  public void setObject(ObjectEnum _object) {
     this._object = _object;
-  }
-
-
-  public VouchersRedemptionGetResponseBody url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * URL
-   * @return url
-  **/
-  @javax.annotation.Nullable
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-
-  public VouchersRedemptionGetResponseBody dataRef(String dataRef) {
-    
-    this.dataRef = dataRef;
-    return this;
-  }
-
-   /**
-   * Identifies the name of the attribute that contains the array of &#x60;redemption_entries&#x60;.
-   * @return dataRef
-  **/
-  @javax.annotation.Nullable
-  public String getDataRef() {
-    return dataRef;
-  }
-
-
-  public void setDataRef(String dataRef) {
-    this.dataRef = dataRef;
-  }
-
-
-  public VouchersRedemptionGetResponseBody total(Integer total) {
-    
-    this.total = total;
-    return this;
-  }
-
-   /**
-   * Total number of redemption objects.
-   * @return total
-  **/
-  @javax.annotation.Nullable
-  public Integer getTotal() {
-    return total;
-  }
-
-
-  public void setTotal(Integer total) {
-    this.total = total;
-  }
-
-
-  public VouchersRedemptionGetResponseBody redemptionEntries(List<RedemptionEntry> redemptionEntries) {
-    
-    this.redemptionEntries = redemptionEntries;
-    return this;
-  }
-
-  public VouchersRedemptionGetResponseBody addRedemptionEntriesItem(RedemptionEntry redemptionEntriesItem) {
-    if (this.redemptionEntries == null) {
-      this.redemptionEntries = new ArrayList<>();
-    }
-    this.redemptionEntries.add(redemptionEntriesItem);
-    return this;
-  }
-
-   /**
-   * Contains the array of successful and failed redemption objects.
-   * @return redemptionEntries
-  **/
-  @javax.annotation.Nonnull
-  public List<RedemptionEntry> getRedemptionEntries() {
-    return redemptionEntries;
-  }
-
-
-  public void setRedemptionEntries(List<RedemptionEntry> redemptionEntries) {
-    this.redemptionEntries = redemptionEntries;
   }
 
   /**
@@ -254,9 +263,9 @@ public class VouchersRedemptionGetResponseBody {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VouchersRedemptionGetResponseBody instance itself
+   * @return the RedemptionEntryCustomer instance itself
    */
-  public VouchersRedemptionGetResponseBody putAdditionalProperty(String key, Object value) {
+  public RedemptionEntryCustomer putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -295,15 +304,14 @@ public class VouchersRedemptionGetResponseBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VouchersRedemptionGetResponseBody vouchersRedemptionGetResponseBody = (VouchersRedemptionGetResponseBody) o;
-    return Objects.equals(this.quantity, vouchersRedemptionGetResponseBody.quantity) &&
-        Objects.equals(this.redeemedQuantity, vouchersRedemptionGetResponseBody.redeemedQuantity) &&
-        Objects.equals(this._object, vouchersRedemptionGetResponseBody._object) &&
-        Objects.equals(this.url, vouchersRedemptionGetResponseBody.url) &&
-        Objects.equals(this.dataRef, vouchersRedemptionGetResponseBody.dataRef) &&
-        Objects.equals(this.total, vouchersRedemptionGetResponseBody.total) &&
-        Objects.equals(this.redemptionEntries, vouchersRedemptionGetResponseBody.redemptionEntries)&&
-        Objects.equals(this.additionalProperties, vouchersRedemptionGetResponseBody.additionalProperties);
+    RedemptionEntryCustomer redemptionEntryCustomer = (RedemptionEntryCustomer) o;
+    return Objects.equals(this.id, redemptionEntryCustomer.id) &&
+        Objects.equals(this.sourceId, redemptionEntryCustomer.sourceId) &&
+        Objects.equals(this.name, redemptionEntryCustomer.name) &&
+        Objects.equals(this.email, redemptionEntryCustomer.email) &&
+        Objects.equals(this.metadata, redemptionEntryCustomer.metadata) &&
+        Objects.equals(this._object, redemptionEntryCustomer._object)&&
+        Objects.equals(this.additionalProperties, redemptionEntryCustomer.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -312,7 +320,7 @@ public class VouchersRedemptionGetResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, redeemedQuantity, _object, url, dataRef, total, redemptionEntries, additionalProperties);
+    return Objects.hash(id, sourceId, name, email, metadata, _object, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -325,14 +333,13 @@ public class VouchersRedemptionGetResponseBody {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VouchersRedemptionGetResponseBody {\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    redeemedQuantity: ").append(toIndentedString(redeemedQuantity)).append("\n");
+    sb.append("class RedemptionEntryCustomer {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    dataRef: ").append(toIndentedString(dataRef)).append("\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
-    sb.append("    redemptionEntries: ").append(toIndentedString(redemptionEntries)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -356,58 +363,67 @@ public class VouchersRedemptionGetResponseBody {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("quantity");
-    openapiFields.add("redeemed_quantity");
+    openapiFields.add("id");
+    openapiFields.add("source_id");
+    openapiFields.add("name");
+    openapiFields.add("email");
+    openapiFields.add("metadata");
     openapiFields.add("object");
-    openapiFields.add("url");
-    openapiFields.add("data_ref");
-    openapiFields.add("total");
-    openapiFields.add("redemption_entries");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("redemption_entries");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBody
+  * @throws IOException if the JSON Element is invalid with respect to RedemptionEntryCustomer
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        return;
+      }
+      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
+        return;
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        return;
+      }
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
+        return;
+      }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         return;
       }
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
-        return;
-      }
+      try {
+        JsonElement objectElement = jsonObj.get("object");
 
-      JsonArray jsonArrayredemptionEntries = jsonObj.getAsJsonArray("redemption_entries");
-      // validate the required field `redemption_entries` (array)
-      for (int i = 0; i < jsonArrayredemptionEntries.size(); i++) {
-        RedemptionEntry.validateJsonElement(jsonArrayredemptionEntries.get(i));
-      };
+        if (objectElement != null && !objectElement.isJsonNull()) {
+          ObjectEnum.fromValue(objectElement.getAsString());
+        } else {
+          return;
+        }
+      } catch (IllegalArgumentException e) {
+          return;
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VouchersRedemptionGetResponseBody.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VouchersRedemptionGetResponseBody' and its subtypes
+       if (!RedemptionEntryCustomer.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionEntryCustomer' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VouchersRedemptionGetResponseBody> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VouchersRedemptionGetResponseBody.class));
+       final TypeAdapter<RedemptionEntryCustomer> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionEntryCustomer.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VouchersRedemptionGetResponseBody>() {
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionEntryCustomer>() {
            @Override
-           public void write(JsonWriter out, VouchersRedemptionGetResponseBody value) throws IOException {
+           public void write(JsonWriter out, RedemptionEntryCustomer value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -430,12 +446,12 @@ public class VouchersRedemptionGetResponseBody {
            }
 
            @Override
-           public VouchersRedemptionGetResponseBody read(JsonReader in) throws IOException {
+           public RedemptionEntryCustomer read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             VouchersRedemptionGetResponseBody instance = thisAdapter.fromJsonTree(jsonObj);
+             RedemptionEntryCustomer instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -462,18 +478,18 @@ public class VouchersRedemptionGetResponseBody {
   }
 
  /**
-  * Create an instance of VouchersRedemptionGetResponseBody given an JSON string
+  * Create an instance of RedemptionEntryCustomer given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VouchersRedemptionGetResponseBody
-  * @throws IOException if the JSON string is invalid with respect to VouchersRedemptionGetResponseBody
+  * @return An instance of RedemptionEntryCustomer
+  * @throws IOException if the JSON string is invalid with respect to RedemptionEntryCustomer
   */
-  public static VouchersRedemptionGetResponseBody fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VouchersRedemptionGetResponseBody.class);
+  public static RedemptionEntryCustomer fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RedemptionEntryCustomer.class);
   }
 
  /**
-  * Convert an instance of VouchersRedemptionGetResponseBody to an JSON string
+  * Convert an instance of RedemptionEntryCustomer to an JSON string
   *
   * @return JSON string
   */

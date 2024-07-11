@@ -48,33 +48,31 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Stores a summary of redemptions that have been applied to the voucher.
+ * RedemptionEntryVoucherGift
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
+public class RedemptionEntryVoucherGift {
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private Integer amount;
 
-  public static final String SERIALIZED_NAME_REDEEMED_POINTS = "redeemed_points";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_POINTS)
-  private Integer redeemedPoints;
-
-  public static final String SERIALIZED_NAME_REDEEMED_QUANTITY = "redeemed_quantity";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_QUANTITY)
-  private Integer redeemedQuantity;
+  public static final String SERIALIZED_NAME_BALANCE = "balance";
+  @SerializedName(SERIALIZED_NAME_BALANCE)
+  private Integer balance;
 
   /**
-   * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
+   * Defines how the credits are applied to the customer&#39;s order.
    */
-  @JsonAdapter(ObjectEnum.Adapter.class)
-  public enum ObjectEnum {
-    LIST("list");
+  @JsonAdapter(EffectEnum.Adapter.class)
+  public enum EffectEnum {
+    ORDER("APPLY_TO_ORDER"),
+    
+    ITEMS("APPLY_TO_ITEMS");
 
     private String value;
 
-    ObjectEnum(String value) {
+    EffectEnum(String value) {
       this.value = value;
     }
 
@@ -87,8 +85,8 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
       return String.valueOf(value);
     }
 
-    public static ObjectEnum fromValue(String value) {
-      for (ObjectEnum b : ObjectEnum.values()) {
+    public static EffectEnum fromValue(String value) {
+      for (EffectEnum b : EffectEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -96,133 +94,87 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
         return null;
     }
 
-    public static class Adapter extends TypeAdapter<ObjectEnum> {
+    public static class Adapter extends TypeAdapter<EffectEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ObjectEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final EffectEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ObjectEnum read(final JsonReader jsonReader) throws IOException {
+      public EffectEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ObjectEnum.fromValue(value);
+        return EffectEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_OBJECT = "object";
-  @SerializedName(SERIALIZED_NAME_OBJECT)
-  private ObjectEnum _object = ObjectEnum.LIST;
+  public static final String SERIALIZED_NAME_EFFECT = "effect";
+  @SerializedName(SERIALIZED_NAME_EFFECT)
+  private EffectEnum effect;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption() {
+  public RedemptionEntryVoucherGift() {
   }
 
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption quantity(Integer quantity) {
+  public RedemptionEntryVoucherGift amount(Integer amount) {
     
-    this.quantity = quantity;
+    this.amount = amount;
     return this;
   }
 
    /**
-   * How many times a voucher can be redeemed. A null value means unlimited.
-   * @return quantity
+   * Total gift card income over the lifetime of the card. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
+   * @return amount
   **/
   @javax.annotation.Nullable
-  public Integer getQuantity() {
-    return quantity;
+  public Integer getAmount() {
+    return amount;
   }
 
 
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+  public void setAmount(Integer amount) {
+    this.amount = amount;
   }
 
 
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption redeemedPoints(Integer redeemedPoints) {
+  public RedemptionEntryVoucherGift balance(Integer balance) {
     
-    this.redeemedPoints = redeemedPoints;
+    this.balance = balance;
     return this;
   }
 
    /**
-   * Total loyalty points redeemed.
-   * @return redeemedPoints
+   * Available funds. Value is multiplied by 100 to precisely represent 2 decimal places. For example, $100 amount is written as 10000.
+   * @return balance
   **/
   @javax.annotation.Nullable
-  public Integer getRedeemedPoints() {
-    return redeemedPoints;
+  public Integer getBalance() {
+    return balance;
   }
 
 
-  public void setRedeemedPoints(Integer redeemedPoints) {
-    this.redeemedPoints = redeemedPoints;
+  public void setBalance(Integer balance) {
+    this.balance = balance;
   }
 
 
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption redeemedQuantity(Integer redeemedQuantity) {
+  public RedemptionEntryVoucherGift effect(EffectEnum effect) {
     
-    this.redeemedQuantity = redeemedQuantity;
+    this.effect = effect;
     return this;
   }
 
    /**
-   * How many times a voucher has already been redeemed.
-   * @return redeemedQuantity
+   * Defines how the credits are applied to the customer&#39;s order.
+   * @return effect
   **/
   @javax.annotation.Nullable
-  public Integer getRedeemedQuantity() {
-    return redeemedQuantity;
+  public EffectEnum getEffect() {
+    return effect;
   }
 
 
-  public void setRedeemedQuantity(Integer redeemedQuantity) {
-    this.redeemedQuantity = redeemedQuantity;
-  }
-
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption _object(ObjectEnum _object) {
-    
-    this._object = _object;
-    return this;
-  }
-
-   /**
-   * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
-   * @return _object
-  **/
-  @javax.annotation.Nullable
-  public ObjectEnum getObject() {
-    return _object;
-  }
-
-
-  public void setObject(ObjectEnum _object) {
-    this._object = _object;
-  }
-
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * The endpoint where this list of redemptions can be accessed using a GET method. /v1/vouchers/{voucher_code}/redemptions
-   * @return url
-  **/
-  @javax.annotation.Nullable
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
+  public void setEffect(EffectEnum effect) {
+    this.effect = effect;
   }
 
   /**
@@ -238,9 +190,9 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LoyaltiesMembersTransfersCreateResponseBodyRedemption instance itself
+   * @return the RedemptionEntryVoucherGift instance itself
    */
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption putAdditionalProperty(String key, Object value) {
+  public RedemptionEntryVoucherGift putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -279,13 +231,11 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoyaltiesMembersTransfersCreateResponseBodyRedemption loyaltiesMembersTransfersCreateResponseBodyRedemption = (LoyaltiesMembersTransfersCreateResponseBodyRedemption) o;
-    return Objects.equals(this.quantity, loyaltiesMembersTransfersCreateResponseBodyRedemption.quantity) &&
-        Objects.equals(this.redeemedPoints, loyaltiesMembersTransfersCreateResponseBodyRedemption.redeemedPoints) &&
-        Objects.equals(this.redeemedQuantity, loyaltiesMembersTransfersCreateResponseBodyRedemption.redeemedQuantity) &&
-        Objects.equals(this._object, loyaltiesMembersTransfersCreateResponseBodyRedemption._object) &&
-        Objects.equals(this.url, loyaltiesMembersTransfersCreateResponseBodyRedemption.url)&&
-        Objects.equals(this.additionalProperties, loyaltiesMembersTransfersCreateResponseBodyRedemption.additionalProperties);
+    RedemptionEntryVoucherGift redemptionEntryVoucherGift = (RedemptionEntryVoucherGift) o;
+    return Objects.equals(this.amount, redemptionEntryVoucherGift.amount) &&
+        Objects.equals(this.balance, redemptionEntryVoucherGift.balance) &&
+        Objects.equals(this.effect, redemptionEntryVoucherGift.effect)&&
+        Objects.equals(this.additionalProperties, redemptionEntryVoucherGift.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -294,7 +244,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, redeemedPoints, redeemedQuantity, _object, url, additionalProperties);
+    return Objects.hash(amount, balance, effect, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -307,12 +257,10 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoyaltiesMembersTransfersCreateResponseBodyRedemption {\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    redeemedPoints: ").append(toIndentedString(redeemedPoints)).append("\n");
-    sb.append("    redeemedQuantity: ").append(toIndentedString(redeemedQuantity)).append("\n");
-    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("class RedemptionEntryVoucherGift {\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+    sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -336,11 +284,9 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("quantity");
-    openapiFields.add("redeemed_points");
-    openapiFields.add("redeemed_quantity");
-    openapiFields.add("object");
-    openapiFields.add("url");
+    openapiFields.add("amount");
+    openapiFields.add("balance");
+    openapiFields.add("effect");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -350,26 +296,23 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersTransfersCreateResponseBodyRedemption
+  * @throws IOException if the JSON Element is invalid with respect to RedemptionEntryVoucherGift
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
         return;
       }
       try {
-        JsonElement objectElement = jsonObj.get("object");
+        JsonElement objectElement = jsonObj.get("effect");
 
         if (objectElement != null && !objectElement.isJsonNull()) {
-          ObjectEnum.fromValue(objectElement.getAsString());
+          EffectEnum.fromValue(objectElement.getAsString());
         } else {
           return;
         }
       } catch (IllegalArgumentException e) {
           return;
-      }
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        return;
       }
   }
 
@@ -377,16 +320,16 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LoyaltiesMembersTransfersCreateResponseBodyRedemption.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LoyaltiesMembersTransfersCreateResponseBodyRedemption' and its subtypes
+       if (!RedemptionEntryVoucherGift.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionEntryVoucherGift' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LoyaltiesMembersTransfersCreateResponseBodyRedemption> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LoyaltiesMembersTransfersCreateResponseBodyRedemption.class));
+       final TypeAdapter<RedemptionEntryVoucherGift> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionEntryVoucherGift.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LoyaltiesMembersTransfersCreateResponseBodyRedemption>() {
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionEntryVoucherGift>() {
            @Override
-           public void write(JsonWriter out, LoyaltiesMembersTransfersCreateResponseBodyRedemption value) throws IOException {
+           public void write(JsonWriter out, RedemptionEntryVoucherGift value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -409,12 +352,12 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
            }
 
            @Override
-           public LoyaltiesMembersTransfersCreateResponseBodyRedemption read(JsonReader in) throws IOException {
+           public RedemptionEntryVoucherGift read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             LoyaltiesMembersTransfersCreateResponseBodyRedemption instance = thisAdapter.fromJsonTree(jsonObj);
+             RedemptionEntryVoucherGift instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -441,18 +384,18 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   }
 
  /**
-  * Create an instance of LoyaltiesMembersTransfersCreateResponseBodyRedemption given an JSON string
+  * Create an instance of RedemptionEntryVoucherGift given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LoyaltiesMembersTransfersCreateResponseBodyRedemption
-  * @throws IOException if the JSON string is invalid with respect to LoyaltiesMembersTransfersCreateResponseBodyRedemption
+  * @return An instance of RedemptionEntryVoucherGift
+  * @throws IOException if the JSON string is invalid with respect to RedemptionEntryVoucherGift
   */
-  public static LoyaltiesMembersTransfersCreateResponseBodyRedemption fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LoyaltiesMembersTransfersCreateResponseBodyRedemption.class);
+  public static RedemptionEntryVoucherGift fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RedemptionEntryVoucherGift.class);
   }
 
  /**
-  * Convert an instance of LoyaltiesMembersTransfersCreateResponseBodyRedemption to an JSON string
+  * Convert an instance of RedemptionEntryVoucherGift to an JSON string
   *
   * @return JSON string
   */

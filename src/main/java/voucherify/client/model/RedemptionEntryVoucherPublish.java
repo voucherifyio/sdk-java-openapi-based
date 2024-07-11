@@ -20,11 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.RedemptionEntry;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,92 +48,34 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Response body schema for **GET** &#x60;/vouchers/{code}/redemption&#x60;.
+ * RedemptionEntryVoucherPublish
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class VouchersRedemptionGetResponseBody {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
-
-  public static final String SERIALIZED_NAME_REDEEMED_QUANTITY = "redeemed_quantity";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_QUANTITY)
-  private Integer redeemedQuantity;
-
+public class RedemptionEntryVoucherPublish {
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
   private String _object = "list";
+
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private Integer count;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
   private String url;
 
-  public static final String SERIALIZED_NAME_DATA_REF = "data_ref";
-  @SerializedName(SERIALIZED_NAME_DATA_REF)
-  private String dataRef = "redemption_entries";
-
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private Integer total;
-
-  public static final String SERIALIZED_NAME_REDEMPTION_ENTRIES = "redemption_entries";
-  @SerializedName(SERIALIZED_NAME_REDEMPTION_ENTRIES)
-  private List<RedemptionEntry> redemptionEntries = new ArrayList<>();
-
-  public VouchersRedemptionGetResponseBody() {
+  public RedemptionEntryVoucherPublish() {
   }
 
-  public VouchersRedemptionGetResponseBody quantity(Integer quantity) {
-    
-    this.quantity = quantity;
-    return this;
-  }
-
-   /**
-   * The maximum number of times a voucher can be redeemed.
-   * @return quantity
-  **/
-  @javax.annotation.Nullable
-  public Integer getQuantity() {
-    return quantity;
-  }
-
-
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
-  }
-
-
-  public VouchersRedemptionGetResponseBody redeemedQuantity(Integer redeemedQuantity) {
-    
-    this.redeemedQuantity = redeemedQuantity;
-    return this;
-  }
-
-   /**
-   * The number of times the voucher was redeemed successfully.
-   * @return redeemedQuantity
-  **/
-  @javax.annotation.Nullable
-  public Integer getRedeemedQuantity() {
-    return redeemedQuantity;
-  }
-
-
-  public void setRedeemedQuantity(Integer redeemedQuantity) {
-    this.redeemedQuantity = redeemedQuantity;
-  }
-
-
-  public VouchersRedemptionGetResponseBody _object(String _object) {
+  public RedemptionEntryVoucherPublish _object(String _object) {
     
     this._object = _object;
     return this;
   }
 
    /**
-   * The type of the object represented by JSON. This object stores information about redemptions in a dictionary.
+   * The type of the object represented is by default &#x60;list&#x60;. To get this list, you need to make a call to the endpoint returned in the &#x60;url&#x60; attribute.
    * @return _object
   **/
   @javax.annotation.Nullable
@@ -150,14 +89,35 @@ public class VouchersRedemptionGetResponseBody {
   }
 
 
-  public VouchersRedemptionGetResponseBody url(String url) {
+  public RedemptionEntryVoucherPublish count(Integer count) {
+    
+    this.count = count;
+    return this;
+  }
+
+   /**
+   * Publication events counter.
+   * @return count
+  **/
+  @javax.annotation.Nullable
+  public Integer getCount() {
+    return count;
+  }
+
+
+  public void setCount(Integer count) {
+    this.count = count;
+  }
+
+
+  public RedemptionEntryVoucherPublish url(String url) {
     
     this.url = url;
     return this;
   }
 
    /**
-   * URL
+   * The endpoint where this list of publications can be accessed using a GET method. &#x60;/v1/vouchers/{voucher_code}/publications&#x60;
    * @return url
   **/
   @javax.annotation.Nullable
@@ -168,77 +128,6 @@ public class VouchersRedemptionGetResponseBody {
 
   public void setUrl(String url) {
     this.url = url;
-  }
-
-
-  public VouchersRedemptionGetResponseBody dataRef(String dataRef) {
-    
-    this.dataRef = dataRef;
-    return this;
-  }
-
-   /**
-   * Identifies the name of the attribute that contains the array of &#x60;redemption_entries&#x60;.
-   * @return dataRef
-  **/
-  @javax.annotation.Nullable
-  public String getDataRef() {
-    return dataRef;
-  }
-
-
-  public void setDataRef(String dataRef) {
-    this.dataRef = dataRef;
-  }
-
-
-  public VouchersRedemptionGetResponseBody total(Integer total) {
-    
-    this.total = total;
-    return this;
-  }
-
-   /**
-   * Total number of redemption objects.
-   * @return total
-  **/
-  @javax.annotation.Nullable
-  public Integer getTotal() {
-    return total;
-  }
-
-
-  public void setTotal(Integer total) {
-    this.total = total;
-  }
-
-
-  public VouchersRedemptionGetResponseBody redemptionEntries(List<RedemptionEntry> redemptionEntries) {
-    
-    this.redemptionEntries = redemptionEntries;
-    return this;
-  }
-
-  public VouchersRedemptionGetResponseBody addRedemptionEntriesItem(RedemptionEntry redemptionEntriesItem) {
-    if (this.redemptionEntries == null) {
-      this.redemptionEntries = new ArrayList<>();
-    }
-    this.redemptionEntries.add(redemptionEntriesItem);
-    return this;
-  }
-
-   /**
-   * Contains the array of successful and failed redemption objects.
-   * @return redemptionEntries
-  **/
-  @javax.annotation.Nonnull
-  public List<RedemptionEntry> getRedemptionEntries() {
-    return redemptionEntries;
-  }
-
-
-  public void setRedemptionEntries(List<RedemptionEntry> redemptionEntries) {
-    this.redemptionEntries = redemptionEntries;
   }
 
   /**
@@ -254,9 +143,9 @@ public class VouchersRedemptionGetResponseBody {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VouchersRedemptionGetResponseBody instance itself
+   * @return the RedemptionEntryVoucherPublish instance itself
    */
-  public VouchersRedemptionGetResponseBody putAdditionalProperty(String key, Object value) {
+  public RedemptionEntryVoucherPublish putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -295,15 +184,11 @@ public class VouchersRedemptionGetResponseBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VouchersRedemptionGetResponseBody vouchersRedemptionGetResponseBody = (VouchersRedemptionGetResponseBody) o;
-    return Objects.equals(this.quantity, vouchersRedemptionGetResponseBody.quantity) &&
-        Objects.equals(this.redeemedQuantity, vouchersRedemptionGetResponseBody.redeemedQuantity) &&
-        Objects.equals(this._object, vouchersRedemptionGetResponseBody._object) &&
-        Objects.equals(this.url, vouchersRedemptionGetResponseBody.url) &&
-        Objects.equals(this.dataRef, vouchersRedemptionGetResponseBody.dataRef) &&
-        Objects.equals(this.total, vouchersRedemptionGetResponseBody.total) &&
-        Objects.equals(this.redemptionEntries, vouchersRedemptionGetResponseBody.redemptionEntries)&&
-        Objects.equals(this.additionalProperties, vouchersRedemptionGetResponseBody.additionalProperties);
+    RedemptionEntryVoucherPublish redemptionEntryVoucherPublish = (RedemptionEntryVoucherPublish) o;
+    return Objects.equals(this._object, redemptionEntryVoucherPublish._object) &&
+        Objects.equals(this.count, redemptionEntryVoucherPublish.count) &&
+        Objects.equals(this.url, redemptionEntryVoucherPublish.url)&&
+        Objects.equals(this.additionalProperties, redemptionEntryVoucherPublish.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -312,7 +197,7 @@ public class VouchersRedemptionGetResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, redeemedQuantity, _object, url, dataRef, total, redemptionEntries, additionalProperties);
+    return Objects.hash(_object, count, url, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -325,14 +210,10 @@ public class VouchersRedemptionGetResponseBody {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VouchersRedemptionGetResponseBody {\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    redeemedQuantity: ").append(toIndentedString(redeemedQuantity)).append("\n");
+    sb.append("class RedemptionEntryVoucherPublish {\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    dataRef: ").append(toIndentedString(dataRef)).append("\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
-    sb.append("    redemptionEntries: ").append(toIndentedString(redemptionEntries)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -356,24 +237,19 @@ public class VouchersRedemptionGetResponseBody {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("quantity");
-    openapiFields.add("redeemed_quantity");
     openapiFields.add("object");
+    openapiFields.add("count");
     openapiFields.add("url");
-    openapiFields.add("data_ref");
-    openapiFields.add("total");
-    openapiFields.add("redemption_entries");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("redemption_entries");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBody
+  * @throws IOException if the JSON Element is invalid with respect to RedemptionEntryVoucherPublish
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -383,31 +259,22 @@ public class VouchersRedemptionGetResponseBody {
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         return;
       }
-      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
-        return;
-      }
-
-      JsonArray jsonArrayredemptionEntries = jsonObj.getAsJsonArray("redemption_entries");
-      // validate the required field `redemption_entries` (array)
-      for (int i = 0; i < jsonArrayredemptionEntries.size(); i++) {
-        RedemptionEntry.validateJsonElement(jsonArrayredemptionEntries.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VouchersRedemptionGetResponseBody.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VouchersRedemptionGetResponseBody' and its subtypes
+       if (!RedemptionEntryVoucherPublish.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionEntryVoucherPublish' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VouchersRedemptionGetResponseBody> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VouchersRedemptionGetResponseBody.class));
+       final TypeAdapter<RedemptionEntryVoucherPublish> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionEntryVoucherPublish.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VouchersRedemptionGetResponseBody>() {
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionEntryVoucherPublish>() {
            @Override
-           public void write(JsonWriter out, VouchersRedemptionGetResponseBody value) throws IOException {
+           public void write(JsonWriter out, RedemptionEntryVoucherPublish value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -430,12 +297,12 @@ public class VouchersRedemptionGetResponseBody {
            }
 
            @Override
-           public VouchersRedemptionGetResponseBody read(JsonReader in) throws IOException {
+           public RedemptionEntryVoucherPublish read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             VouchersRedemptionGetResponseBody instance = thisAdapter.fromJsonTree(jsonObj);
+             RedemptionEntryVoucherPublish instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -462,18 +329,18 @@ public class VouchersRedemptionGetResponseBody {
   }
 
  /**
-  * Create an instance of VouchersRedemptionGetResponseBody given an JSON string
+  * Create an instance of RedemptionEntryVoucherPublish given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VouchersRedemptionGetResponseBody
-  * @throws IOException if the JSON string is invalid with respect to VouchersRedemptionGetResponseBody
+  * @return An instance of RedemptionEntryVoucherPublish
+  * @throws IOException if the JSON string is invalid with respect to RedemptionEntryVoucherPublish
   */
-  public static VouchersRedemptionGetResponseBody fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VouchersRedemptionGetResponseBody.class);
+  public static RedemptionEntryVoucherPublish fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RedemptionEntryVoucherPublish.class);
   }
 
  /**
-  * Convert an instance of VouchersRedemptionGetResponseBody to an JSON string
+  * Convert an instance of RedemptionEntryVoucherPublish to an JSON string
   *
   * @return JSON string
   */

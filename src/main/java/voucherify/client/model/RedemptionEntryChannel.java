@@ -48,33 +48,27 @@ import java.util.Set;
 import voucherify.client.JSON;
 
 /**
- * Stores a summary of redemptions that have been applied to the voucher.
+ * RedemptionEntryChannel
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 
-public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
-  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-  @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
-
-  public static final String SERIALIZED_NAME_REDEEMED_POINTS = "redeemed_points";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_POINTS)
-  private Integer redeemedPoints;
-
-  public static final String SERIALIZED_NAME_REDEEMED_QUANTITY = "redeemed_quantity";
-  @SerializedName(SERIALIZED_NAME_REDEEMED_QUANTITY)
-  private Integer redeemedQuantity;
+public class RedemptionEntryChannel {
+  public static final String SERIALIZED_NAME_CHANNEL_ID = "channel_id";
+  @SerializedName(SERIALIZED_NAME_CHANNEL_ID)
+  private String channelId;
 
   /**
-   * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
+   * The source of the channel for the redemption. A &#x60;USER&#x60; corresponds to the Voucherify Dashboard and an &#x60;API&#x60; corresponds to the API.
    */
-  @JsonAdapter(ObjectEnum.Adapter.class)
-  public enum ObjectEnum {
-    LIST("list");
+  @JsonAdapter(ChannelTypeEnum.Adapter.class)
+  public enum ChannelTypeEnum {
+    USER("USER"),
+    
+    API("API");
 
     private String value;
 
-    ObjectEnum(String value) {
+    ChannelTypeEnum(String value) {
       this.value = value;
     }
 
@@ -87,8 +81,8 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
       return String.valueOf(value);
     }
 
-    public static ObjectEnum fromValue(String value) {
-      for (ObjectEnum b : ObjectEnum.values()) {
+    public static ChannelTypeEnum fromValue(String value) {
+      for (ChannelTypeEnum b : ChannelTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -96,133 +90,66 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
         return null;
     }
 
-    public static class Adapter extends TypeAdapter<ObjectEnum> {
+    public static class Adapter extends TypeAdapter<ChannelTypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ObjectEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ChannelTypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ObjectEnum read(final JsonReader jsonReader) throws IOException {
+      public ChannelTypeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ObjectEnum.fromValue(value);
+        return ChannelTypeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_OBJECT = "object";
-  @SerializedName(SERIALIZED_NAME_OBJECT)
-  private ObjectEnum _object = ObjectEnum.LIST;
+  public static final String SERIALIZED_NAME_CHANNEL_TYPE = "channel_type";
+  @SerializedName(SERIALIZED_NAME_CHANNEL_TYPE)
+  private ChannelTypeEnum channelType;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption() {
+  public RedemptionEntryChannel() {
   }
 
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption quantity(Integer quantity) {
+  public RedemptionEntryChannel channelId(String channelId) {
     
-    this.quantity = quantity;
+    this.channelId = channelId;
     return this;
   }
 
    /**
-   * How many times a voucher can be redeemed. A null value means unlimited.
-   * @return quantity
+   * Get channelId
+   * @return channelId
   **/
   @javax.annotation.Nullable
-  public Integer getQuantity() {
-    return quantity;
+  public String getChannelId() {
+    return channelId;
   }
 
 
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+  public void setChannelId(String channelId) {
+    this.channelId = channelId;
   }
 
 
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption redeemedPoints(Integer redeemedPoints) {
+  public RedemptionEntryChannel channelType(ChannelTypeEnum channelType) {
     
-    this.redeemedPoints = redeemedPoints;
+    this.channelType = channelType;
     return this;
   }
 
    /**
-   * Total loyalty points redeemed.
-   * @return redeemedPoints
+   * The source of the channel for the redemption. A &#x60;USER&#x60; corresponds to the Voucherify Dashboard and an &#x60;API&#x60; corresponds to the API.
+   * @return channelType
   **/
   @javax.annotation.Nullable
-  public Integer getRedeemedPoints() {
-    return redeemedPoints;
+  public ChannelTypeEnum getChannelType() {
+    return channelType;
   }
 
 
-  public void setRedeemedPoints(Integer redeemedPoints) {
-    this.redeemedPoints = redeemedPoints;
-  }
-
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption redeemedQuantity(Integer redeemedQuantity) {
-    
-    this.redeemedQuantity = redeemedQuantity;
-    return this;
-  }
-
-   /**
-   * How many times a voucher has already been redeemed.
-   * @return redeemedQuantity
-  **/
-  @javax.annotation.Nullable
-  public Integer getRedeemedQuantity() {
-    return redeemedQuantity;
-  }
-
-
-  public void setRedeemedQuantity(Integer redeemedQuantity) {
-    this.redeemedQuantity = redeemedQuantity;
-  }
-
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption _object(ObjectEnum _object) {
-    
-    this._object = _object;
-    return this;
-  }
-
-   /**
-   * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
-   * @return _object
-  **/
-  @javax.annotation.Nullable
-  public ObjectEnum getObject() {
-    return _object;
-  }
-
-
-  public void setObject(ObjectEnum _object) {
-    this._object = _object;
-  }
-
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * The endpoint where this list of redemptions can be accessed using a GET method. /v1/vouchers/{voucher_code}/redemptions
-   * @return url
-  **/
-  @javax.annotation.Nullable
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
+  public void setChannelType(ChannelTypeEnum channelType) {
+    this.channelType = channelType;
   }
 
   /**
@@ -238,9 +165,9 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LoyaltiesMembersTransfersCreateResponseBodyRedemption instance itself
+   * @return the RedemptionEntryChannel instance itself
    */
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption putAdditionalProperty(String key, Object value) {
+  public RedemptionEntryChannel putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -279,13 +206,10 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoyaltiesMembersTransfersCreateResponseBodyRedemption loyaltiesMembersTransfersCreateResponseBodyRedemption = (LoyaltiesMembersTransfersCreateResponseBodyRedemption) o;
-    return Objects.equals(this.quantity, loyaltiesMembersTransfersCreateResponseBodyRedemption.quantity) &&
-        Objects.equals(this.redeemedPoints, loyaltiesMembersTransfersCreateResponseBodyRedemption.redeemedPoints) &&
-        Objects.equals(this.redeemedQuantity, loyaltiesMembersTransfersCreateResponseBodyRedemption.redeemedQuantity) &&
-        Objects.equals(this._object, loyaltiesMembersTransfersCreateResponseBodyRedemption._object) &&
-        Objects.equals(this.url, loyaltiesMembersTransfersCreateResponseBodyRedemption.url)&&
-        Objects.equals(this.additionalProperties, loyaltiesMembersTransfersCreateResponseBodyRedemption.additionalProperties);
+    RedemptionEntryChannel redemptionEntryChannel = (RedemptionEntryChannel) o;
+    return Objects.equals(this.channelId, redemptionEntryChannel.channelId) &&
+        Objects.equals(this.channelType, redemptionEntryChannel.channelType)&&
+        Objects.equals(this.additionalProperties, redemptionEntryChannel.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -294,7 +218,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, redeemedPoints, redeemedQuantity, _object, url, additionalProperties);
+    return Objects.hash(channelId, channelType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -307,12 +231,9 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoyaltiesMembersTransfersCreateResponseBodyRedemption {\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    redeemedPoints: ").append(toIndentedString(redeemedPoints)).append("\n");
-    sb.append("    redeemedQuantity: ").append(toIndentedString(redeemedQuantity)).append("\n");
-    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("class RedemptionEntryChannel {\n");
+    sb.append("    channelId: ").append(toIndentedString(channelId)).append("\n");
+    sb.append("    channelType: ").append(toIndentedString(channelType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -336,11 +257,8 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("quantity");
-    openapiFields.add("redeemed_points");
-    openapiFields.add("redeemed_quantity");
-    openapiFields.add("object");
-    openapiFields.add("url");
+    openapiFields.add("channel_id");
+    openapiFields.add("channel_type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -350,26 +268,26 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersTransfersCreateResponseBodyRedemption
+  * @throws IOException if the JSON Element is invalid with respect to RedemptionEntryChannel
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+      if ((jsonObj.get("channel_id") != null && !jsonObj.get("channel_id").isJsonNull()) && !jsonObj.get("channel_id").isJsonPrimitive()) {
+        return;
+      }
+      if ((jsonObj.get("channel_type") != null && !jsonObj.get("channel_type").isJsonNull()) && !jsonObj.get("channel_type").isJsonPrimitive()) {
         return;
       }
       try {
-        JsonElement objectElement = jsonObj.get("object");
+        JsonElement objectElement = jsonObj.get("channel_type");
 
         if (objectElement != null && !objectElement.isJsonNull()) {
-          ObjectEnum.fromValue(objectElement.getAsString());
+          ChannelTypeEnum.fromValue(objectElement.getAsString());
         } else {
           return;
         }
       } catch (IllegalArgumentException e) {
           return;
-      }
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        return;
       }
   }
 
@@ -377,16 +295,16 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LoyaltiesMembersTransfersCreateResponseBodyRedemption.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LoyaltiesMembersTransfersCreateResponseBodyRedemption' and its subtypes
+       if (!RedemptionEntryChannel.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RedemptionEntryChannel' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LoyaltiesMembersTransfersCreateResponseBodyRedemption> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LoyaltiesMembersTransfersCreateResponseBodyRedemption.class));
+       final TypeAdapter<RedemptionEntryChannel> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RedemptionEntryChannel.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LoyaltiesMembersTransfersCreateResponseBodyRedemption>() {
+       return (TypeAdapter<T>) new TypeAdapter<RedemptionEntryChannel>() {
            @Override
-           public void write(JsonWriter out, LoyaltiesMembersTransfersCreateResponseBodyRedemption value) throws IOException {
+           public void write(JsonWriter out, RedemptionEntryChannel value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -409,12 +327,12 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
            }
 
            @Override
-           public LoyaltiesMembersTransfersCreateResponseBodyRedemption read(JsonReader in) throws IOException {
+           public RedemptionEntryChannel read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             LoyaltiesMembersTransfersCreateResponseBodyRedemption instance = thisAdapter.fromJsonTree(jsonObj);
+             RedemptionEntryChannel instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -441,18 +359,18 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   }
 
  /**
-  * Create an instance of LoyaltiesMembersTransfersCreateResponseBodyRedemption given an JSON string
+  * Create an instance of RedemptionEntryChannel given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LoyaltiesMembersTransfersCreateResponseBodyRedemption
-  * @throws IOException if the JSON string is invalid with respect to LoyaltiesMembersTransfersCreateResponseBodyRedemption
+  * @return An instance of RedemptionEntryChannel
+  * @throws IOException if the JSON string is invalid with respect to RedemptionEntryChannel
   */
-  public static LoyaltiesMembersTransfersCreateResponseBodyRedemption fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LoyaltiesMembersTransfersCreateResponseBodyRedemption.class);
+  public static RedemptionEntryChannel fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RedemptionEntryChannel.class);
   }
 
  /**
-  * Convert an instance of LoyaltiesMembersTransfersCreateResponseBodyRedemption to an JSON string
+  * Convert an instance of RedemptionEntryChannel to an JSON string
   *
   * @return JSON string
   */
