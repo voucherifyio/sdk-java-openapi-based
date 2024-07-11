@@ -19,7 +19,7 @@ Response body schema for **POST** `/loyalties/{campaignId}/members/{memberId}/tr
 |**loyaltyCard** | [**LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard**](LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard.md) |  |
 |**startDate** | **OffsetDateTime** | Activation timestamp defines when the code starts to be active in ISO 8601 format. Voucher is inactive before this date. |
 |**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the code expires in ISO 8601 format. Voucher is inactive after this date. |
-|**validityTimeframe** | [**LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe**](LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe.md) |  |
+|**validityTimeframe** | [**ValidityTimeframe**](ValidityTimeframe.md) |  |
 |**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |
 |**validityHours** | [**ValidityHours**](ValidityHours.md) |  |
 |**publish** | [**LoyaltiesMembersTransfersCreateResponseBodyPublish**](LoyaltiesMembersTransfersCreateResponseBodyPublish.md) |  |

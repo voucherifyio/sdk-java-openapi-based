@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *ExportsApi* | [**getExport**](docs/ExportsApi.md#getExport) | **GET** /v1/exports/{exportId} | Get Export
 *ExportsApi* | [**listExports**](docs/ExportsApi.md#listExports) | **GET** /v1/exports | List Exports
 *LoyaltiesApi* | [**createInBulkLoyaltyTiers**](docs/LoyaltiesApi.md#createInBulkLoyaltyTiers) | **POST** /v1/loyalties/{campaignId}/tiers | Create loyalty tiers
+*LoyaltiesApi* | [**deleteEarningRule**](docs/LoyaltiesApi.md#deleteEarningRule) | **DELETE** /v1/loyalties/{campaignId}/earning-rules/{earningRuleId} | Delete Earning Rule
 *LoyaltiesApi* | [**deleteLoyaltyProgram**](docs/LoyaltiesApi.md#deleteLoyaltyProgram) | **DELETE** /v1/loyalties/{campaignId} | Delete Loyalty Campaign
 *LoyaltiesApi* | [**deleteRewardAssignment1**](docs/LoyaltiesApi.md#deleteRewardAssignment1) | **DELETE** /v1/loyalties/{campaignId}/rewards/{assignmentId} | Delete Reward Assignment
 *LoyaltiesApi* | [**disableEarningRule**](docs/LoyaltiesApi.md#disableEarningRule) | **POST** /v1/loyalties/{campaignId}/earning-rules/{earningRuleId}/disable | Disable Earning Rule
@@ -225,6 +226,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**updateSku**](docs/ProductsApi.md#updateSku) | **PUT** /v1/products/{productId}/skus/{skuId} | Update SKU
 *PromotionsApi* | [**createPromotionStack**](docs/PromotionsApi.md#createPromotionStack) | **POST** /v1/promotions/{campaignId}/stacks | Create Promotion Stack
 *PromotionsApi* | [**deletePromotionStack**](docs/PromotionsApi.md#deletePromotionStack) | **DELETE** /v1/promotions/{campaignId}/stacks/{stackId} | Delete Promotion Stack
+*PromotionsApi* | [**deletePromotionTier**](docs/PromotionsApi.md#deletePromotionTier) | **DELETE** /v1/promotions/tiers/{promotionTierId} | Delete Promotion Tier
 *PromotionsApi* | [**disablePromotionTier**](docs/PromotionsApi.md#disablePromotionTier) | **POST** /v1/promotions/tiers/{promotionTierId}/disable | Disable Promotion Tier
 *PromotionsApi* | [**enablePromotionTier**](docs/PromotionsApi.md#enablePromotionTier) | **POST** /v1/promotions/tiers/{promotionTierId}/enable | Enable Promotion Tier
 *PromotionsApi* | [**getPromotionStack**](docs/PromotionsApi.md#getPromotionStack) | **GET** /v1/promotions/{campaignId}/stacks/{stackId} | Get Promotion Stack
@@ -234,6 +236,7 @@ Class | Method | HTTP request | Description
 *PromotionsApi* | [**listPromotionTiersFromCampaign**](docs/PromotionsApi.md#listPromotionTiersFromCampaign) | **GET** /v1/promotions/{campaignId}/tiers | List Promotion Tiers from Campaign
 *PromotionsApi* | [**updatePromotionStack**](docs/PromotionsApi.md#updatePromotionStack) | **PUT** /v1/promotions/{campaignId}/stacks/{stackId} | Update Promotion Stack
 *PublicationsApi* | [**createPublication**](docs/PublicationsApi.md#createPublication) | **POST** /v1/publications | Create Publication
+*PublicationsApi* | [**createPublication1**](docs/PublicationsApi.md#createPublication1) | **GET** /v1/publications/create | Create Publication
 *PublicationsApi* | [**listPublications**](docs/PublicationsApi.md#listPublications) | **GET** /v1/publications | List Publications
 *QualificationsApi* | [**checkEligibility**](docs/QualificationsApi.md#checkEligibility) | **POST** /v1/qualifications | Check Eligibility
 *RedemptionsApi* | [**getRedemption**](docs/RedemptionsApi.md#getRedemption) | **GET** /v1/redemptions/{redemptionId} | Get Redemption
@@ -243,10 +246,12 @@ Class | Method | HTTP request | Description
 *RedemptionsApi* | [**rollbackRedemption**](docs/RedemptionsApi.md#rollbackRedemption) | **POST** /v1/redemptions/{redemptionId}/rollback | Rollback Redemption
 *RedemptionsApi* | [**rollbackStackedRedemptions**](docs/RedemptionsApi.md#rollbackStackedRedemptions) | **POST** /v1/redemptions/{parentRedemptionId}/rollbacks | Rollback Stackable Redemptions
 *RewardsApi* | [**createRewardAssignment**](docs/RewardsApi.md#createRewardAssignment) | **POST** /v1/rewards/{rewardId}/assignments | Create Reward Assignment
+*RewardsApi* | [**deleteReward**](docs/RewardsApi.md#deleteReward) | **DELETE** /v1/rewards/{rewardId} | Delete Reward
 *RewardsApi* | [**deleteRewardAssignment**](docs/RewardsApi.md#deleteRewardAssignment) | **DELETE** /v1/rewards/{rewardId}/assignments/{assignmentId} | Delete Reward Assignment
 *RewardsApi* | [**getRewardAssignment**](docs/RewardsApi.md#getRewardAssignment) | **GET** /v1/rewards/{rewardId}/assignments/{assignmentId} | Get Reward Assignment
 *RewardsApi* | [**listRewardAssignments**](docs/RewardsApi.md#listRewardAssignments) | **GET** /v1/rewards/{rewardId}/assignments | List Reward Assignments
 *RewardsApi* | [**updateRewardAssignment**](docs/RewardsApi.md#updateRewardAssignment) | **PUT** /v1/rewards/{rewardId}/assignments/{assignmentId} | Update Reward Assignment
+*SegmentsApi* | [**deleteSegment**](docs/SegmentsApi.md#deleteSegment) | **DELETE** /v1/segments/{segmentId} | Delete Segment
 *ValidationRulesApi* | [**createValidationRuleAssignment**](docs/ValidationRulesApi.md#createValidationRuleAssignment) | **POST** /v1/validation-rules/{validationRuleId}/assignments | Create Validation Rules Assignments
 *ValidationRulesApi* | [**createValidationRules**](docs/ValidationRulesApi.md#createValidationRules) | **POST** /v1/validation-rules | Create Validation Rules
 *ValidationRulesApi* | [**deleteValidationRuleAssignment**](docs/ValidationRulesApi.md#deleteValidationRuleAssignment) | **DELETE** /v1/validation-rules/{validationRuleId}/assignments/{assignmentId} | Delete Validation Rule Assignment
@@ -257,32 +262,34 @@ Class | Method | HTTP request | Description
 *ValidationRulesApi* | [**listValidationRulesAssignments**](docs/ValidationRulesApi.md#listValidationRulesAssignments) | **GET** /v1/validation-rules-assignments | List Validation Rules&#39; Assignment(s)
 *ValidationRulesApi* | [**updateValidationRule**](docs/ValidationRulesApi.md#updateValidationRule) | **PUT** /v1/validation-rules/{validationRuleId} | Update Validation Rule
 *ValidationsApi* | [**validateStackedDiscounts**](docs/ValidationsApi.md#validateStackedDiscounts) | **POST** /v1/validations | Validate Stackable Discounts
+*VouchersApi* | [**deleteVoucher**](docs/VouchersApi.md#deleteVoucher) | **DELETE** /v1/vouchers/{code} | Delete Voucher
 *VouchersApi* | [**disableVoucher**](docs/VouchersApi.md#disableVoucher) | **POST** /v1/vouchers/{code}/disable | Disable Voucher
 *VouchersApi* | [**enableVoucher**](docs/VouchersApi.md#enableVoucher) | **POST** /v1/vouchers/{code}/enable | Enable Voucher
 *VouchersApi* | [**exportVoucherTransactions**](docs/VouchersApi.md#exportVoucherTransactions) | **POST** /v1/vouchers/{code}/transactions/export | Export Voucher Transactions
 *VouchersApi* | [**getVoucher**](docs/VouchersApi.md#getVoucher) | **GET** /v1/vouchers/{code} | Get Voucher
 *VouchersApi* | [**importVouchersUsingCsv**](docs/VouchersApi.md#importVouchersUsingCsv) | **POST** /v1/vouchers/importCSV | Import Vouchers using CSV
 *VouchersApi* | [**listVoucherTransactions**](docs/VouchersApi.md#listVoucherTransactions) | **GET** /v1/vouchers/{code}/transactions | List Voucher Transactions
+*VouchersApi* | [**releaseValidationSession**](docs/VouchersApi.md#releaseValidationSession) | **DELETE** /v1/vouchers/{code}/sessions/{sessionKey} | Release Validation Session
 *VouchersApi* | [**updateVoucherBalance**](docs/VouchersApi.md#updateVoucherBalance) | **POST** /v1/vouchers/{code}/balance | Add or Remove Voucher Balance
 
 
 ## Documentation for Models
 
+ - [AccessSettingsCampaignAssignmentsList](docs/AccessSettingsCampaignAssignmentsList.md)
  - [ApplicableTo](docs/ApplicableTo.md)
  - [ApplicableToEffect](docs/ApplicableToEffect.md)
  - [ApplicableToResultList](docs/ApplicableToResultList.md)
+ - [AreaStoreCampaignAssignment](docs/AreaStoreCampaignAssignment.md)
  - [AsyncActions](docs/AsyncActions.md)
  - [BusValRuleAssignment](docs/BusValRuleAssignment.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignBase](docs/CampaignBase.md)
- - [CampaignBaseValidityTimeframe](docs/CampaignBaseValidityTimeframe.md)
  - [CampaignLoyaltyCard](docs/CampaignLoyaltyCard.md)
  - [CampaignLoyaltyCardExpirationRules](docs/CampaignLoyaltyCardExpirationRules.md)
  - [CampaignVoucher](docs/CampaignVoucher.md)
  - [CampaignVoucherRedemption](docs/CampaignVoucherRedemption.md)
  - [CampaignsCreateRequestBody](docs/CampaignsCreateRequestBody.md)
  - [CampaignsCreateRequestBodyPromotion](docs/CampaignsCreateRequestBodyPromotion.md)
- - [CampaignsCreateRequestBodyValidityTimeframe](docs/CampaignsCreateRequestBodyValidityTimeframe.md)
  - [CampaignsCreateRequestBodyVoucher](docs/CampaignsCreateRequestBodyVoucher.md)
  - [CampaignsCreateRequestBodyVoucherRedemption](docs/CampaignsCreateRequestBodyVoucherRedemption.md)
  - [CampaignsCreateResponseBody](docs/CampaignsCreateResponseBody.md)
@@ -298,7 +305,6 @@ Class | Method | HTTP request | Description
  - [CampaignsListResponseBody](docs/CampaignsListResponseBody.md)
  - [CampaignsUpdateRequestBody](docs/CampaignsUpdateRequestBody.md)
  - [CampaignsUpdateRequestBodyOptions](docs/CampaignsUpdateRequestBodyOptions.md)
- - [CampaignsUpdateRequestBodyValidityTimeframe](docs/CampaignsUpdateRequestBodyValidityTimeframe.md)
  - [CampaignsUpdateResponseBody](docs/CampaignsUpdateResponseBody.md)
  - [CampaignsVouchersCreateBaseRequestBody](docs/CampaignsVouchersCreateBaseRequestBody.md)
  - [CampaignsVouchersCreateCombinedResponseBody](docs/CampaignsVouchersCreateCombinedResponseBody.md)
@@ -306,7 +312,6 @@ Class | Method | HTTP request | Description
  - [CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard](docs/CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard.md)
  - [CampaignsVouchersCreateCombinedResponseBodyPublish](docs/CampaignsVouchersCreateCombinedResponseBodyPublish.md)
  - [CampaignsVouchersCreateCombinedResponseBodyRedemption](docs/CampaignsVouchersCreateCombinedResponseBodyRedemption.md)
- - [CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe](docs/CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe.md)
  - [CampaignsVouchersCreateInBulkRequestBody](docs/CampaignsVouchersCreateInBulkRequestBody.md)
  - [CampaignsVouchersCreateRequestBody](docs/CampaignsVouchersCreateRequestBody.md)
  - [CampaignsVouchersCreateResponseBody](docs/CampaignsVouchersCreateResponseBody.md)
@@ -379,7 +384,6 @@ Class | Method | HTTP request | Description
  - [EarningRuleBaseLoyaltyOrderMetadata](docs/EarningRuleBaseLoyaltyOrderMetadata.md)
  - [EarningRuleBaseSegment](docs/EarningRuleBaseSegment.md)
  - [EarningRuleBaseSource](docs/EarningRuleBaseSource.md)
- - [EarningRuleBaseValidityTimeframe](docs/EarningRuleBaseValidityTimeframe.md)
  - [EarningRuleEvent](docs/EarningRuleEvent.md)
  - [Error](docs/Error.md)
  - [EventsCreateRequestBody](docs/EventsCreateRequestBody.md)
@@ -441,7 +445,6 @@ Class | Method | HTTP request | Description
  - [LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard](docs/LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard.md)
  - [LoyaltiesMembersTransfersCreateResponseBodyPublish](docs/LoyaltiesMembersTransfersCreateResponseBodyPublish.md)
  - [LoyaltiesMembersTransfersCreateResponseBodyRedemption](docs/LoyaltiesMembersTransfersCreateResponseBodyRedemption.md)
- - [LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe](docs/LoyaltiesMembersTransfersCreateResponseBodyValidityTimeframe.md)
  - [LoyaltiesRewardAssignmentsGetResponseBody](docs/LoyaltiesRewardAssignmentsGetResponseBody.md)
  - [LoyaltiesRewardAssignmentsRewardGetResponseBody](docs/LoyaltiesRewardAssignmentsRewardGetResponseBody.md)
  - [LoyaltiesRewardsGetResponseBody](docs/LoyaltiesRewardsGetResponseBody.md)
@@ -551,12 +554,10 @@ Class | Method | HTTP request | Description
  - [PromotionTier](docs/PromotionTier.md)
  - [PromotionTierAction](docs/PromotionTierAction.md)
  - [PromotionTierCampaign](docs/PromotionTierCampaign.md)
- - [PromotionTierCampaignValidityTimeframe](docs/PromotionTierCampaignValidityTimeframe.md)
  - [PromotionTierCreateParams](docs/PromotionTierCreateParams.md)
  - [PromotionTierSummary](docs/PromotionTierSummary.md)
  - [PromotionTierSummaryOrders](docs/PromotionTierSummaryOrders.md)
  - [PromotionTierSummaryRedemptions](docs/PromotionTierSummaryRedemptions.md)
- - [PromotionTierValidityTimeframe](docs/PromotionTierValidityTimeframe.md)
  - [PromotionTiersList](docs/PromotionTiersList.md)
  - [PromotionsStacksCreateRequestBody](docs/PromotionsStacksCreateRequestBody.md)
  - [PromotionsStacksCreateResponseBody](docs/PromotionsStacksCreateResponseBody.md)
@@ -594,6 +595,28 @@ Class | Method | HTTP request | Description
  - [RedeemableResult](docs/RedeemableResult.md)
  - [Redemption](docs/Redemption.md)
  - [RedemptionChannel](docs/RedemptionChannel.md)
+ - [RedemptionEntry](docs/RedemptionEntry.md)
+ - [RedemptionEntryChannel](docs/RedemptionEntryChannel.md)
+ - [RedemptionEntryCustomer](docs/RedemptionEntryCustomer.md)
+ - [RedemptionEntryGift](docs/RedemptionEntryGift.md)
+ - [RedemptionEntryLoyaltyCard](docs/RedemptionEntryLoyaltyCard.md)
+ - [RedemptionEntryOrder](docs/RedemptionEntryOrder.md)
+ - [RedemptionEntryOrderCustomer](docs/RedemptionEntryOrderCustomer.md)
+ - [RedemptionEntryOrderReferrer](docs/RedemptionEntryOrderReferrer.md)
+ - [RedemptionEntryPromotionTier](docs/RedemptionEntryPromotionTier.md)
+ - [RedemptionEntryPromotionTierAction](docs/RedemptionEntryPromotionTierAction.md)
+ - [RedemptionEntryPromotionTierCampaign](docs/RedemptionEntryPromotionTierCampaign.md)
+ - [RedemptionEntryPromotionTierSummary](docs/RedemptionEntryPromotionTierSummary.md)
+ - [RedemptionEntryPromotionTierSummaryOrders](docs/RedemptionEntryPromotionTierSummaryOrders.md)
+ - [RedemptionEntryPromotionTierSummaryRedemptions](docs/RedemptionEntryPromotionTierSummaryRedemptions.md)
+ - [RedemptionEntryRelatedRedemptions](docs/RedemptionEntryRelatedRedemptions.md)
+ - [RedemptionEntryRelatedRedemptionsRedemptionsItem](docs/RedemptionEntryRelatedRedemptionsRedemptionsItem.md)
+ - [RedemptionEntryRelatedRedemptionsRollbacksItem](docs/RedemptionEntryRelatedRedemptionsRollbacksItem.md)
+ - [RedemptionEntryVoucher](docs/RedemptionEntryVoucher.md)
+ - [RedemptionEntryVoucherGift](docs/RedemptionEntryVoucherGift.md)
+ - [RedemptionEntryVoucherLoyaltyCard](docs/RedemptionEntryVoucherLoyaltyCard.md)
+ - [RedemptionEntryVoucherPublish](docs/RedemptionEntryVoucherPublish.md)
+ - [RedemptionEntryVoucherRedemption](docs/RedemptionEntryVoucherRedemption.md)
  - [RedemptionGift](docs/RedemptionGift.md)
  - [RedemptionLoyaltyCard](docs/RedemptionLoyaltyCard.md)
  - [RedemptionRelatedRedemptions](docs/RedemptionRelatedRedemptions.md)
@@ -621,14 +644,14 @@ Class | Method | HTTP request | Description
  - [RedemptionsGetResponseBodyGift](docs/RedemptionsGetResponseBodyGift.md)
  - [RedemptionsGetResponseBodyLoyaltyCard](docs/RedemptionsGetResponseBodyLoyaltyCard.md)
  - [RedemptionsGetResponseBodyOrder](docs/RedemptionsGetResponseBodyOrder.md)
+ - [RedemptionsGetResponseBodyOrderCustomer](docs/RedemptionsGetResponseBodyOrderCustomer.md)
+ - [RedemptionsGetResponseBodyOrderReferrer](docs/RedemptionsGetResponseBodyOrderReferrer.md)
  - [RedemptionsGetResponseBodyPromotionTier](docs/RedemptionsGetResponseBodyPromotionTier.md)
  - [RedemptionsGetResponseBodyPromotionTierAction](docs/RedemptionsGetResponseBodyPromotionTierAction.md)
  - [RedemptionsGetResponseBodyPromotionTierCampaign](docs/RedemptionsGetResponseBodyPromotionTierCampaign.md)
- - [RedemptionsGetResponseBodyPromotionTierCampaignValidityTimeframe](docs/RedemptionsGetResponseBodyPromotionTierCampaignValidityTimeframe.md)
  - [RedemptionsGetResponseBodyPromotionTierSummary](docs/RedemptionsGetResponseBodyPromotionTierSummary.md)
  - [RedemptionsGetResponseBodyPromotionTierSummaryOrders](docs/RedemptionsGetResponseBodyPromotionTierSummaryOrders.md)
  - [RedemptionsGetResponseBodyPromotionTierSummaryRedemptions](docs/RedemptionsGetResponseBodyPromotionTierSummaryRedemptions.md)
- - [RedemptionsGetResponseBodyPromotionTierValidityTimeframe](docs/RedemptionsGetResponseBodyPromotionTierValidityTimeframe.md)
  - [RedemptionsGetResponseBodyRelatedRedemptions](docs/RedemptionsGetResponseBodyRelatedRedemptions.md)
  - [RedemptionsGetResponseBodyRelatedRedemptionsRedemptionsItem](docs/RedemptionsGetResponseBodyRelatedRedemptionsRedemptionsItem.md)
  - [RedemptionsGetResponseBodyRelatedRedemptionsRollbacksItem](docs/RedemptionsGetResponseBodyRelatedRedemptionsRollbacksItem.md)
@@ -637,7 +660,6 @@ Class | Method | HTTP request | Description
  - [RedemptionsGetResponseBodyVoucherLoyaltyCard](docs/RedemptionsGetResponseBodyVoucherLoyaltyCard.md)
  - [RedemptionsGetResponseBodyVoucherPublish](docs/RedemptionsGetResponseBodyVoucherPublish.md)
  - [RedemptionsGetResponseBodyVoucherRedemption](docs/RedemptionsGetResponseBodyVoucherRedemption.md)
- - [RedemptionsGetResponseBodyVoucherValidityTimeframe](docs/RedemptionsGetResponseBodyVoucherValidityTimeframe.md)
  - [RedemptionsListResponseBody](docs/RedemptionsListResponseBody.md)
  - [RedemptionsListResponseBodyRedemptionsItem](docs/RedemptionsListResponseBodyRedemptionsItem.md)
  - [RedemptionsListResponseBodyRedemptionsItemChannel](docs/RedemptionsListResponseBodyRedemptionsItemChannel.md)
@@ -645,14 +667,14 @@ Class | Method | HTTP request | Description
  - [RedemptionsListResponseBodyRedemptionsItemGift](docs/RedemptionsListResponseBodyRedemptionsItemGift.md)
  - [RedemptionsListResponseBodyRedemptionsItemLoyaltyCard](docs/RedemptionsListResponseBodyRedemptionsItemLoyaltyCard.md)
  - [RedemptionsListResponseBodyRedemptionsItemOrder](docs/RedemptionsListResponseBodyRedemptionsItemOrder.md)
+ - [RedemptionsListResponseBodyRedemptionsItemOrderCustomer](docs/RedemptionsListResponseBodyRedemptionsItemOrderCustomer.md)
+ - [RedemptionsListResponseBodyRedemptionsItemOrderReferrer](docs/RedemptionsListResponseBodyRedemptionsItemOrderReferrer.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTier](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTier.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierAction](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierAction.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign.md)
- - [RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaignValidityTimeframe](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaignValidityTimeframe.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierSummaryOrders](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierSummaryOrders.md)
  - [RedemptionsListResponseBodyRedemptionsItemPromotionTierSummaryRedemptions](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierSummaryRedemptions.md)
- - [RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe](docs/RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe.md)
  - [RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions](docs/RedemptionsListResponseBodyRedemptionsItemRelatedRedemptions.md)
  - [RedemptionsListResponseBodyRedemptionsItemRelatedRedemptionsRedemptionsItem](docs/RedemptionsListResponseBodyRedemptionsItemRelatedRedemptionsRedemptionsItem.md)
  - [RedemptionsListResponseBodyRedemptionsItemRelatedRedemptionsRollbacksItem](docs/RedemptionsListResponseBodyRedemptionsItemRelatedRedemptionsRollbacksItem.md)
@@ -661,7 +683,6 @@ Class | Method | HTTP request | Description
  - [RedemptionsListResponseBodyRedemptionsItemVoucherLoyaltyCard](docs/RedemptionsListResponseBodyRedemptionsItemVoucherLoyaltyCard.md)
  - [RedemptionsListResponseBodyRedemptionsItemVoucherPublish](docs/RedemptionsListResponseBodyRedemptionsItemVoucherPublish.md)
  - [RedemptionsListResponseBodyRedemptionsItemVoucherRedemption](docs/RedemptionsListResponseBodyRedemptionsItemVoucherRedemption.md)
- - [RedemptionsListResponseBodyRedemptionsItemVoucherValidityTimeframe](docs/RedemptionsListResponseBodyRedemptionsItemVoucherValidityTimeframe.md)
  - [RedemptionsRedeemRequestBody](docs/RedemptionsRedeemRequestBody.md)
  - [RedemptionsRedeemResponseBody](docs/RedemptionsRedeemResponseBody.md)
  - [RedemptionsRollbackCreateRequestBody](docs/RedemptionsRollbackCreateRequestBody.md)
@@ -749,6 +770,7 @@ Class | Method | HTTP request | Description
  - [ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard](docs/ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard.md)
  - [ValidityHours](docs/ValidityHours.md)
  - [ValidityHoursDailyInner](docs/ValidityHoursDailyInner.md)
+ - [ValidityTimeframe](docs/ValidityTimeframe.md)
  - [Voucher](docs/Voucher.md)
  - [VoucherAssets](docs/VoucherAssets.md)
  - [VoucherHolder](docs/VoucherHolder.md)
@@ -782,29 +804,6 @@ Class | Method | HTTP request | Description
  - [VouchersGetResponseBody](docs/VouchersGetResponseBody.md)
  - [VouchersImportCsvCreateResponseBody](docs/VouchersImportCsvCreateResponseBody.md)
  - [VouchersRedemptionGetResponseBody](docs/VouchersRedemptionGetResponseBody.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItem](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItem.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemChannel.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemCustomer](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemCustomer.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemGift.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemLoyaltyCard.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemOrder.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTier.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierAction](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierAction.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierCampaign](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierCampaign.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierCampaignValidityTimeframe](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierCampaignValidityTimeframe.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummary](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummary.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryOrders](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryOrders.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryRedemptions](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierSummaryRedemptions.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemPromotionTierValidityTimeframe.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptions.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptionsRedemptionsItem](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptionsRedemptionsItem.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptionsRollbacksItem](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemRelatedRedemptionsRollbacksItem.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucher.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherGift](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherGift.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherLoyaltyCard](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherLoyaltyCard.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherPublish](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherPublish.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherRedemption](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherRedemption.md)
- - [VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe](docs/VouchersRedemptionGetResponseBodyRedemptionEntriesItemVoucherValidityTimeframe.md)
  - [VouchersTransactionsExportCreateRequestBody](docs/VouchersTransactionsExportCreateRequestBody.md)
  - [VouchersTransactionsExportCreateResponseBody](docs/VouchersTransactionsExportCreateResponseBody.md)
  - [VouchersTransactionsListResponseBody](docs/VouchersTransactionsListResponseBody.md)

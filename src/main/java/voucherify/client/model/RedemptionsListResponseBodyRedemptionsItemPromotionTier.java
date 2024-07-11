@@ -29,9 +29,9 @@ import voucherify.client.model.Category;
 import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTierAction;
 import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTierCampaign;
 import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTierSummary;
-import voucherify.client.model.RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe;
 import voucherify.client.model.ValidationRuleAssignmentsList;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -121,11 +121,68 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
+
+  /**
+   * Gets or Sets validityDayOfWeek
+   */
+  @JsonAdapter(ValidityDayOfWeekEnum.Adapter.class)
+  public enum ValidityDayOfWeekEnum {
+    NUMBER_0(0),
+    
+    NUMBER_1(1),
+    
+    NUMBER_2(2),
+    
+    NUMBER_3(3),
+    
+    NUMBER_4(4),
+    
+    NUMBER_5(5),
+    
+    NUMBER_6(6);
+
+    private Integer value;
+
+    ValidityDayOfWeekEnum(Integer value) {
+      this.value = value;
+    }
+
+    public Integer getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ValidityDayOfWeekEnum fromValue(Integer value) {
+      for (ValidityDayOfWeekEnum b : ValidityDayOfWeekEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+        return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ValidityDayOfWeekEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValidityDayOfWeekEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValidityDayOfWeekEnum read(final JsonReader jsonReader) throws IOException {
+        Integer value =  jsonReader.nextInt();
+        return ValidityDayOfWeekEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK = "validity_day_of_week";
   @SerializedName(SERIALIZED_NAME_VALIDITY_DAY_OF_WEEK)
-  private List<Integer> validityDayOfWeek;
+  private List<ValidityDayOfWeekEnum> validityDayOfWeek;
 
   public static final String SERIALIZED_NAME_VALIDITY_HOURS = "validity_hours";
   @SerializedName(SERIALIZED_NAME_VALIDITY_HOURS)
@@ -448,7 +505,7 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
   }
 
 
-  public RedemptionsListResponseBodyRedemptionsItemPromotionTier validityTimeframe(RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe validityTimeframe) {
+  public RedemptionsListResponseBodyRedemptionsItemPromotionTier validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -459,23 +516,23 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe getValidityTimeframe() {
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
 
-  public RedemptionsListResponseBodyRedemptionsItemPromotionTier validityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public RedemptionsListResponseBodyRedemptionsItemPromotionTier validityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     
     this.validityDayOfWeek = validityDayOfWeek;
     return this;
   }
 
-  public RedemptionsListResponseBodyRedemptionsItemPromotionTier addValidityDayOfWeekItem(Integer validityDayOfWeekItem) {
+  public RedemptionsListResponseBodyRedemptionsItemPromotionTier addValidityDayOfWeekItem(ValidityDayOfWeekEnum validityDayOfWeekItem) {
     if (this.validityDayOfWeek == null) {
       this.validityDayOfWeek = new ArrayList<>();
     }
@@ -484,16 +541,16 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
   }
 
    /**
-   * Integer array corresponding to the particular days of the week in which the promotion tier is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
+   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
-  public List<Integer> getValidityDayOfWeek() {
+  public List<ValidityDayOfWeekEnum> getValidityDayOfWeek() {
     return validityDayOfWeek;
   }
 
 
-  public void setValidityDayOfWeek(List<Integer> validityDayOfWeek) {
+  public void setValidityDayOfWeek(List<ValidityDayOfWeekEnum> validityDayOfWeek) {
     this.validityDayOfWeek = validityDayOfWeek;
   }
 
@@ -836,7 +893,7 @@ public class RedemptionsListResponseBodyRedemptionsItemPromotionTier {
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        RedemptionsListResponseBodyRedemptionsItemPromotionTierValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {

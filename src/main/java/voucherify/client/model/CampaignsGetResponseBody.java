@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.CampaignBaseValidityTimeframe;
+import voucherify.client.model.AccessSettingsCampaignAssignmentsList;
 import voucherify.client.model.CampaignVoucher;
 import voucherify.client.model.Category;
 import voucherify.client.model.LoyaltyTiersExpirationAll;
@@ -33,6 +33,7 @@ import voucherify.client.model.PromotionTiersList;
 import voucherify.client.model.ReferralProgram;
 import voucherify.client.model.ValidationRulesAssignmentsList;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -204,7 +205,7 @@ public class CampaignsGetResponseBody {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private CampaignBaseValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -453,6 +454,10 @@ public class CampaignsGetResponseBody {
   @SerializedName(SERIALIZED_NAME_VALIDATION_RULES_ASSIGNMENTS)
   private ValidationRulesAssignmentsList validationRulesAssignments;
 
+  public static final String SERIALIZED_NAME_ACCESS_SETTINGS_ASSIGNMENTS = "access_settings_assignments";
+  @SerializedName(SERIALIZED_NAME_ACCESS_SETTINGS_ASSIGNMENTS)
+  private AccessSettingsCampaignAssignmentsList accessSettingsAssignments;
+
   public CampaignsGetResponseBody() {
   }
 
@@ -645,7 +650,7 @@ public class CampaignsGetResponseBody {
   }
 
 
-  public CampaignsGetResponseBody validityTimeframe(CampaignBaseValidityTimeframe validityTimeframe) {
+  public CampaignsGetResponseBody validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -656,12 +661,12 @@ public class CampaignsGetResponseBody {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public CampaignBaseValidityTimeframe getValidityTimeframe() {
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(CampaignBaseValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -681,7 +686,7 @@ public class CampaignsGetResponseBody {
   }
 
    /**
-   * Integer array corresponding to the particular days of the week in which the campaign is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
+   * Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday
    * @return validityDayOfWeek
   **/
   @javax.annotation.Nullable
@@ -1122,6 +1127,27 @@ public class CampaignsGetResponseBody {
     this.validationRulesAssignments = validationRulesAssignments;
   }
 
+
+  public CampaignsGetResponseBody accessSettingsAssignments(AccessSettingsCampaignAssignmentsList accessSettingsAssignments) {
+    
+    this.accessSettingsAssignments = accessSettingsAssignments;
+    return this;
+  }
+
+   /**
+   * Get accessSettingsAssignments
+   * @return accessSettingsAssignments
+  **/
+  @javax.annotation.Nullable
+  public AccessSettingsCampaignAssignmentsList getAccessSettingsAssignments() {
+    return accessSettingsAssignments;
+  }
+
+
+  public void setAccessSettingsAssignments(AccessSettingsCampaignAssignmentsList accessSettingsAssignments) {
+    this.accessSettingsAssignments = accessSettingsAssignments;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -1207,7 +1233,8 @@ public class CampaignsGetResponseBody {
         Objects.equals(this.referralProgram, campaignsGetResponseBody.referralProgram) &&
         Objects.equals(this.loyaltyTiersExpiration, campaignsGetResponseBody.loyaltyTiersExpiration) &&
         Objects.equals(this.promotion, campaignsGetResponseBody.promotion) &&
-        Objects.equals(this.validationRulesAssignments, campaignsGetResponseBody.validationRulesAssignments)&&
+        Objects.equals(this.validationRulesAssignments, campaignsGetResponseBody.validationRulesAssignments) &&
+        Objects.equals(this.accessSettingsAssignments, campaignsGetResponseBody.accessSettingsAssignments)&&
         Objects.equals(this.additionalProperties, campaignsGetResponseBody.additionalProperties);
   }
 
@@ -1217,7 +1244,7 @@ public class CampaignsGetResponseBody {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, campaignType, type, voucher, autoJoin, joinOnce, useVoucherMetadataSchema, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, vouchersCount, startDate, expirationDate, active, metadata, createdAt, updatedAt, category, creationStatus, vouchersGenerationStatus, _protected, categoryId, categories, _object, referralProgram, loyaltyTiersExpiration, promotion, validationRulesAssignments, additionalProperties);
+    return Objects.hash(id, name, description, campaignType, type, voucher, autoJoin, joinOnce, useVoucherMetadataSchema, validityTimeframe, validityDayOfWeek, validityHours, activityDurationAfterPublishing, vouchersCount, startDate, expirationDate, active, metadata, createdAt, updatedAt, category, creationStatus, vouchersGenerationStatus, _protected, categoryId, categories, _object, referralProgram, loyaltyTiersExpiration, promotion, validationRulesAssignments, accessSettingsAssignments, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1262,6 +1289,7 @@ public class CampaignsGetResponseBody {
     sb.append("    loyaltyTiersExpiration: ").append(toIndentedString(loyaltyTiersExpiration)).append("\n");
     sb.append("    promotion: ").append(toIndentedString(promotion)).append("\n");
     sb.append("    validationRulesAssignments: ").append(toIndentedString(validationRulesAssignments)).append("\n");
+    sb.append("    accessSettingsAssignments: ").append(toIndentedString(accessSettingsAssignments)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1316,6 +1344,7 @@ public class CampaignsGetResponseBody {
     openapiFields.add("loyalty_tiers_expiration");
     openapiFields.add("promotion");
     openapiFields.add("validation_rules_assignments");
+    openapiFields.add("access_settings_assignments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1372,7 +1401,7 @@ public class CampaignsGetResponseBody {
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
@@ -1433,6 +1462,10 @@ public class CampaignsGetResponseBody {
       // validate the optional field `validation_rules_assignments`
       if (jsonObj.get("validation_rules_assignments") != null && !jsonObj.get("validation_rules_assignments").isJsonNull()) {
         ValidationRulesAssignmentsList.validateJsonElement(jsonObj.get("validation_rules_assignments"));
+      }
+      // validate the optional field `access_settings_assignments`
+      if (jsonObj.get("access_settings_assignments") != null && !jsonObj.get("access_settings_assignments").isJsonNull()) {
+        AccessSettingsCampaignAssignmentsList.validateJsonElement(jsonObj.get("access_settings_assignments"));
       }
   }
 

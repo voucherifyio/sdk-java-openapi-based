@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.VouchersRedemptionGetResponseBodyRedemptionEntriesItem;
+import voucherify.client.model.RedemptionEntry;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,7 +82,7 @@ public class VouchersRedemptionGetResponseBody {
 
   public static final String SERIALIZED_NAME_REDEMPTION_ENTRIES = "redemption_entries";
   @SerializedName(SERIALIZED_NAME_REDEMPTION_ENTRIES)
-  private List<VouchersRedemptionGetResponseBodyRedemptionEntriesItem> redemptionEntries;
+  private List<RedemptionEntry> redemptionEntries = new ArrayList<>();
 
   public VouchersRedemptionGetResponseBody() {
   }
@@ -213,13 +213,13 @@ public class VouchersRedemptionGetResponseBody {
   }
 
 
-  public VouchersRedemptionGetResponseBody redemptionEntries(List<VouchersRedemptionGetResponseBodyRedemptionEntriesItem> redemptionEntries) {
+  public VouchersRedemptionGetResponseBody redemptionEntries(List<RedemptionEntry> redemptionEntries) {
     
     this.redemptionEntries = redemptionEntries;
     return this;
   }
 
-  public VouchersRedemptionGetResponseBody addRedemptionEntriesItem(VouchersRedemptionGetResponseBodyRedemptionEntriesItem redemptionEntriesItem) {
+  public VouchersRedemptionGetResponseBody addRedemptionEntriesItem(RedemptionEntry redemptionEntriesItem) {
     if (this.redemptionEntries == null) {
       this.redemptionEntries = new ArrayList<>();
     }
@@ -228,16 +228,16 @@ public class VouchersRedemptionGetResponseBody {
   }
 
    /**
-   * Get redemptionEntries
+   * Contains the array of successful and failed redemption objects.
    * @return redemptionEntries
   **/
-  @javax.annotation.Nullable
-  public List<VouchersRedemptionGetResponseBodyRedemptionEntriesItem> getRedemptionEntries() {
+  @javax.annotation.Nonnull
+  public List<RedemptionEntry> getRedemptionEntries() {
     return redemptionEntries;
   }
 
 
-  public void setRedemptionEntries(List<VouchersRedemptionGetResponseBodyRedemptionEntriesItem> redemptionEntries) {
+  public void setRedemptionEntries(List<RedemptionEntry> redemptionEntries) {
     this.redemptionEntries = redemptionEntries;
   }
 
@@ -366,6 +366,7 @@ public class VouchersRedemptionGetResponseBody {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("redemption_entries");
   }
 
  /**
@@ -385,6 +386,12 @@ public class VouchersRedemptionGetResponseBody {
       if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
         return;
       }
+
+      JsonArray jsonArrayredemptionEntries = jsonObj.getAsJsonArray("redemption_entries");
+      // validate the required field `redemption_entries` (array)
+      for (int i = 0; i < jsonArrayredemptionEntries.size(); i++) {
+        RedemptionEntry.validateJsonElement(jsonArrayredemptionEntries.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

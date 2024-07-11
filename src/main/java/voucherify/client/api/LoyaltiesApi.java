@@ -226,6 +226,134 @@ public class LoyaltiesApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteEarningRule
+     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
+     * @param earningRuleId A unique earning rule ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteEarningRuleCall(String campaignId, String earningRuleId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/loyalties/{campaignId}/earning-rules/{earningRuleId}"
+            .replace("{" + "campaignId" + "}", localVarApiClient.escapeString(campaignId.toString()))
+            .replace("{" + "earningRuleId" + "}", localVarApiClient.escapeString(earningRuleId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "X-App-Id", "X-App-Token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteEarningRuleValidateBeforeCall(String campaignId, String earningRuleId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling deleteEarningRule(Async)");
+        }
+
+        // verify the required parameter 'earningRuleId' is set
+        if (earningRuleId == null) {
+            throw new ApiException("Missing the required parameter 'earningRuleId' when calling deleteEarningRule(Async)");
+        }
+
+        return deleteEarningRuleCall(campaignId, earningRuleId, _callback);
+
+    }
+
+    /**
+     * Delete Earning Rule
+     * This method deletes an earning rule for a specific loyalty campaign.
+     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
+     * @param earningRuleId A unique earning rule ID. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteEarningRule(String campaignId, String earningRuleId) throws ApiException {
+        deleteEarningRuleWithHttpInfo(campaignId, earningRuleId);
+    }
+
+    /**
+     * Delete Earning Rule
+     * This method deletes an earning rule for a specific loyalty campaign.
+     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
+     * @param earningRuleId A unique earning rule ID. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteEarningRuleWithHttpInfo(String campaignId, String earningRuleId) throws ApiException {
+        okhttp3.Call localVarCall = deleteEarningRuleValidateBeforeCall(campaignId, earningRuleId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete Earning Rule (asynchronously)
+     * This method deletes an earning rule for a specific loyalty campaign.
+     * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
+     * @param earningRuleId A unique earning rule ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Returns no content if deletion is successful. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteEarningRuleAsync(String campaignId, String earningRuleId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteEarningRuleValidateBeforeCall(campaignId, earningRuleId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteLoyaltyProgram
      * @param campaignId The campaign ID or name of the loyalty campaign. You can either pass the campaign ID, which was assigned by Voucherify, or the &#x60;name&#x60; of the campaign as the path parameter value, e.g., &#x60;Loyalty%20Campaign&#x60;.  (required)
      * @param force If this flag is set to &#x60;true&#x60;, the campaign and related vouchers will be removed permanently. If it is set to &#x60;false&#x60; or not set at all, the loyalty campaign and all related loyalty cards will be moved to the bin. Going forward, the user will be able to create the next campaign with the same name. (optional)

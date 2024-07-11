@@ -20,9 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -66,10 +64,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   public static final String SERIALIZED_NAME_REDEEMED_QUANTITY = "redeemed_quantity";
   @SerializedName(SERIALIZED_NAME_REDEEMED_QUANTITY)
   private Integer redeemedQuantity;
-
-  public static final String SERIALIZED_NAME_REDEMPTION_ENTRIES = "redemption_entries";
-  @SerializedName(SERIALIZED_NAME_REDEMPTION_ENTRIES)
-  private List<String> redemptionEntries;
 
   /**
    * The type of the object represented is by default list. To get this list, you need to make a call to the endpoint returned in the url attribute.
@@ -190,35 +184,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
   }
 
 
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption redemptionEntries(List<String> redemptionEntries) {
-    
-    this.redemptionEntries = redemptionEntries;
-    return this;
-  }
-
-  public LoyaltiesMembersTransfersCreateResponseBodyRedemption addRedemptionEntriesItem(String redemptionEntriesItem) {
-    if (this.redemptionEntries == null) {
-      this.redemptionEntries = new ArrayList<>();
-    }
-    this.redemptionEntries.add(redemptionEntriesItem);
-    return this;
-  }
-
-   /**
-   * Get redemptionEntries
-   * @return redemptionEntries
-  **/
-  @javax.annotation.Nullable
-  public List<String> getRedemptionEntries() {
-    return redemptionEntries;
-  }
-
-
-  public void setRedemptionEntries(List<String> redemptionEntries) {
-    this.redemptionEntries = redemptionEntries;
-  }
-
-
   public LoyaltiesMembersTransfersCreateResponseBodyRedemption _object(ObjectEnum _object) {
     
     this._object = _object;
@@ -318,7 +283,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     return Objects.equals(this.quantity, loyaltiesMembersTransfersCreateResponseBodyRedemption.quantity) &&
         Objects.equals(this.redeemedPoints, loyaltiesMembersTransfersCreateResponseBodyRedemption.redeemedPoints) &&
         Objects.equals(this.redeemedQuantity, loyaltiesMembersTransfersCreateResponseBodyRedemption.redeemedQuantity) &&
-        Objects.equals(this.redemptionEntries, loyaltiesMembersTransfersCreateResponseBodyRedemption.redemptionEntries) &&
         Objects.equals(this._object, loyaltiesMembersTransfersCreateResponseBodyRedemption._object) &&
         Objects.equals(this.url, loyaltiesMembersTransfersCreateResponseBodyRedemption.url)&&
         Objects.equals(this.additionalProperties, loyaltiesMembersTransfersCreateResponseBodyRedemption.additionalProperties);
@@ -330,7 +294,7 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, redeemedPoints, redeemedQuantity, redemptionEntries, _object, url, additionalProperties);
+    return Objects.hash(quantity, redeemedPoints, redeemedQuantity, _object, url, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,7 +311,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    redeemedPoints: ").append(toIndentedString(redeemedPoints)).append("\n");
     sb.append("    redeemedQuantity: ").append(toIndentedString(redeemedQuantity)).append("\n");
-    sb.append("    redemptionEntries: ").append(toIndentedString(redemptionEntries)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -376,7 +339,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyRedemption {
     openapiFields.add("quantity");
     openapiFields.add("redeemed_points");
     openapiFields.add("redeemed_quantity");
-    openapiFields.add("redemption_entries");
     openapiFields.add("object");
     openapiFields.add("url");
 
