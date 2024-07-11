@@ -14,11 +14,19 @@ import voucherify.client.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import org.json.JSONException;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.example.helpers.JsonHelper;
 
 @org.junit.jupiter.api.Order(7) // Multiple Order type
 public class ValidationsTest {
@@ -38,34 +46,40 @@ public class ValidationsTest {
     @Test
     @org.junit.jupiter.api.Order(1)
     public void validateStackedInapplicableDiscountsTest() {
-        validateStackedDiscounts(getValidationsValidateInapplicableRedeemableRequestBody());
+        String snapshotPath = "src/test/java/org/example/snapshots/Validations/InaplicableValidation.snapshot.json";
+        validateStackedDiscounts(getValidationsValidateInapplicableVouchersRequestBody(), snapshotPath);
     }
 
     @Test
     @org.junit.jupiter.api.Order(2)
     public void validateStackedApplicableDiscountsTest() {
-        validateStackedDiscounts(getValidationsValidateApplicableRedeemableRequestBody());
+        String snaphsotPath = "src/test/java/org/example/snapshots/Validations/ApplicableValidation.snapshot.json";
+        validateStackedDiscounts(getValidationsValidateApplicableVouchersRequestBody(), snaphsotPath);
     }
 
     @Test
     @org.junit.jupiter.api.Order(3)
     public void validateStackedSkippedDiscountsTest() {
-        ValidationsValidateRequestBody requestBody = getValidationsValidateApplicableRedeemableRequestBody();
+        String snaphsotPath = "src/test/java/org/example/snapshots/Validations/SkippedValidation.snapshot.json";
+        ValidationsValidateRequestBody requestBody = getValidationsValidateApplicableVouchersRequestBody();
         addRedeemablesItemToBeginning(requestBody);
-        validateStackedDiscounts(requestBody);
+        validateStackedDiscounts(requestBody, snaphsotPath);
     }
 
-    private void validateStackedDiscounts(ValidationsValidateRequestBody requestBody) {
+    private void validateStackedDiscounts(ValidationsValidateRequestBody requestBody, String snapshotPath) {
         try {
             ValidationsValidateResponseBody responseBody = validationsApi.validateStackedDiscounts(requestBody);
+            String responseBodyJson = JsonHelper.getObjectMapper().writeValueAsString(responseBody);
+            String snapshot = JsonHelper.readJsonFile(snapshotPath);
             assertNotNull(responseBody);
-        } catch (ApiException | JsonSyntaxException e) {
+            JSONAssert.assertEquals(snapshot, responseBodyJson, false);
+        } catch (ApiException | IOException | JSONException | JsonSyntaxException e) {
             fail();
         }
     }
 
     @NotNull
-    private static ValidationsValidateRequestBody getValidationsValidateInapplicableRedeemableRequestBody() {
+    private static ValidationsValidateRequestBody getValidationsValidateInapplicableVouchersRequestBody() {
         Order order = getOrder();
         StackableValidateRedeemBaseRedeemablesItem redeemablesItem = createRedeemablesItem(
                 Utils.getAlphaNumericString(20));
@@ -73,7 +87,7 @@ public class ValidationsTest {
     }
 
     @NotNull
-    private static ValidationsValidateRequestBody getValidationsValidateApplicableRedeemableRequestBody() {
+    private static ValidationsValidateRequestBody getValidationsValidateApplicableVouchersRequestBody() {
         Order order = getOrder();
         CampaignsVouchersCreateCombinedResponseBody voucher = createCampaignVoucher();
         StackableValidateRedeemBaseRedeemablesItem redeemablesItem = createRedeemablesItem(voucher.getCode());
@@ -141,6 +155,7 @@ public class ValidationsTest {
         return requestBody;
     }
 
+    @NotNull
     private void addRedeemablesItemToBeginning(ValidationsValidateRequestBody requestBody) {
         List<StackableValidateRedeemBaseRedeemablesItem> redeemables = requestBody.getRedeemables();
         List<StackableValidateRedeemBaseRedeemablesItem> newRedeemables = new ArrayList<>();
@@ -150,4 +165,5 @@ public class ValidationsTest {
         newRedeemables.addAll(redeemables);
         requestBody.setRedeemables(newRedeemables);
     }
+
 }
