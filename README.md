@@ -44,7 +44,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.voucherify</groupId>
+  <groupId>io.voucherify.client</groupId>
   <artifactId>voucherify-java-sdk</artifactId>
   <version>12.0.0</version>
   <scope>compile</scope>
@@ -62,7 +62,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.voucherify:voucherify-java-sdk:12.0.0"
+     implementation "io.voucherify.client:voucherify-java-sdk:12.0.0"
   }
 ```
 
