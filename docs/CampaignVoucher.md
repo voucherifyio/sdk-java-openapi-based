@@ -13,7 +13,7 @@ Schema model for a campaign voucher.
 |**gift** | [**Gift**](Gift.md) |  |
 |**loyaltyCard** | [**CampaignLoyaltyCard**](CampaignLoyaltyCard.md) |  |
 |**redemption** | [**CampaignVoucherRedemption**](CampaignVoucherRedemption.md) |  |
-|**codeConfig** | [**CodeConfigRequiredLengthCharsetPattern**](CodeConfigRequiredLengthCharsetPattern.md) |  |
+|**codeConfig** | [**CodeConfig**](CodeConfig.md) |  |
 |**isReferralCode** | **Boolean** | Flag indicating whether this voucher is a referral code; &#x60;true&#x60; for campaign type &#x60;REFERRAL_PROGRAM&#x60;. |
 |**startDate** | **OffsetDateTime** | Activation timestamp defines when the campaign starts to be active in ISO 8601 format. Campaign is *inactive before* this date.  |
 |**expirationDate** | **OffsetDateTime** | Expiration timestamp defines when the campaign expires in ISO 8601 format.  Campaign is *inactive after* this date. |

@@ -27,7 +27,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import voucherify.client.model.CampaignLoyaltyCard;
 import voucherify.client.model.CampaignVoucherRedemption;
-import voucherify.client.model.CodeConfigRequiredLengthCharsetPattern;
+import voucherify.client.model.CodeConfig;
 import voucherify.client.model.Discount;
 import voucherify.client.model.Gift;
 import voucherify.client.model.ValidityHours;
@@ -85,7 +85,7 @@ public class CampaignVoucher {
 
   public static final String SERIALIZED_NAME_CODE_CONFIG = "code_config";
   @SerializedName(SERIALIZED_NAME_CODE_CONFIG)
-  private CodeConfigRequiredLengthCharsetPattern codeConfig;
+  private CodeConfig codeConfig;
 
   public static final String SERIALIZED_NAME_IS_REFERRAL_CODE = "is_referral_code";
   @SerializedName(SERIALIZED_NAME_IS_REFERRAL_CODE)
@@ -276,7 +276,7 @@ public class CampaignVoucher {
   }
 
 
-  public CampaignVoucher codeConfig(CodeConfigRequiredLengthCharsetPattern codeConfig) {
+  public CampaignVoucher codeConfig(CodeConfig codeConfig) {
     
     this.codeConfig = codeConfig;
     return this;
@@ -287,12 +287,12 @@ public class CampaignVoucher {
    * @return codeConfig
   **/
   @javax.annotation.Nonnull
-  public CodeConfigRequiredLengthCharsetPattern getCodeConfig() {
+  public CodeConfig getCodeConfig() {
     return codeConfig;
   }
 
 
-  public void setCodeConfig(CodeConfigRequiredLengthCharsetPattern codeConfig) {
+  public void setCodeConfig(CodeConfig codeConfig) {
     this.codeConfig = codeConfig;
   }
 
@@ -601,7 +601,7 @@ public class CampaignVoucher {
         CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
       }
       // validate the required field `code_config`
-      CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
+      CodeConfig.validateJsonElement(jsonObj.get("code_config"));
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
         ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));

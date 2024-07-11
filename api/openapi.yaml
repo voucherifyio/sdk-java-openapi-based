@@ -18485,7 +18485,7 @@ components:
             type: DISCOUNT_VOUCHER
             loyalty_card: ""
             expiration_date: 2022-09-30T00:00:00Z
-            code_config: null
+            code_config: ""
             validity_timeframe:
               duration: PT1H
               interval: P2D
@@ -18594,7 +18594,7 @@ components:
             type: DISCOUNT_VOUCHER
             loyalty_card: ""
             expiration_date: 2022-09-30T00:00:00Z
-            code_config: null
+            code_config: ""
             validity_timeframe:
               duration: PT1H
               interval: P2D
@@ -25710,7 +25710,7 @@ components:
           type: DISCOUNT_VOUCHER
           loyalty_card: ""
           expiration_date: 2022-09-30T00:00:00Z
-          code_config: null
+          code_config: ""
           validity_timeframe:
             duration: PT1H
             interval: P2D
@@ -30436,7 +30436,7 @@ components:
         type: DISCOUNT_VOUCHER
         loyalty_card: ""
         expiration_date: 2022-09-30T00:00:00Z
-        code_config: null
+        code_config: ""
         validity_timeframe:
           duration: PT1H
           interval: P2D
@@ -30462,7 +30462,12 @@ components:
         redemption:
           $ref: '#/components/schemas/CampaignVoucher_redemption'
         code_config:
-          $ref: '#/components/schemas/CodeConfigRequiredLengthCharsetPattern'
+          allOf:
+          - $ref: '#/components/schemas/CodeConfig'
+          required:
+          - charset
+          - length
+          - pattern
         is_referral_code:
           description: Flag indicating whether this voucher is a referral code; `true`
             for campaign type `REFERRAL_PROGRAM`.
@@ -31394,14 +31399,6 @@ components:
           type: string
       title: Areas and Stores Campain Assignment
       type: object
-    CodeConfigRequiredLengthCharsetPattern:
-      allOf:
-      - $ref: '#/components/schemas/CodeConfig'
-      required:
-      - charset
-      - length
-      - pattern
-      title: Code Config Required Length Charset Pattern
     CustomerSummaryOrders:
       properties:
         total_amount:

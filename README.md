@@ -335,7 +335,6 @@ Class | Method | HTTP request | Description
  - [ClientValidationsValidateRequestBodyAllOfOptions](docs/ClientValidationsValidateRequestBodyAllOfOptions.md)
  - [ClientValidationsValidateResponseBody](docs/ClientValidationsValidateResponseBody.md)
  - [CodeConfig](docs/CodeConfig.md)
- - [CodeConfigRequiredLengthCharsetPattern](docs/CodeConfigRequiredLengthCharsetPattern.md)
  - [CreatePublicationCampaign](docs/CreatePublicationCampaign.md)
  - [Customer](docs/Customer.md)
  - [CustomerBase](docs/CustomerBase.md)

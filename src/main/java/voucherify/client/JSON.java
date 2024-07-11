@@ -152,7 +152,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ClientValidationsValidateRequestBodyAllOfOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.ClientValidationsValidateResponseBody.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.CodeConfig.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.CodeConfigRequiredLengthCharsetPattern.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.CreatePublicationCampaign.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.Customer.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new voucherify.client.model.CustomerBase.CustomTypeAdapterFactory());
