@@ -18,7 +18,7 @@ If you prefer to run tests locally, here are the steps you need to follow.
 
 1. Go into `root` directory
 2. Run `mvn clean install` for build `jar` file 
-3. Run `mvn install:install-file -Dfile=./target/voucherify-java-sdk-1.0.0.jar -DgroupId=local -DartifactId=voucherify-java-sdk -Dversion=1.0.0 -Dpackaging=jar` for export `jar` file to local maven repository
+3. Run `mvn install:install-file -Dfile=./target/voucherify-java-sdk-12.0.0.jar -DgroupId=local -DartifactId=voucherify-java-sdk -Dversion=12.0.0 -Dpackaging=jar` for export `jar` file to local maven repository
 4. Go into `__tests__` directory
 5. Run `mvn -f ./__tests__ clean install` command for install dependencies
 6. Run `mvn -f ./__tests__ test` for start the test suit

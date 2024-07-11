@@ -46,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.voucherify</groupId>
   <artifactId>voucherify-java-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>12.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +62,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.voucherify:voucherify-java-sdk:1.0.0"
+     implementation "com.voucherify:voucherify-java-sdk:12.0.0"
   }
 ```
 
@@ -76,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/voucherify-java-sdk-1.0.0.jar`
+* `target/voucherify-java-sdk-12.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

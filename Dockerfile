@@ -16,7 +16,7 @@ COPY ./__tests__ ./__tests__
 
 RUN mvn clean install
 
-RUN mvn install:install-file -Dfile=./target/voucherify-java-sdk-1.0.0.jar -DgroupId=local -DartifactId=voucherify-java-sdk -Dversion=1.0.0 -Dpackaging=jar
+RUN mvn install:install-file -Dfile=./target/voucherify-java-sdk-12.0.0.jar -DgroupId=local -DartifactId=voucherify-java-sdk -Dversion=12.0.0 -Dpackaging=jar
 
 RUN mvn -f ./__tests__ clean install
 
