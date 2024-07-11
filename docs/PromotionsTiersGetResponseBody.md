@@ -22,14 +22,28 @@ Response body schema for **GET** `/promotions/tiers/{promotionTierId}`.
 |**active** | **Boolean** | A flag to toggle the promotion tier on or off. You can disable a promotion tier even though it&#39;s within the active period defined by the &#x60;start_date&#x60; and &#x60;expiration_date&#x60;.    - &#x60;true&#x60; indicates an *active* promotion tier - &#x60;false&#x60; indicates an *inactive* promotion tier |
 |**startDate** | **OffsetDateTime** | Activation timestamp defines when the promotion tier starts to be active in ISO 8601 format. Promotion tier is *inactive before* this date.  |
 |**expirationDate** | **OffsetDateTime** | Activation timestamp defines when the promotion tier expires in ISO 8601 format. Promotion tier is *inactive after* this date.  |
-|**validityTimeframe** | [**PromotionTierValidityTimeframe**](PromotionTierValidityTimeframe.md) |  |
-|**validityDayOfWeek** | **List&lt;Integer&gt;** | Integer array corresponding to the particular days of the week in which the promotion tier is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |
+|**validityTimeframe** | [**ValidityTimeframe**](ValidityTimeframe.md) |  |
+|**validityDayOfWeek** | [**List&lt;ValidityDayOfWeekEnum&gt;**](#List&lt;ValidityDayOfWeekEnum&gt;) | Integer array corresponding to the particular days of the week in which the voucher is valid.  - &#x60;0&#x60; Sunday - &#x60;1&#x60; Monday - &#x60;2&#x60; Tuesday - &#x60;3&#x60; Wednesday - &#x60;4&#x60; Thursday - &#x60;5&#x60; Friday - &#x60;6&#x60; Saturday |
 |**validityHours** | [**ValidityHours**](ValidityHours.md) |  |
 |**summary** | [**PromotionTierSummary**](PromotionTierSummary.md) |  |
 |**_object** | **String** | The type of the object represented by JSON. This object stores information about the promotion tier. |
 |**validationRuleAssignments** | [**ValidationRuleAssignmentsList**](ValidationRuleAssignmentsList.md) |  |
 |**categoryId** | **String** | Promotion tier category ID. |
 |**categories** | [**List&lt;Category&gt;**](Category.md) |  |
+
+
+
+## Enum: List&lt;ValidityDayOfWeekEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| NUMBER_0 | 0 |
+| NUMBER_1 | 1 |
+| NUMBER_2 | 2 |
+| NUMBER_3 | 3 |
+| NUMBER_4 | 4 |
+| NUMBER_5 | 5 |
+| NUMBER_6 | 6 |
 
 
 

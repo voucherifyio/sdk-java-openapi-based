@@ -29,11 +29,11 @@ import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyGift;
 import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyLoyaltyCard;
 import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyPublish;
 import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyRedemption;
-import voucherify.client.model.CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe;
 import voucherify.client.model.Category;
 import voucherify.client.model.Discount;
 import voucherify.client.model.ValidationRulesAssignmentsList;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 import voucherify.client.model.VoucherAssets;
 
 import com.google.gson.Gson;
@@ -169,7 +169,7 @@ public class VouchersGetResponseBody {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -572,7 +572,7 @@ public class VouchersGetResponseBody {
   }
 
 
-  public VouchersGetResponseBody validityTimeframe(CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe) {
+  public VouchersGetResponseBody validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -583,12 +583,12 @@ public class VouchersGetResponseBody {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe getValidityTimeframe() {
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -1162,7 +1162,7 @@ public class VouchersGetResponseBody {
       }
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        CampaignsVouchersCreateCombinedResponseBodyValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {

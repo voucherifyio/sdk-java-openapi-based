@@ -25,13 +25,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import voucherify.client.model.CampaignBaseValidityTimeframe;
 import voucherify.client.model.CampaignLoyaltyCard;
 import voucherify.client.model.CampaignVoucherRedemption;
 import voucherify.client.model.CodeConfigRequiredLengthCharsetPattern;
 import voucherify.client.model.Discount;
 import voucherify.client.model.Gift;
 import voucherify.client.model.ValidityHours;
+import voucherify.client.model.ValidityTimeframe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -101,7 +101,7 @@ public class CampaignVoucher {
 
   public static final String SERIALIZED_NAME_VALIDITY_TIMEFRAME = "validity_timeframe";
   @SerializedName(SERIALIZED_NAME_VALIDITY_TIMEFRAME)
-  private CampaignBaseValidityTimeframe validityTimeframe;
+  private ValidityTimeframe validityTimeframe;
 
   /**
    * Gets or Sets validityDayOfWeek
@@ -360,7 +360,7 @@ public class CampaignVoucher {
   }
 
 
-  public CampaignVoucher validityTimeframe(CampaignBaseValidityTimeframe validityTimeframe) {
+  public CampaignVoucher validityTimeframe(ValidityTimeframe validityTimeframe) {
     
     this.validityTimeframe = validityTimeframe;
     return this;
@@ -371,12 +371,12 @@ public class CampaignVoucher {
    * @return validityTimeframe
   **/
   @javax.annotation.Nullable
-  public CampaignBaseValidityTimeframe getValidityTimeframe() {
+  public ValidityTimeframe getValidityTimeframe() {
     return validityTimeframe;
   }
 
 
-  public void setValidityTimeframe(CampaignBaseValidityTimeframe validityTimeframe) {
+  public void setValidityTimeframe(ValidityTimeframe validityTimeframe) {
     this.validityTimeframe = validityTimeframe;
   }
 
@@ -604,7 +604,7 @@ public class CampaignVoucher {
       CodeConfigRequiredLengthCharsetPattern.validateJsonElement(jsonObj.get("code_config"));
       // validate the optional field `validity_timeframe`
       if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        CampaignBaseValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
+        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
       }
       // validate the optional field `validity_hours`
       if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
