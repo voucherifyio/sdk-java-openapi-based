@@ -40,14 +40,6 @@ public class CampaignsTest {
         voucher.setType(CampaignsCreateRequestBodyVoucher.TypeEnum.LOYALTY_CARD);
 
         CampaignsCreateRequestBody campaignsCreateRequestBody = new CampaignsCreateRequestBody();
-        // Voucher
-        // Vouchers
-        // CampaignsCreateRequestBody
-        // | Specify the
-        // details of the
-        // campaign that you
-        // would like to
-        // create.
         campaignsCreateRequestBody.setCampaignType(CampaignsCreateRequestBody.CampaignTypeEnum.LOYALTY_PROGRAM);
         campaignsCreateRequestBody.setType(CampaignsCreateRequestBody.TypeEnum.AUTO_UPDATE);
         campaignsCreateRequestBody.setName(Utils.getAlphaNumericString(20));
@@ -150,18 +142,7 @@ public class CampaignsTest {
     public void addVouchersToCampaign() {
         try {
             Integer vouchersCount = 2; // Integer | Number of vouchers that should be added.
-            CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody(); // CampaignsVouchersCreateInBulkRequestBody
-                                                                                                                                                // |
-                                                                                                                                                // Specify
-                                                                                                                                                // the
-                                                                                                                                                // voucher
-                                                                                                                                                // parameters
-                                                                                                                                                // that
-                                                                                                                                                // you
-                                                                                                                                                // would
-                                                                                                                                                // like
-                                                                                                                                                // to
-                                                                                                                                                // overwrite.
+            CampaignsVouchersCreateInBulkRequestBody campaignsVouchersCreateInBulkRequestBody = new CampaignsVouchersCreateInBulkRequestBody(); //
             CampaignsVouchersCreateCombinedResponseBody responseBody = campaigns.addVouchersToCampaign(loyaltyProgramId,
                     vouchersCount, campaignsVouchersCreateInBulkRequestBody);
 
