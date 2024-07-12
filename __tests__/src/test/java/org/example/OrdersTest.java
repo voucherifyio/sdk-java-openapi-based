@@ -6,10 +6,10 @@ import org.example.data.Voucherify;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import voucherify.client.ApiClient;
-import voucherify.client.api.*;
-import voucherify.client.ApiException;
-import voucherify.client.model.*;
+import io.voucherify.client.ApiClient;
+import io.voucherify.client.api.*;
+import io.voucherify.client.ApiException;
+import io.voucherify.client.model.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
