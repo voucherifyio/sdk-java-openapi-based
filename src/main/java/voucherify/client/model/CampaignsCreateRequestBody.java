@@ -961,83 +961,6 @@ public class CampaignsCreateRequestBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CampaignsCreateRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // validate the optional field `validity_hours`
-      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
-        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
-      }
-      if ((jsonObj.get("activity_duration_after_publishing") != null && !jsonObj.get("activity_duration_after_publishing").isJsonNull()) && !jsonObj.get("activity_duration_after_publishing").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("campaign_type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          CampaignTypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `voucher`
-      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
-        CampaignsCreateRequestBodyVoucher.validateJsonElement(jsonObj.get("voucher"));
-      }
-      // validate the optional field `referral_program`
-      if (jsonObj.get("referral_program") != null && !jsonObj.get("referral_program").isJsonNull()) {
-        ReferralProgram.validateJsonElement(jsonObj.get("referral_program"));
-      }
-      // validate the optional field `promotion`
-      if (jsonObj.get("promotion") != null && !jsonObj.get("promotion").isJsonNull()) {
-        CampaignsCreateRequestBodyPromotion.validateJsonElement(jsonObj.get("promotion"));
-      }
-      // validate the optional field `lucky_draw`
-      if (jsonObj.get("lucky_draw") != null && !jsonObj.get("lucky_draw").isJsonNull()) {
-        LuckyDraw.validateJsonElement(jsonObj.get("lucky_draw"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -1076,7 +999,6 @@ public class CampaignsCreateRequestBody {
            @Override
            public CampaignsCreateRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CampaignsCreateRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

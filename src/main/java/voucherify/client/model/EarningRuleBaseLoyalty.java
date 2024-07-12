@@ -467,60 +467,6 @@ public class EarningRuleBaseLoyalty {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyalty
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("calculation_type") != null && !jsonObj.get("calculation_type").isJsonNull()) && !jsonObj.get("calculation_type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("calculation_type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          CalculationTypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        EarningRuleBaseLoyaltyOrder.validateJsonElement(jsonObj.get("order"));
-      }
-      // validate the optional field `order_items`
-      if (jsonObj.get("order_items") != null && !jsonObj.get("order_items").isJsonNull()) {
-        EarningRuleBaseLoyaltyOrderItems.validateJsonElement(jsonObj.get("order_items"));
-      }
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        EarningRuleBaseLoyaltyCustomer.validateJsonElement(jsonObj.get("customer"));
-      }
-      // validate the optional field `custom_event`
-      if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
-        EarningRuleBaseLoyaltyCustomEvent.validateJsonElement(jsonObj.get("custom_event"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -559,7 +505,6 @@ public class EarningRuleBaseLoyalty {
            @Override
            public EarningRuleBaseLoyalty read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              EarningRuleBaseLoyalty instance = thisAdapter.fromJsonTree(jsonObj);

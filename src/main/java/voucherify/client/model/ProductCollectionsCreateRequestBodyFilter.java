@@ -470,72 +470,6 @@ public class ProductCollectionsCreateRequestBodyFilter {
     openapiRequiredFields.add("junction");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ProductCollectionsCreateRequestBodyFilter
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ProductCollectionsCreateRequestBodyFilter.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProductCollectionsCreateRequestBodyFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `id`
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("id"));
-      }
-      // validate the optional field `product_id`
-      if (jsonObj.get("product_id") != null && !jsonObj.get("product_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("product_id"));
-      }
-      // validate the optional field `source_id`
-      if (jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("source_id"));
-      }
-      // validate the optional field `name`
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("name"));
-      }
-      // validate the optional field `price`
-      if (jsonObj.get("price") != null && !jsonObj.get("price").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("price"));
-      }
-      // validate the optional field `object`
-      if (jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("object"));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("attributes"));
-      }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("metadata"));
-      }
-      // validate the optional field `image_url`
-      if (jsonObj.get("image_url") != null && !jsonObj.get("image_url").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("image_url"));
-      }
-      // validate the optional field `skus`
-      if (jsonObj.get("skus") != null && !jsonObj.get("skus").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("skus"));
-      }
-      // validate the optional field `created_at`
-      if (jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("created_at"));
-      }
-      // validate the optional field `updated_at`
-      if (jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("updated_at"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -557,7 +491,6 @@ public class ProductCollectionsCreateRequestBodyFilter {
            @Override
            public ProductCollectionsCreateRequestBodyFilter read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
            }
 

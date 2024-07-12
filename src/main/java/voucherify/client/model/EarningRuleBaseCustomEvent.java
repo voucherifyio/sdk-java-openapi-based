@@ -189,19 +189,6 @@ public class EarningRuleBaseCustomEvent {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseCustomEvent
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("schema_id") != null && !jsonObj.get("schema_id").isJsonNull()) && !jsonObj.get("schema_id").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -240,7 +227,6 @@ public class EarningRuleBaseCustomEvent {
            @Override
            public EarningRuleBaseCustomEvent read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              EarningRuleBaseCustomEvent instance = thisAdapter.fromJsonTree(jsonObj);

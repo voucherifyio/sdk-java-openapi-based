@@ -372,35 +372,6 @@ public class ValidationsValidateRequestBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ValidationsValidateRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        Order.validateJsonElement(jsonObj.get("order"));
-      }
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        Customer.validateJsonElement(jsonObj.get("customer"));
-      }
-      // validate the optional field `session`
-      if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
-        Session.validateJsonElement(jsonObj.get("session"));
-      }
-      if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `options`
-      if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {
-        ClientValidationsValidateRequestBodyAllOfOptions.validateJsonElement(jsonObj.get("options"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -439,7 +410,6 @@ public class ValidationsValidateRequestBody {
            @Override
            public ValidationsValidateRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ValidationsValidateRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

@@ -297,37 +297,6 @@ public class LoyaltyTiersExpirationAllExpirationDate {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltyTiersExpirationAllExpirationDate
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("extend") != null && !jsonObj.get("extend").isJsonNull()) && !jsonObj.get("extend").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `rounding`
-      if (jsonObj.get("rounding") != null && !jsonObj.get("rounding").isJsonNull()) {
-        LoyaltyTiersExpirationAllExpirationDateRounding.validateJsonElement(jsonObj.get("rounding"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -366,7 +335,6 @@ public class LoyaltyTiersExpirationAllExpirationDate {
            @Override
            public LoyaltyTiersExpirationAllExpirationDate read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltyTiersExpirationAllExpirationDate instance = thisAdapter.fromJsonTree(jsonObj);

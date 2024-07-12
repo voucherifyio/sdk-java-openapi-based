@@ -294,38 +294,6 @@ public class ReferralProgram {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ReferralProgram
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("conversion_event_type") != null && !jsonObj.get("conversion_event_type").isJsonNull()) && !jsonObj.get("conversion_event_type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("conversion_event_type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ConversionEventTypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `custom_event`
-      if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
-        ReferralProgramCustomEvent.validateJsonElement(jsonObj.get("custom_event"));
-      }
-      // validate the optional field `referee_reward`
-      if (jsonObj.get("referee_reward") != null && !jsonObj.get("referee_reward").isJsonNull()) {
-        ReferralProgramRefereeReward.validateJsonElement(jsonObj.get("referee_reward"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -364,7 +332,6 @@ public class ReferralProgram {
            @Override
            public ReferralProgram read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ReferralProgram instance = thisAdapter.fromJsonTree(jsonObj);

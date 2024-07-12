@@ -305,29 +305,6 @@ public class EventsCreateRequestBody {
     openapiRequiredFields.add("customer");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to EventsCreateRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) && !jsonObj.get("event").isJsonPrimitive()) {
-        return;
-      }
-      // validate the required field `customer`
-      Customer.validateJsonElement(jsonObj.get("customer"));
-      // validate the optional field `referral`
-      if (jsonObj.get("referral") != null && !jsonObj.get("referral").isJsonNull()) {
-        ClientEventsCreateRequestBodyReferral.validateJsonElement(jsonObj.get("referral"));
-      }
-      // validate the optional field `loyalty`
-      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
-        ClientEventsCreateRequestBodyLoyalty.validateJsonElement(jsonObj.get("loyalty"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -366,7 +343,6 @@ public class EventsCreateRequestBody {
            @Override
            public EventsCreateRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              EventsCreateRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

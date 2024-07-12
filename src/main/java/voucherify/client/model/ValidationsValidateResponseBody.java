@@ -418,29 +418,6 @@ public class ValidationsValidateResponseBody {
     openapiRequiredFields.add("stacking_rules");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ValidationsValidateResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        OrderCalculated.validateJsonElement(jsonObj.get("order"));
-      }
-      if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `session`
-      if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
-        Session.validateJsonElement(jsonObj.get("session"));
-      }
-      // validate the required field `stacking_rules`
-      StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -479,7 +456,6 @@ public class ValidationsValidateResponseBody {
            @Override
            public ValidationsValidateResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ValidationsValidateResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

@@ -411,50 +411,6 @@ public class CampaignsCreateRequestBodyVoucher {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CampaignsCreateRequestBodyVoucher
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `discount`
-      if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
-        Discount.validateJsonElement(jsonObj.get("discount"));
-      }
-      // validate the optional field `code_config`
-      if (jsonObj.get("code_config") != null && !jsonObj.get("code_config").isJsonNull()) {
-        CodeConfig.validateJsonElement(jsonObj.get("code_config"));
-      }
-      // validate the optional field `redemption`
-      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
-        CampaignsCreateRequestBodyVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
-      }
-      // validate the optional field `gift`
-      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        Gift.validateJsonElement(jsonObj.get("gift"));
-      }
-      // validate the optional field `loyalty_card`
-      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        CampaignLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -493,7 +449,6 @@ public class CampaignsCreateRequestBodyVoucher {
            @Override
            public CampaignsCreateRequestBodyVoucher read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CampaignsCreateRequestBodyVoucher instance = thisAdapter.fromJsonTree(jsonObj);

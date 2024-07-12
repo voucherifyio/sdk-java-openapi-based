@@ -685,59 +685,6 @@ public class ValidationRulesUpdateResponseBody {
     openapiRequiredFields.add("context_type");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ValidationRulesUpdateResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `error`
-      if (jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) {
-        ValidationRuleBaseError.validateJsonElement(jsonObj.get("error"));
-      }
-      // validate the required field `applicable_to`
-      ValidationRuleBaseApplicableTo.validateJsonElement(jsonObj.get("applicable_to"));
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("context_type") != null && !jsonObj.get("context_type").isJsonNull()) && !jsonObj.get("context_type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("context_type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ContextTypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -776,7 +723,6 @@ public class ValidationRulesUpdateResponseBody {
            @Override
            public ValidationRulesUpdateResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ValidationRulesUpdateResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

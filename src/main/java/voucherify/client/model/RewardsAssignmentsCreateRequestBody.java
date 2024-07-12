@@ -256,23 +256,6 @@ public class RewardsAssignmentsCreateRequestBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RewardsAssignmentsCreateRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `parameters`
-      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
-        RewardsAssignmentsCreateRequestBodyParameters.validateJsonElement(jsonObj.get("parameters"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -311,7 +294,6 @@ public class RewardsAssignmentsCreateRequestBody {
            @Override
            public RewardsAssignmentsCreateRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RewardsAssignmentsCreateRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

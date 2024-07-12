@@ -258,20 +258,6 @@ public class LoyaltiesMembersTransactionsExportCreateRequestBodyParameters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersTransactionsExportCreateRequestBodyParameters
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `filters`
-      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
-        ExportVoucherTransactionsFilters.validateJsonElement(jsonObj.get("filters"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -310,7 +296,6 @@ public class LoyaltiesMembersTransactionsExportCreateRequestBodyParameters {
            @Override
            public LoyaltiesMembersTransactionsExportCreateRequestBodyParameters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltiesMembersTransactionsExportCreateRequestBodyParameters instance = thisAdapter.fromJsonTree(jsonObj);

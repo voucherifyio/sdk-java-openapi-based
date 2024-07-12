@@ -1137,100 +1137,6 @@ public class RedemptionsListResponseBodyRedemptionsItemVoucher {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionsListResponseBodyRedemptionsItemVoucher
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) && !jsonObj.get("campaign").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `discount`
-      if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
-        Discount.validateJsonElement(jsonObj.get("discount"));
-      }
-      // validate the optional field `gift`
-      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        RedemptionsListResponseBodyRedemptionsItemVoucherGift.validateJsonElement(jsonObj.get("gift"));
-      }
-      // validate the optional field `loyalty_card`
-      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        RedemptionsListResponseBodyRedemptionsItemVoucherLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      }
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // validate the optional field `validity_hours`
-      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
-        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
-      }
-      if ((jsonObj.get("additional_info") != null && !jsonObj.get("additional_info").isJsonNull()) && !jsonObj.get("additional_info").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `assets`
-      if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
-        VoucherAssets.validateJsonElement(jsonObj.get("assets"));
-      }
-      if ((jsonObj.get("holder_id") != null && !jsonObj.get("holder_id").isJsonNull()) && !jsonObj.get("holder_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("referrer_id") != null && !jsonObj.get("referrer_id").isJsonNull()) && !jsonObj.get("referrer_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `validation_rules_assignments`
-      if (jsonObj.get("validation_rules_assignments") != null && !jsonObj.get("validation_rules_assignments").isJsonNull()) {
-        ValidationRulesAssignmentsList.validateJsonElement(jsonObj.get("validation_rules_assignments"));
-      }
-      // validate the optional field `publish`
-      if (jsonObj.get("publish") != null && !jsonObj.get("publish").isJsonNull()) {
-        RedemptionsListResponseBodyRedemptionsItemVoucherPublish.validateJsonElement(jsonObj.get("publish"));
-      }
-      // validate the optional field `redemption`
-      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
-        RedemptionsListResponseBodyRedemptionsItemVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
-      }
-      // validate the optional field `holder`
-      if (jsonObj.get("holder") != null && !jsonObj.get("holder").isJsonNull()) {
-        SimpleCustomer.validateJsonElement(jsonObj.get("holder"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -1269,7 +1175,6 @@ public class RedemptionsListResponseBodyRedemptionsItemVoucher {
            @Override
            public RedemptionsListResponseBodyRedemptionsItemVoucher read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RedemptionsListResponseBodyRedemptionsItemVoucher instance = thisAdapter.fromJsonTree(jsonObj);

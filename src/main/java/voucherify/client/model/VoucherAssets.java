@@ -219,24 +219,6 @@ public class VoucherAssets {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VoucherAssets
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `qr`
-      if (jsonObj.get("qr") != null && !jsonObj.get("qr").isJsonNull()) {
-        LoyaltiesMembersTransfersCreateResponseBodyAssetsQr.validateJsonElement(jsonObj.get("qr"));
-      }
-      // validate the optional field `barcode`
-      if (jsonObj.get("barcode") != null && !jsonObj.get("barcode").isJsonNull()) {
-        LoyaltiesMembersTransfersCreateResponseBodyAssetsBarcode.validateJsonElement(jsonObj.get("barcode"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -275,7 +257,6 @@ public class VoucherAssets {
            @Override
            public VoucherAssets read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              VoucherAssets instance = thisAdapter.fromJsonTree(jsonObj);

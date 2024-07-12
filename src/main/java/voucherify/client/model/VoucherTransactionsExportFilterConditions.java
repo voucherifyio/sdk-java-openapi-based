@@ -190,20 +190,6 @@ public class VoucherTransactionsExportFilterConditions {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VoucherTransactionsExportFilterConditions
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `voucher_id`
-      if (jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) {
-        VoucherTransactionsExportFilterConditionsVoucherId.validateJsonElement(jsonObj.get("voucher_id"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -242,7 +228,6 @@ public class VoucherTransactionsExportFilterConditions {
            @Override
            public VoucherTransactionsExportFilterConditions read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              VoucherTransactionsExportFilterConditions instance = thisAdapter.fromJsonTree(jsonObj);

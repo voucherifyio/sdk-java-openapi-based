@@ -369,31 +369,6 @@ public class VouchersRedemptionGetResponseBody {
     openapiRequiredFields.add("redemption_entries");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VouchersRedemptionGetResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("data_ref") != null && !jsonObj.get("data_ref").isJsonNull()) && !jsonObj.get("data_ref").isJsonPrimitive()) {
-        return;
-      }
-
-      JsonArray jsonArrayredemptionEntries = jsonObj.getAsJsonArray("redemption_entries");
-      // validate the required field `redemption_entries` (array)
-      for (int i = 0; i < jsonArrayredemptionEntries.size(); i++) {
-        RedemptionEntry.validateJsonElement(jsonArrayredemptionEntries.get(i));
-      };
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -432,7 +407,6 @@ public class VouchersRedemptionGetResponseBody {
            @Override
            public VouchersRedemptionGetResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              VouchersRedemptionGetResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

@@ -330,28 +330,6 @@ public class CodeConfig {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CodeConfig
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("charset") != null && !jsonObj.get("charset").isJsonNull()) && !jsonObj.get("charset").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("postfix") != null && !jsonObj.get("postfix").isJsonNull()) && !jsonObj.get("postfix").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("pattern") != null && !jsonObj.get("pattern").isJsonNull()) && !jsonObj.get("pattern").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -390,7 +368,6 @@ public class CodeConfig {
            @Override
            public CodeConfig read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CodeConfig instance = thisAdapter.fromJsonTree(jsonObj);

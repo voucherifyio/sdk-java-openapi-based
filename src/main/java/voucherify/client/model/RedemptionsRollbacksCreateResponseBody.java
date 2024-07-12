@@ -257,24 +257,6 @@ public class RedemptionsRollbacksCreateResponseBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionsRollbacksCreateResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `parent_rollback`
-      if (jsonObj.get("parent_rollback") != null && !jsonObj.get("parent_rollback").isJsonNull()) {
-        RedemptionRollback.validateJsonElement(jsonObj.get("parent_rollback"));
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        OrderCalculatedNoCustomerData.validateJsonElement(jsonObj.get("order"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -313,7 +295,6 @@ public class RedemptionsRollbacksCreateResponseBody {
            @Override
            public RedemptionsRollbacksCreateResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RedemptionsRollbacksCreateResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

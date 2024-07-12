@@ -467,51 +467,6 @@ public class CampaignsImportVoucherItem {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CampaignsImportVoucherItem
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `redemption`
-      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
-        CampaignsImportVoucherItemRedemption.validateJsonElement(jsonObj.get("redemption"));
-      }
-      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("additional_info") != null && !jsonObj.get("additional_info").isJsonNull()) && !jsonObj.get("additional_info").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `gift`
-      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        Gift.validateJsonElement(jsonObj.get("gift"));
-      }
-      // validate the optional field `loyalty_card`
-      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        CampaignsImportVoucherLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -550,7 +505,6 @@ public class CampaignsImportVoucherItem {
            @Override
            public CampaignsImportVoucherItem read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CampaignsImportVoucherItem instance = thisAdapter.fromJsonTree(jsonObj);

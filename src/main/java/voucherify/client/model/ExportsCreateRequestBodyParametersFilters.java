@@ -263,28 +263,6 @@ public class ExportsCreateRequestBodyParametersFilters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ExportsCreateRequestBodyParametersFilters
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `campaign_id`
-      if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
-      }
-      // validate the optional field `voucher_id`
-      if (jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("voucher_id"));
-      }
-      // validate the optional field `created_at`
-      if (jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) {
-        FieldConditions.validateJsonElement(jsonObj.get("created_at"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -323,7 +301,6 @@ public class ExportsCreateRequestBodyParametersFilters {
            @Override
            public ExportsCreateRequestBodyParametersFilters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ExportsCreateRequestBodyParametersFilters instance = thisAdapter.fromJsonTree(jsonObj);

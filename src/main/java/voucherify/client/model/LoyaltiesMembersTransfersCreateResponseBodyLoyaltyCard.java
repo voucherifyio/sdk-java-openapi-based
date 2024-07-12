@@ -273,19 +273,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("next_expiration_date") != null && !jsonObj.get("next_expiration_date").isJsonNull()) && !jsonObj.get("next_expiration_date").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -324,7 +311,6 @@ public class LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard {
            @Override
            public LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltiesMembersTransfersCreateResponseBodyLoyaltyCard instance = thisAdapter.fromJsonTree(jsonObj);

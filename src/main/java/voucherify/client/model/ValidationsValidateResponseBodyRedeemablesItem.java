@@ -524,63 +524,6 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ValidationsValidateResponseBodyRedeemablesItem
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("status");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          StatusEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("object");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ObjectEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        OrderCalculated.validateJsonElement(jsonObj.get("order"));
-      }
-      // validate the optional field `applicable_to`
-      if (jsonObj.get("applicable_to") != null && !jsonObj.get("applicable_to").isJsonNull()) {
-        ApplicableToResultList.validateJsonElement(jsonObj.get("applicable_to"));
-      }
-      // validate the optional field `inapplicable_to`
-      if (jsonObj.get("inapplicable_to") != null && !jsonObj.get("inapplicable_to").isJsonNull()) {
-        InapplicableToResultList.validateJsonElement(jsonObj.get("inapplicable_to"));
-      }
-      // validate the optional field `result`
-      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
-        ValidationsValidateResponseBodyRedeemablesItemResult.validateJsonElement(jsonObj.get("result"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -619,7 +562,6 @@ public class ValidationsValidateResponseBodyRedeemablesItem {
            @Override
            public ValidationsValidateResponseBodyRedeemablesItem read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ValidationsValidateResponseBodyRedeemablesItem instance = thisAdapter.fromJsonTree(jsonObj);

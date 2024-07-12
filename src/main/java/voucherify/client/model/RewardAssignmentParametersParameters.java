@@ -190,20 +190,6 @@ public class RewardAssignmentParametersParameters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RewardAssignmentParametersParameters
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `loyalty`
-      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
-        RewardAssignmentParametersParametersLoyalty.validateJsonElement(jsonObj.get("loyalty"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -242,7 +228,6 @@ public class RewardAssignmentParametersParameters {
            @Override
            public RewardAssignmentParametersParameters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RewardAssignmentParametersParameters instance = thisAdapter.fromJsonTree(jsonObj);

@@ -403,34 +403,6 @@ public class FilterConditionsString {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FilterConditionsString
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("$is") != null && !jsonObj.get("$is").isJsonNull()) && !jsonObj.get("$is").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("$is_not") != null && !jsonObj.get("$is_not").isJsonNull()) && !jsonObj.get("$is_not").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("$has_value") != null && !jsonObj.get("$has_value").isJsonNull()) && !jsonObj.get("$has_value").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("$is_unknown") != null && !jsonObj.get("$is_unknown").isJsonNull()) && !jsonObj.get("$is_unknown").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("$starts_with") != null && !jsonObj.get("$starts_with").isJsonNull()) && !jsonObj.get("$starts_with").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("$ends_with") != null && !jsonObj.get("$ends_with").isJsonNull()) && !jsonObj.get("$ends_with").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -469,7 +441,6 @@ public class FilterConditionsString {
            @Override
            public FilterConditionsString read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              FilterConditionsString instance = thisAdapter.fromJsonTree(jsonObj);

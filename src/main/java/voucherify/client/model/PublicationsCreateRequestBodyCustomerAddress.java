@@ -329,34 +329,6 @@ public class PublicationsCreateRequestBodyCustomerAddress {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PublicationsCreateRequestBodyCustomerAddress
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("line_1") != null && !jsonObj.get("line_1").isJsonNull()) && !jsonObj.get("line_1").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("line_2") != null && !jsonObj.get("line_2").isJsonNull()) && !jsonObj.get("line_2").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("postal_code") != null && !jsonObj.get("postal_code").isJsonNull()) && !jsonObj.get("postal_code").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -395,7 +367,6 @@ public class PublicationsCreateRequestBodyCustomerAddress {
            @Override
            public PublicationsCreateRequestBodyCustomerAddress read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PublicationsCreateRequestBodyCustomerAddress instance = thisAdapter.fromJsonTree(jsonObj);

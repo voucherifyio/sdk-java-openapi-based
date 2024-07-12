@@ -565,51 +565,6 @@ public class LoyaltiesTiersGetResponseBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesTiersGetResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `points`
-      if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
-        LoyaltyTierBasePoints.validateJsonElement(jsonObj.get("points"));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `config`
-      if (jsonObj.get("config") != null && !jsonObj.get("config").isJsonNull()) {
-        LoyaltyTierAllOfConfig.validateJsonElement(jsonObj.get("config"));
-      }
-      // validate the optional field `expiration`
-      if (jsonObj.get("expiration") != null && !jsonObj.get("expiration").isJsonNull()) {
-        LoyaltyTierExpiration.validateJsonElement(jsonObj.get("expiration"));
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("object");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ObjectEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -648,7 +603,6 @@ public class LoyaltiesTiersGetResponseBody {
            @Override
            public LoyaltiesTiersGetResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltiesTiersGetResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

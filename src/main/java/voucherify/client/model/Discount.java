@@ -761,67 +761,6 @@ public class Discount {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Discount
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("amount_off_formula") != null && !jsonObj.get("amount_off_formula").isJsonNull()) && !jsonObj.get("amount_off_formula").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("effect");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          EffectEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("unit_off_formula") != null && !jsonObj.get("unit_off_formula").isJsonNull()) && !jsonObj.get("unit_off_formula").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("unit_type") != null && !jsonObj.get("unit_type").isJsonNull()) && !jsonObj.get("unit_type").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `product`
-      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
-        SimpleProductDiscountUnit.validateJsonElement(jsonObj.get("product"));
-      }
-      // validate the optional field `sku`
-      if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
-        SimpleSkuDiscountUnit.validateJsonElement(jsonObj.get("sku"));
-      }
-      if ((jsonObj.get("percent_off_formula") != null && !jsonObj.get("percent_off_formula").isJsonNull()) && !jsonObj.get("percent_off_formula").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("fixed_amount_formula") != null && !jsonObj.get("fixed_amount_formula").isJsonNull()) && !jsonObj.get("fixed_amount_formula").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -860,7 +799,6 @@ public class Discount {
            @Override
            public Discount read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Discount instance = thisAdapter.fromJsonTree(jsonObj);

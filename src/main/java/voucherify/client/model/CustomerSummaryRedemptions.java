@@ -387,24 +387,6 @@ public class CustomerSummaryRedemptions {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CustomerSummaryRedemptions
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `gift`
-      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        CustomerSummaryRedemptionsGift.validateJsonElement(jsonObj.get("gift"));
-      }
-      // validate the optional field `loyalty_card`
-      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        CustomerSummaryRedemptionsLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -443,7 +425,6 @@ public class CustomerSummaryRedemptions {
            @Override
            public CustomerSummaryRedemptions read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CustomerSummaryRedemptions instance = thisAdapter.fromJsonTree(jsonObj);

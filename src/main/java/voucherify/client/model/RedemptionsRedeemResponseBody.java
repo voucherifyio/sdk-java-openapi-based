@@ -331,24 +331,6 @@ public class RedemptionsRedeemResponseBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionsRedeemResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `parent_redemption`
-      if (jsonObj.get("parent_redemption") != null && !jsonObj.get("parent_redemption").isJsonNull()) {
-        Redemption.validateJsonElement(jsonObj.get("parent_redemption"));
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        OrderCalculated.validateJsonElement(jsonObj.get("order"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -387,7 +369,6 @@ public class RedemptionsRedeemResponseBody {
            @Override
            public RedemptionsRedeemResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RedemptionsRedeemResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

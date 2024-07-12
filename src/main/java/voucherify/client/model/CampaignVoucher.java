@@ -573,45 +573,6 @@ public class CampaignVoucher {
     openapiRequiredFields.add("code_config");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CampaignVoucher
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `discount`
-      if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
-        Discount.validateJsonElement(jsonObj.get("discount"));
-      }
-      // validate the optional field `gift`
-      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        Gift.validateJsonElement(jsonObj.get("gift"));
-      }
-      // validate the optional field `loyalty_card`
-      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        CampaignLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      }
-      // validate the optional field `redemption`
-      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
-        CampaignVoucherRedemption.validateJsonElement(jsonObj.get("redemption"));
-      }
-      // validate the required field `code_config`
-      CodeConfig.validateJsonElement(jsonObj.get("code_config"));
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // validate the optional field `validity_hours`
-      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
-        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -650,7 +611,6 @@ public class CampaignVoucher {
            @Override
            public CampaignVoucher read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CampaignVoucher instance = thisAdapter.fromJsonTree(jsonObj);

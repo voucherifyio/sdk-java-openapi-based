@@ -445,41 +445,6 @@ public class LoyaltyCardTransaction {
     openapiRequiredFields.add("type");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltyCardTransaction
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("voucher_id") != null && !jsonObj.get("voucher_id").isJsonNull()) && !jsonObj.get("voucher_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `details`
-      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
-        VoucherTransactionDetails.validateJsonElement(jsonObj.get("details"));
-      }
-      if ((jsonObj.get("related_transaction_id") != null && !jsonObj.get("related_transaction_id").isJsonNull()) && !jsonObj.get("related_transaction_id").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -518,7 +483,6 @@ public class LoyaltyCardTransaction {
            @Override
            public LoyaltyCardTransaction read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltyCardTransaction instance = thisAdapter.fromJsonTree(jsonObj);

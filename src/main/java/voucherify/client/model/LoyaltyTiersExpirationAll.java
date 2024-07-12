@@ -373,52 +373,6 @@ public class LoyaltyTiersExpirationAll {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltyTiersExpirationAll
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("qualification_type") != null && !jsonObj.get("qualification_type").isJsonNull()) && !jsonObj.get("qualification_type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("qualification_type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          QualificationTypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("qualification_period") != null && !jsonObj.get("qualification_period").isJsonNull()) && !jsonObj.get("qualification_period").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("qualification_period");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          QualificationPeriodEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `start_date`
-      if (jsonObj.get("start_date") != null && !jsonObj.get("start_date").isJsonNull()) {
-        LoyaltyTiersExpirationAllStartDate.validateJsonElement(jsonObj.get("start_date"));
-      }
-      // validate the optional field `expiration_date`
-      if (jsonObj.get("expiration_date") != null && !jsonObj.get("expiration_date").isJsonNull()) {
-        LoyaltyTiersExpirationAllExpirationDate.validateJsonElement(jsonObj.get("expiration_date"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -457,7 +411,6 @@ public class LoyaltyTiersExpirationAll {
            @Override
            public LoyaltyTiersExpirationAll read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltyTiersExpirationAll instance = thisAdapter.fromJsonTree(jsonObj);

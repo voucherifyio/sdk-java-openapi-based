@@ -247,24 +247,6 @@ public class LoyaltiesMembersRedemptionRedeemRequestBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LoyaltiesMembersRedemptionRedeemRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `reward`
-      if (jsonObj.get("reward") != null && !jsonObj.get("reward").isJsonNull()) {
-        LoyaltiesMembersRedemptionRedeemRequestBodyReward.validateJsonElement(jsonObj.get("reward"));
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        Order.validateJsonElement(jsonObj.get("order"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -303,7 +285,6 @@ public class LoyaltiesMembersRedemptionRedeemRequestBody {
            @Override
            public LoyaltiesMembersRedemptionRedeemRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LoyaltiesMembersRedemptionRedeemRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

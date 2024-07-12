@@ -860,61 +860,6 @@ public class PromotionTier {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PromotionTier
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("banner") != null && !jsonObj.get("banner").isJsonNull()) && !jsonObj.get("banner").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `action`
-      if (jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) {
-        PromotionTierAction.validateJsonElement(jsonObj.get("action"));
-      }
-      if ((jsonObj.get("promotion_id") != null && !jsonObj.get("promotion_id").isJsonNull()) && !jsonObj.get("promotion_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `campaign`
-      if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
-        PromotionTierCampaign.validateJsonElement(jsonObj.get("campaign"));
-      }
-      if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // validate the optional field `validity_hours`
-      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
-        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
-      }
-      // validate the optional field `summary`
-      if (jsonObj.get("summary") != null && !jsonObj.get("summary").isJsonNull()) {
-        PromotionTierSummary.validateJsonElement(jsonObj.get("summary"));
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `validation_rule_assignments`
-      if (jsonObj.get("validation_rule_assignments") != null && !jsonObj.get("validation_rule_assignments").isJsonNull()) {
-        ValidationRuleAssignmentsList.validateJsonElement(jsonObj.get("validation_rule_assignments"));
-      }
-      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -953,7 +898,6 @@ public class PromotionTier {
            @Override
            public PromotionTier read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PromotionTier instance = thisAdapter.fromJsonTree(jsonObj);

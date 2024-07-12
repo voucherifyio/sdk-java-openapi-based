@@ -535,44 +535,6 @@ public class StackingRules {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to StackingRules
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("redeemables_application_mode") != null && !jsonObj.get("redeemables_application_mode").isJsonNull()) && !jsonObj.get("redeemables_application_mode").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("redeemables_application_mode");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          RedeemablesApplicationModeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("redeemables_sorting_rule") != null && !jsonObj.get("redeemables_sorting_rule").isJsonNull()) && !jsonObj.get("redeemables_sorting_rule").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("redeemables_sorting_rule");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          RedeemablesSortingRuleEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -611,7 +573,6 @@ public class StackingRules {
            @Override
            public StackingRules read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              StackingRules instance = thisAdapter.fromJsonTree(jsonObj);

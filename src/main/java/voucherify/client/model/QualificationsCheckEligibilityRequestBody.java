@@ -391,45 +391,6 @@ public class QualificationsCheckEligibilityRequestBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to QualificationsCheckEligibilityRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        Customer.validateJsonElement(jsonObj.get("customer"));
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        Order.validateJsonElement(jsonObj.get("order"));
-      }
-      if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) && !jsonObj.get("scenario").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("scenario");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ScenarioEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `options`
-      if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {
-        QualificationsOption.validateJsonElement(jsonObj.get("options"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -468,7 +429,6 @@ public class QualificationsCheckEligibilityRequestBody {
            @Override
            public QualificationsCheckEligibilityRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              QualificationsCheckEligibilityRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

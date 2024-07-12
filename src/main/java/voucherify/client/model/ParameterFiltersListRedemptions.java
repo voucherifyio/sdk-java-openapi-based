@@ -451,56 +451,6 @@ public class ParameterFiltersListRedemptions {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ParameterFiltersListRedemptions
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `voucher_code`
-      if (jsonObj.get("voucher_code") != null && !jsonObj.get("voucher_code").isJsonNull()) {
-        ParameterFiltersListRedemptionsVoucherCode.validateJsonElement(jsonObj.get("voucher_code"));
-      }
-      // validate the optional field `related_object_id`
-      if (jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) {
-        ParameterFiltersListRedemptionsRelatedObjectId.validateJsonElement(jsonObj.get("related_object_id"));
-      }
-      // validate the optional field `related_object_parent_id`
-      if (jsonObj.get("related_object_parent_id") != null && !jsonObj.get("related_object_parent_id").isJsonNull()) {
-        ParameterFiltersListRedemptionsRelatedObjectParentId.validateJsonElement(jsonObj.get("related_object_parent_id"));
-      }
-      // validate the optional field `parent_redemption_id`
-      if (jsonObj.get("parent_redemption_id") != null && !jsonObj.get("parent_redemption_id").isJsonNull()) {
-        ParameterFiltersListRedemptionsParentRedemptionId.validateJsonElement(jsonObj.get("parent_redemption_id"));
-      }
-      // validate the optional field `failure_code`
-      if (jsonObj.get("failure_code") != null && !jsonObj.get("failure_code").isJsonNull()) {
-        ParameterFiltersListRedemptionsFailureCode.validateJsonElement(jsonObj.get("failure_code"));
-      }
-      // validate the optional field `result`
-      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
-        ParameterFiltersListRedemptionsResult.validateJsonElement(jsonObj.get("result"));
-      }
-      // validate the optional field `object`
-      if (jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) {
-        ParameterFiltersListRedemptionsObject.validateJsonElement(jsonObj.get("object"));
-      }
-      // validate the optional field `customer_id`
-      if (jsonObj.get("customer_id") != null && !jsonObj.get("customer_id").isJsonNull()) {
-        ParameterFiltersListRedemptionsCustomerId.validateJsonElement(jsonObj.get("customer_id"));
-      }
-      // validate the optional field `campaign_name`
-      if (jsonObj.get("campaign_name") != null && !jsonObj.get("campaign_name").isJsonNull()) {
-        ParameterFiltersListRedemptionsCampaignName.validateJsonElement(jsonObj.get("campaign_name"));
-      }
-      // validate the optional field `user_login`
-      if (jsonObj.get("user_login") != null && !jsonObj.get("user_login").isJsonNull()) {
-        ParameterFiltersListRedemptionsUserLogin.validateJsonElement(jsonObj.get("user_login"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -539,7 +489,6 @@ public class ParameterFiltersListRedemptions {
            @Override
            public ParameterFiltersListRedemptions read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ParameterFiltersListRedemptions instance = thisAdapter.fromJsonTree(jsonObj);

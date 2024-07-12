@@ -177,16 +177,6 @@ public class RedemptionsListResponseBodyRedemptionsItemGift {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionsListResponseBodyRedemptionsItemGift
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -225,7 +215,6 @@ public class RedemptionsListResponseBodyRedemptionsItemGift {
            @Override
            public RedemptionsListResponseBodyRedemptionsItemGift read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RedemptionsListResponseBodyRedemptionsItemGift instance = thisAdapter.fromJsonTree(jsonObj);

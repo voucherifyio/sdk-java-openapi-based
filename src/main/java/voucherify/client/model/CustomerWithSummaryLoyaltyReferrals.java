@@ -717,68 +717,6 @@ public class CustomerWithSummaryLoyaltyReferrals {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CustomerWithSummaryLoyaltyReferrals
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonNull()) && !jsonObj.get("phone").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `address`
-      if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
-        CustomerBaseAddress.validateJsonElement(jsonObj.get("address"));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `summary`
-      if (jsonObj.get("summary") != null && !jsonObj.get("summary").isJsonNull()) {
-        CustomerSummary.validateJsonElement(jsonObj.get("summary"));
-      }
-      // validate the optional field `loyalty`
-      if (jsonObj.get("loyalty") != null && !jsonObj.get("loyalty").isJsonNull()) {
-        CustomerLoyalty.validateJsonElement(jsonObj.get("loyalty"));
-      }
-      // validate the optional field `referrals`
-      if (jsonObj.get("referrals") != null && !jsonObj.get("referrals").isJsonNull()) {
-        CustomerReferrals.validateJsonElement(jsonObj.get("referrals"));
-      }
-      // validate the optional field `assets`
-      if (jsonObj.get("assets") != null && !jsonObj.get("assets").isJsonNull()) {
-        CustomerResponseDataAssets.validateJsonElement(jsonObj.get("assets"));
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("object");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ObjectEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -817,7 +755,6 @@ public class CustomerWithSummaryLoyaltyReferrals {
            @Override
            public CustomerWithSummaryLoyaltyReferrals read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CustomerWithSummaryLoyaltyReferrals instance = thisAdapter.fromJsonTree(jsonObj);

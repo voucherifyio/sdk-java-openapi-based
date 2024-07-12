@@ -303,30 +303,6 @@ public class PublicationsCreateRequestBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PublicationsCreateRequestBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) && !jsonObj.get("voucher").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("source_id") != null && !jsonObj.get("source_id").isJsonNull()) && !jsonObj.get("source_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        PublicationsCreateRequestBodyCustomer.validateJsonElement(jsonObj.get("customer"));
-      }
-      // validate the optional field `campaign`
-      if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
-        CreatePublicationCampaign.validateJsonElement(jsonObj.get("campaign"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -365,7 +341,6 @@ public class PublicationsCreateRequestBody {
            @Override
            public PublicationsCreateRequestBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PublicationsCreateRequestBody instance = thisAdapter.fromJsonTree(jsonObj);

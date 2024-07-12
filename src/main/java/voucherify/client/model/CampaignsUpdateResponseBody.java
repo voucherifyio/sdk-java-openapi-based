@@ -1350,125 +1350,6 @@ public class CampaignsUpdateResponseBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CampaignsUpdateResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) && !jsonObj.get("campaign_type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("campaign_type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          CampaignTypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `voucher`
-      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
-        CampaignVoucher.validateJsonElement(jsonObj.get("voucher"));
-      }
-      // validate the optional field `validity_timeframe`
-      if (jsonObj.get("validity_timeframe") != null && !jsonObj.get("validity_timeframe").isJsonNull()) {
-        ValidityTimeframe.validateJsonElement(jsonObj.get("validity_timeframe"));
-      }
-      // validate the optional field `validity_hours`
-      if (jsonObj.get("validity_hours") != null && !jsonObj.get("validity_hours").isJsonNull()) {
-        ValidityHours.validateJsonElement(jsonObj.get("validity_hours"));
-      }
-      if ((jsonObj.get("activity_duration_after_publishing") != null && !jsonObj.get("activity_duration_after_publishing").isJsonNull()) && !jsonObj.get("activity_duration_after_publishing").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("creation_status") != null && !jsonObj.get("creation_status").isJsonNull()) && !jsonObj.get("creation_status").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("creation_status");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          CreationStatusEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("vouchers_generation_status") != null && !jsonObj.get("vouchers_generation_status").isJsonNull()) && !jsonObj.get("vouchers_generation_status").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("vouchers_generation_status");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          VouchersGenerationStatusEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      if ((jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) && !jsonObj.get("category_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `referral_program`
-      if (jsonObj.get("referral_program") != null && !jsonObj.get("referral_program").isJsonNull()) {
-        ReferralProgram.validateJsonElement(jsonObj.get("referral_program"));
-      }
-      // validate the optional field `loyalty_tiers_expiration`
-      if (jsonObj.get("loyalty_tiers_expiration") != null && !jsonObj.get("loyalty_tiers_expiration").isJsonNull()) {
-        LoyaltyTiersExpirationAll.validateJsonElement(jsonObj.get("loyalty_tiers_expiration"));
-      }
-      // validate the optional field `promotion`
-      if (jsonObj.get("promotion") != null && !jsonObj.get("promotion").isJsonNull()) {
-        PromotionTiersList.validateJsonElement(jsonObj.get("promotion"));
-      }
-      // validate the optional field `validation_rules_assignments`
-      if (jsonObj.get("validation_rules_assignments") != null && !jsonObj.get("validation_rules_assignments").isJsonNull()) {
-        ValidationRulesAssignmentsList.validateJsonElement(jsonObj.get("validation_rules_assignments"));
-      }
-      // validate the optional field `access_settings_assignments`
-      if (jsonObj.get("access_settings_assignments") != null && !jsonObj.get("access_settings_assignments").isJsonNull()) {
-        AccessSettingsCampaignAssignmentsList.validateJsonElement(jsonObj.get("access_settings_assignments"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -1507,7 +1388,6 @@ public class CampaignsUpdateResponseBody {
            @Override
            public CampaignsUpdateResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CampaignsUpdateResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

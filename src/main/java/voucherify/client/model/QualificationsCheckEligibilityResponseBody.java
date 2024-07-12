@@ -276,31 +276,6 @@ public class QualificationsCheckEligibilityResponseBody {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to QualificationsCheckEligibilityResponseBody
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `redeemables`
-      if (jsonObj.get("redeemables") != null && !jsonObj.get("redeemables").isJsonNull()) {
-        QualificationsRedeemables.validateJsonElement(jsonObj.get("redeemables"));
-      }
-      if ((jsonObj.get("tracking_id") != null && !jsonObj.get("tracking_id").isJsonNull()) && !jsonObj.get("tracking_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        OrderCalculated.validateJsonElement(jsonObj.get("order"));
-      }
-      // validate the optional field `stacking_rules`
-      if (jsonObj.get("stacking_rules") != null && !jsonObj.get("stacking_rules").isJsonNull()) {
-        StackingRules.validateJsonElement(jsonObj.get("stacking_rules"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -339,7 +314,6 @@ public class QualificationsCheckEligibilityResponseBody {
            @Override
            public QualificationsCheckEligibilityResponseBody read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              QualificationsCheckEligibilityResponseBody instance = thisAdapter.fromJsonTree(jsonObj);

@@ -306,36 +306,6 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ValidationsValidateResponseBodyRedeemablesItemResult
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `discount`
-      if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
-        ValidationsValidateResponseBodyRedeemablesItemResultDiscount.validateJsonElement(jsonObj.get("discount"));
-      }
-      // validate the optional field `gift`
-      if (jsonObj.get("gift") != null && !jsonObj.get("gift").isJsonNull()) {
-        ValidationsValidateResponseBodyRedeemablesItemResultGift.validateJsonElement(jsonObj.get("gift"));
-      }
-      // validate the optional field `loyalty_card`
-      if (jsonObj.get("loyalty_card") != null && !jsonObj.get("loyalty_card").isJsonNull()) {
-        ValidationsValidateResponseBodyRedeemablesItemResultLoyaltyCard.validateJsonElement(jsonObj.get("loyalty_card"));
-      }
-      // validate the optional field `error`
-      if (jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) {
-        Error.validateJsonElement(jsonObj.get("error"));
-      }
-      // validate the optional field `details`
-      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
-        ValidationsValidateResponseBodyRedeemablesItemResultDetails.validateJsonElement(jsonObj.get("details"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -374,7 +344,6 @@ public class ValidationsValidateResponseBodyRedeemablesItemResult {
            @Override
            public ValidationsValidateResponseBodyRedeemablesItemResult read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ValidationsValidateResponseBodyRedeemablesItemResult instance = thisAdapter.fromJsonTree(jsonObj);

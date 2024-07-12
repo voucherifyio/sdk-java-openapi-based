@@ -412,34 +412,6 @@ public class QualificationsOption {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to QualificationsOption
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `filters`
-      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
-        QualificationsOptionFilters.validateJsonElement(jsonObj.get("filters"));
-      }
-      if ((jsonObj.get("sorting_rule") != null && !jsonObj.get("sorting_rule").isJsonNull()) && !jsonObj.get("sorting_rule").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("sorting_rule");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          SortingRuleEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -478,7 +450,6 @@ public class QualificationsOption {
            @Override
            public QualificationsOption read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              QualificationsOption instance = thisAdapter.fromJsonTree(jsonObj);

@@ -273,22 +273,6 @@ public class CampaignLoyaltyCardExpirationRules {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CampaignLoyaltyCardExpirationRules
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("period_type") != null && !jsonObj.get("period_type").isJsonNull()) && !jsonObj.get("period_type").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("rounding_type") != null && !jsonObj.get("rounding_type").isJsonNull()) && !jsonObj.get("rounding_type").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -327,7 +311,6 @@ public class CampaignLoyaltyCardExpirationRules {
            @Override
            public CampaignLoyaltyCardExpirationRules read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CampaignLoyaltyCardExpirationRules instance = thisAdapter.fromJsonTree(jsonObj);

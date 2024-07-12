@@ -537,68 +537,6 @@ public class VoucherTransactionDetails {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VoucherTransactionDetails
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `balance`
-      if (jsonObj.get("balance") != null && !jsonObj.get("balance").isJsonNull()) {
-        VoucherTransactionDetailsBalance.validateJsonElement(jsonObj.get("balance"));
-      }
-      // validate the optional field `order`
-      if (jsonObj.get("order") != null && !jsonObj.get("order").isJsonNull()) {
-        VoucherTransactionDetailsOrder.validateJsonElement(jsonObj.get("order"));
-      }
-      // validate the optional field `event`
-      if (jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) {
-        VoucherTransactionDetailsEvent.validateJsonElement(jsonObj.get("event"));
-      }
-      // validate the optional field `earning_rule`
-      if (jsonObj.get("earning_rule") != null && !jsonObj.get("earning_rule").isJsonNull()) {
-        VoucherTransactionDetailsEarningRule.validateJsonElement(jsonObj.get("earning_rule"));
-      }
-      // validate the optional field `segment`
-      if (jsonObj.get("segment") != null && !jsonObj.get("segment").isJsonNull()) {
-        VoucherTransactionDetailsSegment.validateJsonElement(jsonObj.get("segment"));
-      }
-      // validate the optional field `loyalty_tier`
-      if (jsonObj.get("loyalty_tier") != null && !jsonObj.get("loyalty_tier").isJsonNull()) {
-        VoucherTransactionDetailsLoyaltyTier.validateJsonElement(jsonObj.get("loyalty_tier"));
-      }
-      // validate the optional field `redemption`
-      if (jsonObj.get("redemption") != null && !jsonObj.get("redemption").isJsonNull()) {
-        VoucherTransactionDetailsRedemption.validateJsonElement(jsonObj.get("redemption"));
-      }
-      // validate the optional field `rollback`
-      if (jsonObj.get("rollback") != null && !jsonObj.get("rollback").isJsonNull()) {
-        VoucherTransactionDetailsRollback.validateJsonElement(jsonObj.get("rollback"));
-      }
-      // validate the optional field `custom_event`
-      if (jsonObj.get("custom_event") != null && !jsonObj.get("custom_event").isJsonNull()) {
-        VoucherTransactionDetailsCustomEvent.validateJsonElement(jsonObj.get("custom_event"));
-      }
-      // validate the optional field `event_schema`
-      if (jsonObj.get("event_schema") != null && !jsonObj.get("event_schema").isJsonNull()) {
-        VoucherTransactionDetailsEventSchema.validateJsonElement(jsonObj.get("event_schema"));
-      }
-      // validate the optional field `reward`
-      if (jsonObj.get("reward") != null && !jsonObj.get("reward").isJsonNull()) {
-        VoucherTransactionDetailsReward.validateJsonElement(jsonObj.get("reward"));
-      }
-      // validate the optional field `source_voucher`
-      if (jsonObj.get("source_voucher") != null && !jsonObj.get("source_voucher").isJsonNull()) {
-        SimpleVoucher.validateJsonElement(jsonObj.get("source_voucher"));
-      }
-      // validate the optional field `destination_voucher`
-      if (jsonObj.get("destination_voucher") != null && !jsonObj.get("destination_voucher").isJsonNull()) {
-        SimpleVoucher.validateJsonElement(jsonObj.get("destination_voucher"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -637,7 +575,6 @@ public class VoucherTransactionDetails {
            @Override
            public VoucherTransactionDetails read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              VoucherTransactionDetails instance = thisAdapter.fromJsonTree(jsonObj);

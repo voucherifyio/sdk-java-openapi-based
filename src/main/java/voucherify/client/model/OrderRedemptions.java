@@ -404,28 +404,6 @@ public class OrderRedemptions {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to OrderRedemptions
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("rollback_id") != null && !jsonObj.get("rollback_id").isJsonNull()) && !jsonObj.get("rollback_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("related_object_type") != null && !jsonObj.get("related_object_type").isJsonNull()) && !jsonObj.get("related_object_type").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("related_object_id") != null && !jsonObj.get("related_object_id").isJsonNull()) && !jsonObj.get("related_object_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("related_object_parent_id") != null && !jsonObj.get("related_object_parent_id").isJsonNull()) && !jsonObj.get("related_object_parent_id").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -464,7 +442,6 @@ public class OrderRedemptions {
            @Override
            public OrderRedemptions read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              OrderRedemptions instance = thisAdapter.fromJsonTree(jsonObj);

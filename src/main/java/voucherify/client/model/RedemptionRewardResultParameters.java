@@ -248,28 +248,6 @@ public class RedemptionRewardResultParameters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionRewardResultParameters
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `campaign`
-      if (jsonObj.get("campaign") != null && !jsonObj.get("campaign").isJsonNull()) {
-        RedemptionRewardResultParametersCampaign.validateJsonElement(jsonObj.get("campaign"));
-      }
-      // validate the optional field `product`
-      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
-        RedemptionRewardResultParametersProduct.validateJsonElement(jsonObj.get("product"));
-      }
-      // validate the optional field `coin`
-      if (jsonObj.get("coin") != null && !jsonObj.get("coin").isJsonNull()) {
-        RedemptionRewardResultParametersCoin.validateJsonElement(jsonObj.get("coin"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -308,7 +286,6 @@ public class RedemptionRewardResultParameters {
            @Override
            public RedemptionRewardResultParameters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RedemptionRewardResultParameters instance = thisAdapter.fromJsonTree(jsonObj);

@@ -245,25 +245,6 @@ public class LuckyDraw {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LuckyDraw
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("winners_count") != null && !jsonObj.get("winners_count").isJsonNull()) && !jsonObj.get("winners_count").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("unique_winners_per_draw") != null && !jsonObj.get("unique_winners_per_draw").isJsonNull()) && !jsonObj.get("unique_winners_per_draw").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("unique_winners") != null && !jsonObj.get("unique_winners").isJsonNull()) && !jsonObj.get("unique_winners").isJsonPrimitive()) {
-        return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -302,7 +283,6 @@ public class LuckyDraw {
            @Override
            public LuckyDraw read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              LuckyDraw instance = thisAdapter.fromJsonTree(jsonObj);

@@ -343,52 +343,6 @@ public class QualificationsOptionFilters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to QualificationsOptionFilters
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!QualificationsOptionFilters.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `QualificationsOptionFilters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `category_id`
-      if (jsonObj.get("category_id") != null && !jsonObj.get("category_id").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("category_id"));
-      }
-      // validate the optional field `campaign_id`
-      if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("campaign_id"));
-      }
-      // validate the optional field `campaign_type`
-      if (jsonObj.get("campaign_type") != null && !jsonObj.get("campaign_type").isJsonNull()) {
-        QualificationsCampaignTypeConditions.validateJsonElement(jsonObj.get("campaign_type"));
-      }
-      // validate the optional field `resource_id`
-      if (jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("resource_id"));
-      }
-      // validate the optional field `resource_type`
-      if (jsonObj.get("resource_type") != null && !jsonObj.get("resource_type").isJsonNull()) {
-        QualificationsOptionFiltersResourceType.validateJsonElement(jsonObj.get("resource_type"));
-      }
-      // validate the optional field `voucher_type`
-      if (jsonObj.get("voucher_type") != null && !jsonObj.get("voucher_type").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("voucher_type"));
-      }
-      // validate the optional field `code`
-      if (jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) {
-        QualificationsFieldConditions.validateJsonElement(jsonObj.get("code"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -410,7 +364,6 @@ public class QualificationsOptionFilters {
            @Override
            public QualificationsOptionFilters read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
            }
 

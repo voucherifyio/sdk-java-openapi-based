@@ -625,76 +625,6 @@ public class RedemptionRewardResult {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RedemptionRewardResult
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `customer`
-      if (jsonObj.get("customer") != null && !jsonObj.get("customer").isJsonNull()) {
-        SimpleCustomer.validateJsonElement(jsonObj.get("customer"));
-      }
-      if ((jsonObj.get("assignment_id") != null && !jsonObj.get("assignment_id").isJsonNull()) && !jsonObj.get("assignment_id").isJsonPrimitive()) {
-        return;
-      }
-      // validate the optional field `voucher`
-      if (jsonObj.get("voucher") != null && !jsonObj.get("voucher").isJsonNull()) {
-        RedemptionRewardResultVoucher.validateJsonElement(jsonObj.get("voucher"));
-      }
-      // validate the optional field `product`
-      if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
-        RedemptionRewardResultProduct.validateJsonElement(jsonObj.get("product"));
-      }
-      // validate the optional field `sku`
-      if (jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull()) {
-        RedemptionRewardResultSku.validateJsonElement(jsonObj.get("sku"));
-      }
-      if ((jsonObj.get("loyalty_tier_id") != null && !jsonObj.get("loyalty_tier_id").isJsonNull()) && !jsonObj.get("loyalty_tier_id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        return;
-      }
-      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("object");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          ObjectEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-      // validate the optional field `parameters`
-      if (jsonObj.get("parameters") != null && !jsonObj.get("parameters").isJsonNull()) {
-        RedemptionRewardResultParameters.validateJsonElement(jsonObj.get("parameters"));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        return;
-      }
-      try {
-        JsonElement objectElement = jsonObj.get("type");
-
-        if (objectElement != null && !objectElement.isJsonNull()) {
-          TypeEnum.fromValue(objectElement.getAsString());
-        } else {
-          return;
-        }
-      } catch (IllegalArgumentException e) {
-          return;
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -733,7 +663,6 @@ public class RedemptionRewardResult {
            @Override
            public RedemptionRewardResult read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RedemptionRewardResult instance = thisAdapter.fromJsonTree(jsonObj);

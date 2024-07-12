@@ -247,28 +247,6 @@ public class EarningRuleBaseLoyaltyOrder {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to EarningRuleBaseLoyaltyOrder
-  */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `amount`
-      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
-        EarningRuleBaseLoyaltyOrderAmount.validateJsonElement(jsonObj.get("amount"));
-      }
-      // validate the optional field `total_amount`
-      if (jsonObj.get("total_amount") != null && !jsonObj.get("total_amount").isJsonNull()) {
-        EarningRuleBaseLoyaltyOrderAmount.validateJsonElement(jsonObj.get("total_amount"));
-      }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        EarningRuleBaseLoyaltyOrderMetadata.validateJsonElement(jsonObj.get("metadata"));
-      }
-  }
-
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
@@ -307,7 +285,6 @@ public class EarningRuleBaseLoyaltyOrder {
            @Override
            public EarningRuleBaseLoyaltyOrder read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              EarningRuleBaseLoyaltyOrder instance = thisAdapter.fromJsonTree(jsonObj);
