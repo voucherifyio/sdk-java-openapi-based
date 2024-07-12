@@ -88,10 +88,6 @@ public class LoyaltiesTest {
             loyaltyTierBasePoints.setFrom(0);
             loyaltyTierBasePoints.setTo(1000);
 
-            LoyaltiesTiersCreateInBulkRequestBodyItem item = new LoyaltiesTiersCreateInBulkRequestBodyItem();
-            item.setName("Bronze");
-            item.setPoints(loyaltyTierBasePoints);
-
             // UNCOMMENT WHEN YOU CREATED REWARD MANUALLY AND WANT TO TEST AND PROVIDE FIXED
             // CAMPAIGN ID AND REWARD ASSIGMENT ID
             // Map<String, MappingPoints> rewards = new HashMap<>();
@@ -105,8 +101,6 @@ public class LoyaltiesTest {
             //
             // rewards.put("rewa_Js4okPaZa4KVdGFcnlwsR7iv", mappingPoints);
             // item.setRewards(rewards);
-
-            tiers.add(item);
 
             List<LoyaltyTier> loyaltyTiers = loyalties.createInBulkLoyaltyTiers(
                     Voucherify.getInstance().getLoyaltyCampaign().getId(),
