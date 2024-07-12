@@ -1,4 +1,4 @@
-FROM openjdk:14-jdk-slim
+FROM openjdk:8-jdk-slim
 
 ENV JAVA_HOME /usr/local/openjdk-18
 ENV PATH $JAVA_HOME/bin:/usr/share/maven/bin:$PATH

@@ -1,0 +1,102 @@
+Voucherify Java SDK - Changelog
+===============================
+- **2024-07-04** - `11.2.2` - Fixed missing `getValue` in `Expand` enums. Added missing `VALIDATION_RULES` property to stacked endpoints option.
+- **2024-03-12** - `11.2.1` - Added all supported fields to `DiscountResponse`. Thanks to [mariaivanova-git](https://github.com/mariaivanova-git) for issue request
+- **2023-10-26** - `11.2.0` -
+  * Added `APPLY_TO_ITEMS_BY_QUANTITY` discount type. Added [Update Products in bulk] method. Thanks to [@viglu](https://github.com/viglu) for contribution!
+  * Added missing properties to OrderResponse and OrderItemResponse models. Thanks to [@petro-dutchak-infopulse](https://github.com/petro-dutchak-infopulse) for issue request!
+  * Added support for Stackable Discounts API. Thanks to [prenner-voucherify](https://github.com/prenner-voucherify) for issue request.
+  * Added basic implementation for GetMemberActivities.
+  * Added support for consents API.
+  * Added support for Qualifications API.
+- **2023-09-21** - `11.1.6` - Added `VoucherValidationErrorResponse` to `VoucherValidationResponse`. Thanks to [tcalvoarroyo](https://github.com/tcalvoarroyo) for issue request!
+- **2023-08-30** - `11.1.5` - Added mapping for `status` to `result` in `RollbackRedemptionResponse` to correctly catch data returned by api in the new version where `status` property was added.
+- **2023-03-21** - `11.1.4` - Added `holder_id` to VoucherResponse. Added `status` to CreateOrder.  Thanks to [@viglu](https://github.com/viglu) for contribution and [@markonieczny](https://github.com/markonieczny) for issue request!
+- **2023-01-23** - `11.1.3` - Added functions [Get Loyalty Member By Id] and [Get Members Loyalty Tier]. Thanks to [@viglu](https://github.com/viglu) for Your contribution!
+- **2022-09-16** - `11.1.2` - Customer bulk update. Added function [Add or Remove Loyalty Card Balance]. Added information about Loyalty Card potins expiration. Thanks to [@mabdullah12](https://github.com/mabdullah12) for Your contribution!
+- **2022-09-07** - `11.1.1` - Add `source_id` field to `CreateOrder` model
+- **2021-12-21** - `11.1.0` - Add support for Session on Voucher validation & redemption as well as session release
+- **2023-08-30** - `11.0.1` - Added mapping for `status` to `result` in `RollbackRedemptionResponse` to correctly catch data returned by api in the new version where `status` property was added.
+- **2021-10-25** - `11.0.0` - Dropped `VoucherifyUtils`. Changed `Integer` to `Long` for amount/quantity/total alike fields. Added missing `FIXED` discount type. Added discount/gift effects. Changed `CampaignType` -> `CampaignExtenstionType`, `CampaginType` now contains actual campaign types like `REFERRAL_PROGRAM`. Aligned OkHttp3 version.
+- **2023-08-30** - `10.2.1` - Added mapping for `status` to `result` in `RollbackRedemptionResponse` to correctly catch data returned by api in the new version where `status` property was added.
+- **2021-07-27** - `10.2.0` - Add support for Async Actions in vouchers import.
+- **2023-08-30** - `10.1.1` - Added mapping for `status` to `result` in `RollbackRedemptionResponse` to correctly catch data returned by api in the new version where `status` property was added.
+- **2021-07-16** - `10.1.0` - Add support for Async Actions
+- **2023-08-30** - `10.0.1` - Added mapping for `status` to `result` in `RollbackRedemptionResponse` to correctly catch data returned by api in the new version where `status` property was added.
+- **2020-10-14** - `10.0.0` - Drop old versions usage. Changed properties type from `Integer` to `Long` in some classes. Add `campaign` and `campaign_id` in Voucher validation response.
+- **2023-08-30** - `9.1.2` - Added mapping for `status` to `result` in `RollbackRedemptionResponse` to correctly catch data returned by api in the new version where `status` property was added.
+- **2020-07-22** - `9.1.1` - Fixed previous release version and improved publishing artifacts
+- **2020-07-14** - `9.1.0` - Added possibility to specify points as reward when redeeming loyalty card, fixed UpdateOrder status field
+- **2019-09-30** - `9.0.0` - Updated retrofit and rxjava to version >= 2.x. Dropped support for JDK 1.6 and 1.7
+- **2019-09-30** - `8.1.0` - Extended `QualifiedResourceFilter` to support `order` query param.
+- **2019-08-22** - `8.0.1` - Added missing `id` to VoucherResponse.
+- **2019-06-19** - `8.0.0` - Hide API versioning in setEndpoint method.
+- **2019-05-27** - `7.4.1` - Restore `discount_amount` for `OrderResponse`.
+- **2019-05-16** - `7.4.0` - API for getting qualified Vouchers and Campaigns.
+- **2019-04-23** - `7.3.0` - Loyalties API, Rewards API.
+- **2019-03-21** - `7.2.0` - Added `ValidationRules assignments` property to `Voucher` and `Campaign` responses, added `Referral` to `CustomEvent`, updated `OrderResponse` object with new properties.
+- **2019-02-01** - `7.1.3` - Fixed deserialisation of `CampaignResponse` for newest API version.
+- **2019-02-01** - `7.1.2` - Fixed deserialisation of `VoucherResponse` for newest API version.
+- **2019-01-28** - `7.1.1` - Fixed release.
+- **2019-01-25** - `7.1.0` - Extended `OrderItem` and `OrderItemResponse` with `OrderItemProduct` and `OrderItemSKU`.
+- **2018-12-20** - `7.0.0` - Replaced Validation Rules with Business Validation Rules. Added API Verion v2018-08-01.
+- **2018-12-04** - `6.2.0` - Added support for `Order` when listing vouchers.
+- **2018-11-08** - `6.1.0` - Added support for `advanced filters` for Vouchers.
+- **2018-11-08** - `6.0.9` - Fix `Segment` metadata entry builder.
+- **2018-10-24** - `6.0.8` - Add `discountAmount` to `OrderItemResponse`.
+- **2018-10-19** - `6.0.7` - Add amount to `OrderItem`.
+- **2018-10-17** - `6.0.6` - Added ApplicableTo object to response of redeem/validate methods for vouchers and promotions.
+- **2018-10-10** - `6.0.5` - Added ValidationRules in VoucherResponse object.
+- **2018-09-09** - `6.0.4` - Added filtering vouchers by customer.
+- **2018-05-21** - `6.0.3` - Added support for `price` when creating `Price` model.
+- **2018-04-05** - `6.0.2` - Added support for `unitType` when creating `Discount` Voucher, removed obsolete `VoucherType` from validation response. Added class `PromotionTierValidationResponse` for proper promotion tier response mapping for promotion validation returned from `voucherify.validations().validate(PromotionValidation)` method.
+- **2018-04-05** - `6.0.1` - Fix response class accessibility from `package` to `public`. `OrderItem` and `OrderItemResponse` classes now supports `price` field.
+- **2018-04-04** - `6.0.0` - Response from Publish Voucher method now includes additional fields and structure introduced when using `ApiVersion.V_2017_04_20`. `RollbackRedemptionResponse` object uses VoucherResponse as voucher field instead of `PublishVoucherResponse`.
+- **2018-04-03** - `5.3.2` - Add missing fields in Validation and Redeem responses, provide more examples related to percent discount voucher.
+- **2018-04-03** - `5.3.1` - Add Order to Validation response.
+- **2018-01-14** - `5.3.0` - API Version set in header by default, Events API, Orders API, added missing methods to Customers, Distributions and Campaigns modules.
+- **2017-09-28** - `5.2.0` - Support for additional ValidationRules properties, additional examples, license info update.
+- **2017-09-19** - `5.1.2` - Fix creating VoucherifyError from Retrofit errors, fix typo in RedeemVoucherBuilder.
+- **2017-08-21** - `5.1.1` - Added metadata to VoucherValidationResponse.
+- **2017-08-21** - `5.1.0` - Added metadata to VoucherValidation.
+- **2017-08-18** - `5.0.1` - Fix for retrofit response body mapping.
+- **2017-05-10** - `5.0.0` - Separate modules, general refactoring, updated models.
+- **2017-04-21** - `4.2.0` - Moved validation to a separate module.
+- **2017-04-20** - `4.1.0` - Added method to validate voucher.
+- **2017-04-11** - `4.0.0` - Fixed redemptions list filter and response format.
+- **2016-12-02** - `3.6.1` - Added gift balance. Enhanced utils to support gift vouchers.
+- **2016-10-07** - `3.6.0` - Added a method to publish voucher.
+- **2017-04-21** - `4.2.0` - Moved validation to a separate module.
+- **2017-04-20** - `4.1.0` - Added method to validate voucher.
+- **2017-04-11** - `4.0.0` - Fixed redemptions list filter and response format.
+- **2016-12-02** - `3.6.1` - Added gift balance. Enhanced utils to support gift vouchers.
+- **2016-09-06** - `3.6.0` - Added a method to publish voucher for given code or campaign name.
+- **2016-09-06** - `3.5.0` - Added order items.
+- **2016-07-19** - `3.4.0` - Voucher code config.
+- **2016-07-18** - `3.3.0` - Added a method to update voucher.
+- **2016-06-21** - `3.2.0` - Added support for gift vouchers.
+  - vouchers has a type now - `VoucherType`: `DISCOUNT_VOUCHER` or `GIFT_VOUCHER`
+  - gift vouchers have an amount limit defined in `gift.amount`
+  - redeeming a gift voucher requires to provide amount value (`VoucherRedemptionContext.order.amount`)
+  - you can redeem gift vouchers multiple times but the total amount cannot exceed the gift amount
+- **2016-06-10** - `3.1.0` - Added methods to SDK for supporting Customer API.
+- **2016-06-02** - `3.0.0` - New customer model. Customers are now a separate entity in Voucherify, thus there are a few changes in the model:
+  - `Customer`: added `source_id` (previously `id` which is now a generated value), `created_at` and `object`
+  - `VoucherRedemptionResult` - added `customer_id`
+  - `RedemptionEntry` - added `customer_id`
+  - `RedemptionDetails` - changed type of  `customer` from `String` to `Customer`
+- **2016-05-30** - `2.6.0` - New publish model.
+- **2016-04-27** - `2.5.0` - Redemption rollback.
+- **2016-04-13** - `2.4.1` - Added customer_id to vouchers and redemption filter.
+- **2016-04-12** - `2.4.0` - Create, disable and enable voucher
+- **2016-04-04** - `2.3.1` - Updated API URL, HTTPS enabled by default
+- **2016-03-11** - `2.3.0` - List vouchers which meet specified filters
+- **2016-02-22** - `2.2.0` - List redemptions across all vouchers
+- **2015-12-14** - `2.1.0` - New discount model, new discount type: UNIT
+- **2015-11-23** - `2.0.1` - Added X-Voucherify-Channel header
+- **2015-11-18** - `2.0.0` - New model for voucher redemption result
+- **2015-11-18** - `1.9.2` - Added `category` to `Voucher`
+- **2015-11-10** - `1.9.0` - Added `VoucherifyUtils` which includes `calculatePrice` for computing product/cart price
+  after discount and `calculateDiscount`.
+- **2015-11-09** - `1.8.1` - Changed discount type from double to integer
+- **2015-11-06** - `1.8.0` - Added an id to RedemptionEntry
