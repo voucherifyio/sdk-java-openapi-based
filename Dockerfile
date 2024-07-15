@@ -9,7 +9,9 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY ./ ./
+COPY ./* ./
 
-RUN mvn test
+RUN mvn clean install
+
+CMD mvn test
 
