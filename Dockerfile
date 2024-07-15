@@ -13,7 +13,5 @@ COPY .env .
 COPY pom.xml .
 COPY ./src ./src
 
-RUN mvn clean install
-
-CMD mvn test
+RUN mvn test
 
