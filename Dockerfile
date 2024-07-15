@@ -9,7 +9,9 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY ./* ./
+COPY .env .
+COPY pom.xml .
+COPY ./src ./src
 
 RUN mvn clean install
 
